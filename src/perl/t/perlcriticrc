@@ -1,0 +1,16 @@
+[NamingConventions::Capitalization]
+packages = :no_restriction
+[RegularExpressions::ProhibitComplexRegexes]
+max_characters = 80
+[Documentation::PodSpelling]
+stop_words = accessor accessors afterwards arrayref arrayrefs authorised boolean CGI config DateTime dbh dbhost DBI dbname dbpass dbport dbsection dbuser denormalized dev EACS filehandle filehandles flowcell goldcrest groupname GQ GRL hasa hashref hashrefs hasmany iCal ini init IP iscurrent JSON libxml LWP memcached mq MVC npg NPG Pettett PNG POSIX pre prephasing projectname qc Readonly realname refactor refactored requestor requestor's RESTful rsd run's runfolder SangerPaths SangerWeb SequenceScape SQL strftime STDERR subdirectory subscribable superclass SVV uid undef uptimes useragent usergroup usergroups username util utilisation yearmonthday yyyymmdd 
+[Subroutines::ProhibitUnusedPrivateSubroutines]
+private_name_regex = ^_(?!_|build)\w+
+[Subroutines::ProhibitExcessComplexity]
+max_mccabe = 30
+[ValuesAndExpressions::ProhibitLongChainsOfMethodCalls]
+max_chain_length = 4
+[Documentation::RequirePodSections]
+lib_sections    = NAME | SYNOPSIS | DESCRIPTION | SUBROUTINES/METHODS | BUGS AND LIMITATIONS | DEPENDENCIES | CONFIGURATION AND ENVIRONMENT | INCOMPATIBILITIES | AUTHOR | LICENSE AND COPYRIGHT
+[CodeLayout::ProhibitHardTabs]
+allow_leading_tabs = 0
