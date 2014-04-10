@@ -52,7 +52,7 @@ my $builder = $class->new(
           'module_name'         => 'wtsi_clarity_perl',
           'dist_author'         => 'wtsi-clarity',
           'dist_version'        => $class->git_tag(),
-          'dist_abstract'       => 'Custom scripting for GenoLogics (http://www.genologics.com) Clarity LIMS at Wellcome Trust Sanger Institute',
+          'dist_abstract'       => 'Custom scripting for GenoLogics (http://www.genologics.com) Clarity LIMS at WTSI',
           'license'             => 'gpl',
 
           'configure_requires' => {
@@ -73,17 +73,14 @@ my $builder = $class->new(
                 'Test::Pod::Coverage'             => 0,
                 'Test::Perl::Critic'              => 0,
                 'Test::Warn'                      => 0,
-                'DateTime::Format::SQLite'        => 0,
+                'File::Temp'                      => 0,
           },
 
           'requires'    => {
                 'Carp'                            => 0,
                 'Config::Auto'                    => 0,
-                'Crypt::CBC'                      => 0,
-                'Cwd'                             => 0,
                 'English'                         => 0,
                 'File::Spec::Functions'           => 0,
-                'File::Slurp'                     => 0,
                 'Moose'                           => 0,
                 'Moose::Util::TypeConstraints'    => 0,
                 'Readonly'                        => 0,
