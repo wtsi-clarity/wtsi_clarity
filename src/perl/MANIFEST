@@ -1,0 +1,16 @@
+Changes
+MANIFEST
+README
+Build.PL
+lib/wtsi_clarity/util/config.pm
+lib/wtsi_clarity/util/types.pm
+t/perlcriticrc
+t/00-critic.t
+t/00-distribution.t
+t/00-scripts_compile.t
+t/00-podcoverage.t
+t/00-pod.t
+t/10-util-config.t
+t/data/config/config
+
+
