@@ -1,7 +1,3 @@
-#########
-# Author:        rmp
-#
-
 use strict;
 use warnings;
 use Test::More;
@@ -12,9 +8,7 @@ if (!$ENV{TEST_AUTHOR}) {
   plan( skip_all => $msg );
 }
 
-eval { require Test::Perl::Critic;
-       require Perl::Critic::Utils;
-     };
+eval { require Test::Perl::Critic; };
 
 if($EVAL_ERROR) {
   plan skip_all => 'Test::Perl::Critic not installed';
@@ -22,24 +16,17 @@ if($EVAL_ERROR) {
   Test::Perl::Critic->import(
            -severity => 1,
            -exclude => ['tidy',
-                              'ValuesAndExpressions::ProhibitImplicitNewlines',
-                              'Documentation::PodSpelling',
-                              'RegularExpressions::ProhibitEscapedMetacharacters',
-                              'RegularExpressions::ProhibitEnumeratedClasses',
-                              'Documentation::RequirePodAtEnd',
-                              'Modules::RequireVersionVar',
-                              'Miscellanea::RequireRcsKeywords',
-                              'ValuesAndExpressions::RequireConstantVersion'
+                        'Documentation::PodSpelling',
+                        'Documentation::RequirePodAtEnd',
+                        'NamingConventions::Capitalization',
+                        'Modules::RequireVersionVar',
+                        'Miscellanea::RequireRcsKeywords',
+                        'ValuesAndExpressions::RequireConstantVersion'
                              ],
                  -verbose => "%m at %f line %l, policy %p\n",
                  -profile => 't/perlcriticrc',
           );
- 
- my @files = Perl::Critic::Utils::all_perl_files(-e 'blib' ? 'blib/lib' : 'lib');
- foreach my $file (sort @files) {
-   critic_ok($file);
- }
- done_testing( scalar @files );
+  all_critic_ok();
 }
 
 1;
