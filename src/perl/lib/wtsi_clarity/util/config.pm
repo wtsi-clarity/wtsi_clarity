@@ -10,6 +10,7 @@ use wtsi_clarity::util::types;
 
 our $VERSION = '0.0';
 
+Readonly::Scalar my $WTSI_CLARITY_HOME_VAR_NAME => q[WTSI_CLARITY_HOME];
 Readonly::Scalar my $CONF_DIR        => q[.wtsi_clarity];
 Readonly::Scalar my $CONF_FILE_NAME  => q[config];
 Readonly::Array  my @CONF_ITEMS      => qw/ clarity_api
@@ -25,11 +26,11 @@ has 'dir_path'  => (
 sub _build_dir_path {
   my $self = shift;
   my $home = $ENV{'HOME'};
-  my $clarity_home = $ENV{'WTSI_CLARITY_HOME'};
+  my $clarity_home = $ENV{$WTSI_CLARITY_HOME_VAR_NAME};
   my $error =
       q[Neither WTSI_CLARITY_HOME not HOME environment variable is defined, cannot find location of the wtsi_clarity project configuration directory];
   return $clarity_home ? $clarity_home : (
-         $home ? catdir($home, $CONF_DIR) : carp $error);
+         $home ? catdir($home, $CONF_DIR) : croak $error);
 }
 
 has 'file'  => (
@@ -73,13 +74,17 @@ sub _inject_conf_option_builders {
     no warnings 'redefine';
     *{$build_method} = sub {
         my $self = shift;
-        if (!exist $self->_data->{$conf_item}) {
-          croak qq["$conf_item" configuration option is nor defined in ] . $self->file;
+        if (!exists $self->_data->{$conf_item}) {
+          croak qq["$conf_item" configuration option is not defined in ] . $self->file;
         }
         return $self->_data->{$conf_item};
     };
   }
   return;
+}
+
+sub wtsi_clarity_home_var_name {
+  return $WTSI_CLARITY_HOME_VAR_NAME;
 }
 
 1;
@@ -116,6 +121,9 @@ wtsi_clarity::util::config
 
 =head2 warehouse_mq - returns a hash reference corresponding to this
    section of a configuration file
+
+=head2 wtsi_clarity_home_var_name - returns name of the env variable
+   for wtsi clarity home
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
