@@ -24,10 +24,10 @@ sub parse {
 
     croak "Volume already set for well " . $tube_location if (exists ($result{$tube_location}));
 
-    $result{$tube_location} = $volume;
+    $result{$tube_location} = sprintf('%.4f', $volume);
   }
 
-  %result;
+  return %result;
 }
 
 1;
