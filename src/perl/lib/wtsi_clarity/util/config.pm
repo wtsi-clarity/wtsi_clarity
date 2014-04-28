@@ -15,7 +15,9 @@ Readonly::Scalar my $CONF_DIR        => q[.wtsi_clarity];
 Readonly::Scalar my $CONF_FILE_NAME  => q[config];
 Readonly::Array  my @CONF_ITEMS      => qw/ clarity_api
                                             clarity_mq
-                                            warehouse_mq /;
+                                            warehouse_mq
+                                            robot_file_dir
+                                          /;
 
 has 'dir_path'  => (
     isa             => 'WtsiClarityDirectory',

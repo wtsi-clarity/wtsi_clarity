@@ -5,20 +5,9 @@ use Module::Build;
 my $class = Module::Build->subclass(code => <<'EOF');
 
   sub git_tag {
-    my $version;
-    my $gitver = q[./scripts/gitver];
-    if (!-e $gitver) {
-      warn "$gitver script not found";
-      $version = q[unknown];
-    }
-    if (!-x $gitver) {
-      warn "$gitver script is not executable";
-      $version = q[unknown];
-    }
-    if (!$version) {
-      $version = `$gitver`;
-      $version =~ s/\s$//smxg;
-    }
+    my $gitver = q[git describe --dirty --always];
+    my $version = `$gitver`;
+    $version =~ s/\s$//smxg;
     return $version;
   }
 
@@ -49,8 +38,8 @@ EOF
 
 my $builder = $class->new(
 
-          'module_name'         => 'wtsi_clarity_perl',
-          'dist_author'         => 'wtsi-clarity',
+          'module_name'         => 'wtsi_clarity',
+          'dist_author'         => 'WTSI, Seq. Informatics',
           'dist_version'        => $class->git_tag(),
           'dist_abstract'       => 'Custom scripting for GenoLogics (http://www.genologics.com) Clarity LIMS at WTSI',
           'license'             => 'gpl',
@@ -60,8 +49,6 @@ my $builder = $class->new(
           },
 
           'build_requires' => {
-                'strict'                          => 0,
-                'warnings'                        => 0,
                 'Module::Build'                   => 0,
                 'ExtUtils::CBuilder'              => 0,
                 'Test::Compile'                   => 0,
@@ -74,16 +61,25 @@ my $builder = $class->new(
                 'Test::Perl::Critic'              => 0,
                 'Test::Warn'                      => 0,
                 'File::Temp'                      => 0,
+                'Cwd'                             => 0,
           },
 
           'requires'    => {
                 'Carp'                            => 0,
                 'Config::Auto'                    => 0,
                 'English'                         => 0,
+                'Getopt::Long'                    => 0,
                 'File::Spec::Functions'           => 0,
+                'File::Copy'                      => 0,
+                'FindBin'                         => 0,
+                'lib'                             => 0,
                 'Moose'                           => 0,
                 'Moose::Util::TypeConstraints'    => 0,
+                'MooseX::Getopt'                  => 0,
+                'MooseX::Getopt::Meta::Attribute::Trait::NoGetopt' => 0,
                 'Readonly'                        => 0,
+                'strict'                          => 0,
+                'warnings'                        => 0,
           },
          
           'dist'         => { COMPRESS => 'gzip', SUFFIX => 'gz', },

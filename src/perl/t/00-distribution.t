@@ -10,7 +10,7 @@ eval {
 if($EVAL_ERROR) {
   plan skip_all => 'Test::Distribution not installed';
 } else {
-  Test::Distribution->import('not' => 'prereq');
+  Test::Distribution->import(only => [qw/versions description/], distversion => 1);
 }
 
 1;
