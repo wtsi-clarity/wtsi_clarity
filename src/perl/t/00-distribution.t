@@ -1,7 +1,3 @@
-#########
-# Author:        rmp
-#
-package distribution;
 use strict;
 use warnings;
 use Test::More;
@@ -14,7 +10,7 @@ eval {
 if($EVAL_ERROR) {
   plan skip_all => 'Test::Distribution not installed';
 } else {
-  Test::Distribution->import('not' => 'prereq'); # Having issues with Test::Dist seeing my PREREQ_PM :(
+  Test::Distribution->import(only => [qw/versions description/], distversion => 1);
 }
 
 1;

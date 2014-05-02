@@ -1,12 +1,10 @@
-#########
-# Author:        rmp
-# Created:       2008-04-28
-#
-
+use strict;
+use warnings;
 use Test::More;
 
-eval "use Test::Pod::Coverage 1.00";
-plan skip_all => "Test::Pod::Coverage 1.00 required for testing POD coverage" if $@;
+eval "use Test::Pod::Coverage";
+plan skip_all => "Test::Pod::Coverage required for testing POD" if $@; 
 all_pod_coverage_ok();
+
 
 1;

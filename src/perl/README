@@ -1,4 +1,22 @@
 wtsi_clarity
 ============
 
-Custom scripting for GenoLogics (http://www.genologics.com) Clarity LIMS at Wellcome Trust Sanger Institute 
+Custom Perl scripting for GenoLogics (http://www.genologics.com) Clarity LIMS at Wellcome Trust Sanger Institute
+
+TESTING
+
+cd src/perl
+perl Build.PL
+./Build test
+  or
+TEST_AUTHOR=1  ./Build test
+
+to run an individual test
+
+./Build test --verbose --test-files t/mytest.t
+
+to run groups of tests
+
+./Build test --verbose --test-files 't/00-*.t' # note the quotes
+
+
