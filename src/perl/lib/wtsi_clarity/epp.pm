@@ -1,18 +1,34 @@
 package wtsi_clarity::epp;
 
 use Moose;
-
+use Carp;
 use wtsi_clarity::util::config;
 
 with 'MooseX::Getopt';
 
 our $VERSION = '0.0';
 
-has 'process_id'  => (
+has 'process_url'  => (
     isa             => 'Str',
     is              => 'ro',
     required        => 1,
 );
+
+has 'base_url'  => (
+    isa             => 'Str',
+    is              => 'ro',
+    required        => 0,
+    traits          => [ 'NoGetopt' ],
+    lazy_build      => 1,
+);
+sub _build_base_url {
+  my $self = shift;
+  my ($url) = $self->process_url =~ /(\S+\/)\w+\/\w+/smx;
+  if (!$url) {
+    croak q[Failed to get base url from ] . $self->process_url;
+  } 
+  return $url;
+}
 
 has 'config'      => (
     isa             => 'wtsi_clarity::util::config',
@@ -27,9 +43,9 @@ sub _build_config {
 
 sub run {
   my $self = shift;
-  $self->epp_log(sprintf 'run method of the %s class is called, process_id is %s',
+  $self->epp_log(sprintf 'run method of the %s class is called, process is %s',
                      ref $self,
-                     $self->process_id);
+                     $self->process_url);
   return;
 }
 
@@ -66,7 +82,9 @@ wtsi_clarity::epp
 
 =head1 SUBROUTINES/METHODS
 
-=head2 process_id - required attribute
+=head2 process_url - required attribute
+
+=head2 base_url - base url for api calls; if not given is derived from process url
 
 =head2 run - executes the callback, should be implemented by child classes
 
@@ -86,6 +104,8 @@ wtsi_clarity::epp
 =item Moose
 
 =item MooseX::Getopt
+
+=item Carp
 
 =back
 

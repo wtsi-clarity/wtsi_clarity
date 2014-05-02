@@ -11,11 +11,22 @@ extends 'wtsi_clarity::epp';
 
 our $VERSION = '0.0';
 
+has 'input'  => (
+    isa             => 'Str',
+    is              => 'ro',
+    required        => 0,
+    lazy_build      => 1,
+);
+sub _build_input {
+  my $self = shift;
+  return $self->output;
+}
+
 has 'output'  => (
     isa             => 'Str',
     is              => 'ro',
     required        => 1,
-    );
+);
 
 has 'robot_file'  => (
     isa             => 'WtsiClarityReadableFile',
@@ -26,7 +37,7 @@ has 'robot_file'  => (
 );
 sub _build_robot_file {
   my $self = shift;
-  return catfile $self->config->robot_file_dir->{'sm_volume_check'}, $self->output;
+  return catfile $self->config->robot_file_dir->{'sm_volume_check'}, $self->input;
 }
 
 override 'run' => sub {
@@ -50,8 +61,8 @@ wtsi_clarity::epp::sm::volume_check
 =head1 SYNOPSIS
   
   use wtsi_clarity::epp::sm::volume_check;
-  wtsi_clarity::epp::sm::volume_check->new(process_id => '1234XM',
-                                           output_file => 'LP45678.csv')->run();
+  wtsi_clarity::epp::sm::volume_check->new(process_url => 'http://some.com/process/1234XM',
+                                           output      => 'LP45678.csv')->run();
   
 =head1 DESCRIPTION
 
@@ -59,7 +70,7 @@ wtsi_clarity::epp::sm::volume_check
 
 =head1 SUBROUTINES/METHODS
 
-=head2 process_id - required attribute
+=head2 process_url - required attribute
 
 =head2 output - required attribute - file name to copy the robot csv files to
 
