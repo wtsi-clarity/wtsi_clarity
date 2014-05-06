@@ -1,7 +1,8 @@
 use strict;
 use warnings;
-use Test::More tests => 8;
+use Test::More tests => 9;
 use Test::Exception;
+use XML::LibXML;
 
 use_ok('wtsi_clarity::util::request');
 
@@ -35,6 +36,9 @@ use_ok('wtsi_clarity::util::request');
   my $r = wtsi_clarity::util::request->new();
   my $data = $r->get(q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/GOU51A7});
   ok($data, 'data received');
+  my $dom = XML::LibXML->load_xml(string => $data);
+  lives_ok {$data = $r->put(q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/GOU51A7}, $data)}
+     'put request succeeds';
   #diag $data;
 }
 

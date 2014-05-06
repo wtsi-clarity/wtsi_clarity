@@ -7,6 +7,7 @@ use MooseX::StrictConstructor;
 use MooseX::ClassAttribute;
 use LWP::UserAgent;
 use HTTP::Request::Common;
+use HTTP::Request;
 use File::Basename;
 use File::Path;
 use File::Spec::Functions;
@@ -47,6 +48,7 @@ Readonly::Scalar our $RETRY_DELAY => 10;
 Readonly::Scalar our $LWP_TIMEOUT => 60;
 Readonly::Scalar our $DEFAULT_METHOD => q[GET];
 Readonly::Scalar our $DEFAULT_CONTENT_TYPE => q[application/xml];
+Readonly::Scalar our $REQUEST_OK     => 200;
 
 =head2 cache_dir_var_name
 
@@ -199,8 +201,8 @@ sub _build_useragent {
 
 =head2 get
 
-Contacts a web service to perform a requested operation.
-For GET requests optionally saves the content of a requested web resource
+Contacts a web service to perform a GET request.
+Optionally saves the content of a requested web resource
 to a cache. If a global variable whose name is returned by
 $self->cache_dir_var_name is set, for GET requests retrieves the
 requested resource from a cache.
@@ -236,6 +238,41 @@ sub get {
     }
 
     return $content;
+}
+
+=head2 post
+
+Contacts a web service to perform a POST request.
+
+=cut
+sub post {
+    my ($self, $uri, $content) = @_;
+    return $self->_put_post('POST',$uri, $content);
+}
+
+=head2 put
+
+Contacts a web service to perform a PUT request.
+
+=cut
+sub put {
+    my ($self, $uri, $content) = @_;
+    return $self->_put_post('PUT',$uri, $content);
+}
+
+sub _put_post {
+    my ($self, $type, $uri, $content) = @_;
+
+    my $req=HTTP::Request->new($type, $uri,undef, $content);
+    $req->header('encoding' =>   'UTF-8');
+    $req->header('Accept',       $self->content_type);
+    $req->header('Content-Type', $self->content_type);
+    $req->header('User-Agent',   $self->useragent->agent());
+    my $res=$self->useragent()->request($req);
+    if(!$res->is_success()) {
+        croak "$type request to $uri failed: " . $res->status_line();
+    }
+    return $res->decoded_content;
 }
 
 sub _create_path {
