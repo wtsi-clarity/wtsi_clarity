@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 7;
+use Test::More tests => 8;
 use Test::Exception;
 
 use_ok('wtsi_clarity::util::request');
@@ -18,7 +18,7 @@ use_ok('wtsi_clarity::util::request');
   my $r = wtsi_clarity::util::request->new();
   my $data;
   lives_ok {
-    $data = $r->make(q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-28177})
+    $data = $r->get(q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-28177})
            } 'no error retrieving from cache';
   is($r->base_url, 'clarity-ap.internal.sanger.ac.uk:8080', 'base url correct');
 
@@ -28,6 +28,14 @@ use_ok('wtsi_clarity::util::request');
   close $fh;
 
   is ($data, $xml, 'content retrieved correctly');
+}
+
+{
+  diag 'live test';
+  my $r = wtsi_clarity::util::request->new();
+  my $data = $r->get(q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/GOU51A7});
+  ok($data, 'data received');
+  #diag $data;
 }
 
 1;
