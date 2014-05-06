@@ -3,7 +3,6 @@ package wtsi_clarity::util::request;
 use Moose;
 use Carp;
 use English qw( -no_match_vars );
-use Moose::Util::TypeConstraints;
 use MooseX::StrictConstructor;
 use MooseX::ClassAttribute;
 use LWP::UserAgent;
@@ -105,6 +104,16 @@ has 'content_type'=> (isa      => 'Maybe[Str]',
                       required => 0,
                      );
 
+has 'config'      => (
+    isa             => 'wtsi_clarity::util::config',
+    is              => 'ro',
+    required        => 0,
+    lazy_build      => 1,
+);
+sub _build_config {
+  return wtsi_clarity::util::config->new();
+}
+
 =head2 user
 
 Username of a user authorised to use API;
@@ -152,16 +161,15 @@ has 'base_url'      => (isa        => 'Maybe[Str]',
                         required   => 0,
                         'writer'   => '_set_base_url',
                        );
-sub _get_base_url {
+sub _get_baseurl {
     my $url = shift;
-    if ($url) {
+    if (!$url) {
         croak q[URL argument should be provided];
     }
     my ($base_url) = $url =~ /https?:\/\/([^\/]+)\//smx;
     if (!$base_url) {
         croak qq[Cannot get base url from $url];
     }
-    carp qq[Base url $base_url];
     return $base_url;
 }
 
@@ -203,9 +211,11 @@ sub make {
     if (!$uri) {
         croak q[Uri is not defined];
     }
-    if ($self->base_url) {
-        $self->_set_base_url(_get_base_url($uri));
+    if (!$self->base_url) {
+        $self->_set_base_url(_get_baseurl($uri));
     }
+
+    $self->useragent;
 
     if (!$method) {
         $method = $DEFAULT_METHOD;
@@ -243,12 +253,12 @@ sub make {
 
 sub _create_path {
     my ( $self, $url ) = @_;
-    my @components = split /\//xms;
+    my @components = split /\//xms, $url;
     my $query  = pop @components;
     my $entity = pop @components;
     my $path;
     if ($query and $entity) {
-        $path = catdir($query, $entity);
+        $path = catdir($entity, $query);
     }
     if ($path) {
         $path = catfile($ENV{$self->cache_dir_var_name}, $path);
@@ -345,7 +355,7 @@ sub _from_web {
         if (!$content_type) {
             $content_type = $self->content_type;
         }
-        $self->_write2cache($path, $content, $content_type);
+        $self->_write2cache($path, $content);
     }
 
     return $content;
@@ -428,8 +438,6 @@ __END__
 =over
 
 =item Moose
-
-=item Moose::Util::TypeConstraints
 
 =item MooseX::StrictConstructor
 
