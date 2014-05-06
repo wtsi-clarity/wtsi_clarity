@@ -8,6 +8,18 @@ our $VERSION = '0.0';
 has 'file_path', is => 'ro', isa => 'Str';
 has 'delimiter', is => 'ro', isa => 'Str', default => ',';
 
+sub _format_tube_location {
+	my ($self, $tube_location) = @_;
+
+	# Add the colon after letter
+	substr($tube_location, 1, 0) = ':';
+
+	# Remove leading 0 if there is one
+	$tube_location =~ s/:0/:/g;
+	
+	return $tube_location;
+}
+
 sub parse {
   my $self = shift;
   my %result = ();
@@ -23,6 +35,8 @@ sub parse {
     my ($rack_id, $tube_location, $volume) = split($self->delimiter, $_);
 
     croak "Volume already set for well " . $tube_location if (exists ($result{$tube_location}));
+		
+		$tube_location = $self->_format_tube_location($tube_location);
 
     $result{$tube_location} = sprintf('%.4f', $volume);
   }
