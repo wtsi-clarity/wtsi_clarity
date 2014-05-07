@@ -247,7 +247,7 @@ Contacts a web service to perform a POST request.
 =cut
 sub post {
     my ($self, $uri, $content) = @_;
-    return $self->_put_post('POST',$uri, $content);
+    return $self->_request('POST',$uri, $content);
 }
 
 =head2 put
@@ -257,10 +257,10 @@ Contacts a web service to perform a PUT request.
 =cut
 sub put {
     my ($self, $uri, $content) = @_;
-    return $self->_put_post('PUT',$uri, $content);
+    return $self->_request('PUT',$uri, $content);
 }
 
-sub _put_post {
+sub _request {
     my ($self, $type, $uri, $content) = @_;
 
     my $req=HTTP::Request->new($type, $uri,undef, $content);
@@ -270,9 +270,19 @@ sub _put_post {
     $req->header('User-Agent',   $self->useragent->agent());
     my $res=$self->useragent()->request($req);
     if(!$res->is_success()) {
-        croak "$type request to $uri failed: " . $res->status_line();
+        croak "$type request to $uri failed: " . join q[ ], $res->status_line(), $res->decoded_content;
     }
     return $res->decoded_content;
+}
+
+=head2 del
+
+Contacts a web service to perform a DELETE request.
+
+=cut
+sub del {
+    my ($self, $uri, $content) = @_;
+    return $self->_request('DELETE',$uri);
 }
 
 sub _create_path {

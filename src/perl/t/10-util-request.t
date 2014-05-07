@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 10;
+use Test::More tests => 11;
 use Test::Exception;
 
 use_ok('wtsi_clarity::util::request');
@@ -33,7 +33,7 @@ use_ok('wtsi_clarity::util::request');
 {
   SKIP: {
     if ( !$ENV{'LIVE_TEST'} ) {
-      skip 'set LIVE_TEST to true to run', 3;
+      skip 'set LIVE_TEST to true to run', 4;
     }
     my $base = q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2};
     my $samples_uri = $base . q{/samples};
@@ -54,20 +54,23 @@ use_ok('wtsi_clarity::util::request');
      'put request succeeds';
     ok($new_data =~ /$new_date/, 'amended sample data returned');
 
-    my $sample = q[<?xml version="1.0" encoding="UTF-8"?>
-<smp:samplecreation xmlns:smp="http://genologics.com/ri/sample" xmlns:udf="http://genologics.com/ri/userdefined">
+my $sample = q[<smp:samplecreation xmlns:smp="http://genologics.com/ri/sample" xmlns:udf="http://genologics.com/ri/userdefined">
 <name>mar_ina_test-11</name>
 <project limsid="GOU51" uri="] . $base . q[/projects/GOU51"/>
 <date-received>2014-05-01</date-received>
-<container limsid="27-16" uri="] . $base . q[/containers/27-16"/><value>1:1</value></location>
+<location><container limsid="27-151" uri="] . $base . q[/containers/27-151"/><value>H:12</value></location>
 <udf:field name="WTSI Sample Consent Withdrawn">false</udf:field>
 <udf:field name="WTSI Requested Size Range From">600</udf:field>
 <udf:field name="Reference Genome">Homo_sapiens (1000Genomes)</udf:field>
 </smp:samplecreation>
 ];
 
-    #lives_ok {$new_data = $r->post($samples_uri, $sample)}
-    #  'post request succeeds';
+    throws_ok {$new_data = $r->post($samples_uri, $sample)}
+      qr/The container placement: H:12 is a duplicate for container: 27-151/,
+      'cannot create a new sample in the same well'
+
+    #lives_ok {$new_data = $r->post($sample_uri)}
+    #  'delete request succeeds';
     #diag $new_data;
   }
 }
