@@ -7,6 +7,7 @@ use MooseX::StrictConstructor;
 use MooseX::ClassAttribute;
 use LWP::UserAgent;
 use HTTP::Request::Common;
+use HTTP::Request;
 use File::Basename;
 use File::Path;
 use File::Spec::Functions;
@@ -46,7 +47,8 @@ Readonly::Scalar our $MAX_RETRIES => 3;
 Readonly::Scalar our $RETRY_DELAY => 10;
 Readonly::Scalar our $LWP_TIMEOUT => 60;
 Readonly::Scalar our $DEFAULT_METHOD => q[GET];
-Readonly::Scalar our $DEFAULT_CONTENT_TYPE => q[text/xml];
+Readonly::Scalar our $DEFAULT_CONTENT_TYPE => q[application/xml];
+Readonly::Scalar our $REQUEST_OK     => 200;
 
 =head2 cache_dir_var_name
 
@@ -99,9 +101,10 @@ has 'retry_delay'=> (isa      => 'Num',
 Content type to accept
 
 =cut
-has 'content_type'=> (isa      => 'Maybe[Str]',
+has 'content_type'=> (isa      => 'Str',
                       is       => 'ro',
                       required => 0,
+                      default  => $DEFAULT_CONTENT_TYPE,
                      );
 
 has 'config'      => (
@@ -196,17 +199,17 @@ sub _build_useragent {
     return $ua;
 }
 
-=head2 make
+=head2 get
 
-Contacts a web service to perform a requested operation.
-For GET requests optionally saves the content of a requested web resource
+Contacts a web service to perform a GET request.
+Optionally saves the content of a requested web resource
 to a cache. If a global variable whose name is returned by
 $self->cache_dir_var_name is set, for GET requests retrieves the
 requested resource from a cache.
 
 =cut
-sub make {
-    my ($self, $uri, $method, $args) = @_;
+sub get {
+    my ($self, $uri) = @_;
 
     if (!$uri) {
         croak q[Uri is not defined];
@@ -217,38 +220,59 @@ sub make {
 
     $self->useragent;
 
-    if (!$method) {
-        $method = $DEFAULT_METHOD;
+    my $cache = $ENV{$self->cache_dir_var_name} ? $ENV{$self->cache_dir_var_name} : q[];
+    my $path = q[];
+    if ($cache) {
+        $self->_check_cache_dir($cache);
+        $path = $self->_create_path($uri);
+        if (!$path) {
+            croak qq[Empty path generated for $uri];
+        }
     }
 
-    my $cache = $ENV{$self->cache_dir_var_name} ? $ENV{$self->cache_dir_var_name} : q[];
-
-    my $content;
-
-    if ($method ne $DEFAULT_METHOD) {
-        if ($cache) {
-            croak qq[$method requests cannot use cache: $uri];
-        }
-        $content = $self->_from_web($uri, $method, $args);
-    } else {
-        my $path = q[];
-        if ($cache) {
-            $self->_check_cache_dir($cache);
-            $path = $self->_create_path($uri);
-            if (!$path) {
-                croak qq[Empty path generated for $uri];
-            }
-        }
-
-        $content = ($cache && !$ENV{$self->save2cache_dir_var_name}) ?
+    my $content = ($cache && !$ENV{$self->save2cache_dir_var_name}) ?
                   $self->_from_cache($path, $uri) :
-                  $self->_from_web($uri, $method, $args, $path);
-        if (!$content) {
-            croak qq[Empty document at $uri $path];
-        }
+                  $self->_from_web($uri, $path);
+    if (!$content) {
+        croak qq[Empty document at $uri $path];
     }
 
     return $content;
+}
+
+=head2 post
+
+Contacts a web service to perform a POST request.
+
+=cut
+sub post {
+    my ($self, $uri, $content) = @_;
+    return $self->_put_post('POST',$uri, $content);
+}
+
+=head2 put
+
+Contacts a web service to perform a PUT request.
+
+=cut
+sub put {
+    my ($self, $uri, $content) = @_;
+    return $self->_put_post('PUT',$uri, $content);
+}
+
+sub _put_post {
+    my ($self, $type, $uri, $content) = @_;
+
+    my $req=HTTP::Request->new($type, $uri,undef, $content);
+    $req->header('encoding' =>   'UTF-8');
+    $req->header('Accept',       $self->content_type);
+    $req->header('Content-Type', $self->content_type);
+    $req->header('User-Agent',   $self->useragent->agent());
+    my $res=$self->useragent()->request($req);
+    if(!$res->is_success()) {
+        croak "$type request to $uri failed: " . $res->status_line();
+    }
+    return $res->decoded_content;
 }
 
 sub _create_path {
@@ -290,7 +314,6 @@ sub _check_cache_dir {
 sub _from_cache {
     my ($self, $path, $uri) = @_;
 
-    $path .= $self->_extension($self->content_type);
     if (!-e $path) {
         croak qq[$path for $uri is not in the cache];
     }
@@ -305,7 +328,7 @@ sub _from_cache {
 }
 
 sub _from_web {
-    my ($self, $uri, $method, $args, $path) = @_;
+    my ($self, $uri, $path) = @_;
 
     if ($path && $ENV{$self->save2cache_dir_var_name} && $ENV{$self->cache_dir_var_name}) {
         my $content;
@@ -317,12 +340,7 @@ sub _from_web {
         }
     }
 
-    my $req;
-    if ($method eq $DEFAULT_METHOD) {
-        $req = GET $uri, @{$args || []};
-    } else {
-        $req = POST $uri, @{$args || []};
-    }
+    my $req = GET $uri;
     if ($self->content_type) {
         $req->header('Accept' => $self->content_type);
     }
@@ -345,16 +363,7 @@ sub _from_web {
         croak $errstr;
     }
 
-    if (defined $self->content_type && $self->content_type eq $DEFAULT_CONTENT_TYPE && $content =~ /<!DOCTYPE[ ]html/xms) {
-        carp 'there has been a problem - the xml is formated with an HTML doctype';
-        $content =~ s/<!DOCTYPE[ ]html.*//xms;
-    }
-
     if ($ENV{$self->save2cache_dir_var_name}) {
-        my $content_type = $response->headers->header('Content-Type');
-        if (!$content_type) {
-            $content_type = $self->content_type;
-        }
         $self->_write2cache($path, $content);
     }
 
@@ -362,9 +371,7 @@ sub _from_web {
 }
 
 sub _write2cache {
-    my ($self, $path, $content, $content_type) = @_;
-
-    $path .= $self->_extension($content_type);
+    my ($self, $path, $content) = @_;
 
     my ($name,$dir,$suffix) = fileparse($path);
     if (-e $dir) {
@@ -411,18 +418,6 @@ sub _retry {
     }
 
     return $result;
-}
-
-sub _extension {
-    my ($self, $content_type) = @_;
-
-    my $extension = q[];
-    if ($content_type) {
-        my @types = split /;/smx, $content_type;
-        @types = split /\//smx, $types[0];
-        $extension = q[.] . $types[-1];
-    }
-    return $extension;
 }
 
 1;

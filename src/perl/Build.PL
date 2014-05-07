@@ -75,6 +75,7 @@ my $builder = $class->new(
                 'File::Path'                      => 0,
                 'File::Spec::Functions'           => 0,
                 'FindBin'                         => 0,
+                'HTTP::Request'                   => 0,
                 'HTTP::Request::Common'           => 0,
                 'lib'                             => 0,
                 'LWP::UserAgent'                  => 0,
