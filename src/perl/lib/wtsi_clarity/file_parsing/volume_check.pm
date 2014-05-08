@@ -41,7 +41,7 @@ sub parse {
     $result{$tube_location} = sprintf('%.4f', $volume);
   }
 
-  return %result;
+  return \%result;
 }
 
 1;
