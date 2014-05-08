@@ -76,7 +76,6 @@ my $builder = $class->new(
                 'File::Spec::Functions'           => 0,
                 'FindBin'                         => 0,
                 'HTTP::Request'                   => 0,
-                'HTTP::Request::Common'           => 0,
                 'lib'                             => 0,
                 'LWP::UserAgent'                  => 0,
                 'Moose'                           => 0,

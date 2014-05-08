@@ -6,7 +6,6 @@ use English qw( -no_match_vars );
 use MooseX::StrictConstructor;
 use MooseX::ClassAttribute;
 use LWP::UserAgent;
-use HTTP::Request::Common;
 use HTTP::Request;
 use File::Basename;
 use File::Path;
@@ -18,8 +17,6 @@ use wtsi_clarity::util::config;
 our $VERSION = '0.0';
 
 Readonly::Scalar my $REALM => q[GLSSecurity];
-
-## no critic (RequirePodAtEnd RequireCheckingReturnValueOfEval)
 
 =head1 NAME
 
@@ -43,12 +40,9 @@ The location of the cache is stored in an environment variable
 Readonly::Scalar our $DEFAULT_VAR_NAME => q[WTSICLARITY_WEBCACHE_DIR];
 Readonly::Scalar our $SAVE2CACHE_VAR_NAME => q[SAVE2WTSICLARITY_WEBCACHE];
 
-Readonly::Scalar our $MAX_RETRIES => 3;
-Readonly::Scalar our $RETRY_DELAY => 10;
 Readonly::Scalar our $LWP_TIMEOUT => 60;
 Readonly::Scalar our $DEFAULT_METHOD => q[GET];
 Readonly::Scalar our $DEFAULT_CONTENT_TYPE => q[application/xml];
-Readonly::Scalar our $REQUEST_OK     => 200;
 
 =head2 cache_dir_var_name
 
@@ -73,28 +67,6 @@ class_has 'save2cache_dir_var_name'=> (isa      => 'Str',
                                        required => 0,
                                        default  => $SAVE2CACHE_VAR_NAME,
                                       );
-
-=head2 max_retries
-
-Maximum number of attempts to retrieve a requested resource.
-
-=cut
-has 'max_retries'=> (isa      => 'Num',
-                     is       => 'ro',
-                     required => 0,
-                     default  => $MAX_RETRIES,
-                    );
-
-=head2 retry_delay
-
-A delay (in seconds) between attempts.
-
-=cut
-has 'retry_delay'=> (isa      => 'Num',
-                     is       => 'ro',
-                     required => 0,
-                     default  => $RETRY_DELAY,
-                    );
 
 =head2 content_type
 
@@ -162,19 +134,8 @@ will be generated from the first requested URL.
 has 'base_url'      => (isa        => 'Maybe[Str]',
                         is         => 'ro',
                         required   => 0,
-                        'writer'   => '_set_base_url',
+                        'writer'   => '_write_base_url',
                        );
-sub _get_baseurl {
-    my $url = shift;
-    if (!$url) {
-        croak q[URL argument should be provided];
-    }
-    my ($base_url) = $url =~ /https?:\/\/([^\/]+)\//smx;
-    if (!$base_url) {
-        croak qq[Cannot get base url from $url];
-    }
-    return $base_url;
-}
 
 =head2 useragent
 
@@ -199,6 +160,21 @@ sub _build_useragent {
     return $ua;
 }
 
+sub _set_base_url {
+    my ($self, $url) = @_;
+    if (!$url) {
+        croak q[URL argument should be provided];
+    }
+    my ($base_url) = $url =~ /https?:\/\/([^\/]+)\//smx;
+    if (!$base_url) {
+        croak qq[Cannot get base url from $url];
+    }
+    if (!$self->base_url) {
+        $self->_write_base_url($base_url);
+    }
+    return;
+}
+
 =head2 get
 
 Contacts a web service to perform a GET request.
@@ -211,14 +187,7 @@ requested resource from a cache.
 sub get {
     my ($self, $uri) = @_;
 
-    if (!$uri) {
-        croak q[Uri is not defined];
-    }
-    if (!$self->base_url) {
-        $self->_set_base_url(_get_baseurl($uri));
-    }
-
-    $self->useragent;
+    #$self->_set_base_url($uri);
 
     my $cache = $ENV{$self->cache_dir_var_name} ? $ENV{$self->cache_dir_var_name} : q[];
     my $path = q[];
@@ -262,6 +231,12 @@ sub put {
 
 sub _request {
     my ($self, $type, $uri, $content) = @_;
+
+    if ( !$type || $type !~ /GET|POST|PUT|DELETE/smx) {
+        $type = !defined $type ? 'undefined' : $type;
+        croak qq[Invalid request type "$type", valid types are POST, PUT, DELETE];
+    }
+    $self->_set_base_url($uri);
 
     my $req=HTTP::Request->new($type, $uri,undef, $content);
     $req->header('encoding' =>   'UTF-8');
@@ -340,43 +315,22 @@ sub _from_cache {
 sub _from_web {
     my ($self, $uri, $path) = @_;
 
+    my $content;
     if ($path && $ENV{$self->save2cache_dir_var_name} && $ENV{$self->cache_dir_var_name}) {
-        my $content;
+        ##no critic (RequireCheckingReturnValueOfEval)
         eval {
           $content = $self->_from_cache($path, $uri);
         };
+        ##use critic
         if ($content) {
             return $content;
         }
     }
 
-    my $req = GET $uri;
-    if ($self->content_type) {
-        $req->header('Accept' => $self->content_type);
-    }
-
-    my $response = $self->_retry(sub {
-             my $inner_response = $self->useragent()->request($req);
-             if(!$inner_response->is_success()) {
-                 croak $inner_response->status_line();
-             }
-             return $inner_response;
-                                 }, $uri);
-
-    if(!$response->is_success()) {
-        croak qq[Web request to $uri failed: ] . $response->status_line();
-    }
-
-    my $content = $response->content();
-    if($content =~ /<h\d>An[ ]Error[ ]Occurred/smix) {
-        my ($errstr) = $content =~ m{<p>(Error.*?)</p>}smix;
-        croak $errstr;
-    }
-
+    $content = $self->_request('GET', $uri);
     if ($ENV{$self->save2cache_dir_var_name}) {
         $self->_write2cache($path, $content);
     }
-
     return $content;
 }
 
@@ -397,37 +351,6 @@ sub _write2cache {
     print {$fh} $content or croak qq[Failed to write to open $path: $ERRNO];
     close $fh or croak qq[Failed to close a filehandle for $path: $ERRNO];
     return;
-}
-
-sub _retry {
-    my ($self, $cb, $uri) = @_;
-
-    my $retry = 0;
-    my $result;
-    my $error;
-
-    while($retry < $self->max_retries) {
-        $retry++;
-        eval {
-            $error = q[];
-            $result = $cb->();
-        } or do {
-            $error = $EVAL_ERROR;
-        };
-
-        if($result) {
-            last;
-        }
-
-        if($retry == $self->max_retries) {
-            croak q[Failed ] . $self->max_retries .
-              qq[ attempts to request $uri. Giving up. Last error: $error];
-        }
-
-        sleep $self->retry_delay;
-    }
-
-    return $result;
 }
 
 1;
@@ -453,8 +376,6 @@ __END__
 =item English
 
 =item LWP::UserAgent
-
-=item HTTP::Request::Common
 
 =item File::Basename
 

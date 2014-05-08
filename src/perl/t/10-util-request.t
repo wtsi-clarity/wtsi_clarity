@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 11;
+use Test::More tests => 12;
 use Test::Exception;
 
 use_ok('wtsi_clarity::util::request');
@@ -20,7 +20,7 @@ use_ok('wtsi_clarity::util::request');
   lives_ok {
     $data = $r->get(q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-28177})
            } 'no error retrieving from cache';
-  is($r->base_url, 'clarity-ap.internal.sanger.ac.uk:8080', 'base url correct');
+  ok(!$r->base_url, 'base url not set');
 
   local $/=undef;
   open my $fh,  't/data/cached/processes/24-28177' or die "Couldn't open file";
@@ -33,7 +33,7 @@ use_ok('wtsi_clarity::util::request');
 {
   SKIP: {
     if ( !$ENV{'LIVE_TEST'} ) {
-      skip 'set LIVE_TEST to true to run', 4;
+      skip 'set LIVE_TEST to true to run', 5;
     }
     my $base = q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2};
     my $samples_uri = $base . q{/samples};
@@ -41,6 +41,7 @@ use_ok('wtsi_clarity::util::request');
     my $r = wtsi_clarity::util::request->new();
     my $data = $r->get($sample_uri);
     ok($data, 'data received');
+    is($r->base_url, 'clarity-ap.internal.sanger.ac.uk:8080', 'base url correct');
     my $old_date = '2013-10-31';
     my $new_date = '2013-10-21';
     if ($data =~ /$new_date/) {
@@ -50,6 +51,7 @@ use_ok('wtsi_clarity::util::request');
     }
     $data =~ s/$old_date/$new_date/;
     my $new_data;
+    $r = wtsi_clarity::util::request->new();
     lives_ok {$new_data = $r->put($sample_uri, $data)}
      'put request succeeds';
     ok($new_data =~ /$new_date/, 'amended sample data returned');
