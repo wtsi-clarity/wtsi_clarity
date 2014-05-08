@@ -187,8 +187,6 @@ requested resource from a cache.
 sub get {
     my ($self, $uri) = @_;
 
-    #$self->_set_base_url($uri);
-
     my $cache = $ENV{$self->cache_dir_var_name} ? $ENV{$self->cache_dir_var_name} : q[];
     my $path = q[];
     if ($cache) {
