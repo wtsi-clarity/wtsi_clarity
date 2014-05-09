@@ -108,6 +108,9 @@ sub _fetch_and_update_samples {
 sub _updateSample {
 	my ($self, $sampleDoc, $sampleInfo, $parsed_file) = @_;
 	my $wellLocation = $sampleInfo->{'wellLocation'};
+
+	croak 'Well location does not exist in volume check file' if (!exists($parsed_file->{$wellLocation}));
+
   my $newVolume = $parsed_file->{$wellLocation};
   my $volumeList = $sampleDoc->findnodes($VOLUME_PATH);
 
@@ -125,8 +128,6 @@ sub _updateSample {
 	}
 
 	$self->request->put($sampleInfo->{'uri'}, $sampleDoc->toString());
-
-	print $self->request->get($sampleInfo->{'uri'});
 }
 
 sub _extract_analyte_uri {
