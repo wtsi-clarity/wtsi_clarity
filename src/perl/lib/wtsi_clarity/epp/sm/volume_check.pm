@@ -11,10 +11,10 @@ use wtsi_clarity::file_parsing::volume_check;
 use wtsi_clarity::util::request;
 use wtsi_clarity::util::types;
 
-Readonly::Scalar my $ANALYTE_PATH => q( prc:process/input-output-map[output/@output-generation-type='PerInput'] ); 
+Readonly::Scalar my $ANALYTE_PATH => q( prc:process/input-output-map[output/@output-generation-type='PerInput'] );
 Readonly::Scalar my $VOLUME_PATH => q( smp:sample/udf:field[starts-with(@name, 'Volume')] );
 Readonly::Scalar my $LOCATION_PATH => q ( art:artifact/location/value );
-Readonly::Scalar my $URI_PATH => q (art:artifact/sample/@uri);
+Readonly::Scalar my $URI_PATH => q ( art:artifact/sample/@uri );
 
 extends 'wtsi_clarity::epp';
 
@@ -64,7 +64,7 @@ override 'run' => sub {
 
   # Fetch the process xml and parse it
   my $doc = $self->_fetch_and_parse($self->process_url);
-  
+
   $self->_fetch_and_update_samples($doc, $parsed_file);
 
   copy($self->robot_file, $self->output)
@@ -80,7 +80,7 @@ sub _build_robot_file {
 sub _parse_robot_file {
   my $self = shift;
   my $parser = wtsi_clarity::file_parsing::volume_check->new(file_path => $self->robot_file);
-  return $parser->parse(); 
+  return $parser->parse();
 }
 
 sub _fetch_and_parse {
@@ -100,9 +100,11 @@ sub _fetch_and_update_samples {
     my $analyteDoc = $self->_fetch_and_parse($uri);
     my $sampleInfo = $self->_extract_sample_info($analyteDoc);
     my $sampleDoc = $self->_fetch_and_parse($sampleInfo->{'uri'});
-  
+
     $self->_updateSample($sampleDoc, $sampleInfo, $parsed_file);
   }
+
+  return 1;
 }
 
 sub _updateSample {
@@ -128,6 +130,8 @@ sub _updateSample {
   }
 
   $self->request->put($sampleInfo->{'uri'}, $sampleDoc->toString());
+
+  return 1;
 }
 
 sub _extract_analyte_uri {
@@ -140,7 +144,7 @@ sub _extract_sample_info {
   my ($self, $analyteDoc) = @_;
   my %info = ();
   $info{'wellLocation'} = $analyteDoc->findvalue($LOCATION_PATH);
-  $info{'uri'} = $analyteDoc->findvalue($URI_PATH); 
+  $info{'uri'} = $analyteDoc->findvalue($URI_PATH);
   return \%info;
 }
 
