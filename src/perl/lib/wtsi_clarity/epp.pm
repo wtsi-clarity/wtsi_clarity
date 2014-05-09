@@ -26,7 +26,7 @@ sub _build_base_url {
   my ($url) = $self->process_url =~ /(\S+\/)\w+\/\w+/smx;
   if (!$url) {
     croak q[Failed to get base url from ] . $self->process_url;
-  } 
+  }
   return $url;
 }
 
