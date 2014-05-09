@@ -21,10 +21,10 @@ extends 'wtsi_clarity::epp';
 our $VERSION = '0.0';
 
 has 'input'  => (
-    isa             => 'Str',
-    is              => 'ro',
-    required        => 0,
-    lazy_build      => 1,
+  isa             => 'Str',
+  is              => 'ro',
+  required        => 0,
+  lazy_build      => 1,
 );
 
 sub _build_input {
@@ -33,17 +33,17 @@ sub _build_input {
 }
 
 has 'output'  => (
-    isa             => 'Str',
-    is              => 'ro',
-    required        => 1,
+  isa             => 'Str',
+  is              => 'ro',
+  required        => 1,
 );
 
 has 'robot_file'  => (
-    isa             => 'WtsiClarityReadableFile',
-    is              => 'ro',
-    required        => 0,
-    traits          => [ 'NoGetopt' ],
-    lazy_build      => 1,
+  isa             => 'WtsiClarityReadableFile',
+  is              => 'ro',
+  required        => 0,
+  traits          => [ 'NoGetopt' ],
+  lazy_build      => 1,
 );
 
 has 'request' => (
