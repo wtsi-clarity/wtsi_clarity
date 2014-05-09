@@ -47,25 +47,25 @@ has 'robot_file'  => (
 );
 
 has 'request' => (
-	isa => 'wtsi_clarity::util::request',
-	is  => 'ro',
-	traits => [ 'NoGetopt' ],
-	default => sub {
-		return wtsi_clarity::util::request->new();
-	},
+  isa => 'wtsi_clarity::util::request',
+  is  => 'ro',
+  traits => [ 'NoGetopt' ],
+  default => sub {
+    return wtsi_clarity::util::request->new();
+  },
 );
 
 override 'run' => sub {
   my $self = shift;
   super(); #call parent's run method
 
-	# Parse the robot file
-	my $parsed_file = $self->_parse_robot_file();
+  # Parse the robot file
+  my $parsed_file = $self->_parse_robot_file();
 
-	# Fetch the process xml and parse it
+  # Fetch the process xml and parse it
   my $doc = $self->_fetch_and_parse($self->process_url);
-	
-	$self->_fetch_and_update_samples($doc, $parsed_file);
+  
+  $self->_fetch_and_update_samples($doc, $parsed_file);
 
   copy($self->robot_file, $self->output)
     or croak sprintf 'Failed to copy %s to %s', $self->robot_file, $self->output;
@@ -78,70 +78,70 @@ sub _build_robot_file {
 }
 
 sub _parse_robot_file {
-	my $self = shift;
-	my $parser = wtsi_clarity::file_parsing::volume_check->new(file_path => $self->robot_file);
+  my $self = shift;
+  my $parser = wtsi_clarity::file_parsing::volume_check->new(file_path => $self->robot_file);
   return $parser->parse(); 
 }
 
 sub _fetch_and_parse {
-	my ($self, $url) = @_;
-	my $parser = XML::LibXML->new();
+  my ($self, $url) = @_;
+  my $parser = XML::LibXML->new();
 
   my $doc = $parser->parse_string($self->request->get($url));
 
-	return $doc;
+  return $doc;
 }
 
 sub _fetch_and_update_samples {
-	my ($self, $doc, $parsed_file) = @_;
+  my ($self, $doc, $parsed_file) = @_;
 
-	foreach my $analyteNode ($doc->findnodes($ANALYTE_PATH)) {
-		my $uri = $self->_extract_analyte_uri($analyteNode);
-		my $analyteDoc = $self->_fetch_and_parse($uri);
-	  my $sampleInfo = $self->_extract_sample_info($analyteDoc);
-		my $sampleDoc = $self->_fetch_and_parse($sampleInfo->{'uri'});
-	
-		$self->_updateSample($sampleDoc, $sampleInfo, $parsed_file);
-	}
+  foreach my $analyteNode ($doc->findnodes($ANALYTE_PATH)) {
+    my $uri = $self->_extract_analyte_uri($analyteNode);
+    my $analyteDoc = $self->_fetch_and_parse($uri);
+    my $sampleInfo = $self->_extract_sample_info($analyteDoc);
+    my $sampleDoc = $self->_fetch_and_parse($sampleInfo->{'uri'});
+  
+    $self->_updateSample($sampleDoc, $sampleInfo, $parsed_file);
+  }
 }
 
 sub _updateSample {
-	my ($self, $sampleDoc, $sampleInfo, $parsed_file) = @_;
-	my $wellLocation = $sampleInfo->{'wellLocation'};
+  my ($self, $sampleDoc, $sampleInfo, $parsed_file) = @_;
+  my $wellLocation = $sampleInfo->{'wellLocation'};
 
-	croak 'Well location does not exist in volume check file' if (!exists($parsed_file->{$wellLocation}));
+  croak 'Well location does not exist in volume check file' if (!exists($parsed_file->{$wellLocation}));
 
   my $newVolume = $parsed_file->{$wellLocation};
   my $volumeList = $sampleDoc->findnodes($VOLUME_PATH);
 
-	return 0 if $volumeList->size() == 0;
+  return 0 if $volumeList->size() == 0;
 
   croak 'More than 1 udf field starting with Volume found' if $volumeList->size() > 1;
 
   # Don't know if there is a simpler way to do this...
   my $volumeUDF = $volumeList->pop();
 
-	if ($volumeUDF->hasChildNodes()) {
-		$volumeUDF->firstChild()->setData($newVolume);
-	} else {
-		$volumeUDF->addChild($sampleDoc->createTextNode($newVolume));
-	}
+  if ($volumeUDF->hasChildNodes()) {
+    $volumeUDF->firstChild()->setData($newVolume);
+  } else {
+    $volumeUDF->addChild($sampleDoc->createTextNode($newVolume));
+  }
 
-	$self->request->put($sampleInfo->{'uri'}, $sampleDoc->toString());
+  $self->request->put($sampleInfo->{'uri'}, $sampleDoc->toString());
 }
 
 sub _extract_analyte_uri {
-	my ($self, $analyte) = @_;
+  my ($self, $analyte) = @_;
   my $url = $analyte->findvalue(qw (input/@uri) );
-	return $url;
+  return $url;
 }
 
 sub _extract_sample_info {
-	my ($self, $analyteDoc) = @_;
-	my %info = ();
-	$info{'wellLocation'} = $analyteDoc->findvalue($LOCATION_PATH);
-  $info{'uri'} = $analyteDoc->findvalue($URI_PATH);	
-	return \%info;
+  my ($self, $analyteDoc) = @_;
+  my %info = ();
+  $info{'wellLocation'} = $analyteDoc->findvalue($LOCATION_PATH);
+  $info{'uri'} = $analyteDoc->findvalue($URI_PATH); 
+  return \%info;
 }
 
 

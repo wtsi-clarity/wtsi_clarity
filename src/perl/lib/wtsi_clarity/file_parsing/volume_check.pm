@@ -34,9 +34,9 @@ sub parse {
     chomp;
     my ($rack_id, $tube_location, $volume) = split($self->delimiter, $_);
 
+    $tube_location = $self->_format_tube_location($tube_location);
+
     croak "Volume already set for well " . $tube_location if (exists ($result{$tube_location}));
-		
-		$tube_location = $self->_format_tube_location($tube_location);
 
     $result{$tube_location} = sprintf('%.4f', $volume);
   }
