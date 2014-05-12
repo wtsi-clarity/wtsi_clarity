@@ -87,6 +87,7 @@ my $builder = $class->new(
                 'Readonly'                        => 0,
                 'strict'                          => 0,
                 'warnings'                        => 0,
+								'XML::LibXML'										  => 0,
           },
          
           'dist'         => { COMPRESS => 'gzip', SUFFIX => 'gz', },
