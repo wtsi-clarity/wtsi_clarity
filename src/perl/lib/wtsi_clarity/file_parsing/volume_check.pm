@@ -6,28 +6,53 @@ use Carp;
 our $VERSION = '0.0';
 
 has 'file_path', is => 'ro', isa => 'Str';
-has 'delimiter', is => 'ro', isa => 'Str', default => ',';
+has 'delimiter', is => 'ro', isa => 'Str', default => q{,};
+
+sub _format_tube_location {
+  my ($self, $tube_location) = @_;
+
+  # Add the colon after letter
+  substr $tube_location, 1, 0, q{:};
+
+  # Remove leading 0 if there is one
+  $tube_location =~ s/:0/:/gmsx;
+
+  return $tube_location;
+}
 
 sub parse {
   my $self = shift;
-  my %result = ();
 
   open my $volume_check_file, '<', $self->file_path
-    or croak "File can not be found at " . $self->file_path;
+    or croak 'File can not be found at ' . $self->file_path;
+
+  my $result = $self->_parse_file($volume_check_file);
+
+  close $volume_check_file
+    or carp 'Error closing volume check file';
+
+  return $result;
+}
+
+sub _parse_file {
+  my ($self, $volume_check_file) = @_;
+  my %result = ();
 
   # Strip the header
   my $header = <$volume_check_file>;
 
   while (<$volume_check_file>) {
     chomp;
-    my ($rack_id, $tube_location, $volume) = split($self->delimiter, $_);
+    my ($rack_id, $tube_location, $volume) = split $self->delimiter, $_;
 
-    croak "Volume already set for well " . $tube_location if (exists ($result{$tube_location}));
+    $tube_location = $self->_format_tube_location($tube_location);
 
-    $result{$tube_location} = sprintf('%.4f', $volume);
+    croak "Volume already set for well $tube_location" if (exists $result{$tube_location});
+
+    $result{$tube_location} = sprintf '%.4f', $volume;
   }
 
-  return %result;
+  return \%result;
 }
 
 1;
@@ -37,6 +62,8 @@ __END__
 =head1 NAME
 
 wtsi_clarity::file_parsing::volume_check
+
+=head1 SYNOPSIS
 
 =head1 DESCRIPTION
 
@@ -52,12 +79,14 @@ A string that contains the path to the Volume Check file
 
 The delimiter for a line of the file. Defaults to ","
 
-=head1 METHODS
+=head1 SUBROUTINES/METHODS
 
 =head2 parse
 
 Opens a parses the Volume Check file. Returns a hash containing 
 well locations as keys and volumes as values.
+
+=head1 CONFIGURATION AND ENVIRONMENT
 
 =head1 DEPENDENCIES
 
