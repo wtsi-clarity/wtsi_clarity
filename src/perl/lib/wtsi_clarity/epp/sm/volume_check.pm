@@ -70,8 +70,8 @@ override 'run' => sub {
 
   $self->_fetch_and_update_samples($doc, $parsed_file);
 
-#  copy($self->robot_file, $self->output)
-#    or croak sprintf 'Failed to copy %s to %s', $self->robot_file, $self->output;
+  copy($self->robot_file, $self->output)
+    or croak sprintf 'Failed to copy %s to %s', $self->robot_file, $self->output;
   return;
 };
 
