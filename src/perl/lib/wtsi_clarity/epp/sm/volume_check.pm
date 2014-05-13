@@ -6,7 +6,6 @@ use File::Copy;
 use File::Spec::Functions;
 use XML::LibXML;
 use Readonly;
-use Encode;
 
 use wtsi_clarity::file_parsing::volume_check;
 use wtsi_clarity::util::request;
@@ -127,7 +126,7 @@ sub _updateSample {
   } else {
     $self->_update_volume_node($volumeList, $newVolume);
   }
- 
+
   $self->request->put($sampleInfo->{'uri'}, $sampleDoc->toString());
 
   return 1;
@@ -136,11 +135,12 @@ sub _updateSample {
 # This probably belongs in another module...
 sub _create_volume_node {
   my ($self, $sampleDoc, $newVolume) = @_;
-  my $node = XML::LibXML::Element->new('udf:field'); 
+  my $node = XML::LibXML::Element->new('udf:field');
   $node->setAttribute('type', 'Numeric');
-  $node->setAttribute('name', encode("utf8", "Volume (\x{c2b5}L) (SM)"));
+  $node->setAttribute('name', "Volume (\N{U+00B5}L) (SM)");
   $node->appendTextNode($newVolume);
   $sampleDoc->documentElement()->appendChild($node);
+  return 1;
 }
 
 sub _update_volume_node {
@@ -152,6 +152,7 @@ sub _update_volume_node {
   } else {
     $volumeUDF->addChild($volumeUDF->createTextNode($newVolume));
   }
+  return 1;
 }
 
 sub _extract_analyte_uri {
