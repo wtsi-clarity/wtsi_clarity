@@ -66,6 +66,7 @@ my $builder = $class->new(
 
           'requires'    => {
                 'Carp'                            => 0,
+                'Compress::Zlib'                  => 0,
                 'Config::Auto'                    => 0,
                 'English'                         => 0,
                 'Getopt::Long'                    => 0,
@@ -78,6 +79,7 @@ my $builder = $class->new(
                 'HTTP::Request'                   => 0,
                 'lib'                             => 0,
                 'LWP::UserAgent'                  => 0,
+                'MIME::Base64'                    => 0,
                 'Moose'                           => 0,
                 'Moose::Util::TypeConstraints'    => 0,
                 'MooseX::ClassAttribute'          => 0,
