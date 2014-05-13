@@ -6,6 +6,7 @@ use File::Copy;
 use File::Spec::Functions;
 use XML::LibXML;
 use Readonly;
+use Encode;
 
 use wtsi_clarity::file_parsing::volume_check;
 use wtsi_clarity::util::request;
@@ -69,8 +70,8 @@ override 'run' => sub {
 
   $self->_fetch_and_update_samples($doc, $parsed_file);
 
-  copy($self->robot_file, $self->output)
-    or croak sprintf 'Failed to copy %s to %s', $self->robot_file, $self->output;
+#  copy($self->robot_file, $self->output)
+#    or croak sprintf 'Failed to copy %s to %s', $self->robot_file, $self->output;
   return;
 };
 
@@ -118,22 +119,39 @@ sub _updateSample {
   my $newVolume = $parsed_file->{$wellLocation};
   my $volumeList = $sampleDoc->findnodes($VOLUME_PATH);
 
-  return 0 if $volumeList->size() == 0;
-
   croak 'More than 1 udf field starting with Volume found' if $volumeList->size() > 1;
 
-  # Don't know if there is a simpler way to do this...
+  # If the udf node doesn't exist...
+  if ($volumeList->size() == 0) {
+    $self->_create_volume_node($sampleDoc, $newVolume);
+  } else {
+    $self->_update_volume_node($volumeList, $newVolume);
+  }
+ 
+  $self->request->put($sampleInfo->{'uri'}, $sampleDoc->toString());
+
+  return 1;
+}
+
+# This probably belongs in another module...
+sub _create_volume_node {
+  my ($self, $sampleDoc, $newVolume) = @_;
+  my $node = XML::LibXML::Element->new('udf:field'); 
+  $node->setAttribute('type', 'Numeric');
+  $node->setAttribute('name', encode("utf8", "Volume (\x{c2b5}L) (SM)"));
+  $node->appendTextNode($newVolume);
+  $sampleDoc->documentElement()->appendChild($node);
+}
+
+sub _update_volume_node {
+  my ($self, $volumeList, $newVolume) = @_;
   my $volumeUDF = $volumeList->pop();
 
   if ($volumeUDF->hasChildNodes()) {
     $volumeUDF->firstChild()->setData($newVolume);
   } else {
-    $volumeUDF->addChild($sampleDoc->createTextNode($newVolume));
+    $volumeUDF->addChild($volumeUDF->createTextNode($newVolume));
   }
-
-  $self->request->put($sampleInfo->{'uri'}, $sampleDoc->toString());
-
-  return 1;
 }
 
 sub _extract_analyte_uri {
