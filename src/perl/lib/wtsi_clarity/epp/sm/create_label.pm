@@ -7,11 +7,11 @@ extends 'wtsi_clarity::epp';
 
 our $VERSION = '0.0';
 
-has 'out_plate' => (
-  isa        => 'Str',
+has 'source_plate' => (
+  isa        => 'Bool',
   is         => 'ro',
   required   => 0,
-  lazy_build => 1,
+  default    => 0,
 );
 
 has 'printer' => (
@@ -23,7 +23,6 @@ has 'printer' => (
 
 override 'run' => sub {
   my $self = shift;
-
   return 1;
 };
 
@@ -37,13 +36,22 @@ wtsi_clarity::epp::sm::create_label
 
 =head1 SYNOPSIS
   
-  wtsi_clarity::epp:sm::create_label->new()->run();
+  wtsi_clarity::epp:sm::create_label->new(process_url => 'http://my.com/processes/3345')->run();
   
 =head1 DESCRIPTION
 
-  Creates a label (if required) and prints it.
+  Creates a barcode and sets it for the containers (if required), formats the label  and prints it.
 
 =head1 SUBROUTINES/METHODS
+
+=head2 process_url - Clarity process url, required.
+
+=head2 printer - printer name (as known to the print service), an optional attribute.
+
+=head2 source_plate - a boolean flag indicating whether source or target plates have to be considered
+  false by default, meaning that target plates should be considered bt default, an optional attribute.
+
+=head2 run - callback for the create_label action
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
@@ -59,7 +67,7 @@ wtsi_clarity::epp::sm::create_label
 
 =head1 AUTHOR
 
-Author: Chris Smith E<lt>cs24@sanger.ac.ukE<gt>
+Chris Smith E<lt>cs24@sanger.ac.ukE<gt>
 
 =head1 LICENSE AND COPYRIGHT
 
