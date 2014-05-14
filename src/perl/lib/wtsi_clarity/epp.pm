@@ -2,7 +2,10 @@ package wtsi_clarity::epp;
 
 use Moose;
 use Carp;
+use XML::LibXML;
+
 use wtsi_clarity::util::config;
+use wtsi_clarity::util::request;
 
 with 'MooseX::Getopt';
 
@@ -41,12 +44,44 @@ sub _build_config {
   return wtsi_clarity::util::config->new();
 }
 
+has 'xml_parser'  => (
+    isa             => 'XML::LibXML',
+    is              => 'ro',
+    required        => 0,
+    traits          => [ 'NoGetopt' ],
+    default         => sub { return XML::LibXML->new(); },
+);
+
+has 'request' => (
+  isa => 'wtsi_clarity::util::request',
+  is  => 'ro',
+  traits => [ 'NoGetopt' ],
+  default => sub { return wtsi_clarity::util::request->new(); },
+);
+
+has 'process_doc'  => (
+    isa             => 'XML::LibXML::Document',
+    is              => 'ro',
+    required        => 0,
+    traits          => [ 'NoGetopt' ],
+    lazy_build      => 1,
+);
+sub _build_process_doc {
+  my ($self) = @_;
+  return $self->fetch_and_parse($self->process_url);
+}
+
 sub run {
   my $self = shift;
   $self->epp_log(sprintf 'run method of the %s class is called, process is %s',
                      ref $self,
                      $self->process_url);
   return;
+}
+
+sub fetch_and_parse {
+  my ($self, $url) = @_;
+  return $self->xml_parser->parse_string($self->request->get($url));
 }
 
 sub epp_log {
@@ -95,6 +130,19 @@ wtsi_clarity::epp
   A reference to wtsi_clarity::util::config object,
   access to configuration options for the package.
 
+=head2 request
+  
+   A reference to wtsi_clarity::util::request object,
+   which should be used to raise http requests
+
+=head2 xml_parser - XML parser instance
+
+=head2 process_doc - XML dom representation of process xml
+
+=head2 fetch_and_parse - given url, fetches XML document and returns its XML dom representation
+
+  my $dom = $self->fetch_and_parse($url);
+
 =head1 CONFIGURATION AND ENVIRONMENT
 
 =head1 DEPENDENCIES
@@ -111,7 +159,7 @@ wtsi_clarity::epp
 
 =head1 AUTHOR
 
-Author: Marina Gourtovaia E<lt>mg8@sanger.ac.ukE<gt>
+Marina Gourtovaia E<lt>mg8@sanger.ac.ukE<gt>
 
 =head1 LICENSE AND COPYRIGHT
 

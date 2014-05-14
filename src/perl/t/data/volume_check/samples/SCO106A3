@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:sample xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/SCO106A3" limsid="SCO106A3">
+    <name>marina_training5</name>
+    <date-received>2013-11-07</date-received>
+    <project limsid="SCO106" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/projects/SCO106"/>
+    <submitter uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/researchers/6">
+        <first-name>Marina</first-name>
+        <last-name>Gourtovaia</last-name>
+    </submitter>
+    <artifact limsid="SCO106A3PA1" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/SCO106A3PA1?state=2207"/>
+    <udf:field type="Numeric" name="Volume (µL) (SM)">19.0897</udf:field>
+    <udf:field type="String" name="Sample Type">Genomic DNA</udf:field>
+    <udf:field type="String" name="Sequencing Coverage">30 Gb</udf:field>
+</smp:sample>
+

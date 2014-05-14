@@ -4,11 +4,9 @@ use Moose;
 use Carp;
 use File::Copy;
 use File::Spec::Functions;
-use XML::LibXML;
 use Readonly;
 
 use wtsi_clarity::file_parsing::volume_check;
-use wtsi_clarity::util::request;
 use wtsi_clarity::util::types;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
@@ -47,15 +45,10 @@ has 'robot_file'  => (
   traits          => [ 'NoGetopt' ],
   lazy_build      => 1,
 );
-
-has 'request' => (
-  isa => 'wtsi_clarity::util::request',
-  is  => 'ro',
-  traits => [ 'NoGetopt' ],
-  default => sub {
-    return wtsi_clarity::util::request->new();
-  },
-);
+sub _build_robot_file {
+  my $self = shift;
+  return catfile $self->config->robot_file_dir->{'sm_volume_check'}, $self->input;
+}
 
 override 'run' => sub {
   my $self = shift;
@@ -63,21 +56,12 @@ override 'run' => sub {
 
   # Parse the robot file
   my $parsed_file = $self->_parse_robot_file();
-
-  # Fetch the process xml and parse it
-  my $doc = $self->_fetch_and_parse($self->process_url);
-
-  $self->_fetch_and_update_samples($doc, $parsed_file);
+  $self->_fetch_and_update_samples($parsed_file);
 
   copy($self->robot_file, $self->output)
     or croak sprintf 'Failed to copy %s to %s', $self->robot_file, $self->output;
   return;
 };
-
-sub _build_robot_file {
-  my $self = shift;
-  return catfile $self->config->robot_file_dir->{'sm_volume_check'}, $self->input;
-}
 
 sub _parse_robot_file {
   my $self = shift;
@@ -85,23 +69,14 @@ sub _parse_robot_file {
   return $parser->parse();
 }
 
-sub _fetch_and_parse {
-  my ($self, $url) = @_;
-  my $parser = XML::LibXML->new();
-
-  my $doc = $parser->parse_string($self->request->get($url));
-
-  return $doc;
-}
-
 sub _fetch_and_update_samples {
-  my ($self, $doc, $parsed_file) = @_;
+  my ($self, $parsed_file) = @_;
 
-  foreach my $analyteNode ($doc->findnodes($ANALYTE_PATH)) {
+  foreach my $analyteNode ($self->process_doc->findnodes($ANALYTE_PATH)) {
     my $uri = $self->_extract_analyte_uri($analyteNode);
-    my $analyteDoc = $self->_fetch_and_parse($uri);
+    my $analyteDoc = $self->fetch_and_parse($uri);
     my $sampleInfo = $self->_extract_sample_info($analyteDoc);
-    my $sampleDoc = $self->_fetch_and_parse($sampleInfo->{'uri'});
+    my $sampleDoc = $self->fetch_and_parse($sampleInfo->{'uri'});
 
     $self->_updateSample($sampleDoc, $sampleInfo, $parsed_file);
   }
@@ -111,9 +86,9 @@ sub _fetch_and_update_samples {
 
 sub _updateSample {
   my ($self, $sampleDoc, $sampleInfo, $parsed_file) = @_;
-  my $wellLocation = $sampleInfo->{'wellLocation'};
 
-  croak 'Well location does not exist in volume check file' if (!exists($parsed_file->{$wellLocation}));
+  my $wellLocation = $sampleInfo->{'wellLocation'};
+  croak "Well location $wellLocation does not exist in volume check file " . $self->robot_file if (!exists($parsed_file->{$wellLocation}));
 
   my $newVolume = $parsed_file->{$wellLocation};
   my $volumeList = $sampleDoc->findnodes($VOLUME_PATH);
@@ -213,25 +188,19 @@ wtsi_clarity::epp::sm::volume_check
 
 =item File::Copy
 
-=item File::Copy;
+=item File::Spec::Functions
 
-=item File::Spec::Functions;
+=item Readonly
 
-=item XML::LibXML;
+=item wtsi_clarity::file_parsing::volume_check
 
-=item Readonly;
-
-=item wtsi_clarity::file_parsing::volume_check;
-
-=item wtsi_clarity::util::request;
-
-=item wtsi_clarity::util::types;
+=item wtsi_clarity::util::types
 
 =back
 
 =head1 AUTHOR
 
-Author: Marina Gourtovaia E<lt>mg8@sanger.ac.ukE<gt>
+Marina Gourtovaia E<lt>mg8@sanger.ac.ukE<gt>
 
 =head1 LICENSE AND COPYRIGHT
 
