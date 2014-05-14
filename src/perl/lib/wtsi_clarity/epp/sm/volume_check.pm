@@ -12,7 +12,7 @@ use wtsi_clarity::util::request;
 use wtsi_clarity::util::types;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $ANALYTE_PATH => q( prc:process/input-output-map[output/@output-generation-type='PerInput'] );
+Readonly::Scalar my $ANALYTE_PATH => q( prc:process/input-output-map[output/@output-generation-type='PerAllInputs'] );
 Readonly::Scalar my $VOLUME_PATH => q( smp:sample/udf:field[starts-with(@name, 'Volume')] );
 Readonly::Scalar my $LOCATION_PATH => q ( art:artifact/location/value );
 Readonly::Scalar my $URI_PATH => q ( art:artifact/sample/@uri );
