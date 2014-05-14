@@ -1,6 +1,22 @@
 CHANGES for wtsi_clarity Perl project
 
-  - module for channelling HTTP requests
+release 0.6
+  - tests for volume check
+  - utf8 encoding when caching XML files
+  - some common methods and accessors moved from the volume check to the epp parent
+  - backbone for the create_label callback
+
+release 0.5
+  - volume check refinement
+
+release 0.4
+  - volume check refinement
+
+release 0.3
+  - volume check refinement
+
+release 0.2
+  - volume check refinement
 
 release 0.1 - initial release
   - callback for sample management volume check

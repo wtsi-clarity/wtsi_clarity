@@ -23,6 +23,7 @@ has 'printer' => (
 
 override 'run' => sub {
   my $self = shift;
+  super(); #call parent's run method
   return 1;
 };
 

@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:sample xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/SCO106A2" limsid="SCO106A2">
+    <name>marina_training2</name>
+    <date-received>2013-11-07</date-received>
+    <project limsid="SCO106" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/projects/SCO106"/>
+    <submitter uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/researchers/6">
+        <first-name>Marina</first-name>
+        <last-name>Gourtovaia</last-name>
+    </submitter>
+    <artifact limsid="SCO106A2PA1" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/SCO106A2PA1?state=2206"/>
+    <udf:field type="Numeric" name="Sample Conc. (ng\µL) (SM)">203.44</udf:field>
+    <udf:field type="Numeric" name="Volume (µL) (SM)">18.0809</udf:field>
+    <udf:field type="String" name="Application">Whole genome sequencing</udf:field>
+    <udf:field type="String" name="Pooling">No</udf:field>
+    <udf:field type="String" name="Read Length">60x2</udf:field>
+    <udf:field type="String" name="Reference Genome">Homo_sapiens (CGP_GRCh37.NCBI.allchr_MT)</udf:field>
+    <udf:field type="String" name="Sample Buffer">TE</udf:field>
+    <udf:field type="String" name="Sample Type">Genomic DNA</udf:field>
+    <udf:field type="String" name="Sequencing Coverage">50 Gb</udf:field>
+    <udf:field type="String" name="Sequencing Method">Paired End Read</udf:field>
+    <udf:field type="String" name="Units">ng/ul</udf:field>
+</smp:sample>
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:sample xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/101C-202" limsid="101C-202">
+    <name>Stock plate control</name>
+    <date-received>2014-04-25</date-received>
+    <control-type name="Stock plate control" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/controltypes/101"/>
+    <submitter uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/researchers/254">
+        <first-name>Christopher</first-name>
+        <last-name>Smith</last-name>
+    </submitter>
+    <artifact limsid="101C-202PA1" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/101C-202PA1?state=329446"/>
+    <udf:field type="Numeric" name="Volume (µL) (SM)">0.4387</udf:field>
+</smp:sample>
+

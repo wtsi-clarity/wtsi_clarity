@@ -55,6 +55,7 @@ my $builder = $class->new(
                 'Test::Distribution'              => 0,
                 'Test::Deep'                      => 0,
                 'Test::Exception'                 => 0,
+                'Test::MockObject::Extends'       => 0,
                 'Test::More'                      => 0,
                 'Test::Pod'                       => 0,
                 'Test::Pod::Coverage'             => 0,

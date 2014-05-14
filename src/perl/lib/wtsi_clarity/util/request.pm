@@ -344,7 +344,7 @@ sub _write2cache {
         File::Path::make_path($dir);
     }
 
-    open my $fh, q[>], $path or croak qq[Error when opening $path for writing: $ERRNO];
+    open my $fh, q[>:encoding(UTF-8)], $path or croak qq[Error when opening $path for writing: $ERRNO];
     $fh or croak qq[Undefined filehandle returned for $path];
     print {$fh} $content or croak qq[Failed to write to open $path: $ERRNO];
     close $fh or croak qq[Failed to close a filehandle for $path: $ERRNO];
