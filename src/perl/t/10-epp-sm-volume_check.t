@@ -1,7 +1,8 @@
 use strict;
 use warnings;
-use Test::More tests => 4;
+use Test::More tests => 7;
 use Test::Exception;
+use Test::MockObject::Extends;
 use File::Temp qw/ tempdir /;
 use File::Spec::Functions;
 use Carp;
@@ -39,13 +40,39 @@ my $current = cwd;
   my $working = catfile $dir, 'working';
   mkdir $working;
   chdir $working;
-  my $epp = wtsi_clarity::epp::sm::volume_check->new(
-    process_url => 'http://some.com/process/XM4567', input => $in,  output => $out);
-  is ($epp->robot_file, $file, 'robot file located correctly');
 
-#  lives_ok {$epp->run} 'execute callback';
-   chdir $current;
-#  ok(-e catfile($working, $out), 'robot file has been copied');
+  local $ENV{http_proxy} = 'http://my';
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = $current . '/t/data/volume_check';
+  #local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
+
+  use wtsi_clarity::util::request;
+  my $r = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
+  $r->mock(q(put), sub{my ($self, $uri, $content) = @_; return $content;});
+   
+  my $epp = wtsi_clarity::epp::sm::volume_check->new(
+    request     => $r,
+    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-64486',
+    input       => $in,
+    output      => $out,
+  );
+  is ($epp->robot_file, $file, 'robot file located correctly');
+  throws_ok { $epp->run }  qr/Well location H:12 does not exist in volume check file/,
+    'well is missing in an empty robot file';
+
+  my $f = join q[/], $current, 't/data/volume_check/test_1.CSV';
+  my $command = "cp $f $dir/$in";
+  `$command`;
+
+  $epp = wtsi_clarity::epp::sm::volume_check->new(
+    request     => $r,
+    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-64486',
+    input       => $in,
+    output      => $out,
+  );
+  lives_ok { $epp->run } 'callback runs OK';
+
+  chdir $current;
+  ok(-e catfile($working, $out), 'robot file has been copied');
 }
 
 1;

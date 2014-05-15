@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/2-590255?state=329451" limsid="2-590255">
+    <name>marina_training4</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-64467" limsid="24-64467"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containers/27-6068" limsid="27-6068"/>
+        <value>A:5</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/SCO106A5" limsid="SCO106A5"/>
+</art:artifact>
