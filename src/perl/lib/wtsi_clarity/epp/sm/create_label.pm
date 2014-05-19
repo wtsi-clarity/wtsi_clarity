@@ -11,6 +11,18 @@ use wtsi_clarity::util::barcode;
 use wtsi_clarity::util::signature;
 extends 'wtsi_clarity::epp';
 
+#########################
+# TODO
+# in case of multiple output containers
+# increment the purpose (append A, B, etc)
+#
+# have short project name on the label?
+#
+# have plate purpose on the label
+#
+# have date on the label
+#
+
 our $VERSION = '0.0';
 
 Readonly::Scalar my $PRINTER_PATH         => q{ /prc:process/udf:field[contains(@name, 'Printer')] };
@@ -18,13 +30,19 @@ Readonly::Scalar my $NUM_COPIES_PATH      => q{ /prc:process/udf:field[@name='Ba
 Readonly::Scalar my $DEFAULT_NUM_COPIES   => 1;
 
 Readonly::Scalar my $PLATE_PURPOSE_PATH   => q{ /prc:process/udf:field[@name='Plate Purpose'] };
+Readonly::Scalar my $CONTAINER_PURPOSE_PATH   => q{ /prc:process/udf:field[@name='WTSI Container Purpose Name'] };
 
-Readonly::Scalar my $INPUT_ANALYTE_PATH   => q{ /prc:process/input-output-map/input[contains(@uri,'artifacts')] };
-Readonly::Scalar my $OUTPUT_ANALYTE_PATH  => q{ /prc:process/input-output-map/output[contains(@uri,'artifacts')] };
-Readonly::Scalar my $CONTAINER_PATH       => q{ /art::artifact/location/container/@uri };
-Readonly::Scalar my $SAMPLE_PATH          => q{ art:artifact/sample/@limsid };
+Readonly::Scalar my $IO_MAP_PATH          => q{ /prc:process/input-output-map};
+Readonly::Scalar my $CONTAINER_PATH       => q{ /art:artifact/location/container/@uri };
+Readonly::Scalar my $SAMPLE_PATH          => q{ /art:artifact/sample/@limsid };
 Readonly::Scalar my $DEFAULT_SM_BARCODE_PREFIX   => 'SM';
-Readonly::Scalar my $BARCODE_PREFIX_PATH         => q{ /prc:process/udf:field(@name, 'Barcode Prefix') };
+Readonly::Scalar my $BARCODE_PREFIX_PATH         =>
+  q{ /prc:process/udf:field(@name, 'Barcode Prefix') };
+
+Readonly::Scalar my $CONTAINER_LIMSID_PATH  => q{ /con:container/@limsid };
+Readonly::Scalar my $SUPPLIER_CONTAINER_NAME_PATH =>
+  q{ /con:container/udf:field/[has(name = 'Supplier Container Name')] };
+Readonly::Scalar my $CONTAINER_NAME_PATH  => q{ /con:container/name };
 
 has 'source_plate' => (
   isa        => 'Bool',
@@ -194,28 +212,34 @@ has '_container' => (
 );
 sub _build__container {
   my $self = shift;
-  my $path = $self->source_plate ? $INPUT_ANALYTE_PATH : $OUTPUT_ANALYTE_PATH;
-  my @nodes = $self->process_doc->findnodes($path);
+
+  my @nodes = $self->process_doc->findnodes($IO_MAP_PATH);
   if (!@nodes) {
     croak 'No analytes registered';
   }
 
   my $containers = {};
   foreach my $anode (@nodes) {
-    my $url = $anode->findvalue(qw(@uri) );
+    my $path = $self->source_plate ? q[input] : q[output];
+    my $url = $anode->findvalue(q{./} . $path . q{/@uri});
+
     my $analyte_dom = $self->fetch_and_parse($url);
-    my $container_url = $analyte_dom->findnodes($CONTAINER_PATH);
+    my $container_url = $analyte_dom->findvalue($CONTAINER_PATH);
     if (!$container_url) {
       croak qq[Container not defined for $url];
     }
-    my $sample_lims_id = $analyte_dom->findnodes($SAMPLE_PATH);
-    if ($sample_lims_id) {
+
+    my $sample_lims_id = $analyte_dom->findvalue($SAMPLE_PATH);
+    if (!$sample_lims_id) {
       croak qq[Sample lims id not defined for $url];
     }
     if (!exists $containers->{$container_url}) {
-      $containers->{$container_url}->{'doc'} = $self->fetch_and_parse($container_url);
-      push @{$containers->{$container_url}->{'samples'}}, $sample_lims_id;  
+      $containers->{$container_url}->{'doc'} = $self->fetch_and_parse($container_url); 
     }
+    push @{$containers->{$container_url}->{'samples'}}, $sample_lims_id; 
+  }
+  if (scalar keys %{$containers} == 0) {
+    croak q[Failed to get containers for process ] . $self->process_url;
   }
   return $containers;
 }
@@ -228,7 +252,7 @@ has '_date' => (
 );
 
 sub _generate_barcode {
-  my ($prefix, $container_id) = @_;
+  my ($container_id) = @_;
   my (@bcd)       = split(/\-/, $container_id);
   return Calculatebarcode($bcd[0],$bcd[1],'1');
 }
@@ -246,26 +270,32 @@ override 'run' => sub {
 
 sub _set_container_data {
   my $self = shift;
+
   foreach my $container_url (keys %{$self->containers}) {
     my $container = $self->containers->{$container_url};
     my $doc = $container->{'doc'};
-    my $lims_id ='XX';
+    my $lims_id = $doc->findvalue($CONTAINER_LIMSID_PATH);
+    if (!$lims_id) {
+      croak qq[No limsid for $container_url];
+    }
     $container->{'limsid'} = $lims_id;
-    my $copied = $self->_copy_supplier_container_name($doc);  # SM first step only
-    my ($barcode, $num) = $self->_generate_barcode($self->barcode_prefix, $lims_id);
+
+    if (!$self->source_plate) {  # SM first step only
+      $self->_copy_supplier_container_name($doc);
+    }
+    $self->_copy_purpose($doc);
+
+    my ($barcode, $num) = _generate_barcode($lims_id);
     $container->{'barcode'} = $barcode;
     $container->{'num'} = $num;
-    #copy barcode to 'Base Identifier'
-    #need container type as well, hardcode to plate
+
+    $self->_copy_barcode2container($doc, $barcode);
 
     my $container_type = $doc->find(q(/con:container/type))->[0]->findvalue(q(@name));
     if (!$container_type) {
       croak qq[Container type not defined for $container_url];
     }
     $container->{'type'} = $container_type =~ /plate/smx ? 'plate' : 'tube';
-
-    $self->_copy_plate_purpose($doc);  # make conditional for plates only? SM only?
-
     $container->{'signature'} =
       wtsi_clarity::util::signature->new()->encode(sort @{$container->{'samples'}});
   }
@@ -340,31 +370,77 @@ sub _print_label {
   return;
 }
 
-sub _set_barcode {
+sub _copy_purpose {
   my ($self, $doc) = @_;
+  #copy $self->plate_purpose to 'WTSI Container Purpose Name' udf of the container
+  my $nodes = $doc->findnodes($CONTAINER_PURPOSE_PATH);
+  if ($nodes->size > 1) {
+    croak 'Only one container purpose udf node is possible';
+  }
+
+  if ($nodes->size() == 0) {
+    _create_udf_node($doc,q[WTSI Container Purpose Name], $self->_plate_purpose);
+  } else {
+    _update_udf_node($nodes, $self->_plate_purpose);
+  }
   return;
 }
 
-sub _copy_plate_purpose {
-  my ($self, $doc) = @_;
-  #copy $self->plate_purpose to 'WTSI Container Purpose Name' udf of teh container
+sub _create_node {
+  my ($doc, $udf_name, $value) = @_;
+
+  my $node = XML::LibXML::Element->new('udf:field');
+  $node->setAttribute('name', $udf_name);
+  $node->appendTextNode($value);
+  $doc->documentElement()->appendChild($node);
+  return;
+}
+
+sub _update_node {
+  my ($nodes, $value) = @_;
+
+  my $node = $nodes->pop();
+  if ($node->hasChildNodes()) {
+    $node->firstChild()->setData($value);
+  } else {
+    $node->addChild($node->createTextNode($value));
+  }
   return;
 }
 
 sub _copy_supplier_container_name {
   my ($self, $doc) = @_;
-  if (!$self->source_plate) { #not the first SM step
-    return 0;
+
+  my @supplier_nodes = $doc->findnodes($SUPPLIER_CONTAINER_NAME_PATH);
+
+  if (!@supplier_nodes) {
+    my @nodes = $doc->findnodes($CONTAINER_NAME_PATH);
+    if (!@nodes || scalar @nodes > 1) {
+      croak 'Only one container name node is possible';
+    }
+    my $name = $nodes[0]->getData();
+    if ($name) {
+      $name =~ s/^\s+|\s+$//g;
+    }
+    _create_node($doc, 'Supplier Container Name', $name);
   }
-  my $supplier_name;
-  # = get from 'Supplier Container Name';
-  if (!$supplier_name) {
-    my $id;
-    #get from'Base Identifier';
-    #copy $id to 'Supplier Container Name'
-    return 1;
+  return;
+}
+
+sub _copy_barcode2container {
+  my ($self, $doc, $barcode) = @_;
+
+  my @nodes = $doc->findnodes($CONTAINER_NAME_PATH);
+  if (!@nodes || scalar @nodes > 1) {
+    croak 'Only one container name node is possible';
   }
-  return 0;
+  my $node = $nodes[0];
+  if ($node->hasChildNodes()) {
+    $node->firstChild()->setData($barcode);
+  } else {
+    croak q[No child node];
+  }
+  return;
 }
 
 1;
