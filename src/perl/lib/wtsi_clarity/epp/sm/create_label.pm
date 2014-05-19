@@ -56,7 +56,6 @@ sub _build_printer {
   if (!$printer) {
     croak 'Printer name should be defined';
   }
-  # do we have to validate the printer against S2 known printers?
   return $printer;
 }
 
@@ -82,7 +81,47 @@ sub _build_user {
       $user .= " $last";
     }  
   }
-  return $user || q[GCLP];
+  return $user;
+}
+
+has '_printer_url' => (
+  isa        => 'Str',
+  is         => 'ro',
+  required   => 0,
+  lazy_build => 1,
+);
+sub _build__printer_url {
+  my $self = shift;
+
+  my $print_service = $self->config->printing->{'service_url'};
+  if (!$print_service) {
+    croak q[service_url entry should be defined in the printing section of the configuration file];
+  }
+  my $url =  "$print_service/label_printers/page\=1";
+  my $output;
+  my $printer = $self->printer;
+  my $p;
+  my $cmd = qq[curl -H 'Accept: application/json' -H 'Content-Type: application/json' $url];
+  eval {
+    $output = `$cmd`;
+  };
+  if ($CHILD_ERROR) {
+    croak qq[Failed to get info about a printer $printer from $url,\n $output\n ERROR: ] . $CHILD_ERROR >> 8;
+  }
+  
+  my $text = decode_json($output);
+  foreach my $t ( @{$text->{'label_printers'}} ){
+    if ($t->{'name'} && $t->{'name'} eq $printer){
+      if (!$t->{'uuid'}) {
+        croak qq[No uuid for printer $printer]
+      }
+      $p = join q[/], $print_service, $t->{'uuid'};
+    }
+  }
+  if (!$p) {
+    croak qq[Failed to get printer $printer details from $url]
+  }
+  return $p;
 }
 
 has '_num_copies' => (
@@ -293,10 +332,10 @@ sub _print_label {
   my ($self, $template) = @_;
 
   my $cmd = qq(curl -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d);
-  $cmd .= q[ '] . encode_json($template)  . q[' ] . $self->printer;
+  $cmd .= q[ '] . encode_json($template)  . q[' ] . $self->_printer_url;
   my $output = `$cmd`;
   if ($CHILD_ERROR) {
-    croak qq[Barcode printing failed\n $output\n : ] . $CHILD_ERROR >> 8;
+    croak qq[Barcode printing failed\n $output \n: ] . $CHILD_ERROR >> 8;
   }
   return;
 }
