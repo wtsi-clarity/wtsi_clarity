@@ -69,6 +69,7 @@ my $builder = $class->new(
                 'Carp'                            => 0,
                 'Compress::Zlib'                  => 0,
                 'Config::Auto'                    => 0,
+                'DateTime'                        => 0,
                 'English'                         => 0,
                 'Getopt::Long'                    => 0,
                 'File::Basename'                  => 0,
