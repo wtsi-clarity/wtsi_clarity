@@ -21,7 +21,8 @@ if($EVAL_ERROR) {
                         'NamingConventions::Capitalization',
                         'Modules::RequireVersionVar',
                         'Miscellanea::RequireRcsKeywords',
-                        'ValuesAndExpressions::RequireConstantVersion'
+                        'ValuesAndExpressions::RequireConstantVersion',
+                        'Miscellanea::ProhibitUnrestrictedNoCritic',
                              ],
                  -verbose => "%m at %f line %l, policy %p\n",
                  -profile => 't/perlcriticrc',

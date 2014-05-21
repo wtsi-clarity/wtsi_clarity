@@ -18,19 +18,16 @@ extends 'wtsi_clarity::epp';
 #
 # have short project name on the label?
 #
-# have plate purpose on the label
-#
-# have date on the label
-#
 
 our $VERSION = '0.0';
 
+##no critic (ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $PRINTER_PATH         => q{ /prc:process/udf:field[contains(@name, 'Printer')] };
 Readonly::Scalar my $NUM_COPIES_PATH      => q{ /prc:process/udf:field[@name='Barcode Copies'] };
 Readonly::Scalar my $DEFAULT_NUM_COPIES   => 1;
 
 Readonly::Scalar my $PLATE_PURPOSE_PATH   => q{ /prc:process/udf:field[@name='Plate Purpose'] };
-Readonly::Scalar my $CONTAINER_PURPOSE_PATH   => q{ /prc:process/udf:field[@name='WTSI Container Purpose Name'] };
+Readonly::Scalar my $CONTAINER_PURPOSE_PATH   => q{ /con:container/udf:field[@name='WTSI Container Purpose Name'] };
 
 Readonly::Scalar my $IO_MAP_PATH          => q{ /prc:process/input-output-map};
 Readonly::Scalar my $CONTAINER_PATH       => q{ /art:artifact/location/container/@uri };
@@ -41,8 +38,11 @@ Readonly::Scalar my $BARCODE_PREFIX_PATH         =>
 
 Readonly::Scalar my $CONTAINER_LIMSID_PATH  => q{ /con:container/@limsid };
 Readonly::Scalar my $SUPPLIER_CONTAINER_NAME_PATH =>
-  q{ /con:container/udf:field/[has(name = 'Supplier Container Name')] };
+  q{ /con:container/udf:field[@name='Supplier Container Name'] };
 Readonly::Scalar my $CONTAINER_NAME_PATH  => q{ /con:container/name };
+##use critic
+
+Readonly::Scalar my  $SIGNATURE_LENGTH => 13;
 
 has 'source_plate' => (
   isa        => 'Bool',
@@ -245,10 +245,10 @@ sub _build__container {
 }
 
 has '_date' => (
-  isa        => 'Str',
+  isa        => 'DateTime',
   is         => 'ro',
   required   => 0,
-  default    => { return DateTime->now()->strftime('%a %b %d %T %Y') },
+  default    => sub { return DateTime->now(); },
 );
 
 sub _generate_barcode {
@@ -265,24 +265,24 @@ override 'run' => sub {
   $self->_format_label();
   my $template = $self->_generate_label();
   $self->_print_label($template);
-  return 1;
+  return;
 };
 
 sub _set_container_data {
   my $self = shift;
 
-  foreach my $container_url (keys %{$self->containers}) {
-    my $container = $self->containers->{$container_url};
+  foreach my $container_url (keys %{$self->_container}) {
+    my $container = $self->_container->{$container_url};
     my $doc = $container->{'doc'};
     my $lims_id = $doc->findvalue($CONTAINER_LIMSID_PATH);
     if (!$lims_id) {
       croak qq[No limsid for $container_url];
     }
     $container->{'limsid'} = $lims_id;
-
-    if (!$self->source_plate) {  # SM first step only
+    if ($self->source_plate) {  # SM first step only
       $self->_copy_supplier_container_name($doc);
     }
+    
     $self->_copy_purpose($doc);
 
     my ($barcode, $num) = _generate_barcode($lims_id);
@@ -297,15 +297,16 @@ sub _set_container_data {
     }
     $container->{'type'} = $container_type =~ /plate/smx ? 'plate' : 'tube';
     $container->{'signature'} =
-      wtsi_clarity::util::signature->new()->encode(sort @{$container->{'samples'}});
+      wtsi_clarity::util::signature->new(length => $SIGNATURE_LENGTH)->encode(sort @{$container->{'samples'}});
   }
+
   return;
 }
 
 sub _update_container {
   my $self = shift;
-  foreach my $container_url (keys %{$self->containers}) {
-    my $doc = $self->containers->{$container_url}->{'doc'};
+  foreach my $container_url (keys %{$self->_container}) {
+    my $doc = $self->_container->{$container_url}->{'doc'};
     $self->request->put($container_url, $doc->toString);
   }
   return;
@@ -314,17 +315,20 @@ sub _update_container {
 sub _format_label {
   my $self = shift;
 
-  foreach my $container_url (keys %{$self->containers}) {
-    my $c = $self->containers->{$container_url};
+  foreach my $container_url (keys %{$self->_container}) {
+    my $c = $self->_container->{$container_url};
     my $type = $c->{'type'};
+    my $date = $self->_date->strftime('%d-%b-%Y');
+    my $user = $self->source_plate ? q[] : $self->user; #no user for sample management stock plates
     if ($type eq 'plate') {
-      $c->{'label'} = {'template'  => 'tube_rack',
-                       'tube_rack' => { 'ean13'      => $c->{'barcode'},
-                                        'sanger'     => $c->{'lims_id'},
-                                        'label_text' =>
-                      {'role' => $self->user, 'text5' => $c->{'num'}, 'text6' => $c->{'signature'},}
+      $c->{'label'} = {'template'  => 'plate',
+                       'plate' => { 'ean13'      => $c->{'barcode'},
+                                    'sanger' => join(q[ ], $date, $user),
+                                    'label_text' =>
+                      {'role' => $self->_plate_purpose, 'text5' => $c->{'num'}, 'text6' => $c->{'signature'}}
                                       }};
-      $c->{'label'} = {'template'  => 'tube_and_tube',
+    } elsif ($type eq 'tube') { #tube labels have not been tested yet
+      $c->{'label'} = {'template'  => 'tube',
                        'tube'      => { 'ean13'      => $c->{'barcode'},
                                         'sanger'     => $c->{'lims_id'},
                                         'label_text' => {'role' => $self->user,},
@@ -339,17 +343,18 @@ sub _format_label {
 sub _generate_label {
   my $self = shift;
   my $user = $self->user;
+  my $date = $self->_date->strftime('%a %b %d %T %Y');
   my $h = {};
   $h->{'label_printer'}->{'header_text'} =
-    {'header_text1' => "header by $user",'header_text2' => $self->_date,};
+    {'header_text1' => "header by $user",'header_text2' => $date,};
   $h->{'label_printer'}->{'footer_text'} =
-    {'footer_text1' => "footer by $user",'footer_text2' => $self->_date,};
+    {'footer_text1' => "footer by $user",'footer_text2' => $date,};
 
   my @labels = ();
-  foreach my $container_url (keys %{$self->containers}) {
+  foreach my $container_url (keys %{$self->_container}) {
     my $count = 0;
-    while ($count < $self->num_copies) {
-      push @labels, $self->containers->{$container_url}->{'label'};
+    while ($count < $self->_num_copies) {
+      push @labels, $self->_container->{$container_url}->{'label'};
       $count++;
     }
   }
@@ -372,26 +377,21 @@ sub _print_label {
 
 sub _copy_purpose {
   my ($self, $doc) = @_;
-  #copy $self->plate_purpose to 'WTSI Container Purpose Name' udf of the container
   my $nodes = $doc->findnodes($CONTAINER_PURPOSE_PATH);
-  if ($nodes->size > 1) {
-    croak 'Only one container purpose udf node is possible';
+  if ($nodes->size != 0) {
+    croak 'Container purpose is already set';
   }
-
-  if ($nodes->size() == 0) {
-    _create_udf_node($doc,q[WTSI Container Purpose Name], $self->_plate_purpose);
-  } else {
-    _update_udf_node($nodes, $self->_plate_purpose);
-  }
+  _create_node($doc,q[WTSI Container Purpose Name], $self->_plate_purpose);
   return;
 }
 
 sub _create_node {
   my ($doc, $udf_name, $value) = @_;
 
-  my $node = XML::LibXML::Element->new('udf:field');
+  my $node = $doc->createElement("udf:field");
   $node->setAttribute('name', $udf_name);
-  $node->appendTextNode($value);
+  my $text = $doc->createTextNode($value);
+  $node->appendChild($text);
   $doc->documentElement()->appendChild($node);
   return;
 }
@@ -413,14 +413,17 @@ sub _copy_supplier_container_name {
 
   my @supplier_nodes = $doc->findnodes($SUPPLIER_CONTAINER_NAME_PATH);
 
-  if (!@supplier_nodes) {
+  if (!@supplier_nodes) { #Copy only if does not exists
     my @nodes = $doc->findnodes($CONTAINER_NAME_PATH);
     if (!@nodes || scalar @nodes > 1) {
       croak 'Only one container name node is possible';
     }
-    my $name = $nodes[0]->getData();
+    my $name = $nodes[0]->textContent();
     if ($name) {
       $name =~ s/^\s+|\s+$//g;
+    }
+    if (!$name) {
+      croak 'Container name undefined';
     }
     _create_node($doc, 'Supplier Container Name', $name);
   }

@@ -10,17 +10,25 @@ Readonly::Scalar my $MAX_LENGTH => 32;
 
 our $VERSION = '0.0';
 
+has 'length' => (
+  isa        => 'Num',
+  is         => 'ro',
+  required   => 0,
+  default    => $MAX_LENGTH,
+);
+
 sub encode {
   my ($self, @inputs) = @_;
-
+  
+  my $length = $self->length;
   my $input = join q{}, @inputs;
   my $result = encode_base64(compress($input), q{});
 
-  if (length $result < $MAX_LENGTH) {
-    my $pre = '0' x ($MAX_LENGTH - length $result);
+  if (length $result < $length) {
+    my $pre = '0' x ($length - length $result);
     $result = $pre . $result;
   } else {
-    $result = substr $result, 0, $MAX_LENGTH;
+    $result = substr $result, 0, $length;
   }
 
   return $result;
@@ -46,6 +54,8 @@ wtsi_clarity::util::signature
 =head1 SUBROUTINES/METHODS
 
 =head2 encode
+
+=head2 length, defaults to 32
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
