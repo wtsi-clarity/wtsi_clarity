@@ -1,56 +1,22 @@
-## Created - December 2013
-## Carol Scott hack for Clarity LIMs - from original BADGER module
-## original VERSION - 1.01
-##
-
 package wtsi_clarity::util::barcode;
 
 use strict;
 use warnings;
-use vars qw(@ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-use Exporter;
+use Carp;
+use Exporter qw(import);
 
-@ISA = qw(Exporter);
-@EXPORT = qw(Verifynumber makeID Calculatebarcode Checkdigit);
+our @EXPORT_OK = qw(calculateBarcode);
 
 our $VERSION = '0.0';
 
 ##no critic
 
 sub makeID {
-
-    my $pkg = shift;
-    my $s;
-
-    if(! ref $pkg)
-    {$s = $pkg;}else{ ($s) = @_;}
-    
-    return $s =~ /^[0-9]{1,3}\-[0-9][0-9]*$/ ? $s . makeCheck($s) : "";
-
-}
-
-sub IdOrNull {
-    my ($s, $type) = @_;
-    return validID($s, $type) ? substr($s, 2, -1) : "NULL";
-}
-
-sub validID {
-
-    my ($s, $type) = @_;
-    return "" if $s !~ /^[0-9]{1,3}\-[1-9][0-9]*[A-Z]$/;
-
-    if (defined $type) {
-    #Modified to return NULL on type mis match
-	return "NULL" if $type ne substr($s, 0, 2);
-    }
-    
-    my $ck = substr($s, length($s) - 1, 1);
-
-    return $ck eq makeCheck(substr($s, 0, -1));
+    my $s = shift;
+    return $s =~ /^[A-Z]{2}\-[0-9][0-9]*$/ ? $s . makeCheck($s) : "";
 }
 
 sub makeCheck {
-
     my ($s) = @_;
     my @chars = split //, $s;
 
@@ -63,97 +29,22 @@ sub makeCheck {
     }
  
     return chr($sum % 23 + ord('A'));
-
 }
 
-sub Verifynumber {
-
-    my $pkg = shift;
-    my $code;
-    my $type;
-    my $prefix = "Not Determined";
-    my $number;
-    my $check  = "Not Determined";
-    my $sanger = '';
-    my $s;
-    my $strip;
-    my $p;
-    
-
-    if(! ref $pkg)
-    {
-	$code = $pkg;
-	$type = shift;
-	$code = "$code";
-    }
-    else
-    {
-	($code,$type) = @_;
-	$code = "$code";
-    }
-    
-    $number = $code;
-    if($code !~ /\D/g)
-    {
-
-	if((length($code) > 11)&&(length($code) < 14))
-	{
-	    
-	    # For code 128 formats that have only 12 digits
-	    while(length($code) < 13){$code = "0$code";}
-	    $number 	= substr($code,0,12);
-	    
-	    $check	 	= chr(substr($number,10));
-	    $prefix		= Letter_prefix(substr($number,0,3));
-	    $number		= substr($number,3,7)/1;
-	    
-	    $code = "$prefix" ."-". "$number$check";
-
-	    my $r = validID($code,$type);
-	    if ($r eq "NULL")	{$p = "Invalid"	;}
-	    elsif(!$r)		{$p = "Bad"	;}
-	    else		{$p = "Good"	;}
-	    
-	    return {	Process => $p, 
-			Type 	=> $prefix, 
-			Number 	=> $number, 
-			Check 	=> $check,
-			Whole 	=> $code
-	    };
-	}
-    }
-    
-    $check = validID($code,$type);
-    if ($check eq "NULL")  {  $p = "Invalid"    ;}
-    elsif(!$check)	   {  $p = "Bad"	;}
-    else	           {  $p = "Good"	;}
-    
-    if($p ne "Bad")
-    {
-	$prefix = substr($code,0,2);
-	$number = substr($code,2,(length($code)-3));
-	$check 	= substr($code,length($code)-1);
-    }
-    
-    return {	Process => $p, 
-		Type 	=> $prefix, 
-		Number 	=> $number, 
-		Check 	=> $check,
-		Whole 	=> $code
-    };				
-}
-
-sub Number_prefix {
-    
-    my ($prefix) = @_;    
-    return (($prefix * 7)  * 1000000000);;
-
-}
-
-sub Letter_prefix {
-
+sub numberPrefix {
+    # Return the number of two letter prefix
     my ($prefix) = @_;
-    return(sprintf("%.0f", ($prefix/7)));
+    my $i = (substr $prefix,0,1);
+    my $j = (substr $prefix,1,1);
+
+    $i = ord($i)-64;
+    $j = ord($j)-64;
+    if($i < 1){$i = 0;}
+    if($j < 1){$j = 0;}
+
+    $prefix = (($i * 27) + $j) * 1000000000;
+
+    return $prefix;
 }
 
 ## Method to return the barcode identifier based on the entity type
@@ -163,25 +54,29 @@ sub Letter_prefix {
 ## passing a number will return a valid barcode identifier, not 12
 ## zero's.
 
-sub Calculatebarcode {
+sub calculateBarcode {
+    my ($type,$number) = @_;
 
-    my ($type,$number,$ean13) = @_;
-
-    if((!$number)||($number < 1)){return ('000000000000','0');}
+    if (!$type) {
+      croak 'Barcode prefix is needed for barcode generation';
+    }
+    if (!$number) {
+      croak 'ID is needed for barcode generation';
+    }
 
     my $cl = makeID($type ."-". $number);
-    if(!$cl){return (-1);}
-
-    my $bc = Number_prefix($type) + ($number * 100);
-    $bc += ord(substr($cl,length($cl)-1));
-    if(length($bc) == 11){$bc ="0$bc";}   
-    $number = $cl;
-
-    if($ean13) {
-	my $check = Checkdigit($bc);
-	$bc      .= $check;
+    if(!$cl) {
+      croak 'Failed to generate id';
     }
-    return ($bc, $number);
+
+    my $bc = numberPrefix($type) + ($number * 100);
+    $bc += ord(substr($cl,length($cl)-1));
+    if(length($bc) == 11){$bc ="0$bc";}
+  
+    my $check = checkDigit($bc);
+    $bc      .= $check;
+
+    return ($bc, $cl);
 }
 
 ## Method to find the check digit that should be returned by
@@ -192,7 +87,7 @@ sub Calculatebarcode {
 ## will match the 13 digits returned by physically scanning the same
 ## barcode with a hand scanner.
 
-sub Checkdigit {
+sub checkDigit {
     my $stem = shift;
     my $sum  = 0;
     while ($stem) {
@@ -217,6 +112,16 @@ wtsi_clarity::util::barcode
 
 =head1 SUBROUTINES/METHODS
 
+=head2 calculateBarcode
+
+=head2 checkDigit
+
+=head2 numberPrefix
+
+=head2 makeCheck
+
+=head2 makeID
+
 =head1 CONFIGURATION AND ENVIRONMENT
 
 =head1 DEPENDENCIES
@@ -227,7 +132,7 @@ wtsi_clarity::util::barcode
 
 =item warnings
 
-=item vars
+=item Carp
 
 =item Exporter
 

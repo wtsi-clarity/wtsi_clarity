@@ -7,7 +7,7 @@ use Readonly;
 use JSON;
 use DateTime;
 
-use wtsi_clarity::util::barcode;
+use wtsi_clarity::util::barcode qw/calculateBarcode/;
 use wtsi_clarity::util::signature;
 extends 'wtsi_clarity::epp';
 
@@ -42,7 +42,8 @@ Readonly::Scalar my $SUPPLIER_CONTAINER_NAME_PATH =>
 Readonly::Scalar my $CONTAINER_NAME_PATH  => q{ /con:container/name };
 ##use critic
 
-Readonly::Scalar my  $SIGNATURE_LENGTH => 13;
+Readonly::Scalar my  $SIGNATURE_LENGTH => 5;
+Readonly::Scalar my  $USER_NAME_LENGTH => 12;
 
 has 'source_plate' => (
   isa        => 'Bool',
@@ -182,12 +183,12 @@ sub _build__plate_purpose {
   return;
 }
 
-#has '_barcode_prefix' {
-#  isa        => 'Str',
-#  is         => 'ro',
-#  required   => 0,
-#  lazy_build => 1,  
-#};
+has '_barcode_prefix' => (
+  isa        => 'Str',
+  is         => 'ro',
+  required   => 0,
+  default    => q[SM],  
+);
 #sub _build__barcode_prefix {
 #  my $self = shift;
 #  my @nodes = $self->process_doc->findnodes($BARCODE_PREFIX_PATH);
@@ -252,9 +253,12 @@ has '_date' => (
 );
 
 sub _generate_barcode {
-  my ($container_id) = @_;
-  my (@bcd)       = split(/\-/, $container_id);
-  return Calculatebarcode($bcd[0],$bcd[1],'1');
+  my ($self, $container_id) = @_;
+  if (!$container_id) {
+    croak 'Container id is not given';
+  }
+  $container_id =~ s/-//mxg;
+  return calculateBarcode($self->_barcode_prefix, $container_id);
 }
 
 override 'run' => sub {
@@ -285,7 +289,7 @@ sub _set_container_data {
     
     $self->_copy_purpose($doc);
 
-    my ($barcode, $num) = _generate_barcode($lims_id);
+    my ($barcode, $num) = $self->_generate_barcode($lims_id);
     $container->{'barcode'} = $barcode;
     $container->{'num'} = $num;
 
@@ -297,7 +301,7 @@ sub _set_container_data {
     }
     $container->{'type'} = $container_type =~ /plate/smx ? 'plate' : 'tube';
     $container->{'signature'} =
-      wtsi_clarity::util::signature->new(length => $SIGNATURE_LENGTH)->encode(sort @{$container->{'samples'}});
+     uc wtsi_clarity::util::signature->new(sig_length => $SIGNATURE_LENGTH)->encode(sort @{$container->{'samples'}});
   }
 
   return;
@@ -320,6 +324,9 @@ sub _format_label {
     my $type = $c->{'type'};
     my $date = $self->_date->strftime('%d-%b-%Y');
     my $user = $self->source_plate ? q[] : $self->user; #no user for sample management stock plates
+    if ($user && length $user > $USER_NAME_LENGTH) {
+      $user = substr $user, 0, $USER_NAME_LENGTH;
+    }
     if ($type eq 'plate') {
       $c->{'label'} = {'template'  => 'plate',
                        'plate' => { 'ean13'      => $c->{'barcode'},

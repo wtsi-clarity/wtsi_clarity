@@ -1,7 +1,6 @@
 package wtsi_clarity::util::signature;
 
 use Moose;
-
 use Compress::Zlib;
 use MIME::Base64;
 use Readonly;
@@ -10,7 +9,7 @@ Readonly::Scalar my $MAX_LENGTH => 32;
 
 our $VERSION = '0.0';
 
-has 'length' => (
+has 'sig_length' => (
   isa        => 'Num',
   is         => 'ro',
   required   => 0,
@@ -19,8 +18,8 @@ has 'length' => (
 
 sub encode {
   my ($self, @inputs) = @_;
-  
-  my $length = $self->length;
+
+  my $length = $self->sig_length;
   my $input = join q{}, @inputs;
   my $result = encode_base64(compress($input), q{});
 
@@ -55,7 +54,7 @@ wtsi_clarity::util::signature
 
 =head2 encode
 
-=head2 length, defaults to 32
+=head2 sig_length, defaults to 32
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

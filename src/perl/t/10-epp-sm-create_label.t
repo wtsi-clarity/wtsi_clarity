@@ -96,11 +96,11 @@ use_ok('wtsi_clarity::epp::sm::create_label');
                                              {
                                                'template' => 'plate',
                                                'plate' => {
-                                                            'ean13' => '1890001204762',
+                                                            'ean13' => '5260271204834',
                                                             'label_text' => {
-                                                                              'text5' => '27-1204L',
+                                                                              'text5' => 'SM-271204S',
                                                                               'role' => 'Stock Plate',
-                                                                              'text6' => 'eJwLdvY3NDBzN'
+                                                                              'text6' => 'EJWLD',
                                                                             },
                                                             'sanger' => '21-May-2014 '
                                                           }
