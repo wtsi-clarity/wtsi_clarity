@@ -32,7 +32,7 @@ Readonly::Scalar my $CONTAINER_PURPOSE_PATH   => q{ /con:container/udf:field[@na
 Readonly::Scalar my $IO_MAP_PATH          => q{ /prc:process/input-output-map};
 Readonly::Scalar my $CONTAINER_PATH       => q{ /art:artifact/location/container/@uri };
 Readonly::Scalar my $SAMPLE_PATH          => q{ /art:artifact/sample/@limsid };
-Readonly::Scalar my $DEFAULT_SM_BARCODE_PREFIX   => 'SM';
+Readonly::Scalar my $DEFAULT_BARCODE_PREFIX   => 'SM';
 Readonly::Scalar my $BARCODE_PREFIX_PATH         =>
   q{ /prc:process/udf:field(@name, 'Barcode Prefix') };
 
@@ -44,6 +44,8 @@ Readonly::Scalar my $CONTAINER_NAME_PATH  => q{ /con:container/name };
 
 Readonly::Scalar my  $SIGNATURE_LENGTH => 5;
 Readonly::Scalar my  $USER_NAME_LENGTH => 12;
+Readonly::Scalar my  $DEFAULT_CONTAINER_TYPE => 'plate';
+Readonly::Scalar my  $CHILD_ERROR_SHIFT => 8;
 
 has 'source_plate' => (
   isa        => 'Bool',
@@ -51,6 +53,14 @@ has 'source_plate' => (
   required   => 0,
   default    => 0,
 );
+
+has 'container_type' => (
+  isa        => 'Str',
+  is         => 'ro',
+  required   => 0,
+  default    => $DEFAULT_CONTAINER_TYPE,
+);
+
 
 has 'printer' => (
   isa        => 'Str',
@@ -68,10 +78,8 @@ sub _build_printer {
   if (scalar @nodes > 1) {
     croak 'Multiple printer udf fields are defined for the process';
   }
-  my $printer =  $nodes[0]->textContent;
-  if ($printer) {
-    $printer =~ s/^\s+|\s+$//g;
-  }
+
+  my $printer = _trim_value($nodes[0]->textContent);
   if (!$printer) {
     croak 'Printer name should be defined';
   }
@@ -95,10 +103,10 @@ sub _build_user {
       $user = substr $user, 0, 1;
       $user .= q[.];
     }
-    my $last = $technician_node->find(q(./last-name))->[0]->textContent;
-    if ($last) {
-      $user .= " $last";
-    }  
+    my $sn = $technician_node->find(q(./last-name))->[0]->textContent;
+    if ($sn) {
+      $user .= " $sn";
+    }
   }
   return $user;
 }
@@ -117,17 +125,16 @@ sub _build__printer_url {
     croak q[service_url entry should be defined in the printing section of the configuration file];
   }
   my $url =  "$print_service/label_printers/page\=1";
-  my $output;
   my $printer = $self->printer;
   my $p;
   my $cmd = qq[curl -H 'Accept: application/json' -H 'Content-Type: application/json' $url];
-  eval {
-    $output = `$cmd`;
-  };
+  ##no critic (ProhibitBacktickOperators)
+  my $output = `$cmd`;
+  ##use critic
   if ($CHILD_ERROR) {
-    croak qq[Failed to get info about a printer $printer from $url,\n $output\n ERROR: ] . $CHILD_ERROR >> 8;
+    croak qq[Failed to get info about a printer $printer from $url,\n $output\n ERROR: ] . $CHILD_ERROR >> $CHILD_ERROR_SHIFT;
   }
-  
+
   my $text = decode_json($output);
   foreach my $t ( @{$text->{'label_printers'}} ){
     if ($t->{'name'} && $t->{'name'} eq $printer){
@@ -174,11 +181,7 @@ sub _build__plate_purpose {
     croak 'Multiple plate purpose udf fields are defined for the process';
   }
   if (@nodes) {
-    my $plate_purpose = $nodes[0]->textContent;
-    if ($plate_purpose) {
-      $plate_purpose =~ s/^\s+|\s+$//g;
-    }
-    return $plate_purpose;
+    return _trim_value($nodes[0]->textContent);
   }
   return;
 }
@@ -187,7 +190,7 @@ has '_barcode_prefix' => (
   isa        => 'Str',
   is         => 'ro',
   required   => 0,
-  default    => q[SM],  
+  default    => $DEFAULT_BARCODE_PREFIX,
 );
 #sub _build__barcode_prefix {
 #  my $self = shift;
@@ -222,8 +225,9 @@ sub _build__container {
   my $containers = {};
   foreach my $anode (@nodes) {
     my $path = $self->source_plate ? q[input] : q[output];
+    ##no critic (RequireInterpolationOfMetachars)
     my $url = $anode->findvalue(q{./} . $path . q{/@uri});
-
+    ##use critic
     my $analyte_dom = $self->fetch_and_parse($url);
     my $container_url = $analyte_dom->findvalue($CONTAINER_PATH);
     if (!$container_url) {
@@ -235,9 +239,9 @@ sub _build__container {
       croak qq[Sample lims id not defined for $url];
     }
     if (!exists $containers->{$container_url}) {
-      $containers->{$container_url}->{'doc'} = $self->fetch_and_parse($container_url); 
+      $containers->{$container_url}->{'doc'} = $self->fetch_and_parse($container_url);
     }
-    push @{$containers->{$container_url}->{'samples'}}, $sample_lims_id; 
+    push @{$containers->{$container_url}->{'samples'}}, $sample_lims_id;
   }
   if (scalar keys %{$containers} == 0) {
     croak q[Failed to get containers for process ] . $self->process_url;
@@ -257,7 +261,7 @@ sub _generate_barcode {
   if (!$container_id) {
     croak 'Container id is not given';
   }
-  $container_id =~ s/-//mxg;
+  $container_id =~ s/-//smxg;
   return calculateBarcode($self->_barcode_prefix, $container_id);
 }
 
@@ -286,7 +290,7 @@ sub _set_container_data {
     if ($self->source_plate) {  # SM first step only
       $self->_copy_supplier_container_name($doc);
     }
-    
+
     $self->_copy_purpose($doc);
 
     my ($barcode, $num) = $self->_generate_barcode($lims_id);
@@ -295,13 +299,8 @@ sub _set_container_data {
 
     $self->_copy_barcode2container($doc, $barcode);
 
-    my $container_type = $doc->find(q(/con:container/type))->[0]->findvalue(q(@name));
-    if (!$container_type) {
-      croak qq[Container type not defined for $container_url];
-    }
-    $container->{'type'} = $container_type =~ /plate/smx ? 'plate' : 'tube';
     $container->{'signature'} =
-     uc wtsi_clarity::util::signature->new(sig_length => $SIGNATURE_LENGTH)->encode(sort @{$container->{'samples'}});
+      uc wtsi_clarity::util::signature->new(sig_length => $SIGNATURE_LENGTH)->encode(sort @{$container->{'samples'}});
   }
 
   return;
@@ -319,9 +318,10 @@ sub _update_container {
 sub _format_label {
   my $self = shift;
 
+  my $type = $self->container_type;
   foreach my $container_url (keys %{$self->_container}) {
     my $c = $self->_container->{$container_url};
-    my $type = $c->{'type'};
+
     my $date = $self->_date->strftime('%d-%b-%Y');
     my $user = $self->source_plate ? q[] : $self->user; #no user for sample management stock plates
     if ($user && length $user > $USER_NAME_LENGTH) {
@@ -373,11 +373,16 @@ sub _generate_label {
 sub _print_label {
   my ($self, $template) = @_;
 
+  ##no critic (ProhibitInterpolationOfLiterals)
   my $cmd = qq(curl -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d);
+  ##use critic
   $cmd .= q[ '] . encode_json($template)  . q[' ] . $self->_printer_url;
+
+  ##no critic (ProhibitBacktickOperators)
   my $output = `$cmd`;
+  ##use critic
   if ($CHILD_ERROR) {
-    croak qq[Barcode printing failed\n $output \n: ] . $CHILD_ERROR >> 8;
+    croak qq[Barcode printing failed\n $output \n: ] . $CHILD_ERROR >> $CHILD_ERROR_SHIFT;
   }
   return;
 }
@@ -385,17 +390,21 @@ sub _print_label {
 sub _copy_purpose {
   my ($self, $doc) = @_;
   my $nodes = $doc->findnodes($CONTAINER_PURPOSE_PATH);
-  if ($nodes->size != 0) {
-    croak 'Container purpose is already set';
+  if ($nodes->size > 1) {
+    croak 'Only one container purpose node is possible';
   }
-  _create_node($doc,q[WTSI Container Purpose Name], $self->_plate_purpose);
+  if ($nodes->size == 0) {
+    _create_node($doc,q[WTSI Container Purpose Name], $self->_plate_purpose);
+  } else {
+    _update_node($nodes, $self->_plate_purpose);
+  }
   return;
 }
 
 sub _create_node {
   my ($doc, $udf_name, $value) = @_;
 
-  my $node = $doc->createElement("udf:field");
+  my $node = $doc->createElement('udf:field');
   $node->setAttribute('name', $udf_name);
   my $text = $doc->createTextNode($value);
   $node->appendChild($text);
@@ -420,14 +429,15 @@ sub _copy_supplier_container_name {
 
   my @supplier_nodes = $doc->findnodes($SUPPLIER_CONTAINER_NAME_PATH);
 
-  if (!@supplier_nodes) { #Copy only if does not exists
+  if (!@supplier_nodes) { # Copy only if does not exists,
+                          # otherwise we might overwrite the value.
     my @nodes = $doc->findnodes($CONTAINER_NAME_PATH);
     if (!@nodes || scalar @nodes > 1) {
       croak 'Only one container name node is possible';
     }
     my $name = $nodes[0]->textContent();
     if ($name) {
-      $name =~ s/^\s+|\s+$//g;
+      $name = _trim_value($name);
     }
     if (!$name) {
       croak 'Container name undefined';
@@ -440,17 +450,20 @@ sub _copy_supplier_container_name {
 sub _copy_barcode2container {
   my ($self, $doc, $barcode) = @_;
 
-  my @nodes = $doc->findnodes($CONTAINER_NAME_PATH);
-  if (!@nodes || scalar @nodes > 1) {
-    croak 'Only one container name node is possible';
+  my $nodes = $doc->findnodes($CONTAINER_NAME_PATH);
+  if ($nodes->size == 0 || $nodes->size > 1) {
+    croak 'Multiple or none container name nodes';
   }
-  my $node = $nodes[0];
-  if ($node->hasChildNodes()) {
-    $node->firstChild()->setData($barcode);
-  } else {
-    croak q[No child node];
-  }
+  _update_node($nodes, $barcode);
   return;
+}
+
+sub _trim_value {
+  my $v = shift;
+  if ($v) {
+    $v =~ s/^\s+|\s+$//smxg;
+  }
+  return $v;
 }
 
 1;
