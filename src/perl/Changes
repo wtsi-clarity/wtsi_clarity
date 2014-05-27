@@ -1,5 +1,8 @@
 CHANGES for wtsi_clarity Perl project
 
+release 0.9
+  - short signatures pick up the header of the compressed string - change to using md5
+
 release 0.8
   - fixes for create_label callback
 

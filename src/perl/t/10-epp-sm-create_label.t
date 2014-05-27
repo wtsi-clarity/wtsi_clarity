@@ -100,7 +100,7 @@ use_ok('wtsi_clarity::epp::sm::create_label');
                                                             'label_text' => {
                                                                               'text5' => 'SM-271204S',
                                                                               'role' => 'Stock Plate',
-                                                                              'text6' => 'EJWLD',
+                                                                              'text6' => 'QKJMF',
                                                                             },
                                                             'sanger' => '21-May-2014 '
                                                           }
