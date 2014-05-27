@@ -1,5 +1,9 @@
 CHANGES for wtsi_clarity Perl project
 
+release 0.10
+  - add suffix to plate purpose if multiple outputs
+  - exclude controls from plate signature generation
+
 release 0.9
   - short signatures pick up the header of the compressed string - change to using md5
 

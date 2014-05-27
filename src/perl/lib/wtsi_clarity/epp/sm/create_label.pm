@@ -14,8 +14,6 @@ extends 'wtsi_clarity::epp';
 
 #########################
 # TODO
-# in case of multiple output containers
-# increment the purpose (append A, B, etc)
 #
 # have short project name on the label?
 #
@@ -33,6 +31,7 @@ Readonly::Scalar my $CONTAINER_PURPOSE_PATH   => q{ /con:container/udf:field[@na
 Readonly::Scalar my $IO_MAP_PATH          => q{ /prc:process/input-output-map};
 Readonly::Scalar my $CONTAINER_PATH       => q{ /art:artifact/location/container/@uri };
 Readonly::Scalar my $SAMPLE_PATH          => q{ /art:artifact/sample/@limsid };
+Readonly::Scalar my $CONTROL_PATH         => q{ /art:artifact/control-type };
 Readonly::Scalar my $DEFAULT_BARCODE_PREFIX   => 'SM';
 Readonly::Scalar my $BARCODE_PREFIX_PATH         =>
   q{ /prc:process/udf:field(@name, 'Barcode Prefix') };
@@ -235,14 +234,17 @@ sub _build__container {
       croak qq[Container not defined for $url];
     }
 
-    my $sample_lims_id = $analyte_dom->findvalue($SAMPLE_PATH);
-    if (!$sample_lims_id) {
-      croak qq[Sample lims id not defined for $url];
-    }
     if (!exists $containers->{$container_url}) {
       $containers->{$container_url}->{'doc'} = $self->fetch_and_parse($container_url);
     }
-    push @{$containers->{$container_url}->{'samples'}}, $sample_lims_id;
+    my @control_flag = $analyte_dom->findnodes($CONTROL_PATH);
+    if (!@control_flag) { # Sample list should not contain controls
+      my $sample_lims_id = $analyte_dom->findvalue($SAMPLE_PATH);
+      if (!$sample_lims_id) {
+        croak qq[Sample lims id not defined for $url];
+      }
+      push @{$containers->{$container_url}->{'samples'}}, $sample_lims_id;
+    }
   }
   if (scalar keys %{$containers} == 0) {
     croak q[Failed to get containers for process ] . $self->process_url;
@@ -255,6 +257,13 @@ has '_date' => (
   is         => 'ro',
   required   => 0,
   default    => sub { return DateTime->now(); },
+);
+
+has '_plate_purpose_suffix' => (
+  isa        => 'ArrayRef',
+  is         => 'ro',
+  required   => 0,
+  default    => sub { my @a = ('A'..'Z'); return \@a; },
 );
 
 sub _generate_barcode {
@@ -280,7 +289,10 @@ override 'run' => sub {
 sub _set_container_data {
   my $self = shift;
 
-  foreach my $container_url (keys %{$self->_container}) {
+  my $count = 0;
+  my @urls = keys %{$self->_container};
+
+  foreach my $container_url ( @urls ) {
     my $container = $self->_container->{$container_url};
     my $doc = $container->{'doc'};
     my $lims_id = $doc->findvalue($CONTAINER_LIMSID_PATH);
@@ -292,7 +304,8 @@ sub _set_container_data {
       $self->_copy_supplier_container_name($doc);
     }
 
-    $self->_copy_purpose($doc);
+    my $suffix = scalar @urls == 1 ? q[] : $self->_plate_purpose_suffix->[$count];
+    $container->{'purpose'} = $self->_copy_purpose($doc, $suffix);
 
     my ($barcode, $num) = $self->_generate_barcode($lims_id);
     $container->{'barcode'} = $barcode;
@@ -302,6 +315,8 @@ sub _set_container_data {
 
     $container->{'signature'} =
       wtsi_clarity::util::signature->new(sig_length => $SIGNATURE_LENGTH)->encode(sort @{$container->{'samples'}});
+
+    $count++;
   }
 
   return;
@@ -333,7 +348,7 @@ sub _format_label {
                        'plate' => { 'ean13'      => $c->{'barcode'},
                                     'sanger' => join(q[ ], $date, $user),
                                     'label_text' =>
-                      {'role' => $self->_plate_purpose, 'text5' => $c->{'num'}, 'text6' => $c->{'signature'}}
+                      {'role' => $c->{'purpose'}, 'text5' => $c->{'num'}, 'text6' => $c->{'signature'}}
                                       }};
     } elsif ($type eq 'tube') { #tube labels have not been tested yet
       $c->{'label'} = {'template'  => 'tube',
@@ -389,17 +404,24 @@ sub _print_label {
 }
 
 sub _copy_purpose {
-  my ($self, $doc) = @_;
+  my ($self, $doc, $suffix) = @_;
+
   my $nodes = $doc->findnodes($CONTAINER_PURPOSE_PATH);
   if ($nodes->size > 1) {
     croak 'Only one container purpose node is possible';
   }
-  if ($nodes->size == 0) {
-    _create_node($doc,q[WTSI Container Purpose Name], $self->_plate_purpose);
-  } else {
-    _update_node($nodes, $self->_plate_purpose);
+
+  my $purpose = $self->_plate_purpose;
+  if ($suffix) {
+    $purpose .= " $suffix";
   }
-  return;
+
+  if ($nodes->size == 0) {
+    _create_node($doc,q[WTSI Container Purpose Name], $purpose);
+  } else {
+    _update_node($nodes, $purpose);
+  }
+  return $purpose;
 }
 
 sub _create_node {
