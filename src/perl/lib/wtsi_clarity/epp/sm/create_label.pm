@@ -6,6 +6,7 @@ use Carp;
 use Readonly;
 use JSON;
 use DateTime;
+use namespace::autoclean;
 
 use wtsi_clarity::util::barcode qw/calculateBarcode/;
 use wtsi_clarity::util::signature;
@@ -300,7 +301,7 @@ sub _set_container_data {
     $self->_copy_barcode2container($doc, $barcode);
 
     $container->{'signature'} =
-      uc wtsi_clarity::util::signature->new(sig_length => $SIGNATURE_LENGTH)->encode(sort @{$container->{'samples'}});
+      wtsi_clarity::util::signature->new(sig_length => $SIGNATURE_LENGTH)->encode(sort @{$container->{'samples'}});
   }
 
   return;
@@ -466,6 +467,9 @@ sub _trim_value {
   return $v;
 }
 
+__PACKAGE__->meta->make_immutable;
+
+
 1;
 
 __END__
@@ -502,6 +506,16 @@ wtsi_clarity::epp::sm::create_label
 =item Moose
 
 =item Carp
+
+=item namespace::autoclean
+
+=item English
+
+=item Readonly
+
+=item JSON
+
+=item DateTime
 
 =back
 
