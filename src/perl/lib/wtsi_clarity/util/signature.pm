@@ -1,11 +1,12 @@
 package wtsi_clarity::util::signature;
 
 use Moose;
-use Compress::Zlib;
-use MIME::Base64;
+use Digest::MD5 qw(md5_base64);
+use Carp;
 use Readonly;
+use namespace::autoclean;
 
-Readonly::Scalar my $MAX_LENGTH => 32;
+Readonly::Scalar my $MAX_LENGTH => 22;
 
 our $VERSION = '0.0';
 
@@ -20,18 +21,15 @@ sub encode {
   my ($self, @inputs) = @_;
 
   my $length = $self->sig_length;
-  my $input = join q{}, @inputs;
-  my $result = encode_base64(compress($input), q{});
-
-  if (length $result < $length) {
-    my $pre = '0' x ($length - length $result);
-    $result = $pre . $result;
-  } else {
-    $result = substr $result, 0, $length;
+  if ($length > $MAX_LENGTH) {
+    croak qq[Maximum signature length is $MAX_LENGTH];
   }
 
-  return $result;
+  my $result = md5_base64(@inputs);
+  return uc(substr $result, 0, $length);
 }
+
+__PACKAGE__->meta->make_immutable;
 
 1;
 
@@ -64,11 +62,13 @@ wtsi_clarity::util::signature
 
 =item Moose
 
-=item Compress::Zlib;
+=item Digest::MD5
 
-=item MIME::Base64;
+=item Carp
 
-=item Readonly;
+=item Readonly
+
+=item namespace::autoclean
 
 =back
 
