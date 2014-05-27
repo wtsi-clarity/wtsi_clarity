@@ -111,7 +111,7 @@ use_ok('wtsi_clarity::epp::sm::create_label');
   $label->{'label_printer'}->{'labels'}->[1] = $label->{'label_printer'}->{'labels'}->[0];
 
   is_deeply($l->_generate_label(), $label, 'label hash representation');
-  #$l->_print_label($template); #This prints a label
+  #$l->_print_label($label); #This prints a label
 }
 
 1;
