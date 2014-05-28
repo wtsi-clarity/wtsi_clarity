@@ -175,7 +175,7 @@ use_ok('wtsi_clarity::epp::sm::create_label');
                                                             'ean13' => '5260276711719',
                                                             'label_text' => {
                                                                               'text5' => 'SM-276711G',
-                                                                              'role' => 'Pico Assay B',
+                                                                              'role' => 'Pico Assay',
                                                                               'text6' => 'HP2MX'
                                                                             },
                                                             'sanger' => '21-May-2014 D. Jones'
