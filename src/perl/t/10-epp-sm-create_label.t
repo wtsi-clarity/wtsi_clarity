@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 22;
+use Test::More tests => 34;
 use Test::Exception;
 use DateTime;
 
@@ -33,7 +33,7 @@ use_ok('wtsi_clarity::epp::sm::create_label');
 
   $l = wtsi_clarity::epp::sm::create_label->new(
     process_url => 'http://clarity-ap:8080/api/v2/processes/24-67069');
-  my $config = join q[/]. $ENV{'HOME'}, '.wtsi_clarity', 'config';
+  my $config = join q[/], $ENV{'HOME'}, '.wtsi_clarity', 'config';
   SKIP: {
     if ( !$ENV{'LIVE_TEST'} || !-e $config ) {
       skip 'set LIVE_TEST to true to run and have config file in your home directory', 1;
@@ -73,14 +73,23 @@ use_ok('wtsi_clarity::epp::sm::create_label');
   is (scalar @containers, 1, 'correct number of containers');
   my $container_url = $containers[0];
   is (scalar @{$l->_container->{$container_url}->{'samples'}}, 12, 'correct number of samples');
+
+  my $doc = $l->_container->{$container_url}->{'doc'};
+  my @nodes = $doc->findnodes(q{ /con:container/name });
+  is ($nodes[0]->textContent(), 'ces_tester_101_', 'old container name');
+
   lives_ok {$l->_set_container_data} 'container data set';
-  #TODO
-  #get original container name
-  #test that final name is 1890001204762
-  #test that 'Supplier Container Name' udf is set to 'ces_tester_101_'
-  #test that 'WTSI Container Purpose Name' is set to 'Stock Plate'
+
+  @nodes = $doc->findnodes( q{ /con:container/name } );
+  is ($nodes[0]->textContent(), '5260271204834', 'new container name');
+  my $xml =  $doc->toString;
+  like ($xml, qr/WTSI Container Purpose Name\">Stock Plate/, 'container purpose present');
+  like ($xml, qr/Supplier Container Name\">ces_tester_101_/, 'container supplier present');
+
   lives_ok {$l->_set_container_data} 'container data set is run again';
-  #test that 'Supplier Container Name' udf is still set to 'ces_tester_101_'
+  $xml =  $doc->toString;
+  like ($xml, qr/Supplier Container Name\">ces_tester_101_/, 'container supplier unchanged');
+
   lives_ok { $l->_format_label() } 'labels formatted';
 
   my $label = {
@@ -112,6 +121,71 @@ use_ok('wtsi_clarity::epp::sm::create_label');
 
   is_deeply($l->_generate_label(), $label, 'label hash representation');
   #$l->_print_label($label); #This prints a label
+}
+
+{
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/create_label';
+  #local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
+  my $l = wtsi_clarity::epp::sm::create_label->new(
+     process_url => 'http://clarity-ap:8080/api/v2/processes/24-97619',
+     _date => my $dt = DateTime->new(
+        year       => 2014,
+        month      => 5,
+        day        => 21,
+        hour       => 15,
+        minute     => 04,
+        second     => 23,
+    ),
+  ); 
+  lives_ok {$l->_container} 'got containers';
+  my @urls = keys %{$l->_container};
+  is (scalar @urls, 2, 'correct number of containers');
+  is (scalar @{$l->_container->{$urls[0]}->{'samples'}}, 95, 'correct number of samples');
+  is (scalar @{$l->_container->{$urls[1]}->{'samples'}}, 95, 'correct number of samples');
+
+  lives_ok {$l->_set_container_data} 'container data set';
+  lives_ok { $l->_format_label() } 'labels formatted';
+
+  my $label = {
+          'label_printer' => {
+                               'footer_text' => {
+                                                  'footer_text2' => 'Wed May 21 15:04:23 2014',
+                                                  'footer_text1' => 'footer by D. Jones'
+                                                },
+                               'header_text' => {
+                                                  'header_text2' => 'Wed May 21 15:04:23 2014',
+                                                  'header_text1' => 'header by D. Jones'
+                                                },
+                               'labels' => [
+                                             {
+                                               'template' => 'plate',
+                                               'plate' => {
+                                                            'ean13' => '5260276710705',
+                                                            'label_text' => {
+                                                                              'text5' => 'SM-276710F',
+                                                                              'role' => 'Pico Assay A',
+                                                                              'text6' => 'HP2MX'
+                                                                            },
+                                                            'sanger' => '21-May-2014 D. Jones'
+                                                          }
+                                             },
+                                             {
+                                               'template' => 'plate',
+                                               'plate' => {
+                                                            'ean13' => '5260276711719',
+                                                            'label_text' => {
+                                                                              'text5' => 'SM-276711G',
+                                                                              'role' => 'Pico Assay B',
+                                                                              'text6' => 'HP2MX'
+                                                                            },
+                                                            'sanger' => '21-May-2014 D. Jones'
+                                                          }
+                                             }
+                                           ]
+                             }
+        };
+
+  is_deeply($l->_generate_label(), $label, 'label hash representation');
 }
 
 1;
