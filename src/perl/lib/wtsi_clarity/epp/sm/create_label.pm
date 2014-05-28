@@ -411,16 +411,20 @@ sub _copy_purpose {
     croak 'Only one container purpose node is possible';
   }
 
-  my $purpose = $self->_plate_purpose;
-  if ($suffix) {
-    $purpose .= " $suffix";
+  my $purpose;
+  if ($nodes->size == 1) { # At cherry-picking stage purpose is preset
+    $purpose = $nodes->pop()->textContent();
+    if (!$purpose) {
+      croak qq[No purpose in $CONTAINER_PURPOSE_PATH];
+    }
+  } else {
+    $purpose = $self->_plate_purpose;
+    if ($suffix) {
+      $purpose .= " $suffix";
+    }
+    _create_node($doc,q[WTSI Container Purpose Name], $purpose);
   }
 
-  if ($nodes->size == 0) {
-    _create_node($doc,q[WTSI Container Purpose Name], $purpose);
-  } else {
-    _update_node($nodes, $purpose);
-  }
   return $purpose;
 }
 

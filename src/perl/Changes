@@ -1,5 +1,8 @@
 CHANGES for wtsi_clarity Perl project
 
+release 0.11
+  - do not overwrite existing plate purpose (preset at cherry-picking stage)
+
 release 0.10
   - add suffix to plate purpose if multiple outputs
   - exclude controls from plate signature generation
