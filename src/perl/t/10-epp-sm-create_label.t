@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 34;
+use Test::More tests => 38;
 use Test::Exception;
 use DateTime;
 
@@ -126,16 +126,20 @@ use_ok('wtsi_clarity::epp::sm::create_label');
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/create_label';
   #local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
-  my $l = wtsi_clarity::epp::sm::create_label->new(
-     process_url => 'http://clarity-ap:8080/api/v2/processes/24-97619',
-     _date => my $dt = DateTime->new(
+  
+  my $dt = DateTime->new(
         year       => 2014,
         month      => 5,
         day        => 21,
         hour       => 15,
         minute     => 04,
         second     => 23,
-    ),
+  );
+
+  my $l = wtsi_clarity::epp::sm::create_label->new(
+     process_url => 'http://clarity-ap:8080/api/v2/processes/24-97619',
+     increment_purpose => 1,
+     _date => $dt,
   ); 
   lives_ok {$l->_container} 'got containers';
   my @urls = keys %{$l->_container};
@@ -163,7 +167,7 @@ use_ok('wtsi_clarity::epp::sm::create_label');
                                                             'ean13' => '5260276710705',
                                                             'label_text' => {
                                                                               'text5' => 'SM-276710F',
-                                                                              'role' => 'Pico Assay A',
+                                                                              'role'  => 'Pico Assay A',
                                                                               'text6' => 'HP2MX'
                                                                             },
                                                             'sanger' => '21-May-2014 D. Jones'
@@ -175,7 +179,7 @@ use_ok('wtsi_clarity::epp::sm::create_label');
                                                             'ean13' => '5260276711719',
                                                             'label_text' => {
                                                                               'text5' => 'SM-276711G',
-                                                                              'role' => 'Pico Assay',
+                                                                              'role'  => 'Pico Assay',
                                                                               'text6' => 'HP2MX'
                                                                             },
                                                             'sanger' => '21-May-2014 D. Jones'
@@ -185,6 +189,18 @@ use_ok('wtsi_clarity::epp::sm::create_label');
                              }
         };
 
+  is_deeply($l->_generate_label(), $label, 'label hash representation');
+
+  $l = wtsi_clarity::epp::sm::create_label->new(
+     process_url => 'http://clarity-ap:8080/api/v2/processes/24-97619',
+     _date => $dt,
+  );
+
+  lives_ok {$l->_container} 'got containers';
+  lives_ok {$l->_set_container_data} 'container data set';
+  lives_ok { $l->_format_label() } 'labels formatted';
+  # increment_purpose flag is false
+  $label->{'label_printer'}->{'labels'}->[0]->{'plate'}->{'label_text'}->{'role'} = 'Pico Assay';
   is_deeply($l->_generate_label(), $label, 'label hash representation');
 }
 
