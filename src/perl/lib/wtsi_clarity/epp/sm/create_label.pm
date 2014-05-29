@@ -61,6 +61,12 @@ has 'container_type' => (
   default    => $DEFAULT_CONTAINER_TYPE,
 );
 
+has 'increment_purpose' => (
+  isa        => 'Bool',
+  is         => 'ro',
+  required   => 0,
+  default    => 0,
+);
 
 has 'printer' => (
   isa        => 'Str',
@@ -304,7 +310,8 @@ sub _set_container_data {
       $self->_copy_supplier_container_name($doc);
     }
 
-    my $suffix = scalar @urls == 1 ? q[] : $self->_plate_purpose_suffix->[$count];
+    my $suffix = ( scalar @urls == 1 || !$self->increment_purpose ) ?
+                 q[] : $self->_plate_purpose_suffix->[$count];
     $container->{'purpose'} = $self->_copy_purpose($doc, $suffix);
 
     my ($barcode, $num) = $self->_generate_barcode($lims_id);
@@ -514,12 +521,31 @@ wtsi_clarity::epp::sm::create_label
 
 =head1 SUBROUTINES/METHODS
 
-=head2 process_url - Clarity process url, required.
+=head2 run
 
-=head2 printer - printer name (as known to the print service), an optional attribute.
+  Method executing the epp callback
 
-=head2 source_plate - a boolean flag indicating whether source or target plates have to be considered
+=head2 process_url
+
+  Clarity process url, required.
+
+=head2 printer
+
+  Printer name (as known to the print service), an optional attribute.
+
+=head2 user
+
+  User name as it appears on a label, an optional attribute.
+
+=head2 source_plate
+
+  A boolean flag indicating whether source or target plates have to be considered
   false by default, meaning that target plates should be considered bt default, an optional attribute.
+
+=head2 increment_purpose
+
+  A boolean flag indicating whether container purpose has to be incremented in
+  case of multiple outputs, defaults to false, an optional attribute.
 
 =head2 run - callback for the create_label action
 
