@@ -1,5 +1,9 @@
 CHANGES for wtsi_clarity Perl project
 
+release 0.12
+  - explicit increment_purpose flag for create_label callback since it's possible
+    that multiple outputs are due to multiple inputs
+
 release 0.11
   - do not overwrite existing plate purpose (preset at cherry-picking stage)
 
