@@ -6,7 +6,6 @@ use File::Copy;
 use File::Spec::Functions;
 use Readonly;
 
-use wtsi_clarity::util::clarity_elements;
 use wtsi_clarity::file_parsing::volume_check;
 use wtsi_clarity::util::types;
 

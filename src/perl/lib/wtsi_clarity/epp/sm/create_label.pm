@@ -11,6 +11,7 @@ use namespace::autoclean;
 use wtsi_clarity::util::barcode qw/calculateBarcode/;
 use wtsi_clarity::util::signature;
 extends 'wtsi_clarity::epp';
+with 'wtsi_clarity::util::clarity_elements';
 
 #########################
 # TODO
@@ -198,21 +199,6 @@ has '_barcode_prefix' => (
   required   => 0,
   default    => $DEFAULT_BARCODE_PREFIX,
 );
-#sub _build__barcode_prefix {
-#  my $self = shift;
-#  my @nodes = $self->process_doc->findnodes($BARCODE_PREFIX_PATH);
-#  if (scalar @nodes > 1) {
-#    croak 'Multiple barcode prefix udf fields are defined for the process';
-#  }
-#  my $barcode_prefix;
-#  if (@nodes) {
-#    $barcode_prefix = $nodes[0]->textContent;
-#    if ($barcode_prefix) {
-#      $barcode_prefix =~ s/^\s+|\s+$//g;
-#    }
-#  }
-#  return $barcode_prefix || $DEFAULT_SM_BARCODE_PREFIX;
-#}
 
 has '_container' => (
   isa        => 'HashRef',
@@ -429,32 +415,16 @@ sub _copy_purpose {
     if ($suffix) {
       $purpose .= " $suffix";
     }
-    _create_node($doc,q[WTSI Container Purpose Name], $purpose);
+    $self->_create_node($doc,q[WTSI Container Purpose Name], $purpose);
   }
 
   return $purpose;
 }
 
 sub _create_node {
-  my ($doc, $udf_name, $value) = @_;
-
-  my $node = $doc->createElement('udf:field');
-  $node->setAttribute('name', $udf_name);
-  my $text = $doc->createTextNode($value);
-  $node->appendChild($text);
+  my ($self, $doc, $udf_name, $value) = @_;
+  my $node = $self->create_udf_element($doc, $udf_name, $value);
   $doc->documentElement()->appendChild($node);
-  return;
-}
-
-sub _update_node {
-  my ($nodes, $value) = @_;
-
-  my $node = $nodes->pop();
-  if ($node->hasChildNodes()) {
-    $node->firstChild()->setData($value);
-  } else {
-    $node->addChild($node->createTextNode($value));
-  }
   return;
 }
 
@@ -476,7 +446,7 @@ sub _copy_supplier_container_name {
     if (!$name) {
       croak 'Container name undefined';
     }
-    _create_node($doc, 'Supplier Container Name', $name);
+    $self->_create_node($doc, 'Supplier Container Name', $name);
   }
   return;
 }
@@ -488,7 +458,7 @@ sub _copy_barcode2container {
   if ($nodes->size == 0 || $nodes->size > 1) {
     croak 'Multiple or none container name nodes';
   }
-  _update_node($nodes, $barcode);
+  $self->update_text($nodes->pop(), $barcode);
   return;
 }
 

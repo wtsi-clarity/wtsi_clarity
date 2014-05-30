@@ -1,5 +1,9 @@
 CHANGES for wtsi_clarity Perl project
 
+  - further methods in wtsi_clarity::util::clarity_elements role
+  - wtsi_clarity::epp::sm::create_label refactored to use
+      wtsi_clarity::util::clarity_elements role to create and update xml elements
+
 release 0.12
   - explicit increment_purpose flag for create_label callback since it's possible
     that multiple outputs are due to multiple inputs
