@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 6;
+use Test::More tests => 7;
 use Test::Exception;
 
 use_ok('wtsi_clarity::epp::mapper');
@@ -17,6 +17,8 @@ use_ok('wtsi_clarity::epp::mapper');
   my $m = wtsi_clarity::epp::mapper->new(action => 'create_label');
   isa_ok($m, 'wtsi_clarity::epp::mapper');
   is($m->package_name, 'wtsi_clarity::epp::sm::create_label', 'correct package name');
+  $m = wtsi_clarity::epp::mapper->new(action => 'stamp');
+  is($m->package_name, 'wtsi_clarity::epp::stamp', 'correct package name');
 }
 
 1;

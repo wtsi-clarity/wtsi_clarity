@@ -8,6 +8,7 @@ lib/wtsi_clarity/util/config.pm
 lib/wtsi_clarity/util/types.pm
 lib/wtsi_clarity/epp.pm
 lib/wtsi_clarity/epp/mapper.pm
+lib/wtsi_clarity/epp/stamp.pm
 lib/wtsi_clarity/epp/sm/volume_check.pm
 t/perlcriticrc
 t/00-critic.t
@@ -18,6 +19,7 @@ t/00-pod.t
 t/10-epp.t
 t/10-epp-mapper.t
 t/10-epp-sm-volume_check.t
+t/10-epp-stamp.t
 t/10-util-config.t
 t/10-util-request.t
 t/data/config/config
