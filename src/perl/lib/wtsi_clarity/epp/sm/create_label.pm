@@ -26,10 +26,11 @@ Readonly::Scalar my $PRINTER_PATH         => q{ /prc:process/udf:field[contains(
 Readonly::Scalar my $NUM_COPIES_PATH      => q{ /prc:process/udf:field[@name='Barcode Copies'] };
 Readonly::Scalar my $DEFAULT_NUM_COPIES   => 1;
 
-Readonly::Scalar my $PLATE_PURPOSE_PATH   => q{ /prc:process/udf:field[@name='Plate Purpose'] };
+Readonly::Scalar my $PLATE_PURPOSE_PATH       => q{ /prc:process/udf:field[@name='Plate Purpose'] };
 Readonly::Scalar my $CONTAINER_PURPOSE_PATH   => q{ /con:container/udf:field[@name='WTSI Container Purpose Name'] };
 
-Readonly::Scalar my $IO_MAP_PATH          => q{ /prc:process/input-output-map};
+Readonly::Scalar my $IO_MAP_PATH                => q{ /prc:process/input-output-map};
+Readonly::Scalar my $IO_MAP_PATH_ANALYTE_OUTPUT => $IO_MAP_PATH . q{[output[@output-type='Analyte']] };
 Readonly::Scalar my $CONTAINER_PATH       => q{ /art:artifact/location/container/@uri };
 Readonly::Scalar my $SAMPLE_PATH          => q{ /art:artifact/sample/@limsid };
 Readonly::Scalar my $CONTROL_PATH         => q{ /art:artifact/control-type };
@@ -209,7 +210,8 @@ has '_container' => (
 sub _build__container {
   my $self = shift;
 
-  my @nodes = $self->process_doc->findnodes($IO_MAP_PATH);
+  my $iopath = $self->source_plate ? $IO_MAP_PATH : $IO_MAP_PATH_ANALYTE_OUTPUT;
+  my @nodes = $self->process_doc->findnodes($iopath);
   if (!@nodes) {
     croak 'No analytes registered';
   }
