@@ -17,6 +17,12 @@ Readonly::Scalar my $CONTAINER_TYPE_NAME_PATH => q{ /con:container/type/@name };
 
 our $VERSION = '0.0';
 
+has 'step_url' => (
+  isa        => 'Str',
+  is         => 'ro',
+  required   => 1,
+);
+
 has 'container_type_name' => (
   isa        => 'Str',
   is         => 'ro',
@@ -111,9 +117,9 @@ sub _build__analytes {
 override 'run' => sub {
   my $self = shift;
   super(); #call parent's run method
-  $self->_create_containers();
-  $self->_update_target_analytes();
-  $self->_send_updates();
+  #$self->_create_containers();
+  #$self->_update_target_analytes();
+  #$self->_send_updates();
 };
 
 sub _create_containers {
@@ -175,7 +181,6 @@ sub _send_updates {
   foreach my $input_container ( keys %{$self->_analytes}) {
     foreach my $input_analyte ( keys %{$self->_analytes->{$input_container} }) {
       my $doc = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_doc'};
-      print $doc->toString . "\n\n";
       $self->request->put($self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'}, $doc->toString);
     }
   }

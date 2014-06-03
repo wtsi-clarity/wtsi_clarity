@@ -6,14 +6,16 @@ use Test::Exception;
 use_ok('wtsi_clarity::epp::stamp');
 
 {
-  my $s = wtsi_clarity::epp::stamp->new(process_url => 'some');
+  my $s = wtsi_clarity::epp::stamp->new(process_url => 'some', step_url => 'some');
   isa_ok($s, 'wtsi_clarity::epp::stamp');
 }
 
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/stamp';
   #local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
-  my $s = wtsi_clarity::epp::stamp->new(process_url => 'http://clarity-ap:8080/api/v2/processes/24-98502');
+  my $s = wtsi_clarity::epp::stamp->new(
+              process_url => 'http://clarity-ap:8080/api/v2/processes/24-98502',
+              step_url => 'some');
   lives_ok { $s->_analytes } 'got all info from clarity';
   my @containers = keys %{$s->_analytes};
   is (scalar @containers, 1, 'one input container');
@@ -39,7 +41,8 @@ use_ok('wtsi_clarity::epp::stamp');
   
     local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/stamp';
     my $s = wtsi_clarity::epp::stamp->new(
-      process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-98502'
+      process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-98502',
+      step_url    => 'some'
     );
     lives_ok { $s->_analytes } 'got all info from clarity';
     local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = q[];
@@ -55,7 +58,8 @@ use_ok('wtsi_clarity::epp::stamp');
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/stamp';
   my $s = wtsi_clarity::epp::stamp->new(
-    process_url => 'http://clarity-ap:8080/api/v2/processes/24-98502'
+    process_url => 'http://clarity-ap:8080/api/v2/processes/24-98502',
+    step_url    => 'some'
   );
   lives_ok { $s->_analytes } 'got all info from clarity';
 
