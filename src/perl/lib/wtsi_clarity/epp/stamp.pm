@@ -113,7 +113,7 @@ override 'run' => sub {
   super(); #call parent's run method
   $self->_create_containers();
   $self->_update_target_analytes();
-  $self->_post_updates();
+  $self->_send_updates();
 };
 
 sub _create_containers {
@@ -154,6 +154,7 @@ sub _update_target_analytes {
       if (!$uri) {
         croak q[Target uri not known'];
       }
+      ($uri) = $uri =~ /\A([^?]*)/smx; #drop part of teh query starting with ?
       $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'} = $uri;
       my $location = $doc->createElement('location');
       my $container = $doc->createElement('container');
@@ -163,16 +164,19 @@ sub _update_target_analytes {
       $location->appendTextChild('value', $self->_analytes->{$input_container}->{$input_analyte}->{'well'});
       $doc->getDocumentElement()->addChild($location);
     }
+    delete $self->_analytes->{$input_container}->{'output_container'};
+    delete $self->_analytes->{$input_container}->{'doc'};
   }
   return;
 }
 
-sub _post_updates {
+sub _send_updates {
   my $self = shift;
   foreach my $input_container ( keys %{$self->_analytes}) {
     foreach my $input_analyte ( keys %{$self->_analytes->{$input_container} }) {
       my $doc = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_doc'};
-      $self->request->post($doc->toString, $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'});
+      print $doc->toString . "\n\n";
+      $self->request->put($self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'}, $doc->toString);
     }
   }
   return;

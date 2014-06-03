@@ -68,7 +68,7 @@ use_ok('wtsi_clarity::epp::stamp');
   lives_ok { $s->_update_target_analytes } 'targer analytes updated';
   my @input_analytes = keys %{$s->_analytes->{$container_urls[0]}};
   my $ian = $s->_analytes->{$container_urls[0]}->{$input_analytes[0]};
-  like ($ian->{'target_analyte_uri'}, qr/artifacts\/2-644754/, 'target analyte uri is set');
+  like ($ian->{'target_analyte_uri'}, qr/artifacts\/2-644754\Z/, 'truncated target analyte uri is set');
   my $doc = $ian->{'target_analyte_doc'};
   ok ($doc, 'target analyte XML doc retrieved');
   my @nodes = $doc->findnodes(q{/art:artifact/location});
