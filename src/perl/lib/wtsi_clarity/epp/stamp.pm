@@ -14,18 +14,27 @@ Readonly::Scalar my $WELL_PATH      => q{ /art:artifact/location/value };
 
 our $VERSION = '0.0';
 
-has 'container_name' => (
+has 'container_type_name' => (
   isa        => 'Str',
   is         => 'ro',
   required   => 0,
   lazy_build => 1,
 );
-sub _build_container_name {
+sub _build_container_type_name {
   my $self = shift;
   my @container_urls = keys %{$self->_analytes};
   my $doc = $self->_analytes->{$container_urls[0]}->{'doc'};
+  $self->_set_validate_container_type(0);
   return $doc->findvalue(q{ /con:container/type/@name });
 }
+
+has '_validate_container_type' => (
+  isa        => 'Bool',
+  is         => 'ro',
+  required   => 0,
+  default    => 1,
+  writer     => '_set_validate_container_type', 
+);
 
 has '_container_type' => (
   isa        => 'XML::LibXML::Node',
@@ -35,10 +44,11 @@ has '_container_type' => (
 );
 sub _build__container_type {
   my $self = shift;
+  my $name = $self->container_type_name;
   my @nodes;
-  if (!$self->has_container_name) {
-    my $name = uri_escape($self->container_name);
-    my $doc = $self->fetch_and_parse($self->base_url . q{/containertypes?name=} . $name);
+  if ($self->_validate_container_type) {
+    my $name = uri_escape($name);
+    my $doc = $self->fetch_and_parse($self->base_url . q{containertypes?name=} . $name);
     @nodes =  $doc->findnodes(q{/ctp:container-types/container-type});
   } else {
     my @container_urls = keys %{$self->_analytes};
@@ -46,7 +56,7 @@ sub _build__container_type {
     @nodes =  $doc->findnodes(q{ /con:container/type });
   }
   if (scalar @nodes > 1) {
-    croak q[Multiple container types for container name ] . $self->container_name;
+    croak q[Multiple container types for container name ] . $name;
   }
   return $nodes[0];
 }
@@ -104,19 +114,17 @@ override 'run' => sub {
 sub _create_containers {
   my $self = shift;
 
-  my $xml ='<?xml version="1.0" encoding="UTF-8"?>';
+  my $xml = '<?xml version="1.0" encoding="UTF-8"?>';
   $xml .= '<con:container xmlns:con="http://genologics.com/ri/container">';
-  #$xml .= '<name>new container</name>';
+  $xml .= $self->_container_type->toString;
   $xml .= '</con:container>';
-  my $doc = XML::LibXML->load_xml($xml);
-  $doc->addChild($self->_container_type);
 
   foreach my $input_container ( keys %{$self->_analytes}) {
-    my $url = join q[/], $self->base_url, $self->containers;
-    my $container_doc = XML::LibXML->load_xml($self->request->put($doc->toString, join(q[/], $url));
-    my %h = ( 'limsid' => $container_doc->getvalue(q{ /con:container/@limsid }),
-              'uri'    => $container_doc->getvalue(q{ /con:container/@uri }) );
-    $self->_analytes->{$input_container}->{'output_container'} = \%h;
+    my $url = $self->base_url . 'containers';
+    my $container_doc = XML::LibXML->load_xml(string => $self->request->post($url, $xml));
+    my $h = { 'limsid' => $container_doc->findvalue(q{ /con:container/@limsid }),
+              'uri'    => $container_doc->findvalue(q{ /con:container/@uri }) };
+    $self->_analytes->{$input_container}->{'output_container'} = $h;
   }
   return;
 }
