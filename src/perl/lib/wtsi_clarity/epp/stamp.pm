@@ -8,9 +8,12 @@ use URI::Escape;
 
 extends 'wtsi_clarity::epp';
 
+##no critic ValuesAndExpressions::RequireInterpolationOfMetachars
 Readonly::Scalar my $IO_MAP_PATH    => q{ /prc:process/input-output-map[output[@output-type='Analyte']]};
 Readonly::Scalar my $CONTAINER_PATH => q{ /art:artifact/location/container/@uri };
 Readonly::Scalar my $WELL_PATH      => q{ /art:artifact/location/value };
+Readonly::Scalar my $CONTAINER_TYPE_NAME_PATH => q{ /con:container/type/@name };
+##use critic
 
 our $VERSION = '0.0';
 
@@ -25,7 +28,7 @@ sub _build_container_type_name {
   my @container_urls = keys %{$self->_analytes};
   my $doc = $self->_analytes->{$container_urls[0]}->{'doc'};
   $self->_set_validate_container_type(0);
-  return $doc->findvalue(q{ /con:container/type/@name });
+  return $doc->findvalue($CONTAINER_TYPE_NAME_PATH);
 }
 
 has '_validate_container_type' => (
@@ -33,7 +36,7 @@ has '_validate_container_type' => (
   is         => 'ro',
   required   => 0,
   default    => 1,
-  writer     => '_set_validate_container_type', 
+  writer     => '_set_validate_container_type',
 );
 
 has '_container_type' => (
@@ -47,8 +50,8 @@ sub _build__container_type {
   my $name = $self->container_type_name;
   my @nodes;
   if ($self->_validate_container_type) {
-    my $name = uri_escape($name);
-    my $doc = $self->fetch_and_parse($self->base_url . q{containertypes?name=} . $name);
+    my $ename = uri_escape($name);
+    my $doc = $self->fetch_and_parse($self->base_url . q{containertypes?name=} . $ename);
     @nodes =  $doc->findnodes(q{/ctp:container-types/container-type});
   } else {
     my @container_urls = keys %{$self->_analytes};
@@ -94,8 +97,10 @@ sub _build__analytes {
       croak 'Well not defined';
     }
     $containers->{$container_url}->{$url}->{'well'} = $well;
+    ##no critic (RequireInterpolationOfMetachars)
     $containers->{$container_url}->{$url}->{'target_analyte_doc'} =
       $self->fetch_and_parse($anode->findvalue(q{./output/@uri}));
+    ##use critic
   }
   if (scalar keys %{$containers} == 0) {
     croak q[Failed to get input containers for process ] . $self->process_url;
@@ -122,8 +127,10 @@ sub _create_containers {
   foreach my $input_container ( keys %{$self->_analytes}) {
     my $url = $self->base_url . 'containers';
     my $container_doc = XML::LibXML->load_xml(string => $self->request->post($url, $xml));
+    ##no critic (RequireInterpolationOfMetachars)
     my $h = { 'limsid' => $container_doc->findvalue(q{ /con:container/@limsid }),
               'uri'    => $container_doc->findvalue(q{ /con:container/@uri }) };
+    ##use critic
     $self->_analytes->{$input_container}->{'output_container'} = $h;
   }
   return;
@@ -133,20 +140,28 @@ sub _update_target_analytes {
   my $self = shift;
 
   foreach my $input_container ( keys %{$self->_analytes}) {
-    foreach my $input_analyte ( keys %{$self->_analytes->{$input_container} }) {
+    foreach my $input_analyte ( keys %{$self->_analytes->{$input_container} } ) {
+      if ( $input_analyte eq 'output_container' || $input_analyte eq 'doc' ) {
+        next;
+      }
       my $doc = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_doc'};
+      if (!$doc) {
+        croak qq[Target analyte not defined for container $input_container, input analyte $input_analyte];
+      }
+      ##no critic (RequireInterpolationOfMetachars)
       my $uri = $doc->findvalue(q{ /art:artifact/@uri });
+      ##use critic
       if (!$uri) {
         croak q[Target uri not known'];
       }
       $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'} = $uri;
-      my $root = $doc->documentElement();
-      my $location = $root->createElement('location');
-      my $container = $location->createElement('container');
+      my $location = $doc->createElement('location');
+      my $container = $doc->createElement('container');
+      $location->addChild($container);
       $container->setAttribute( 'uri', $self->_analytes->{$input_container}->{'output_container'}->{'uri'} );
       $container->setAttribute( 'limsid', $self->_analytes->{$input_container}->{'output_container'}->{'limsid'} );
-      my $well = $location->addElement('value');
-      $well->addChild(XML::LibXML::Text->new( $self->_analytes->{$input_container}->{$input_analyte}->{'well'} ));
+      $location->appendTextChild('value', $self->_analytes->{$input_container}->{$input_analyte}->{'well'});
+      $doc->getDocumentElement()->addChild($location);
     }
   }
   return;

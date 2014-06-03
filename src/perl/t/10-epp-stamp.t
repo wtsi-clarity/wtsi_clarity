@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 15;
+use Test::More tests => 23;
 use Test::Exception;
 
 use_ok('wtsi_clarity::epp::stamp');
@@ -51,4 +51,31 @@ use_ok('wtsi_clarity::epp::stamp');
     like ($ocon->{'uri'}, qr/containers\/27-/, 'container uri is set');
   }
 }
+
+{
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/stamp';
+  my $s = wtsi_clarity::epp::stamp->new(
+    process_url => 'http://clarity-ap:8080/api/v2/processes/24-98502'
+  );
+  lives_ok { $s->_analytes } 'got all info from clarity';
+
+  my @container_urls = keys %{$s->_analytes};
+  my $climsid = '27-4536';
+  my $curi = 'http://c.com/containers/' . $climsid;
+  $s->_analytes->{$container_urls[0]}->{'output_container'}->{'limsid'} = $climsid;
+  $s->_analytes->{$container_urls[0]}->{'output_container'}->{'uri'} = $curi;
+
+  lives_ok { $s->_update_target_analytes } 'targer analytes updated';
+  my @input_analytes = keys %{$s->_analytes->{$container_urls[0]}};
+  my $ian = $s->_analytes->{$container_urls[0]}->{$input_analytes[0]};
+  like ($ian->{'target_analyte_uri'}, qr/artifacts\/2-644754/, 'target analyte uri is set');
+  my $doc = $ian->{'target_analyte_doc'};
+  ok ($doc, 'target analyte XML doc retrieved');
+  my @nodes = $doc->findnodes(q{/art:artifact/location});
+  is (scalar @nodes, 1, 'one location node available');
+  is ($doc->findvalue(q{ /art:artifact/location/container/@uri }), $curi, 'uri attr is set for the container');
+  is ($doc->findvalue(q{ /art:artifact/location/container/@limsid }), $climsid, 'limsid attr is set for the container');
+  is ($doc->findvalue(q{ /art:artifact/location/value}), 'H:9', 'well text node is set correctly');
+}
+
 1;
