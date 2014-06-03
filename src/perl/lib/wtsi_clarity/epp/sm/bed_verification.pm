@@ -31,7 +31,7 @@ wtsi_clarity::epp::sm::bed_verification
 
 =head1 SUBROUTINES/METHODS
 
-=head2 run - callback for the date_received action
+=head2 run - callback for the bed_verification action
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
