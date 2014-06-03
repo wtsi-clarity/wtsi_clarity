@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 23;
+use Test::More tests => 18;
 use Test::Exception;
 
 use_ok('wtsi_clarity::epp::stamp');
@@ -69,17 +69,11 @@ use_ok('wtsi_clarity::epp::stamp');
   $s->_analytes->{$container_urls[0]}->{'output_container'}->{'limsid'} = $climsid;
   $s->_analytes->{$container_urls[0]}->{'output_container'}->{'uri'} = $curi;
 
-  lives_ok { $s->_update_target_analytes } 'targer analytes updated';
-  my @input_analytes = keys %{$s->_analytes->{$container_urls[0]}};
-  my $ian = $s->_analytes->{$container_urls[0]}->{$input_analytes[0]};
-  like ($ian->{'target_analyte_uri'}, qr/artifacts\/2-644754\Z/, 'truncated target analyte uri is set');
-  my $doc = $ian->{'target_analyte_doc'};
-  ok ($doc, 'target analyte XML doc retrieved');
-  my @nodes = $doc->findnodes(q{/art:artifact/location});
-  is (scalar @nodes, 1, 'one location node available');
-  is ($doc->findvalue(q{ /art:artifact/location/container/@uri }), $curi, 'uri attr is set for the container');
-  is ($doc->findvalue(q{ /art:artifact/location/container/@limsid }), $climsid, 'limsid attr is set for the container');
-  is ($doc->findvalue(q{ /art:artifact/location/value}), 'H:9', 'well text node is set correctly');
+  my $doc;
+  lives_ok { $doc = $s->_create_placements_doc } 'placement doc created';
+  #diag $doc;
+  lives_ok { $doc = $s->_create_output_placements($doc) } 'individual placements created';
+  #diag $doc;
 }
 
 1;

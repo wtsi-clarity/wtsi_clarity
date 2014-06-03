@@ -5,6 +5,7 @@ use namespace::autoclean;
 use Readonly;
 use Carp;
 use URI::Escape;
+use XML::LibXML;
 
 extends 'wtsi_clarity::epp';
 
@@ -15,14 +16,12 @@ Readonly::Scalar my $WELL_PATH      => q{ /art:artifact/location/value };
 Readonly::Scalar my $CONTAINER_TYPE_NAME_PATH => q{ /con:container/type/@name };
 ##use critic
 
-##no critic (ProhibitUnusedPrivateSubroutines)
-
 our $VERSION = '0.0';
 
 has 'step_url' => (
   isa        => 'Str',
   is         => 'ro',
-  required   => 1,
+  required   => 0,
 );
 
 has 'container_type_name' => (
@@ -120,9 +119,11 @@ override 'run' => sub {
   my $self = shift;
   super(); #call parent's run method
   $self->epp_log('Step url is ' . $self->step_url);
-  #$self->_create_containers();
-  #$self->_update_target_analytes();
-  #$self->_send_updates();
+  $self->_create_containers();
+  my $doc = $self->_create_placements_doc;
+  $doc = $self->_create_output_placements($doc);
+  $self->request->post($self->step_url . '/placements', $doc->toString);
+  return;
 };
 
 sub _create_containers {
@@ -145,52 +146,64 @@ sub _create_containers {
   return;
 }
 
-sub _update_target_analytes {
+sub _create_placements_doc {
   my $self = shift;
+
+  my $pXML = '<?xml version="1.0" encoding="UTF-8"?>';
+  $pXML .= '<stp:placements xmlns:stp="http://genologics.com/ri/step" uri="' . $self->process_url . '/placements">';
+  $pXML .= '<step uri="' . $self->step_url . '"/>';
+  #$pXML .= '<configuration uri="' + HOSTNAME +' /api/v2/configuration/protocols/101/steps/220">Betty Pre-Caliper Stamping (ILB)</configuration>'
+  $pXML .= '<selected-containers>';
+  foreach my $input_container ( keys %{$self->_analytes}) {
+    my $container_url = $self->_analytes->{$input_container}->{'output_container'}->{'uri'} ;
+    $pXML .= '<container uri="' . $container_url . '"/>';
+  }
+  $pXML .= '</selected-containers>';
+  $pXML .= '<output-placements/></stp:placements>';
+
+  return XML::LibXML->load_xml(string => $pXML);
+}
+
+sub _create_output_placements {
+  my ($self, $doc) = @_;
+
+  my @placements = $doc->findnodes(q{ /stp:placements/output-placements });
+  if (!@placements) {
+    croak 'Placements element not found';
+  }
 
   foreach my $input_container ( keys %{$self->_analytes}) {
     foreach my $input_analyte ( keys %{$self->_analytes->{$input_container} } ) {
       if ( $input_analyte eq 'output_container' || $input_analyte eq 'doc' ) {
         next;
       }
-      my $doc = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_doc'};
-      if (!$doc) {
+
+      my $adoc = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_doc'};
+      if (!$adoc) {
         croak qq[Target analyte not defined for container $input_container, input analyte $input_analyte];
       }
       ##no critic (RequireInterpolationOfMetachars)
-      my $uri = $doc->findvalue(q{ /art:artifact/@uri });
+      my $uri = $adoc->findnodes(q{ /art:artifact/@uri });
       ##use critic
       if (!$uri) {
-        croak q[Target uri not known'];
+        croak q[Target uri not known];
       }
-      ($uri) = $uri =~ /\A([^?]*)/smx; #drop part of teh query starting with ?
-      $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'} = $uri;
+      ($uri) = $uri =~ /\A([^?]*)/smx; #drop part of the uri starting with ? (state)
+      my $placement = $doc->createElement('output-placement');
+      $placement->setAttribute( 'uri', $uri );
       my $location = $doc->createElement('location');
+      $placement->addChild($location);
       my $container = $doc->createElement('container');
       $location->addChild($container);
       $container->setAttribute( 'uri', $self->_analytes->{$input_container}->{'output_container'}->{'uri'} );
       $container->setAttribute( 'limsid', $self->_analytes->{$input_container}->{'output_container'}->{'limsid'} );
       $location->appendTextChild('value', $self->_analytes->{$input_container}->{$input_analyte}->{'well'});
-      $doc->getDocumentElement()->addChild($location);
-    }
-    delete $self->_analytes->{$input_container}->{'output_container'};
-    delete $self->_analytes->{$input_container}->{'doc'};
-  }
-  return;
-}
-
-sub _send_updates {
-  my $self = shift;
-  foreach my $input_container ( keys %{$self->_analytes}) {
-    foreach my $input_analyte ( keys %{$self->_analytes->{$input_container} }) {
-      my $doc = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_doc'};
-      $self->request->put($self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'}, $doc->toString);
+      $placements[0]->addChild($placement);
     }
   }
-  return;
+
+  return $doc;
 }
-
-
 
 __PACKAGE__->meta->make_immutable;
 
@@ -221,6 +234,10 @@ wtsi_clarity::epp::stamp
 
   Clarity process url, required.
 
+=head2 step_url
+
+  Clarity step url, required.
+
 =head1 CONFIGURATION AND ENVIRONMENT
 
 =head1 DEPENDENCIES
@@ -235,7 +252,9 @@ wtsi_clarity::epp::stamp
 
 =item Readonly
 
-=item URI::Encode
+=item URI::Escape
+
+=item XML::LibXML
 
 =back
 
