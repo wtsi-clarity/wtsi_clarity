@@ -15,6 +15,8 @@ Readonly::Scalar my $WELL_PATH      => q{ /art:artifact/location/value };
 Readonly::Scalar my $CONTAINER_TYPE_NAME_PATH => q{ /con:container/type/@name };
 ##use critic
 
+##no critic (ProhibitUnusedPrivateSubroutines)
+
 our $VERSION = '0.0';
 
 has 'step_url' => (
@@ -117,6 +119,7 @@ sub _build__analytes {
 override 'run' => sub {
   my $self = shift;
   super(); #call parent's run method
+  $self->epp_log('Step url is ' . $self->step_url);
   #$self->_create_containers();
   #$self->_update_target_analytes();
   #$self->_send_updates();
