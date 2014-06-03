@@ -1,17 +1,161 @@
 package wtsi_clarity::epp::stamp;
 
 use Moose;
-use English qw(-no_match_vars);
 use namespace::autoclean;
+use Readonly;
+use Carp;
+use URI::Escape;
 
 extends 'wtsi_clarity::epp';
 
+Readonly::Scalar my $IO_MAP_PATH    => q{ /prc:process/input-output-map[output[@output-type='Analyte']]};
+Readonly::Scalar my $CONTAINER_PATH => q{ /art:artifact/location/container/@uri };
+Readonly::Scalar my $WELL_PATH      => q{ /art:artifact/location/value };
+
 our $VERSION = '0.0';
+
+has 'container_name' => (
+  isa        => 'Str',
+  is         => 'ro',
+  required   => 0,
+  lazy_build => 1,
+);
+sub _build_container_name {
+  my $self = shift;
+  my @container_urls = keys %{$self->_analytes};
+  my $doc = $self->_analytes->{$container_urls[0]}->{'doc'};
+  return $doc->findvalue(q{ /con:container/type/@name });
+}
+
+has '_container_type' => (
+  isa        => 'XML::LibXML::Node',
+  is         => 'ro',
+  required   => 0,
+  lazy_build => 1,
+);
+sub _build__container_type {
+  my $self = shift;
+  my @nodes;
+  if (!$self->has_container_name) {
+    my $name = uri_escape($self->container_name);
+    my $doc = $self->fetch_and_parse($self->base_url . q{/containertypes?name=} . $name);
+    @nodes =  $doc->findnodes(q{/ctp:container-types/container-type});
+  } else {
+    my @container_urls = keys %{$self->_analytes};
+    my $doc = $self->_analytes->{$container_urls[0]}->{'doc'};
+    @nodes =  $doc->findnodes(q{ /con:container/type });
+  }
+  if (scalar @nodes > 1) {
+    croak q[Multiple container types for container name ] . $self->container_name;
+  }
+  return $nodes[0];
+}
+
+has '_analytes' => (
+  isa        => 'HashRef',
+  is         => 'ro',
+  required   => 0,
+  lazy_build => 1,
+);
+sub _build__analytes {
+  my $self = shift;
+
+  my @nodes = $self->process_doc->findnodes($IO_MAP_PATH);
+  if (!@nodes) {
+    croak 'No analytes registered';
+  }
+
+  my $containers = {};
+  foreach my $anode (@nodes) {
+    ##no critic (RequireInterpolationOfMetachars)
+    my $url = $anode->findvalue(q{./input/@uri});
+    ##use critic
+    my $analyte_dom = $self->fetch_and_parse($url);
+    my $container_url = $analyte_dom->findvalue($CONTAINER_PATH);
+    if (!$container_url) {
+      croak qq[Container not defined for $url];
+    }
+
+    if (!exists $containers->{$container_url}) {
+      $containers->{$container_url}->{'doc'} = $self->fetch_and_parse($container_url);
+    }
+    my $well = $analyte_dom->findvalue($WELL_PATH);
+    if (!$well) {
+      croak 'Well not defined';
+    }
+    $containers->{$container_url}->{$url}->{'well'} = $well;
+    $containers->{$container_url}->{$url}->{'target_analyte_doc'} =
+      $self->fetch_and_parse($anode->findvalue(q{./output/@uri}));
+  }
+  if (scalar keys %{$containers} == 0) {
+    croak q[Failed to get input containers for process ] . $self->process_url;
+  }
+  return $containers;
+}
 
 override 'run' => sub {
   my $self = shift;
   super(); #call parent's run method
+  $self->_create_containers();
+  $self->_update_target_analytes();
+  $self->_post_updates();
 };
+
+sub _create_containers {
+  my $self = shift;
+
+  my $xml ='<?xml version="1.0" encoding="UTF-8"?>';
+  $xml .= '<con:container xmlns:con="http://genologics.com/ri/container">';
+  #$xml .= '<name>new container</name>';
+  $xml .= '</con:container>';
+  my $doc = XML::LibXML->load_xml($xml);
+  $doc->addChild($self->_container_type);
+
+  foreach my $input_container ( keys %{$self->_analytes}) {
+    my $url = join q[/], $self->base_url, $self->containers;
+    my $container_doc = XML::LibXML->load_xml($self->request->put($doc->toString, join(q[/], $url));
+    my %h = ( 'limsid' => $container_doc->getvalue(q{ /con:container/@limsid }),
+              'uri'    => $container_doc->getvalue(q{ /con:container/@uri }) );
+    $self->_analytes->{$input_container}->{'output_container'} = \%h;
+  }
+  return;
+}
+
+sub _update_target_analytes {
+  my $self = shift;
+
+  foreach my $input_container ( keys %{$self->_analytes}) {
+    foreach my $input_analyte ( keys %{$self->_analytes->{$input_container} }) {
+      my $doc = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_doc'};
+      my $uri = $doc->findvalue(q{ /art:artifact/@uri });
+      if (!$uri) {
+        croak q[Target uri not known'];
+      }
+      $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'} = $uri;
+      my $root = $doc->documentElement();
+      my $location = $root->createElement('location');
+      my $container = $location->createElement('container');
+      $container->setAttribute( 'uri', $self->_analytes->{$input_container}->{'output_container'}->{'uri'} );
+      $container->setAttribute( 'limsid', $self->_analytes->{$input_container}->{'output_container'}->{'limsid'} );
+      my $well = $location->addElement('value');
+      $well->addChild(XML::LibXML::Text->new( $self->_analytes->{$input_container}->{$input_analyte}->{'well'} ));
+    }
+  }
+  return;
+}
+
+sub _post_updates {
+  my $self = shift;
+  foreach my $input_container ( keys %{$self->_analytes}) {
+    foreach my $input_analyte ( keys %{$self->_analytes->{$input_container} }) {
+      my $doc = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_doc'};
+      $self->request->post($doc->toString, $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'});
+    }
+  }
+  return;
+}
+
+
 
 __PACKAGE__->meta->make_immutable;
 
@@ -53,6 +197,10 @@ wtsi_clarity::epp::stamp
 =item Carp
 
 =item namespace::autoclean
+
+=item Readonly
+
+=item URI::Encode
 
 =back
 
