@@ -13,6 +13,14 @@ Readonly::Hash my %NAME2ELEMENTS => (
     'create' => '_create_volume',
     'find'   => q( /smp:sample/udf:field[starts-with(@name, 'Volume')] ),
   },
+  'supplier_sample_name' => {
+    'create' => '_create_supplier_sample_name',
+    'find'   => q( /smp:sample/udf:field[@name='WTSI Supplier Sample Name (SM)'] )
+  },
+  'name' => {
+    'create' => '_create_name',
+    'find'   => q( /smp:sample/name )
+  },
   'date_received' => {
     'create' => '_create_date_received',
     'find'   => q ( /smp:sample/date-received )
@@ -78,6 +86,24 @@ sub _create_date_received {
   my ($self, $sampleXML, $today) = @_;
   my $node = $sampleXML->createElement('date-received');
   $node->appendTextNode($today);
+  return $node;
+}
+
+sub _create_supplier_sample_name {
+  my ($self, $sampleXML, $name) = @_;
+  my $docElem = $sampleXML->getDocumentElement();
+  $docElem->setNamespace('http://genologics.com/ri/userdefined', 'udf', 0);
+  my $node = $sampleXML->createElementNS('http://genologics.com/ri/userdefined', 'field');
+  $node->setAttribute('type', 'Text');
+  $node->setAttribute('name', 'WTSI Supplier Sample Name (SM)');
+  $node->appendTextNode($name);
+  return $node;
+}
+
+sub _create_name {
+  my ($self, $sampleXML, $name) = @_;
+  my $node = $sampleXML->createElement('name');
+  $node->appendTextNode($name);
   return $node;
 }
 
