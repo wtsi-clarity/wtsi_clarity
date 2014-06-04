@@ -493,10 +493,6 @@ wtsi_clarity::epp::sm::create_label
 
 =head1 SUBROUTINES/METHODS
 
-=head2 run
-
-  Method executing the epp callback
-
 =head2 process_url
 
   Clarity process url, required.
@@ -519,7 +515,9 @@ wtsi_clarity::epp::sm::create_label
   A boolean flag indicating whether container purpose has to be incremented in
   case of multiple outputs, defaults to false, an optional attribute.
 
-=head2 run - callback for the create_label action
+=head2 run
+
+  Callback for the create_label action
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
