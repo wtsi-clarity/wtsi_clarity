@@ -94,6 +94,7 @@ my $builder = $class->new(
                 'strict'                          => 0,
                 'warnings'                        => 0,
 		'XML::LibXML'                     => 0,
+                'URI::Escape'                     => 0,
           },
          
           'dist'         => { COMPRESS => 'gzip', SUFFIX => 'gz', },
