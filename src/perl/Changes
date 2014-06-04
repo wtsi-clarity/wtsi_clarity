@@ -6,6 +6,15 @@ CHANGES for wtsi_clarity Perl project
   - remove line feeds from error - may be Clarity will display the whole error
       message
 
+release 0.15
+  - stamp callback - use of placement url
+
+release 0.14
+  - callback for 'stamp' action with an additional option (step_url)
+
+release 0.13
+  - empty callback for 'stamp' action
+
 release 0.12
   - explicit increment_purpose flag for create_label callback since it's possible
     that multiple outputs are due to multiple inputs
