@@ -105,9 +105,13 @@ sub _build__analytes {
     }
     $containers->{$container_url}->{$url}->{'well'} = $well;
     ##no critic (RequireInterpolationOfMetachars)
-    $containers->{$container_url}->{$url}->{'target_analyte_doc'} =
-      $self->fetch_and_parse($anode->findvalue(q{./output/@uri}));
+    my $uri = $anode->findvalue(q{./output/@uri});
     ##use critic
+    if (!$uri) {
+      croak qq[Target analyte uri not defined for container $container_url input analyte $url];
+    }
+    ($uri) = $uri =~ /\A([^?]*)/smx; #drop part of the uri starting with ? (state)
+    $containers->{$container_url}->{$url}->{'target_analyte_uri'} = $uri;
   }
   if (scalar keys %{$containers} == 0) {
     croak q[Failed to get input containers for process ] . $self->process_url;
@@ -178,17 +182,7 @@ sub _create_output_placements {
         next;
       }
 
-      my $adoc = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_doc'};
-      if (!$adoc) {
-        croak qq[Target analyte not defined for container $input_container, input analyte $input_analyte];
-      }
-      ##no critic (RequireInterpolationOfMetachars)
-      my $uri = $adoc->findnodes(q{ /art:artifact/@uri });
-      ##use critic
-      if (!$uri) {
-        croak q[Target uri not known];
-      }
-      ($uri) = $uri =~ /\A([^?]*)/smx; #drop part of the uri starting with ? (state)
+      my $uri = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'};
       my $placement = $doc->createElement('output-placement');
       $placement->setAttribute( 'uri', $uri );
       my $location = $doc->createElement('location');
