@@ -1,11 +1,13 @@
-package wtsi_clarity::epp::sm::date_received;
+package wtsi_clarity::epp::sm::sample_received;
 
 use Moose;
 use Carp;
 use XML::LibXML;
 use Readonly;
 use DateTime;
+use JSON qw / decode_json /;
 
+use wtsi_clarity::util::request;
 use wtsi_clarity::util::clarity_elements;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
@@ -54,10 +56,29 @@ sub _update_sample_date_received {
   my ($self, $sampleDoc, $sampleURI) = @_;
 
   $self->set_element($sampleDoc, 'date_received', $self->_today());
+  my $nameElem = $self->find_element($sampleDoc, 'name');
+
+  $self->set_element($sampleDoc, 'supplier_sample_name', $nameElem->textContent);
+  $self->set_element($sampleDoc, 'name', $self->_get_uuid());
 
   $self->request->put($sampleURI, $sampleDoc->toString());
 
   return 1;
+}
+
+sub _get_uuid {
+  my $self = shift;
+
+  my $request = wtsi_clarity::util::request->new('content_type' => 'application/json');
+
+  my $response = $request->get($self->config->uuid_api->{'uri'});
+  my $response_json = decode_json $response;
+
+  if (!exists $response_json->{'uuid'}) {
+    croak "Could not retrieve a uuid";
+  }
+
+  return $response_json->{'uuid'};
 }
 
 sub _today {
@@ -70,11 +91,11 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::epp::sm::date_received
+wtsi_clarity::epp::sm::sample_received
 
 =head1 SYNOPSIS
   
-  wtsi_clarity::epp:sm::date_received->new(process_url => 'http://my.com/processes/3345')->run();
+  wtsi_clarity::epp:sm::sample_received->new(process_url => 'http://my.com/processes/3345')->run();
   
 =head1 DESCRIPTION
 
