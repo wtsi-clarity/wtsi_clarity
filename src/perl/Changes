@@ -1,5 +1,8 @@
 CHANGES for wtsi_clarity Perl project
 
+release 0.17
+  - Try:Tiny was breaking the Build. Fixed to Try::Tiny.
+
 release 0.16
   - date_received changed to sample_received. Calls to external service to
     retrieve a UUID
