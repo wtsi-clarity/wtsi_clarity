@@ -12,7 +12,8 @@ our $VERSION = '0.0';
 Readonly::Hash my %ACTION2MODULE => (
     'volume_check' => 'sm::volume_check',
     'create_label' => 'sm::create_label',
-    'sample_received' => 'sm::sample_received',
+    'stamp'        => 'stamp',
+    'date_received' => 'sm::date_received',
 );
 
 has 'action'  => (
