@@ -13,6 +13,14 @@ Readonly::Hash my %NAME2ELEMENTS => (
     'create' => '_create_volume',
     'find'   => q( /smp:sample/udf:field[starts-with(@name, 'Volume')] ),
   },
+  'supplier_sample_name' => {
+    'create' => '_create_supplier_sample_name',
+    'find'   => q( /smp:sample/udf:field[@name='WTSI Supplier Sample Name (SM)'] )
+  },
+  'name' => {
+    'create' => '_create_name',
+    'find'   => q( /smp:sample/name )
+  },
   'date_received' => {
     'create' => '_create_date_received',
     'find'   => q ( /smp:sample/date-received )
@@ -93,6 +101,18 @@ sub _create_date_received {
   my ($self, $sampleXML, $today) = @_;
   my $node = $sampleXML->createElement('date-received');
   $node->appendTextNode($today);
+  return $node;
+}
+
+sub _create_supplier_sample_name {
+  my ($self, $sampleXML, $name) = @_;
+  return $self->create_udf_element($sampleXML, "WTSI Supplier Sample Name (SM)", $name);
+}
+
+sub _create_name {
+  my ($self, $sampleXML, $name) = @_;
+  my $node = $sampleXML->createElement('name');
+  $node->appendTextNode($name);
   return $node;
 }
 
