@@ -13,6 +13,14 @@ Readonly::Hash my %NAME2ELEMENTS => (
     'create' => '_create_volume',
     'find'   => q( /smp:sample/udf:field[starts-with(@name, 'Volume')] ),
   },
+  'supplier_sample_name' => {
+    'create' => '_create_supplier_sample_name',
+    'find'   => q( /smp:sample/udf:field[@name='WTSI Supplier Sample Name (SM)'] )
+  },
+  'name' => {
+    'create' => '_create_name',
+    'find'   => q( /smp:sample/name )
+  },
   'date_received' => {
     'create' => '_create_date_received',
     'find'   => q ( /smp:sample/date-received )
@@ -28,13 +36,13 @@ sub set_element {
     croak q/ Element can not be created /;
   }
   my $element = $NAME2ELEMENTS{$name};
-  my $oldNode = $self->find_element($xml, $name);
-
   my $createMethod = $element->{'create'};
+
+  my $oldNode = $self->find_element($xml, $name);
   my $newNode = $self->$createMethod($xml, $value);
   my $root = $xml->getDocumentElement();
 
-  if ($oldNode) {
+  if ( $oldNode ) {
     $oldNode->removeChildNodes();
     $root->removeChild($oldNode);
   }
@@ -58,26 +66,53 @@ sub find_element {
     croak qq/ Found more than one element for $name /;
   }
 
-  return 0 if $nodeList->size() == 0;
+  return $nodeList->size() == 0 ? undef : $nodeList->pop();
+}
 
-  return $nodeList->pop();
+sub create_udf_element {
+  my ($self, $xml_el, $udf_name, $udf_value) = @_;
+
+  my $url = 'http://genologics.com/ri/userdefined';
+  my $docElem = $xml_el->getDocumentElement();
+  $docElem->setNamespace($url, 'udf', 0);
+  my $node = $xml_el->createElementNS($url, 'field');
+  $node->setAttribute('name', $udf_name);
+  $node->appendTextNode($udf_value);
+  return $node;
+}
+
+sub update_text {
+  my ($self, $node, $value) = @_;
+
+  if ($node->hasChildNodes()) {
+    $node->firstChild()->setData($value);
+  } else {
+    $node->appendTextNode($value);
+  }
+  return;
 }
 
 sub _create_volume {
   my ($self, $sampleXML, $volume) = @_;
-  my $docElem = $sampleXML->getDocumentElement();
-  $docElem->setNamespace('http://genologics.com/ri/userdefined', 'udf', 0);
-  my $node = $sampleXML->createElementNS('http://genologics.com/ri/userdefined', 'field');
-  $node->setAttribute('type', 'Numeric');
-  $node->setAttribute('name', "Volume (\N{U+00B5}L) (SM)");
-  $node->appendTextNode($volume);
-  return $node;
+  return $self->create_udf_element($sampleXML, "Volume (\N{U+00B5}L) (SM)", $volume);
 }
 
 sub _create_date_received {
   my ($self, $sampleXML, $today) = @_;
   my $node = $sampleXML->createElement('date-received');
   $node->appendTextNode($today);
+  return $node;
+}
+
+sub _create_supplier_sample_name {
+  my ($self, $sampleXML, $name) = @_;
+  return $self->create_udf_element($sampleXML, "WTSI Supplier Sample Name (SM)", $name);
+}
+
+sub _create_name {
+  my ($self, $sampleXML, $name) = @_;
+  my $node = $sampleXML->createElement('name');
+  $node->appendTextNode($name);
   return $node;
 }
 
@@ -90,8 +125,6 @@ __END__
 wtsi_clarity::util::clarity_elements
 
 =head1 SYNOPSIS
-
-  use wtsi_clarity::util::clarity_elements;
 
   with 'wtsi_clarity::util::clarity_elements';
 
@@ -112,7 +145,11 @@ wtsi_clarity::util::clarity_elements
 
 =head2
   find_element - takes some XML and an element name. Will return the element name
-  node, or 0 if not found.
+  node, or undef if not found.
+
+=head2 create_udf_element
+
+=head2 update_text
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
@@ -120,13 +157,13 @@ wtsi_clarity::util::clarity_elements
 
 =over
 
-=item use Moose::Role;
+=item Moose::Role
 
-=item use Carp;
+=item Carp
 
-=item use Readonly;
+=item Readonly
 
-=item use XML::LibXML;
+=item XML::LibXML
 
 =back
 

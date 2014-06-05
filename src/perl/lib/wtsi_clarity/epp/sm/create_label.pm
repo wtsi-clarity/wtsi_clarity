@@ -11,6 +11,7 @@ use namespace::autoclean;
 use wtsi_clarity::util::barcode qw/calculateBarcode/;
 use wtsi_clarity::util::signature;
 extends 'wtsi_clarity::epp';
+with 'wtsi_clarity::util::clarity_elements';
 
 #########################
 # TODO
@@ -25,10 +26,11 @@ Readonly::Scalar my $PRINTER_PATH         => q{ /prc:process/udf:field[contains(
 Readonly::Scalar my $NUM_COPIES_PATH      => q{ /prc:process/udf:field[@name='Barcode Copies'] };
 Readonly::Scalar my $DEFAULT_NUM_COPIES   => 1;
 
-Readonly::Scalar my $PLATE_PURPOSE_PATH   => q{ /prc:process/udf:field[@name='Plate Purpose'] };
+Readonly::Scalar my $PLATE_PURPOSE_PATH       => q{ /prc:process/udf:field[@name='Plate Purpose'] };
 Readonly::Scalar my $CONTAINER_PURPOSE_PATH   => q{ /con:container/udf:field[@name='WTSI Container Purpose Name'] };
 
-Readonly::Scalar my $IO_MAP_PATH          => q{ /prc:process/input-output-map};
+Readonly::Scalar my $IO_MAP_PATH                => q{ /prc:process/input-output-map};
+Readonly::Scalar my $IO_MAP_PATH_ANALYTE_OUTPUT => $IO_MAP_PATH . q{[output[@output-type='Analyte']] };
 Readonly::Scalar my $CONTAINER_PATH       => q{ /art:artifact/location/container/@uri };
 Readonly::Scalar my $SAMPLE_PATH          => q{ /art:artifact/sample/@limsid };
 Readonly::Scalar my $CONTROL_PATH         => q{ /art:artifact/control-type };
@@ -198,21 +200,6 @@ has '_barcode_prefix' => (
   required   => 0,
   default    => $DEFAULT_BARCODE_PREFIX,
 );
-#sub _build__barcode_prefix {
-#  my $self = shift;
-#  my @nodes = $self->process_doc->findnodes($BARCODE_PREFIX_PATH);
-#  if (scalar @nodes > 1) {
-#    croak 'Multiple barcode prefix udf fields are defined for the process';
-#  }
-#  my $barcode_prefix;
-#  if (@nodes) {
-#    $barcode_prefix = $nodes[0]->textContent;
-#    if ($barcode_prefix) {
-#      $barcode_prefix =~ s/^\s+|\s+$//g;
-#    }
-#  }
-#  return $barcode_prefix || $DEFAULT_SM_BARCODE_PREFIX;
-#}
 
 has '_container' => (
   isa        => 'HashRef',
@@ -223,7 +210,8 @@ has '_container' => (
 sub _build__container {
   my $self = shift;
 
-  my @nodes = $self->process_doc->findnodes($IO_MAP_PATH);
+  my $iopath = $self->source_plate ? $IO_MAP_PATH : $IO_MAP_PATH_ANALYTE_OUTPUT;
+  my @nodes = $self->process_doc->findnodes($iopath);
   if (!@nodes) {
     croak 'No analytes registered';
   }
@@ -429,32 +417,16 @@ sub _copy_purpose {
     if ($suffix) {
       $purpose .= " $suffix";
     }
-    _create_node($doc,q[WTSI Container Purpose Name], $purpose);
+    $self->_create_node($doc,q[WTSI Container Purpose Name], $purpose);
   }
 
   return $purpose;
 }
 
 sub _create_node {
-  my ($doc, $udf_name, $value) = @_;
-
-  my $node = $doc->createElement('udf:field');
-  $node->setAttribute('name', $udf_name);
-  my $text = $doc->createTextNode($value);
-  $node->appendChild($text);
+  my ($self, $doc, $udf_name, $value) = @_;
+  my $node = $self->create_udf_element($doc, $udf_name, $value);
   $doc->documentElement()->appendChild($node);
-  return;
-}
-
-sub _update_node {
-  my ($nodes, $value) = @_;
-
-  my $node = $nodes->pop();
-  if ($node->hasChildNodes()) {
-    $node->firstChild()->setData($value);
-  } else {
-    $node->addChild($node->createTextNode($value));
-  }
   return;
 }
 
@@ -476,7 +448,7 @@ sub _copy_supplier_container_name {
     if (!$name) {
       croak 'Container name undefined';
     }
-    _create_node($doc, 'Supplier Container Name', $name);
+    $self->_create_node($doc, 'Supplier Container Name', $name);
   }
   return;
 }
@@ -488,7 +460,7 @@ sub _copy_barcode2container {
   if ($nodes->size == 0 || $nodes->size > 1) {
     croak 'Multiple or none container name nodes';
   }
-  _update_node($nodes, $barcode);
+  $self->update_text($nodes->pop(), $barcode);
   return;
 }
 
@@ -521,10 +493,6 @@ wtsi_clarity::epp::sm::create_label
 
 =head1 SUBROUTINES/METHODS
 
-=head2 run
-
-  Method executing the epp callback
-
 =head2 process_url
 
   Clarity process url, required.
@@ -547,7 +515,9 @@ wtsi_clarity::epp::sm::create_label
   A boolean flag indicating whether container purpose has to be incremented in
   case of multiple outputs, defaults to false, an optional attribute.
 
-=head2 run - callback for the create_label action
+=head2 run
+
+  Callback for the create_label action
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
