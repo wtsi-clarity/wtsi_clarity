@@ -1,5 +1,8 @@
 CHANGES for wtsi_clarity Perl project
 
+release 0.16
+  - date_received changed to sample_received. Calls to external service to
+    retrieve a UUID
   - further methods in wtsi_clarity::util::clarity_elements role
   - wtsi_clarity::epp::sm::create_label refactored to use
       wtsi_clarity::util::clarity_elements role to create and update xml elements
