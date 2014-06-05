@@ -99,7 +99,9 @@ wtsi_clarity::epp::sm::sample_received
   
 =head1 DESCRIPTION
 
-  Updates the 'date_received' field of all samples in the process to today's date.
+  Updates the 'date_received' field of all samples in the process to today's date. Will also copy
+  the value in the name field to the WTSI Supplier Sample Name (SM). It will then replace name
+  with a UUID obtained from an extenal web service.
 
 =head1 SUBROUTINES/METHODS
 
@@ -114,6 +116,14 @@ wtsi_clarity::epp::sm::sample_received
 =item Moose
 
 =item Carp
+
+=item XML::LibXML
+
+=item Readonly
+
+=item DateTime
+
+=item JSON
 
 =back
 
