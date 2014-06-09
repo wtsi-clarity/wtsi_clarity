@@ -43,11 +43,7 @@ sub _verify_mapping {
   my $destination = $input_mapping->{destination};
   my $config_destination = $config_mapping->{destination};
 
-  if ($self->_verify_beds($sources, $config_sources) && $self->_verify_beds($destination, $config_destination)) {
-    return 1;
-  } else {
-    return 0;
-  }
+  return ($self->_verify_beds($sources, $config_sources) && $self->_verify_beds($destination, $config_destination));
 }
 
 sub _verify_beds {
@@ -55,7 +51,7 @@ sub _verify_beds {
   foreach my $bed (@{$input}) {
     my $matching_config_bed = $self->_find_matching_config_bed($bed, $config);
 
-    if ($matching_config_bed == 0) {
+    if (!$matching_config_bed) {
       return 0;
     }
 
@@ -76,7 +72,7 @@ sub _find_matching_config_bed {
     }
   }
 
-  return 0;
+  return;
 }
 
 sub _find_mapping_by_bed {
@@ -90,7 +86,7 @@ sub _find_mapping_by_bed {
     }
   }
   # Hopefully would not get to here...
-  croak qq/ Could not find bed $bed for this process /;
+  croak qq/ Bed $bed is not source bed for process /;
 }
 
 1;
@@ -113,7 +109,25 @@ wtsi_clarity::process_checks::bed_verification
 
 =head1 SUBROUTINES/METHODS
 
-=head2 verify - returns a bool dependent on plates being correctly placed in beds 
+=head2 verify($process_name, $robot_id, $mappings)
+
+  Returns a bool dependent on plates being correctly placed in beds
+
+  $process_name - name of the process. Used as a lookup key in the config
+
+  $robot_id - ID of the robot being used for the process. Must match id for process in the config
+
+  $mappings - An array of mapping hashes. Each mapping contains a source and destination, which
+    also contain lists of hashes.
+
+    e.g.
+
+      my @source = ({ bed => 2, barcode => 58373626272 });
+      my @destination = ({ bed => 3, barcode => 580040003686 });
+      my @mappings = ({
+        source => \@source,
+        destination => \@destination
+      });
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

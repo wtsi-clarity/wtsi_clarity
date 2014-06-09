@@ -38,7 +38,7 @@ my $config = decode_json($json_text);
   });
 
   throws_ok { $c->verify('working_dilution', '009851', \@mappings) }
-    qr/ Could not find bed 99999 for this process /,
+    qr/ Bed 99999 is not source bed for process /,
     'throws an error when the bed number does not exist';
 
   # Test for when a source bed barcode is incorrect
