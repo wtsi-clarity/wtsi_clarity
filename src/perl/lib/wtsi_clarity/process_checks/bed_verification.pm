@@ -99,7 +99,7 @@ wtsi_clarity::process_checks::bed_verification
 
 =head1 SYNOPSIS
 
-  # $config comes from a JSON file (decoded into a Perl object)
+  # $config comes from a JSON file (decoded into a Perl hash)
   $c = wtsi_clarity::process_checks::bed_verification->new(config => $config);
   $c->verify($process_name, $robot_id, $mappings);
 
