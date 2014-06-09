@@ -75,7 +75,7 @@ sub _get_uuid {
   my $response_json = decode_json $response;
 
   if (!exists $response_json->{'uuid'}) {
-    croak "Could not retrieve a uuid";
+    croak 'Could not retrieve a uuid';
   }
 
   return $response_json->{'uuid'};

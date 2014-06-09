@@ -106,7 +106,7 @@ sub _create_date_received {
 
 sub _create_supplier_sample_name {
   my ($self, $sampleXML, $name) = @_;
-  return $self->create_udf_element($sampleXML, "WTSI Supplier Sample Name (SM)", $name);
+  return $self->create_udf_element($sampleXML, 'WTSI Supplier Sample Name (SM)', $name);
 }
 
 sub _create_name {
