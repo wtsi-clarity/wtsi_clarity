@@ -14,6 +14,7 @@ Readonly::Scalar my $IO_MAP_PATH    => q{ /prc:process/input-output-map[output[@
 Readonly::Scalar my $CONTAINER_PATH => q{ /art:artifact/location/container/@uri };
 Readonly::Scalar my $WELL_PATH      => q{ /art:artifact/location/value };
 Readonly::Scalar my $CONTAINER_TYPE_NAME_PATH => q{ /con:container/type/@name };
+Readonly::Scalar my $CONTROL_PATH   => q{ /art:artifact/control-type };
 ##use critic
 
 our $VERSION = '0.0';
@@ -91,6 +92,10 @@ sub _build__analytes {
     my $url = $anode->findvalue(q{./input/@uri});
     ##use critic
     my $analyte_dom = $self->fetch_and_parse($url);
+    my @control_flag = $analyte_dom->findnodes($CONTROL_PATH);
+    if (@control_flag) {
+      next;
+    }
     my $container_url = $analyte_dom->findvalue($CONTAINER_PATH);
     if (!$container_url) {
       croak qq[Container not defined for $url];

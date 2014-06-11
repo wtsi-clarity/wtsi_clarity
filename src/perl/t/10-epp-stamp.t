@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 18;
+use Test::More tests => 20;
 use Test::Exception;
 
 use_ok('wtsi_clarity::epp::stamp');
@@ -74,6 +74,16 @@ use_ok('wtsi_clarity::epp::stamp');
   #diag $doc;
   lives_ok { $doc = $s->_create_output_placements($doc) } 'individual placements created';
   #diag $doc;
+}
+
+{
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/stamp_with_control';
+  my $s = wtsi_clarity::epp::stamp->new(
+              process_url => 'http://clarity-ap:8080/api/v2/processes/24-99904',
+              step_url => 'some');
+  lives_ok { $s->_analytes } 'got all info from clarity';
+  my @containers = keys %{$s->_analytes};
+  is (scalar @containers, 1, 'one input container, control tube is skipped');
 }
 
 1;
