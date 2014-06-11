@@ -3,6 +3,7 @@ MANIFEST
 README
 Build.PL
 bin/epp
+lib/wtsi_clarity/process_checks/bed_verification.pm
 lib/wtsi_clarity/util/request.pm
 lib/wtsi_clarity/util/config.pm
 lib/wtsi_clarity/util/types.pm
@@ -22,7 +23,9 @@ t/10-epp-sm-volume_check.t
 t/10-epp-stamp.t
 t/10-util-config.t
 t/10-util-request.t
+t/10-process_checks-bed_verification.t
 t/data/config/config
+t/data/config/bed_verification.json
 t/data/cached/processes/24-28177
 t/data/stamp/containers/27-6851
 t/data/stamp/processes/24-98502
@@ -38,6 +41,4 @@ t/data/stamp_with_control/artifacts/2-652392?state=353092
 t/data/stamp_with_control/artifacts/2-652393?state=353093
 t/data/stamp_with_control/containers/27-7103
 t/data/stamp_with_control/processes/24-99904
-
-
 
