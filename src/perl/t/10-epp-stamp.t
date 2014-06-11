@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 20;
+use Test::More tests => 23;
 use Test::Exception;
 
 use_ok('wtsi_clarity::epp::stamp');
@@ -23,10 +23,9 @@ use_ok('wtsi_clarity::epp::stamp');
 
   is ($s->container_type_name, 'ABgene 0800', 'container name retrieved correctly');
   is ($s->_validate_container_type, 0, 'container type validation flag unset');
-  my $type_xml;
-  lives_ok {$type_xml = $s->_container_type} 'container type retrieved';
-  is ($type_xml->findvalue(q{ ./@uri }), "http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containertypes/105",
-    'container type value');
+  is($s->_container_type,
+     '<type uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containertypes/105" name="ABgene 0800"/>',
+     'container type value');
 
   delete $s->_analytes->{$containers[0]}->{'doc'};
   my @wells = sort map { $s->_analytes->{$containers[0]}->{$_}->{'well'} } (keys %{$s->_analytes->{$containers[0]}});
@@ -84,6 +83,22 @@ use_ok('wtsi_clarity::epp::stamp');
   lives_ok { $s->_analytes } 'got all info from clarity';
   my @containers = keys %{$s->_analytes};
   is (scalar @containers, 1, 'one input container, control tube is skipped');
+}
+
+{
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/stamp_with_control';
+  #local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
+  my $s = wtsi_clarity::epp::stamp->new(
+              process_url => 'http://clarity-ap:8080/api/v2/processes/24-99904',
+              step_url => 'some',
+              container_type_name => 'ABgene 0800');
+  lives_ok { $s->_analytes } 'got all info from clarity';
+  my @containers = keys %{$s->_analytes};
+  is (scalar @containers, 1, 'one input container, control tube is skipped');
+  ok ($s->_validate_container_type, 'validate container flag is true');
+  is ($s->_container_type,
+      '<type uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containertypes/105" name="ABgene 0800"/>',
+      'container type derived correctly from name');
 }
 
 1;

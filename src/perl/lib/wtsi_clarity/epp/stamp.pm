@@ -48,7 +48,7 @@ has '_validate_container_type' => (
 );
 
 has '_container_type' => (
-  isa        => 'XML::LibXML::Node',
+  isa        => 'Str',
   is         => 'ro',
   required   => 0,
   lazy_build => 1,
@@ -56,20 +56,25 @@ has '_container_type' => (
 sub _build__container_type {
   my $self = shift;
   my $name = $self->container_type_name;
-  my @nodes;
+  my $xml = q[];
   if ($self->_validate_container_type) {
     my $ename = uri_escape($name);
-    my $doc = $self->fetch_and_parse($self->base_url . q{containertypes?name=} . $ename);
-    @nodes =  $doc->findnodes(q{/ctp:container-types/container-type});
+    my $url = $self->base_url . q{containertypes?name=} . $ename;
+    my $doc = $self->fetch_and_parse($url);
+    my @nodes =  $doc->findnodes(q{/ctp:container-types/container-type});
+    if (@nodes) {
+      $xml = $nodes[0]->toString();
+      $xml =~ s/container-type/type/xms;
+    } else {
+      croak qq[Did not find container type entry at $url];
+    }
   } else {
     my @container_urls = keys %{$self->_analytes};
     my $doc = $self->_analytes->{$container_urls[0]}->{'doc'};
-    @nodes =  $doc->findnodes(q{ /con:container/type });
+    my @nodes =  $doc->findnodes(q{ /con:container/type });
+    $xml = $nodes[0]->toString();
   }
-  if (scalar @nodes > 1) {
-    croak q[Multiple container types for container name ] . $name;
-  }
-  return $nodes[0];
+  return $xml;
 }
 
 has '_analytes' => (
@@ -140,7 +145,7 @@ sub _create_containers {
 
   my $xml = '<?xml version="1.0" encoding="UTF-8"?>';
   $xml .= '<con:container xmlns:con="http://genologics.com/ri/container">';
-  $xml .= $self->_container_type->toString;
+  $xml .= $self->_container_type;
   $xml .= '</con:container>';
 
   foreach my $input_container ( keys %{$self->_analytes}) {
