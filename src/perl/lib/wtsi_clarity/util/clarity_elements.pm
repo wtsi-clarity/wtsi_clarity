@@ -25,7 +25,10 @@ Readonly::Hash my %NAME2ELEMENTS => (
     'create' => '_create_date_received',
     'find'   => q ( /smp:sample/date-received )
   },
-);
+  'plate_purpose' => {
+    'create' => '_create_plate_purpose',
+    'find'   => q( /con:container/udf:field[@name='WTSI Container Purpose Name'] )
+  },);
 ## use critic
 ## no critic(Subroutines::ProhibitUnusedPrivateSubroutines)
 
@@ -114,6 +117,11 @@ sub _create_name {
   my $node = $sampleXML->createElement('name');
   $node->appendTextNode($name);
   return $node;
+}
+
+sub _create_plate_purpose {
+  my ($self, $containerXML, $name) = @_;
+  return $self->create_udf_element($containerXML, 'WTSI Container Purpose Name', $name);
 }
 
 1;
