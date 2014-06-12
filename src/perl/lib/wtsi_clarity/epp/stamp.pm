@@ -74,7 +74,7 @@ sub _build__container_type {
     my @container_urls = keys %{$self->_analytes};
     my $doc = $self->_analytes->{$container_urls[0]}->{'doc'};
     my @nodes =  $doc->findnodes(q{ /con:container/type });
-    push @types, $nodes[0]->toString();;
+    push @types, $nodes[0]->toString();
   }
   return \@types;
 }
@@ -149,15 +149,15 @@ sub _create_containers {
   $xml_header .= '<con:container xmlns:con="http://genologics.com/ri/container">';
   my $xml_footer = '</con:container>';
 
-  if ((scalar @{$self->container_type_name} > 1) && 
+  if ((scalar @{$self->container_type_name} > 1) &&
       (scalar keys %{$self->_analytes} > 1)) {
     croak 'Multiple container type names are not compatible with multiple input containers';
   }
 
   foreach my $input_container ( keys %{$self->_analytes}) {
-    foreach my $output_container_type (@{$self->container_type_name}) {
+    foreach my $output_container_type_xml (@{$self->_container_type}) {
       my $xml = $xml_header;
-      $xml .= $output_container_type;
+      $xml .= $output_container_type_xml;
       $xml .= $xml_footer;
       my $url = $self->base_url . 'containers';
       my $container_doc = XML::LibXML->load_xml(string => $self->request->post($url, $xml));
@@ -236,12 +236,47 @@ wtsi_clarity::epp::stamp
 
 =head1 SYNOPSIS
   
-  wtsi_clarity::epp:stamp->new(process_url => 'http://my.com/processes/3345')->run();
+  1:1 and N:N scanarios, output container type will be copied from the input
+  containers:
+
+  wtsi_clarity::epp:stamp->new(
+       process_url => 'http://clarity-ap:8080/processes/3345',
+       step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970
+  )->run();
+
+  1:1 and N:N scanarios with explicit output container type name:
+
+  wtsi_clarity::epp:stamp->new(
+       process_url => 'http://clarity-ap:8080/processes/3345',
+       step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970,
+       container_type_name => ['ABgene 0800']
+  )->run();
+
+  1:2 scenario, the same output container type names:
+
+  wtsi_clarity::epp:stamp->new(
+       process_url => 'http://clarity-ap:8080/processes/3345',
+       step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970,
+       container_type_name => ['ABgene 0800', 'ABgene 0800']
+  )->run();
+
+  1:2 scenario, different output container type names:
+
+  wtsi_clarity::epp:stamp->new(
+       process_url => 'http://clarity-ap:8080/processes/3345',
+       step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970,
+       container_type_name => ['ABgene 0800', 'ABgene 0765']
+  )->run();
   
 =head1 DESCRIPTION
 
   Stamps the content of source plates to desctination plates.
-  Three scenarios are considered: 1:1, N:N (in pairs), 1:N
+  Three scenarios are considered: 1:1, N:N (in pairs), 1:N.
+
+  Input controls and their containers are ignored.
+
+  To set up stamping from one to multiple plates, container type name should be
+  set explicitly by the caller as many times as the number of output containers required.
 
 =head1 SUBROUTINES/METHODS
 

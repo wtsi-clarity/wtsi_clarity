@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 29;
+use Test::More tests => 32;
 use Test::Exception;
 
 use_ok('wtsi_clarity::epp::stamp');
@@ -35,7 +35,7 @@ use_ok('wtsi_clarity::epp::stamp');
 {
   SKIP: {
     if ( !$ENV{'LIVE_TEST'}) {
-      skip 'set LIVE_TEST to true to run', 5;
+      skip 'set LIVE_TEST to true to run', 8;
     }
   
     local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/stamp';
@@ -44,13 +44,19 @@ use_ok('wtsi_clarity::epp::stamp');
       step_url    => 'some'
     );
     lives_ok { $s->_analytes } 'got all info from clarity';
+    is ($s->container_type_name->[0], 'ABgene 0800', 'container name retrieved correctly');
+    is ($s->_validate_container_type, 0, 'container type validation flag unset');
+    is ($s->_container_type->[0],
+       '<type uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containertypes/105" name="ABgene 0800"/>',
+       'container type value');
+
     local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = q[];
     lives_ok { $s->_create_containers } 'containers created';
     my @container_urls = keys %{$s->_analytes};
-    my $ocon = $s->_analytes->{$container_urls[0]}->{'output_container'};
-    ok ($ocon, 'output container entry exists');
-    like($ocon->{'limsid'}, qr/27-/, 'container limsid is set');
-    like ($ocon->{'uri'}, qr/containers\/27-/, 'container uri is set');
+    my $ocon = $s->_analytes->{$container_urls[0]}->{'output_containers'};
+    ok ($ocon->[0], 'output container entry exists');
+    like($ocon->[0]->{'limsid'}, qr/27-/, 'container limsid is set');
+    like ($ocon->[0]->{'uri'}, qr/containers\/27-/, 'container uri is set');
   }
 }
 
@@ -103,7 +109,7 @@ use_ok('wtsi_clarity::epp::stamp');
 
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/stamp_with_control';
-  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
+  #local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
   my $s = wtsi_clarity::epp::stamp->new(
               process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-99904',
               step_url => 'some',
