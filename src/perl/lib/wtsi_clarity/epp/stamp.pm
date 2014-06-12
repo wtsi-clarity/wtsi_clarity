@@ -14,6 +14,7 @@ Readonly::Scalar my $IO_MAP_PATH    => q{ /prc:process/input-output-map[output[@
 Readonly::Scalar my $CONTAINER_PATH => q{ /art:artifact/location/container/@uri };
 Readonly::Scalar my $WELL_PATH      => q{ /art:artifact/location/value };
 Readonly::Scalar my $CONTAINER_TYPE_NAME_PATH => q{ /con:container/type/@name };
+Readonly::Scalar my $CONTROL_PATH   => q{ /art:artifact/control-type };
 ##use critic
 
 our $VERSION = '0.0';
@@ -25,7 +26,7 @@ has 'step_url' => (
 );
 
 has 'container_type_name' => (
-  isa        => 'Str',
+  isa        => 'ArrayRef[Str]',
   is         => 'ro',
   required   => 0,
   lazy_build => 1,
@@ -35,7 +36,7 @@ sub _build_container_type_name {
   my @container_urls = keys %{$self->_analytes};
   my $doc = $self->_analytes->{$container_urls[0]}->{'doc'};
   $self->_set_validate_container_type(0);
-  return $doc->findvalue($CONTAINER_TYPE_NAME_PATH);
+  return [$doc->findvalue($CONTAINER_TYPE_NAME_PATH)];
 }
 
 has '_validate_container_type' => (
@@ -47,28 +48,35 @@ has '_validate_container_type' => (
 );
 
 has '_container_type' => (
-  isa        => 'XML::LibXML::Node',
+  isa        => 'ArrayRef[Str]',
   is         => 'ro',
   required   => 0,
   lazy_build => 1,
 );
 sub _build__container_type {
   my $self = shift;
-  my $name = $self->container_type_name;
-  my @nodes;
+  my $names = $self->container_type_name;
+  my @types = ();
   if ($self->_validate_container_type) {
-    my $ename = uri_escape($name);
-    my $doc = $self->fetch_and_parse($self->base_url . q{containertypes?name=} . $ename);
-    @nodes =  $doc->findnodes(q{/ctp:container-types/container-type});
+    foreach my $name (@{$names}) {
+      my $ename = uri_escape($name);
+      my $url = $self->base_url . q{containertypes?name=} . $ename;
+      my $doc = $self->fetch_and_parse($url);
+      my @nodes =  $doc->findnodes(q{/ctp:container-types/container-type});
+      if (!@nodes) {
+        croak qq[Did not find container type entry at $url];
+      }
+      my $xml = $nodes[0]->toString();
+      $xml =~ s/container-type/type/xms;
+      push @types, $xml;
+    }
   } else {
     my @container_urls = keys %{$self->_analytes};
     my $doc = $self->_analytes->{$container_urls[0]}->{'doc'};
-    @nodes =  $doc->findnodes(q{ /con:container/type });
+    my @nodes =  $doc->findnodes(q{ /con:container/type });
+    push @types, $nodes[0]->toString();;
   }
-  if (scalar @nodes > 1) {
-    croak q[Multiple container types for container name ] . $name;
-  }
-  return $nodes[0];
+  return \@types;
 }
 
 has '_analytes' => (
@@ -91,6 +99,10 @@ sub _build__analytes {
     my $url = $anode->findvalue(q{./input/@uri});
     ##use critic
     my $analyte_dom = $self->fetch_and_parse($url);
+    my @control_flag = $analyte_dom->findnodes($CONTROL_PATH);
+    if (@control_flag) {
+      next;
+    }
     my $container_url = $analyte_dom->findvalue($CONTAINER_PATH);
     if (!$container_url) {
       croak qq[Container not defined for $url];
@@ -133,19 +145,28 @@ override 'run' => sub {
 sub _create_containers {
   my $self = shift;
 
-  my $xml = '<?xml version="1.0" encoding="UTF-8"?>';
-  $xml .= '<con:container xmlns:con="http://genologics.com/ri/container">';
-  $xml .= $self->_container_type->toString;
-  $xml .= '</con:container>';
+  my $xml_header = '<?xml version="1.0" encoding="UTF-8"?>';
+  $xml_header .= '<con:container xmlns:con="http://genologics.com/ri/container">';
+  my $xml_footer = '</con:container>';
+
+  if ((scalar @{$self->container_type_name} > 1) && 
+      (scalar keys %{$self->_analytes} > 1)) {
+    croak 'Multiple container type names are not compatible with multiple input containers';
+  }
 
   foreach my $input_container ( keys %{$self->_analytes}) {
-    my $url = $self->base_url . 'containers';
-    my $container_doc = XML::LibXML->load_xml(string => $self->request->post($url, $xml));
-    ##no critic (RequireInterpolationOfMetachars)
-    my $h = { 'limsid' => $container_doc->findvalue(q{ /con:container/@limsid }),
+    foreach my $output_container_type (@{$self->container_type_name}) {
+      my $xml = $xml_header;
+      $xml .= $output_container_type;
+      $xml .= $xml_footer;
+      my $url = $self->base_url . 'containers';
+      my $container_doc = XML::LibXML->load_xml(string => $self->request->post($url, $xml));
+      ##no critic (RequireInterpolationOfMetachars)
+      my $h = { 'limsid' => $container_doc->findvalue(q{ /con:container/@limsid }),
               'uri'    => $container_doc->findvalue(q{ /con:container/@uri }) };
-    ##use critic
-    $self->_analytes->{$input_container}->{'output_container'} = $h;
+      ##use critic
+      push @{$self->_analytes->{$input_container}->{'output_containers'}}, $h;
+    }
   }
   return;
 }
@@ -156,11 +177,12 @@ sub _create_placements_doc {
   my $pXML = '<?xml version="1.0" encoding="UTF-8"?>';
   $pXML .= '<stp:placements xmlns:stp="http://genologics.com/ri/step" uri="' . $self->process_url . '/placements">';
   $pXML .= '<step uri="' . $self->step_url . '"/>';
-  #$pXML .= '<configuration uri="' + HOSTNAME +' /api/v2/configuration/protocols/101/steps/220">Betty Pre-Caliper Stamping (ILB)</configuration>'
   $pXML .= '<selected-containers>';
   foreach my $input_container ( keys %{$self->_analytes}) {
-    my $container_url = $self->_analytes->{$input_container}->{'output_container'}->{'uri'} ;
-    $pXML .= '<container uri="' . $container_url . '"/>';
+    foreach my $output_container (@{$self->_analytes->{$input_container}->{'output_containers'}}) {
+      my $container_url = $output_container->{'uri'} ;
+      $pXML .= '<container uri="' . $container_url . '"/>';
+    }
   }
   $pXML .= '</selected-containers>';
   $pXML .= '<output-placements/></stp:placements>';
@@ -178,21 +200,24 @@ sub _create_output_placements {
 
   foreach my $input_container ( keys %{$self->_analytes}) {
     foreach my $input_analyte ( keys %{$self->_analytes->{$input_container} } ) {
-      if ( $input_analyte eq 'output_container' || $input_analyte eq 'doc' ) {
+      if ( $input_analyte eq 'output_containers' || $input_analyte eq 'doc' ) {
         next;
       }
-
       my $uri = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'};
-      my $placement = $doc->createElement('output-placement');
-      $placement->setAttribute( 'uri', $uri );
-      my $location = $doc->createElement('location');
-      $placement->addChild($location);
-      my $container = $doc->createElement('container');
-      $location->addChild($container);
-      $container->setAttribute( 'uri', $self->_analytes->{$input_container}->{'output_container'}->{'uri'} );
-      $container->setAttribute( 'limsid', $self->_analytes->{$input_container}->{'output_container'}->{'limsid'} );
-      $location->appendTextChild('value', $self->_analytes->{$input_container}->{$input_analyte}->{'well'});
-      $placements[0]->addChild($placement);
+      my $well = $self->_analytes->{$input_container}->{$input_analyte}->{'well'};
+
+      foreach my $output_container ( @{$self->_analytes->{$input_container}->{'output_containers'}} ) {
+        my $placement = $doc->createElement('output-placement');
+        $placement->setAttribute( 'uri', $uri );
+        my $location = $doc->createElement('location');
+        $placement->addChild($location);
+        my $container = $doc->createElement('container');
+        $location->addChild($container);
+        $container->setAttribute( 'uri', $output_container->{'uri'} );
+        $container->setAttribute( 'limsid', $output_container->{'limsid'} );
+        $location->appendTextChild('value', $well);
+        $placements[0]->addChild($placement);
+      }
     }
   }
 
