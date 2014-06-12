@@ -1,5 +1,10 @@
 CHANGES for wtsi_clarity Perl project
 
+  - stamping:
+      ignore controls,
+      fix a bug in setting container type from container type name,
+      deal with 1:N scenario
+
 release 0.17
   - Try:Tiny was breaking the Build. Fixed to Try::Tiny.
 

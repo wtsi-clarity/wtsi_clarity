@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 23;
+use Test::More tests => 29;
 use Test::Exception;
 
 use_ok('wtsi_clarity::epp::stamp');
@@ -21,9 +21,9 @@ use_ok('wtsi_clarity::epp::stamp');
   is (scalar @containers, 1, 'one input container');
   is (scalar keys $s->_analytes->{$containers[0]}, 6, 'five input analytes and a container doc');
 
-  is ($s->container_type_name, 'ABgene 0800', 'container name retrieved correctly');
+  is ($s->container_type_name->[0], 'ABgene 0800', 'container name retrieved correctly');
   is ($s->_validate_container_type, 0, 'container type validation flag unset');
-  is($s->_container_type,
+  is ($s->_container_type->[0],
      '<type uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containertypes/105" name="ABgene 0800"/>',
      'container type value');
 
@@ -91,14 +91,34 @@ use_ok('wtsi_clarity::epp::stamp');
   my $s = wtsi_clarity::epp::stamp->new(
               process_url => 'http://clarity-ap:8080/api/v2/processes/24-99904',
               step_url => 'some',
-              container_type_name => 'ABgene 0800');
+              container_type_name => ['ABgene 0800']);
   lives_ok { $s->_analytes } 'got all info from clarity';
   my @containers = keys %{$s->_analytes};
   is (scalar @containers, 1, 'one input container, control tube is skipped');
   ok ($s->_validate_container_type, 'validate container flag is true');
-  is ($s->_container_type,
+  is ($s->_container_type->[0],
       '<type uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containertypes/105" name="ABgene 0800"/>',
       'container type derived correctly from name');
+}
+
+{
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/stamp_with_control';
+  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
+  my $s = wtsi_clarity::epp::stamp->new(
+              process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-99904',
+              step_url => 'some',
+              container_type_name => ['ABgene 0765', 'ABgene 0800']);
+  lives_ok { $s->_analytes } 'got all info from clarity';
+  my @containers = keys %{$s->_analytes};
+  is (scalar @containers, 1, 'one input container, control tube is skipped');
+  ok ($s->_validate_container_type, 'validate container flag is true');
+  is (scalar @{$s->_container_type}, 2, 'two container types retrieved');
+  is ($s->_container_type->[0],
+      '<type uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containertypes/106" name="ABgene 0765"/>',
+      'first container type derived correctly from name');
+  is ($s->_container_type->[1],
+      '<type uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containertypes/105" name="ABgene 0800"/>',
+      'second container type derived correctly from name');
 }
 
 1;
