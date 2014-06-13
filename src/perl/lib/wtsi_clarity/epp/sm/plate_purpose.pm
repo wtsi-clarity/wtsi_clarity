@@ -25,7 +25,7 @@ has '_containers' => (
   is  => 'ro',
   required => 0,
   lazy => 1,
-  default => sub { {} }
+  default => sub { {} },
 );
 
 override 'run' => sub {
@@ -46,7 +46,7 @@ sub _fetch_and_update_containers {
 
   foreach my $analyteURI ($doc->findnodes($ANALYTE_PATH)) {
     my $analyteDoc = $self->fetch_and_parse($analyteURI->getValue());
-  	my $containerURI = $self->_extract_container_uri($analyteDoc);
+    my $containerURI = $self->_extract_container_uri($analyteDoc);
     my $containerDoc = $self->fetch_and_parse($containerURI);
 
     if (!exists $self->_containers->{$containerURI}) {
@@ -78,6 +78,7 @@ sub _put_changes {
   {
     $self->request->put($containerURI, $self->_containers->{$containerURI})
   }
+  return;
 }
 
 1;
