@@ -1,21 +1,16 @@
 use strict;
 use warnings;
-use Test::More tests => 8;
+use Test::More tests => 9;
 use Test::Exception;
 use DateTime;
 use XML::LibXML;
 use Carp;
+use lib qw ( t );
+use util::xml;
 
 use_ok('wtsi_clarity::epp::sm::plate_purpose', 'can use wtsi_clarity::epp::sm::plate_purpose' );
+use_ok('util::xml', 'can use wtsi_clarity::t::util::xml' );
 
-
-sub find_elements {
-  my ($xml, $name) = @_;
-  my $parser = XML::LibXML->new;
-  my $doc = $parser->parse_string($xml);
-  my $xpc = XML::LibXML::XPathContext->new($doc->getDocumentElement());
-  return $xpc->findnodes($name);
-}
 
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/plate_purpose';
@@ -32,7 +27,7 @@ sub find_elements {
 
   foreach my $containerURI (keys %{$plate_purpose->_containers})
   {
-    my @elements = find_elements( $plate_purpose->_containers->{$containerURI}, $PURPOSE_PATH) ;
+    my @elements = util::xml::find_elements( $plate_purpose->_containers->{$containerURI}, $PURPOSE_PATH) ;
     cmp_ok(scalar @elements, '==', 1, 'The purpose has been added to the container.');
   }
 }
@@ -52,7 +47,7 @@ sub find_elements {
 
   foreach my $containerURI (keys %{$plate_purpose->_containers})
   {
-    my @elements = find_elements( $plate_purpose->_containers->{$containerURI}, $PURPOSE_PATH) ;
+    my @elements = util::xml::find_elements( $plate_purpose->_containers->{$containerURI}, $PURPOSE_PATH) ;
     cmp_ok(scalar @elements, '==', 1, 'The purpose has been added to the container.');
   }
 }
