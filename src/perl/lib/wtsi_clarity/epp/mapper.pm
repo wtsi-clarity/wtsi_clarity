@@ -14,6 +14,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'create_label' => 'sm::create_label',
     'stamp'        => 'stamp',
     'sample_received' => 'sm::sample_received',
+    'plate_purpose' => 'sm::plate_purpose',
 );
 
 has 'action'  => (
