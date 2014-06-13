@@ -23,7 +23,11 @@ Readonly::Hash my %NAME2ELEMENTS => (
   },
   'date_received' => {
     'create' => '_create_date_received',
-    'find'   => q ( /smp:sample/date-received )
+    'find'   => q ( /smp:sample/date-received ),
+  },
+  'qc_complete' => {
+    'create' => '_create_qc_complete',
+    'find'   => q ( /smp:sample/udf:field[@name='QC Complete'] ),
   },
   'plate_purpose' => {
     'create' => '_create_plate_purpose',
@@ -55,10 +59,32 @@ sub set_element {
   return $newNode;
 }
 
+sub set_element_if_absent {
+  my ($self, $xml, $name, $value) = @_;
+
+  if (!exists $NAME2ELEMENTS{$name}) {
+    croak qq/ Element <$name> can not be created : it is not handled by clarity_elements/;
+  }
+  my $element = $NAME2ELEMENTS{$name};
+  my $createMethod = $element->{'create'};
+
+  my $oldNode = $self->find_element($xml, $name);
+  my $root = $xml->getDocumentElement();
+
+  if ( $oldNode ) {
+    return $oldNode;
+  }
+
+  my $newNode = $self->$createMethod($xml, $value);
+  $root->addChild($newNode);
+  return $newNode;
+}
+
+
 sub find_element {
   my ($self, $xml, $name) = @_;
   if (!exists $NAME2ELEMENTS{$name}) {
-    croak qq/ Can not search for element $name /;
+    croak qq/ Cannot search for element <$name> : it is not handled by clarity_elements /;
   }
   my $element = $NAME2ELEMENTS{$name};
 
@@ -74,7 +100,6 @@ sub find_element {
 
 sub create_udf_element {
   my ($self, $xml_el, $udf_name, $udf_value) = @_;
-
   my $url = 'http://genologics.com/ri/userdefined';
   my $docElem = $xml_el->getDocumentElement();
   $docElem->setNamespace($url, 'udf', 0);
@@ -101,10 +126,15 @@ sub _create_volume {
 }
 
 sub _create_date_received {
-  my ($self, $sampleXML, $today) = @_;
+  my ($self, $sampleXML, $date) = @_;
   my $node = $sampleXML->createElement('date-received');
-  $node->appendTextNode($today);
+  $node->appendTextNode($date);
   return $node;
+}
+
+sub _create_qc_complete {
+  my ($self, $sampleXML, $date) = @_;
+  return $self->create_udf_element($sampleXML, 'QC Complete', $date);
 }
 
 sub _create_supplier_sample_name {
@@ -147,9 +177,14 @@ wtsi_clarity::util::clarity_elements
 
 =head1 SUBROUTINES/METHODS
 
-=head2 
+=head2
   set_element - takes some XML, an element name, and the new value. Will
   update the element in the XML with the new value.
+
+=head2
+  set_element_if_absent - takes some XML, an element name, and the new value. Will
+  add the element in the XML with the new value, but will NOT change the value of
+  an existing node.
 
 =head2
   find_element - takes some XML and an element name. Will return the element name

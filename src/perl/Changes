@@ -1,7 +1,8 @@
 CHANGES for wtsi_clarity Perl project
 
 release 0.18
-  - plate purpose added.
+  - qc_complete added.
+  - plate_purpose added.
   - CI: Travis configured.
   - stamping:
       ignore input controls and their containers

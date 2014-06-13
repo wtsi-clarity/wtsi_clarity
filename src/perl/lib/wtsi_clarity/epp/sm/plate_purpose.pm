@@ -42,7 +42,6 @@ override 'run' => sub {
 sub _fetch_and_update_containers {
   my ($self, $doc) = @_;
   my $purpose = $doc->findvalue($PROCESS_PURPOSE_PATH);
-  # my $containers = {};
 
   foreach my $analyteURI ($doc->findnodes($ANALYTE_PATH)) {
     my $analyteDoc = $self->fetch_and_parse($analyteURI->getValue());
