@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/2-652382?state=353082" limsid="2-652382">
+    <name>Test 47</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-98951" limsid="24-98951"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containers/27-7103" limsid="27-7103"/>
+        <value>G:6</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/JON1407A902" limsid="JON1407A902"/>
+</art:artifact>

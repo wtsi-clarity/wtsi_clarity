@@ -1,5 +1,17 @@
 CHANGES for wtsi_clarity Perl project
 
+release 0.18
+  - qc_complete added.
+  - plate_purpose added.
+  - CI: Travis configured.
+  - stamping:
+      ignore input controls and their containers
+      a bug in setting container type from container type name is fixed
+      stamping from one to multiple plates, optionally of different type;
+        container type name should be specified explicitly as many times
+        as the number of output containers required; works only for a
+        single input container
+
 release 0.17
   - Try:Tiny was breaking the Build. Fixed to Try::Tiny.
 
@@ -62,4 +74,3 @@ release 0.2
 
 release 0.1 - initial release
   - callback for sample management volume check
-

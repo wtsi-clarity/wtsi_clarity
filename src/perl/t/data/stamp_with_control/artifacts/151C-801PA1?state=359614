@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/151C-801PA1?state=359614" limsid="151C-801PA1">
+    <name>NTC</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containers/27-7555" limsid="27-7555"/>
+        <value>1:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/151C-801" limsid="151C-801"/>
+    <control-type uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/controltypes/151"/>
+</art:artifact>

@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use Moose::Meta::Class;
-use Test::More tests => 12;
+use Test::More tests => 16;
 use Cwd;
 use XML::LibXML;
 
@@ -15,7 +15,7 @@ my $fake_class = Moose::Meta::Class->create_anon_class(
 
 # Run tests for adding volume element
 {
-  my $xml = XML::LibXML->load_xml(location => cwd . "/t/data/util/element_mapper/test_update"); 
+  my $xml = XML::LibXML->load_xml(location => cwd . "/t/data/util/element_mapper/test_update");
 
   is($fake_class->find_element($xml, 'volume')->textContent, '35.5077', 'Can find the volume');
 
@@ -39,7 +39,7 @@ my $fake_class = Moose::Meta::Class->create_anon_class(
 
   $fake_class->set_element($xml, 'date_received', '19-05-2014');
   is($fake_class->find_element($xml, 'date_received')->textContent, '19-05-2014', 'Can find the new date_received node');
-  
+
   my $el = $fake_class->create_udf_element($xml, 'New Field', 'red dog');
   $xml->documentElement()->appendChild($el);
   my @nodes = $xml->findnodes(q{ /smp:sample/udf:field[@name='New Field'] });
@@ -51,5 +51,19 @@ my $fake_class = Moose::Meta::Class->create_anon_class(
   $fake_class->update_text($el, 'Blue ball');
   is($nodes[0]->textContent, 'Blue ball', 'new text retrieved');
 }
+
+# set_element_if_absent() only updates an XML element when it is NOT present
+{
+  my $xml = XML::LibXML->load_xml(location => cwd . "/t/data/util/element_mapper/test_update");
+
+  is($fake_class->find_element($xml, 'volume')->textContent, '35.5077', '(Test fixture)');
+  $fake_class->set_element_if_absent($xml, 'volume', '10.0000');
+  is($fake_class->find_element($xml, 'volume')->textContent, '35.5077', 'When present, an element should not be updated using set_element_if_absent()');
+
+  is($fake_class->find_element($xml, 'name'), undef, '(Test fixture)');
+  $fake_class->set_element_if_absent($xml, 'name', '10.0000');
+  is($fake_class->find_element($xml, 'name')->textContent, '10.0000', 'When absent, an element should be updated using set_element_if_absent()');
+}
+
 
 1;
