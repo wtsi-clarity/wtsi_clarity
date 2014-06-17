@@ -1,5 +1,12 @@
 CHANGES for wtsi_clarity Perl project
 
+release 0.19
+  - version from git describe command - ensure starts with a number
+  - sample_received callback bug fix - sample details should only
+      be updated once
+  - volume check callback tests - capture warnings to keep test optput
+      clean
+
 release 0.18
   - qc_complete added.
   - plate_purpose added.

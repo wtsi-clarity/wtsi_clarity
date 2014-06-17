@@ -87,7 +87,7 @@ sub _build_printer {
     croak 'Multiple printer udf fields are defined for the process';
   }
 
-  my $printer = _trim_value($nodes[0]->textContent);
+  my $printer = $self->trim_value($nodes[0]->textContent);
   if (!$printer) {
     croak 'Printer name should be defined';
   }
@@ -189,7 +189,7 @@ sub _build__plate_purpose {
     croak 'Multiple plate purpose udf fields are defined for the process';
   }
   if (@nodes) {
-    return _trim_value($nodes[0]->textContent);
+    return $self->trim_value($nodes[0]->textContent);
   }
   return;
 }
@@ -443,7 +443,7 @@ sub _copy_supplier_container_name {
     }
     my $name = $nodes[0]->textContent();
     if ($name) {
-      $name = _trim_value($name);
+      $name = $self->trim_value($name);
     }
     if (!$name) {
       croak 'Container name undefined';
@@ -462,14 +462,6 @@ sub _copy_barcode2container {
   }
   $self->update_text($nodes->pop(), $barcode);
   return;
-}
-
-sub _trim_value {
-  my $v = shift;
-  if ($v) {
-    $v =~ s/^\s+|\s+$//smxg;
-  }
-  return $v;
 }
 
 __PACKAGE__->meta->make_immutable;
