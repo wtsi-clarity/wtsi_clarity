@@ -6,6 +6,7 @@ release 0.19
       be updated once
   - volume check callback tests - capture warnings to keep test optput
       clean
+  - stamping callback - do not skip controls that are already on a plate
 
 release 0.18
   - qc_complete added.
