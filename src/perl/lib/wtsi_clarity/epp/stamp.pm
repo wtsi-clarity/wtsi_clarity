@@ -99,17 +99,21 @@ sub _build__analytes {
     my $url = $anode->findvalue(q{./input/@uri});
     ##use critic
     my $analyte_dom = $self->fetch_and_parse($url);
-    my @control_flag = $analyte_dom->findnodes($CONTROL_PATH);
-    if (@control_flag) {
-      next;
-    }
     my $container_url = $analyte_dom->findvalue($CONTAINER_PATH);
     if (!$container_url) {
       croak qq[Container not defined for $url];
     }
 
     if (!exists $containers->{$container_url}) {
-      $containers->{$container_url}->{'doc'} = $self->fetch_and_parse($container_url);
+      my $container_doc = $self->fetch_and_parse($container_url);
+      my $container_type_name = $container_doc->findvalue($CONTAINER_TYPE_NAME_PATH);
+      my @control_flag = $analyte_dom->findnodes($CONTROL_PATH);
+      # Skip controls that come from a tube - we do not want to create separate
+      # containers for them
+      if (@control_flag && $container_type_name =~ /tube/ixms) {
+        next;
+      }
+      $containers->{$container_url}->{'doc'} = $container_doc;
     }
     my $well = $analyte_dom->findvalue($WELL_PATH);
     if (!$well) {

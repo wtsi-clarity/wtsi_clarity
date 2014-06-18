@@ -13,10 +13,6 @@ Readonly::Hash my %NAME2ELEMENTS => (
     'create' => '_create_volume',
     'find'   => q( /smp:sample/udf:field[starts-with(@name, 'Volume')] ),
   },
-  'supplier_sample_name' => {
-    'create' => '_create_supplier_sample_name',
-    'find'   => q( /smp:sample/udf:field[@name='WTSI Supplier Sample Name (SM)'] )
-  },
   'name' => {
     'create' => '_create_name',
     'find'   => q( /smp:sample/name )
@@ -120,6 +116,14 @@ sub update_text {
   return;
 }
 
+sub trim_value {
+  my ($self,$v) = @_;
+  if ($v) {
+    $v =~ s/^\s+|\s+$//smxg;
+  }
+  return $v;
+}
+
 sub _create_volume {
   my ($self, $sampleXML, $volume) = @_;
   return $self->create_udf_element($sampleXML, "Volume (\N{U+00B5}L) (SM)", $volume);
@@ -135,11 +139,6 @@ sub _create_date_received {
 sub _create_qc_complete {
   my ($self, $sampleXML, $date) = @_;
   return $self->create_udf_element($sampleXML, 'QC Complete', $date);
-}
-
-sub _create_supplier_sample_name {
-  my ($self, $sampleXML, $name) = @_;
-  return $self->create_udf_element($sampleXML, 'WTSI Supplier Sample Name (SM)', $name);
 }
 
 sub _create_name {
@@ -193,6 +192,8 @@ wtsi_clarity::util::clarity_elements
 =head2 create_udf_element
 
 =head2 update_text
+
+=head2 trim_value - trims white space on both ends of the string
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

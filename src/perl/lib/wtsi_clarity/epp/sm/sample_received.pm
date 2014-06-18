@@ -2,32 +2,29 @@ package wtsi_clarity::epp::sm::sample_received;
 
 use Moose;
 use Carp;
-use XML::LibXML;
 use Readonly;
 use DateTime;
 use JSON qw / decode_json /;
 
 use wtsi_clarity::util::request;
-use wtsi_clarity::util::clarity_elements;
-
-## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $ANALYTE_PATH => q( prc:process/input-output-map/input/@uri );
-Readonly::Scalar my $URI_PATH => q ( art:artifact/sample/@uri );
-## use critic
-
 extends 'wtsi_clarity::epp';
-
 with 'wtsi_clarity::util::clarity_elements';
 
 our $VERSION = '0.0';
 
+## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+Readonly::Scalar my $ANALYTE_PATH => q( prc:process/input-output-map/input/@uri );
+Readonly::Scalar my $URI_PATH => q ( art:artifact/sample/@uri );
+Readonly::Scalar my $SUPPLIER_UDF_FIELD_NAME  => 'WTSI Supplier Sample Name (SM)';
+Readonly::Scalar my $SUPPLIER_NAME_PATH => q( /smp:sample/udf:field[@name=') . $SUPPLIER_UDF_FIELD_NAME . q('] );
+Readonly::Scalar my $DATE_RECEIVED_PATH => q( /smp:sample/date-received );
+## use critic
+
 override 'run' => sub {
   my $self= shift;
   super();
-
   $self->_fetch_and_update_samples($self->process_doc);
-
-  return 1;
+  return;
 };
 
 # Duplicated from volume_check
@@ -45,37 +42,59 @@ sub _fetch_and_update_samples {
     my $analyteDoc = $self->fetch_and_parse($analyteURI->getValue());
     my $sampleURI = $self->_extract_sample_uri($analyteDoc);
     my $sampleDoc = $self->fetch_and_parse($sampleURI);
-
-    $self->_update_sample_date_received($sampleDoc, $sampleURI);
+    if ($self->_is_new_sample($sampleDoc, $sampleURI)) {
+      $self->_update_sample($sampleDoc, $sampleURI);
+    }
   }
 
+  return;
+}
+
+sub _is_new_sample {
+  my ($self, $doc, $url) = @_;
+
+  $url |= q[];
+  if ($doc->findnodes($SUPPLIER_NAME_PATH)) {
+    $self->epp_log(qq[Supplier name already set for the sample, not updating $url]);
+    return 0;
+  }
+  my @nodes = $doc->findnodes($DATE_RECEIVED_PATH);
+  if (@nodes) {
+    my $date = $self->trim_value($nodes[0]->textContent());
+    if ($date) {
+      $self->epp_log(qq[Date received $date already set for the sample, not updating $url]);
+      return 0;
+    }
+  }
   return 1;
 }
 
-sub _update_sample_date_received {
+sub _update_sample {
   my ($self, $sampleDoc, $sampleURI) = @_;
 
-  $self->set_element($sampleDoc, 'date_received', $self->_today());
   my $nameElem = $self->find_element($sampleDoc, 'name');
-
-  $self->set_element($sampleDoc, 'supplier_sample_name', $nameElem->textContent);
+  $self->create_udf_element($sampleDoc, $SUPPLIER_UDF_FIELD_NAME, $nameElem->textContent);
   $self->set_element($sampleDoc, 'name', $self->_get_uuid());
+
+  $self->set_element($sampleDoc, 'date_received', $self->_today());
 
   $self->request->put($sampleURI, $sampleDoc->toString());
 
-  return 1;
+  return;
 }
 
 sub _get_uuid {
   my $self = shift;
 
   my $request = wtsi_clarity::util::request->new('content_type' => 'application/json');
-
-  my $response = $request->get($self->config->uuid_api->{'uri'});
+  my $url = $self->config->uuid_api->{'uri'};
+  my $response = $request->get($url);
+  if (!$response) {
+    croak qq[Empty response from $url];
+  }
   my $response_json = decode_json $response;
-
-  if (!exists $response_json->{'uuid'}) {
-    croak 'Could not retrieve a uuid';
+  if (!$response_json->{'uuid'}) {
+    croak qq[Could not get uuid from $url];
   }
 
   return $response_json->{'uuid'};
@@ -103,7 +122,12 @@ wtsi_clarity::epp::sm::sample_received
   the value in the name field to the WTSI Supplier Sample Name (SM). It will then replace name
   with a UUID obtained from an extenal web service.
 
+  If the sample already has either date received or WTSI Supplier Sample Name (SM) defined,
+  it will not be updated o avoid overwriting the original values. No error will be raised.
+
 =head1 SUBROUTINES/METHODS
+
+=head2 process_url - required attribute
 
 =head2 run - callback for the date_received action
 
@@ -116,8 +140,6 @@ wtsi_clarity::epp::sm::sample_received
 =item Moose
 
 =item Carp
-
-=item XML::LibXML
 
 =item Readonly
 
@@ -133,7 +155,7 @@ Chris Smith E<lt>cs24@sanger.ac.ukE<gt>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (C) 2014 GRL by Chris Smith
+Copyright (C) 2014 Genome Research Ltd.
 
 This file is part of wtsi_clarity project.
 
