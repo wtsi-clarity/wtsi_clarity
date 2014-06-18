@@ -3,6 +3,7 @@ use warnings;
 use Test::More tests => 36;
 use Test::Exception;
 use File::Temp qw/tempdir/;
+use File::Slurp;
 
 use_ok('wtsi_clarity::epp::stamp');
 
@@ -134,8 +135,12 @@ use_ok('wtsi_clarity::epp::stamp');
    #remove tube container from test data
   `rm $dir/stamp_with_control/containers/27-7555`;
   my $control = "$dir/stamp_with_control/artifacts/151C-801PA1?state=359614";
-  `sed -i 's/27-7555/27-7103/g' $control`; #place control on the input plate
-  `sed -i 's/1:1/H:12/' $control`;         #in well H:12
+  my $control_xml = read_file $control;
+  $control_xml =~ s/27-7555/27-7103/g;  #place control on the input plate
+  $control_xml =~ s/1:1/H:12/g;         #in well H:12
+  open my $fh, '>', $control or die "cannot open filehandle to write to $control";
+  print $fh $control_xml or die "cannot write to $control";
+  close $fh;
   
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = "$dir/stamp_with_control";
   my $s = wtsi_clarity::epp::stamp->new(
