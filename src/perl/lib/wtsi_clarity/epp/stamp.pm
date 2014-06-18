@@ -142,6 +142,7 @@ override 'run' => sub {
   $self->_create_containers();
   my $doc = $self->_create_placements_doc;
   $doc = $self->_create_output_placements($doc);
+  $self->epp_log($doc->toString);
   $self->request->post($self->step_url . '/placements', $doc->toString);
   return;
 };

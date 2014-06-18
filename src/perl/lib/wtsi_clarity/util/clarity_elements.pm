@@ -94,6 +94,13 @@ sub find_element {
   return $nodeList->size() == 0 ? undef : $nodeList->pop();
 }
 
+sub add_udf_element {
+  my ($self, $xml_el, $udf_name, $udf_value) = @_;
+  my $new_node = $self->create_udf_element($xml_el, $udf_name, $udf_value);
+  $xml_el->documentElement()->appendChild($new_node);
+  return;
+}
+
 sub create_udf_element {
   my ($self, $xml_el, $udf_name, $udf_value) = @_;
   my $url = 'http://genologics.com/ri/userdefined';
@@ -189,7 +196,13 @@ wtsi_clarity::util::clarity_elements
   find_element - takes some XML and an element name. Will return the element name
   node, or undef if not found.
 
+=head2 add_udf_element
+
+  creates a new element and add it to the document
+
 =head2 create_udf_element
+
+  creates a new element and returns it
 
 =head2 update_text
 

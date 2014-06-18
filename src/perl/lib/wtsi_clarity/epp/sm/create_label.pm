@@ -417,17 +417,10 @@ sub _copy_purpose {
     if ($suffix) {
       $purpose .= " $suffix";
     }
-    $self->_create_node($doc,q[WTSI Container Purpose Name], $purpose);
+    $self->add_udf_element($doc,q[WTSI Container Purpose Name], $purpose);
   }
 
   return $purpose;
-}
-
-sub _create_node {
-  my ($self, $doc, $udf_name, $value) = @_;
-  my $node = $self->create_udf_element($doc, $udf_name, $value);
-  $doc->documentElement()->appendChild($node);
-  return;
 }
 
 sub _copy_supplier_container_name {
@@ -448,7 +441,7 @@ sub _copy_supplier_container_name {
     if (!$name) {
       croak 'Container name undefined';
     }
-    $self->_create_node($doc, 'Supplier Container Name', $name);
+    $self->add_udf_element($doc, 'Supplier Container Name', $name);
   }
   return;
 }
