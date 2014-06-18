@@ -1,7 +1,8 @@
 use strict;
 use warnings;
-use Test::More tests => 32;
+use Test::More tests => 36;
 use Test::Exception;
+use File::Temp qw/tempdir/;
 
 use_ok('wtsi_clarity::epp::stamp');
 
@@ -76,9 +77,7 @@ use_ok('wtsi_clarity::epp::stamp');
 
   my $doc;
   lives_ok { $doc = $s->_create_placements_doc } 'placement doc created';
-  #diag $doc;
   lives_ok { $doc = $s->_create_output_placements($doc) } 'individual placements created';
-  #diag $doc;
 }
 
 {
@@ -109,14 +108,16 @@ use_ok('wtsi_clarity::epp::stamp');
 
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/stamp_with_control';
-  #local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
   my $s = wtsi_clarity::epp::stamp->new(
-              process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-99904',
+              process_url => 'http://clarity-ap:8080/api/v2/processes/24-99904',
               step_url => 'some',
               container_type_name => ['ABgene 0765', 'ABgene 0800']);
+  
   lives_ok { $s->_analytes } 'got all info from clarity';
   my @containers = keys %{$s->_analytes};
   is (scalar @containers, 1, 'one input container, control tube is skipped');
+  is (scalar(map { $_ =~ /\Ahttp/ } keys %{$s->_analytes->{$containers[0]}}), 4, 'control will not be stamped'); 
+  
   ok ($s->_validate_container_type, 'validate container flag is true');
   is (scalar @{$s->_container_type}, 2, 'two container types retrieved');
   is ($s->_container_type->[0],
@@ -125,6 +126,26 @@ use_ok('wtsi_clarity::epp::stamp');
   is ($s->_container_type->[1],
       '<type uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containertypes/105" name="ABgene 0800"/>',
       'second container type derived correctly from name');
+}
+
+{
+  my $dir = tempdir(CLEANUP => 1);
+  `cp -R t/data/stamp_with_control $dir`;
+   #remove tube container from test data
+  `rm $dir/stamp_with_control/containers/27-7555`;
+  my $control = "$dir/stamp_with_control/artifacts/151C-801PA1?state=359614";
+  `sed -i 's/27-7555/27-7103/g' $control`; #place control on the input plate
+  `sed -i 's/1:1/H:12/' $control`;         #in well H:12
+  
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = "$dir/stamp_with_control";
+  my $s = wtsi_clarity::epp::stamp->new(
+              process_url => 'http://clarity-ap:8080/api/v2/processes/24-99904',
+              step_url => 'some');
+  lives_ok { $s->_analytes } 'got all info from clarity';
+  my @containers = keys %{$s->_analytes};
+  is (scalar @containers, 1, 'one input container');
+  is (scalar(map { $_ =~ /\Ahttp/ } keys %{$s->_analytes->{$containers[0]}}), 5,
+    'control will be stamped');
 }
 
 1;

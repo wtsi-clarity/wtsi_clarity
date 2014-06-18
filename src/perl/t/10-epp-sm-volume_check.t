@@ -2,6 +2,7 @@ use strict;
 use warnings;
 use Test::More tests => 7;
 use Test::Exception;
+use Test::Warn;
 use Test::MockObject::Extends;
 use File::Temp qw/ tempdir /;
 use File::Spec::Functions;
@@ -51,7 +52,7 @@ my $current = cwd;
    
   my $epp = wtsi_clarity::epp::sm::volume_check->new(
     request     => $r,
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-64486',
+    process_url => 'http://clarity-ap:8080/api/v2/processes/24-64486',
     input       => $in,
     output      => $out,
   );
@@ -65,11 +66,13 @@ my $current = cwd;
 
   $epp = wtsi_clarity::epp::sm::volume_check->new(
     request     => $r,
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-64486',
+    process_url => 'http://clarity-ap:8080/api/v2/processes/24-64486',
     input       => $in,
     output      => $out,
   );
-  lives_ok { $epp->run } 'callback runs OK';
+  warning_like { $epp->run }
+  qr/run method of the wtsi_clarity::epp::sm::volume_check class is called, process is/,
+  'callback runs OK, logs process details';
 
   chdir $current;
   ok(-e catfile($working, $out), 'robot file has been copied');
