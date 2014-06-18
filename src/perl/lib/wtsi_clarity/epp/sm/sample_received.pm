@@ -13,12 +13,42 @@ with 'wtsi_clarity::util::clarity_elements';
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $ANALYTE_PATH => q( prc:process/input-output-map/input/@uri );
-Readonly::Scalar my $URI_PATH => q ( art:artifact/sample/@uri );
-Readonly::Scalar my $SUPPLIER_UDF_FIELD_NAME  => 'WTSI Supplier Sample Name (SM)';
-Readonly::Scalar my $SUPPLIER_NAME_PATH => q( /smp:sample/udf:field[@name=') . $SUPPLIER_UDF_FIELD_NAME . q('] );
-Readonly::Scalar my $DATE_RECEIVED_PATH => q( /smp:sample/date-received );
+Readonly::Scalar my  $ANALYTE_PATH => q( prc:process/input-output-map/input/@uri );
+Readonly::Scalar my  $URI_PATH => q ( art:artifact/sample/@uri );
+Readonly::Scalar my  $SUPPLIER_UDF_FIELD_NAME  => 'WTSI Supplier Sample Name (SM)';
+Readonly::Scalar our $SUPPLIER_NAME_PATH => q( /smp:sample/udf:field[@name=') . $SUPPLIER_UDF_FIELD_NAME . q('] );
+Readonly::Scalar my  $DATE_RECEIVED_PATH => q( /smp:sample/date-received );
 ## use critic
+
+has '_uuid' => (
+  isa        => 'Str',
+  is         => 'ro',
+  required   => 0,
+  lazy_build => 1,
+);
+sub _build__uuid {
+  my $self = shift;
+
+  my $request = wtsi_clarity::util::request->new('content_type' => 'application/json');
+  my $url = $self->config->uuid_api->{'uri'};
+  my $response = $request->get($url);
+  if (!$response) {
+    croak qq[Empty response from $url];
+  }
+  my $response_json = decode_json $response;
+  if (!$response_json->{'uuid'}) {
+    croak qq[Could not get uuid from $url];
+  }
+
+  return $response_json->{'uuid'};
+}
+
+has '_date' => (
+  isa        => 'Str',
+  is         => 'ro',
+  required   => 0,
+  default    => sub {return DateTime->now->strftime('%Y-%m-%d') },
+);
 
 override 'run' => sub {
   my $self= shift;
@@ -43,7 +73,8 @@ sub _fetch_and_update_samples {
     my $sampleURI = $self->_extract_sample_uri($analyteDoc);
     my $sampleDoc = $self->fetch_and_parse($sampleURI);
     if ($self->_is_new_sample($sampleDoc, $sampleURI)) {
-      $self->_update_sample($sampleDoc, $sampleURI);
+      $self->_update_sample($sampleDoc);
+      $self->request->put($sampleURI, $sampleDoc->toString());
     }
   }
 
@@ -70,38 +101,14 @@ sub _is_new_sample {
 }
 
 sub _update_sample {
-  my ($self, $sampleDoc, $sampleURI) = @_;
+  my ($self, $sampleDoc) = @_;
 
   my $nameElem = $self->find_element($sampleDoc, 'name');
-  $self->create_udf_element($sampleDoc, $SUPPLIER_UDF_FIELD_NAME, $nameElem->textContent);
-  $self->set_element($sampleDoc, 'name', $self->_get_uuid());
-
-  $self->set_element($sampleDoc, 'date_received', $self->_today());
-
-  $self->request->put($sampleURI, $sampleDoc->toString());
+  $self->add_udf_element($sampleDoc, $SUPPLIER_UDF_FIELD_NAME, $nameElem->textContent);
+  $self->set_element($sampleDoc, 'name', $self->_uuid);
+  $self->set_element($sampleDoc, 'date_received', $self->_date);
 
   return;
-}
-
-sub _get_uuid {
-  my $self = shift;
-
-  my $request = wtsi_clarity::util::request->new('content_type' => 'application/json');
-  my $url = $self->config->uuid_api->{'uri'};
-  my $response = $request->get($url);
-  if (!$response) {
-    croak qq[Empty response from $url];
-  }
-  my $response_json = decode_json $response;
-  if (!$response_json->{'uuid'}) {
-    croak qq[Could not get uuid from $url];
-  }
-
-  return $response_json->{'uuid'};
-}
-
-sub _today {
-  return DateTime->now->strftime('%Y-%m-%d');
 }
 
 1;

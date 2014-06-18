@@ -1,5 +1,8 @@
 CHANGES for wtsi_clarity Perl project
 
+release 0.20
+  - bug fix - restore copying sapplier name to an udf field
+
 release 0.19
   - version from git describe command - ensure starts with a number
   - sample_received callback bug fix - sample details should only
