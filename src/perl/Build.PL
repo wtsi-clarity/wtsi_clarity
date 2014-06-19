@@ -63,6 +63,7 @@ my $builder = $class->new(
                 'Test::Perl::Critic'              => 0,
                 'Test::Warn'                      => 0,
                 'File::Temp'                      => 0,
+                'File::Slurp'                     => 0,
                 'Cwd'                             => 0,
           },
 
