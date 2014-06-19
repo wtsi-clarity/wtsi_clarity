@@ -16,14 +16,16 @@ Readonly::Scalar my $TARGET_NAME   => q(QC Complete);
 ## use critic
 
 extends 'wtsi_clarity::util::clarity_elements_fetcher';
+with 'wtsi_clarity::util::clarity_elements';
+with 'wtsi_clarity::util::clarity_elements_fetcher_role';
 
 our $VERSION = '0.0';
 
-override '_get_targets_uri' => sub {
+sub get_targets_uri {
   return ( $ARTIFACT_PATH , $SAMPLE_PATH);
 };
 
-override '_update_one_target_data' => sub {
+sub update_one_target_data {
   my ($self, $targetDoc, $targetURI, $value) = @_;
 
   $self->set_udf_element_if_absent($targetDoc, $TARGET_NAME, $value);
@@ -31,7 +33,7 @@ override '_update_one_target_data' => sub {
   return $targetDoc->toString();
 };
 
-override '_get_data' => sub {
+sub get_data {
   my ($self, $targetDoc, $targetURI) = @_;
   return DateTime->now->strftime('%Y-%m-%d');
 };
@@ -80,7 +82,7 @@ Benoit Mangili E<lt>bm10@sanger.ac.ukE<gt>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (C) 2014 GRL by Benoit Mangili
+Copyright (C) 2014 Genome Research Ltd.
 
 This file is part of wtsi_clarity project.
 

@@ -1,27 +1,13 @@
 package wtsi_clarity::util::clarity_elements_fetcher;
 
 use Moose;
-use Carp;
-use XML::LibXML;
-use Readonly;
-use DateTime;
 
 use wtsi_clarity::util::request;
 use wtsi_clarity::util::clarity_elements;
 
 extends 'wtsi_clarity::epp';
 
-with 'wtsi_clarity::util::clarity_elements';
-
 our $VERSION = '0.0';
-
-has '_targets' => (
-  isa => 'HashRef',
-  is  => 'ro',
-  required => 0,
-  lazy => 1,
-  default => sub { {} },
-);
 
 override 'run' => sub {
   my $self= shift;
@@ -34,87 +20,6 @@ override 'run' => sub {
   return 1;
 };
 
-# Finding the targets....
-
-sub fetch_targets_hash {
-  # start the recursive search for targets.
-  my ($self, @list_of_xpath) = @_;
-
-  my @output =  $self->_find_xml_recursively($self->process_doc->getDocumentElement(), @list_of_xpath);
-
-  my %hash =  map { $_->getValue() => $self->fetch_and_parse($_->value) } @output;
-  return \%hash;
-}
-
-sub _fetch_targets_hash {
-  my ($self) = @_;
-  my $hash = $self->fetch_targets_hash($self->_get_targets_uri());
-
-  return $hash;
-}
-
-sub _find_xml_recursively {
-  my ($self,$xml, @xpaths) = @_;
-  my $first = shift @xpaths;
-
-  my @nodeList = $xml->findnodes($first)->get_nodelist();
-  my @found_targets = ();
-
-  if (scalar @xpaths != 0)
-  {
-    foreach my $element (@nodeList)
-    {
-      my $partial_xml = $self->fetch_and_parse($element->getValue());
-      my @new_targets   = $self->_find_xml_recursively($partial_xml->getDocumentElement() , @xpaths);
-      push @found_targets, @new_targets;
-    }
-    return @found_targets;
-  }
-  else
-  {
-    return @nodeList;
-  }
-}
-
-# core methods ....
-
-sub _fetch_and_update_targets {
-  my ($self, $doc, $data) = @_;
-
-  my $targets = $self->_fetch_targets_hash();
-
-  while (my ($targetURI, $targetDoc) = each %{$targets} ) {
-    if (!exists $self->_targets->{$targetURI}) {
-      $self->_targets->{$targetURI} =
-          $self->_update_one_target_data($targetDoc, $targetURI, $self->_get_data($targetDoc, $targetURI));
-    }
-  }
-
-  return 1;
-}
-
-sub _put_changes {
-  my ($self) = @_;
-  foreach my $targetURI (keys %{$self->_targets})
-  {
-    # $self->request->put($targetURI, $self->_targets->{$targetURI})
-  }
-  return;
-}
-
-# stubs to be implemented by derived class...
-
-sub _get_targets_uri {
-  return;
-}
-
-sub _update_one_target_data {
-  return;
-}
-
-sub _get_data {
-  return;
-}
 
 1;
 
@@ -133,14 +38,16 @@ wtsi_clarity::util::clarity_elements_fetcher
   ## use critic
 
   extends 'wtsi_clarity::util::clarity_elements_fetcher';
+  with 'wtsi_clarity::util::clarity_elements';
+  with 'wtsi_clarity::util::clarity_elements_fetcher_role';
 
   our $VERSION = '0.0';
 
-  override '_get_targets_uri' => sub {
+  sub get_targets_uri {
     return ( $OUTPUT_PATH, $CONTAINER_PATH );
   };
 
-  override '_update_one_target_data' => sub {
+  sub update_one_target_data {
     my ($self, $targetDoc, $targetURI, $value) = @_;
 
     $self->set_udf_element_if_absent($targetDoc, $TARGET_NAME, $value);
@@ -148,7 +55,7 @@ wtsi_clarity::util::clarity_elements_fetcher
     return $targetDoc->toString();
   };
 
-  override '_get_data' => sub {
+  sub get_data {
     my ($self,$targetDoc, $targetURI) = @_;
     return $self->process_doc->findvalue($PROCESS_PURPOSE_PATH);
   };
@@ -156,28 +63,16 @@ wtsi_clarity::util::clarity_elements_fetcher
 
 =head1 DESCRIPTION
 
-  Offers a generic way to find and update resources (called 'targets' in this
-  context) in XML files, using XPath to find the files.
+  Offers an abstract class to find and update resources (called 'targets' in this
+  context) in XML files, using XPath to find the files. It implements the run
+  methods of wtsi_clarity::epp.
 
-  _get_targets_uri(),
-  _update_one_target_data(), and
-  _get_data()
-  have to be overriden.
-
-  _get_targets_uri() must return an array of XPaths used to fetch the resources
-  to updates. In the given example, the resources are the containers found
-  inside the output artifacts of the process:
-
-  _get_data() will be called to find the
-
-  _update_one_target_data() is the core of the update mechanism. It updates each
-  target with a given value. It will be applied to every target, and has to return
-  the serialised version of the updated xml.
-
+  wtsi_clarity::util::clarity_elements and wtsi_clarity::util::clarity_elements_fetcher_role
+  must be used in the derived instances.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 run - callback for the fluidigm_request_volume action
+=head2 run - main callback implementation. Called automatically.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
@@ -187,14 +82,6 @@ wtsi_clarity::util::clarity_elements_fetcher
 
 =item Moose
 
-=item Carp
-
-=item XML::LibXML
-
-=item Readonly
-
-=item JSON
-
 =back
 
 =head1 AUTHOR
@@ -203,7 +90,7 @@ Benoit Mangili E<lt>bm10@sanger.ac.ukE<gt>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (C) 2014 GRL by Benoit Mangili
+Copyright (C) 2014 Genome Research Ltd.
 
 This file is part of wtsi_clarity project.
 
