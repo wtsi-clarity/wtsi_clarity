@@ -78,7 +78,7 @@ use_ok('wtsi_clarity::epp::stamp');
 
   my $doc;
   lives_ok { $doc = $s->_create_placements_doc } 'placement doc created';
-  lives_ok { $doc = $s->_create_output_placements($doc) } 'individual placements created';
+  lives_ok { $s->_create_output_placements($doc) } 'individual placements created';
 }
 
 {
