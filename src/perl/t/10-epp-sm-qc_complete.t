@@ -17,7 +17,7 @@ use_ok('util::xml', 'can use wtsi_clarity::t::util::xml' );
   my $qc_complete_step = wtsi_clarity::epp::sm::qc_complete->new(
     process_url => 'http://clarity-ap:8080/api/v2/processes/24-100359');
 
-  lives_ok { $qc_complete_step->_fetch_and_update_targets($qc_complete_step->process_doc, 'today') } 'managed to fetch and updates the samples';
+  lives_ok { $qc_complete_step->fetch_and_update_targets($qc_complete_step->process_doc) } 'managed to fetch and updates the samples';
 
   cmp_ok(scalar keys %{$qc_complete_step->_targets}, '==', 11,
     'There should be 11 artifacts (Test Fixture).');

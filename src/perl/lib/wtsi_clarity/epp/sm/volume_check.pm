@@ -108,7 +108,9 @@ sub _updateSample {
 
   my $newVolume = $parsed_file->{$wellLocation};
 
+## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
   $self->update_udf_element($sampleDoc, 'Volume (\N{U+00B5}L) (SM)', $newVolume);
+## use critic
   $self->request->put($sampleInfo->{'uri'}, $sampleDoc->toString());
 
   return 1;

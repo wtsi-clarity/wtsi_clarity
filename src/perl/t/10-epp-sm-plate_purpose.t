@@ -21,7 +21,7 @@ use_ok('util::xml', 'can use wtsi_clarity::t::util::xml' );
   my $plate_purpose = wtsi_clarity::epp::sm::plate_purpose->new(
     process_url => 'http://clarity-ap:8080/api/v2/processes/24-99911');
   # , $FAKE_PURPOSE
-  lives_ok { $plate_purpose->_fetch_and_update_targets($plate_purpose->process_doc) } 'managed to fetch and updates the containers';
+  lives_ok { $plate_purpose->fetch_and_update_targets($plate_purpose->process_doc) } 'managed to fetch and updates the containers';
 
   cmp_ok(scalar keys %{$plate_purpose->_targets}, '==', 1,
     'There should be only one container for the 5 artifacts as they have the same container.');
@@ -45,7 +45,7 @@ use_ok('util::xml', 'can use wtsi_clarity::t::util::xml' );
   my $plate_purpose = wtsi_clarity::epp::sm::plate_purpose->new(
     process_url => 'http://clarity-ap:8080/api/v2/processes/24-99912');
 
-  lives_ok { $plate_purpose->_fetch_and_update_targets($plate_purpose->process_doc) } 'managed to fetch and updates the containers';
+  lives_ok { $plate_purpose->fetch_and_update_targets($plate_purpose->process_doc) } 'managed to fetch and updates the containers';
 
   cmp_ok(scalar keys %{$plate_purpose->_targets}, '==', 2,
     'There should be two containers for the 5 artifacts as they have different containers.');

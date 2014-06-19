@@ -56,7 +56,17 @@ wtsi_clarity::epp::sm::qc_complete
 
 =head1 SUBROUTINES/METHODS
 
-=head2 run - callback for the qc_complete action
+=head2 get_targets_uri
+  Implementation needed by wtsi_clarity::util::clarity_elements_fetcher_role.
+  The targets are the samples find inside each artifact of the process.
+
+=head2 update_one_target_data
+  Implementation needed by wtsi_clarity::util::clarity_elements_fetcher_role.
+  The targets should only be updated if the target value is not present.
+
+=head2 get_data
+  Implementation needed by wtsi_clarity::util::clarity_elements_fetcher_role.
+  The value used to update the target is today's date.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

@@ -179,25 +179,43 @@ wtsi_clarity::util::clarity_elements
 =head1 SUBROUTINES/METHODS
 
 =head2
-  set_element - takes some XML, an element name, and the new value. Will
-  update the element in the XML with the new value.
+  set_udf_element_if_absent - takes some XML, an element name, and the new value. Will
+  add a UDF element in the XML with the new value, in the UDF namespace, and with an
+  attribute name but will NOT change the value of an existing node.
 
 =head2
-  set_element_if_absent - takes some XML, an element name, and the new value. Will
-  add the element in the XML with the new value, but will NOT change the value of
+  add_udf_element - takes some XML, an element name for the name attribute, and the
+  new value. Will update the element in the XML with the new value if present.
+
+=head2
+  update_udf_element - alias for add_udf_element.
+
+=head2
+  set_clarity_element_if_absent - takes some XML, an element name, and the new value. Will
+  add the element in the XML with the new value but will NOT change the value of
   an existing node.
 
 =head2
-  find_element - takes some XML and an element name. Will return the element name
+  add_clarity_element - takes some XML, an element name, and the new value. Will
+  update the element in the XML with the new value if present.
+
+=head2
+  update_clarity_element - alias for add_clarity_element.
+
+=head2
+  find_udf_element - takes some XML and an element name. Will return the UDF element
   node, or undef if not found.
 
-=head2 add_udf_element
-
-  creates a new element and add it to the document
+=head2
+  find_clarity_element - takes some XML and an element name. Will return the element
+  node, or undef if not found.
 
 =head2 create_udf_element
+  creates a new UDF element, append it to the xml at the given position, and returns it
 
-  creates a new element and returns it
+=head2 create_clarity_element
+  creates a new element, append it to the xml at the given position, and returns it
+
 
 =head2 update_text
 

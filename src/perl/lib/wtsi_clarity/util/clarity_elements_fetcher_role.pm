@@ -64,8 +64,8 @@ sub _find_xml_recursively {
 
 # core methods ....
 
-sub _fetch_and_update_targets {
-  my ($self, $doc, $data) = @_;
+sub fetch_and_update_targets {
+  my ($self, $doc) = @_;
 
   my $targets = $self->_fetch_targets_hash();
 
@@ -79,12 +79,11 @@ sub _fetch_and_update_targets {
   return 1;
 }
 
-sub _put_changes {
+sub put_changes {
   my ($self) = @_;
   foreach my $targetURI (keys %{$self->_targets})
   {
-    warn 'enable me!';
-    # $self->request->put($targetURI, $self->_targets->{$targetURI})
+    $self->request->put($targetURI, $self->_targets->{$targetURI})
   }
   return;
 }
@@ -124,7 +123,17 @@ wtsi_clarity::util::clarity_elements_fetcher_role
 
 =head1 SUBROUTINES/METHODS
 
-=head2 run - callback for the fluidigm_request_volume action
+=head2 fetch_targets_hash
+  Takes a list of XPaths, and use them to find the targets that will need to be
+  updated, as a hash (its keys are the URI of the targets).
+  Each Xpath has to point toward a URI, that will be fetched, and use to apply the next one.
+
+=head2 fetch_and_update_targets
+  Takes an XML doc to process.
+  Method used by clarity_elements_fetcher to fetch the target, and update them.
+
+=head2  put_changes
+  Method used to send the update requests after having updated the targets.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
