@@ -108,7 +108,7 @@ sub _updateSample {
 
   my $newVolume = $parsed_file->{$wellLocation};
 
-  $self->set_element($sampleDoc, 'volume', $newVolume);
+  $self->update_udf_element($sampleDoc, 'Volume (\N{U+00B5}L) (SM)', $newVolume);
   $self->request->put($sampleInfo->{'uri'}, $sampleDoc->toString());
 
   return 1;
@@ -123,11 +123,11 @@ __END__
 wtsi_clarity::epp::sm::volume_check
 
 =head1 SYNOPSIS
-  
+
   use wtsi_clarity::epp::sm::volume_check;
   wtsi_clarity::epp::sm::volume_check->new(process_url => 'http://some.com/process/1234XM',
                                            output      => 'LP45678.csv')->run();
-  
+
 =head1 DESCRIPTION
 
  Volume check for sample management workflow.

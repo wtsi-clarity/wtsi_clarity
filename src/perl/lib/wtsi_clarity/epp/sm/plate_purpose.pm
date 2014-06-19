@@ -9,76 +9,32 @@ use wtsi_clarity::util::request;
 use wtsi_clarity::util::clarity_elements;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $ANALYTE_PATH => q( prc:process/input-output-map/output/@uri );
-Readonly::Scalar my $PROCESS_PURPOSE_PATH => q ( prc:process/udf:field[@name="Plate Purpose"] );
-Readonly::Scalar my $CONTAINER_PATH => q ( art:artifact/location/container/@uri );
+Readonly::Scalar my $OUTPUT_PATH          => q(/prc:process/input-output-map/output/@uri);
+Readonly::Scalar my $PROCESS_PURPOSE_PATH => q(/prc:process/udf:field[@name="Plate Purpose"]);
+Readonly::Scalar my $CONTAINER_PATH       => q(/art:artifact/location/container/@uri);
+Readonly::Scalar my $TARGET_NAME          => q(WTSI Container Purpose Name);
 ## use critic
 
-extends 'wtsi_clarity::epp';
-
-with 'wtsi_clarity::util::clarity_elements';
+extends 'wtsi_clarity::util::clarity_elements_fetcher';
 
 our $VERSION = '0.0';
 
-has '_containers' => (
-  isa => 'HashRef',
-  is  => 'ro',
-  required => 0,
-  lazy => 1,
-  default => sub { {} },
-);
-
-override 'run' => sub {
-  my $self= shift;
-  super();
-
-  $self->_fetch_and_update_containers($self->process_doc);
-
-  $self->_put_changes();
-
-  return 1;
+override '_get_targets_uri' => sub {
+  return ( $OUTPUT_PATH, $CONTAINER_PATH );
 };
 
-sub _fetch_and_update_containers {
-  my ($self, $doc) = @_;
-  my $purpose = $doc->findvalue($PROCESS_PURPOSE_PATH);
+override '_update_one_target_data' => sub {
+  my ($self, $targetDoc, $targetURI, $value) = @_;
 
-  foreach my $analyteURI ($doc->findnodes($ANALYTE_PATH)) {
-    my $analyteDoc = $self->fetch_and_parse($analyteURI->getValue());
-    my $containerURI = $self->_extract_container_uri($analyteDoc);
-    my $containerDoc = $self->fetch_and_parse($containerURI);
+  $self->set_udf_element_if_absent($targetDoc, $TARGET_NAME, $value);
 
-    if (!exists $self->_containers->{$containerURI}) {
-      $self->_containers->{$containerURI} =
-          $self->_update_one_container_purpose($containerDoc, $containerURI, $purpose);
-    }
-  }
+  return $targetDoc->toString();
+};
 
-  return 1;
-}
-
-sub _extract_container_uri {
-  my ($self, $analyteDoc) = @_;
-  my $uri = $analyteDoc->findvalue($CONTAINER_PATH);
-  return $uri;
-}
-
-
-sub _update_one_container_purpose {
-  my ($self, $containerDoc, $containerURI, $purpose) = @_;
-  $self->set_element($containerDoc, 'plate_purpose', $purpose);
-
-  return $containerDoc->toString();
-}
-
-sub _put_changes {
-  my ($self) = @_;
-  foreach my $containerURI (keys %{$self->_containers})
-  {
-    $self->request->put($containerURI, $self->_containers->{$containerURI})
-  }
-  return;
-}
+override '_get_data' => sub {
+  my ($self, $targetDoc, $targetURI) = @_;
+  return $self->process_doc->findvalue($PROCESS_PURPOSE_PATH);
+};
 
 1;
 

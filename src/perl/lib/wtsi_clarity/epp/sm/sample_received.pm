@@ -103,10 +103,10 @@ sub _is_new_sample {
 sub _update_sample {
   my ($self, $sampleDoc) = @_;
 
-  my $nameElem = $self->find_element($sampleDoc, 'name');
+  my $nameElem = $self->find_clarity_element($sampleDoc, 'name');
   $self->add_udf_element($sampleDoc, $SUPPLIER_UDF_FIELD_NAME, $nameElem->textContent);
-  $self->set_element($sampleDoc, 'name', $self->_uuid);
-  $self->set_element($sampleDoc, 'date_received', $self->_date);
+  $self->add_clarity_element($sampleDoc, 'name', $self->_uuid);
+  $self->add_clarity_element($sampleDoc, 'date-received', $self->_date);
 
   return;
 }
@@ -120,9 +120,9 @@ __END__
 wtsi_clarity::epp::sm::sample_received
 
 =head1 SYNOPSIS
-  
+
   wtsi_clarity::epp:sm::sample_received->new(process_url => 'http://my.com/processes/3345')->run();
-  
+
 =head1 DESCRIPTION
 
   Updates the 'date_received' field of all samples in the process to today's date. Will also copy

@@ -7,85 +7,95 @@ use XML::LibXML;
 
 our $VERSION = '0.0';
 
-## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Hash my %NAME2ELEMENTS => (
-  'volume' => {
-    'create' => '_create_volume',
-    'find'   => q( /smp:sample/udf:field[starts-with(@name, 'Volume')] ),
-  },
-  'name' => {
-    'create' => '_create_name',
-    'find'   => q( /smp:sample/name )
-  },
-  'date_received' => {
-    'create' => '_create_date_received',
-    'find'   => q ( /smp:sample/date-received ),
-  },
-  'qc_complete' => {
-    'create' => '_create_qc_complete',
-    'find'   => q ( /smp:sample/udf:field[@name='QC Complete'] ),
-  },
-  'plate_purpose' => {
-    'create' => '_create_plate_purpose',
-    'find'   => q( /con:container/udf:field[@name='WTSI Container Purpose Name'] )
-  },);
+sub _set_clarity_element {
+  my ($self, $xml, $name, $value, $override) = @_;
+  return $self->_set_any_element($xml, $name, $value, $override, 0);
+}
+
+sub _set_udf_element {
+  my ($self, $xml, $name, $value, $override) = @_;
+  return $self->_set_any_element($xml, $name, $value, $override, 1);
+}
+
+## no critic(Subroutines::ProhibitManyArgs)
+sub _set_any_element {
+  my ($self, $xml, $name, $value, $override, $is_udf) = @_;
 ## use critic
-## no critic(Subroutines::ProhibitUnusedPrivateSubroutines)
+  croak q/Missing argument: is_udf flag must be set/ if !defined $is_udf;
+  # find if the element already exists...
+  my $oldElement = $is_udf ?  $self->find_udf_element($xml, $name):
+                              $self->find_clarity_element($xml, $name);
 
-sub set_element {
-  my ($self, $xml, $name, $value) = @_;
-
-  if (!exists $NAME2ELEMENTS{$name}) {
-    croak q/ Element can not be created /;
+  if ( $oldElement ) {
+    if ($override ) {
+      # if node exists and should be overriden...
+      return $self->_overwrite_element($oldElement, $value);
+    } else {
+      # if node exists but should be kept...
+      return $oldElement;
+    }
   }
-  my $element = $NAME2ELEMENTS{$name};
-  my $createMethod = $element->{'create'};
 
-  my $oldNode = $self->find_element($xml, $name);
-  my $newNode = $self->$createMethod($xml, $value);
+  # node does not exists...
+  my $newNode = $is_udf ? $self->create_udf_element    ($xml, $name, $value):
+                          $self->create_clarity_element($xml, $name, $value);
   my $root = $xml->getDocumentElement();
-
-  if ( $oldNode ) {
-    $oldNode->removeChildNodes();
-    $root->removeChild($oldNode);
-  }
-
   $root->addChild($newNode);
 
   return $newNode;
 }
 
-sub set_element_if_absent {
-  my ($self, $xml, $name, $value) = @_;
+sub _overwrite_element {
+  my ($self, $element, $value) = @_;
 
-  if (!exists $NAME2ELEMENTS{$name}) {
-    croak qq/ Element <$name> can not be created : it is not handled by clarity_elements/;
+  if ($element->hasChildNodes()) {
+    my $firstchild = $element->firstChild();
+    if (!$firstchild->isa('XML::LibXML::Text')) {
+      croak q(It seems that a udf element has children elements which are not text!);
+    }
+    $firstchild->setData($value);
+    return $element;
   }
-  my $element = $NAME2ELEMENTS{$name};
-  my $createMethod = $element->{'create'};
-
-  my $oldNode = $self->find_element($xml, $name);
-  my $root = $xml->getDocumentElement();
-
-  if ( $oldNode ) {
-    return $oldNode;
-  }
-
-  my $newNode = $self->$createMethod($xml, $value);
-  $root->addChild($newNode);
-  return $newNode;
+  $element->appendText($value);
+  return $element;
 }
 
+sub set_udf_element_if_absent {
+  my ($self, $xml, $name, $value) = @_;
+  return $self->_set_udf_element($xml, $name, $value);
+}
 
-sub find_element {
+sub add_udf_element {
+  my ($self, $xml, $name, $value) = @_;
+  return $self->_set_udf_element($xml, $name, $value, 1);
+}
+
+sub update_udf_element {
+  my ($self, $xml, $name, $value) = @_;
+  return $self->_set_udf_element($xml, $name, $value, 1);
+}
+
+sub set_clarity_element_if_absent {
+  my ($self, $xml, $name, $value) = @_;
+  return $self->_set_clarity_element($xml, $name, $value);
+}
+
+sub add_clarity_element {
+  my ($self, $xml, $name, $value) = @_;
+  return $self->_set_clarity_element($xml, $name, $value, 1);
+}
+
+sub update_clarity_element {
+  my ($self, $xml, $name, $value) = @_;
+  return $self->_set_clarity_element($xml, $name, $value, 1);
+}
+
+sub find_udf_element {
   my ($self, $xml, $name) = @_;
-  if (!exists $NAME2ELEMENTS{$name}) {
-    croak qq/ Cannot search for element <$name> : it is not handled by clarity_elements /;
-  }
-  my $element = $NAME2ELEMENTS{$name};
 
   my $xpc = XML::LibXML::XPathContext->new($xml->getDocumentElement());
-  my $nodeList = $xpc->findnodes($element->{'find'});
+  my $xpath = "udf:field[\@name='$name']";
+  my $nodeList = $xpc->findnodes($xpath);
 
   if ($nodeList->size() > 1) {
     croak qq/ Found more than one element for $name /;
@@ -94,11 +104,18 @@ sub find_element {
   return $nodeList->size() == 0 ? undef : $nodeList->pop();
 }
 
-sub add_udf_element {
-  my ($self, $xml_el, $udf_name, $udf_value) = @_;
-  my $new_node = $self->create_udf_element($xml_el, $udf_name, $udf_value);
-  $xml_el->documentElement()->appendChild($new_node);
-  return;
+sub find_clarity_element {
+  my ($self, $xml, $name) = @_;
+
+  my $xpc = XML::LibXML::XPathContext->new($xml->getDocumentElement());
+  my $xpath = "$name";
+  my $nodeList = $xpc->findnodes($xpath);
+
+  if ($nodeList->size() > 1) {
+    croak qq/ Found more than one element for $name /;
+  }
+
+  return $nodeList->size() == 0 ? undef : $nodeList->pop();
 }
 
 sub create_udf_element {
@@ -108,6 +125,13 @@ sub create_udf_element {
   $docElem->setNamespace($url, 'udf', 0);
   my $node = $xml_el->createElementNS($url, 'field');
   $node->setAttribute('name', $udf_name);
+  $node->appendTextNode($udf_value);
+  return $node;
+}
+
+sub create_clarity_element {
+  my ($self, $xml_el, $udf_name, $udf_value) = @_;
+  my $node = $xml_el->createElement($udf_name);
   $node->appendTextNode($udf_value);
   return $node;
 }
@@ -129,35 +153,6 @@ sub trim_value {
     $v =~ s/^\s+|\s+$//smxg;
   }
   return $v;
-}
-
-sub _create_volume {
-  my ($self, $sampleXML, $volume) = @_;
-  return $self->create_udf_element($sampleXML, "Volume (\N{U+00B5}L) (SM)", $volume);
-}
-
-sub _create_date_received {
-  my ($self, $sampleXML, $date) = @_;
-  my $node = $sampleXML->createElement('date-received');
-  $node->appendTextNode($date);
-  return $node;
-}
-
-sub _create_qc_complete {
-  my ($self, $sampleXML, $date) = @_;
-  return $self->create_udf_element($sampleXML, 'QC Complete', $date);
-}
-
-sub _create_name {
-  my ($self, $sampleXML, $name) = @_;
-  my $node = $sampleXML->createElement('name');
-  $node->appendTextNode($name);
-  return $node;
-}
-
-sub _create_plate_purpose {
-  my ($self, $containerXML, $name) = @_;
-  return $self->create_udf_element($containerXML, 'WTSI Container Purpose Name', $name);
 }
 
 1;

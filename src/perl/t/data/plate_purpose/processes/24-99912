@@ -25,6 +25,6 @@
         <input post-process-uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JON1407A3439PA1?state=335412" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JON1407A3439PA1?state=335412" limsid="JON1407A3439PA1" />
         <output uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/2-665722?state=359722" output-generation-type="PerInput" output-type="Analyte" limsid="2-665722" />
     </input-output-map>
-    <udf:field type="String" name="Plate Purpose">WGS Stock DNA</udf:field>
+    <udf:field type="String" name="Plate Purpose">Because...</udf:field>
     <process-parameter name="Plate Purpose" />
 </prc:process>

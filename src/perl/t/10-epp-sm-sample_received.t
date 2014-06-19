@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 12;
+use Test::More tests => 13;
 use Test::Warn;
 
 use_ok('wtsi_clarity::epp::sm::sample_received');
@@ -44,12 +44,15 @@ use_ok('wtsi_clarity::epp::sm::sample_received');
   my $sample_doc = $s->fetch_and_parse(q[http://clarity-ap:8080/api/v2/samples/JON1301A293]);
   $s->_update_sample($sample_doc);
   my @nodes = $sample_doc->findnodes( $wtsi_clarity::epp::sm::sample_received::SUPPLIER_NAME_PATH );
-  is (scalar(@nodes), 1, 'supplier udf created');
-  is ($nodes[0]->textContent, 'Test a', 'supplier udf set correctly');
+  cmp_ok(scalar(@nodes), '==', 1, 'supplier udf should be created.');
+  cmp_ok($nodes[0]->textContent, 'eq', 'Test a', 'supplier udf should be correct.');
+
   @nodes = $sample_doc->findnodes( q{ /smp:sample/name });
-  is ($nodes[0]->textContent, $uuid, 'sample name changed to uuid');
-  @nodes = $sample_doc->findnodes( q{ /smp:sample/date-received });
-  is ($nodes[0]->textContent, $date, 'date received set');
+  cmp_ok($nodes[0]->textContent, 'eq', $uuid, 'should change sample name to uuid');
+
+  @nodes = $sample_doc->findnodes( q{/smp:sample/date-received});
+  cmp_ok(scalar(@nodes), '==', 1, 'should find date-received.');
+  is ($nodes[0]->textContent, $date, 'should set date-received');
 }
 
 1;
