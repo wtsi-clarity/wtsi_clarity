@@ -15,6 +15,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'stamp'        => 'stamp',
     'sample_received' => 'sm::sample_received',
     'qc_complete' => 'sm::qc_complete',
+    'fluidigm_request_volume' => 'sm::fluidigm_request_volume',
     'plate_purpose' => 'sm::plate_purpose',
 );
 
