@@ -121,13 +121,14 @@ sub _build__analytes {
     }
     $containers->{$container_url}->{$url}->{'well'} = $well;
     ##no critic (RequireInterpolationOfMetachars)
-    my $uri = $anode->findvalue(q{./output/@uri});
+    my $uri = $anode->findvalue(q{./output/@uri}); # ideally, we have to check that this output is
+                                                   # of type 'Analyte'
     ##use critic
     if (!$uri) {
       croak qq[Target analyte uri not defined for container $container_url input analyte $url];
     }
     ($uri) = $uri =~ /\A([^?]*)/smx; #drop part of the uri starting with ? (state)
-    $containers->{$container_url}->{$url}->{'target_analyte_uri'} = $uri;
+    push @{$containers->{$container_url}->{$url}->{'target_analyte_uri'}}, $uri;
   }
   if (scalar keys %{$containers} == 0) {
     croak q[Failed to get input containers for process ] . $self->process_url;
@@ -142,7 +143,6 @@ override 'run' => sub {
   $self->_create_containers();
   my $doc = $self->_create_placements_doc;
   $doc = $self->_create_output_placements($doc);
-  $self->epp_log($doc->toString);
   $self->request->post($self->step_url . '/placements', $doc->toString);
   return;
 };
@@ -204,14 +204,20 @@ sub _create_output_placements {
   }
 
   foreach my $input_container ( keys %{$self->_analytes}) {
+
     foreach my $input_analyte ( keys %{$self->_analytes->{$input_container} } ) {
       if ( $input_analyte eq 'output_containers' || $input_analyte eq 'doc' ) {
         next;
       }
-      my $uri = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'};
+
       my $well = $self->_analytes->{$input_container}->{$input_analyte}->{'well'};
 
+      my $container_index = 0;
       foreach my $output_container ( @{$self->_analytes->{$input_container}->{'output_containers'}} ) {
+        my $uri = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'}->[$container_index];
+        if (!$uri) {
+          croak qq[No target analyte uri for container index $container_index];
+        }
         my $placement = $doc->createElement('output-placement');
         $placement->setAttribute( 'uri', $uri );
         my $location = $doc->createElement('location');
@@ -222,6 +228,8 @@ sub _create_output_placements {
         $container->setAttribute( 'limsid', $output_container->{'limsid'} );
         $location->appendTextChild('value', $well);
         $placements[0]->addChild($placement);
+
+        $container_index++;
       }
     }
   }

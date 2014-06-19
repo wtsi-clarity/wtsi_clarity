@@ -1,5 +1,9 @@
 CHANGES for wtsi_clarity Perl project
 
+release 0.21
+  - bug fix in 1:N stamping - for each input analyte, take into accout
+      potential multiple output analytes
+
 release 0.20
   - bug fix - restore copying sapplier name to an udf field
 
