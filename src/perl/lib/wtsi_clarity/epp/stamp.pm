@@ -331,7 +331,7 @@ Marina Gourtovaia E<lt>cs24@sanger.ac.ukE<gt>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (C) 2014 GRL by Marina Gourtovaia
+Copyright (C) 2014 Genome Research Ltd.
 
 This file is part of wtsi_clarity project.
 

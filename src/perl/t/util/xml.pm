@@ -53,7 +53,7 @@ Benoit Mangili E<lt>bm10@sanger.ac.ukE<gt>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (C) 2014 GRL by Benoit Mangili
+Copyright (C) 2014 Genome Research Ltd.
 
 This file is part of wtsi_clarity project.
 

@@ -15,6 +15,8 @@ Readonly::Hash my %ACTION2MODULE => (
     'stamp'        => 'stamp',
     'sample_received' => 'sm::sample_received',
     'qc_complete' => 'sm::qc_complete',
+    'fluidigm_request_volume' => 'sm::fluidigm_request_volume',
+    'cherrypick_volume' => 'sm::cherrypick_volume',
     'plate_purpose' => 'sm::plate_purpose',
 );
 
@@ -81,7 +83,7 @@ Author: Marina Gourtovaia E<lt>mg8@sanger.ac.ukE<gt>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (C) 2014 GRL by Marina Gourtovaia
+Copyright (C) 2014 Genome Research Ltd.
 
 This file is part of wtsi_clarity project.
 
