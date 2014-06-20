@@ -12,7 +12,7 @@ Readonly::Scalar my $ARTIFACT_PATH        => q{/smp:sample/artifact/@uri};
 Readonly::Scalar my $SAMPLE_VOLUME_NAME   => q(Cherrypick Sample Volume);
 Readonly::Scalar my $BUFFER_VOLUME_NAME   => q(Cherrypick Buffer Volume);
 Readonly::Scalar my $CONCENTRATION_PATH   => q{/smp:sample/udf:field[@name="Sample Conc. (ng\µL) (SM)"]};
-Readonly::Scalar my $AVAILABLE_VOL_PATH   => q{/smp:sample/udf:field[@name="Volume (µL) (SM)"]};
+Readonly::Scalar my $AVAILABLE_VOL_PATH   => q{/smp:sample/udf:field[@name="WTSI Working Volume (µL) (SM)"]};
 
 Readonly::Scalar my $MODE_SELECTOR                             => q(/prc:process/udf:field[@name="Pick by"]);
 Readonly::Scalar my $REQUIRED_CONCENTRATION_FOR_CONCENTRATION  => q(/prc:process/udf:field[@name="(1) Required Concentration"]);
