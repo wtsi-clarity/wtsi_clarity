@@ -21,7 +21,6 @@ Readonly::Scalar my $REQUIRED_AMOUNT_FOR_NG_MIN_MAX            => q(/prc:process
 Readonly::Scalar my $MIN_VOLUME_FOR_NG_MIN_MAX                 => q(/prc:process/udf:field[@name="(2) Minimum Volume"]);
 Readonly::Scalar my $MAX_VOLUME_FOR_NG_MIN_MAX                 => q(/prc:process/udf:field[@name="(2) Maximum Volume"]);
 Readonly::Scalar my $REQUIRED_VOLUME_FOR_VOLUME                => q(/prc:process/udf:field[@name="(3) Required Volume"]);
-
 ## use critic
 
 extends 'wtsi_clarity::util::clarity_elements_fetcher';
@@ -29,32 +28,6 @@ with 'wtsi_clarity::util::clarity_elements';
 with 'wtsi_clarity::util::clarity_elements_fetcher_role';
 
 our $VERSION = '0.0';
-
-has 'data_source' => (
-  isa => 'HashRef',
-  is => 'ro',
-  required => 0,
-  lazy_build => 1,
-);
-
-sub _build_data_source {
-  my ($self) = @_;
-
-  my $hash_artifact = $self->fetch_targets_hash( ( $OUTPUT_PATH, ) );
-  my $hash_samples  = $self->fetch_targets_hash( ( $OUTPUT_PATH, $SAMPLE_PATH ) );
-
-  my $cool_hash = {};
-
-  while (my ($uri, $doc) = each %{$hash_samples} ) {
-    my @artifact = $doc->findnodes( $ARTIFACT_PATH )->get_nodelist();
-    my @concentration = $doc->findnodes( $CONCENTRATION_PATH )->get_nodelist();
-    my @volume        = $doc->findnodes( $AVAILABLE_VOL_PATH )->get_nodelist();
-
-    $cool_hash->{$artifact[0]->getValue()} = [$concentration[0]->textContent , $volume[0]->textContent];
-  }
-
-  return $cool_hash;
-}
 
 sub get_targets_uri {
   return ( $OUTPUT_PATH );
@@ -97,6 +70,38 @@ sub get_data {
   }
   return $result;
 };
+
+#### private members and methods...
+
+has 'data_source' => (
+  isa => 'HashRef',
+  is => 'ro',
+  required => 0,
+  lazy_build => 1,
+);
+
+sub _build_data_source {
+  my ($self) = @_;
+
+  my $hash_artifact = $self->fetch_targets_hash( ( $OUTPUT_PATH, ) );
+  my $hash_samples  = $self->fetch_targets_hash( ( $OUTPUT_PATH, $SAMPLE_PATH ) );
+
+  my $data_hash = {}; # for each artifact uri as a key, we save an array of concentration and volume
+                      # { 'http://clari ... /artifacts/00001' => [ 100, 10 ],
+                      #   'http://clari ... /artifacts/00002' => [ 100, 35 ],
+                      #   'http://clari ... /artifacts/00003' => [ 100, 25 ] }
+
+  while (my ($uri, $doc) = each %{$hash_samples} ) {
+    my @artifact = $doc->findnodes( $ARTIFACT_PATH )->get_nodelist();
+    my @concentration = $doc->findnodes( $CONCENTRATION_PATH )->get_nodelist();
+    my @volume        = $doc->findnodes( $AVAILABLE_VOL_PATH )->get_nodelist();
+
+    # we have to associate the correct uri with the correct data...
+    $data_hash->{$artifact[0]->getValue()} = [$concentration[0]->textContent , $volume[0]->textContent];
+  }
+
+  return $data_hash;
+}
 
 sub _concentration_and_volume_calculation {
   my ($required_concentration, $required_volume, $concentration, $avail_volume) = @_;
