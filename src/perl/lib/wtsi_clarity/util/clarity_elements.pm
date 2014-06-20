@@ -125,7 +125,9 @@ sub create_udf_element {
   $docElem->setNamespace($url, 'udf', 0);
   my $node = $xml_el->createElementNS($url, 'field');
   $node->setAttribute('name', $udf_name);
-  $node->appendTextNode($udf_value);
+  if (defined $udf_value) {
+    $node->appendTextNode($udf_value);
+  }
   return $node;
 }
 
