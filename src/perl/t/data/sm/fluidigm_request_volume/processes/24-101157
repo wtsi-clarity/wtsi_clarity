@@ -1,0 +1,44 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-101157" limsid="24-101157">
+    <type uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processtypes/536">Fluidigm Request (SM)</type>
+    <technician uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/researchers/454">
+        <first-name>Benoit</first-name>
+        <last-name>Mangili</last-name>
+    </technician>
+    <input-output-map>
+        <input post-process-uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JAC2A392PA1?state=209" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JAC2A392PA1?state=209" limsid="JAC2A392PA1" />
+        <output uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/2-670413?state=361974" output-generation-type="PerInput" output-type="Analyte" limsid="2-670413" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JAC2A390PA1?state=370" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JAC2A390PA1?state=370" limsid="JAC2A390PA1" />
+        <output uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/2-670415?state=361976" output-generation-type="PerInput" output-type="Analyte" limsid="2-670415" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JAC2A391PA1?state=214" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JAC2A391PA1?state=214" limsid="JAC2A391PA1" />
+        <output uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/2-670414?state=361975" output-generation-type="PerInput" output-type="Analyte" limsid="2-670414" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JAC2A385PA1?state=439" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JAC2A385PA1?state=439" limsid="JAC2A385PA1" />
+        <output uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/2-670420?state=361981" output-generation-type="PerInput" output-type="Analyte" limsid="2-670420" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JAC2A388PA1?state=120" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JAC2A388PA1?state=120" limsid="JAC2A388PA1" />
+        <output uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/2-670417?state=361978" output-generation-type="PerInput" output-type="Analyte" limsid="2-670417" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JAC2A389PA1?state=107" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JAC2A389PA1?state=107" limsid="JAC2A389PA1" />
+        <output uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/2-670416?state=361977" output-generation-type="PerInput" output-type="Analyte" limsid="2-670416" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JAC2A386PA1?state=442" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JAC2A386PA1?state=442" limsid="JAC2A386PA1" />
+        <output uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/2-670419?state=361980" output-generation-type="PerInput" output-type="Analyte" limsid="2-670419" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JAC2A387PA1?state=239" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JAC2A387PA1?state=239" limsid="JAC2A387PA1" />
+        <output uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/2-670418?state=361979" output-generation-type="PerInput" output-type="Analyte" limsid="2-670418" />
+    </input-output-map>
+    <udf:field type="Numeric" name="Required Volume">123.45</udf:field>
+    <udf:field type="String" name="Select Barcode Printer">g214bc</udf:field>
+    <udf:field type="String" name="Plate Purpose">Fluidigm STA</udf:field>
+    <process-parameter name="Transfer Required Volume on Samples" />
+</prc:process>

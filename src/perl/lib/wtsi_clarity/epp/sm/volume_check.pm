@@ -108,7 +108,9 @@ sub _updateSample {
 
   my $newVolume = $parsed_file->{$wellLocation};
 
-  $self->set_element($sampleDoc, 'volume', $newVolume);
+## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+  $self->update_udf_element($sampleDoc, 'Volume (\N{U+00B5}L) (SM)', $newVolume);
+## use critic
   $self->request->put($sampleInfo->{'uri'}, $sampleDoc->toString());
 
   return 1;
@@ -123,11 +125,11 @@ __END__
 wtsi_clarity::epp::sm::volume_check
 
 =head1 SYNOPSIS
-  
+
   use wtsi_clarity::epp::sm::volume_check;
   wtsi_clarity::epp::sm::volume_check->new(process_url => 'http://some.com/process/1234XM',
                                            output      => 'LP45678.csv')->run();
-  
+
 =head1 DESCRIPTION
 
  Volume check for sample management workflow.
@@ -175,7 +177,7 @@ Marina Gourtovaia E<lt>mg8@sanger.ac.ukE<gt>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (C) 2014 GRL by Marina Gourtovaia
+Copyright (C) 2014 Genome Research Ltd.
 
 This file is part of wtsi_clarity project.
 

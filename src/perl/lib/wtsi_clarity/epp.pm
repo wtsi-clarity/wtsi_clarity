@@ -12,17 +12,17 @@ with 'MooseX::Getopt';
 our $VERSION = '0.0';
 
 has 'process_url'  => (
-    isa             => 'Str',
-    is              => 'ro',
-    required        => 1,
+  isa             => 'Str',
+  is              => 'ro',
+  required        => 1,
 );
 
 has 'base_url'  => (
-    isa             => 'Str',
-    is              => 'ro',
-    required        => 0,
-    traits          => [ 'NoGetopt' ],
-    lazy_build      => 1,
+  isa             => 'Str',
+  is              => 'ro',
+  required        => 0,
+  traits          => [ 'NoGetopt' ],
+  lazy_build      => 1,
 );
 sub _build_base_url {
   my $self = shift;
@@ -34,22 +34,22 @@ sub _build_base_url {
 }
 
 has 'config'      => (
-    isa             => 'wtsi_clarity::util::config',
-    is              => 'ro',
-    required        => 0,
-    traits          => [ 'NoGetopt' ],
-    lazy_build      => 1,
+  isa             => 'wtsi_clarity::util::config',
+  is              => 'ro',
+  required        => 0,
+  traits          => [ 'NoGetopt' ],
+  lazy_build      => 1,
 );
 sub _build_config {
   return wtsi_clarity::util::config->new();
 }
 
 has 'xml_parser'  => (
-    isa             => 'XML::LibXML',
-    is              => 'ro',
-    required        => 0,
-    traits          => [ 'NoGetopt' ],
-    default         => sub { return XML::LibXML->new(); },
+  isa             => 'XML::LibXML',
+  is              => 'ro',
+  required        => 0,
+  traits          => [ 'NoGetopt' ],
+  default         => sub { return XML::LibXML->new(); },
 );
 
 has 'request' => (
@@ -60,11 +60,11 @@ has 'request' => (
 );
 
 has 'process_doc'  => (
-    isa             => 'XML::LibXML::Document',
-    is              => 'ro',
-    required        => 0,
-    traits          => [ 'NoGetopt' ],
-    lazy_build      => 1,
+  isa             => 'XML::LibXML::Document',
+  is              => 'ro',
+  required        => 0,
+  traits          => [ 'NoGetopt' ],
+  lazy_build      => 1,
 );
 sub _build_process_doc {
   my ($self) = @_;
@@ -131,7 +131,7 @@ wtsi_clarity::epp
   access to configuration options for the package.
 
 =head2 request
-  
+
    A reference to wtsi_clarity::util::request object,
    which should be used to raise http requests
 
