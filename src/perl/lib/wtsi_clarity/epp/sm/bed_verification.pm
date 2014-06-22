@@ -7,7 +7,6 @@ use File::Spec::Functions;
 use File::Slurp;
 use JSON;
 use Try::Tiny;
-#use List::MoreUtils qw / uniq /;
 
 use wtsi_clarity::util::config;
 use wtsi_clarity::process_checks::bed_verification;
@@ -26,16 +25,32 @@ Readonly::Scalar my $BED_VERIFICATION_CONFIG => q[bed_verification.json];
 
 extends 'wtsi_clarity::epp';
 
-has '_container_layout' => (
-  isa        => 'ArrayRef',
+has '_robot_barcode' => (
+  isa        => 'Str',
   is         => 'ro',
   required   => 0,
   lazy_build => 1,
 );
-sub _build__container_layout {
+sub _build__robot_barcode {
   my $self = shift;
-  
-  return [];
+  my $rbc;
+  #get robot barcode from process xml
+  return $rbc;
+}
+
+has '_step_name' => (
+  isa        => 'Str',
+  is         => 'ro',
+  required   => 0,
+  lazy_build => 1,
+);
+sub _build__step_name {
+  my $self = shift;
+  my $sn;
+  #get step name from process xml
+  #it might be possible to get it directky as input
+  #then just rename attribute to 'step_name'
+  return $sn;
 }
 
 has '_bed_layout' => (
@@ -46,19 +61,29 @@ has '_bed_layout' => (
 );
 sub _build__bed_layout {
   my $self = shift;
-  
+  my $container_map = $self->_fetch_container_map();
+  my $container_map_barcodes = $self->_fetch_barcodes_for_map($container_map);
+  # now use information from $container_map_barcodes
+  # to convert $self->_bed_container_pairs array into an array suitable for
+  # use in bed verification
   return [];
 }
 
-has '_bed_config_file' => (
-  isa        => 'WtsiClarityReadableFile',
+has '_bed_container_pairs' => (
+  isa        => 'ArrayRef',
   is         => 'ro',
   required   => 0,
   lazy_build => 1,
 );
-sub _build__bed_config_file {
+sub _build__bed_container_pairs {
   my $self = shift;
-  return catfile($self->config->dir_path, $BED_VERIFICATION_CONFIG);
+  # from process xml(?)
+  # get all wtsi fields having 'Bed', get barcodes of beds
+  # get all wtsi fields having 'Input' and 'Output', get barcode of containers
+  # pair bed and container barcodes using a new naming convention
+  # id 'Bed X' corresponds to 'Input Y', the full name of the bed is 'Bed X (Input Y)'
+  # return a ref to an array of bed-container barcode pairs
+  return [];
 }
 
 has '_bed_config_file' => (
@@ -74,10 +99,7 @@ sub _build__bed_config_file {
 
 override 'run' => sub {
   my $self = shift;
-  super();
-  
-  my $container_map = $self->_fetch_container_map();
-  my $container_map_barcodes = $self->_fetch_barcodes_for_map($container_map);
+  super(); 
 
   my $verified = 0;
   try {
@@ -86,8 +108,8 @@ override 'run' => sub {
     $self->epp_log("Bed verification error $_");
   };
 
-  if {
-    $self->_update_step();
+  if ($verified) {
+    $self->_update_step(); #tick the box
   } else {
     warn 'Bed veryfication has failed for ' . $self->toString;
   }
@@ -99,7 +121,9 @@ sub _verify {
   my $self = shift;
   my $conf = decode_json(read_file($self->bed_config_file));
   my $v = wtsi_clarity::process_checks::bed_verification->new($conf);
-  return $v->verify($self->_process_name4bebver, $self->_robot_id, $self->_bed_layout);
+  # edit bed verification config file; use step names directly in keys
+  # to avoid the need to map step names to keys in the config map
+  return $v->verify($self->_step_name, $self->_robot_barcode, $self->_bed_layout);
 }
 
 sub _update_step {
@@ -144,11 +168,6 @@ sub _fetch_barcodes_for_map {
   }
 
   return $barcodes_map;
-}
-
-sub _fetch_process_beds {
-  my $self = shift;
-
 }
 
 1;
