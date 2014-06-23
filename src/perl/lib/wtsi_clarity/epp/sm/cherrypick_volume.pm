@@ -30,7 +30,7 @@ with 'wtsi_clarity::util::clarity_elements_fetcher_role';
 our $VERSION = '0.0';
 
 sub get_targets_uri {
-  return ( $OUTPUT_PATH, $SAMPLE_PATH , $ARTIFACT_PATH);
+  return ( $OUTPUT_PATH );
 };
 
 sub update_one_target_data {
@@ -83,21 +83,22 @@ has 'data_source' => (
 sub _build_data_source {
   my ($self) = @_;
 
-  my $hash_artifact = $self->fetch_targets_hash( ( $OUTPUT_PATH, ) );
+  my $artifacts = $self->fetch_targets_hash( ( $OUTPUT_PATH, ) );
   my $hash_samples  = $self->fetch_targets_hash( ( $OUTPUT_PATH, $SAMPLE_PATH ) );
 
+  my $hash_analytes = {};
   my $data_hash = {}; # for each artifact uri as a key, we save an array of concentration and volume
                       # { 'http://clari ... /artifacts/00001' => [ 100, 10 ],
                       #   'http://clari ... /artifacts/00002' => [ 100, 35 ],
                       #   'http://clari ... /artifacts/00003' => [ 100, 25 ] }
 
-  while (my ($uri, $doc) = each %{$hash_samples} ) {
-    my @artifact = $doc->findnodes( $ARTIFACT_PATH )->get_nodelist();
-    my @concentration = $doc->findnodes( $CONCENTRATION_PATH )->get_nodelist();
-    my @volume        = $doc->findnodes( $AVAILABLE_VOL_PATH )->get_nodelist();
+  while (my ($art_uri, $art_doc) = each %{$artifacts} ) {
+    my @analyte = $art_doc->findnodes( $SAMPLE_PATH )->get_nodelist();
+    my $smp = $hash_samples->{$analyte[0]->textContent};
+    my @concentration = $smp->findnodes( $CONCENTRATION_PATH )->get_nodelist();
+    my @volume        = $smp->findnodes( $AVAILABLE_VOL_PATH )->get_nodelist();
 
-    # we have to associate the correct uri with the correct data...
-    $data_hash->{$artifact[0]->getValue()} = [$concentration[0]->textContent , $volume[0]->textContent];
+    $data_hash->{$art_uri} = [$concentration[0]->textContent , $volume[0]->textContent];
   }
 
   return $data_hash;
