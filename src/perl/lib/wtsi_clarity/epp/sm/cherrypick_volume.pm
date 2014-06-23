@@ -30,7 +30,7 @@ with 'wtsi_clarity::util::clarity_elements_fetcher_role';
 our $VERSION = '0.0';
 
 sub get_targets_uri {
-  return ( $OUTPUT_PATH );
+  return ( $OUTPUT_PATH, $SAMPLE_PATH , $ARTIFACT_PATH);
 };
 
 sub update_one_target_data {
