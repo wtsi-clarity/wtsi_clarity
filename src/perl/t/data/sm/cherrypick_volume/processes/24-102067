@@ -15,6 +15,9 @@
         <input post-process-uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/203" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/203" limsid="203" />
     </input-output-map>
     <input-output-map>
+        <input post-process-uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/204" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/203" limsid="204" />
+    </input-output-map>
+    <input-output-map>
         <input post-process-uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/211" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/211" limsid="211" />
     </input-output-map>
     <input-output-map>
