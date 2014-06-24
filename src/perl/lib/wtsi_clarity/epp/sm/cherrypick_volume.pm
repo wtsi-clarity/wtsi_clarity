@@ -119,7 +119,7 @@ sub _ng_min_max_calculation {
   my ($required_amount, $min_volume, $max_volume, $concentration, $avail_volume) = @_;
   my $vs = $required_amount / $concentration ;
   my $vb;
-
+  croak q /The minimum volume must be smaller than the maximum volume./ if ($min_volume >= $max_volume) ;
   if ($vs < $min_volume) {
     $vb = $min_volume - $vs;
   }
@@ -130,6 +130,7 @@ sub _ng_min_max_calculation {
   else {
     $vb = 0;
   }
+
   my @output = ($vs, $vb);
   return \@output;
 }

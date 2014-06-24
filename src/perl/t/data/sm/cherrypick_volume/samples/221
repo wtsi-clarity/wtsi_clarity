@@ -4,11 +4,11 @@
   xmlns:ri="http://genologics.com/ri"
   xmlns:file="http://genologics.com/ri/file"
   xmlns:smp="http://genologics.com/ri/sample"
-  uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/JON1301A251"
-  limsid="JON1301A251">
+  uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/221"
+  limsid="221">
 
-    <artifact limsid="JON1301A251PA1" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JON1301A251PA1?state=360076"/>
+    <artifact limsid="201" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/221"/>
     <udf:field type="Numeric" name="Sample Conc. (ng\µL) (SM)"     > 450 </udf:field>
     <udf:field type="Numeric" name="Volume (µL) (SM)"              > 100 </udf:field>
-    <udf:field type="Numeric" name="WTSI Working Volume (µL) (SM)" > 100 </udf:field>
+    <udf:field type="Numeric" name="WTSI Working Volume (µL) (SM)" > 0.05 </udf:field>
 </smp:sample>

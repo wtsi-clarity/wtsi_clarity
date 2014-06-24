@@ -11,6 +11,9 @@ use util::xml;
 use_ok('wtsi_clarity::epp::sm::cherrypick_volume', 'can use wtsi_clarity::epp::sm::cherrypick_volume' );
 use_ok('util::xml', 'can use wtsi_clarity::t::util::xml' );
 
+
+my $espilon = 0.000001;
+
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sm/cherrypick_volume';
   # local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
@@ -40,8 +43,8 @@ use_ok('util::xml', 'can use wtsi_clarity::t::util::xml' );
     cmp_ok(scalar @element_buffers, '==', 1, 'In case (1), the buffer volume should be present on the sample.');
     my $element_sample = shift @element_samples;
     my $element_buffer = shift @element_buffers;
-    cmp_ok($element_sample->textContent, 'eq', @{$expected_result{$sampleURI}}[0], 'In case (1), the sample volume should be as expected.');
-    cmp_ok($element_buffer->textContent, 'eq', @{$expected_result{$sampleURI}}[1], 'In case (1), the buffer volume should be as expected.');
+    cmp_ok(abs($element_sample->textContent - @{$expected_result{$sampleURI}}[0]), '<', $espilon, 'In case (1), the sample volume should be as expected ('.(@{$expected_result{$sampleURI}}[0]+0).' rather than '.$element_sample->textContent.').');
+    cmp_ok(abs($element_buffer->textContent - @{$expected_result{$sampleURI}}[1]), '<', $espilon, 'In case (1), the buffer volume should be as expected ('.(@{$expected_result{$sampleURI}}[0]+0).' rather than '.$element_sample->textContent.').');
   }
 }
 
@@ -57,17 +60,25 @@ use_ok('util::xml', 'can use wtsi_clarity::t::util::xml' );
 
   lives_ok { $step->fetch_and_update_targets($step->process_doc) } 'In case (2), the class managed to fetch and updates the artifact';
 
-  cmp_ok(scalar keys %{$step->_targets}, '==', 5, 'In case (2), there should be 5 artifacts (Test Fixture).');
+  cmp_ok(scalar keys %{$step->_targets}, '==', 11, 'In case (2), there should be 11 artifacts (Test Fixture).');
 
   my $SAMPLE_PATH = q(/art:artifact/udf:field[@name='Cherrypick Sample Volume']);
   my $BUFFER_PATH = q(/art:artifact/udf:field[@name='Cherrypick Buffer Volume']);
 
   my %expected_result = (
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JON1301A251PA1?state=360076' => [ 25/450 ,  0.1 - 25/450 ],
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JON1301A252PA1?state=360082' => [ 25/30  ,  0            ],
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JON1301A253PA1?state=360058' => [ 25/90  ,  0            ],
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JON1301A254PA1?state=360086' => [ 25/350 ,  0.1 - 25/350 ],
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JON1301A255PA1?state=360078' => [ 1      ,  0            ],
+    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/201' => [ 25/450 ,  0.1 - 25/450 ],
+    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/202' => [ 25/50  ,  0 ],
+    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/203' => [ 1.0    ,  0 ],
+
+    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/211' => [ 25/450 ,  0.1 - 25/450 ],
+    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/212' => [ 25/75  ,  0.0 ],
+    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/213' => [ 0.5    ,  0.0 ],
+    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/214' => [ 0.5    ,  0.0 ],
+
+    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/221' => [ 25/450 ,  0.1 - 25/450 ],
+    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/222' => [ 25/75  ,  0 ],
+    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/223' => [ 0.5    ,  0 ],
+    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/224' => [ 0.5    ,  0 ],
   );
 
   foreach my $sampleURI (keys %{$step->_targets})
@@ -78,8 +89,8 @@ use_ok('util::xml', 'can use wtsi_clarity::t::util::xml' );
     cmp_ok(scalar @element_buffers, '==', 1, 'In case (2), the buffer volume should be present on the sample.');
     my $element_sample = shift @element_samples;
     my $element_buffer = shift @element_buffers;
-    cmp_ok($element_sample->textContent, 'eq', @{$expected_result{$sampleURI}}[0], 'In case (2), the sample volume should be as expected.');
-    cmp_ok($element_buffer->textContent, 'eq', @{$expected_result{$sampleURI}}[1], 'In case (2), the buffer volume should be as expected.');
+    cmp_ok(abs($element_sample->textContent - @{$expected_result{$sampleURI}}[0]), '<', $espilon, 'In case (2), the sample volume should be as expected ('.(@{$expected_result{$sampleURI}}[0]+0).' rather than '.$element_sample->textContent.').');
+    cmp_ok(abs($element_buffer->textContent - @{$expected_result{$sampleURI}}[1]), '<', $espilon, 'In case (2), the buffer volume should be as expected ('.(@{$expected_result{$sampleURI}}[0]+0).' rather than '.$element_sample->textContent.').');
   }
 }
 
@@ -118,7 +129,7 @@ use_ok('util::xml', 'can use wtsi_clarity::t::util::xml' );
     cmp_ok(scalar @element_buffers, '==', 1, 'In case (3), the buffer volume should be present on the sample.');
     my $element_sample = shift @element_samples;
     my $element_buffer = shift @element_buffers;
-    cmp_ok($element_sample->textContent, 'eq', @{$expected_result{$sampleURI}}[0], 'In case (3), the sample volume should be as expected.');
+    cmp_ok(abs($element_sample->textContent - @{$expected_result{$sampleURI}}[0]), '<', $espilon, 'In case (3), the sample volume should be as expected ('.(@{$expected_result{$sampleURI}}[0]+0).' rather than '.$element_sample->textContent.').');
     cmp_ok($element_buffer->textContent, 'eq', @{$expected_result{$sampleURI}}[1], 'In case (3), the buffer volume should be empty.');
   }
 }
