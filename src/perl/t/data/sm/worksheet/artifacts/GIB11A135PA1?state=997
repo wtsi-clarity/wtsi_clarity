@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A135PA1?state=997" limsid="GIB11A135PA1">
+    <name>eag sample-139</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containers/27-27" limsid="27-27"/>
+        <value>D:4</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/GIB11A135" limsid="GIB11A135"/>
+    <artifact-group name="C44 workflow not QC" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifactgroups/703"/>
+</art:artifact>

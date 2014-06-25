@@ -118,6 +118,13 @@ sub find_clarity_element {
   return $nodeList->size() == 0 ? undef : $nodeList->pop();
 }
 
+sub find_elements {
+  my ($self, $xml, $name) = @_;
+  my $xpc = XML::LibXML::XPathContext->new($xml->getDocumentElement());
+  return $xpc->findnodes($name);
+}
+
+
 sub create_udf_element {
   my ($self, $xml_el, $udf_name, $udf_value) = @_;
   my $url = 'http://genologics.com/ri/userdefined';

@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:sample xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/GIB11A103" limsid="GIB11A103">
+    <name>eag sample-107</name>
+    <date-received>2013-11-01</date-received>
+    <project limsid="GIB11" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/projects/GIB11"/>
+    <submitter uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/researchers/5">
+        <first-name>Carol</first-name>
+        <last-name>Scott</last-name>
+    </submitter>
+    <artifact limsid="GIB11A103PA1" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A103PA1?state=978"/>
+    <udf:field type="Boolean" name="Control?">false</udf:field>
+</smp:sample>

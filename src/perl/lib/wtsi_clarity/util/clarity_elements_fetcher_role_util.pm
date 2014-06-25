@@ -1,30 +1,72 @@
-package wtsi_clarity::util::clarity_elements_fetcher_role;
+package wtsi_clarity::util::clarity_elements_fetcher_role_util;
 
 use Moose::Role;
 use XML::LibXML;
 
 use wtsi_clarity::util::request;
-with 'wtsi_clarity::util::clarity_elements_fetcher_role_util';
-
-requires 'get_data';
-requires 'get_targets_uri';
-requires 'update_one_target_data';
+use wtsi_clarity::util::clarity_elements;
 
 our $VERSION = '0.0';
 
-sub fetch_and_update_targets {
-  my ($self, $doc) = @_;
+has '_targets' => (
+  isa => 'HashRef',
+  is  => 'ro',
+  required => 0,
+  lazy => 1,
+  default => sub { {} },
+);
 
-  my $targets = $self->_fetch_targets_hash();
+# Finding the targets....
 
-  while (my ($targetURI, $targetDoc) = each %{$targets} ) {
-    if (!exists $self->_targets->{$targetURI}) {
-      $self->_targets->{$targetURI} =
-          $self->update_one_target_data($targetDoc, $targetURI, $self->get_data($targetDoc, $targetURI));
+sub fetch_targets_hash {
+  # start the recursive search for targets.
+  my ($self, @list_of_xpath) = @_;
+
+  my @output =  $self->_find_xml_recursively($self->process_doc->getDocumentElement(), @list_of_xpath);
+
+  my %hash =  map { $_->getValue() => $self->fetch_and_parse($_->value) } @output;
+  return \%hash;
+}
+
+sub _fetch_targets_hash {
+  my ($self) = @_;
+  my $hash = $self->fetch_targets_hash($self->get_targets_uri());
+
+  return $hash;
+}
+
+sub _find_xml_recursively {
+  my ($self,$xml, @xpaths) = @_;
+  my $first = shift @xpaths;
+
+  my @nodeList = $xml->findnodes($first)->get_nodelist();
+  my @found_targets = ();
+
+  if (scalar @xpaths != 0)
+  {
+    foreach my $element (@nodeList)
+    {
+      my $partial_xml = $self->fetch_and_parse($element->getValue());
+      my @new_targets   = $self->_find_xml_recursively($partial_xml->getDocumentElement() , @xpaths);
+      push @found_targets, @new_targets;
     }
+    return @found_targets;
   }
+  else
+  {
+    return @nodeList;
+  }
+}
 
-  return 1;
+# core methods ....
+
+sub put_changes {
+  my ($self) = @_;
+  foreach my $targetURI (keys %{$self->_targets})
+  {
+    $self->request->put($targetURI, $self->_targets->{$targetURI})
+  }
+  return;
 }
 
 1;
