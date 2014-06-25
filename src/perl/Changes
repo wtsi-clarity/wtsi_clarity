@@ -1,10 +1,12 @@
 CHANGES for wtsi_clarity Perl project
 
+release 0.23
+  - fixes for cherrypick_volume
+
 release 0.22
   - Adding a utility class (clarity_elements_fetcher) to update fields on resources more easily.
   - fluidigm_request_volume added
   - cherrypick_volume added
-
 
 release 0.21
   - bug fix in 1:N stamping - for each input analyte, take into accout
