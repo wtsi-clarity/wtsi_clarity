@@ -239,7 +239,9 @@ sub _punish_user_by_resetting_everything {
 
   my $all_plates = $self->process_doc->findnodes($ALL_PLATES);
 
+  ## no critic(ValuesAndExpressions::ProhibitEmptyQuotes)
   map { $self->update_text($_, ''); } $all_plates->get_nodelist();
+  ## use critic
 
   $self->request->put($self->process_url, $self->process_doc->toString);
 

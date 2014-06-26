@@ -146,6 +146,10 @@ wtsi_clarity::epp
 
   my $dom = $self->fetch_and_parse($url);
 
+=head2 toString
+
+  Returns output about this class and the process
+
 =head1 CONFIGURATION AND ENVIRONMENT
 
 =head1 DEPENDENCIES
