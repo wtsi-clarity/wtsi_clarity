@@ -18,7 +18,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'fluidigm_request_volume' => 'sm::fluidigm_request_volume',
     'cherrypick_volume' => 'sm::cherrypick_volume',
     'plate_purpose' => 'sm::plate_purpose',
-	'bed_verification' => 'sm::bed_verification',
+    'bed_verification' => 'sm::bed_verification',
 );
 
 has 'action'  => (

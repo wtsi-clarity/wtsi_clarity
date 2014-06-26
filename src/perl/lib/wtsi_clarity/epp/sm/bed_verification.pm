@@ -5,6 +5,7 @@ use Carp;
 use Readonly;
 use File::Spec::Functions;
 use File::Slurp;
+use English qw( -no_match_vars );
 use JSON;
 use Try::Tiny;
 
@@ -13,6 +14,7 @@ use wtsi_clarity::process_checks::bed_verification;
 
 our $VERSION = '0.0';
 
+## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $INPUT_OUTPUT_MAP_PATH  => q[ //input-output-map ];
 Readonly::Scalar my $INPUT_URI_PATH         => q[ input/@uri ];
 Readonly::Scalar my $OUTPUT_URI_PATH        => q[ output/@uri ];
@@ -20,9 +22,14 @@ Readonly::Scalar my $ANALYTE_PATH           => q[ //art:artifact ];
 Readonly::Scalar my $ANALYTE_CONTAINER_PATH => q[ //location/container/@uri ];
 Readonly::Scalar my $CONTROL_PATH           => q[ //control-type ];
 Readonly::Scalar my $CONTAINER_NAME         => q[ //name ];
+Readonly::Scalar my $ROBOT_BARCODE_PATH     => q[ /prc:process/udf:field[@name="Robot ID"] ];
+Readonly::Scalar my $BEDS_PATH              => q[ /prc:process/udf:field[starts-with(@name, "Bed") and contains(@name, "Input Plate")] ];
+Readonly::Scalar my $ALL_PLATES             => q[ /prc:process/udf:field[contains(@name, "Input Plate") or contains(@name, "Output Plate")] ];
+## use critic
 
 Readonly::Scalar my $BED_VERIFICATION_CONFIG => q[bed_verification.json];
 
+with 'wtsi_clarity::util::clarity_elements';
 extends 'wtsi_clarity::epp';
 
 has '_robot_barcode' => (
@@ -33,41 +40,22 @@ has '_robot_barcode' => (
 );
 sub _build__robot_barcode {
   my $self = shift;
-  my $rbc;
-  #get robot barcode from process xml
+  my $rbc = $self->process_doc->findvalue($ROBOT_BARCODE_PATH);
+
+  ## no critic(ValuesAndExpressions::ProhibitEmptyQuotes)
+  if ($rbc eq '') {
+    croak q[Robot ID must be set for bed verification];
+  }
+  ## use critic
+
   return $rbc;
 }
 
-has '_step_name' => (
+has 'step_name' => (
   isa        => 'Str',
   is         => 'ro',
-  required   => 0,
-  lazy_build => 1,
+  required   => 1,
 );
-sub _build__step_name {
-  my $self = shift;
-  my $sn;
-  #get step name from process xml
-  #it might be possible to get it directky as input
-  #then just rename attribute to 'step_name'
-  return $sn;
-}
-
-has '_bed_layout' => (
-  isa        => 'ArrayRef',
-  is         => 'ro',
-  required   => 0,
-  lazy_build => 1,
-);
-sub _build__bed_layout {
-  my $self = shift;
-  my $container_map = $self->_fetch_container_map();
-  my $container_map_barcodes = $self->_fetch_barcodes_for_map($container_map);
-  # now use information from $container_map_barcodes
-  # to convert $self->_bed_container_pairs array into an array suitable for
-  # use in bed verification
-  return [];
-}
 
 has '_bed_container_pairs' => (
   isa        => 'ArrayRef',
@@ -77,33 +65,121 @@ has '_bed_container_pairs' => (
 );
 sub _build__bed_container_pairs {
   my $self = shift;
-  # from process xml(?)
+  my @mappings = ();
+
   # get all wtsi fields having 'Bed', get barcodes of beds
-  # get all wtsi fields having 'Input' and 'Output', get barcode of containers
-  # pair bed and container barcodes using a new naming convention
-  # id 'Bed X' corresponds to 'Input Y', the full name of the bed is 'Bed X (Input Y)'
-  # return a ref to an array of bed-container barcode pairs
-  return [];
+  my $beds = $self->process_doc->findnodes($BEDS_PATH);
+
+  foreach my $node ($beds->get_nodelist) {
+    my %pair = ();
+    my $bed_name = $node->findvalue('@name');
+    my $input_plate_name;
+    my $input_plate_number;
+
+    # Get plate name from between brackets
+    if ( $bed_name =~ /[(](.*?)[)]/sxm ) {
+      $input_plate_name = $1;
+    } else {
+      croak qq[Could not find matching plate name for $bed_name];
+    }
+
+    # Get the plate number
+    $input_plate_number = $self->_get_plate_number($bed_name);
+
+    # Search and replace to find the output
+    $input_plate_name =~ s/Input/Output/gsm;
+
+    my $output_path = qq [ /prc:process/udf:field[contains(\@name, '$input_plate_name') and starts-with(\@name, 'Bed')] ];
+
+    my $output_plate = $self
+                        ->process_doc
+                        ->findnodes($output_path)
+                        ->pop();
+
+    my $output_plate_number = $self->_get_plate_number($output_plate->findvalue('@name'));
+
+    my @source = ({
+      bed => $input_plate_number,
+      barcode => $node->textContent()
+    });
+
+    my @destination = ({
+      bed => $output_plate_number,
+      barcode => $output_plate->textContent()
+    });
+
+    push @mappings, { source => \@source, destination => \@destination };
+  }
+
+  return \@mappings;
+}
+
+sub _get_plate_number {
+  my ($self, $bed_name) = @_;
+  my $plate_number;
+
+  if ( $bed_name =~ /(\d+)/sxm ) {
+    $plate_number = $1;
+  } else {
+    croak q[Plate number not found];
+  }
+
+  return $plate_number;
 }
 
 has '_bed_config_file' => (
-  isa        => 'WtsiClarityReadableFile',
+  isa        => 'HashRef',
   is         => 'ro',
   required   => 0,
   lazy_build => 1,
 );
 sub _build__bed_config_file {
   my $self = shift;
-  return catfile($self->config->dir_path, $BED_VERIFICATION_CONFIG);
+  my $file_path = catfile($self->config->dir_path, $BED_VERIFICATION_CONFIG);
+  open my $fh, '<:encoding(UTF-8)', $file_path
+    or croak qq[Could not retrive the configuration file at $file_path];
+  local $RS = undef;
+  my $json_text = <$fh>;
+  close $fh
+    or croak qq[Could not close handle to $file_path];
+  return decode_json($json_text);
+}
+
+has '_barcode_map' => (
+  isa        => 'HashRef',
+  is         => 'ro',
+  required   => 0,
+  lazy_build => 1,
+);
+sub _build__barcode_map {
+  my $self = shift;
+  my $container_map_barcodes = $self->_fetch_container_map;
+  my $barcodes_map;
+
+  foreach my $input_url (keys %{$container_map_barcodes}) {
+    my $input_container = $self->fetch_and_parse($input_url);
+    my $input_barcode = $input_container->findnodes($CONTAINER_NAME)->pop()->textContent;
+
+    foreach my $output_url (keys %{$container_map_barcodes->{$input_url}}) {
+      my $output_container = $self->fetch_and_parse($output_url);
+      my $output_barcode = $output_container->findnodes($CONTAINER_NAME)->pop()->textContent;
+      push @{$barcodes_map->{$input_barcode}}, $output_barcode;
+    }
+  }
+
+  return $barcodes_map;
 }
 
 override 'run' => sub {
   my $self = shift;
-  super(); 
+  super();
+
+  $self->_punish_user_by_resetting_everything();
+  die;
 
   my $verified = 0;
   try {
-    $verified = $self->verify();
+    $verified = $self->_verify();
   } catch {
     $self->epp_log("Bed verification error $_");
   };
@@ -111,23 +187,70 @@ override 'run' => sub {
   if ($verified) {
     $self->_update_step(); #tick the box
   } else {
-    warn 'Bed veryfication has failed for ' . $self->toString;
+    $self->_punish_user_by_resetting_everything();
+    carp 'Bed verification has failed for ' . $self->toString;
   }
-  
+
   return;
 };
 
 sub _verify {
   my $self = shift;
-  my $conf = decode_json(read_file($self->bed_config_file));
-  my $v = wtsi_clarity::process_checks::bed_verification->new($conf);
-  # edit bed verification config file; use step names directly in keys
-  # to avoid the need to map step names to keys in the config map
-  return $v->verify($self->_step_name, $self->_robot_barcode, $self->_bed_layout);
+
+  my $v = wtsi_clarity::process_checks::bed_verification->new(config => $self->_bed_config_file);
+
+  return $v->verify($self->step_name, $self->_robot_barcode, $self->_bed_container_pairs)
+          && $self->_verify_plates_positioned_correctly();
+}
+
+sub _verify_plates_positioned_correctly {
+  my $self = shift;
+  my $barcode_map = $self->_barcode_map();
+
+  foreach my $input_plate (keys %{$barcode_map}) {
+    my $input_elem = $self->process_doc->findnodes( qq[ prc:process/udf:field[text()='$input_plate']]);
+
+    if ($input_elem->size() == 0) {
+      croak qq[Could not find plate with barcode $input_plate];
+    }
+
+    my $input_elem_name = $input_elem->pop()->findvalue('@name');
+    # Convert to output
+    $input_elem_name =~ s/Input/Output/gsm;
+    my $output_elem_value = $self->process_doc->findvalue( qq[ prc:process/udf:field[\@name='$input_elem_name']]);
+
+    ## no critic(ValuesAndExpressions::ProhibitEmptyQuotes)
+    if ($output_elem_value eq '') {
+      croak qq[Could not find the field for plate $input_elem_name];
+    }
+    ## use critic
+
+    my $output_plate = $barcode_map->{ $input_plate }[0];
+
+    if ($output_elem_value ne $output_plate) {
+      return 0;
+    }
+  }
+
+  return 1;
 }
 
 sub _update_step {
   my $self = shift;
+  return;
+}
+
+sub _punish_user_by_resetting_everything {
+  my $self = shift;
+
+  my $all_plates = $self->process_doc->findnodes($ALL_PLATES);
+
+  foreach my $plate ($all_plates->get_nodelist()) {
+    $self->update_text($plate, '');
+  }
+
+  $self->request->update($self->process_url, $self->process_doc);
+
   return;
 }
 
@@ -152,24 +275,6 @@ sub _fetch_container_map {
   return $container_input_output_map;
 }
 
-sub _fetch_barcodes_for_map {
-  my ($self, $container_map_barcodes) = @_;
-  my $barcodes_map;
-
-  foreach my $input_url (keys %{$container_map_barcodes}) {
-    my $input_container = $self->fetch_and_parse($input_url);
-    my $input_barcode = $input_container->findnodes($CONTAINER_NAME)->pop()->textContent;
-    
-    foreach my $output_url (keys %{$container_map_barcodes->{$input_url}}) {
-      my $output_container = $self->fetch_and_parse($container_map_barcodes->{$output_url});
-      my $output_barcode = $output_container->findnodes($CONTAINER_NAME)->pop()->textContent;
-      push @{$barcodes_map->{$input_barcode}}, $output_barcode;
-    }
-  }
-
-  return $barcodes_map;
-}
-
 1;
 
 __END__
@@ -179,9 +284,9 @@ __END__
 wtsi_clarity::epp::sm::bed_verification
 
 =head1 SYNOPSIS
-  
+
   wtsi_clarity::epp:sm::bed_verification->new(process_url => 'http://my.com/processes/3345')->run();
-  
+
 =head1 DESCRIPTION
 
   Checks that plates have been placed in the correct beds for various processes
