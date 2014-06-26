@@ -25,6 +25,7 @@ Readonly::Scalar my $CONTAINER_NAME         => q[ //name ];
 Readonly::Scalar my $ROBOT_BARCODE_PATH     => q[ /prc:process/udf:field[@name="Robot ID"] ];
 Readonly::Scalar my $BEDS_PATH              => q[ /prc:process/udf:field[starts-with(@name, "Bed") and contains(@name, "Input Plate")] ];
 Readonly::Scalar my $ALL_PLATES             => q[ /prc:process/udf:field[contains(@name, "Input Plate") or contains(@name, "Output Plate")] ];
+Readonly::Scalar my $SUCCESS_PATH           => q[ /prc:process/udf:field[@name="Bed Verification Successful"]];
 ## use critic
 
 Readonly::Scalar my $BED_VERIFICATION_CONFIG => q[bed_verification.json];
@@ -234,6 +235,9 @@ sub _verify_plates_positioned_correctly {
 
 sub _update_step {
   my $self = shift;
+
+  $self->update_clarity_element($self->process_doc, $SUCCESS_PATH, 'true');
+
   return;
 }
 
