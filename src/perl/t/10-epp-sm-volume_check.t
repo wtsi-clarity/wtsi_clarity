@@ -36,7 +36,7 @@ my $current = cwd;
   my $out = 'robot_out.csv';
   my $file = catfile($dir, $in);
   `touch $file`;
-  
+
   local $ENV{'WTSI_CLARITY_HOME'} = $dir;
   my $working = catfile $dir, 'working';
   mkdir $working;
@@ -49,7 +49,7 @@ my $current = cwd;
   use wtsi_clarity::util::request;
   my $r = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
   $r->mock(q(put), sub{my ($self, $uri, $content) = @_; return $content;});
-   
+
   my $epp = wtsi_clarity::epp::sm::volume_check->new(
     request     => $r,
     process_url => 'http://clarity-ap:8080/api/v2/processes/24-64486',
@@ -71,7 +71,7 @@ my $current = cwd;
     output      => $out,
   );
   warning_like { $epp->run }
-  qr/run method of the wtsi_clarity::epp::sm::volume_check class is called, process is/,
+  qr/Run method is called for class wtsi_clarity::epp::sm::volume_check, process/,
   'callback runs OK, logs process details';
 
   chdir $current;
