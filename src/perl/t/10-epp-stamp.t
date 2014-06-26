@@ -39,7 +39,7 @@ use_ok('wtsi_clarity::epp::stamp');
     if ( !$ENV{'LIVE_TEST'}) {
       skip 'set LIVE_TEST to true to run', 8;
     }
-  
+
     local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/stamp';
     my $s = wtsi_clarity::epp::stamp->new(
       process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-98502',
@@ -113,12 +113,12 @@ use_ok('wtsi_clarity::epp::stamp');
               process_url => 'http://clarity-ap:8080/api/v2/processes/24-99904',
               step_url => 'some',
               container_type_name => ['ABgene 0765', 'ABgene 0800']);
-  
+
   lives_ok { $s->_analytes } 'got all info from clarity';
   my @containers = keys %{$s->_analytes};
   is (scalar @containers, 1, 'one input container, control tube is skipped');
-  is (scalar(map { $_ =~ /\Ahttp/ } keys %{$s->_analytes->{$containers[0]}}), 4, 'control will not be stamped'); 
-  
+  is (scalar(map { $_ =~ /\Ahttp/ } keys %{$s->_analytes->{$containers[0]}}), 4, 'control will not be stamped');
+
   ok ($s->_validate_container_type, 'validate container flag is true');
   is (scalar @{$s->_container_type}, 2, 'two container types retrieved');
   is ($s->_container_type->[0],
@@ -141,7 +141,7 @@ use_ok('wtsi_clarity::epp::stamp');
   open my $fh, '>', $control or die "cannot open filehandle to write to $control";
   print $fh $control_xml or die "cannot write to $control";
   close $fh;
-  
+
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = "$dir/stamp_with_control";
   my $s = wtsi_clarity::epp::stamp->new(
               process_url => 'http://clarity-ap:8080/api/v2/processes/24-99904',

@@ -33,7 +33,7 @@ my $class = Module::Build->subclass(code => <<'EOF');
       }
       unlink "$file$backup";
     }
-    return; 
+    return;
   }
 EOF
 
@@ -96,10 +96,10 @@ my $builder = $class->new(
                 'strict'                          => 0,
                 'Try::Tiny'                       => 0,
                 'warnings'                        => 0,
-		'XML::LibXML'                     => 0,
+		            'XML::LibXML'                     => 0,
                 'URI::Escape'                     => 0,
           },
-         
+
           'dist'         => { COMPRESS => 'gzip', SUFFIX => 'gz', },
 );
 
