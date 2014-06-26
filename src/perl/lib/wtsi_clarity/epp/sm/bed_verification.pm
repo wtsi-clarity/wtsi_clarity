@@ -45,7 +45,7 @@ sub _build__robot_barcode {
 
   ## no critic(ValuesAndExpressions::ProhibitEmptyQuotes)
   if ($rbc eq '') {
-    croak q[Robot ID must be set for bed verification];
+    croak qq[Robot ID must be set for bed verification\n];
   }
   ## use critic
 
@@ -81,7 +81,7 @@ sub _build__bed_container_pairs {
     if ( $bed_name =~ /[(](.*?)[)]/sxm ) {
       $input_plate_name = $1;
     } else {
-      croak qq[Could not find matching plate name for $bed_name];
+      croak qq[Could not find matching plate name for $bed_name\n];
     }
 
     # Get the plate number
@@ -94,10 +94,13 @@ sub _build__bed_container_pairs {
 
     my $output_plate = $self
                         ->process_doc
-                        ->findnodes($output_path)
-                        ->pop();
+                        ->findnodes($output_path);
 
-    my $output_plate_number = $self->_get_plate_number($output_plate->findvalue('@name'));
+    if ($output_plate->size() == 0) {
+      croak "Could not find output plate $input_plate_name\n";
+    }
+
+    my $output_plate_number = $self->_get_plate_number($output_plate->pop()->findvalue('@name'));
 
     my @source = ({
       bed => $input_plate_number,
@@ -106,7 +109,7 @@ sub _build__bed_container_pairs {
 
     my @destination = ({
       bed => $output_plate_number,
-      barcode => $output_plate->textContent()
+      barcode => $output_plate->pop()->textContent()
     });
 
     push @mappings, { source => \@source, destination => \@destination };
@@ -122,7 +125,7 @@ sub _get_plate_number {
   if ( $bed_name =~ /(\d+)/sxm ) {
     $plate_number = $1;
   } else {
-    croak q[Plate number not found];
+    croak qq[Plate number not found\n];
   }
 
   return $plate_number;
@@ -138,11 +141,11 @@ sub _build__bed_config_file {
   my $self = shift;
   my $file_path = catfile($self->config->dir_path, $BED_VERIFICATION_CONFIG);
   open my $fh, '<:encoding(UTF-8)', $file_path
-    or croak qq[Could not retrive the configuration file at $file_path];
+    or croak qq[Could not retrive the configuration file at $file_path\n];
   local $RS = undef;
   my $json_text = <$fh>;
   close $fh
-    or croak qq[Could not close handle to $file_path];
+    or croak qq[Could not close handle to $file_path\n];
   return decode_json($json_text);
 }
 
@@ -182,11 +185,9 @@ override 'run' => sub {
     $self->epp_log("Bed verification error $_");
   };
 
-  if ($verified) {
-    $self->_update_step(); #tick the box
-  } else {
+  if (!$verified) {
     $self->_punish_user_by_resetting_everything();
-    carp 'Bed verification has failed for ' . $self->toString;
+    carp "Bed verification has failed\n";
   }
 
   return;
@@ -209,7 +210,7 @@ sub _verify_plates_positioned_correctly {
     my $input_elem = $self->process_doc->findnodes( qq[ prc:process/udf:field[text()='$input_plate']]);
 
     if ($input_elem->size() == 0) {
-      croak qq[Could not find plate with barcode $input_plate];
+      croak qq[Could not find plate with barcode $input_plate\n];
     }
 
     my $input_elem_name = $input_elem->pop()->findvalue('@name');
@@ -219,7 +220,7 @@ sub _verify_plates_positioned_correctly {
 
     ## no critic(ValuesAndExpressions::ProhibitEmptyQuotes)
     if ($output_elem_value eq '') {
-      croak qq[Could not find the field for plate $input_elem_name];
+      croak qq[Could not find the field for plate $input_elem_name\n];
     }
     ## use critic
 
@@ -233,24 +234,14 @@ sub _verify_plates_positioned_correctly {
   return 1;
 }
 
-sub _update_step {
-  my $self = shift;
-
-  $self->update_clarity_element($self->process_doc, $SUCCESS_PATH, 'true');
-
-  return;
-}
-
 sub _punish_user_by_resetting_everything {
   my $self = shift;
 
   my $all_plates = $self->process_doc->findnodes($ALL_PLATES);
 
-  foreach my $plate ($all_plates->get_nodelist()) {
-    $self->update_text($plate, '');
-  }
+  map { $self->update_text($_, ''); } $all_plates->get_nodelist();
 
-  $self->request->update($self->process_url, $self->process_doc);
+  $self->request->put($self->process_url, $self->process_doc->toString);
 
   return;
 }
