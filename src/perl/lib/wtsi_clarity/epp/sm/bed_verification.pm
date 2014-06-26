@@ -175,6 +175,9 @@ override 'run' => sub {
   my $self = shift;
   super();
 
+  $self->_punish_user_by_resetting_everything();
+  die;
+
   my $verified = 0;
   try {
     $verified = $self->_verify();
@@ -236,11 +239,9 @@ sub _punish_user_by_resetting_everything {
 
   my $all_plates = $self->process_doc->findnodes($ALL_PLATES);
 
-  foreach my $plate ($all_plates->get_nodelist()) {
-    $self->update_text($plate, '');
-  }
+  map { $self->update_text($_, ''); } $all_plates->get_nodelist();
 
-  $self->request->update($self->process_url, $self->process_doc);
+  $self->request->put($self->process_url, $self->process_doc->toString);
 
   return;
 }
