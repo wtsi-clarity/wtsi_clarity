@@ -182,9 +182,7 @@ override 'run' => sub {
     $self->epp_log("Bed verification error $_");
   };
 
-  if ($verified) {
-    $self->_update_step(); #tick the box
-  } else {
+  if (!$verified) {
     $self->_punish_user_by_resetting_everything();
     carp 'Bed verification has failed for ' . $self->toString;
   }
@@ -231,14 +229,6 @@ sub _verify_plates_positioned_correctly {
   }
 
   return 1;
-}
-
-sub _update_step {
-  my $self = shift;
-
-  $self->update_clarity_element($self->process_doc, $SUCCESS_PATH, 'true');
-
-  return;
 }
 
 sub _punish_user_by_resetting_everything {
