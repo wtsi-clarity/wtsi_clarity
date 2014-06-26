@@ -187,7 +187,7 @@ override 'run' => sub {
 
   if (!$verified) {
     $self->_punish_user_by_resetting_everything();
-    carp "Bed verification has failed\n";
+    croak "Bed verification has failed\n";
   }
 
   return;
