@@ -174,9 +174,6 @@ override 'run' => sub {
   my $self = shift;
   super();
 
-  $self->_punish_user_by_resetting_everything();
-  die;
-
   my $verified = 0;
   try {
     $verified = $self->_verify();
