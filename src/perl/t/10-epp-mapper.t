@@ -21,4 +21,10 @@ use_ok('wtsi_clarity::epp::mapper');
   is($m->package_name, 'wtsi_clarity::epp::stamp', 'correct package name');
 }
 
+{
+  my $m = wtsi_clarity::epp::mapper->new(action => 'bed_verification');
+  isa_ok($m, 'wtsi_clarity::epp::mapper');
+  is($m->package_name, 'wtsi_clarity::epp::sm::bed_verification', 'correct package name');
+}
+
 1;

@@ -73,9 +73,7 @@ sub _build_process_doc {
 
 sub run {
   my $self = shift;
-  $self->epp_log(sprintf 'run method of the %s class is called, process is %s',
-                     ref $self,
-                     $self->process_url);
+  $self->epp_log('Run method is called for ' . $self->toString());
   return;
 }
 
@@ -88,6 +86,11 @@ sub epp_log {
   my ($self, $message) = @_;
   warn "$message\n";
   return;
+}
+
+sub toString {
+  my $self = shift;
+  return sprintf 'class %s, process %s', ref $self, $self->process_url;
 }
 
 1;
