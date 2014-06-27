@@ -49,56 +49,57 @@ override 'run' => sub {
   my $self= shift;
   super();
 
-  my $containers_data = $self->get_containers_data();
+  my $containers_data = $self->_get_containers_data();
   my $pdf = PDF::API2->new();
 
+  # for each output container, we produce a new page...
   while (my ($uri, $data) = each %{$containers_data->{'output_container_info'}} ) {
     my $page = $pdf->page();
     $page->mediabox('A4');
     my $font = $pdf->corefont('Helvetica-Bold');
-    my ($table_data, $table_properties) = get_table_data($data->{'container_details'}, $nb_col, $nb_row);
+    my ($table_data, $table_properties) = _get_table_data($data->{'container_details'}, $nb_col, $nb_row);
 
-    add_title_to_page($page, $font, $containers_data, $uri);
+    _add_title_to_page($page, $font, $containers_data, $uri);
 
-    add_sources_to_page($pdf, $page, $font, $containers_data, $uri);
-    add_destinations_to_page($pdf, $page, $font, $containers_data, $uri);    
-    add_buffer_to_page($pdf, $page, $font, $table_data, $table_properties);
+    _add_sources_to_page($pdf, $page, $font, $containers_data, $uri);
+    _add_destinations_to_page($pdf, $page, $font, $containers_data, $uri);    
+    _add_buffer_to_page($pdf, $page, $font, $table_data, $table_properties);
   }
 
   $pdf->saveas("new.pdf");
   return 1;
 };
 
-sub add_title_to_page {
+sub _add_title_to_page {
   my ($page, $font, $containers_data, $uri) = @_;
-  add_text_to_page($page, $font, get_title($containers_data, $uri, "Cherrypicking"), 20, 780, 20);
+  _add_text_to_page($page, $font, _get_title($containers_data, $uri, "Cherrypicking"), 20, 780, 20);
 }
 
-sub add_sources_to_page {
+sub _add_sources_to_page {
   my ($pdf, $page, $font, $containers_data, $uri) = @_;
   my $y = 700;
-  my $data = get_source_plate_data($containers_data, $uri);
-  add_text_to_page($page, $font, "Source plates", 20, $y+20, 12);
-  add_table_to_page($pdf, $page, $data,           20, $y);
+  my $data = _get_source_plate_data($containers_data, $uri);
+  _add_text_to_page($page, $font, "Source plates", 20, $y+20, 12);
+  _add_table_to_page($pdf, $page, $data,           20, $y);
 }
 
-sub add_destinations_to_page {
+sub _add_destinations_to_page {
   my ($pdf, $page, $font, $containers_data, $uri) = @_;
   my $y = 450;
-  my $data = get_destination_plate_data($containers_data, $uri);
-  add_text_to_page($page, $font, "Destination plates", 20, $y+20, 12);
-  add_table_to_page($pdf, $page, $data,                20, $y);
+  my $data = _get_destination_plate_data($containers_data, $uri);
+  _add_text_to_page($page, $font, "Destination plates", 20, $y+20, 12);
+  _add_table_to_page($pdf, $page, $data,                20, $y);
 }
 
-sub add_buffer_to_page {
+sub _add_buffer_to_page {
     my ($pdf, $page, $font, $table_data, $table_properties) = @_;
     my $y = 350;
 
-    add_text_to_page($page, $font, "Buffer required", 20, $y+20, 12);
-    add_buffer_table_to_page($pdf, $page, $table_data, $table_properties, $y);
+    _add_text_to_page($page, $font, "Buffer required", 20, $y+20, 12);
+    _add_buffer_table_to_page($pdf, $page, $table_data, $table_properties, $y);
 }
 
-sub add_buffer_table_to_page {
+sub _add_buffer_table_to_page {
     my ($pdf, $page, $table_data, $table_properties, $y) = @_;
     my $pdftable = new PDF::Table;
 
@@ -131,7 +132,7 @@ sub add_buffer_table_to_page {
     );
 }
 
-sub add_text_to_page {
+sub _add_text_to_page {
   my ($page, $font, $content, $x, $y, $font_size) = @_;
   my $text = $page->text();
   $text->font($font, $font_size);
@@ -139,7 +140,7 @@ sub add_text_to_page {
   $text->text($content);
 }
 
-sub add_table_to_page {
+sub _add_table_to_page {
   my ($pdf, $page, $data, $x, $y) = @_;
   my $pdftable_source = new PDF::Table;
   $pdftable_source->table(
@@ -153,14 +154,14 @@ sub add_table_to_page {
   );
 }
 
-sub get_title {
+sub _get_title {
   my ($data, $uri, $action) = @_;
   my $purpose = $data->{'output_container_info'}->{$uri}->{'purpose'};
   my $process = $data->{'process_id'};
   return "Process ".$process." - ".$purpose." - ".$action;
 }
 
-sub get_source_plate_data {
+sub _get_source_plate_data {
   my ($data, $uri) = @_;
   my $input_plates = {};
 
@@ -187,7 +188,7 @@ sub get_source_plate_data {
   return $table_data;
 }
 
-sub get_destination_plate_data {
+sub _get_destination_plate_data {
   my ($data, $uri) = @_;
 
   my $table_data = [];
@@ -200,20 +201,20 @@ sub get_destination_plate_data {
   return $table_data;
 }
 
-sub get_table_data {
+sub _get_table_data {
   my ($data, $nb_col, $nb_row) = @_;
 
   my $table_data = [];
   my $table_properties = [];
   my @list_of_colours = ('#F5BA7F', '#F5E77D', '#7DD3F5', '#DB7DF5');
 
-  my $colours = get_colour_data($data, @list_of_colours);
+  my $colours = _get_colour_data($data, @list_of_colours);
 
   for (my $j=0; $j <= $nb_row+1; $j++) {
     my $row = [];
     my $row_properties = [];
     for (my $i=0; $i <= $nb_col+1; $i++) {
-      my ($content, $properties) = get_cell($data, $colours, $i, $j, $nb_col, $nb_row);
+      my ($content, $properties) = _get_cell($data, $colours, $i, $j, $nb_col, $nb_row);
       push $row, $content;
       push $row_properties, $properties;
     }
@@ -224,24 +225,24 @@ sub get_table_data {
   return ($table_data, $table_properties);
 }
 
-sub get_cell {
+sub _get_cell {
   my ($data, $colours, $i, $j, $nb_col, $nb_row) = @_;
 
   my $content;
   my $properties;
 
-  if (my $pos = get_location($i,$j, $nb_col, $nb_row)) {
-    $content = get_cell_content($data, $pos);
-    $properties = get_cell_properties($data, $colours, $pos);
+  if (my $pos = _get_location($i,$j, $nb_col, $nb_row)) {
+    $content = _get_cell_content($data, $pos);
+    $properties = _get_cell_properties($data, $colours, $pos);
 
   } else {
-    $content = get_legend_content($i,$j, $nb_col, $nb_row);
-    $properties = get_legend_properties($i,$j, $nb_col, $nb_row);
+    $content = _get_legend_content($i,$j, $nb_col, $nb_row);
+    $properties = _get_legend_properties($i,$j, $nb_col, $nb_row);
   }
   return ($content, $properties);
 }
 
-sub get_cell_content {
+sub _get_cell_content {
   my ($data, $pos) = @_;
   my $cell = $data->{$pos};
   if ($cell) {
@@ -257,7 +258,7 @@ sub get_cell_content {
   return "";
 }
 
-sub get_legend_content {
+sub _get_legend_content {
   my ($i, $j, $nb_col, $nb_row) = @_;
   if (0 == $i || $nb_col < $i ){
     if (0 == $j || $nb_row < $j ){
@@ -271,7 +272,7 @@ sub get_legend_content {
   return;
 }
 
-sub get_cell_properties {
+sub _get_cell_properties {
   my ($data, $colours, $pos) = @_;
   my $id = $data->{$pos}->{'input_id'};
   if (defined $id){
@@ -290,7 +291,7 @@ sub get_cell_properties {
   }
 }
 
-sub get_legend_properties {
+sub _get_legend_properties {
   my ($i, $j, $nb_col, $nb_row) = @_;
   
   return {
@@ -300,7 +301,7 @@ sub get_legend_properties {
   }
 }
 
-sub get_colour_data {
+sub _get_colour_data {
   my ($data, @list_of_colours) = @_;
   my $hash_colour = {};
 
@@ -313,7 +314,7 @@ sub get_colour_data {
   return $hash_colour; 
 }
 
-sub get_location {
+sub _get_location {
   my ($i, $j, $nb_col, $nb_row) = @_;
   if (0 == $i || $nb_col < $i ){
     # top or bottom row
@@ -326,14 +327,14 @@ sub get_location {
   return chr(64+$j).":".($i);
 }
 
-sub get_containers_data {
+sub _get_containers_data {
   my ($self) = @_;
 
   my $artifacts_tmp       = $self->fetch_targets_hash($ARTIFACT_PATH);
   my $previous_processes  = $self->fetch_targets_hash($PREVIOUS_PROC);
   my $previous_artifacts  = $self->fetch_targets_hash($PREVIOUS_PROC, $ARTIFACT_PATH);
 
-  my $oi_map = $self->get_oi_map($previous_processes);
+  my $oi_map = $self->_get_oi_map($previous_processes);
 
   my $all_data = {};
 
@@ -422,7 +423,7 @@ has '_oi_map' => (
   default => sub { {} },
 );
 
-sub get_oi_map {
+sub _get_oi_map {
   my ($self, $previous_processes) = @_;
 
   if (keys $self->_oi_map) {
@@ -443,9 +444,76 @@ sub get_oi_map {
   return $self->_oi_map;
 }
 
-
-
-
 1;
 
 __END__
+
+=head1 NAME
+
+wtsi_clarity::epp::sm::qc_complete
+
+=head1 SYNOPSIS
+
+  wtsi_clarity::epp:sm::qc_complete->new(process_url => 'http://my.com/processes/3345')->run();
+
+=head1 DESCRIPTION
+
+  Updates the 'QC Complete' field of all samples in the process to the current date.
+
+=head1 SUBROUTINES/METHODS
+
+=head2 get_targets_uri
+  Implementation needed by wtsi_clarity::util::clarity_elements_fetcher_role.
+  The targets are the samples find inside each artifact of the process.
+
+=head2 update_one_target_data
+  Implementation needed by wtsi_clarity::util::clarity_elements_fetcher_role.
+  The targets should only be updated if the target value is not present.
+
+=head2 get_data
+  Implementation needed by wtsi_clarity::util::clarity_elements_fetcher_role.
+  The value used to update the target is today's date.
+
+=head1 CONFIGURATION AND ENVIRONMENT
+
+=head1 DEPENDENCIES
+
+=over
+
+=item Moose
+
+=item Carp
+
+=item XML::LibXML
+
+=item Readonly
+
+=item JSON
+
+=back
+
+=head1 AUTHOR
+
+Benoit Mangili E<lt>bm10@sanger.ac.ukE<gt>
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright (C) 2014 Genome Research Ltd.
+
+This file is part of wtsi_clarity project.
+
+wtsi_clarity is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+=cut
+

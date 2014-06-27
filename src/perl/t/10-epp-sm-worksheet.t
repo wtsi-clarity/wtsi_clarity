@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 82;
+use Test::More tests => 117;
 use Test::Exception;
 use DateTime;
 use XML::LibXML;
@@ -320,7 +320,7 @@ my $TEST_DATA3 = {
 };
 
 
-{ # testing get_location
+{ # testing _get_location
   my @test_data = (
     { 'in' => [ 0, 0,10,10], 'out' => undef, },
     { 'in' => [ 0,11,10,10], 'out' => undef, },
@@ -340,17 +340,16 @@ my $TEST_DATA3 = {
   foreach my $datum (@test_data) {
     my ($i,$j, $c, $r) = @{$datum->{'in'}};
     my $expected = $datum->{'out'};
-    # my $expected = %{$datum}->{'out'};
-    my $val = wtsi_clarity::epp::sm::worksheet::get_location($i,$j, $c, $r);
+    my $val = wtsi_clarity::epp::sm::worksheet::_get_location($i,$j, $c, $r);
     if (defined $expected){
-      cmp_ok($val, 'eq', $expected, "get_location($i, $j,...) should give $expected.");
+      cmp_ok($val, 'eq', $expected, "_get_location($i, $j,...) should give $expected.");
     } else {
-      is($val, undef, "get_location($i, $j,...) should not give anything.");
+      is($val, undef, "_get_location($i, $j,...) should not give anything.");
     }
   }
 }
 
-{ # get_legend_content
+{ # _get_legend_content
   my @test_data = (
     { 'in' => [ 0, 0,10,10], 'out' => "", },
     { 'in' => [ 0,11,10,10], 'out' => "", },
@@ -368,18 +367,18 @@ my $TEST_DATA3 = {
   foreach my $datum (@test_data) {
     my ($i,$j, $c, $r) = @{$datum->{'in'}};
     my $expected = $datum->{'out'};
-    my $val = wtsi_clarity::epp::sm::worksheet::get_legend_content($i,$j, $c, $r);
+    my $val = wtsi_clarity::epp::sm::worksheet::_get_legend_content($i,$j, $c, $r);
 
     if (defined $expected){
-      cmp_ok($val, 'eq', $expected, "get_legend_content($i, $j,...) should give the correct value.");
+      cmp_ok($val, 'eq', $expected, "_get_legend_content($i, $j,...) should give the correct value.");
     } else {
-      is($val, undef, "get_legend_content($i, $j,...) should not give anything.");
+      is($val, undef, "_get_legend_content($i, $j,...) should not give anything.");
     }
 
   }
 }
 
-{ # get_table_data
+{ # _get_table_data
   my @expected_data = (
     { 'in' => [0,0],  'out' => "", },
     { 'in' => [1,1],  'out' => "A:1\n2723\nv1 b8", },
@@ -389,25 +388,25 @@ my $TEST_DATA3 = {
     { 'in' => [1,0],  'out' => "1", },
     { 'in' => [3,0],  'out' => "3", },
   );
-  my ($table, $prop) = wtsi_clarity::epp::sm::worksheet::get_table_data($TEST_DATA->{'output_container_info'}->{'container_uri'}->{'container_details'}, 5,6);
+  my ($table, $prop) = wtsi_clarity::epp::sm::worksheet::_get_table_data($TEST_DATA->{'output_container_info'}->{'container_uri'}->{'container_details'}, 5,6);
 
-  cmp_ok(scalar @{$table}, '==', 6+2 , "get_table_data should return an array of the correct size (nb of rows).");
-  cmp_ok(scalar @{@{$table}[0]}, '==', 5+2 , "get_table_data should return an array of the correct size (nb of cols).");
+  cmp_ok(scalar @{$table}, '==', 6+2 , "_get_table_data should return an array of the correct size (nb of rows).");
+  cmp_ok(scalar @{@{$table}[0]}, '==', 5+2 , "_get_table_data should return an array of the correct size (nb of cols).");
 
   foreach my $datum (@expected_data) {
     my ($i,$j) = @{$datum->{'in'}};
     my $expected = $datum->{'out'};
     my $val = $table->[$j][$i];
-    cmp_ok($val, 'eq', $expected, "get_table_data(...,$i, $j) should give the correct format.");
+    cmp_ok($val, 'eq', $expected, "_get_table_data(...,$i, $j) should give the correct format.");
   }
 }
 
-{ # get_containers_data
+{ # _get_containers_data
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sm/worksheet';
   my $step = wtsi_clarity::epp::sm::worksheet->new(
     process_url => 'http://clarity-ap:8080/api/v2/processes/24-102407');
 
-  my $data = $step->get_containers_data();
+  my $data = $step->_get_containers_data();
   my $container_uri = q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containers/27-8129};
   my $cont = $data->{'output_container_info'}->{$container_uri}->{'container_details'};
   my @expected_data = (
@@ -435,14 +434,14 @@ my $TEST_DATA3 = {
     my $in_smp  = $cont->{$out}->{'sample_volume'};
     my $in_buf  = $cont->{$out}->{'buffer_volume'};
     my $in_id   = $cont->{$out}->{'input_id'};
-    cmp_ok($in_loc, 'eq', $exp_loc, "get_containers_data(...) should give the correct relation $out <-> $exp_loc (found $in_loc). ");
-    cmp_ok($in_smp, 'eq', $exp_smp, "get_containers_data(...) should give the sample volume. ");
-    cmp_ok($in_buf, 'eq', $exp_buf, "get_containers_data(...) should give the buffer volume. ");
-    cmp_ok($in_id, 'eq', $exp_id, "get_containers_data(...) should give the container id. ");
+    cmp_ok($in_loc, 'eq', $exp_loc, "_get_containers_data(...) should give the correct relation $out <-> $exp_loc (found $in_loc). ");
+    cmp_ok($in_smp, 'eq', $exp_smp, "_get_containers_data(...) should give the sample volume. ");
+    cmp_ok($in_buf, 'eq', $exp_buf, "_get_containers_data(...) should give the buffer volume. ");
+    cmp_ok($in_id, 'eq', $exp_id, "_get_containers_data(...) should give the container id. ");
   }
 }
 
-{ # get_cell_properties
+{ # _get_cell_properties
   my @expected_data = (
     { 'pos' => "A:1",  'background_color' => "red", 'font_size' => '7' },
     { 'pos' => "A:2",  'background_color' => "green", 'font_size' => '7' },
@@ -461,18 +460,18 @@ my $TEST_DATA3 = {
   foreach my $datum (@expected_data) {
     my $pos = $datum->{'pos'};
 
-    my $prop = wtsi_clarity::epp::sm::worksheet::get_cell_properties($TEST_DATA3->{'output_container_info'}->{'container_uri'}->{'container_details'}, $colour_data, $pos);
+    my $prop = wtsi_clarity::epp::sm::worksheet::_get_cell_properties($TEST_DATA3->{'output_container_info'}->{'container_uri'}->{'container_details'}, $colour_data, $pos);
 
     my $exp_bg = $datum->{'background_color'};
     my $exp_fs = $datum->{'font_size'};
     my $bg = $prop->{'background_color'};
     my $fs = $prop->{'font_size'};
-    cmp_ok($bg, 'eq', $exp_bg, "get_cell_properties(...,$pos) {background_color} should give $exp_bg.");
-    cmp_ok($fs, 'eq', $exp_fs, "get_cell_properties(...,$pos) {font_size} should give $exp_fs.");
+    cmp_ok($bg, 'eq', $exp_bg, "_get_cell_properties(...,$pos) {background_color} should give $exp_bg.");
+    cmp_ok($fs, 'eq', $exp_fs, "_get_cell_properties(...,$pos) {font_size} should give $exp_fs.");
   }
 }
 
-{ # get_colour_data
+{ # _get_colour_data
   my %expected_data = (
      '27' => "red" ,
      '23' => "green" ,
@@ -480,23 +479,23 @@ my $TEST_DATA3 = {
   );
   my @list_of_colours = ('red', 'green', 'blue', 'yellow', 'orange');
 
-  my $cols = wtsi_clarity::epp::sm::worksheet::get_colour_data($TEST_DATA3->{'output_container_info'}->{'container_uri'}->{'container_details'}, @list_of_colours);
+  my $cols = wtsi_clarity::epp::sm::worksheet::_get_colour_data($TEST_DATA3->{'output_container_info'}->{'container_uri'}->{'container_details'}, @list_of_colours);
 
   while (my ($id, $exp_col) = each %expected_data ) {
     my $found = $cols->{$id};
-    cmp_ok($found, 'eq', $exp_col, "get_colour_data(...) {$id} should give $exp_col.");
+    cmp_ok($found, 'eq', $exp_col, "_get_colour_data(...) {$id} should give $exp_col.");
   }
 }
 
-{ # get_title
-  my $title = wtsi_clarity::epp::sm::worksheet::get_title($TEST_DATA3, 'container_uri', "Cherrypicking");
+{ # _get_title
+  my $title = wtsi_clarity::epp::sm::worksheet::_get_title($TEST_DATA3, 'container_uri', "Cherrypicking");
 
   my $exp_title = q{Process PROCESS_ID - PLATE_PURPOSE_out - Cherrypicking};
   # my $found = $cols->{$id};
-  cmp_ok($title, 'eq', $exp_title, "get_title(...) should give $exp_title.");
+  cmp_ok($title, 'eq', $exp_title, "_get_title(...) should give $exp_title.");
 }
 
-{ # get_legend_properties
+{ # _get_legend_properties
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sm/worksheet';
   # local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
   my $step = wtsi_clarity::epp::sm::worksheet->new(
@@ -515,18 +514,18 @@ my $TEST_DATA3 = {
   foreach my $datum (@expected_data) {
     my ($i,$j) = @{$datum->{'pos'}};
 
-    my $prop = wtsi_clarity::epp::sm::worksheet::get_legend_properties($TEST_DATA, $i, $j, 1, 1);
+    my $prop = wtsi_clarity::epp::sm::worksheet::_get_legend_properties($TEST_DATA, $i, $j, 1, 1);
 
     my $exp_bg = $datum->{'background_color'};
     my $exp_fs = $datum->{'font_size'};
     my $bg = $prop->{'background_color'};
     my $fs = $prop->{'font_size'};
-    cmp_ok($bg, 'eq', $exp_bg, "get_legend_properties(..., $i, $j) {background_color} should give $exp_bg.");
-    cmp_ok($fs, 'eq', $exp_fs, "get_legend_properties(..., $i, $j) {font_size} should give $exp_fs.");
+    cmp_ok($bg, 'eq', $exp_bg, "_get_legend_properties(..., $i, $j) {background_color} should give $exp_bg.");
+    cmp_ok($fs, 'eq', $exp_fs, "_get_legend_properties(..., $i, $j) {font_size} should give $exp_fs.");
   }
 }
 
-{ # get_source_plate_data
+{ # _get_source_plate_data
   my @expected_data = (
     { 'in' => [0,0],  'out' => "Plate name", },
     { 'in' => [1,0],  'out' => "Barcode", },
@@ -556,21 +555,21 @@ my $TEST_DATA3 = {
     { 'in' => [4,3],  'out' => "000023", },
     { 'in' => [5,3],  'out' => "000024", },
   );
-  my $table = wtsi_clarity::epp::sm::worksheet::get_source_plate_data($TEST_DATA3, 'container_uri' );
+  my $table = wtsi_clarity::epp::sm::worksheet::_get_source_plate_data($TEST_DATA3, 'container_uri' );
 
-  cmp_ok(scalar @{$table}, '==', 4 , "get_source_plate_data should return an array of the correct size (nb of rows).");
-  cmp_ok(scalar @{@{$table}[0]}, '==', 6 , "get_source_plate_data should return an array of the correct size (nb of cols).");
+  cmp_ok(scalar @{$table}, '==', 4 , "_get_source_plate_data should return an array of the correct size (nb of rows).");
+  cmp_ok(scalar @{@{$table}[0]}, '==', 6 , "_get_source_plate_data should return an array of the correct size (nb of cols).");
 
   foreach my $datum (@expected_data) {
     my ($i,$j) = @{$datum->{'in'}};
     my $expected = $datum->{'out'};
     my $val = $table->[$j][$i];
-    cmp_ok($val, 'eq', $expected, "get_source_plate_data(..., $i, $j) should give the correct content.");
+    cmp_ok($val, 'eq', $expected, "_get_source_plate_data(..., $i, $j) should give the correct content.");
   }
 }
 
 
-{ # get_destination_plate_data
+{ # _get_destination_plate_data
   my @expected_data = (
     { 'in' => [0,0],  'out' => "Plate name", },
     { 'in' => [1,0],  'out' => "Barcode", },
@@ -580,16 +579,16 @@ my $TEST_DATA3 = {
     { 'in' => [1,1],  'out' => "1234567890123456", },
     { 'in' => [2,1],  'out' => "96", },
   );
-  my $table = wtsi_clarity::epp::sm::worksheet::get_destination_plate_data($TEST_DATA3, 'container_uri' );
+  my $table = wtsi_clarity::epp::sm::worksheet::_get_destination_plate_data($TEST_DATA3, 'container_uri' );
 
-  cmp_ok(scalar @{$table}, '==', 2 , "get_destination_plate_data should return an array of the correct size (nb of rows).");
-  cmp_ok(scalar @{@{$table}[0]}, '==', 3 , "get_destination_plate_data should return an array of the correct size (nb of cols).");
+  cmp_ok(scalar @{$table}, '==', 2 , "_get_destination_plate_data should return an array of the correct size (nb of rows).");
+  cmp_ok(scalar @{@{$table}[0]}, '==', 3 , "_get_destination_plate_data should return an array of the correct size (nb of cols).");
 
   foreach my $datum (@expected_data) {
     my ($i,$j) = @{$datum->{'in'}};
     my $expected = $datum->{'out'};
     my $val = $table->[$j][$i];
-    cmp_ok($val, 'eq', $expected, "get_destination_plate_data(..., $i, $j) should give the correct content.");
+    cmp_ok($val, 'eq', $expected, "_get_destination_plate_data(..., $i, $j) should give the correct content.");
   }
 }
 
