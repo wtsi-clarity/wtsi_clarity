@@ -20,7 +20,6 @@ Readonly::Hash my %ACTION2MODULE => (
     'plate_purpose' => 'sm::plate_purpose',
     'bed_verification' => 'sm::bed_verification',
     'make_worksheet' => 'sm::worksheet',
-    'truc' => 'sm::truc',
 );
 
 has 'action'  => (
