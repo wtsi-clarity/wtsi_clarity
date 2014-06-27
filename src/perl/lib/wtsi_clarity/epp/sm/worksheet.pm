@@ -4,8 +4,6 @@ use Moose;
 use Carp;
 use XML::LibXML;
 use Readonly;
-use DateTime;
-use Data::Dumper;
 use PDF::API2;
 use PDF::Table;
 
@@ -450,29 +448,21 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::epp::sm::qc_complete
+wtsi_clarity::epp::sm::worksheet
 
 =head1 SYNOPSIS
 
-  wtsi_clarity::epp:sm::qc_complete->new(process_url => 'http://my.com/processes/3345')->run();
+  wtsi_clarity::epp:sm::worksheet->new(process_url => 'http://my.com/processes/3345')->run();
 
 =head1 DESCRIPTION
 
-  Updates the 'QC Complete' field of all samples in the process to the current date.
+  Creates a pdf document describing the plates.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 get_targets_uri
-  Implementation needed by wtsi_clarity::util::clarity_elements_fetcher_role.
-  The targets are the samples find inside each artifact of the process.
+=head2 process_url - required attribute
 
-=head2 update_one_target_data
-  Implementation needed by wtsi_clarity::util::clarity_elements_fetcher_role.
-  The targets should only be updated if the target value is not present.
-
-=head2 get_data
-  Implementation needed by wtsi_clarity::util::clarity_elements_fetcher_role.
-  The value used to update the target is today's date.
+=head2 run - executes the callback
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
@@ -488,7 +478,9 @@ wtsi_clarity::epp::sm::qc_complete
 
 =item Readonly
 
-=item JSON
+=item PDF::API2
+
+=item PDF::Table
 
 =back
 
