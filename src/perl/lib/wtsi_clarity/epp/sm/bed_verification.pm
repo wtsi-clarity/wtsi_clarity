@@ -92,15 +92,17 @@ sub _build__bed_container_pairs {
 
     my $output_path = qq [ /prc:process/udf:field[contains(\@name, '$input_plate_name') and starts-with(\@name, 'Bed')] ];
 
-    my $output_plate = $self
-                        ->process_doc
-                        ->findnodes($output_path);
+    my $output_plate_list = $self
+                              ->process_doc
+                              ->findnodes($output_path);
 
-    if ($output_plate->size() == 0) {
+    if ($output_plate_list->size() == 0) {
       croak "Could not find output plate $input_plate_name\n";
     }
 
-    my $output_plate_number = $self->_get_plate_number($output_plate->pop()->findvalue('@name'));
+    my $output_plate = $output_plate_list->pop();
+
+    my $output_plate_number = $self->_get_plate_number($output_plate->findvalue('@name'));
 
     my @source = ({
       bed => $input_plate_number,
@@ -109,7 +111,7 @@ sub _build__bed_container_pairs {
 
     my @destination = ({
       bed => $output_plate_number,
-      barcode => $output_plate->pop()->textContent()
+      barcode => $output_plate->textContent()
     });
 
     push @mappings, { source => \@source, destination => \@destination };
