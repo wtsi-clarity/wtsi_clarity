@@ -58,6 +58,60 @@ has 'step_name' => (
   required   => 1,
 );
 
+sub _get_input_plates {
+  my $self = shift;
+  my $nodes = $self->process_doc->findnodes($BEDS_PATH);
+
+  if ($nodes->size() == 0) {
+    croak qq[Could not find any input plates\n];
+  }
+
+  return $nodes;
+}
+
+# Get plate name from between brackets
+sub _extract_plate_name {
+  my ($self, $bed_name) = @_;
+
+  if ( $bed_name =~ /[(](.*?)[)]/sxm ) {
+    my $input_plate_name = $1;
+  } else {
+    croak qq[Could not find matching plate name for $bed_name\n];
+  }
+}
+
+sub _extract_plate_number {
+  my ($self, $bed_name) = @_;
+  my $plate_number;
+
+  if ( $bed_name =~ /(\d+)/sxm ) {
+    $plate_number = $1;
+  } else {
+    croak qq[Plate number not found\n];
+  }
+
+  return $plate_number;
+}
+
+sub _get_output_plate_from_input {
+  my ($self, $input_plate_name) = @_;
+
+  # Search and replace to find the output
+  $input_plate_name =~ s/Input/Output/gsm;
+
+  my $output_path = qq [ /prc:process/udf:field[contains(\@name, '$input_plate_name') and starts-with(\@name, 'Bed')] ];
+
+  my $output_plate_list = $self
+                            ->process_doc
+                            ->findnodes($output_path);
+
+  if ($output_plate_list->size() == 0) {
+    croak "Could not find output plate $input_plate_name\n";
+  }
+
+  return $output_plate_list->pop();
+}
+
 has '_bed_container_pairs' => (
   isa        => 'ArrayRef',
   is         => 'ro',
@@ -69,40 +123,17 @@ sub _build__bed_container_pairs {
   my @mappings = ();
 
   # get all wtsi fields having 'Bed', get barcodes of beds
-  my $beds = $self->process_doc->findnodes($BEDS_PATH);
+  my $beds = $self->_get_input_plates();
 
   foreach my $node ($beds->get_nodelist) {
     my %pair = ();
     my $bed_name = $node->findvalue('@name');
-    my $input_plate_name;
-    my $input_plate_number;
 
-    # Get plate name from between brackets
-    if ( $bed_name =~ /[(](.*?)[)]/sxm ) {
-      $input_plate_name = $1;
-    } else {
-      croak qq[Could not find matching plate name for $bed_name\n];
-    }
-
-    # Get the plate number
-    $input_plate_number = $self->_get_plate_number($bed_name);
-
-    # Search and replace to find the output
-    $input_plate_name =~ s/Input/Output/gsm;
-
-    my $output_path = qq [ /prc:process/udf:field[contains(\@name, '$input_plate_name') and starts-with(\@name, 'Bed')] ];
-
-    my $output_plate_list = $self
-                              ->process_doc
-                              ->findnodes($output_path);
-
-    if ($output_plate_list->size() == 0) {
-      croak "Could not find output plate $input_plate_name\n";
-    }
-
-    my $output_plate = $output_plate_list->pop();
-
-    my $output_plate_number = $self->_get_plate_number($output_plate->findvalue('@name'));
+    my $input_plate_name = $self->_extract_plate_name($bed_name);
+    my $input_plate_number = $self->_extract_plate_number($bed_name);
+    
+    my $output_plate = $self->_get_output_plate_from_input($input_plate_name);
+    my $output_plate_number = $self->_extract_plate_number($output_plate->findvalue('@name'));
 
     my @source = ({
       bed => $input_plate_number,
@@ -118,19 +149,6 @@ sub _build__bed_container_pairs {
   }
 
   return \@mappings;
-}
-
-sub _get_plate_number {
-  my ($self, $bed_name) = @_;
-  my $plate_number;
-
-  if ( $bed_name =~ /(\d+)/sxm ) {
-    $plate_number = $1;
-  } else {
-    croak qq[Plate number not found\n];
-  }
-
-  return $plate_number;
 }
 
 has '_bed_config_file' => (
