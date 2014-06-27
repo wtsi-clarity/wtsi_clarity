@@ -30,7 +30,20 @@ Readonly::Scalar my $FREEZER_PATH       => q{WTSI Freezer};
 Readonly::Scalar my $SHELF_PATH         => q{WTSI Shelf};
 Readonly::Scalar my $TRAY_PATH          => q{WTSI Tray};
 Readonly::Scalar my $RACK_PATH          => q{WTSI Rack};
+
 ## use critic
+Readonly::Scalar my $col_width                => 40;
+Readonly::Scalar my $nb_col                   => 12;
+Readonly::Scalar my $nb_row                   => 8;
+Readonly::Scalar my $left_margin              => 20;
+Readonly::Scalar my $title_height             => 780;
+Readonly::Scalar my $title_size               => 20;
+Readonly::Scalar my $subtitle_shift           => 20;
+Readonly::Scalar my $subtitle_size            => 12;
+Readonly::Scalar my $source_table_height      => 700;
+Readonly::Scalar my $destination_table_height => 450;
+Readonly::Scalar my $buffer_table_height      => 350;
+Readonly::Scalar my $A_CHAR_CODE              => 64;
 
 extends 'wtsi_clarity::epp';
 with 'wtsi_clarity::util::clarity_elements_fetcher_role_util';
@@ -38,10 +51,6 @@ with 'wtsi_clarity::util::clarity_elements';
 
 
 our $VERSION = '0.0';
-
-my $width = 40 ;
-my $nb_col = 12;
-my $nb_row = 8;
 
 override 'run' => sub {
   my $self= shift;
@@ -60,103 +69,113 @@ override 'run' => sub {
     _add_title_to_page($page, $font, $containers_data, $uri);
 
     _add_sources_to_page($pdf, $page, $font, $containers_data, $uri);
-    _add_destinations_to_page($pdf, $page, $font, $containers_data, $uri);    
+    _add_destinations_to_page($pdf, $page, $font, $containers_data, $uri);
     _add_buffer_to_page($pdf, $page, $font, $table_data, $table_properties);
   }
 
-  $pdf->saveas("new.pdf");
+  $pdf->saveas('new.pdf');
   return 1;
 };
 
+
+
 sub _add_title_to_page {
   my ($page, $font, $containers_data, $uri) = @_;
-  _add_text_to_page($page, $font, _get_title($containers_data, $uri, "Cherrypicking"), 20, 780, 20);
+  _add_text_to_page($page, $font, _get_title($containers_data, $uri, 'Cherrypicking'), $left_margin, $title_height, $title_size);
+  return;
 }
+
+
 
 sub _add_sources_to_page {
   my ($pdf, $page, $font, $containers_data, $uri) = @_;
-  my $y = 700;
   my $data = _get_source_plate_data($containers_data, $uri);
-  _add_text_to_page($page, $font, "Source plates", 20, $y+20, 12);
-  _add_table_to_page($pdf, $page, $data,           20, $y);
+  _add_text_to_page($page, $font, 'Source plates', $left_margin, $source_table_height+$subtitle_shift, $subtitle_size);
+  _add_table_to_page($pdf, $page, $data,           $left_margin, $source_table_height);
+  return;
 }
 
 sub _add_destinations_to_page {
   my ($pdf, $page, $font, $containers_data, $uri) = @_;
-  my $y = 450;
   my $data = _get_destination_plate_data($containers_data, $uri);
-  _add_text_to_page($page, $font, "Destination plates", 20, $y+20, 12);
-  _add_table_to_page($pdf, $page, $data,                20, $y);
+  _add_text_to_page($page, $font, 'Destination plates', $left_margin, $destination_table_height+$subtitle_shift, $subtitle_size);
+  _add_table_to_page($pdf, $page, $data,                $left_margin, $destination_table_height);
+  return;
 }
 
 sub _add_buffer_to_page {
-    my ($pdf, $page, $font, $table_data, $table_properties) = @_;
-    my $y = 350;
-
-    _add_text_to_page($page, $font, "Buffer required", 20, $y+20, 12);
-    _add_buffer_table_to_page($pdf, $page, $table_data, $table_properties, $y);
+  my ($pdf, $page, $font, $table_data, $table_properties) = @_;
+  _add_text_to_page($page, $font, 'Buffer required', $left_margin, $buffer_table_height+$subtitle_shift, $subtitle_size);
+  _add_buffer_table_to_page($pdf, $page, $table_data, $table_properties, $buffer_table_height);
+  return;
 }
 
 sub _add_buffer_table_to_page {
-    my ($pdf, $page, $table_data, $table_properties, $y) = @_;
-    my $pdftable = new PDF::Table;
+  my ($pdf, $page, $table_data, $table_properties, $y) = @_;
+  my $pdftable = PDF::Table->new();
 
-    $pdftable->table(
-      # required params
-      $pdf, $page, $table_data,
-      x => 20,
-      w => ($nb_col + 1)*$width,
-      start_y => $y,
-      start_h => 600,
-      padding => 2,
-      font  =>      $pdf->corefont("Courier-Bold", -encoding => "latin1"),
-      cell_props => $table_properties,
-      column_props => [ 
-        { min_w => $width/2, max_w => $width/2, },
-        { min_w => $width, max_w => $width, },
-        { min_w => $width, max_w => $width, },
-        { min_w => $width, max_w => $width, },
-        { min_w => $width, max_w => $width, },
-        { min_w => $width, max_w => $width, },
-        { min_w => $width, max_w => $width, },
-        { min_w => $width, max_w => $width, },
-        { min_w => $width, max_w => $width, },
-        { min_w => $width, max_w => $width, },
-        { min_w => $width, max_w => $width, },
-        { min_w => $width, max_w => $width, },
-        { min_w => $width, max_w => $width, },
-        { min_w => $width/2, max_w => $width/2, },
-      ]
-    );
+  $pdftable->table(
+    # required params
+    $pdf, $page, $table_data,
+
+    x => $left_margin,
+    w => ($nb_col + 1)*$col_width,
+    start_y => $y,
+    start_h => 600,
+    padding => 2,
+    font  =>      $pdf->corefont('Courier-Bold', -encoding => 'latin1'),
+    cell_props => $table_properties,
+    column_props => [
+      { min_w => $col_width/2, max_w => $col_width/2, },
+      { min_w => $col_width, max_w => $col_width, },
+      { min_w => $col_width, max_w => $col_width, },
+      { min_w => $col_width, max_w => $col_width, },
+      { min_w => $col_width, max_w => $col_width, },
+      { min_w => $col_width, max_w => $col_width, },
+      { min_w => $col_width, max_w => $col_width, },
+      { min_w => $col_width, max_w => $col_width, },
+      { min_w => $col_width, max_w => $col_width, },
+      { min_w => $col_width, max_w => $col_width, },
+      { min_w => $col_width, max_w => $col_width, },
+      { min_w => $col_width, max_w => $col_width, },
+      { min_w => $col_width, max_w => $col_width, },
+      { min_w => $col_width/2, max_w => $col_width/2, },
+    ]
+  );
+  return;
 }
 
+## no critic(Subroutines::ProhibitManyArgs)
 sub _add_text_to_page {
   my ($page, $font, $content, $x, $y, $font_size) = @_;
   my $text = $page->text();
   $text->font($font, $font_size);
   $text->translate($x, $y);
   $text->text($content);
+  return;
 }
+## use critic
 
 sub _add_table_to_page {
   my ($pdf, $page, $data, $x, $y) = @_;
-  my $pdftable_source = new PDF::Table;
+  my $pdftable_source = PDF::Table->new();
   $pdftable_source->table(
     $pdf, $page, $data,
     x => $x, w => 400,
     start_y    => $y,
     start_h    => 600,
     font_size  => 9,
-    padding    => 4,        
-    font       => $pdf->corefont("Helvetica", -encoding => "latin1"),
+    padding    => 4,
+    font       => $pdf->corefont('Helvetica', -encoding => 'latin1'),
   );
+  return;
 }
 
 sub _get_title {
   my ($data, $uri, $action) = @_;
   my $purpose = $data->{'output_container_info'}->{$uri}->{'purpose'};
   my $process = $data->{'process_id'};
-  return "Process ".$process." - ".$purpose." - ".$action;
+  return 'Process '.$process.' - '.$purpose.' - '.$action;
 }
 
 sub _get_source_plate_data {
@@ -174,13 +193,13 @@ sub _get_source_plate_data {
 
   push $table_data , ['Plate name', 'Barcode', 'Freezer', 'Shelf', 'Rack', 'Tray'];
 
-  foreach $uri (sort keys %{$input_plates} ) {
-    my $plate_name = $data->{'input_container_info'}->{$uri}->{'plate_name'};
-    my $barcode = $data->{'input_container_info'}->{$uri}->{'barcode'};
-    my $freezer = $data->{'input_container_info'}->{$uri}->{'freezer'};
-    my $shelf = $data->{'input_container_info'}->{$uri}->{'shelf'};
-    my $rack = $data->{'input_container_info'}->{$uri}->{'rack'};
-    my $tray = $data->{'input_container_info'}->{$uri}->{'tray'};
+  foreach my $key (sort keys %{$input_plates} ) {
+    my $plate_name = $data->{'input_container_info'}->{$key}->{'plate_name'};
+    my $barcode = $data->{'input_container_info'}->{$key}->{'barcode'};
+    my $freezer = $data->{'input_container_info'}->{$key}->{'freezer'};
+    my $shelf = $data->{'input_container_info'}->{$key}->{'shelf'};
+    my $rack = $data->{'input_container_info'}->{$key}->{'rack'};
+    my $tray = $data->{'input_container_info'}->{$key}->{'tray'};
     push $table_data, [$plate_name, $barcode, $freezer, $shelf, $rack, $tray];
   }
   return $table_data;
@@ -192,9 +211,9 @@ sub _get_destination_plate_data {
   my $table_data = [];
   push $table_data , ['Plate name', 'Barcode', 'Wells'];
 
-    my $plate_name = $data->{'output_container_info'}->{$uri}->{'plate_name'};
-    my $barcode = $data->{'output_container_info'}->{$uri}->{'barcode'};
-    my $wells = $data->{'output_container_info'}->{$uri}->{'wells'};
+  my $plate_name = $data->{'output_container_info'}->{$uri}->{'plate_name'};
+  my $barcode = $data->{'output_container_info'}->{$uri}->{'barcode'};
+  my $wells = $data->{'output_container_info'}->{$uri}->{'wells'};
   push $table_data, [$plate_name, $barcode, $wells];
   return $table_data;
 }
@@ -208,10 +227,10 @@ sub _get_table_data {
 
   my $colours = _get_colour_data($data, @list_of_colours);
 
-  for (my $j=0; $j <= $nb_row+1; $j++) {
+  foreach my $j (0..$nb_row+1) {
     my $row = [];
     my $row_properties = [];
-    for (my $i=0; $i <= $nb_col+1; $i++) {
+    foreach my $i (0..$nb_col+1) {
       my ($content, $properties) = _get_cell($data, $colours, $i, $j, $nb_col, $nb_row);
       push $row, $content;
       push $row_properties, $properties;
@@ -223,6 +242,7 @@ sub _get_table_data {
   return ($table_data, $table_properties);
 }
 
+## no critic(Subroutines::ProhibitManyArgs)
 sub _get_cell {
   my ($data, $colours, $i, $j, $nb_col, $nb_row) = @_;
 
@@ -239,30 +259,31 @@ sub _get_cell {
   }
   return ($content, $properties);
 }
+## use critic
 
 sub _get_cell_content {
   my ($data, $pos) = @_;
   my $cell = $data->{$pos};
   if ($cell) {
     my $container_id = $cell->{'input_id'};
-    $container_id =~ s/\-//;
+    $container_id =~ s/\-//xms;
 
     my $id = $container_id;
     my $loc = $cell->{'input_location'};
     my $v = $cell->{'sample_volume'};
     my $b = $cell->{'buffer_volume'};
-    return $loc."\n".$id."\nv".int($v)." b".int($b);
+    return $loc."\n".$id."\nv".(int $v).' b'.(int $b);
   }
-  return "";
+  return q{};
 }
 
 sub _get_legend_content {
   my ($i, $j, $nb_col, $nb_row) = @_;
   if (0 == $i || $nb_col < $i ){
     if (0 == $j || $nb_row < $j ){
-      return "";
+      return q{};
     }
-    return ".\n".chr(64+$j)."\n.";
+    return ".\n".chr($A_CHAR_CODE+$j)."\n.";
   }
   if (0 == $j || $nb_row < $j ){
     return $i;
@@ -278,24 +299,24 @@ sub _get_cell_properties {
     return {
       background_color => $col,
       font_size=> 7,
-      justify => "center",
+      justify => 'center',
     };
   } else {
     return {
       background_color => 'white',
       font_size=> 7,
-      justify => "center",
+      justify => 'center',
     }
   }
 }
 
 sub _get_legend_properties {
   my ($i, $j, $nb_col, $nb_row) = @_;
-  
+
   return {
     background_color => 'white',
     font_size=> 7,
-    justify => "center",
+    justify => 'center',
   }
 }
 
@@ -309,7 +330,7 @@ sub _get_colour_data {
       $hash_colour->{$id} = shift @list_of_colours;
     }
   }
-  return $hash_colour; 
+  return $hash_colour;
 }
 
 sub _get_location {
@@ -322,7 +343,7 @@ sub _get_location {
     # top or bottom row
     return;
   }
-  return chr(64+$j).":".($i);
+  return (chr $A_CHAR_CODE+$j).q{:}.$i;
 }
 
 sub _get_containers_data {
@@ -337,11 +358,11 @@ sub _get_containers_data {
   my $all_data = {};
 
   my $process_id  = ($self->find_elements($self->process_doc, $PROCESS_ID_PATH))[0]->getValue();
-  $process_id =~ s/\-//;
+  $process_id =~ s/\-//xms;
   $all_data->{'process_id'} = $process_id;
 
   while (my ($uri, $out_artifact) = each %{$artifacts_tmp} ) {
-    if ($uri =~ /(.*)\?.*/){
+    if ($uri =~ /(.*)[?].*/xms){
       my $in_artifact = $previous_artifacts->{$oi_map->{$uri}};
 
 
@@ -356,15 +377,15 @@ sub _get_containers_data {
       my $in_container_id   = ($self->find_elements($in_artifact,     $CONTAINER_ID_PATH  ) )[0] ->getValue();
 
       # we only do this part when it's a container that we don't know yet...
-      if (!defined $all_data->{'output_container_info'}->{$out_container_uri}) 
+      if (!defined $all_data->{'output_container_info'}->{$out_container_uri})
       {
         my $out_container = $self->fetch_and_parse($out_container_uri);
 
-        my $barcode       = $self->find_clarity_element($out_container, "name")->textContent;
+        my $barcode       = $self->find_clarity_element($out_container, 'name')->textContent;
         my $purpose       = $self->find_udf_element($out_container,    $PURPOSE_PATH)  ->textContent;
-        if (!defined $purpose) { $purpose = " Unknown " ; }
-        my $name          = $out_container_id; 
-        $name =~ s/\-//;
+        if (!defined $purpose) { $purpose = ' Unknown ' ; }
+        my $name          = $out_container_id;
+        $name =~ s/\-//xms;
 
         # to get the wells
         my $out_container_type_uri  = ($self->find_elements($out_container, $CONTAINER_TYPE_URI) )[0] ->getValue();
@@ -387,9 +408,9 @@ sub _get_containers_data {
         my $shelf       = $self->find_udf_element($in_container,    $SHELF_PATH)  ->textContent;
         my $tray        = $self->find_udf_element($in_container,    $TRAY_PATH)   ->textContent;
         my $rack        = $self->find_udf_element($in_container,    $RACK_PATH)   ->textContent;
-        my $barcode     = $self->find_clarity_element($in_container, "name")      ->textContent;
-        my $name        = $in_container_id; 
-        $name =~ s/\-//;
+        my $barcode     = $self->find_clarity_element($in_container, 'name')      ->textContent;
+        my $name        = $in_container_id;
+        $name =~ s/\-//xms;
 
         $all_data->{'input_container_info' }->{$in_container_uri }->{'plate_name'} = $name;
         $all_data->{'input_container_info' }->{$in_container_uri }->{'barcode'}    = $barcode;
@@ -409,8 +430,6 @@ sub _get_containers_data {
     }
   }
 
-  # print Dumper $all_data;
-
   return $all_data;
 }
 
@@ -428,16 +447,16 @@ sub _get_oi_map {
     return $self->_oi_map;
   }
   my $oi_map = {};
-
+  ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
   while (my ($uri, $proc) = each %{$previous_processes} ) {
     my $proc_io_maps = $self->find_elements($proc, q{./input-output-map});
     foreach my $proc_io_map (@{$proc_io_maps}){
-      my $in  = $proc_io_map->findnodes(q{./input/@uri});
-      my $out = $proc_io_map->findnodes(q{./output/@uri});
+      my $in  = $proc_io_map->findnodes( q{./input/@uri}  );
+      my $out = $proc_io_map->findnodes( q{./output/@uri} );
       $oi_map->{$out} = $in;
     }
   }
-
+  ## use critic
   $self->_oi_map($oi_map);
   return $self->_oi_map;
 }

@@ -197,10 +197,10 @@ my $TEST_DATA = {
                            'input_id' => '27-27'
                          }
       },
-      'purpose' => 'PLATE_PURPOSE_out', 
-      'plate_name' => 'PLATE_NAME', 
-      'barcode' => '1234567890123456', 
-      'wells' => '96',  
+      'purpose' => 'PLATE_PURPOSE_out',
+      'plate_name' => 'PLATE_NAME',
+      'barcode' => '1234567890123456',
+      'wells' => '96',
     },
   },
   'input_container_info' => {
@@ -221,10 +221,10 @@ my $TEST_DATA2 = {
           'input_id' => '27'
         },
       },
-      'purpose' => 'PLATE_PURPOSE_out', 
-      'plate_name' => 'PLATE_NAME', 
-      'barcode' => '1234567890123456', 
-      'wells' => '96',  
+      'purpose' => 'PLATE_PURPOSE_out',
+      'plate_name' => 'PLATE_NAME',
+      'barcode' => '1234567890123456',
+      'wells' => '96',
     },
   },
   'input_container_info' => {
@@ -302,9 +302,9 @@ my $TEST_DATA3 = {
                  'input_uri' => '23',
                },
       },
-      'purpose' => 'PLATE_PURPOSE_out', 
-      'plate_name' => 'PLATE_NAME', 
-      'barcode' => '1234567890123456', 
+      'purpose' => 'PLATE_PURPOSE_out',
+      'plate_name' => 'PLATE_NAME',
+      'barcode' => '1234567890123456',
       'wells' => '96',
     },
   },
@@ -313,7 +313,7 @@ my $TEST_DATA3 = {
               'freezer' => '000021', 'shelf' => '000022', 'rack' => '000023', 'tray'=> '000024' },
     '25' => { 'purpose' => 'PLATE_PURPOSE_25', 'plate_name' => 'PLATE_NAME25', 'barcode' => '00000025', 'wells' => '25',
               'freezer' => '000031', 'shelf' => '000032', 'rack' => '000033', 'tray'=> '000034' },
-    '23' => { 'purpose' => 'PLATE_PURPOSE_23', 'plate_name' => 'PLATE_NAME23', 'barcode' => '00000023', 'wells' => '23', 
+    '23' => { 'purpose' => 'PLATE_PURPOSE_23', 'plate_name' => 'PLATE_NAME23', 'barcode' => '00000023', 'wells' => '23',
               'freezer' => '000011', 'shelf' => '000012', 'rack' => '000013', 'tray'=> '000014' },
   },
   'process_id' => 'PROCESS_ID',
@@ -410,13 +410,13 @@ my $TEST_DATA3 = {
   my $container_uri = q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containers/27-8129};
   my $cont = $data->{'output_container_info'}->{$container_uri}->{'container_details'};
   my @expected_data = (
-    { 'param' => 'D:1',  
+    { 'param' => 'D:1',
     'exp_location' => "B:2",
     'exp_sample_volume' => "1.2",
     'exp_buffer_volume' => "8.8",
     'exp_id' => "27-23",
     },
-    { 'param' => 'D:3',  
+    { 'param' => 'D:3',
     'exp_location' => "B:1",
     'exp_sample_volume' => "1.2",
     'exp_buffer_volume' => "8.8",

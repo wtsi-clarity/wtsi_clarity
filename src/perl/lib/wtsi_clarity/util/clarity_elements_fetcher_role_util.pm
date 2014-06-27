@@ -28,12 +28,14 @@ sub fetch_targets_hash {
   return \%hash;
 }
 
+## no critic(Subroutines::ProhibitUnusedPrivateSubroutines)
 sub _fetch_targets_hash {
   my ($self) = @_;
   my $hash = $self->fetch_targets_hash($self->get_targets_uri());
 
   return $hash;
 }
+## use critic
 
 sub _find_xml_recursively {
   my ($self,$xml, @xpaths) = @_;
@@ -75,32 +77,15 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::util::clarity_elements_fetcher_role
+wtsi_clarity::util::clarity_elements_fetcher_role_util
 
 =head1 SYNOPSIS
 
-  with 'wtsi_clarity::util::clarity_elements_fetcher_role';
+  with 'wtsi_clarity::util::clarity_elements_fetcher_role_util';
 
 =head1 DESCRIPTION
 
-  Offers a role to find and update resources (called 'targets' in this
-  context) in XML files, using XPath to find the files. It has to be used
-  in conjonction with a class extending wtsi_clarity::util::clarity_elements_fetcher.
-
-  get_targets_uri(),
-  update_one_target_data(), and
-  get_data()
-  have to be implemented.
-
-  get_targets_uri() must return an array of XPaths used to fetch the resources
-  to updates. In the given example, the resources are the containers found
-  inside the output artifacts of the process:
-
-  get_data() will be called to find the
-
-  update_one_target_data() is the core of the update mechanism. It updates each
-  target with a given value. It will be applied to every target, and has to return
-  the serialised version of the updated xml.
+  Utility role for wtsi_clarity::util::clarity_elements_fetcher_role
 
 =head1 SUBROUTINES/METHODS
 
