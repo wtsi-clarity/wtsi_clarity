@@ -12,15 +12,26 @@ use PDF::Table;
 use wtsi_clarity::util::request;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $ARTIFACT_PATH   => q(/prc:process/input-output-map/input/@post-process-uri);
-Readonly::Scalar my $PREVIOUS_PROC   => q(/prc:process/input-output-map/input/parent-process/@uri);
-Readonly::Scalar my $SAMPLE_PATH     => q(/art:artifact/sample/@uri);
-Readonly::Scalar my $CONTAINER_PATH  => q(/art:artifact/location/container/@uri);
-Readonly::Scalar my $TARGET_NAME     => q(QC Complete);
+Readonly::Scalar my $ARTIFACT_PATH      => q(/prc:process/input-output-map/input/@post-process-uri);
+Readonly::Scalar my $PREVIOUS_PROC      => q(/prc:process/input-output-map/input/parent-process/@uri);
+Readonly::Scalar my $PROCESS_ID_PATH    => q(/prc:process/@limsid);
 
+Readonly::Scalar my $SAMPLE_PATH        => q(/art:artifact/sample/@uri);
+Readonly::Scalar my $LOCATION_PATH      => q(/art:artifact/location/value);
+Readonly::Scalar my $CONTAINER_URI_PATH => q(/art:artifact/location/container/@uri);
+Readonly::Scalar my $CONTAINER_ID_PATH  => q(/art:artifact/location/container/@limsid);
 
-Readonly::Scalar my $PURPOSE_PATH    => q(WTSI Container Purpose Name);
+Readonly::Scalar my $CONTAINER_TYPE_URI => q{/con:container/type/@uri};
+Readonly::Scalar my $CONTAINER_TYPE_X   => q{/ctp:container-type/x-dimension/size};
+Readonly::Scalar my $CONTAINER_TYPE_Y   => q{/ctp:container-type/y-dimension/size};
 
+Readonly::Scalar my $PURPOSE_PATH       => q(WTSI Container Purpose Name);
+Readonly::Scalar my $SAMPLE_VOLUME_PATH => q{Cherrypick Sample Volume};
+Readonly::Scalar my $BUFFER_VOLUME_PATH => q{Cherrypick Buffer Volume};
+Readonly::Scalar my $FREEZER_PATH       => q{WTSI Freezer};
+Readonly::Scalar my $SHELF_PATH         => q{WTSI Shelf};
+Readonly::Scalar my $TRAY_PATH          => q{WTSI Tray};
+Readonly::Scalar my $RACK_PATH          => q{WTSI Rack};
 ## use critic
 
 extends 'wtsi_clarity::epp';
@@ -41,39 +52,63 @@ override 'run' => sub {
   my $containers_data = $self->get_containers_data();
   my $pdf = PDF::API2->new();
 
-
-  #
   while (my ($uri, $data) = each %{$containers_data->{'output_container_info'}} ) {
-
-    my ($table_data, $table_properties) = get_table_data($data->{'container_details'}, $nb_col, $nb_row);
-  #
     my $page = $pdf->page();
     $page->mediabox('A4');
     my $font = $pdf->corefont('Helvetica-Bold');
-    my $title = $page->text();
-    $title->font($font, 20);
-    $title->translate(20, 700);
-    $title->text(get_title($containers_data, $uri));
+    my ($table_data, $table_properties) = get_table_data($data->{'container_details'}, $nb_col, $nb_row);
 
+    add_title_to_page($page, $font, $containers_data, $uri);
 
+    add_sources_to_page($pdf, $page, $font, $containers_data, $uri);
+    add_destinations_to_page($pdf, $page, $font, $containers_data, $uri);    
+    add_buffer_to_page($pdf, $page, $font, $table_data, $table_properties);
+  }
 
+  $pdf->saveas("new.pdf");
+  return 1;
+};
 
+sub add_title_to_page {
+  my ($page, $font, $containers_data, $uri) = @_;
+  add_text_to_page($page, $font, get_title($containers_data, $uri, "Cherrypicking"), 20, 780, 20);
+}
+
+sub add_sources_to_page {
+  my ($pdf, $page, $font, $containers_data, $uri) = @_;
+  my $y = 700;
+  my $data = get_source_plate_data($containers_data, $uri);
+  add_text_to_page($page, $font, "Source plates", 20, $y+20, 12);
+  add_table_to_page($pdf, $page, $data,           20, $y);
+}
+
+sub add_destinations_to_page {
+  my ($pdf, $page, $font, $containers_data, $uri) = @_;
+  my $y = 450;
+  my $data = get_destination_plate_data($containers_data, $uri);
+  add_text_to_page($page, $font, "Destination plates", 20, $y+20, 12);
+  add_table_to_page($pdf, $page, $data,                20, $y);
+}
+
+sub add_buffer_to_page {
+    my ($pdf, $page, $font, $table_data, $table_properties) = @_;
+    my $y = 350;
+
+    add_text_to_page($page, $font, "Buffer required", 20, $y+20, 12);
+    add_buffer_table_to_page($pdf, $page, $table_data, $table_properties, $y);
+}
+
+sub add_buffer_table_to_page {
+    my ($pdf, $page, $table_data, $table_properties, $y) = @_;
     my $pdftable = new PDF::Table;
-
-    my $left_edge_of_table = 20;
 
     $pdftable->table(
       # required params
-      $pdf,
-      $page,
-      $table_data,
-      x => $left_edge_of_table,
+      $pdf, $page, $table_data,
+      x => 20,
       w => ($nb_col + 1)*$width,
-      start_y => 400,
-      # next_y  => 720,
+      start_y => $y,
       start_h => 600,
-      # next_h  => 350,
-      # font_size      => 6,
       padding => 2,
       font  =>      $pdf->corefont("Courier-Bold", -encoding => "latin1"),
       cell_props => $table_properties,
@@ -94,14 +129,76 @@ override 'run' => sub {
         { min_w => $width/2, max_w => $width/2, },
       ]
     );
-  #
+}
+
+sub add_text_to_page {
+  my ($page, $font, $content, $x, $y, $font_size) = @_;
+  my $text = $page->text();
+  $text->font($font, $font_size);
+  $text->translate($x, $y);
+  $text->text($content);
+}
+
+sub add_table_to_page {
+  my ($pdf, $page, $data, $x, $y) = @_;
+  my $pdftable_source = new PDF::Table;
+  $pdftable_source->table(
+    $pdf, $page, $data,
+    x => $x, w => 400,
+    start_y    => $y,
+    start_h    => 600,
+    font_size  => 9,
+    padding    => 4,        
+    font       => $pdf->corefont("Helvetica", -encoding => "latin1"),
+  );
+}
+
+sub get_title {
+  my ($data, $uri, $action) = @_;
+  my $purpose = $data->{'output_container_info'}->{$uri}->{'purpose'};
+  my $process = $data->{'process_id'};
+  return "Process ".$process." - ".$purpose." - ".$action;
+}
+
+sub get_source_plate_data {
+  my ($data, $uri) = @_;
+  my $input_plates = {};
+
+  while (my ($pos, $info) = each %{$data->{'output_container_info'}
+                                         ->{$uri}
+                                         ->{'container_details'}    } ) {
+    if (defined $info->{'input_uri'}) {
+      $input_plates->{$info->{'input_uri'}} = 1;
+    }
   }
-  #
-  $pdf->saveas("new.pdf");
+  my $table_data = [];
 
+  push $table_data , ['Plate name', 'Barcode', 'Freezer', 'Shelf', 'Rack', 'Tray'];
 
-  return 1;
-};
+  foreach $uri (sort keys %{$input_plates} ) {
+    my $plate_name = $data->{'input_container_info'}->{$uri}->{'plate_name'};
+    my $barcode = $data->{'input_container_info'}->{$uri}->{'barcode'};
+    my $freezer = $data->{'input_container_info'}->{$uri}->{'freezer'};
+    my $shelf = $data->{'input_container_info'}->{$uri}->{'shelf'};
+    my $rack = $data->{'input_container_info'}->{$uri}->{'rack'};
+    my $tray = $data->{'input_container_info'}->{$uri}->{'tray'};
+    push $table_data, [$plate_name, $barcode, $freezer, $shelf, $rack, $tray];
+  }
+  return $table_data;
+}
+
+sub get_destination_plate_data {
+  my ($data, $uri) = @_;
+
+  my $table_data = [];
+  push $table_data , ['Plate name', 'Barcode', 'Wells'];
+
+    my $plate_name = $data->{'output_container_info'}->{$uri}->{'plate_name'};
+    my $barcode = $data->{'output_container_info'}->{$uri}->{'barcode'};
+    my $wells = $data->{'output_container_info'}->{$uri}->{'wells'};
+  push $table_data, [$plate_name, $barcode, $wells];
+  return $table_data;
+}
 
 sub get_table_data {
   my ($data, $nb_col, $nb_row) = @_;
@@ -141,11 +238,6 @@ sub get_cell {
     $content = get_legend_content($i,$j, $nb_col, $nb_row);
     $properties = get_legend_properties($i,$j, $nb_col, $nb_row);
   }
-
-  #
-  # my $content = get_cell_content($data, $i, $j);
-  # my $properties = get_cell_properties($data, $i, $j);
-
   return ($content, $properties);
 }
 
@@ -210,7 +302,6 @@ sub get_legend_properties {
 
 sub get_colour_data {
   my ($data, @list_of_colours) = @_;
-  # my @list_of_colours = ('red', 'green', 'blue', 'yellow', 'orange');
   my $hash_colour = {};
 
   foreach my $key (sort keys %{$data}) {
@@ -240,10 +331,103 @@ sub get_containers_data {
 
   my $artifacts_tmp       = $self->fetch_targets_hash($ARTIFACT_PATH);
   my $previous_processes  = $self->fetch_targets_hash($PREVIOUS_PROC);
-  my $previous_artifacts  = $self->fetch_targets_hash($PREVIOUS_PROC, q(/prc:process/input-output-map/input/@post-process-uri));
+  my $previous_artifacts  = $self->fetch_targets_hash($PREVIOUS_PROC, $ARTIFACT_PATH);
+
+  my $oi_map = $self->get_oi_map($previous_processes);
+
+  my $all_data = {};
+
+  my $process_id  = ($self->find_elements($self->process_doc, $PROCESS_ID_PATH))[0]->getValue();
+  $process_id =~ s/\-//;
+  $all_data->{'process_id'} = $process_id;
+
+  while (my ($uri, $out_artifact) = each %{$artifacts_tmp} ) {
+    if ($uri =~ /(.*)\?.*/){
+      my $in_artifact = $previous_artifacts->{$oi_map->{$uri}};
 
 
 
+      my $out_location      = ($self->find_elements($out_artifact,    $LOCATION_PATH      ) )[0] ->textContent;
+      my $out_container_uri = ($self->find_elements($out_artifact,    $CONTAINER_URI_PATH ) )[0] ->getValue();
+      my $out_container_id  = ($self->find_elements($out_artifact,    $CONTAINER_ID_PATH  ) )[0] ->getValue();
+      my $sample_volume     = ($self->find_udf_element($out_artifact, $SAMPLE_VOLUME_PATH ) )    ->textContent;
+      my $buffer_volume     = ($self->find_udf_element($out_artifact, $BUFFER_VOLUME_PATH ) )    ->textContent;
+      my $in_location       = ($self->find_elements($in_artifact,     $LOCATION_PATH      ) )[0] ->textContent;
+      my $in_container_uri  = ($self->find_elements($in_artifact,     $CONTAINER_URI_PATH ) )[0] ->getValue();
+      my $in_container_id   = ($self->find_elements($in_artifact,     $CONTAINER_ID_PATH  ) )[0] ->getValue();
+
+      # we only do this part when it's a container that we don't know yet...
+      if (!defined $all_data->{'output_container_info'}->{$out_container_uri}) 
+      {
+        my $out_container = $self->fetch_and_parse($out_container_uri);
+
+        my $barcode       = $self->find_clarity_element($out_container, "name")->textContent;
+        my $purpose       = $self->find_udf_element($out_container,    $PURPOSE_PATH)  ->textContent;
+        if (!defined $purpose) { $purpose = " Unknown " ; }
+        my $name          = $out_container_id; 
+        $name =~ s/\-//;
+
+        # to get the wells
+        my $out_container_type_uri  = ($self->find_elements($out_container, $CONTAINER_TYPE_URI) )[0] ->getValue();
+        my $out_container_type      = $self->fetch_and_parse($out_container_type_uri);
+        my $x  = ($self->find_elements($out_container_type,    $CONTAINER_TYPE_Y) )[0] ->textContent;
+        my $y  = ($self->find_elements($out_container_type,    $CONTAINER_TYPE_Y) )[0] ->textContent;
+
+        $all_data->{'output_container_info'}->{$out_container_uri}->{'purpose'}    = $purpose;
+        $all_data->{'output_container_info'}->{$out_container_uri}->{'plate_name'} = $name;
+        $all_data->{'output_container_info'}->{$out_container_uri}->{'barcode'}    = $barcode;
+        $all_data->{'output_container_info'}->{$out_container_uri}->{'wells'}      = $x*$y;
+      }
+
+      # we only do this part when it's a container that we don't know yet...
+      if (!defined $all_data->{'input_container_info'}->{$in_container_uri})
+      {
+        my $in_container= $self->fetch_and_parse($in_container_uri);
+
+        my $freezer     = $self->find_udf_element($in_container,    $FREEZER_PATH)->textContent;
+        my $shelf       = $self->find_udf_element($in_container,    $SHELF_PATH)  ->textContent;
+        my $tray        = $self->find_udf_element($in_container,    $TRAY_PATH)   ->textContent;
+        my $rack        = $self->find_udf_element($in_container,    $RACK_PATH)   ->textContent;
+        my $barcode     = $self->find_clarity_element($in_container, "name")      ->textContent;
+        my $name        = $in_container_id; 
+        $name =~ s/\-//;
+
+        $all_data->{'input_container_info' }->{$in_container_uri }->{'plate_name'} = $name;
+        $all_data->{'input_container_info' }->{$in_container_uri }->{'barcode'}    = $barcode;
+        $all_data->{'input_container_info' }->{$in_container_uri }->{'freezer'}    = $freezer;
+        $all_data->{'input_container_info' }->{$in_container_uri }->{'shelf'}      = $shelf;
+        $all_data->{'input_container_info' }->{$in_container_uri }->{'rack'}       = $rack;
+        $all_data->{'input_container_info' }->{$in_container_uri }->{'tray'}       = $tray;
+      }
+
+      $all_data->{'output_container_info'}->{$out_container_uri}->{'container_details'}->{$out_location} = {
+                            'input_id'             => $in_container_id,
+                            'input_location'       => $in_location,
+                            'sample_volume'        => $sample_volume,
+                            'buffer_volume'        => $buffer_volume,
+                            'input_uri'            => $in_container_uri,
+                          };
+    }
+  }
+
+  # print Dumper $all_data;
+
+  return $all_data;
+}
+
+has '_oi_map' => (
+  isa        => 'HashRef',
+  is         => 'rw',
+  required   => 0,
+  default => sub { {} },
+);
+
+sub get_oi_map {
+  my ($self, $previous_processes) = @_;
+
+  if (keys $self->_oi_map) {
+    return $self->_oi_map;
+  }
   my $oi_map = {};
 
   while (my ($uri, $proc) = each %{$previous_processes} ) {
@@ -255,109 +439,12 @@ sub get_containers_data {
     }
   }
 
-  my $all_data = {};
-
-  my $process_id  = ($self->find_elements($self->process_doc, q{/prc:process/@limsid}))[0]->getValue();
-  $process_id =~ s/\-//;
-  $all_data->{'process_id'} = $process_id;
-
-  while (my ($uri, $out_artifact) = each %{$artifacts_tmp} ) {
-    if ($uri =~ /(.*)\?.*/){
-      my $in_artifact = $previous_artifacts->{$oi_map->{$uri}};
-
-      my $out_location      = ($self->find_elements($out_artifact,    q{/art:artifact/location/value})             )[0] ->textContent;
-      my $out_container_uri = ($self->find_elements($out_artifact,    q{/art:artifact/location/container/@uri})    )[0] ->getValue();
-      my $sample_volume     = ($self->find_udf_element($out_artifact, q{Cherrypick Sample Volume})                 )    ->textContent;
-      my $buffer_volume     = ($self->find_udf_element($out_artifact, q{Cherrypick Buffer Volume})                 )    ->textContent;
-      my $in_location       = ($self->find_elements($in_artifact,     q{/art:artifact/location/value})             )[0] ->textContent;
-      my $in_container_uri  = ($self->find_elements($in_artifact,     q{/art:artifact/location/container/@uri})    )[0] ->getValue();
-      my $in_container_id   = ($self->find_elements($in_artifact,     q{/art:artifact/location/container/@limsid}) )[0] ->getValue();
-
-      if (!defined $all_data->{'output_container_info'}->{$out_container_uri}) 
-      {
-        my $out_container= $self->fetch_and_parse($out_container_uri);
-        my $purpose      = $self->find_udf_element($out_container,    $PURPOSE_PATH)  ->textContent;
-        my $name         = $self->find_clarity_element($out_container, "name")->textContent;
-        $name =~ s/\-//;
-        print " >> ",$purpose,"\n";
-        print " >> ",$name,"\n";
-        $all_data->{'output_container_info'}->{$out_container_uri}->{'purpose'}    = $purpose;
-        $all_data->{'output_container_info'}->{$out_container_uri}->{'plate_name'} = $name;
-        $all_data->{'output_container_info'}->{$out_container_uri}->{'barcode'}    = 'barcode';
-        $all_data->{'output_container_info'}->{$out_container_uri}->{'wells'}      = 'wells';
-      }
-
-      if (!defined $all_data->{'input_container_info'}->{$in_container_uri})
-      {
-        $all_data->{'input_container_info' }->{$in_container_uri }->{'purpose'}    = 'purpose';
-        $all_data->{'input_container_info' }->{$in_container_uri }->{'plate_name'} = 'another name';
-        $all_data->{'input_container_info' }->{$in_container_uri }->{'barcode'}    = 'barcode';
-      }
-
-      $all_data->{'output_container_info'}->{$out_container_uri}->{'container_details'}->{$out_location} = {
-                            'input_id'             => $in_container_id,
-                            'input_location'       => $in_location,
-                            'sample_volume'        => $sample_volume,
-                            'buffer_volume'        => $buffer_volume,
-                          };
-
-
-
-    }
-  }
-
-  # print Dumper $all_data;
-
-  return $all_data;
+  $self->_oi_map($oi_map);
+  return $self->_oi_map;
 }
 
-sub get_title {
-  my ($data, $uri) = @_;
-  my $purpose = $data->{'output_container_info'}->{$uri}->{'purpose'};
-  my $process = $data->{'process_id'};
-  return "Process ".$process." - ".$purpose." - Cherrypicking";
-}
-
-sub get_inputs_data {
-  my ($data, $uri) = @_;
-  my $purpose = $data->{'output_container_info'}->{$uri}->{'purpose'};
-  my $process = $data->{'process_id'};
-  return "Process ".$process." - ".$purpose." - Cherrypicking";
-}
-
-# sub get_targets_uri {
-#   return ( $ARTIFACT_PATH , $SAMPLE_PATH);
-# };
-#
-# sub update_one_target_data {
-#   my ($self, $targetDoc, $targetURI, $value) = @_;
-#
-#   $self->set_udf_element_if_absent($targetDoc, $TARGET_NAME, $value);
-#
-#   return $targetDoc->toString();
-# };
-#
-# sub get_data {
-#   my ($self, $targetDoc, $targetURI) = @_;
-#   return DateTime->now->strftime('%Y-%m-%d');
-# };
 
 
-
-# my @nodeList = $xml->findnodes($first)->get_nodelist();
-# my @found_targets = ();
-#
-# if (scalar @xpaths != 0)
-# {
-#   foreach my $element (@nodeList)
-#   {
-#     my $partial_xml = $self->fetch_and_parse($element->getValue());
-#     my @new_targets   = $self->_find_xml_recursively($partial_xml->getDocumentElement() , @xpaths);
-#     push @found_targets, @new_targets;
-#   }
-#   return @found_targets;
-# }
-#
 
 1;
 

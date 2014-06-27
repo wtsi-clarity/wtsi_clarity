@@ -288,6 +288,9 @@
     <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A78PA1" limsid="GIB11A78PA1">
         <value>G:6</value>
     </placement>
-    <udf:field type="String" name="WTSI Container Purpose Name">ISC Stock DNA</udf:field>
+    <udf:field type="String" name="WTSI Freezer">0000011</udf:field>
+    <udf:field type="String" name="WTSI Shelf">0000012</udf:field>
+    <udf:field type="String" name="WTSI Rack">0000013</udf:field>
+    <udf:field type="String" name="WTSI Tray">0000014</udf:field>
     <state>Populated</state>
 </con:container>

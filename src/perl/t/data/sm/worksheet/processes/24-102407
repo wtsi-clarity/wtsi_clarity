@@ -370,4 +370,8 @@
             <parent-process uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-102406" limsid="24-102406" />
         </input>
     </input-output-map>
+    <udf:field type="String" name="Pick by">(1) Concentration &amp; volume</udf:field>
+    <udf:field type="String" name="(1) Required Volume">10</udf:field>
+    <udf:field type="String" name="(1) Required Concentration">12</udf:field>
+    <process-parameter name="Print Barcode" />
 </prc:process>
