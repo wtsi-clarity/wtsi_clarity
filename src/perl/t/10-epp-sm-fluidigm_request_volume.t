@@ -20,7 +20,7 @@ use_ok('util::xml', 'can use wtsi_clarity::t::util::xml' );
   lives_ok { $step->fetch_and_update_targets($step->process_doc, '123.45') } 'managed to fetch and updates the artifact';
 
   cmp_ok(scalar keys %{$step->_targets}, '==', 8,
-    'There should be 8 artifacts (Test Fixture).');
+    'There should be 8 artifacts (only get the analyte type, no ResultFile).');
 
   my $TARGET_DATA_PATH = q(/art:artifact/udf:field[@name='Cherrypick Sample Volume']);
 

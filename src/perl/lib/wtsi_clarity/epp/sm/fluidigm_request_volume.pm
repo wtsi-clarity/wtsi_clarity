@@ -6,7 +6,7 @@ use XML::LibXML;
 use Readonly;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $OUTPUT_PATH   => q(/prc:process/input-output-map/output/@uri);
+Readonly::Scalar my $OUTPUT_PATH   => q(/prc:process/input-output-map/output[@output-type='Analyte']/@uri);
 Readonly::Scalar my $TARGET_NAME   => q(Cherrypick Sample Volume);
 Readonly::Scalar my $DATA_SOURCE   => q(/prc:process/udf:field[@name="Required Volume"]);
 ## use critic
