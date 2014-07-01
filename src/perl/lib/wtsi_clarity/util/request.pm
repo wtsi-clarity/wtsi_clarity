@@ -109,6 +109,13 @@ sub _build_user {
     return $user;
 }
 
+=head2 ftpuser
+
+Username of a user authorised to use FTP;
+if not given will be read from the configuration file.
+
+=cut
+
 has 'ftpuser'      => (isa        => 'Str',
                     is         => 'ro',
                     required   => 0,
@@ -139,6 +146,13 @@ sub _build_password {
     return $p;
 }
 
+
+=head2 ftppassword
+
+Password of a user authorised to use FTP;
+if not given will be read from the configuration file.
+
+=cut
 
 has 'ftppassword'      => (isa        => 'Str',
                         is         => 'ro',
@@ -276,7 +290,11 @@ sub _request {
 }
 
 
+=head2 del
 
+Open an FTP connection and upload a given file.
+
+=cut
 
 sub upload_file {
     my ($self, $server, $remote_directory, $oldfilename, $newfilename) = @_;
