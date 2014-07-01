@@ -6,12 +6,15 @@ use XML::LibXML;
 use Readonly;
 use PDF::API2;
 use PDF::Table;
+use File::Temp ();
+use File::Tempdir ();
 
 use wtsi_clarity::util::request;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $ARTIFACT_PATH      => q(/prc:process/input-output-map/input/@post-process-uri);
 Readonly::Scalar my $PREVIOUS_PROC      => q(/prc:process/input-output-map/input/parent-process/@uri);
+Readonly::Scalar my $OUTPUT_FILES       => q(/prc:process/input-output-map/output[@output-type='ResultFile']/@uri);
 Readonly::Scalar my $PROCESS_ID_PATH    => q(/prc:process/@limsid);
 
 Readonly::Scalar my $SAMPLE_PATH        => q(/art:artifact/sample/@uri);
@@ -48,10 +51,12 @@ Readonly::Scalar my $A_CHAR_CODE              => 64;
 extends 'wtsi_clarity::epp';
 with 'wtsi_clarity::util::clarity_elements_fetcher_role_util';
 with 'wtsi_clarity::util::clarity_elements';
+with 'wtsi_clarity::util::uploader_role';
 
 
 our $VERSION = '0.0';
 
+$File::Temp::KEEP_ALL = 1;
 override 'run' => sub {
   my $self= shift;
   super();
@@ -73,7 +78,26 @@ override 'run' => sub {
     _add_buffer_to_page($pdf, $page, $font, $table_data, $table_properties);
   }
 
-  $pdf->saveas('new.pdf');
+  my $tmpdir = File::Temp->newdir(CLEANUP => 1);
+  my $filename = $tmpdir->dirname().'/worksheet.pdf';
+  $pdf->saveas($filename);
+
+  my $outputs       = $self->fetch_targets_hash($OUTPUT_FILES);
+
+  my $worksheet_uri;
+  # $self->request->put($targetURI, $self->_targets->{$targetURI})
+  while (my ($uri, $output) = each %{$outputs} ) {
+    # print $output;
+    my $name = ($self->find_elements($output,    q{/art:artifact/name}      ) )[0] ->textContent;
+    if ($name eq 'Worksheet') {
+      # print $uri;
+      $worksheet_uri = $uri;
+    }
+  }
+
+  $self->addfile_to_resource($worksheet_uri, $filename)
+    or croak qq[Could not add file $filename to the resource $worksheet_uri.];
+
   return 1;
 };
 
@@ -366,12 +390,15 @@ sub _get_containers_data {
       my $in_artifact = $previous_artifacts->{$oi_map->{$uri}};
 
 
-
+      my $buffer_volume = 0;
       my $out_location      = ($self->find_elements($out_artifact,    $LOCATION_PATH      ) )[0] ->textContent;
       my $out_container_uri = ($self->find_elements($out_artifact,    $CONTAINER_URI_PATH ) )[0] ->getValue();
       my $out_container_id  = ($self->find_elements($out_artifact,    $CONTAINER_ID_PATH  ) )[0] ->getValue();
       my $sample_volume     = ($self->find_udf_element($out_artifact, $SAMPLE_VOLUME_PATH ) )    ->textContent;
-      my $buffer_volume     = ($self->find_udf_element($out_artifact, $BUFFER_VOLUME_PATH ) )    ->textContent;
+      my $buffer_volume_elmt= ($self->find_udf_element($out_artifact, $BUFFER_VOLUME_PATH ) ) ;
+      if ($buffer_volume_elmt) {
+        $buffer_volume      = ($buffer_volume_elmt)->textContent;
+      }
       my $in_location       = ($self->find_elements($in_artifact,     $LOCATION_PATH      ) )[0] ->textContent;
       my $in_container_uri  = ($self->find_elements($in_artifact,     $CONTAINER_URI_PATH ) )[0] ->getValue();
       my $in_container_id   = ($self->find_elements($in_artifact,     $CONTAINER_ID_PATH  ) )[0] ->getValue();
@@ -404,10 +431,21 @@ sub _get_containers_data {
       {
         my $in_container= $self->fetch_and_parse($in_container_uri);
 
-        my $freezer     = $self->find_udf_element($in_container,    $FREEZER_PATH)->textContent;
-        my $shelf       = $self->find_udf_element($in_container,    $SHELF_PATH)  ->textContent;
-        my $tray        = $self->find_udf_element($in_container,    $TRAY_PATH)   ->textContent;
-        my $rack        = $self->find_udf_element($in_container,    $RACK_PATH)   ->textContent;
+        my $freezer = q{};
+        my $shelf   = q{};
+        my $tray    = q{};
+        my $rack    = q{};
+
+        my $freezer_elmt     = $self->find_udf_element($in_container,    $FREEZER_PATH) ;
+        my $shelf_elmt       = $self->find_udf_element($in_container,    $SHELF_PATH);
+        my $tray_elmt        = $self->find_udf_element($in_container,    $TRAY_PATH);
+        my $rack_elmt        = $self->find_udf_element($in_container,    $RACK_PATH);
+
+        if ($freezer_elmt) {   $freezer = $freezer_elmt->textContent; }
+        if ($shelf_elmt)   {   $shelf = $shelf_elmt->textContent;     }
+        if ($tray_elmt)    {   $tray = $tray_elmt->textContent;       }
+        if ($rack_elmt)    {   $rack = $rack_elmt->textContent;       }
+
         my $barcode     = $self->find_clarity_element($in_container, 'name')      ->textContent;
         my $name        = $in_container_id;
         $name =~ s/\-//xms;

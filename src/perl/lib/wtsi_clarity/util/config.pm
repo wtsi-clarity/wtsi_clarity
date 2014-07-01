@@ -19,6 +19,7 @@ Readonly::Array  my @CONF_ITEMS      => qw/ clarity_api
                                             warehouse_mq
                                             robot_file_dir
                                             printing
+                                            ftp_user
                                           /;
 
 has 'dir_path'  => (
