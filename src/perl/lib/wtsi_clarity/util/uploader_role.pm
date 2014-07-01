@@ -11,7 +11,7 @@ our $VERSION = '0.0';
 
 
 sub _get_storage_request {
-  my ($self, $destination_uri, $filename) = @_;
+  my ($destination_uri, $filename) = @_;
 
   my $doc = XML::LibXML::Document->new('1.0', 'utf-8');
   my $root = $doc->createElementNS('http://genologics.com/ri/file', "file:file");
@@ -32,10 +32,15 @@ sub _get_storage_request {
   return $doc;
 }
 
+sub _extract_locations {
+  my ($url) = @_;
+  return $url =~ /sftp:\/\/([^\/]+)\/(.*)\/([^\/]+[.].+)/smx;
+}
+
 sub addfile_to_resource {
   my ($self, $destination_uri, $filename) = @_;
 
-  my $storage_request = $self->_get_storage_request($destination_uri, $filename)
+  my $storage_request = _get_storage_request($destination_uri, $filename)
     or croak qq[Could not request storage for file $filename];
 
   my $storage_raw = $self->request->post(($self->base_url).'glsstorage', $storage_request->toString());
@@ -46,7 +51,7 @@ sub addfile_to_resource {
 
   my $content_location = ($self->find_elements($storage,    q{/file:file/content-location}      ) )[0] ->textContent;
 
-  my ($server, $remote_directory, $newfilename) = $content_location =~ /sftp?:\/\/([^\/]+)\/(.*)\/([^\/]+[.].+)/smx;
+  my ($server, $remote_directory, $newfilename) = _extract_locations ($content_location);
   if (!$remote_directory) {
       croak qq[Cannot get base url from $content_location];
   }
@@ -67,29 +72,20 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::util::clarity_elements_fetcher_role_util
+wtsi_clarity::util::uploader_role
 
 =head1 SYNOPSIS
 
-  with 'wtsi_clarity::util::clarity_elements_fetcher_role_util';
+  with 'wtsi_clarity::util::uploader_role';
 
 =head1 DESCRIPTION
 
-  Utility role for wtsi_clarity::util::clarity_elements_fetcher_role
+  Utility role for wtsi_clarity::util::uploader_role
 
 =head1 SUBROUTINES/METHODS
 
-=head2 fetch_targets_hash
-  Takes a list of XPaths, and use them to find the targets that will need to be
-  updated, as a hash (its keys are the URI of the targets).
-  Each Xpath has to point toward a URI, that will be fetched, and use to apply the next one.
-
-=head2 fetch_and_update_targets
-  Takes an XML doc to process.
-  Method used by clarity_elements_fetcher to fetch the target, and update them.
-
-=head2  put_changes
-  Method used to send the update requests after having updated the targets.
+=head2 addfile_to_resource
+  Takes a resource URI and file path on the local server, and attach the file to the given resource.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
@@ -98,6 +94,8 @@ wtsi_clarity::util::clarity_elements_fetcher_role_util
 =over
 
 =item Moose
+
+=item Carp
 
 =item XML::LibXML
 

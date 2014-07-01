@@ -84,19 +84,14 @@ override 'run' => sub {
 
   my $outputs       = $self->fetch_targets_hash($OUTPUT_FILES);
 
-  my $worksheet_uri;
-  # $self->request->put($targetURI, $self->_targets->{$targetURI})
   while (my ($uri, $output) = each %{$outputs} ) {
-    # print $output;
     my $name = ($self->find_elements($output,    q{/art:artifact/name}      ) )[0] ->textContent;
     if ($name eq 'Worksheet') {
-      # print $uri;
-      $worksheet_uri = $uri;
+      $self->addfile_to_resource($uri, $filename)
+        or croak qq[Could not add file $filename to the resource $uri.];
     }
   }
 
-  $self->addfile_to_resource($worksheet_uri, $filename)
-    or croak qq[Could not add file $filename to the resource $worksheet_uri.];
 
   return 1;
 };

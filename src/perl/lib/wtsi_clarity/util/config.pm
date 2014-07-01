@@ -116,7 +116,7 @@ wtsi_clarity::util::config
 
 =head2 dir_path - directory for configuration files
 
-=head2 file - a full path of the confuguration file
+=head2 file - a full path of the configuration file
 
 =head2 clarity_api - returns a hash reference corresponding to this
    section of a configuration file
