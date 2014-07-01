@@ -508,7 +508,7 @@ wtsi_clarity::epp::sm::worksheet
 
 =head1 DESCRIPTION
 
-  Creates a pdf document describing the plates.
+  Creates a pdf document describing the plates, and upload it on the server, as an output for each output plate.
 
 =head1 SUBROUTINES/METHODS
 
