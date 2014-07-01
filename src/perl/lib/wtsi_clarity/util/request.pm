@@ -290,7 +290,7 @@ sub _request {
 }
 
 
-=head2 del
+=head2 upload_file
 
 Open an FTP connection and upload a given file.
 
@@ -298,18 +298,16 @@ Open an FTP connection and upload a given file.
 
 sub upload_file {
     my ($self, $server, $remote_directory, $oldfilename, $newfilename) = @_;
-    print "calling $server\n";
     my $sftp=Net::SFTP::Foreign->new($server,
             'user'=>$self->ftpuser,
             'password' => $self->ftppassword,
-            # 'more' => '-v',
-            ) or croak "could not open connection to $server\n";
+            ) or croak qq{could not open connection to $server};
 
 
-    $sftp->put($oldfilename, "/".$remote_directory."/".$newfilename)
-      or croak "could not upload the file $oldfilename as $remote_directory / $newfilename on the server $server\n".$sftp->error;
+    $sftp->put($oldfilename, qq{/$remote_directory/$newfilename} )
+      or croak qq{could not upload the file $oldfilename as $remote_directory / $newfilename on the server $server}.$sftp->error;
 
-    $sftp->disconnect();
+    return $sftp->disconnect();
 }
 
 =head2 del

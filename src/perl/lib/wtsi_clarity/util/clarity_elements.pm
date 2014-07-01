@@ -219,6 +219,9 @@ wtsi_clarity::util::clarity_elements
   find_clarity_element - takes some XML and an element name. Will return the element
   node, or undef if not found.
 
+=head2
+  find_elements - takes some XML and an element name. Will return all the elements found.
+  
 =head2 create_udf_element
   creates a new UDF element, append it to the xml at the given position, and returns it
 

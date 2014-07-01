@@ -14,7 +14,7 @@ sub _get_storage_request {
   my ($destination_uri, $filename) = @_;
 
   my $doc = XML::LibXML::Document->new('1.0', 'utf-8');
-  my $root = $doc->createElementNS('http://genologics.com/ri/file', "file:file");
+  my $root = $doc->createElementNS('http://genologics.com/ri/file', 'file:file');
 
   my %tags = (
       'attached-to'       => $destination_uri,
