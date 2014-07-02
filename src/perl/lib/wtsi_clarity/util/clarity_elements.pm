@@ -118,6 +118,13 @@ sub find_clarity_element {
   return $nodeList->size() == 0 ? undef : $nodeList->pop();
 }
 
+sub find_elements {
+  my ($self, $xml, $name) = @_;
+  my $xpc = XML::LibXML::XPathContext->new($xml->getDocumentElement());
+  return $xpc->findnodes($name);
+}
+
+
 sub create_udf_element {
   my ($self, $xml_el, $udf_name, $udf_value) = @_;
   my $url = 'http://genologics.com/ri/userdefined';
@@ -212,6 +219,9 @@ wtsi_clarity::util::clarity_elements
   find_clarity_element - takes some XML and an element name. Will return the element
   node, or undef if not found.
 
+=head2
+  find_elements - takes some XML and an element name. Will return all the elements found.
+  
 =head2 create_udf_element
   creates a new UDF element, append it to the xml at the given position, and returns it
 

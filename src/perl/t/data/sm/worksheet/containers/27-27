@@ -1,0 +1,296 @@
+<?xml version="1.0" standalone="yes"?>
+<con:container xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containers/27-27" limsid="27-27">
+    <name>eag plate 2</name>
+    <type uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containertypes/1" name="96 Well Plate"/>
+    <occupied-wells>95</occupied-wells>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A128PA1" limsid="GIB11A128PA1">
+        <value>C:9</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A127PA1" limsid="GIB11A127PA1">
+        <value>C:8</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A125PA1" limsid="GIB11A125PA1">
+        <value>C:6</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A126PA1" limsid="GIB11A126PA1">
+        <value>C:7</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A124PA1" limsid="GIB11A124PA1">
+        <value>C:5</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A133PA1" limsid="GIB11A133PA1">
+        <value>D:2</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A134PA1" limsid="GIB11A134PA1">
+        <value>D:3</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A132PA1" limsid="GIB11A132PA1">
+        <value>D:1</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A131PA1" limsid="GIB11A131PA1">
+        <value>C:12</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A129PA1" limsid="GIB11A129PA1">
+        <value>C:10</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A130PA1" limsid="GIB11A130PA1">
+        <value>C:11</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A139PA1" limsid="GIB11A139PA1">
+        <value>D:8</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A138PA1" limsid="GIB11A138PA1">
+        <value>D:7</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A137PA1" limsid="GIB11A137PA1">
+        <value>D:6</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A136PA1" limsid="GIB11A136PA1">
+        <value>D:5</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A135PA1" limsid="GIB11A135PA1">
+        <value>D:4</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A144PA1" limsid="GIB11A144PA1">
+        <value>E:1</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A143PA1" limsid="GIB11A143PA1">
+        <value>D:12</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A142PA1" limsid="GIB11A142PA1">
+        <value>D:11</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A141PA1" limsid="GIB11A141PA1">
+        <value>D:10</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A140PA1" limsid="GIB11A140PA1">
+        <value>D:9</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A105PA1" limsid="GIB11A105PA1">
+        <value>A:10</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A106PA1" limsid="GIB11A106PA1">
+        <value>A:11</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A107PA1" limsid="GIB11A107PA1">
+        <value>A:12</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A103PA1" limsid="GIB11A103PA1">
+        <value>A:8</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A104PA1" limsid="GIB11A104PA1">
+        <value>A:9</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A111PA1" limsid="GIB11A111PA1">
+        <value>B:4</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A112PA1" limsid="GIB11A112PA1">
+        <value>B:5</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A108PA1" limsid="GIB11A108PA1">
+        <value>B:1</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A109PA1" limsid="GIB11A109PA1">
+        <value>B:2</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A110PA1" limsid="GIB11A110PA1">
+        <value>B:3</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A116PA1" limsid="GIB11A116PA1">
+        <value>B:9</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A118PA1" limsid="GIB11A118PA1">
+        <value>B:11</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A117PA1" limsid="GIB11A117PA1">
+        <value>B:10</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A114PA1" limsid="GIB11A114PA1">
+        <value>B:7</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A113PA1" limsid="GIB11A113PA1">
+        <value>B:6</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A115PA1" limsid="GIB11A115PA1">
+        <value>B:8</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A122PA1" limsid="GIB11A122PA1">
+        <value>C:3</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A121PA1" limsid="GIB11A121PA1">
+        <value>C:2</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A123PA1" limsid="GIB11A123PA1">
+        <value>C:4</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A119PA1" limsid="GIB11A119PA1">
+        <value>B:12</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A120PA1" limsid="GIB11A120PA1">
+        <value>C:1</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A168PA1" limsid="GIB11A168PA1">
+        <value>G:1</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A167PA1" limsid="GIB11A167PA1">
+        <value>F:12</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A171PA1" limsid="GIB11A171PA1">
+        <value>G:4</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A169PA1" limsid="GIB11A169PA1">
+        <value>G:2</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A170PA1" limsid="GIB11A170PA1">
+        <value>G:3</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A173PA1" limsid="GIB11A173PA1">
+        <value>G:6</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A174PA1" limsid="GIB11A174PA1">
+        <value>G:7</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A172PA1" limsid="GIB11A172PA1">
+        <value>G:5</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A176PA1" limsid="GIB11A176PA1">
+        <value>G:9</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A175PA1" limsid="GIB11A175PA1">
+        <value>G:8</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A179PA1" limsid="GIB11A179PA1">
+        <value>G:12</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A178PA1" limsid="GIB11A178PA1">
+        <value>G:11</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A177PA1" limsid="GIB11A177PA1">
+        <value>G:10</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A182PA1" limsid="GIB11A182PA1">
+        <value>H:3</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A181PA1" limsid="GIB11A181PA1">
+        <value>H:2</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A180PA1" limsid="GIB11A180PA1">
+        <value>H:1</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A184PA1" limsid="GIB11A184PA1">
+        <value>H:5</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A183PA1" limsid="GIB11A183PA1">
+        <value>H:4</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A187PA1" limsid="GIB11A187PA1">
+        <value>H:8</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A186PA1" limsid="GIB11A186PA1">
+        <value>H:7</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A185PA1" limsid="GIB11A185PA1">
+        <value>H:6</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A145PA1" limsid="GIB11A145PA1">
+        <value>E:2</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A146PA1" limsid="GIB11A146PA1">
+        <value>E:3</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A147PA1" limsid="GIB11A147PA1">
+        <value>E:4</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A148PA1" limsid="GIB11A148PA1">
+        <value>E:5</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A149PA1" limsid="GIB11A149PA1">
+        <value>E:6</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A150PA1" limsid="GIB11A150PA1">
+        <value>E:7</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A151PA1" limsid="GIB11A151PA1">
+        <value>E:8</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A152PA1" limsid="GIB11A152PA1">
+        <value>E:9</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A153PA1" limsid="GIB11A153PA1">
+        <value>E:10</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A154PA1" limsid="GIB11A154PA1">
+        <value>E:11</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A155PA1" limsid="GIB11A155PA1">
+        <value>E:12</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A156PA1" limsid="GIB11A156PA1">
+        <value>F:1</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A158PA1" limsid="GIB11A158PA1">
+        <value>F:3</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A157PA1" limsid="GIB11A157PA1">
+        <value>F:2</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A159PA1" limsid="GIB11A159PA1">
+        <value>F:4</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A160PA1" limsid="GIB11A160PA1">
+        <value>F:5</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A162PA1" limsid="GIB11A162PA1">
+        <value>F:7</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A161PA1" limsid="GIB11A161PA1">
+        <value>F:6</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A163PA1" limsid="GIB11A163PA1">
+        <value>F:8</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A164PA1" limsid="GIB11A164PA1">
+        <value>F:9</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A166PA1" limsid="GIB11A166PA1">
+        <value>F:11</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A165PA1" limsid="GIB11A165PA1">
+        <value>F:10</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A188PA1" limsid="GIB11A188PA1">
+        <value>H:9</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A190PA1" limsid="GIB11A190PA1">
+        <value>H:11</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A189PA1" limsid="GIB11A189PA1">
+        <value>H:10</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A100PA1" limsid="GIB11A100PA1">
+        <value>A:5</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A101PA1" limsid="GIB11A101PA1">
+        <value>A:6</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A102PA1" limsid="GIB11A102PA1">
+        <value>A:7</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A97PA1" limsid="GIB11A97PA1">
+        <value>A:2</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A98PA1" limsid="GIB11A98PA1">
+        <value>A:3</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A99PA1" limsid="GIB11A99PA1">
+        <value>A:4</value>
+    </placement>
+    <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A96PA1" limsid="GIB11A96PA1">
+        <value>A:1</value>
+    </placement>
+    <udf:field type="String" name="WTSI Freezer">0000001</udf:field>
+    <udf:field type="String" name="WTSI Shelf">0000002</udf:field>
+    <udf:field type="String" name="WTSI Rack">0000003</udf:field>
+    <udf:field type="String" name="WTSI Tray">0000004</udf:field>
+    <state>Populated</state>
+</con:container>

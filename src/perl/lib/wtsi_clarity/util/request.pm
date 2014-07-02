@@ -12,6 +12,8 @@ use File::Path;
 use File::Spec::Functions;
 use Readonly;
 
+use Net::SFTP::Foreign;
+
 use wtsi_clarity::util::config;
 
 our $VERSION = '0.0';
@@ -107,6 +109,25 @@ sub _build_user {
     return $user;
 }
 
+=head2 ftpuser
+
+Username of a user authorised to use FTP;
+if not given will be read from the configuration file.
+
+=cut
+
+has 'ftpuser'      => (isa        => 'Str',
+                    is         => 'ro',
+                    required   => 0,
+                    lazy_build => 1,
+                   );
+sub _build_ftpuser {
+    my $self = shift;
+    my $user = $self->config->ftp_user->{'username'} ||
+        croak q[Cannot retrieve ftp username from the configuration file];
+    return $user;
+}
+
 =head2 password
 
 Password of a user authorised to use API;
@@ -122,6 +143,26 @@ sub _build_password {
     my $self = shift;
     my $p = $self->config->clarity_api->{'password'} ||
         croak q[Cannot retrieve password from the configuration file];
+    return $p;
+}
+
+
+=head2 ftppassword
+
+Password of a user authorised to use FTP;
+if not given will be read from the configuration file.
+
+=cut
+
+has 'ftppassword'      => (isa        => 'Str',
+                        is         => 'ro',
+                        required   => 0,
+                        lazy_build => 1,
+                       );
+sub _build_ftppassword {
+    my $self = shift;
+    my $p = $self->config->ftp_user->{'password'} ||
+        croak q[Cannot retrieve ftp password from the configuration file];
     return $p;
 }
 
@@ -246,6 +287,27 @@ sub _request {
         croak "$type request to $uri failed: " . join q[ ], $res->status_line(), $res->decoded_content;
     }
     return $res->decoded_content;
+}
+
+
+=head2 upload_file
+
+Open an FTP connection and upload a given file.
+
+=cut
+
+sub upload_file {
+    my ($self, $server, $remote_directory, $oldfilename, $newfilename) = @_;
+    my $sftp=Net::SFTP::Foreign->new($server,
+            'user'=>$self->ftpuser,
+            'password' => $self->ftppassword,
+            ) or croak qq{could not open connection to $server};
+
+
+    $sftp->put($oldfilename, qq{/$remote_directory/$newfilename} )
+      or croak qq{could not upload the file $oldfilename as $remote_directory / $newfilename on the server $server}.$sftp->error;
+
+    return $sftp->disconnect();
 }
 
 =head2 del
