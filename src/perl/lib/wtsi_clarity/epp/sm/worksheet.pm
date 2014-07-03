@@ -8,7 +8,7 @@ use PDF::API2;
 use PDF::Table;
 use File::Temp ();
 use File::Tempdir ();
-
+use Data::Dumper;
 use wtsi_clarity::util::request;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
@@ -23,6 +23,7 @@ Readonly::Scalar my $CONTAINER_URI_PATH => q(/art:artifact/location/container/@u
 Readonly::Scalar my $CONTAINER_ID_PATH  => q(/art:artifact/location/container/@limsid);
 
 Readonly::Scalar my $CONTAINER_TYPE_URI => q{/con:container/type/@uri};
+Readonly::Scalar my $CONTAINER_TYPE_NAME=> q{/con:container/type/@name};
 Readonly::Scalar my $CONTAINER_TYPE_X   => q{/ctp:container-type/x-dimension/size};
 Readonly::Scalar my $CONTAINER_TYPE_Y   => q{/ctp:container-type/y-dimension/size};
 
@@ -62,49 +63,160 @@ override 'run' => sub {
   super();
 
   my $containers_data = $self->_get_containers_data();
-  my $pdf = PDF::API2->new();
 
-  # for each output container, we produce a new page...
-  while (my ($uri, $data) = each %{$containers_data->{'output_container_info'}} ) {
-    my $page = $pdf->page();
-    $page->mediabox('A4');
-    my $font = $pdf->corefont('Helvetica-Bold');
-    my ($table_data, $table_properties) = _get_table_data($data->{'container_details'}, $nb_col, $nb_row);
+  # print Dumper $containers_data;
 
-    _add_title_to_page($page, $font, $containers_data, $uri);
+  # my $pdf = PDF::API2->new();
 
-    _add_sources_to_page($pdf, $page, $font, $containers_data, $uri);
-    _add_destinations_to_page($pdf, $page, $font, $containers_data, $uri);
-    _add_buffer_to_page($pdf, $page, $font, $table_data, $table_properties);
-  }
+  # # for each output container, we produce a new page...
+  # while (my ($uri, $data) = each %{$containers_data->{'output_container_info'}} ) {
+  #   my $page = $pdf->page();
+  #   $page->mediabox('A4');
+  #   my $font = $pdf->corefont('Helvetica-Bold');
+  #   my ($table_data, $table_properties) = _get_table_data($data->{'container_details'}, $nb_col, $nb_row);
 
-  my $tmpdir = File::Temp->newdir(CLEANUP => 1);
-  my $filename = $tmpdir->dirname().'/worksheet.pdf';
-  $pdf->saveas($filename);
+  #   _add_title_to_page($page, $font, $containers_data, $uri);
 
+  #   _add_sources_to_page($pdf, $page, $font, $containers_data, $uri);
+  #   _add_destinations_to_page($pdf, $page, $font, $containers_data, $uri);
+  #   _add_buffer_to_page($pdf, $page, $font, $table_data, $table_properties);
+  # }
+
+  # my $tmpdir = File::Temp->newdir(CLEANUP => 1);
+  # my $filename = $tmpdir->dirname().'/worksheet.pdf';
+  # $pdf->saveas($filename);
+
+
+
+  my $tecan_content = _get_TECAN_file_content($containers_data,'benoit', 'today');
+
+  my $tecan_filename = _create_tecan_file($tecan_content,'tecan.gwl');
+  print $tecan_filename;
   my $outputs       = $self->fetch_targets_hash($OUTPUT_FILES);
 
-  while (my ($uri, $output) = each %{$outputs} ) {
-    my $name = ($self->find_elements($output,    q{/art:artifact/name}      ) )[0] ->textContent;
-    if ($name eq 'Worksheet') {
-      $self->addfile_to_resource($uri, $filename)
-        or croak qq[Could not add file $filename to the resource $uri.];
-    }
-  }
+  # while (my ($uri, $output) = each %{$outputs} ) {
+  #   my $name = ($self->find_elements($output,    q{/art:artifact/name}      ) )[0] ->textContent;
+  #   if ($name eq 'Worksheet') {
+  #     # $self->addfile_to_resource($uri, $filename)
+  #     #   or croak qq[Could not add file $filename to the resource $uri.];
+  #   }
+  #   if ($name eq 'Tecan File') {
+  #     $self->addfile_to_resource($uri, $tecan_filename)
+  #       or croak qq[Could not add file $tecan_filename to the resource $uri.];
+  #   }
+  # }
 
 
   return 1;
 };
 
+sub _create_tecan_file() {
+  my ($file_content, $filename) = @_;
+  my $tmpdir = File::Temp->newdir();
+  my $full_filename = $tmpdir->dirname().'/'.$filename;
 
+  open(my $fh, '>', $full_filename) or croak "Could not create/open file '$full_filename' $!";
+  foreach (@$file_content)
+  {
+      print $fh "$_\n"; # Print each entry in our array to the file
+  }
+  close $fh;
+  return $full_filename;
+}
+
+
+sub _get_location_in_decimal {
+  my ($loc) = @_;
+  my ($letter, $number) = $loc =~ /(\w):(\d+)/xms;
+  my $letter_as_number = 1 + ord( uc($letter) ) - ord('A');
+  my $res = ($number-1)*8 + $letter_as_number;
+
+  return $res;
+}
+
+sub _get_TECAN_file_content() {
+  my ($containers_data, $username, $date) = @_;
+  my $content_output = [];
+  my $buffer_output = [];
+
+  # creating the comments at the top of the file
+
+  push $content_output, 'C;' ;
+  push $content_output, 'C; This file created by '.$username.' on '.$date ;
+  push $content_output, 'C;' ;
+
+  # creating main content
+
+  foreach my $uri (sort keys %{$containers_data->{'output_container_info'}} ) {
+    my ($samples, $buffers) = _get_TECAN_file_content_per_URI($containers_data, $uri);
+    push $content_output, @$samples;
+    push $buffer_output, @$buffers;
+  }
+  push $content_output, @$buffer_output;
+
+  # creating the comments in the end of the file
+
+  push $content_output, 'C;' ;
+  my $n = 1;
+  foreach my $input (sort keys %{$containers_data->{'input_container_info'}} ) {
+    my $barcode = $containers_data->{'input_container_info'}->{$input}->{'barcode'};
+    push $content_output, qq{C; SRC$n = $barcode} ;
+    $n++;
+  }
+  push $content_output, 'C;' ;
+  $n = 1;
+  foreach my $output (sort keys %{$containers_data->{'output_container_info'}} ) {
+    my $barcode = $containers_data->{'output_container_info'}->{$output}->{'barcode'};
+    push $content_output, qq{C; DEST$n = $barcode} ;
+    $n++;
+  }
+  push $content_output, 'C;' ;
+  return $content_output;
+}
+
+sub _get_TECAN_file_content_per_URI() {
+  my ($data, $uri) = @_;
+  my $sample_output = [];
+  my $buffer_output = [];
+  my $output_container = $data->{'output_container_info'}->{$uri};
+
+  my $output_type   = $data->{'output_container_info'}->{$uri}->{'type'};
+  my $output_barcode= $data->{'output_container_info'}->{$uri}->{'barcode'};
+  # keys are sorted to facilitate testing!
+  foreach my $out_loc (sort keys %{$output_container->{'container_details'}} ) {
+    my $in_details  = $output_container->{'container_details'}->{$out_loc};
+    my $out_loc_dec = _get_location_in_decimal($out_loc);
+    my $inp_loc_dec = _get_location_in_decimal($in_details->{'input_location'});
+    my $sample_volume = $in_details->{'sample_volume'};
+    my $buffer_volume = $in_details->{'buffer_volume'};
+    my $input_uri = $in_details->{'input_uri'};
+    my $input_type    = $data->{'input_container_info'}->{$input_uri}->{'type'};
+    my $input_barcode = $data->{'input_container_info'}->{$input_uri}->{'barcode'};
+
+    # print "$input_barcode;;$input_type;$inp_loc_dec;;$sample_volume\n";
+
+    my $input_sample_string  = qq{A;$input_barcode;;$input_type;$inp_loc_dec;;$sample_volume};
+    my $output_sample_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$sample_volume};
+    my $w_string = qq{W;};
+
+    my $input_buffer_string  = qq{A;BUFF;;96-TROUGH;$inp_loc_dec;;$buffer_volume};
+    my $output_buffer_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$buffer_volume};
+
+    push $sample_output, $input_sample_string;
+    push $sample_output, $output_sample_string;
+    push $sample_output, $w_string;
+    push $buffer_output, $input_buffer_string;
+    push $buffer_output, $output_buffer_string;
+    push $buffer_output, $w_string;
+  }
+  return ($sample_output, $buffer_output);
+}
 
 sub _add_title_to_page {
   my ($page, $font, $containers_data, $uri) = @_;
   _add_text_to_page($page, $font, _get_title($containers_data, $uri, 'Cherrypicking'), $left_margin, $title_height, $title_size);
   return;
 }
-
-
 
 sub _add_sources_to_page {
   my ($pdf, $page, $font, $containers_data, $uri) = @_;
@@ -411,6 +523,7 @@ sub _get_containers_data {
 
         # to get the wells
         my $out_container_type_uri  = ($self->find_elements($out_container, $CONTAINER_TYPE_URI) )[0] ->getValue();
+        my $out_container_type_name = ($self->find_elements($out_container, $CONTAINER_TYPE_NAME) )[0] ->getValue();
         my $out_container_type      = $self->fetch_and_parse($out_container_type_uri);
         my $x  = ($self->find_elements($out_container_type,    $CONTAINER_TYPE_Y) )[0] ->textContent;
         my $y  = ($self->find_elements($out_container_type,    $CONTAINER_TYPE_Y) )[0] ->textContent;
@@ -418,6 +531,7 @@ sub _get_containers_data {
         $all_data->{'output_container_info'}->{$out_container_uri}->{'purpose'}    = $purpose;
         $all_data->{'output_container_info'}->{$out_container_uri}->{'plate_name'} = $name;
         $all_data->{'output_container_info'}->{$out_container_uri}->{'barcode'}    = $barcode;
+        $all_data->{'output_container_info'}->{$out_container_uri}->{'type'}       = $out_container_type_name;
         $all_data->{'output_container_info'}->{$out_container_uri}->{'wells'}      = $x*$y;
       }
 
@@ -442,11 +556,13 @@ sub _get_containers_data {
         if ($rack_elmt)    {   $rack = $rack_elmt->textContent;       }
 
         my $barcode     = $self->find_clarity_element($in_container, 'name')      ->textContent;
+        my $type_name   = ($self->find_elements($in_container, $CONTAINER_TYPE_NAME) )[0] ->getValue();
         my $name        = $in_container_id;
         $name =~ s/\-//xms;
 
         $all_data->{'input_container_info' }->{$in_container_uri }->{'plate_name'} = $name;
         $all_data->{'input_container_info' }->{$in_container_uri }->{'barcode'}    = $barcode;
+        $all_data->{'input_container_info' }->{$in_container_uri }->{'type'}    = $type_name;
         $all_data->{'input_container_info' }->{$in_container_uri }->{'freezer'}    = $freezer;
         $all_data->{'input_container_info' }->{$in_container_uri }->{'shelf'}      = $shelf;
         $all_data->{'input_container_info' }->{$in_container_uri }->{'rack'}       = $rack;
