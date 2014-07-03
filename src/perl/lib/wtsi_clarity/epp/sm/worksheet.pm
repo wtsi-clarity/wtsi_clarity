@@ -64,47 +64,47 @@ override 'run' => sub {
 
   my $containers_data = $self->_get_containers_data();
 
-  # print Dumper $containers_data;
 
-  # my $pdf = PDF::API2->new();
+  # pdf generation
+  my $pdf = PDF::API2->new();
 
-  # # for each output container, we produce a new page...
-  # while (my ($uri, $data) = each %{$containers_data->{'output_container_info'}} ) {
-  #   my $page = $pdf->page();
-  #   $page->mediabox('A4');
-  #   my $font = $pdf->corefont('Helvetica-Bold');
-  #   my ($table_data, $table_properties) = _get_table_data($data->{'container_details'}, $nb_col, $nb_row);
+  # for each output container, we produce a new page...
+  while (my ($uri, $data) = each %{$containers_data->{'output_container_info'}} ) {
+    my $page = $pdf->page();
+    $page->mediabox('A4');
+    my $font = $pdf->corefont('Helvetica-Bold');
+    my ($table_data, $table_properties) = _get_table_data($data->{'container_details'}, $nb_col, $nb_row);
 
-  #   _add_title_to_page($page, $font, $containers_data, $uri);
+    _add_title_to_page($page, $font, $containers_data, $uri);
 
-  #   _add_sources_to_page($pdf, $page, $font, $containers_data, $uri);
-  #   _add_destinations_to_page($pdf, $page, $font, $containers_data, $uri);
-  #   _add_buffer_to_page($pdf, $page, $font, $table_data, $table_properties);
-  # }
+    _add_sources_to_page($pdf, $page, $font, $containers_data, $uri);
+    _add_destinations_to_page($pdf, $page, $font, $containers_data, $uri);
+    _add_buffer_to_page($pdf, $page, $font, $table_data, $table_properties);
+  }
 
-  # my $tmpdir = File::Temp->newdir(CLEANUP => 1);
-  # my $filename = $tmpdir->dirname().'/worksheet.pdf';
-  # $pdf->saveas($filename);
+  my $tmpdir = File::Temp->newdir(CLEANUP => 1);
+  my $filename = $tmpdir->dirname().'/worksheet.pdf';
+  $pdf->saveas($filename);
 
-
-
+  # tecan file generation
   my $tecan_content = _get_TECAN_file_content($containers_data,'benoit', 'today');
-
   my $tecan_filename = _create_tecan_file($tecan_content,'tecan.gwl');
   print $tecan_filename;
   my $outputs       = $self->fetch_targets_hash($OUTPUT_FILES);
 
-  # while (my ($uri, $output) = each %{$outputs} ) {
-  #   my $name = ($self->find_elements($output,    q{/art:artifact/name}      ) )[0] ->textContent;
-  #   if ($name eq 'Worksheet') {
-  #     # $self->addfile_to_resource($uri, $filename)
-  #     #   or croak qq[Could not add file $filename to the resource $uri.];
-  #   }
-  #   if ($name eq 'Tecan File') {
-  #     $self->addfile_to_resource($uri, $tecan_filename)
-  #       or croak qq[Could not add file $tecan_filename to the resource $uri.];
-  #   }
-  # }
+  # uploading files
+  while (my ($uri, $output) = each %{$outputs} ) {
+    my $name = ($self->find_elements($output,    q{/art:artifact/name}      ) )[0] ->textContent;
+    if ($name eq 'Worksheet') {
+      $self->addfile_to_resource($uri, $filename)
+        or croak qq[Could not add file $filename to the resource $uri.];
+    }
+    if ($name eq 'Tecan File') {
+      print "try to add $tecan_filename to $uri \n";
+      $self->addfile_to_resource($uri, $tecan_filename)
+        or croak qq[Could not add file $tecan_filename to the resource $uri.];
+    }
+  }
 
 
   return 1;
@@ -122,16 +122,6 @@ sub _create_tecan_file() {
   }
   close $fh;
   return $full_filename;
-}
-
-
-sub _get_location_in_decimal {
-  my ($loc) = @_;
-  my ($letter, $number) = $loc =~ /(\w):(\d+)/xms;
-  my $letter_as_number = 1 + ord( uc($letter) ) - ord('A');
-  my $res = ($number-1)*8 + $letter_as_number;
-
-  return $res;
 }
 
 sub _get_TECAN_file_content() {
