@@ -1,10 +1,31 @@
 package wtsi_clarity::util::well_mapper;
 
+use strict;
+use warnings;
+use Carp;
+use Readonly;
+
+our $VERSION = '0.0';
+
+
+Readonly::Scalar my $NB_COLS => 12 ;
+Readonly::Scalar my $NB_ROWS => 8  ;
+
 sub get_location_in_decimal {
   my ($loc) = @_;
+
+  return _get_location_in_decimal($loc, $NB_ROWS, $NB_COLS);
+}
+
+sub _get_location_in_decimal {
+  my ($loc, $nb_rows, $nb_cols) = @_;
   my ($letter, $number) = $loc =~ /(\w):(\d+)/xms;
-  my $letter_as_number = 1 + ord( uc($letter) ) - ord('A');
-  my $res = ($number-1)*8 + $letter_as_number;
+
+  ## no critic(CodeLayout::ProhibitParensWithBuiltins)
+  my $letter_as_number = 1 + ord( uc ($letter) ) - ord('A');
+  ## use critic
+
+  my $res = ($number-1)*$nb_rows + $letter_as_number;
 
   return $res;
 }
@@ -20,11 +41,16 @@ wtsi_clarity::util::well_mapper
 
 =head1 SYNOPSIS
 
+  with 'wtsi_clarity::util::well_mapper';
+
+=head1 DESCRIPTION
+
  Utility methods to help converting well denominations
 
 =head1 SUBROUTINES/METHODS
 
 =head2 get_location_in_decimal
+    converts a location with B:3 format into a location in decimal (B:3 -> 11)
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

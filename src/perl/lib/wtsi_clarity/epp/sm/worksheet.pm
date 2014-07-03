@@ -10,6 +10,7 @@ use File::Temp ();
 use File::Tempdir ();
 use Data::Dumper;
 use wtsi_clarity::util::request;
+use wtsi_clarity::util::well_mapper;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $ARTIFACT_PATH      => q(/prc:process/input-output-map/input/@post-process-uri);
@@ -89,7 +90,7 @@ override 'run' => sub {
   # tecan file generation
   my $tecan_content = _get_TECAN_file_content($containers_data,'benoit', 'today');
   my $tecan_filename = _create_tecan_file($tecan_content,'tecan.gwl');
-  print $tecan_filename;
+
   my $outputs       = $self->fetch_targets_hash($OUTPUT_FILES);
 
   # uploading files
@@ -100,7 +101,6 @@ override 'run' => sub {
         or croak qq[Could not add file $filename to the resource $uri.];
     }
     if ($name eq 'Tecan File') {
-      print "try to add $tecan_filename to $uri \n";
       $self->addfile_to_resource($uri, $tecan_filename)
         or croak qq[Could not add file $tecan_filename to the resource $uri.];
     }
@@ -110,21 +110,25 @@ override 'run' => sub {
   return 1;
 };
 
-sub _create_tecan_file() {
+sub _create_tecan_file {
   my ($file_content, $filename) = @_;
-  my $tmpdir = File::Temp->newdir();
-  my $full_filename = $tmpdir->dirname().'/'.$filename;
+  my $tmpdirname = File::Temp->newdir()->dirname();
+  my $full_filename = qq{$tmpdirname/$filename};
 
-  open(my $fh, '>', $full_filename) or croak "Could not create/open file '$full_filename' $!";
-  foreach (@$file_content)
+  open my $fh, '>', $full_filename
+    or croak qq{Could not create/open file '$full_filename'.};
+  foreach my $line (@{$file_content})
   {
-      print $fh "$_\n"; # Print each entry in our array to the file
+      ## no critic(InputOutput::RequireCheckedSyscalls)
+      print $fh, qq{$line\n}; # Print each entry in our array to the file
+      ## use critic
   }
-  close $fh;
+  close $fh
+    or croak qq{ Unable to close $full_filename.};
   return $full_filename;
 }
 
-sub _get_TECAN_file_content() {
+sub _get_TECAN_file_content {
   my ($containers_data, $username, $date) = @_;
   my $content_output = [];
   my $buffer_output = [];
@@ -139,10 +143,10 @@ sub _get_TECAN_file_content() {
 
   foreach my $uri (sort keys %{$containers_data->{'output_container_info'}} ) {
     my ($samples, $buffers) = _get_TECAN_file_content_per_URI($containers_data, $uri);
-    push $content_output, @$samples;
-    push $buffer_output, @$buffers;
+    push $content_output, @{$samples};
+    push $buffer_output, @{$buffers};
   }
-  push $content_output, @$buffer_output;
+  push $content_output, @{$buffer_output};
 
   # creating the comments in the end of the file
 
@@ -164,7 +168,7 @@ sub _get_TECAN_file_content() {
   return $content_output;
 }
 
-sub _get_TECAN_file_content_per_URI() {
+sub _get_TECAN_file_content_per_URI {
   my ($data, $uri) = @_;
   my $sample_output = [];
   my $buffer_output = [];
@@ -175,8 +179,8 @@ sub _get_TECAN_file_content_per_URI() {
   # keys are sorted to facilitate testing!
   foreach my $out_loc (sort keys %{$output_container->{'container_details'}} ) {
     my $in_details  = $output_container->{'container_details'}->{$out_loc};
-    my $out_loc_dec = _get_location_in_decimal($out_loc);
-    my $inp_loc_dec = _get_location_in_decimal($in_details->{'input_location'});
+    my $out_loc_dec = wtsi_clarity::util::well_mapper::get_location_in_decimal($out_loc);
+    my $inp_loc_dec = wtsi_clarity::util::well_mapper::get_location_in_decimal($in_details->{'input_location'});
     my $sample_volume = $in_details->{'sample_volume'};
     my $buffer_volume = $in_details->{'buffer_volume'};
     my $input_uri = $in_details->{'input_uri'};
@@ -187,7 +191,7 @@ sub _get_TECAN_file_content_per_URI() {
 
     my $input_sample_string  = qq{A;$input_barcode;;$input_type;$inp_loc_dec;;$sample_volume};
     my $output_sample_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$sample_volume};
-    my $w_string = qq{W;};
+    my $w_string = q{W;};
 
     my $input_buffer_string  = qq{A;BUFF;;96-TROUGH;$inp_loc_dec;;$buffer_volume};
     my $output_buffer_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$buffer_volume};

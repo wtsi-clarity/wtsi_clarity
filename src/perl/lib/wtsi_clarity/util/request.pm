@@ -302,7 +302,7 @@ sub upload_file {
             'user'=>$self->ftpuser,
             'password' => $self->ftppassword,
             ) or croak qq{could not open connection to $server. };
-    $sftp->mkdir('/'.$remote_directory); # we let this call fail silently, as it *should* indicate that the folder already exists.
+    $sftp->mkdir(qq{/$remote_directory}); # we let this call fail silently, as it *should* indicate that the folder already exists.
     $sftp->put($oldfilename, qq{/$remote_directory/$newfilename} )
       or croak qq{could not upload the file $oldfilename as $remote_directory / $newfilename on the server $server.\n}.$sftp->error;
 
