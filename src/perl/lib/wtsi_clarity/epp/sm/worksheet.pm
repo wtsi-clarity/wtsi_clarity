@@ -11,13 +11,15 @@ use File::Tempdir ();
 use Data::Dumper;
 use wtsi_clarity::util::request;
 use wtsi_clarity::util::well_mapper;
-use Datetime;
+use DateTime;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $ARTIFACT_PATH      => q(/prc:process/input-output-map/input/@post-process-uri);
 Readonly::Scalar my $PREVIOUS_PROC      => q(/prc:process/input-output-map/input/parent-process/@uri);
 Readonly::Scalar my $OUTPUT_FILES       => q(/prc:process/input-output-map/output[@output-type='ResultFile']/@uri);
 Readonly::Scalar my $PROCESS_ID_PATH    => q(/prc:process/@limsid);
+Readonly::Scalar my $TECHNICIAN_FIRSTNAME_PATH => q(/prc:process/technician/first-name/text());
+Readonly::Scalar my $TECHNICIAN_LASTNAME_PATH  => q(/prc:process/technician/last-name/text());
 
 Readonly::Scalar my $SAMPLE_PATH        => q(/art:artifact/sample/@uri);
 Readonly::Scalar my $LOCATION_PATH      => q(/art:artifact/location/value);
@@ -44,6 +46,8 @@ Readonly::Scalar my $nb_row                   => 8;
 Readonly::Scalar my $left_margin              => 20;
 Readonly::Scalar my $title_height             => 780;
 Readonly::Scalar my $title_size               => 20;
+Readonly::Scalar my $stamp_height             => 760;
+Readonly::Scalar my $stamp_size               => 8;
 Readonly::Scalar my $subtitle_shift           => 20;
 Readonly::Scalar my $subtitle_size            => 12;
 Readonly::Scalar my $source_table_height      => 700;
@@ -63,14 +67,14 @@ $File::Temp::KEEP_ALL = 1;
 override 'run' => sub {
   my $self= shift;
   super();
-
   my $containers_data = $self->_get_containers_data();
+  my $stamp = _get_stamp($containers_data, $self->request->user);
 
   # pdf generation
-  my $worksheet_filename = _create_worksheet_file($containers_data);
+  my $worksheet_filename = _create_worksheet_file($containers_data, $stamp);
 
   # tecan file generation
-  my $tecan_filename = _create_tecan_file($containers_data, $self->request->user, DateTime->now->strftime('%Y-%m-%d'));
+  my $tecan_filename = _create_tecan_file($containers_data, $stamp);
 
   # uploading files
   my $outputs       = $self->fetch_targets_hash($OUTPUT_FILES);
@@ -86,16 +90,32 @@ override 'run' => sub {
     }
   }
 
-
   return 1;
 };
+
+################# date & username ############
+
+sub _get_username {
+  my ($data, $realuser) = @_;
+  my $firstname = $data->{'user_first_name'};
+  my $lastname  = $data->{'user_last_name'};
+  return qq{$firstname $lastname (via $realuser)};
+}
+
+sub _get_stamp {
+  my ($data, $realuser) = @_;
+  my $username = _get_username($data, $realuser);
+  my $date = DateTime->now->strftime('%A %d-%B-%Y at %H:%M:%S');
+
+  return qq{This file was created by $username on $date};
+}
 
 ################# tecan file #################
 
 sub _create_tecan_file {
-  my ($containers_data, $username, $date) = @_;
+  my ($containers_data, $stamp) = @_;
 
-  my $file_content = _get_TECAN_file_content($containers_data, $username, $date);
+  my $file_content = _get_TECAN_file_content($containers_data, $stamp);
 
   my $tmpdirname = File::Temp->newdir(CLEANUP => 1)->dirname();
   my $full_filename = qq{$tmpdirname/tecan.gwl};
@@ -114,7 +134,7 @@ sub _create_tecan_file {
 }
 
 sub _get_TECAN_file_content {
-  my ($containers_data, $username, $date) = @_;
+  my ($containers_data, $stamp) = @_;
 
   my $content_output = [];
   my $buffer_output = [];
@@ -122,7 +142,7 @@ sub _get_TECAN_file_content {
   # creating the comments at the top of the file
 
   push $content_output, 'C;' ;
-  push $content_output, 'C; This file created by '.$username.' on '.$date ;
+  push $content_output, 'C; '.$stamp ;
   push $content_output, 'C;' ;
 
   # creating main content
@@ -196,26 +216,28 @@ sub _get_TECAN_file_content_per_URI {
 ################# worksheet #################
 
 sub _create_worksheet_file {
-  my ($containers_data) = @_;
+  my ($containers_data, $stamp) = @_;
   my $pdf = PDF::API2->new();
 
   # for each output container, we produce a new page...
   while (my ($uri, $data) = each %{$containers_data->{'output_container_info'}} ) {
     my $page = $pdf->page();
     $page->mediabox('A4');
-    my $font = $pdf->corefont('Helvetica-Bold');
+    my $font_bold = $pdf->corefont('Helvetica-Bold');
+    my $font = $pdf->corefont('Helvetica');
     my ($table_data, $table_properties) = _get_table_data($data->{'container_details'}, $nb_col, $nb_row);
 
-    _add_title_to_page($page, $font, $containers_data, $uri);
-
-    _add_sources_to_page($pdf, $page, $font, $containers_data, $uri);
-    _add_destinations_to_page($pdf, $page, $font, $containers_data, $uri);
-    _add_buffer_to_page($pdf, $page, $font, $table_data, $table_properties);
+    _add_title_to_page($page, $font_bold, $containers_data, $uri);
+    _add_timestamp($page, $font, $stamp, $uri);
+    _add_sources_to_page($pdf, $page, $font_bold, $containers_data, $uri);
+    _add_destinations_to_page($pdf, $page, $font_bold, $containers_data, $uri);
+    _add_buffer_to_page($pdf, $page, $font_bold, $table_data, $table_properties);
   }
 
   my $tmpdir = File::Temp->newdir(CLEANUP => 1);
   my $filename = $tmpdir->dirname().'/worksheet.pdf';
   $pdf->saveas($filename);
+  return $filename;
 }
 
 sub _add_title_to_page {
@@ -279,6 +301,12 @@ sub _add_buffer_table_to_page {
       { min_w => $col_width/2, max_w => $col_width/2, },
     ]
   );
+  return;
+}
+
+sub _add_timestamp {
+  my ($page, $font, $stamp, $uri) = @_;
+  _add_text_to_page($page, $font, $stamp, $left_margin, $stamp_height, $stamp_size);
   return;
 }
 
@@ -496,6 +524,9 @@ sub _get_containers_data {
   my $process_id  = ($self->find_elements($self->process_doc, $PROCESS_ID_PATH))[0]->getValue();
   $process_id =~ s/\-//xms;
   $all_data->{'process_id'} = $process_id;
+
+  $all_data->{'user_first_name'} = ($self->find_elements($self->process_doc, $TECHNICIAN_FIRSTNAME_PATH))[0]->getValue();
+  $all_data->{'user_last_name'}  = ($self->find_elements($self->process_doc, $TECHNICIAN_LASTNAME_PATH))[0]->getValue();
 
   while (my ($uri, $out_artifact) = each %{$artifacts_tmp} ) {
     if ($uri =~ /(.*)[?].*/xms){

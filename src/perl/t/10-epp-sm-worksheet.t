@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 198;
+use Test::More tests => 199;
 use Test::Exception;
 use DateTime;
 use XML::LibXML;
@@ -363,6 +363,8 @@ my $TEST_DATA4 = {
               'freezer' => '000029', 'shelf' => '000029', 'rack' => '000029', 'tray'=> '000029', 'type' => 'type29', },
   },
   'process_id' => 'PROCESS_ID',
+  'user_first_name' => 'Le General',
+  'user_last_name'  => 'de Castelnau',
 };
 
 
@@ -443,7 +445,7 @@ my $TEST_DATA4 = {
 { # _get_TECAN_file_content
   my @expected_data = (
     qq{C;},
-    qq{C; This file created by benoit on today},
+    qq{C; benoit},
     qq{C;},
     qq{A;00000027;;type27;27;;1.2},
     qq{D;12345678900001;;type1;1;;1.2},
@@ -468,7 +470,7 @@ my $TEST_DATA4 = {
     qq{C;},
 
   );
-  my $table = wtsi_clarity::epp::sm::worksheet::_get_TECAN_file_content($TEST_DATA4, 'benoit', 'today' );
+  my $table = wtsi_clarity::epp::sm::worksheet::_get_TECAN_file_content($TEST_DATA4, 'benoit');
   cmp_ok(scalar @$table, '==', 3 + 3*4 + 2*2 + 3 , "_get_TECAN_file_content should return an array of the correct size (nb of rows).");
 
   foreach my $expected (@expected_data) {
@@ -754,6 +756,9 @@ my $TEST_DATA4 = {
   }
 }
 
-
+{ # _get_username
+  my $string = wtsi_clarity::epp::sm::worksheet::_get_username($TEST_DATA4, 'api' );
+  cmp_ok($string, 'eq', 'Le General de Castelnau (via api)' , "_get_username should return the correct value.");
+}
 
 1;
