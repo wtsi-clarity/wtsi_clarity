@@ -16,7 +16,27 @@ has '_targets' => (
   default => sub { {} },
 );
 
+has '_cached_targets' => (
+  isa => 'HashRef',
+  is  => 'ro',
+  required => 0,
+  lazy => 1,
+  default => sub { {} },
+);
+
+
+
 # Finding the targets....
+
+sub _fetch_target_from_local {
+  my ($self, $uri) = @_;
+
+  if (!exists $self->_cached_targets->{$uri}) {
+    $self->_cached_targets->{$uri} = $self->fetch_and_parse($uri);
+  }
+
+  return $self->_cached_targets->{$uri}; #$self->fetch_and_parse($uri);
+}
 
 sub fetch_targets_hash {
   # start the recursive search for targets.
@@ -24,7 +44,8 @@ sub fetch_targets_hash {
 
   my @output =  $self->_find_xml_recursively($self->process_doc->getDocumentElement(), @list_of_xpath);
 
-  my %hash =  map { $_->getValue() => $self->fetch_and_parse($_->value) } @output;
+  my %hash =  map { $_->getValue() => $self->_fetch_target_from_local($_->value) } @output;
+
   return \%hash;
 }
 
@@ -48,7 +69,7 @@ sub _find_xml_recursively {
   {
     foreach my $element (@nodeList)
     {
-      my $partial_xml = $self->fetch_and_parse($element->getValue());
+      my $partial_xml = $self->_fetch_target_from_local($element->getValue());
       my @new_targets   = $self->_find_xml_recursively($partial_xml->getDocumentElement() , @xpaths);
       push @found_targets, @new_targets;
     }

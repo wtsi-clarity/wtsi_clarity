@@ -13,14 +13,6 @@ requires 'update_one_target_data';
 
 our $VERSION = '0.0';
 
-has '_targets' => (
-  isa => 'HashRef',
-  is  => 'ro',
-  required => 0,
-  lazy => 1,
-  default => sub { {} },
-);
-
 # core methods ....
 
 sub fetch_and_update_targets {

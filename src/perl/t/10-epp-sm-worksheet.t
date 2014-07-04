@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 117;
+use Test::More tests => 199;
 use Test::Exception;
 use DateTime;
 use XML::LibXML;
@@ -288,14 +288,14 @@ my $TEST_DATA3 = {
                  'input_uri' => '23',
                },
           'B:4' => {
-                 'input_location' => 'W:5',
+                 'input_location' => 'E:5',
                  'sample_volume' => '1.2',
                  'buffer_volume' => '8.8',
                  'input_id' => '23',
                  'input_uri' => '23',
                },
           'B:5' => {
-                 'input_location' => 'W:5',
+                 'input_location' => 'E:6',
                  'sample_volume' => '1.2',
                  'buffer_volume' => '8.8',
                  'input_id' => '23',
@@ -306,19 +306,178 @@ my $TEST_DATA3 = {
       'plate_name' => 'PLATE_NAME',
       'barcode' => '1234567890123456',
       'wells' => '96',
+      'type' => 'type1',
     },
   },
   'input_container_info' => {
     '27' => { 'purpose' => 'PLATE_PURPOSE_27', 'plate_name' => 'PLATE_NAME27', 'barcode' => '00000027', 'wells' => '27',
-              'freezer' => '000021', 'shelf' => '000022', 'rack' => '000023', 'tray'=> '000024' },
+              'freezer' => '000021', 'shelf' => '000022', 'rack' => '000023', 'tray'=> '000024', 'type' => 'type27', },
     '25' => { 'purpose' => 'PLATE_PURPOSE_25', 'plate_name' => 'PLATE_NAME25', 'barcode' => '00000025', 'wells' => '25',
-              'freezer' => '000031', 'shelf' => '000032', 'rack' => '000033', 'tray'=> '000034' },
+              'freezer' => '000031', 'shelf' => '000032', 'rack' => '000033', 'tray'=> '000034', 'type' => 'type25',  },
     '23' => { 'purpose' => 'PLATE_PURPOSE_23', 'plate_name' => 'PLATE_NAME23', 'barcode' => '00000023', 'wells' => '23',
-              'freezer' => '000011', 'shelf' => '000012', 'rack' => '000013', 'tray'=> '000014' },
+              'freezer' => '000011', 'shelf' => '000012', 'rack' => '000013', 'tray'=> '000014', 'type' => 'type23',  },
   },
   'process_id' => 'PROCESS_ID',
 };
 
+my $TEST_DATA4 = {
+  'output_container_info' => {
+    'container_uri1' => {
+        'container_details' =>{
+          'A:1' => {
+                 'input_location' => 'C:4',
+                 'sample_volume' => '1.2',
+                 'buffer_volume' => '8.8',
+                 'input_id' => '27',
+                 'input_uri' => '27',
+               },
+          'B:1' => {},
+      },
+      'purpose' => 'PLATE_PURPOSE_out',
+      'plate_name' => 'PLATE_NAME1',
+      'barcode' => '12345678900001',
+      'wells' => '96',
+      'type' => 'type1',
+    },
+    'container_uri2' => {
+        'container_details' =>{
+          'A:1' => {
+                 'input_location' => 'B:2',
+                 'sample_volume' => '1.2',
+                 'buffer_volume' => '8.8',
+                 'input_id' => '29',
+                 'input_uri' => '29',
+               },
+      },
+      'purpose' => 'PLATE_PURPOSE_out',
+      'plate_name' => 'PLATE_NAME2',
+      'barcode' => '12345678900002',
+      'wells' => '96',
+      'type' => 'type1',
+    },
+  },
+  'input_container_info' => {
+    '27' => { 'purpose' => 'PLATE_PURPOSE_27', 'plate_name' => 'PLATE_NAME27', 'barcode' => '00000027', 'wells' => '27',
+              'freezer' => '000021', 'shelf' => '000022', 'rack' => '000023', 'tray'=> '000024', 'type' => 'type27', },
+    '29' => { 'purpose' => 'PLATE_PURPOSE_29', 'plate_name' => 'PLATE_NAME29', 'barcode' => '00000029', 'wells' => '29',
+              'freezer' => '000029', 'shelf' => '000029', 'rack' => '000029', 'tray'=> '000029', 'type' => 'type29', },
+  },
+  'process_id' => 'PROCESS_ID',
+  'user_first_name' => 'Le General',
+  'user_last_name'  => 'de Castelnau',
+};
+
+
+{ # _get_TECAN_file_content_per_URI
+  my @expected_samples = (
+    qq{A;00000027;;type27;27;;1.2},
+    qq{D;1234567890123456;;type1;1;;1.2},
+    qq{W;},
+    qq{A;00000023;;type23;41;;1.2},
+    qq{D;1234567890123456;;type1;9;;1.2},
+    qq{W;},
+    qq{A;00000027;;type27;57;;1.2},
+    qq{D;1234567890123456;;type1;17;;1.2},
+    qq{W;},
+    qq{A;00000025;;type25;82;;1.2},
+    qq{D;1234567890123456;;type1;25;;1.2},
+    qq{W;},
+    qq{A;00000027;;type27;17;;1.2},
+    qq{D;1234567890123456;;type1;2;;1.2},
+    qq{W;},
+    qq{A;00000023;;type23;34;;1.2},
+    qq{D;1234567890123456;;type1;10;;1.2},
+    qq{W;},
+    qq{A;00000023;;type23;35;;1.2},
+    qq{D;1234567890123456;;type1;18;;1.2},
+    qq{W;},
+    qq{A;00000023;;type23;37;;1.2},
+    qq{D;1234567890123456;;type1;26;;1.2},
+    qq{W;},
+    qq{A;00000023;;type23;45;;1.2},
+    qq{D;1234567890123456;;type1;34;;1.2},
+    qq{W;},
+  );
+  my @expected_buffers = (
+    qq{A;BUFF;;96-TROUGH;27;;8.8},
+    qq{D;1234567890123456;;type1;1;;8.8},
+    qq{W;},
+    qq{A;BUFF;;96-TROUGH;41;;8.8},
+    qq{D;1234567890123456;;type1;9;;8.8},
+    qq{W;},
+    qq{A;BUFF;;96-TROUGH;57;;8.8},
+    qq{D;1234567890123456;;type1;17;;8.8},
+    qq{W;},
+    qq{A;BUFF;;96-TROUGH;82;;8.8},
+    qq{D;1234567890123456;;type1;25;;8.8},
+    qq{W;},
+    qq{A;BUFF;;96-TROUGH;17;;8.8},
+    qq{D;1234567890123456;;type1;2;;8.8},
+    qq{W;},
+    qq{A;BUFF;;96-TROUGH;34;;8.8},
+    qq{D;1234567890123456;;type1;10;;8.8},
+    qq{W;},
+    qq{A;BUFF;;96-TROUGH;35;;8.8},
+    qq{D;1234567890123456;;type1;18;;8.8},
+    qq{W;},
+    qq{A;BUFF;;96-TROUGH;37;;8.8},
+    qq{D;1234567890123456;;type1;26;;8.8},
+    qq{W;},
+    qq{A;BUFF;;96-TROUGH;45;;8.8},
+    qq{D;1234567890123456;;type1;34;;8.8},
+    qq{W;},
+  );
+  my ($samples, $buffers) = wtsi_clarity::epp::sm::worksheet::_get_TECAN_file_content_per_URI($TEST_DATA3, 'container_uri' );
+  cmp_ok(scalar @$samples, '==', 9*3, "_get_TECAN_file_content_per_URI should return the correct size nb of samples.");
+  cmp_ok(scalar @$buffers, '==', 9*3 , "_get_TECAN_file_content_per_URI should return the correct size nb of buffers.");
+
+  foreach my $expected (@expected_samples) {
+    my $val = shift $samples;
+    cmp_ok($val, 'eq', $expected, "_get_TECAN_file_content_per_URI(...) should give the correct samples.");
+  }
+
+  foreach my $expected (@expected_buffers) {
+    my $val = shift $buffers;
+    cmp_ok($val, 'eq', $expected, "_get_TECAN_file_content_per_URI(...) should give the correct buffers.");
+  }
+}
+
+{ # _get_TECAN_file_content
+  my @expected_data = (
+    qq{C;},
+    qq{C; benoit},
+    qq{C;},
+    qq{A;00000027;;type27;27;;1.2},
+    qq{D;12345678900001;;type1;1;;1.2},
+    qq{W;},
+    qq{A;00000029;;type29;10;;1.2},
+    qq{D;12345678900002;;type1;1;;1.2},
+    qq{W;},
+
+    qq{A;BUFF;;96-TROUGH;27;;8.8},
+    qq{D;12345678900001;;type1;1;;8.8},
+    qq{W;},
+    qq{A;BUFF;;96-TROUGH;10;;8.8},
+    qq{D;12345678900002;;type1;1;;8.8},
+    qq{W;},
+
+    qq{C;},
+    qq{C; SRC1 = 00000027},
+    qq{C; SRC2 = 00000029},
+    qq{C;},
+    qq{C; DEST1 = 12345678900001},
+    qq{C; DEST2 = 12345678900002},
+    qq{C;},
+
+  );
+  my $table = wtsi_clarity::epp::sm::worksheet::_get_TECAN_file_content($TEST_DATA4, 'benoit');
+  cmp_ok(scalar @$table, '==', 3 + 3*4 + 2*2 + 3 , "_get_TECAN_file_content should return an array of the correct size (nb of rows).");
+
+  foreach my $expected (@expected_data) {
+    my $val = shift $table;
+    cmp_ok($val, 'eq', $expected, "_get_TECAN_file_content(...) should give the correct content.");
+  }
+}
 
 { # testing _get_location
   my @test_data = (
@@ -411,16 +570,18 @@ my $TEST_DATA3 = {
   my $cont = $data->{'output_container_info'}->{$container_uri}->{'container_details'};
   my @expected_data = (
     { 'param' => 'D:1',
-    'exp_location' => "B:2",
-    'exp_sample_volume' => "1.2",
-    'exp_buffer_volume' => "8.8",
-    'exp_id' => "27-23",
+      'exp_location' => "B:2",
+      'exp_sample_volume' => "1.2",
+      'exp_buffer_volume' => "8.8",
+      'exp_id' => "27-23",
+      'exp_type' => "ABgene 0800",
     },
     { 'param' => 'D:3',
-    'exp_location' => "B:1",
-    'exp_sample_volume' => "1.2",
-    'exp_buffer_volume' => "8.8",
-    'exp_id' => "27-27",
+      'exp_location' => "B:1",
+      'exp_sample_volume' => "1.2",
+      'exp_buffer_volume' => "8.8",
+      'exp_id' => "27-27",
+      'exp_type' => "ABgene 0800",
     },
   );
 
@@ -430,14 +591,17 @@ my $TEST_DATA3 = {
     my $exp_smp = $datum->{'exp_sample_volume'};
     my $exp_buf = $datum->{'exp_buffer_volume'};
     my $exp_id  = $datum->{'exp_id'};
+    my $exp_typ = $datum->{'exp_type'};
     my $in_loc  = $cont->{$out}->{'input_location'};
     my $in_smp  = $cont->{$out}->{'sample_volume'};
     my $in_buf  = $cont->{$out}->{'buffer_volume'};
     my $in_id   = $cont->{$out}->{'input_id'};
+    my $in_type = $data->{'output_container_info'}->{$container_uri}->{'type'};
     cmp_ok($in_loc, 'eq', $exp_loc, "_get_containers_data(...) should give the correct relation $out <-> $exp_loc (found $in_loc). ");
-    cmp_ok($in_smp, 'eq', $exp_smp, "_get_containers_data(...) should give the sample volume. ");
-    cmp_ok($in_buf, 'eq', $exp_buf, "_get_containers_data(...) should give the buffer volume. ");
-    cmp_ok($in_id, 'eq', $exp_id, "_get_containers_data(...) should give the container id. ");
+    cmp_ok($in_smp, 'eq', $exp_smp, "_get_containers_data(...) should give the sample volume. $out <-> $exp_smp (found $in_smp)");
+    cmp_ok($in_buf, 'eq', $exp_buf, "_get_containers_data(...) should give the buffer volume. $out <-> $exp_buf (found $in_buf)");
+    cmp_ok($in_id,  'eq', $exp_id,  "_get_containers_data(...) should give the container id. $out <-> $exp_id (found $in_id)");
+    cmp_ok($in_type,'eq', $exp_typ, "_get_containers_data(...) should give the container type. $out <-> $exp_typ (found $in_type)");
   }
 }
 
@@ -590,6 +754,11 @@ my $TEST_DATA3 = {
     my $val = $table->[$j][$i];
     cmp_ok($val, 'eq', $expected, "_get_destination_plate_data(..., $i, $j) should give the correct content.");
   }
+}
+
+{ # _get_username
+  my $string = wtsi_clarity::epp::sm::worksheet::_get_username($TEST_DATA4, 'api' );
+  cmp_ok($string, 'eq', 'Le General de Castelnau (via api)' , "_get_username should return the correct value.");
 }
 
 1;
