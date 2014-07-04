@@ -331,6 +331,7 @@ my $TEST_DATA4 = {
                  'input_id' => '27',
                  'input_uri' => '27',
                },
+          'B:1' => {},
       },
       'purpose' => 'PLATE_PURPOSE_out',
       'plate_name' => 'PLATE_NAME1',

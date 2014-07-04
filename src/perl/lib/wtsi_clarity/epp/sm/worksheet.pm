@@ -11,6 +11,7 @@ use File::Tempdir ();
 use Data::Dumper;
 use wtsi_clarity::util::request;
 use wtsi_clarity::util::well_mapper;
+use Datetime;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $ARTIFACT_PATH      => q(/prc:process/input-output-map/input/@post-process-uri);
@@ -65,40 +66,19 @@ override 'run' => sub {
 
   my $containers_data = $self->_get_containers_data();
 
-
   # pdf generation
-  my $pdf = PDF::API2->new();
-
-  # for each output container, we produce a new page...
-  while (my ($uri, $data) = each %{$containers_data->{'output_container_info'}} ) {
-    my $page = $pdf->page();
-    $page->mediabox('A4');
-    my $font = $pdf->corefont('Helvetica-Bold');
-    my ($table_data, $table_properties) = _get_table_data($data->{'container_details'}, $nb_col, $nb_row);
-
-    _add_title_to_page($page, $font, $containers_data, $uri);
-
-    _add_sources_to_page($pdf, $page, $font, $containers_data, $uri);
-    _add_destinations_to_page($pdf, $page, $font, $containers_data, $uri);
-    _add_buffer_to_page($pdf, $page, $font, $table_data, $table_properties);
-  }
-
-  my $tmpdir = File::Temp->newdir(CLEANUP => 1);
-  my $filename = $tmpdir->dirname().'/worksheet.pdf';
-  $pdf->saveas($filename);
+  my $worksheet_filename = _create_worksheet_file($containers_data);
 
   # tecan file generation
-  my $tecan_content = _get_TECAN_file_content($containers_data,'benoit', 'today');
-  my $tecan_filename = _create_tecan_file($tecan_content,'tecan.gwl');
-
-  my $outputs       = $self->fetch_targets_hash($OUTPUT_FILES);
+  my $tecan_filename = _create_tecan_file($containers_data, $self->request->user, DateTime->now->strftime('%Y-%m-%d'));
 
   # uploading files
+  my $outputs       = $self->fetch_targets_hash($OUTPUT_FILES);
   while (my ($uri, $output) = each %{$outputs} ) {
     my $name = ($self->find_elements($output,    q{/art:artifact/name}      ) )[0] ->textContent;
     if ($name eq 'Worksheet') {
-      $self->addfile_to_resource($uri, $filename)
-        or croak qq[Could not add file $filename to the resource $uri.];
+      $self->addfile_to_resource($uri, $worksheet_filename)
+        or croak qq[Could not add file $worksheet_filename to the resource $uri.];
     }
     if ($name eq 'Tecan File') {
       $self->addfile_to_resource($uri, $tecan_filename)
@@ -110,17 +90,22 @@ override 'run' => sub {
   return 1;
 };
 
+################# tecan file #################
+
 sub _create_tecan_file {
-  my ($file_content, $filename) = @_;
-  my $tmpdirname = File::Temp->newdir()->dirname();
-  my $full_filename = qq{$tmpdirname/$filename};
+  my ($containers_data, $username, $date) = @_;
+
+  my $file_content = _get_TECAN_file_content($containers_data, $username, $date);
+
+  my $tmpdirname = File::Temp->newdir(CLEANUP => 1)->dirname();
+  my $full_filename = qq{$tmpdirname/tecan.gwl};
 
   open my $fh, '>', $full_filename
     or croak qq{Could not create/open file '$full_filename'.};
   foreach my $line (@{$file_content})
   {
       ## no critic(InputOutput::RequireCheckedSyscalls)
-      print $fh, qq{$line\n}; # Print each entry in our array to the file
+      print {$fh} qq{$line\n}; # Print each entry in our array to the file
       ## use critic
   }
   close $fh
@@ -130,6 +115,7 @@ sub _create_tecan_file {
 
 sub _get_TECAN_file_content {
   my ($containers_data, $username, $date) = @_;
+
   my $content_output = [];
   my $buffer_output = [];
 
@@ -173,37 +159,63 @@ sub _get_TECAN_file_content_per_URI {
   my $sample_output = [];
   my $buffer_output = [];
   my $output_container = $data->{'output_container_info'}->{$uri};
-
   my $output_type   = $data->{'output_container_info'}->{$uri}->{'type'};
   my $output_barcode= $data->{'output_container_info'}->{$uri}->{'barcode'};
   # keys are sorted to facilitate testing!
   foreach my $out_loc (sort keys %{$output_container->{'container_details'}} ) {
     my $in_details  = $output_container->{'container_details'}->{$out_loc};
-    my $out_loc_dec = wtsi_clarity::util::well_mapper::get_location_in_decimal($out_loc);
-    my $inp_loc_dec = wtsi_clarity::util::well_mapper::get_location_in_decimal($in_details->{'input_location'});
-    my $sample_volume = $in_details->{'sample_volume'};
-    my $buffer_volume = $in_details->{'buffer_volume'};
-    my $input_uri = $in_details->{'input_uri'};
-    my $input_type    = $data->{'input_container_info'}->{$input_uri}->{'type'};
-    my $input_barcode = $data->{'input_container_info'}->{$input_uri}->{'barcode'};
+    if ( scalar keys %{$in_details}  ) {
+      my $out_loc_dec = wtsi_clarity::util::well_mapper::get_location_in_decimal($out_loc);
+      my $inp_loc_dec = wtsi_clarity::util::well_mapper::get_location_in_decimal($in_details->{'input_location'});
+      my $sample_volume = $in_details->{'sample_volume'};
+      my $buffer_volume = $in_details->{'buffer_volume'};
+      my $input_uri = $in_details->{'input_uri'};
+      my $input_type    = $data->{'input_container_info'}->{$input_uri}->{'type'};
+      my $input_barcode = $data->{'input_container_info'}->{$input_uri}->{'barcode'};
 
-    # print "$input_barcode;;$input_type;$inp_loc_dec;;$sample_volume\n";
+      # print "$input_barcode;;$input_type;$inp_loc_dec;;$sample_volume\n";
 
-    my $input_sample_string  = qq{A;$input_barcode;;$input_type;$inp_loc_dec;;$sample_volume};
-    my $output_sample_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$sample_volume};
-    my $w_string = q{W;};
+      my $input_sample_string  = qq{A;$input_barcode;;$input_type;$inp_loc_dec;;$sample_volume};
+      my $output_sample_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$sample_volume};
+      my $w_string = q{W;};
 
-    my $input_buffer_string  = qq{A;BUFF;;96-TROUGH;$inp_loc_dec;;$buffer_volume};
-    my $output_buffer_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$buffer_volume};
+      my $input_buffer_string  = qq{A;BUFF;;96-TROUGH;$inp_loc_dec;;$buffer_volume};
+      my $output_buffer_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$buffer_volume};
 
-    push $sample_output, $input_sample_string;
-    push $sample_output, $output_sample_string;
-    push $sample_output, $w_string;
-    push $buffer_output, $input_buffer_string;
-    push $buffer_output, $output_buffer_string;
-    push $buffer_output, $w_string;
+      push $sample_output, $input_sample_string;
+      push $sample_output, $output_sample_string;
+      push $sample_output, $w_string;
+      push $buffer_output, $input_buffer_string;
+      push $buffer_output, $output_buffer_string;
+      push $buffer_output, $w_string;
+    }
   }
   return ($sample_output, $buffer_output);
+}
+
+################# worksheet #################
+
+sub _create_worksheet_file {
+  my ($containers_data) = @_;
+  my $pdf = PDF::API2->new();
+
+  # for each output container, we produce a new page...
+  while (my ($uri, $data) = each %{$containers_data->{'output_container_info'}} ) {
+    my $page = $pdf->page();
+    $page->mediabox('A4');
+    my $font = $pdf->corefont('Helvetica-Bold');
+    my ($table_data, $table_properties) = _get_table_data($data->{'container_details'}, $nb_col, $nb_row);
+
+    _add_title_to_page($page, $font, $containers_data, $uri);
+
+    _add_sources_to_page($pdf, $page, $font, $containers_data, $uri);
+    _add_destinations_to_page($pdf, $page, $font, $containers_data, $uri);
+    _add_buffer_to_page($pdf, $page, $font, $table_data, $table_properties);
+  }
+
+  my $tmpdir = File::Temp->newdir(CLEANUP => 1);
+  my $filename = $tmpdir->dirname().'/worksheet.pdf';
+  $pdf->saveas($filename);
 }
 
 sub _add_title_to_page {
@@ -481,7 +493,6 @@ sub _get_containers_data {
   my $oi_map = $self->_get_oi_map($previous_processes);
 
   my $all_data = {};
-
   my $process_id  = ($self->find_elements($self->process_doc, $PROCESS_ID_PATH))[0]->getValue();
   $process_id =~ s/\-//xms;
   $all_data->{'process_id'} = $process_id;
