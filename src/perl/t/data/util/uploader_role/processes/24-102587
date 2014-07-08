@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="24-102587" uri="http://clarity-ap:8080/api/v2/processes/24-102587" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+	<type uri="http://clarity-ap:8080/api/v2/processtypes/516">Cherrypick Worksheet &amp; Barcode(SM)</type>
+	<technician uri="http://clarity-ap:8080/api/v2/researchers/454">
+		<first-name>Benoit</first-name>
+		<last-name>Mangili</last-name>
+	</technician>
+	<input-output-map>
+		<input limsid="2-694765" post-process-uri="http://clarity-ap:8080/api/v2/artifacts/2-694765?state=374081" uri="http://clarity-ap:8080/api/v2/artifacts/2-694765?state=374081">
+			<parent-process limsid="24-102586" uri="http://clarity-ap:8080/api/v2/processes/24-102586"/>
+		</input>
+		<output limsid="92-694766" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://clarity-ap:8080/api/v2/artifacts/92-694766?state=374082"/>
+	</input-output-map>
+	<input-output-map>
+		<input limsid="2-694765" post-process-uri="http://clarity-ap:8080/api/v2/artifacts/2-694765?state=374081" uri="http://clarity-ap:8080/api/v2/artifacts/2-694765?state=374081">
+			<parent-process limsid="24-102586" uri="http://clarity-ap:8080/api/v2/processes/24-102586"/>
+		</input>
+		<output limsid="92-694767" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://clarity-ap:8080/api/v2/artifacts/92-694767?state=374083"/>
+	</input-output-map>
+	<udf:field name="Pick by" type="String">(3) Volume</udf:field>
+	<udf:field name="(3) Required Volume" type="String">1</udf:field>
+	<process-parameter name="Cherrypick volumes"/>
+</prc:process>
