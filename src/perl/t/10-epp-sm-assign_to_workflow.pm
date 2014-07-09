@@ -6,28 +6,9 @@ use Data::Dumper;
 
 
 
-##################  start of test class ####################
-package test::10_sm_assign_to_workflow_test_class;
-use Moose;
-use Carp;
-use XML::LibXML;
-use Readonly;
-
-# we bypass clarity_element_fetcher, as we don't want to test it
-# and want to control the behaviours usually activated by the run method
-extends 'wtsi_clarity::epp';
-with 'wtsi_clarity::util::clarity_elements';
-
-
-
-no Moose;
-##################  end of test class ####################
-
 
 {
   use_ok('wtsi_clarity::epp::sm::assign_to_workflow', 'can use wtsi_clarity::epp::sm::assign_to_workflow' );
-
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sm/assign_to_workflow';
 
 
 

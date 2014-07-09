@@ -26,7 +26,8 @@ override 'run' => sub {
   my $self= shift;
   super();
 
-  my @uris = _get_artifact_uris( $self->process_doc->getDocumentElement() );
+  my @nodes = $self->process_doc->getDocumentElement()->findnodes($INPUT_PATH)->get_nodelist();
+  my @uris = map { $_->getValue() } @nodes;
 
   my $workflows_raw = $self->request->get($self->base_url.'configuration/workflows')
     or croak q{Could not get the list of workflows.};
@@ -41,12 +42,6 @@ override 'run' => sub {
 
   return $response;
 };
-
-sub _get_artifact_uris {
-  my ($doc) = @_;
-  my @nodes = $doc->findnodes($INPUT_PATH)->get_nodelist();
-  return map { $_->getValue() } @nodes;
-}
 
 sub _get_workflow_url {
   my ($workflow_name, $workflows) = @_;

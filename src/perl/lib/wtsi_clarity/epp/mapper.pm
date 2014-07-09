@@ -20,7 +20,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'plate_purpose' => 'sm::plate_purpose',
     'bed_verification' => 'sm::bed_verification',
     'make_worksheet' => 'sm::worksheet',
-    'assign_to_fluidigm' => 'sm::assign_to_workflow',
+    'assign_to_workflow' => 'sm::assign_to_workflow',
 );
 
 has 'action'  => (
