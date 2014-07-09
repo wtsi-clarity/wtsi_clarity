@@ -58,13 +58,13 @@ sub _make_rerouting_request {
   my $doc = XML::LibXML::Document->new('1.0', 'utf-8');
   my $root = $doc->createElementNS('http://genologics.com/ri/routing', 'rt:routing');
 
-  my $assign_tag = $doc->createElement("assign");
-  $assign_tag->setAttribute("workflow-uri", $workflow_uri);
+  my $assign_tag = $doc->createElement('assign');
+  $assign_tag->setAttribute('workflow-uri', $workflow_uri);
   $root->appendChild($assign_tag);
 
   for my $uri (@{$uris}) {
-    my $tag = $doc->createElement("artifact");
-    $tag->setAttribute("uri", $uri);
+    my $tag = $doc->createElement('artifact');
+    $tag->setAttribute('uri', $uri);
     $assign_tag->appendChild($tag);
   }
 
