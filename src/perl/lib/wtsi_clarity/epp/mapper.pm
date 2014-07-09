@@ -21,6 +21,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'bed_verification' => 'sm::bed_verification',
     'make_worksheet' => 'sm::worksheet',
     'assign_to_workflow' => 'sm::assign_to_workflow',
+    'cp_bed_verification' => 'sm::cp_bed_verification',
 );
 
 has 'action'  => (
