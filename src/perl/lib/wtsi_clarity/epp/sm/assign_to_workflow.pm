@@ -46,6 +46,9 @@ override 'run' => sub {
 sub _get_workflow_url {
   my ($workflow_name, $workflows) = @_;
   my @workflows_nodes = $workflows->findnodes( qq{ /wkfcnf:workflows/workflow[\@name='$workflow_name'] } )->get_nodelist();
+  if (scalar @workflows_nodes <= 0) {
+    croak qq{Workflow '$workflow_name' not found};
+  }
   return ($workflows_nodes[0])->getAttribute('uri');
 }
 

@@ -2,20 +2,19 @@ use strict;
 use warnings;
 use Test::More tests => 12;
 use XML::LibXML;
-use Data::Dumper;
-
-
-
+use Test::Exception;
 
 {
   use_ok('wtsi_clarity::epp::sm::assign_to_workflow', 'can use wtsi_clarity::epp::sm::assign_to_workflow' );
 
+  my $data_raw = q{<?xml version="1.0" standalone="yes"?><wkfcnf:workflows xmlns:wkfcnf="http://genologics.com/ri/workflowconfiguration"><workflow status="ACTIVE" uri="uri0" name="really?"/><workflow status="ACTIVE" uri="uri1" name="my workflow"/><workflow status="ACTIVE" uri="uri2" name="my other workflow"/></wkfcnf:workflows>   };
+  my $workflows = XML::LibXML->load_xml(string => $data_raw );
 
-
+  my $uri = wtsi_clarity::epp::sm::assign_to_workflow::_get_workflow_url("my workflow", $workflows);
+  cmp_ok($uri, 'eq', 'uri1', q{_get_workflow_url should find the correct the uri.} );
+  throws_ok { wtsi_clarity::epp::sm::assign_to_workflow::_get_workflow_url('not there', $workflows); }
+    qr{Workflow 'not there' not found}, '_get_workflow_url should croak if the workflow cannot be found.'
 }
-
-
-
 
 {
   use_ok('wtsi_clarity::epp::sm::assign_to_workflow', 'can use wtsi_clarity::epp::sm::assign_to_workflow' );
