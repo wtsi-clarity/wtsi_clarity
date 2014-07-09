@@ -1,0 +1,51 @@
+<?xml version="1.0" standalone="yes"?>
+<wkfcnf:workflows xmlns:wkfcnf="http://genologics.com/ri/workflowconfiguration">
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/551" name="192.24 Fluidigm Test"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/9" name="API Automation Examples"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/153" name="API barcode printing test"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/154" name="API barcode printing test2"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/152" name="API ILLB pooling test"/>
+    <workflow status="ARCHIVED" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/104" name="Betty's First Workflow"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/151" name="Betty's Fourth Workflow"/>
+    <workflow status="ARCHIVED" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/105" name="Betty's Second Workflow"/>
+    <workflow status="ARCHIVED" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/106" name="Betty's Third Workflow"/>
+    <workflow status="ARCHIVED" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/651" name="C44"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/652" name="C44 workflow"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/701" name="C44 workflow not QC"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/251" name="CES test 2"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/201" name="CES test workflow"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/752" name="Cherrypick Test"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/601" name="CS Cherry Pick"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/401" name="CS24 Workflow"/>
+    <workflow status="PENDING" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/10" name="Demo 1.0"/>
+    <workflow status="ARCHIVED" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/351" name="DJ8 workflow test"/>
+    <workflow status="ARCHIVED" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/14" name="dummy workflow ces 2"/>
+    <workflow status="ARCHIVED" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/15" name="dummy workflow ces 3"/>
+    <workflow status="ARCHIVED" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/12" name="dummy workflow ces1"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/352" name="Fluidigm 96.96 Test"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/802" name="Fluidigm Bed Verification"/>
+    <workflow status="PENDING" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/503" name="GCLP Cherrypick"/>
+    <workflow status="PENDING" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/502" name="GCLP Fluidigm 96.96"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/504" name="GCLP Plate Delivery"/>
+    <workflow status="PENDING" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/501" name="GCLP Sequencing QC"/>
+    <workflow status="ARCHIVED" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/11" name="Gung-Ho MiSeq"/>
+    <workflow status="ARCHIVED" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/102" name="ISC"/>
+    <workflow status="ARCHIVED" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/155" name="John Caliper test"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/107" name="Marina's Virtual Sequencing"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/101" name="marina_training"/>
+    <workflow status="PENDING" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/1" name="Nextera DNA for HiSeq"/>
+    <workflow status="PENDING" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/5" name="Nextera DNA for MiSeq"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/801" name="Pico Assay Bed Verification"/>
+    <workflow status="ARCHIVED" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/301" name="Sample Management GCLP QC"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/751" name="Sequencing QC Test"/>
+    <workflow status="ARCHIVED" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/451" name="SM Cherrypick Test"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/103" name="T179 ISC"/>
+    <workflow status="ARCHIVED" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/51" name="Training"/>
+    <workflow status="PENDING" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/6" name="TruSeq Amplicon for MiSeq"/>
+    <workflow status="ARCHIVED" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/2" name="TruSeq DNA for HiSeq"/>
+    <workflow status="PENDING" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/7" name="TruSeq DNA for MiSeq"/>
+    <workflow status="PENDING" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/3" name="TruSeq Exome Enrichment for HiSeq"/>
+    <workflow status="ARCHIVED" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/4" name="TruSeq RNA for HiSeq"/>
+    <workflow status="PENDING" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/8" name="TruSeq RNA for MiSeq"/>
+    <workflow status="ACTIVE" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/13" name="WGS"/>
+</wkfcnf:workflows>
