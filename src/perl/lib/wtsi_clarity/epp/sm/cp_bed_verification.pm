@@ -92,7 +92,45 @@ has '_output_limsid' => (
 );
 sub _build__output_limsid {
   my $self = shift;
-  return $self->process_doc->findvalue($OUTPUT_LIMSID_PATH);
+  my $output_limsid = $self->process_doc->findvalue($OUTPUT_LIMSID_PATH);
+
+  if ($output_limsid eq '') {
+    croak "Can not find output";
+  }
+
+  return $output_limsid;
+}
+
+=head2 _process_limsid
+
+The limsid of the process obvs
+
+=cut
+has '_process_limsid' => (
+  isa => 'Str',
+  is => 'ro',
+  required => 0,
+  lazy_build => 1,
+);
+sub _build__process_limsid {
+  my $self = shift;
+  return $self->process_doc->findvalue($PROCESS_LIMSID);
+}
+
+=head2 _input_limsid
+
+The limsid of the first input in the input-output map
+
+=cut
+has '_input_limsid' => (
+  isa => 'Str',
+  is => 'ro',
+  required => 0,
+  lazy_build => 1,
+);
+sub _build__input_limsid {
+  my $self = shift;
+  return $self->process_doc->findvalue($INPUT_PATH);
 }
 
 =head2 _udf_beds
@@ -176,12 +214,9 @@ has '_tecan_file' => (
 sub _build__tecan_file {
   my $self = shift;
 
-  my $process_limsid = $self->process_doc->findvalue($PROCESS_LIMSID);
-  my $input = $self->process_doc->findvalue($INPUT_PATH);
-
-  my $analyte_processes_url = $self->config->clarity_api->{'base_uri'} . '/processes?inputartifactlimsid=' . $input;
+  my $analyte_processes_url = $self->config->clarity_api->{'base_uri'} . '/processes?inputartifactlimsid=' . $self->_input_limsid;
   my $analyte_processes = $self->fetch_and_parse($analyte_processes_url);
-  my $previous_process_url = $analyte_processes->findvalue(sprintf $PREVIOUS_PROCESS_PATH, $process_limsid);
+  my $previous_process_url = $analyte_processes->findvalue(sprintf $PREVIOUS_PROCESS_PATH, $self->_process_limsid);
   
   my $previous_process = $self->fetch_and_parse($previous_process_url);
   my $previous_process_outputs = $previous_process->findnodes($PREVIOUS_PROCESS_OUTPUT);
@@ -235,7 +270,7 @@ source and destination plates (which are in the comments)
 e.g.
 
   {
-    "SRC1" => 123456789,
+    "SCRC1" => 123456789,
     "DEST1" => 987654321
   }
 
@@ -254,8 +289,8 @@ sub _build__file_input_output {
     or croak qq ( Failed to open $self->_tecan_file );
 
   while( my $line = <$fh>) {
-    if ($line =~ m/^C;\s(SRC|DEST).*$/smx) {
-      my ($bed, $plate) = ($line =~ /^C;\s(SRC\d+|DEST\d+)\s=\s(.+)$/); # Change this for production
+    if ($line =~ m/^C;\s(SCRC|DEST).*$/smx) {
+      my ($bed, $plate) = ($line =~ /^C;\s(SCRC\d+|DEST\d+)\s=\s(.+)$/); # Change this for production
       $input_output_map{$bed} = $plate;
     }
   }
@@ -296,23 +331,21 @@ sub _build__plate_bed_map {
   my @plate_bed_map = ();
 
   if (!exists $self->_tecan_bed_config->{$self->_robot_id}) {
-    carp "Could not find tecan config for robot $self->_robot_id";
+    croak "Could not find tecan config for robot " . $self->_robot_id;
   }
 
   my $beds = $self->_tecan_bed_config->{$self->_robot_id}{'beds'};
   
   foreach my $plate (keys %{$self->_file_input_output}) {
     
-    my $conf = ();
-
     if (!exists $self->_tecan_bed_config->{$self->_robot_id}{'beds'}{$plate}) {
-      carp "Could not find config for plate $plate";
+      croak "Could not find config for plate $plate";
     }
 
-    $conf = $beds->{$plate};
+    my $conf = $beds->{$plate};
     $conf->{'plate_barcode'} = $self->_file_input_output->{$plate};
 
-    push @plate_bed_map, $conf; 
+    push @plate_bed_map, $conf;
   }
 
   return \@plate_bed_map;

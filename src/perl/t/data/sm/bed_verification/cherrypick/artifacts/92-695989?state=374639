@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/92-695989?state=374639" limsid="92-695989">
+    <name>Worksheet</name>
+    <type>ResultFile</type>
+    <output-type>ResultFile</output-type>
+    <parent-process uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-103757" limsid="24-103757"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <sample uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/JON1301A23" limsid="JON1301A23"/>
+    <sample uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/JON1301A24" limsid="JON1301A24"/>
+    <sample uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/JON1301A25" limsid="JON1301A25"/>
+    <sample uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/JON1301A26" limsid="JON1301A26"/>
+    <sample uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/JON1301A31" limsid="JON1301A31"/>
+    <sample uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/JON1301A32" limsid="JON1301A32"/>
+    <sample uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/JON1301A33" limsid="JON1301A33"/>
+    <sample uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/JON1301A39" limsid="JON1301A39"/>
+    <sample uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/JON1301A40" limsid="JON1301A40"/>
+    <sample uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/samples/JON1301A41" limsid="JON1301A41"/>
+    <file:file limsid="92-695989-40-3494" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/files/92-695989-40-3494"/>
+</art:artifact>
