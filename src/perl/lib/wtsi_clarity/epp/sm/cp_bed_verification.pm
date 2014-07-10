@@ -7,6 +7,7 @@ use File::Temp;
 use File::Slurp;
 use File::Spec::Functions;
 use File::Copy;
+use English qw( -no_match_vars );
 use JSON;
 
 use wtsi_clarity::util::request;
@@ -46,8 +47,7 @@ sub _build__tecan_bed_config {
   my $file_path = catfile($self->config->dir_path, $TECAN_CONFIG_FILE);
   open my $fh, '<:encoding(UTF-8)', $file_path
     or croak qq[Could not retrive the configuration file at $file_path\n];
-  # local $RS = undef;
-  local $/ = undef;
+  local $RS = undef;
   my $json_text = <$fh>;
   close $fh
     or croak qq[Could not close handle to $file_path\n];
@@ -70,8 +70,8 @@ sub _build__robot_id {
   my $self = shift;
   my $robot_id = $self->process_doc->findvalue($ROBOT_PATH);
 
-  if ($robot_id eq '') {
-    croak "Robot ID must be set first";
+  if ($robot_id eq q()) {
+    croak 'Robot ID must be set first';
   }
 
   return $robot_id;
@@ -94,8 +94,8 @@ sub _build__output_limsid {
   my $self = shift;
   my $output_limsid = $self->process_doc->findvalue($OUTPUT_LIMSID_PATH);
 
-  if ($output_limsid eq '') {
-    croak "Can not find output";
+  if ($output_limsid eq q()) {
+    croak 'Can not find output';
   }
 
   return $output_limsid;
@@ -217,7 +217,7 @@ sub _build__tecan_file {
   my $analyte_processes_url = $self->config->clarity_api->{'base_uri'} . '/processes?inputartifactlimsid=' . $self->_input_limsid;
   my $analyte_processes = $self->fetch_and_parse($analyte_processes_url);
   my $previous_process_url = $analyte_processes->findvalue(sprintf $PREVIOUS_PROCESS_PATH, $self->_process_limsid);
-  
+
   my $previous_process = $self->fetch_and_parse($previous_process_url);
   my $previous_process_outputs = $previous_process->findnodes($PREVIOUS_PROCESS_OUTPUT);
 
@@ -231,7 +231,9 @@ sub _build__tecan_file {
   my $tmpdir = File::Temp->newdir();
   my $local_filename = $tmpdir->dirname() . $filename;
 
-  $self->request->download_file($server, '/' . $remote_directory . '/' . $filename, $local_filename);
+  my $remote_file = qq($server/$remote_directory/$filename);
+
+  $self->request->download_file($remote_file, $local_filename);
 
   return $local_filename;
 }
@@ -283,22 +285,35 @@ has '_file_input_output' => (
 );
 sub _build__file_input_output {
   my $self = shift;
-  my %input_output_map = ();
 
   open my $fh, '<', $self->_tecan_file
     or croak qq ( Failed to open $self->_tecan_file );
 
-  while( my $line = <$fh>) {
+  my $input_output_map = $self->_parse_tecan_file($fh);
+
+  close $fh or croak 'Could not close connection to tecan file';
+
+  return $input_output_map;
+};
+
+=head2 _parse_tecan_file
+
+=cut
+
+sub _parse_tecan_file {
+  my ($self, $file_handle) = @_;
+  my %input_output_map = ();
+
+  while( my $line = <$file_handle>) {
     if ($line =~ m/^C;\s(SCRC|DEST).*$/smx) {
-      my ($bed, $plate) = ($line =~ /^C;\s(SCRC\d+|DEST\d+)\s=\s(.+)$/); # Change this for production
+      chomp $line;
+      my ($bed, $plate) = ($line =~ /^C;\s(SCRC\d+|DEST\d+)\s=\s(.+)$/smx);
       $input_output_map{$bed} = $plate;
     }
   }
 
-  close $fh;
-
   return \%input_output_map;
-};
+}
 
 =head2 _plate_bed_map
 
@@ -331,13 +346,12 @@ sub _build__plate_bed_map {
   my @plate_bed_map = ();
 
   if (!exists $self->_tecan_bed_config->{$self->_robot_id}) {
-    croak "Could not find tecan config for robot " . $self->_robot_id;
+    croak 'Could not find tecan config for robot ' . $self->_robot_id;
   }
 
   my $beds = $self->_tecan_bed_config->{$self->_robot_id}{'beds'};
-  
+
   foreach my $plate (keys %{$self->_file_input_output}) {
-    
     if (!exists $self->_tecan_bed_config->{$self->_robot_id}{'beds'}{$plate}) {
       croak "Could not find config for plate $plate";
     }
@@ -358,7 +372,9 @@ Change the name of the tecan file to the limsid of the output
 =cut
 sub _offer_download {
   my $self = shift;
-  copy($self->_tecan_file, './' . $self->_output_limsid);
+  my $output = $self->_output_limsid;
+  copy($self->_tecan_file, qq(./$output));
+  return 1;
 }
 
 =head2 validate
@@ -397,8 +413,6 @@ sub validate {
 override 'run' => sub {
   my $self= shift;
   super();
-
-  print $self->_tecan_file;
 
   if ($self->validate($self->_plate_bed_map, $self->_udf_beds, $self->_udf_plates)) {
     $self->_offer_download();
@@ -444,6 +458,7 @@ wtsi_clarity::epp::sm::cp_bed_verification
 =item File::Slurp
 =item File::Spec::Functions
 =item File::Copy
+=item English;
 =item JSON
 =item wtsi_clarity::util::request
 
