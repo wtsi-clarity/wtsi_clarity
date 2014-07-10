@@ -6,6 +6,7 @@ use Readonly;
 use File::Temp;
 use File::Slurp;
 use File::Spec::Functions;
+use File::Copy;
 use JSON;
 
 use wtsi_clarity::util::request;
@@ -24,6 +25,7 @@ Readonly::Scalar my $FILE_CONTENT_LOCATION => q ( /file:file/content-location );
 Readonly::Scalar my $ROBOT_PATH => q ( /prc:process/udf:field[@name="Robot ID"] );
 Readonly::Scalar my $BEDS_PATH => q( /prc:process/udf:field[starts-with(@name, "Bed")] );
 Readonly::Scalar my $PLATES_PATH => q( /prc:process/udf:field[starts-with(@name, "Plate")] );
+Readonly::Scalar my $OUTPUT_LIMSID_PATH => q ( prc:process/input-output-map[1]/output/@limsid );
 
 Readonly::Scalar my $TECAN_CONFIG_FILE => q (tecan_beds.json);
 ## use critic
@@ -66,7 +68,31 @@ has '_robot_id' => (
 );
 sub _build__robot_id {
   my $self = shift;
-  return $self->process_doc->findvalue($ROBOT_PATH);
+  my $robot_id = $self->process_doc->findvalue($ROBOT_PATH);
+
+  if ($robot_id eq '') {
+    croak "Robot ID must be set first";
+  }
+
+  return $robot_id;
+}
+
+=head2 _output_limsid
+
+The limsid of the output result file. Used to rename the Tecan file
+obtained from the previous step to if bed verification is 
+successful.
+
+=cut
+has '_output_limsid' => (
+  isa => 'Str',
+  is => 'ro',
+  required => 0,
+  lazy_build => 1,
+);
+sub _build__output_limsid {
+  my $self = shift;
+  return $self->process_doc->findvalue($OUTPUT_LIMSID_PATH);
 }
 
 =head2 _udf_beds
@@ -292,6 +318,16 @@ sub _build__plate_bed_map {
   return \@plate_bed_map;
 };
 
+=head2 _offer_download
+
+Change the name of the tecan file to the limsid of the output
+
+=cut
+sub _offer_download {
+  my $self = shift;
+  copy($self->_tecan_file, './' . $self->_output_limsid);
+}
+
 =head2 validate
 
 Performs the validation by checking the _plate_bed_map
@@ -329,7 +365,14 @@ override 'run' => sub {
   my $self= shift;
   super();
 
-  return $self->validate($self->_plate_bed_map, $self->_udf_beds, $self->_udf_plates);
+  print $self->_tecan_file;
+
+  if ($self->validate($self->_plate_bed_map, $self->_udf_beds, $self->_udf_plates)) {
+    $self->_offer_download();
+    return 1;
+  }
+
+  return 0;
 };
 
 1;
@@ -367,6 +410,7 @@ wtsi_clarity::epp::sm::cp_bed_verification
 =item File::Temp
 =item File::Slurp
 =item File::Spec::Functions
+=item File::Copy
 =item JSON
 =item wtsi_clarity::util::request
 
