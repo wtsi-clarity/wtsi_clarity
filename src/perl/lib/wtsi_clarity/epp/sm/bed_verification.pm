@@ -43,11 +43,9 @@ sub _build__robot_barcode {
   my $self = shift;
   my $rbc = $self->process_doc->findvalue($ROBOT_BARCODE_PATH);
 
-  ## no critic(ValuesAndExpressions::ProhibitEmptyQuotes)
-  if ($rbc eq '') {
+  if ($rbc eq q{}) {
     croak qq[Robot ID must be set for bed verification\n];
   }
-  ## use critic
 
   return $rbc;
 }
@@ -298,11 +296,9 @@ sub _verify_plates_positioned_correctly {
     $input_elem_name =~ s/Input/Output/gsm;
     my $output_elem_value = $self->process_doc->findvalue( qq[ prc:process/udf:field[\@name='$input_elem_name']]);
 
-    ## no critic(ValuesAndExpressions::ProhibitEmptyQuotes)
-    if ($output_elem_value eq '') {
+    if ($output_elem_value eq q{}) {
       croak qq[Could not find the field for plate $input_elem_name\n];
     }
-    ## use critic
 
     my $output_plate = $barcode_map->{ $input_plate }[0];
 
@@ -319,9 +315,7 @@ sub _punish_user_by_resetting_everything {
 
   my $all_plates = $self->process_doc->findnodes($ALL_PLATES);
 
-  ## no critic(ValuesAndExpressions::ProhibitEmptyQuotes)
-  map { $self->update_text($_, ''); } $all_plates->get_nodelist();
-  ## use critic
+  map { $self->update_text($_, q{}); } $all_plates->get_nodelist();
 
   $self->request->put($self->process_url, $self->process_doc->toString);
 

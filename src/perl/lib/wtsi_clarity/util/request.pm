@@ -309,6 +309,26 @@ sub upload_file {
     return $sftp->disconnect();
 }
 
+=head2 download_file
+
+Open an FTP connection and download a given file.
+
+=cut
+
+sub download_file {
+    my ($self, $server, $remote_path, $local_path) = @_;
+
+    my $sftp=Net::SFTP::Foreign->new($server,
+            'user'=>$self->ftpuser,
+            'password' => $self->ftppassword,
+            ) or croak qq{could not open connection to $server};
+
+    $sftp->get($remote_path, $local_path)
+        or croak qq ( Failed to fetch the file at $remote_path);
+
+    return $sftp->disconnect();
+}
+
 =head2 del
 
 Contacts a web service to perform a DELETE request.
