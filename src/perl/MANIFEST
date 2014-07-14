@@ -11,6 +11,7 @@ lib/wtsi_clarity/epp/sm/plate_purpose.pm
 lib/wtsi_clarity/epp/sm/qc_complete.pm
 lib/wtsi_clarity/epp/sm/sample_received.pm
 lib/wtsi_clarity/epp/sm/bed_verification.pm
+lib/wtsi_clarity/epp/sm/cp_bed_verification.pm
 lib/wtsi_clarity/file_parsing/volume_check.pm
 lib/wtsi_clarity/process_checks/bed_verification.pm
 lib/wtsi_clarity/util/barcode.pm
