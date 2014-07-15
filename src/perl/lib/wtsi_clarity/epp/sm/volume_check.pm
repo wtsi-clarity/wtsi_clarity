@@ -83,7 +83,7 @@ sub _fetch_and_update_samples {
     $self->_updateSample($sampleDoc, $sampleInfo, $parsed_file);
   }
 
-  return 1;
+  return;
 }
 
 sub _extract_analyte_uri {
@@ -102,18 +102,15 @@ sub _extract_sample_info {
 
 sub _updateSample {
   my ($self, $sampleDoc, $sampleInfo, $parsed_file) = @_;
-  my $wellLocation = $sampleInfo->{'wellLocation'};
 
+  my $wellLocation = $sampleInfo->{'wellLocation'};
   croak "Well location $wellLocation does not exist in volume check file " . $self->robot_file if (!exists($parsed_file->{$wellLocation}));
 
   my $newVolume = $parsed_file->{$wellLocation};
-
-## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-  $self->update_udf_element($sampleDoc, 'Volume (\N{U+00B5}L) (SM)', $newVolume);
-## use critic
+  $self->update_udf_element($sampleDoc, "Volume (\N{U+00B5}L) (SM)", $newVolume);
   $self->request->put($sampleInfo->{'uri'}, $sampleDoc->toString());
 
-  return 1;
+  return;
 }
 
 1;
