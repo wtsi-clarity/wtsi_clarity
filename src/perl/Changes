@@ -1,5 +1,12 @@
 CHANGES for wtsi_clarity Perl project
-release -0.28
+
+release 0.29
+  - bed verification tests use bed config with correct barcodes
+  - volume check bug fixed: to get micro character,
+      volume UDF field name should be escaped
+  - remove unused module export
+
+release 0.28
   - Added bed verification for cherrypicking
 
 release 0.27

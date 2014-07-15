@@ -2,16 +2,13 @@ package wtsi_clarity::epp::sm::worksheet;
 
 use Moose;
 use Carp;
-use XML::LibXML;
 use Readonly;
 use PDF::API2;
 use PDF::Table;
-use File::Temp ();
-use File::Tempdir ();
-use Data::Dumper;
+use File::Temp;
+use DateTime;
 use wtsi_clarity::util::request;
 use wtsi_clarity::util::well_mapper;
-use DateTime;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $ARTIFACT_PATH      => q(/prc:process/input-output-map/input/@post-process-uri);
@@ -678,13 +675,15 @@ wtsi_clarity::epp::sm::worksheet
 
 =item Carp
 
-=item XML::LibXML
-
 =item Readonly
 
 =item PDF::API2
 
 =item PDF::Table
+
+=item File::Temp
+
+=item DateTime
 
 =back
 
