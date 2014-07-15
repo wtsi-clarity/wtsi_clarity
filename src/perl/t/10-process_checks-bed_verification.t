@@ -59,7 +59,7 @@ my $config = decode_json($json_text);
 {
   my $c = wtsi_clarity::process_checks::bed_verification->new(config => $config);
 
-  my @source = ({ bed => 2, barcode => 5800400002672 });
+  my @source = ({ bed => 2, barcode => 580040002672 });
   my @destination = ({ bed => 3, barcode => 580040003686 });
   my @mappings = ({
     source => \@source,
@@ -95,7 +95,7 @@ my $config = decode_json($json_text);
 {
   my $c = wtsi_clarity::process_checks::bed_verification->new(config => $config);
 
-  my @source = ({ bed => 2, barcode => 5800400002672 });
+  my @source = ({ bed => 2, barcode => 580040002672 });
   my @destination = ({ bed => 4, barcode => 580040323423 });
   my @mappings = ({
     source => \@source,
