@@ -25,17 +25,21 @@ Readonly::Hash my %ACTION2MODULE => (
 );
 
 has 'action'  => (
-    isa             => 'Str',
+    isa             => 'ArrayRef[Str]',
     is              => 'ro',
     required        => 1,
 );
 
-sub package_name {
+sub package_names {
   my $self = shift;
-  if (!exists $ACTION2MODULE{$self->action}) {
-    croak q[No callback for action ] . $self->action;
+  my @package_names;
+  foreach my $action (@{$self->action}) {
+    if (!exists $ACTION2MODULE{$action}) {
+      croak q[No callback for action ] . $action;
+    }
+    push @package_names, 'wtsi_clarity::epp::' . $ACTION2MODULE{$action};
   }
-  return 'wtsi_clarity::epp::' .  $ACTION2MODULE{$self->action};
+  return @package_names;
 }
 
 1;
@@ -62,7 +66,7 @@ wtsi_clarity::epp::mapper
 
 =head2 action - required attribute
 
-=head2 package_name - returns teh package that implement a callback for
+=head2 package_names - returns teh package that implement a callback for
  this action
 
 =head1 CONFIGURATION AND ENVIRONMENT

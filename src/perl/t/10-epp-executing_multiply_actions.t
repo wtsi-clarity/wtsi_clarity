@@ -1,12 +1,11 @@
 use strict;
 use warnings;
-use Test::More tests => 1;
+use Test::More tests => 2;
 use File::Temp qw/ tempdir /;
 use File::Copy;
 use File::Copy::Recursive qw/ dircopy/;
 use Cwd;
 use Test::Warn;
-use 5.01;
 
 # Copy all the files what needed to the test to a temporary dir
 # These files will be deleted after the execution of this script.
@@ -47,7 +46,23 @@ foreach my $file (@additional_files_to_copy) {
   my $stderr;
   chomp($stderr = <$fh>);
   is( $stderr,
-      "Run method is called for class wtsi_clarity::epp::sm::test_action1, process dummy_url",
+      "Run method from wtsi_clarity::epp::sm::test_action1",
+      'callback runs OK, logs process details'
+    );
+  close($fh);
+}
+
+{
+  system("$dir/bin/epp --action test_action1 --action test_action2 --process_url dummy_url 2>$dir/lib/stderr.txt");
+  open (my $fh, "<", "$dir/lib/stderr.txt");
+  my $stderr = "";
+  while(my $line = <$fh>) {
+    chomp($line);
+    $stderr = $stderr . $line;
+  }
+  is( $stderr,
+      "Run method from wtsi_clarity::epp::sm::test_action1".
+      "Run method from wtsi_clarity::epp::sm::test_action2",
       'callback runs OK, logs process details'
     );
   close($fh);

@@ -13,12 +13,23 @@ use wtsi_clarity::epp::mapper;
 our $VERSION = '0';
 
 try {
-  my $package_name = wtsi_clarity::epp::mapper->new_with_options()->package_name;
-  my $loaded = eval "require $package_name";
-  if (!$loaded) {
-    croak qq[Failed to require $package_name: $EVAL_ERROR];
+  my $process_url;
+  my $action;
+  my @package_names = wtsi_clarity::epp::mapper->new_with_options()->package_names;
+
+  foreach my $package_name (@package_names) {
+    my $loaded = eval "require $package_name";
+    if (!$loaded) {
+      croak qq[Failed to require $package_name: $EVAL_ERROR];
+    }
+    if (!defined $process_url) {
+      $action = $package_name->new_with_options();
+      $process_url = $action->process_url;
+    } else {
+      $action = $package_name->new_with_options(process_url=>$process_url);
+    }
+    $action->run();
   }
-  $package_name->new_with_options()->run();
 } catch {
   my $error = $_;
   $error =~ s/[\r\n]+//gmsx;
