@@ -55,6 +55,13 @@ has 'source_plate' => (
   default    => 0,
 );
 
+has 'temp_barcode' => (
+  isa => 'Str',
+  is  => 'ro',
+  required => 0,
+  default  => 0,
+);
+
 has 'container_type' => (
   isa        => 'Str',
   is         => 'ro',
@@ -170,6 +177,11 @@ has '_container' => (
 sub _build__container {
   my $self = shift;
 
+  # Probably need to find a better way to do this...
+  if ($self->temp_barcode) {
+    return $self->_generate_temp_container();
+  }
+
   my $iopath = $self->source_plate ? $IO_MAP_PATH : $IO_MAP_PATH_ANALYTE_OUTPUT;
   my @nodes = $self->process_doc->findnodes($iopath);
   if (!@nodes) {
@@ -233,10 +245,16 @@ sub _generate_barcode {
 override 'run' => sub {
   my $self = shift;
   super(); #call parent's run method
-  $self->_set_container_data();
-  $self->_update_container();
+
+  if (!$self->temp_barcode) {
+    $self->_set_container_data();
+    $self->_update_container();
+  }
+
   my $template = $self->_generate_labels();
+    
   $self->print_labels($self->printer, $template);
+  
   return;
 };
 
@@ -251,6 +269,30 @@ sub _generate_labels {
       'containers'   => $self->_container,
       'source_plate' => $self->source_plate,
     });
+}
+
+sub _generate_temp_container {
+  my $self = shift;
+
+  my $random_number = $self->_generate_random_number();
+  my ($barcode, $num) = $self->_generate_barcode($random_number);
+
+  return {
+    'tmp' => {
+      'barcode' => $barcode,
+      'num'     => $num,
+      'purpose' => 'AssayPlate',
+      'signature' => 'n/a'
+    }
+  }
+}
+
+sub _generate_random_number {
+  my $self = shift;
+  my $range = 1000000;
+  my $minimum = 1000000;
+
+  return int(rand($range)) + $minimum;
 }
 
 sub _set_container_data {
