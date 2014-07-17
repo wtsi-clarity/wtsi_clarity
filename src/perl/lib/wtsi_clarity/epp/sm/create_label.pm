@@ -1,17 +1,17 @@
 package wtsi_clarity::epp::sm::create_label;
 
 use Moose;
-use English qw(-no_match_vars);
 use Carp;
 use Readonly;
-use JSON;
 use DateTime;
 use namespace::autoclean;
 
 use wtsi_clarity::util::barcode qw/calculateBarcode/;
+use wtsi_clarity::util::label qw/generateLabels/;
 use wtsi_clarity::util::signature;
 extends 'wtsi_clarity::epp';
 with 'wtsi_clarity::util::clarity_elements';
+with 'wtsi_clarity::util::print';
 
 #########################
 # TODO
@@ -44,10 +44,9 @@ Readonly::Scalar my $SUPPLIER_CONTAINER_NAME_PATH =>
 Readonly::Scalar my $CONTAINER_NAME_PATH  => q{ /con:container/name };
 ##use critic
 
-Readonly::Scalar my  $SIGNATURE_LENGTH => 5;
-Readonly::Scalar my  $USER_NAME_LENGTH => 12;
-Readonly::Scalar my  $DEFAULT_CONTAINER_TYPE => 'plate';
-Readonly::Scalar my  $CHILD_ERROR_SHIFT => 8;
+Readonly::Scalar my $SIGNATURE_LENGTH => 5;
+Readonly::Scalar my $DEFAULT_CONTAINER_TYPE => 'plate';
+Readonly::Scalar my $CHILD_ERROR_SHIFT => 8;
 
 has 'source_plate' => (
   isa        => 'Bool',
@@ -117,45 +116,6 @@ sub _build_user {
     }
   }
   return $user;
-}
-
-has '_printer_url' => (
-  isa        => 'Str',
-  is         => 'ro',
-  required   => 0,
-  lazy_build => 1,
-);
-sub _build__printer_url {
-  my $self = shift;
-
-  my $print_service = $self->config->printing->{'service_url'};
-  if (!$print_service) {
-    croak q[service_url entry should be defined in the printing section of the configuration file];
-  }
-  my $url =  "$print_service/label_printers/page\=1";
-  my $printer = $self->printer;
-  my $p;
-  my $cmd = qq[curl -H 'Accept: application/json' -H 'Content-Type: application/json' $url];
-  ##no critic (ProhibitBacktickOperators)
-  my $output = `$cmd`;
-  ##use critic
-  if ($CHILD_ERROR) {
-    croak qq[Failed to get info about a printer $printer from $url,\n $output\n ERROR: ] . $CHILD_ERROR >> $CHILD_ERROR_SHIFT;
-  }
-
-  my $text = decode_json($output);
-  foreach my $t ( @{$text->{'label_printers'}} ){
-    if ($t->{'name'} && $t->{'name'} eq $printer){
-      if (!$t->{'uuid'}) {
-        croak qq[No uuid for printer $printer]
-      }
-      $p = join q[/], $print_service, $t->{'uuid'};
-    }
-  }
-  if (!$p) {
-    croak qq[Failed to get printer $printer details from $url]
-  }
-  return $p;
 }
 
 has '_num_copies' => (
@@ -243,6 +203,7 @@ sub _build__container {
   if (scalar keys %{$containers} == 0) {
     croak q[Failed to get containers for process ] . $self->process_url;
   }
+
   return $containers;
 }
 
@@ -274,11 +235,23 @@ override 'run' => sub {
   super(); #call parent's run method
   $self->_set_container_data();
   $self->_update_container();
-  $self->_format_label();
-  my $template = $self->_generate_label();
-  $self->_print_label($template);
+  my $template = $self->_generate_labels();
+  $self->print_labels($self->printer, $template);
   return;
 };
+
+sub _generate_labels {
+  my $self = shift;
+
+  return generateLabels({
+      'number'       => $self->_num_copies,
+      'type'         => $self->container_type,
+      'user'         => $self->user,
+      'date'         => $self->_date,
+      'containers'   => $self->_container,
+      'source_plate' => $self->source_plate,
+    });
+}
 
 sub _set_container_data {
   my $self = shift;
@@ -322,78 +295,6 @@ sub _update_container {
   foreach my $container_url (keys %{$self->_container}) {
     my $doc = $self->_container->{$container_url}->{'doc'};
     $self->request->put($container_url, $doc->toString);
-  }
-  return;
-}
-
-sub _format_label {
-  my $self = shift;
-
-  my $type = $self->container_type;
-  foreach my $container_url (keys %{$self->_container}) {
-    my $c = $self->_container->{$container_url};
-
-    my $date = $self->_date->strftime('%d-%b-%Y');
-    my $user = $self->source_plate ? q[] : $self->user; #no user for sample management stock plates
-    if ($user && length $user > $USER_NAME_LENGTH) {
-      $user = substr $user, 0, $USER_NAME_LENGTH;
-    }
-    if ($type eq 'plate') {
-      $c->{'label'} = {'template'  => 'plate',
-                       'plate' => { 'ean13'      => $c->{'barcode'},
-                                    'sanger' => join(q[ ], $date, $user),
-                                    'label_text' =>
-                      {'role' => $c->{'purpose'}, 'text5' => $c->{'num'}, 'text6' => $c->{'signature'}}
-                                      }};
-    } elsif ($type eq 'tube') { #tube labels have not been tested yet
-      $c->{'label'} = {'template'  => 'tube',
-                       'tube'      => { 'ean13'      => $c->{'barcode'},
-                                        'sanger'     => $c->{'lims_id'},
-                                        'label_text' => {'role' => $self->user,},
-                                      }};
-    } else {
-      croak qq[Unknown container type $type, known types: tube, plate];
-    }
-  }
-  return;
-}
-
-sub _generate_label {
-  my $self = shift;
-  my $user = $self->user;
-  my $date = $self->_date->strftime('%a %b %d %T %Y');
-  my $h = {};
-  $h->{'label_printer'}->{'header_text'} =
-    {'header_text1' => "header by $user",'header_text2' => $date,};
-  $h->{'label_printer'}->{'footer_text'} =
-    {'footer_text1' => "footer by $user",'footer_text2' => $date,};
-
-  my @labels = ();
-  foreach my $container_url (keys %{$self->_container}) {
-    my $count = 0;
-    while ($count < $self->_num_copies) {
-      push @labels, $self->_container->{$container_url}->{'label'};
-      $count++;
-    }
-  }
-  $h->{'label_printer'}->{'labels'} = \@labels;
-
-  return $h;
-}
-
-sub _print_label {
-  my ($self, $template) = @_;
-
-  ##no critic (ProhibitInterpolationOfLiterals)
-  my $cmd = qq(curl -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d);
-  ##use critic
-  $cmd .= q[ '] . encode_json($template)  . q[' ] . $self->_printer_url;
-
-  ##no critic (ProhibitBacktickOperators)
-  my $output = `$cmd`;
-  ##use critic
-  if ($CHILD_ERROR) {
-    croak qq[Barcode printing failed\n $output \n: ] . $CHILD_ERROR >> $CHILD_ERROR_SHIFT;
   }
   return;
 }
