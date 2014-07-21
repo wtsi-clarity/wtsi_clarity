@@ -66,8 +66,8 @@ wtsi_clarity::epp::mapper
 
 =head2 action - required attribute
 
-=head2 package_names - returns teh package that implement a callback for
- this action
+=head2 package_names - returns an array of packages that implements a callback for
+ the provided actions
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
