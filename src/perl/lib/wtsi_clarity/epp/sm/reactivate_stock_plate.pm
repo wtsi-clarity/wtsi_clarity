@@ -12,18 +12,24 @@ with 'wtsi_clarity::util::clarity_process';
 
 our $VERSION = '0.0';
 
-has 'parent_process' => (
+has 'from_process' => (
   isa => 'Str',
   is  => 'ro',
   required => 1,
 );
+
+has 'to_workflow' => (
+  isa => 'Str',
+  is  => 'ro',
+  required => 1,
+)
 
 override 'run' => sub {
   my $self= shift;
   super();
 
   # Get all input artifacts' parent process URIs
-  my $parent_processes = $self->find_parent($self->parent_process, $self->process_url);
+  my $parent_processes = $self->find_parent($self->from_process, $self->process_url);
 
   if (scalar @{ $parent_processes } == 0) {
     croak 'None of the samples in these plates seem to have gone through Working Dilution (SM)';
@@ -31,7 +37,7 @@ override 'run' => sub {
 
   foreach my $parent_process_url (@{ $parent_processes }) {
     wtsi_clarity::epp::sm::assign_to_workflow->new(
-      new_wf => 'GCLP Cherrypick',
+      new_wf => $self->to_workflow,
       process_url => $parent_process_url,
     )->run();
   }
