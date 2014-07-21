@@ -14,20 +14,25 @@ our $VERSION = '0';
 
 try {
   my $process_url;
-  my $action;
+  my @actions;
   my @package_names = wtsi_clarity::epp::mapper->new_with_options()->package_names;
 
+  # Creating the action object(s)
   foreach my $package_name (@package_names) {
     my $loaded = eval "require $package_name";
     if (!$loaded) {
       croak qq[Failed to require $package_name: $EVAL_ERROR];
     }
     if (!defined $process_url) {
-      $action = $package_name->new_with_options();
-      $process_url = $action->process_url;
+      push @actions, $package_name->new_with_options();
+      $process_url = $actions[0]->process_url;
     } else {
-      $action = $package_name->new_with_options(process_url=>$process_url);
+      push @actions, $package_name->new_with_options(process_url=>$process_url);
     }
+  }
+
+  # Executing the instantiated actions one by one
+  foreach my $action (@actions) {
     $action->run();
   }
 } catch {
