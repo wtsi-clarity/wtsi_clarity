@@ -1,29 +1,32 @@
 package wtsi_clarity::util::label;
 
-use strict;
-use warnings;
+use Moose::Role;
 use Carp;
 use Readonly;
-use Exporter qw(import);
-
-our @EXPORT_OK = qw(generateLabels);
 
 our $VERSION = '0.0';
 
 Readonly::Scalar my $USER_NAME_LENGTH => 12;
 
+has '_date' => (
+  isa        => 'DateTime',
+  is         => 'ro',
+  required   => 0,
+  default    => sub { return DateTime->now(); },
+);
+
 sub generateLabels {
-  my $params = shift;
+  my ($self, $params) = @_;
   my $h = {};
 
   $h->{'label_printer'}->{'header_text'} = {
     header_text1 => 'header by ' . $params->{'user'},
-    header_text2 => $params->{'date'}->strftime('%a %b %d %T %Y'),
+    header_text2 => $self->_date->strftime('%a %b %d %T %Y'),
   };
 
   $h->{'label_printer'}->{'footer_text'} = {
-    footer_text1 => 'footer by ' .$params->{'user'},
-    footer_text2 => $params->{'date'}->strftime('%a %b %d %T %Y'),
+    footer_text1 => 'footer by ' . $params->{'user'},
+    footer_text2 => $self->_date->strftime('%a %b %d %T %Y'),
   };
 
   my @labels = ();
@@ -32,7 +35,7 @@ sub generateLabels {
     my $count = 0;
     while ($count < $params->{'number'}) {
       my $container = $params->{'containers'}->{$container_url};
-      push @labels, _format_label($container, $params);
+      push @labels, $self->_format_label($container, $params);
       $count++;
     }
   }
@@ -43,12 +46,12 @@ sub generateLabels {
 }
 
 sub _format_label {
-  my ($container, $params) = @_;
+  my ($self, $container, $params) = @_;
 
   my $label;
 
   my $type = $params->{'type'};
-  my $date = $params->{'date'}->strftime('%d-%b-%Y');
+  my $date = $self->_date->strftime('%d-%b-%Y');
   my $user = $params->{'source_plate'} ? q[] : $params->{'user'}; #no user for sample management stock plates  
 
   if ($user && length $user > $USER_NAME_LENGTH) {
@@ -102,7 +105,6 @@ wtsi_clarity::util::label
       'number'       => $num_copies, 
       'type'         => $container_type,
       'user'         => $user,
-      'date'         => $date,
       'containers'   => $container,
       'source_plate' => $source_plate,
     })

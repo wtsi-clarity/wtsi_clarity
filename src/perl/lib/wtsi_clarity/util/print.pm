@@ -10,7 +10,7 @@ requires 'config';
 
 our $VERSION = '0.0';
 
-has 'json_request' => (
+has '_json_request' => (
   isa => 'wtsi_clarity::util::request',
   is  => 'ro',
   traits => [ 'NoGetopt' ],
@@ -22,7 +22,7 @@ sub print_labels {
 
   my $printer_url = $self->_get_printer_url($printer_name);
 
-  $self->json_request->post($printer_url, encode_json($template));
+  $self->_json_request->post($printer_url, encode_json($template));
 
   return;
 }
@@ -37,7 +37,7 @@ sub _get_printer_url {
   my $url =  "$print_service/label_printers/page\=1";
   my $p;
 
-  my $output = $self->json_request->get($url);
+  my $output = $self->_json_request->get($url);
   my $text = decode_json($output);
 
   foreach my $t ( @{$text->{'label_printers'}} ){

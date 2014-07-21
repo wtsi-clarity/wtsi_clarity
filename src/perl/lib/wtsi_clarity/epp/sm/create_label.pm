@@ -7,11 +7,11 @@ use DateTime;
 use namespace::autoclean;
 
 use wtsi_clarity::util::barcode qw/calculateBarcode/;
-use wtsi_clarity::util::label qw/generateLabels/;
 use wtsi_clarity::util::signature;
 extends 'wtsi_clarity::epp';
 with 'wtsi_clarity::util::clarity_elements';
 with 'wtsi_clarity::util::print';
+with 'wtsi_clarity::util::label';
 
 #########################
 # TODO
@@ -48,6 +48,9 @@ Readonly::Scalar my $SIGNATURE_LENGTH => 5;
 Readonly::Scalar my $DEFAULT_CONTAINER_TYPE => 'plate';
 Readonly::Scalar my $CHILD_ERROR_SHIFT => 8;
 
+Readonly::Scalar my $DEFAULT_BARCODE_LOWEST => 1_000_000;
+Readonly::Scalar my $DEFAULT_BARCODE_RANGE => 1_000_000;
+
 has 'source_plate' => (
   isa        => 'Bool',
   is         => 'ro',
@@ -56,7 +59,7 @@ has 'source_plate' => (
 );
 
 has 'temp_barcode' => (
-  isa => 'Str',
+  isa => 'Bool',
   is  => 'ro',
   required => 0,
   default  => 0,
@@ -219,13 +222,6 @@ sub _build__container {
   return $containers;
 }
 
-has '_date' => (
-  isa        => 'DateTime',
-  is         => 'ro',
-  required   => 0,
-  default    => sub { return DateTime->now(); },
-);
-
 has '_plate_purpose_suffix' => (
   isa        => 'ArrayRef',
   is         => 'ro',
@@ -252,20 +248,18 @@ override 'run' => sub {
   }
 
   my $template = $self->_generate_labels();
-    
   $self->print_labels($self->printer, $template);
-  
+
   return;
 };
 
 sub _generate_labels {
   my $self = shift;
 
-  return generateLabels({
+  return $self->generateLabels({
       'number'       => $self->_num_copies,
       'type'         => $self->container_type,
       'user'         => $self->user,
-      'date'         => $self->_date,
       'containers'   => $self->_container,
       'source_plate' => $self->source_plate,
     });
@@ -288,11 +282,7 @@ sub _generate_temp_container {
 }
 
 sub _generate_random_number {
-  my $self = shift;
-  my $range = 1000000;
-  my $minimum = 1000000;
-
-  return int(rand($range)) + $minimum;
+  return int(rand $DEFAULT_BARCODE_RANGE ) + $DEFAULT_BARCODE_LOWEST;
 }
 
 sub _set_container_data {
