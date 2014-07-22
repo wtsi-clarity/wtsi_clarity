@@ -22,6 +22,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'make_worksheet' => 'sm::worksheet',
     'assign_to_workflow' => 'sm::assign_to_workflow',
     'cp_bed_verification' => 'sm::cp_bed_verification',
+    'reactivate_stock_plate' => 'sm::reactivate_stock_plate',
 );
 
 has 'action'  => (
