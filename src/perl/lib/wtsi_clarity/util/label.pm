@@ -123,13 +123,9 @@ wtsi_clarity::util::label
 
 =over
 
-=item strict
-
-=item warnings
+=item Moose::Role
 
 =item Carp
-
-=item Exporter
 
 =item Readonly
 
