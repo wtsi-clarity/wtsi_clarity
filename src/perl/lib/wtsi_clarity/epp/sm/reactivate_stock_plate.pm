@@ -32,7 +32,7 @@ override 'run' => sub {
   my $parent_processes = $self->find_parent($self->from_process, $self->process_url);
 
   if (scalar @{ $parent_processes } == 0) {
-    croak 'None of the samples in these plates seem to have gone through Working Dilution (SM)';
+    croak 'None of the samples in these plates seem to have gone through ' . $self->from_process;
   }
 
   foreach my $parent_process_url (@{ $parent_processes }) {
