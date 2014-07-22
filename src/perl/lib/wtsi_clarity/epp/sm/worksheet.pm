@@ -70,8 +70,12 @@ override 'run' => sub {
   # pdf generation
   my $worksheet_filename = _create_worksheet_file($containers_data, $stamp);
 
+  my $tecan_filename;
   # tecan file generation
-  my $tecan_filename = _create_tecan_file($containers_data, $stamp);
+  # temp way to only create the worksheet
+  if ($self->create_tecan) {
+    $tecan_filename = _create_tecan_file($containers_data, $stamp);
+  }
 
   # uploading files
   my $outputs       = $self->fetch_targets_hash($OUTPUT_FILES);
@@ -81,7 +85,7 @@ override 'run' => sub {
       $self->addfile_to_resource($uri, $worksheet_filename)
         or croak qq[Could not add file $worksheet_filename to the resource $uri.];
     }
-    if ($name eq 'Tecan File') {
+    if ($self->create_tecan && $name eq 'Tecan File') {
       $self->addfile_to_resource($uri, $tecan_filename)
         or croak qq[Could not add file $tecan_filename to the resource $uri.];
     }
@@ -89,6 +93,13 @@ override 'run' => sub {
 
   return 1;
 };
+
+has 'create_tecan' => (
+  isa => 'Bool',
+  is  => 'ro',
+  required => 0,
+  default => 0,
+);
 
 ################# date & username ############
 
@@ -531,10 +542,14 @@ sub _get_containers_data {
 
 
       my $buffer_volume = 0;
+      my $sample_volume = 0;
       my $out_location      = ($self->find_elements($out_artifact,    $LOCATION_PATH      ) )[0] ->textContent;
       my $out_container_uri = ($self->find_elements($out_artifact,    $CONTAINER_URI_PATH ) )[0] ->getValue();
       my $out_container_id  = ($self->find_elements($out_artifact,    $CONTAINER_ID_PATH  ) )[0] ->getValue();
-      my $sample_volume     = ($self->find_udf_element($out_artifact, $SAMPLE_VOLUME_PATH ) )    ->textContent;
+      my $sample_volume_elmt= ($self->find_udf_element($out_artifact, $SAMPLE_VOLUME_PATH ) ) ;
+      if ($sample_volume_elmt) {
+        $sample_volume     = ($sample_volume_elmt)->textContent;
+      }
       my $buffer_volume_elmt= ($self->find_udf_element($out_artifact, $BUFFER_VOLUME_PATH ) ) ;
       if ($buffer_volume_elmt) {
         $buffer_volume      = ($buffer_volume_elmt)->textContent;
