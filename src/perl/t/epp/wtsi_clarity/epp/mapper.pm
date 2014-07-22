@@ -10,18 +10,9 @@ with 'MooseX::Getopt';
 our $VERSION = '0.0';
 
 Readonly::Hash my %ACTION2MODULE => (
-    'volume_check' => 'sm::volume_check',
-    'create_label' => 'sm::create_label',
-    'stamp'        => 'stamp',
-    'sample_received' => 'sm::sample_received',
-    'qc_complete' => 'sm::qc_complete',
-    'fluidigm_request_volume' => 'sm::fluidigm_request_volume',
-    'cherrypick_volume' => 'sm::cherrypick_volume',
-    'plate_purpose' => 'sm::plate_purpose',
-    'bed_verification' => 'sm::bed_verification',
-    'make_worksheet' => 'sm::worksheet',
-    'assign_to_workflow' => 'sm::assign_to_workflow',
-    'cp_bed_verification' => 'sm::cp_bed_verification',
+    'test_action1'        => 'sm::test_action1',
+    'test_action2'        => 'sm::test_action2',
+    'test_action3'        => 'sm::test_action3',
 );
 
 has 'action'  => (
