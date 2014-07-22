@@ -25,11 +25,6 @@ use_ok('wtsi_clarity::epp::sm::create_label');
   lives_and(sub {is $l->user, 'D. Brooks'}, 'correct user name');
   lives_and(sub {is $l->_num_copies, 2}, 'number of copies as given');
   lives_and(sub {is $l->_plate_purpose, 'Stock Plate'}, 'plate purpose as given');
-  # {
-  #   local $ENV{'WTSI_CLARITY_HOME'} = 't';
-  #   throws_ok {$l->_printer_url} qr/Validation failed for 'WtsiClarityReadableFile'/,
-  #     'failed to get print service url';
-  # }
 
   $l = wtsi_clarity::epp::sm::create_label->new(
     process_url => 'http://clarity-ap:8080/api/v2/processes/24-67069');
@@ -90,8 +85,6 @@ use_ok('wtsi_clarity::epp::sm::create_label');
   $xml =  $doc->toString;
   like ($xml, qr/Supplier Container Name\">ces_tester_101_/, 'container supplier unchanged');
 
-  # lives_ok { $l->_format_labels() } 'labels formatted';
-
   my $label = {
           'label_printer' => { 'footer_text' => {
                                                   'footer_text2' => 'Wed May 21 15:04:23 2014',
@@ -120,7 +113,6 @@ use_ok('wtsi_clarity::epp::sm::create_label');
   $label->{'label_printer'}->{'labels'}->[1] = $label->{'label_printer'}->{'labels'}->[0];
 
   is_deeply($l->_generate_labels(), $label, 'label hash representation');
-  #$l->_print_label($label); #This prints a label
 }
 
 {
@@ -148,7 +140,6 @@ use_ok('wtsi_clarity::epp::sm::create_label');
   is (scalar @{$l->_container->{$urls[1]}->{'samples'}}, 95, 'correct number of samples');
 
   lives_ok {$l->_set_container_data} 'container data set';
-  # lives_ok { $l->_format_labels() } 'labels formatted';
 
   my $label = {
           'label_printer' => {
@@ -198,7 +189,7 @@ use_ok('wtsi_clarity::epp::sm::create_label');
 
   lives_ok {$l->_container} 'got containers';
   lives_ok {$l->_set_container_data} 'container data set';
-  # lives_ok { $l->_format_labels() } 'labels formatted';
+
   # increment_purpose flag is false
   $label->{'label_printer'}->{'labels'}->[0]->{'plate'}->{'label_text'}->{'role'} = 'Pico Assay';
   is_deeply($l->_generate_labels(), $label, 'label hash representation');
