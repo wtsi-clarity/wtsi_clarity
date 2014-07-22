@@ -22,7 +22,7 @@ has 'to_workflow' => (
   isa => 'Str',
   is  => 'ro',
   required => 1,
-)
+);
 
 override 'run' => sub {
   my $self= shift;
