@@ -3,19 +3,121 @@ package wtsi_clarity::epp::sm::attach_dtx_file;
 use Moose;
 use Carp;
 use Readonly;
+use File::Copy;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+Readonly::Scalar my $FIRST_INPUT_URI_PATH => q(/prc:process/input-output-map[1]/input/@uri);
+Readonly::Scalar my $CONTAINER_URI_PATH => q(/art:artifact/location/container/@uri);
+Readonly::Scalar my $RAW_DATA_NAME => q(_ Pico-green assay run_AllRawData*);
 ## use critic
 
 extends 'wtsi_clarity::epp';
 
 with 'wtsi_clarity::util::clarity_elements';
+with 'wtsi_clarity::util::clarity_elements_fetcher_role_util';
 
 our $VERSION = '0.0';
 
+has '_standard_barcode' => (
+  isa => 'Str',
+  is  => 'ro',
+  required => 0,
+  lazy_build => 1,
+);
+
+sub _build__standard_barcode {
+  my $self = shift;
+
+  my $standard_barcode = $self->find_udf_element($self->process_doc, 'Standard Barcode');
+
+  croak 'Standard barcode has not been set' if (!defined $standard_barcode);
+
+  return $standard_barcode->textContent;
+}
+
+has '_container_barcode' => (
+  isa => 'Str',
+  is => 'ro',
+  required => 0,
+  lazy_build => 1,
+);
+
+sub _build__container_barcode {
+  my $self = shift;
+
+  my $container_hash = $self->fetch_targets_hash($FIRST_INPUT_URI_PATH, $CONTAINER_URI_PATH);
+  my $container_doc = (values %{$container_hash})[0];
+  my $container_barcode = $container_doc->findvalue('/con:container/name');
+
+  croak 'Container barcode is not set' if ($container_barcode eq q{});
+
+  return $container_barcode;
+}
+
+has '_file_prefix' => (
+  isa => 'Str',
+  is => 'ro',
+  required => 0,
+  lazy_build => 1,
+);
+
+sub _build__file_prefix {
+  my $self = shift;
+
+  my $file_prefix = join q{-}, $self->_standard_barcode, $self->_container_barcode;
+
+  return $file_prefix;
+}
+
+has '_dtx_file_path' => (
+  isa => 'Str',
+  is => 'ro',
+  required => 0,
+  lazy_build => 1,
+);
+
+sub _build__dtx_file_path {
+  my $self = shift;
+  my $dir = $self->config->robot_file_dir->{'sm_pico_green'};
+
+  my $file_name =  $self->_file_prefix . $RAW_DATA_NAME;
+
+  return qq{"$dir/$file_name"};
+}
+
+sub _get_dtx_file {
+  my $self = shift;
+
+  my @file_list = glob $self->_dtx_file_path;
+
+  if (scalar @file_list > 1) {
+    croak 'Multiple files are available for ' . $self->_file_prefix;
+  }
+
+  if (scalar @file_list == 0) {
+    croak 'Could not find file ' . $self->_dtx_file_path;
+  }
+
+  my $dtx_file = shift @file_list;
+
+  return $dtx_file;
+}
+
+sub attach_dtx_file_to_process {
+  my $self = shift;
+  my $dtx_file = $self->_get_dtx_file();
+
+  copy ($dtx_file, q{.})
+    or croak sprintf 'Failed to copy %s', $dtx_file;
+
+  return;
+}
+
 override 'run' => sub {
   my $self = shift;
-  super(); #call parent's run method
+  super();
+
+  $self->attach_dtx_file_to_process();
 
   return;
 };
@@ -43,6 +145,9 @@ wtsi_clarity::epp::sm::attach_dtx_file
 
 =head2 run - executes the callback
 
+=head2 attach_dtx_file_to_process
+  Copies the dtx file to the current directory
+
 =head1 CONFIGURATION AND ENVIRONMENT
 
 =head1 DEPENDENCIES
@@ -55,7 +160,11 @@ wtsi_clarity::epp::sm::attach_dtx_file
 
 =item Readonly
 
+=item File::Copy
+
 =item wtsi_clarity::util::clarity_elements
+
+=item wtsi_clarity::util::clarity_elements_fetcher_role_util
 
 =back
 

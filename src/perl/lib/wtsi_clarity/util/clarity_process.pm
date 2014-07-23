@@ -7,10 +7,10 @@ use List::MoreUtils qw/uniq/;
 
 requires 'request';
 
-## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $PARENT_PROCESS_PATH => q( /prc:process/input-output-map/input/parent-process/@uri );
 Readonly::Scalar my $PARENT_PROCESS_TYPE => q( /prc:process/type );
-## use critic
+## use critic
 
 our $VERSION = '0.0';
 
