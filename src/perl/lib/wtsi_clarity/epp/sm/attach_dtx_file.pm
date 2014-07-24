@@ -182,8 +182,8 @@ wtsi_clarity::epp::sm::attach_dtx_file
 
 =head2 run - executes the callback
 
-=head2 attach_dtx_file_to_process
-  Copies the dtx file to the current directory
+=head2 attach_files_to_process
+  Copies the dtx file and the standard plate file to the current directory
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
