@@ -432,12 +432,12 @@ my $TEST_DATA4 = {
   cmp_ok(scalar @$buffers, '==', 9*3 , "_get_TECAN_file_content_per_URI should return the correct size nb of buffers.");
 
   foreach my $expected (@expected_samples) {
-    my $val = shift $samples;
+    my $val = shift @$samples;
     cmp_ok($val, 'eq', $expected, "_get_TECAN_file_content_per_URI(...) should give the correct samples.");
   }
 
   foreach my $expected (@expected_buffers) {
-    my $val = shift $buffers;
+    my $val = shift @$buffers;
     cmp_ok($val, 'eq', $expected, "_get_TECAN_file_content_per_URI(...) should give the correct buffers.");
   }
 }
@@ -474,7 +474,7 @@ my $TEST_DATA4 = {
   cmp_ok(scalar @$table, '==', 3 + 3*4 + 2*2 + 3 , "_get_TECAN_file_content should return an array of the correct size (nb of rows).");
 
   foreach my $expected (@expected_data) {
-    my $val = shift $table;
+    my $val = shift @$table;
     cmp_ok($val, 'eq', $expected, "_get_TECAN_file_content(...) should give the correct content.");
   }
 }
