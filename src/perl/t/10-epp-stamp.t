@@ -21,7 +21,7 @@ use_ok('wtsi_clarity::epp::stamp');
   lives_ok { $s->_analytes } 'got all info from clarity';
   my @containers = keys %{$s->_analytes};
   is (scalar @containers, 1, 'one input container');
-  is (scalar keys $s->_analytes->{$containers[0]}, 6, 'five input analytes and a container doc');
+  is (scalar keys %{$s->_analytes->{$containers[0]}}, 6, 'five input analytes and a container doc');
 
   is ($s->container_type_name->[0], 'ABgene 0800', 'container name retrieved correctly');
   is ($s->_validate_container_type, 0, 'container type validation flag unset');

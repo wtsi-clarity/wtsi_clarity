@@ -144,48 +144,48 @@ sub _create_tecan_file {
 sub _get_TECAN_file_content {
   my ($containers_data, $stamp) = @_;
 
-  my $content_output = [];
-  my $buffer_output = [];
+  my @content_output = ();
+  my @buffer_output = ();
 
   # creating the comments at the top of the file
 
-  push $content_output, 'C;' ;
-  push $content_output, 'C; '.$stamp ;
-  push $content_output, 'C;' ;
+  push @content_output, 'C;' ;
+  push @content_output, 'C; '.$stamp ;
+  push @content_output, 'C;' ;
 
   # creating main content
 
   foreach my $uri (sort keys %{$containers_data->{'output_container_info'}} ) {
     my ($samples, $buffers) = _get_TECAN_file_content_per_URI($containers_data, $uri);
-    push $content_output, @{$samples};
-    push $buffer_output, @{$buffers};
+    push @content_output, @{$samples};
+    push @buffer_output, @{$buffers};
   }
-  push $content_output, @{$buffer_output};
+  push @content_output, @buffer_output;
 
   # creating the comments in the end of the file
 
-  push $content_output, 'C;' ;
+  push @content_output, 'C;' ;
   my $n = 1;
   foreach my $input (sort keys %{$containers_data->{'input_container_info'}} ) {
     my $barcode = $containers_data->{'input_container_info'}->{$input}->{'barcode'};
-    push $content_output, qq{C; SRC$n = $barcode} ;
+    push @content_output, qq{C; SRC$n = $barcode} ;
     $n++;
   }
-  push $content_output, 'C;' ;
+  push @content_output, 'C;' ;
   $n = 1;
   foreach my $output (sort keys %{$containers_data->{'output_container_info'}} ) {
     my $barcode = $containers_data->{'output_container_info'}->{$output}->{'barcode'};
-    push $content_output, qq{C; DEST$n = $barcode} ;
+    push @content_output, qq{C; DEST$n = $barcode} ;
     $n++;
   }
-  push $content_output, 'C;' ;
-  return $content_output;
+  push @content_output, 'C;' ;
+  return \@content_output;
 }
 
 sub _get_TECAN_file_content_per_URI {
   my ($data, $uri) = @_;
-  my $sample_output = [];
-  my $buffer_output = [];
+  my @sample_output = ();
+  my @buffer_output = ();
   my $output_container = $data->{'output_container_info'}->{$uri};
   my $output_type   = $data->{'output_container_info'}->{$uri}->{'type'};
   my $output_barcode= $data->{'output_container_info'}->{$uri}->{'barcode'};
@@ -210,15 +210,15 @@ sub _get_TECAN_file_content_per_URI {
       my $input_buffer_string  = qq{A;BUFF;;96-TROUGH;$inp_loc_dec;;$buffer_volume};
       my $output_buffer_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$buffer_volume};
 
-      push $sample_output, $input_sample_string;
-      push $sample_output, $output_sample_string;
-      push $sample_output, $w_string;
-      push $buffer_output, $input_buffer_string;
-      push $buffer_output, $output_buffer_string;
-      push $buffer_output, $w_string;
+      push @sample_output, $input_sample_string;
+      push @sample_output, $output_sample_string;
+      push @sample_output, $w_string;
+      push @buffer_output, $input_buffer_string;
+      push @buffer_output, $output_buffer_string;
+      push @buffer_output, $w_string;
     }
   }
-  return ($sample_output, $buffer_output);
+  return (\@sample_output, \@buffer_output);
 }
 
 ################# worksheet #################
@@ -362,9 +362,9 @@ sub _get_source_plate_data {
       $input_plates->{$info->{'input_uri'}} = 1;
     }
   }
-  my $table_data = [];
+  my @table_data = ();
 
-  push $table_data , ['Plate name', 'Barcode', 'Freezer', 'Shelf', 'Rack', 'Tray'];
+  push @table_data , ['Plate name', 'Barcode', 'Freezer', 'Shelf', 'Rack', 'Tray'];
 
   foreach my $key (sort keys %{$input_plates} ) {
     my $plate_name = $data->{'input_container_info'}->{$key}->{'plate_name'};
@@ -373,46 +373,46 @@ sub _get_source_plate_data {
     my $shelf = $data->{'input_container_info'}->{$key}->{'shelf'};
     my $rack = $data->{'input_container_info'}->{$key}->{'rack'};
     my $tray = $data->{'input_container_info'}->{$key}->{'tray'};
-    push $table_data, [$plate_name, $barcode, $freezer, $shelf, $rack, $tray];
+    push @table_data, [$plate_name, $barcode, $freezer, $shelf, $rack, $tray];
   }
-  return $table_data;
+  return \@table_data;
 }
 
 sub _get_destination_plate_data {
   my ($data, $uri) = @_;
 
-  my $table_data = [];
-  push $table_data , ['Plate name', 'Barcode', 'Wells'];
+  my @table_data = ();
+  push @table_data , ['Plate name', 'Barcode', 'Wells'];
 
   my $plate_name = $data->{'output_container_info'}->{$uri}->{'plate_name'};
   my $barcode = $data->{'output_container_info'}->{$uri}->{'barcode'};
   my $wells = $data->{'output_container_info'}->{$uri}->{'wells'};
-  push $table_data, [$plate_name, $barcode, $wells];
-  return $table_data;
+  push @table_data, [$plate_name, $barcode, $wells];
+  return \@table_data;
 }
 
 sub _get_table_data {
   my ($data, $nb_col, $nb_row) = @_;
 
-  my $table_data = [];
-  my $table_properties = [];
+  my @table_data = ();
+  my @table_properties = ();
   my @list_of_colours = ('#F5BA7F', '#F5E77D', '#7DD3F5', '#DB7DF5');
 
   my $colours = _get_colour_data($data, @list_of_colours);
 
   foreach my $j (0..$nb_row+1) {
-    my $row = [];
-    my $row_properties = [];
+    my @row = ();
+    my @row_properties = ();
     foreach my $i (0..$nb_col+1) {
       my ($content, $properties) = _get_cell($data, $colours, $i, $j, $nb_col, $nb_row);
-      push $row, $content;
-      push $row_properties, $properties;
+      push @row, $content;
+      push @row_properties, $properties;
     }
-    push $table_data, $row;
-    push $table_properties, $row_properties;
+    push @table_data, \@row;
+    push @table_properties, \@row_properties;
   }
 
-  return ($table_data, $table_properties);
+  return (\@table_data, \@table_properties);
 }
 
 ## no critic(Subroutines::ProhibitManyArgs)
@@ -640,7 +640,7 @@ has '_oi_map' => (
 sub _get_oi_map {
   my ($self, $previous_processes) = @_;
 
-  if (keys $self->_oi_map) {
+  if (keys %{$self->_oi_map}) {
     return $self->_oi_map;
   }
   my $oi_map = {};
