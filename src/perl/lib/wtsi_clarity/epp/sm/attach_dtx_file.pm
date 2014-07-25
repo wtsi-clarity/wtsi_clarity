@@ -18,6 +18,18 @@ with 'wtsi_clarity::util::clarity_elements_fetcher_role_util';
 
 our $VERSION = '0.0';
 
+has 'new_pico_assay_file_name' => (
+  isa => 'Str',
+  is  => 'ro',
+  required => 1,
+);
+
+has 'new_standard_file_name' => (
+  isa => 'Str',
+  is  => 'ro',
+  required => 1,
+);
+
 has '_standard_barcode' => (
   isa => 'Str',
   is  => 'ro',
@@ -85,30 +97,55 @@ sub _build__dtx_file_path {
   return qq{"$dir/$file_name"};
 }
 
-sub _get_dtx_file {
-  my $self = shift;
+has '_standard_file_path' => (
+  isa => 'Str',
+  is => 'ro',
+  required => 0,
+  lazy_build => 1,
+);
 
-  my @file_list = glob $self->_dtx_file_path;
+sub _build__standard_file_path {
+  my $self = shift;
+  my $dir = $self->config->robot_file_dir->{'sm_pico_green'};
+
+  my $file_name =  $self->_standard_barcode . $RAW_DATA_NAME;
+
+  return qq{"$dir/$file_name"};
+};
+
+sub _get_file_path {
+  my $self = shift;
+  my $file_path_pattern = shift;
+
+  my @file_list = glob $file_path_pattern;
 
   if (scalar @file_list > 1) {
-    croak 'Multiple files are available for ' . $self->_file_prefix;
+    croak 'Multiple files are available for ' . $file_path_pattern;
   }
 
   if (scalar @file_list == 0) {
-    croak 'Could not find file ' . $self->_dtx_file_path;
+    croak 'Could not find file ' . $file_path_pattern;
   }
 
-  my $dtx_file = shift @file_list;
+  my $file = shift @file_list;
 
-  return $dtx_file;
+  return $file;
 }
 
-sub attach_dtx_file_to_process {
+sub _get_files {
   my $self = shift;
-  my $dtx_file = $self->_get_dtx_file();
+  return ($self->_get_file_path($self->_dtx_file_path), $self->_get_file_path($self->_standard_file_path));
+}
 
-  copy ($dtx_file, q{.})
+sub attach_files_to_process {
+  my $self = shift;
+  my ($dtx_file, $standard_file) = $self->_get_files();
+
+  copy ($dtx_file, q{./} . $self->new_pico_assay_file_name)
     or croak sprintf 'Failed to copy %s', $dtx_file;
+
+  copy ($standard_file, q{./} . $self->new_standard_file_name)
+    or croak sprintf 'Failed to copy %s', $standard_file;
 
   return;
 }
@@ -117,7 +154,7 @@ override 'run' => sub {
   my $self = shift;
   super();
 
-  $self->attach_dtx_file_to_process();
+  $self->attach_files_to_process();
 
   return;
 };
@@ -145,8 +182,8 @@ wtsi_clarity::epp::sm::attach_dtx_file
 
 =head2 run - executes the callback
 
-=head2 attach_dtx_file_to_process
-  Copies the dtx file to the current directory
+=head2 attach_files_to_process
+  Copies the dtx file and the standard plate file to the current directory
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
