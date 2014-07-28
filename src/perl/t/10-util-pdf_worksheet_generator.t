@@ -6,7 +6,6 @@ use Test::Simple;
 use DateTime;
 use XML::LibXML;
 use Carp;
-use Data::Dumper;
 use File::Temp;
 
 use_ok('wtsi_clarity::util::pdf_worksheet_generator', 'can use wtsi_clarity::util::pdf_worksheet_generator' );

@@ -5,7 +5,6 @@ use Carp;
 use Readonly;
 use PDF::API2;
 use PDF::Table;
-use Data::Dumper;
 
 our $VERSION = '0.0';
 
