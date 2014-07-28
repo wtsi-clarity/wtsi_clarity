@@ -17,7 +17,7 @@ use_ok('wtsi_clarity::epp::sm::create_label');
 
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/create_label';
-  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
+  #local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
   my $l = wtsi_clarity::epp::sm::create_label->new(
     process_url => 'http://clarity-ap:8080/api/v2/processes/24-67069');
 
