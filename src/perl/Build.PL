@@ -79,7 +79,6 @@ my $builder = $class->new(
                 'File::Copy'                      => 0,
                 'File::Copy::Recursive'           => 0,
                 'File::Path'                      => 0,
-                'File::Spec::Functions'           => 0,
                 'File::Temp'                      => 0,
                 'FindBin'                         => 0,
                 'JSON'                            => 0,
