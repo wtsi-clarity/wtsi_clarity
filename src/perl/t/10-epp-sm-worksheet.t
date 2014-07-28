@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 199;
+use Test::More tests => 200;
 use Test::Exception;
 use DateTime;
 use XML::LibXML;
@@ -607,47 +607,43 @@ my $TEST_DATA4 = {
 
 { # _get_cell_properties
   my @expected_data = (
-    { 'pos' => "A:1",  'background_color' => "red", 'font_size' => '7' },
-    { 'pos' => "A:2",  'background_color' => "green", 'font_size' => '7' },
-    { 'pos' => "A:3",  'background_color' => "red", 'font_size' => '7' },
-    { 'pos' => "A:4",  'background_color' => "blue", 'font_size' => '7' },
-    { 'pos' => "A:5",  'background_color' => "white", 'font_size' => '7' },
-    { 'pos' => "B:1",  'background_color' => "red", 'font_size' => '7' },
-    { 'pos' => "B:2",  'background_color' => "green", 'font_size' => '7' },
-    { 'pos' => "B:3",  'background_color' => "green", 'font_size' => '7' },
-    { 'pos' => "B:4",  'background_color' => "green", 'font_size' => '7' },
-    { 'pos' => "B:5",  'background_color' => "green", 'font_size' => '7' },
+    { 'pos' => "A:1",  'style' => "COLOUR_0", },
+    { 'pos' => "A:2",  'style' => "COLOUR_1", },
+    { 'pos' => "A:3",  'style' => "COLOUR_0", },
+    { 'pos' => "A:4",  'style' => "COLOUR_2", },
+    { 'pos' => "A:5",  'style' => "EMPTY_STYLE", },
+    { 'pos' => "B:1",  'style' => "COLOUR_0",  },
+    { 'pos' => "B:2",  'style' => "COLOUR_1",  },
+    { 'pos' => "B:3",  'style' => "COLOUR_1",  },
+    { 'pos' => "B:4",  'style' => "COLOUR_1",  },
+    { 'pos' => "B:5",  'style' => "COLOUR_1",  },
   );
 
-  my $colour_data = {'27' => 'red', '23' => 'green', '25' => 'blue'} ;
+  my $colour_data = {'27' => 0, '23' => 1, '25' => 2} ;
 
   foreach my $datum (@expected_data) {
     my $pos = $datum->{'pos'};
+    my $container_details = $TEST_DATA3->{'output_container_info'}->{'container_uri'}->{'container_details'};
+    my $prop = wtsi_clarity::epp::sm::worksheet::_get_cell_properties($container_details, $colour_data, $pos);
 
-    my $prop = wtsi_clarity::epp::sm::worksheet::_get_cell_properties($TEST_DATA3->{'output_container_info'}->{'container_uri'}->{'container_details'}, $colour_data, $pos);
+    my $exp_style = $datum->{'style'};
 
-    my $exp_bg = $datum->{'background_color'};
-    my $exp_fs = $datum->{'font_size'};
-    my $bg = $prop->{'background_color'};
-    my $fs = $prop->{'font_size'};
-    cmp_ok($bg, 'eq', $exp_bg, "_get_cell_properties(...,$pos) {background_color} should give $exp_bg.");
-    cmp_ok($fs, 'eq', $exp_fs, "_get_cell_properties(...,$pos) {font_size} should give $exp_fs.");
+    cmp_ok($prop, 'eq', $exp_style, "_get_cell_properties(...,$pos) {style} should give $exp_style.");
   }
 }
 
-{ # _get_colour_data
+{ # _get_colour_indexes
   my %expected_data = (
-     '27' => "red" ,
-     '23' => "green" ,
-     '25' => "blue" ,
+     '27' => 0 ,
+     '23' => 1 ,
+     '25' => 2 ,
   );
-  my @list_of_colours = ('red', 'green', 'blue', 'yellow', 'orange');
 
-  my $cols = wtsi_clarity::epp::sm::worksheet::_get_colour_data($TEST_DATA3->{'output_container_info'}->{'container_uri'}->{'container_details'}, @list_of_colours);
+  my $cols = wtsi_clarity::epp::sm::worksheet::_get_colour_indexes($TEST_DATA3->{'output_container_info'}->{'container_uri'}->{'container_details'});
 
   while (my ($id, $exp_col) = each %expected_data ) {
     my $found = $cols->{$id};
-    cmp_ok($found, 'eq', $exp_col, "_get_colour_data(...) {$id} should give $exp_col.");
+    cmp_ok($found, 'eq', $exp_col, "_get_colour_indexes(...) {$id} should give $exp_col.");
   }
 }
 
@@ -666,13 +662,13 @@ my $TEST_DATA4 = {
     process_url => 'http://clarity-ap:8080/api/v2/processes/24-102407');
 
   my @expected_data = (
-    { 'pos' => [0,0],  'background_color' => "white", 'font_size' => '7' },
-    { 'pos' => [2,2],  'background_color' => "white", 'font_size' => '7' },
-    { 'pos' => [0,2],  'background_color' => "white", 'font_size' => '7' },
-    { 'pos' => [2,0],  'background_color' => "white", 'font_size' => '7' },
-    { 'pos' => [1,1],  'background_color' => "white", 'font_size' => '7' },
-    { 'pos' => [1,0],  'background_color' => "white", 'font_size' => '7' },
-    { 'pos' => [0 ,1],  'background_color' => "white", 'font_size' => '7' },
+    { 'pos' => [0,0],  'style' => 'HEADER_STYLE'},
+    { 'pos' => [2,2],  'style' => 'HEADER_STYLE'},
+    { 'pos' => [0,2],  'style' => 'HEADER_STYLE'},
+    { 'pos' => [2,0],  'style' => 'HEADER_STYLE'},
+    { 'pos' => [1,1],  'style' => 'HEADER_STYLE'},
+    { 'pos' => [1,0],  'style' => 'HEADER_STYLE'},
+    { 'pos' => [0 ,1], 'style' => 'HEADER_STYLE' },
   );
 
   foreach my $datum (@expected_data) {
@@ -680,12 +676,8 @@ my $TEST_DATA4 = {
 
     my $prop = wtsi_clarity::epp::sm::worksheet::_get_legend_properties($TEST_DATA, $i, $j, 1, 1);
 
-    my $exp_bg = $datum->{'background_color'};
-    my $exp_fs = $datum->{'font_size'};
-    my $bg = $prop->{'background_color'};
-    my $fs = $prop->{'font_size'};
-    cmp_ok($bg, 'eq', $exp_bg, "_get_legend_properties(..., $i, $j) {background_color} should give $exp_bg.");
-    cmp_ok($fs, 'eq', $exp_fs, "_get_legend_properties(..., $i, $j) {font_size} should give $exp_fs.");
+    my $expected = $datum->{'style'};
+    cmp_ok($prop, 'eq', $expected, "_get_legend_properties(..., $i, $j) {style} should give $expected.");
   }
 }
 
@@ -759,6 +751,110 @@ my $TEST_DATA4 = {
 { # _get_username
   my $string = wtsi_clarity::epp::sm::worksheet::_get_username($TEST_DATA4, 'api' );
   cmp_ok($string, 'eq', 'Le General de Castelnau (via api)' , "_get_username should return the correct value.");
+}
+
+{ # _get_pdf_data
+  my $expected = {
+    'stamp' => 'my stamp',
+    'pages' => [
+      {
+        'title' => 'Process PROCESS_ID - PLATE_PURPOSE_out - Cherrypicking',
+        'input_table' => [['Plate name', 'Barcode', 'Freezer', 'Shelf', 'Rack', 'Tray'],
+                          ['PLATE_NAME29', '00000029', '000029', '000029', '000029', '000029' ]],
+        'input_table_title' => 'Source plates',
+        'output_table' => [['Plate name', 'Barcode', 'Wells'],
+                           ['PLATE_NAME2','12345678900002','96']],
+        'output_table_title' => 'Destination plates',
+        'plate_table' => [['',1,2,3,4,5,6,7,8,9,10,11,12,''],
+                          [".\nA\n.","B:2\n29\nv1 b8",'','','','','','','','','','','',".\nA\n."],
+                          [".\nB\n.",'','','','','','','','','','','','',".\nB\n."],
+                          [".\nC\n.",'','','','','','','','','','','','',".\nC\n."],
+                          [".\nD\n.",'','','','','','','','','','','','',".\nD\n."],
+                          [".\nE\n.",'','','','','','','','','','','','',".\nE\n."],
+                          [".\nF\n.",'','','','','','','','','','','','',".\nF\n."],
+                          [".\nG\n.",'','','','','','','','','','','','',".\nG\n."],
+                          [".\nH\n.",'','','','','','','','','','','','',".\nH\n."],
+                          ['',1,2,3,4,5,6,7,8,9,10,11,12,''],
+                          ],
+        'plate_table_title' => 'Required buffer',
+        'plate_table_cell_styles' => [
+            ['HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE',],
+            ['HEADER_STYLE','COLOUR_0',   'EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','HEADER_STYLE',],
+            ['HEADER_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','HEADER_STYLE',],
+            ['HEADER_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','HEADER_STYLE',],
+            ['HEADER_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','HEADER_STYLE',],
+            ['HEADER_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','HEADER_STYLE',],
+            ['HEADER_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','HEADER_STYLE',],
+            ['HEADER_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','HEADER_STYLE',],
+            ['HEADER_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','HEADER_STYLE',],
+            ['HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE',],
+          ],
+      },
+      {
+        'title' => 'Process PROCESS_ID - PLATE_PURPOSE_out - Cherrypicking',
+        'input_table' => [['Plate name', 'Barcode', 'Freezer', 'Shelf', 'Rack', 'Tray'],
+                          ['PLATE_NAME27', '00000027', '000021', '000022', '000023', '000024' ]],
+        'input_table_title' => 'Source plates',
+        'output_table' => [['Plate name', 'Barcode', 'Wells'],
+                           ['PLATE_NAME1','12345678900001','96']],
+        'output_table_title' => 'Destination plates',
+        'plate_table' => [['',1,2,3,4,5,6,7,8,9,10,11,12,''],
+                          [".\nA\n.","C:4\n27\nv1 b8",'','','','','','','','','','','',".\nA\n."],
+                          [".\nB\n.",'','','','','','','','','','','','',".\nB\n."],
+                          [".\nC\n.",'','','','','','','','','','','','',".\nC\n."],
+                          [".\nD\n.",'','','','','','','','','','','','',".\nD\n."],
+                          [".\nE\n.",'','','','','','','','','','','','',".\nE\n."],
+                          [".\nF\n.",'','','','','','','','','','','','',".\nF\n."],
+                          [".\nG\n.",'','','','','','','','','','','','',".\nG\n."],
+                          [".\nH\n.",'','','','','','','','','','','','',".\nH\n."],
+                          ['',1,2,3,4,5,6,7,8,9,10,11,12,''],
+                          ],
+        'plate_table_title' => 'Required buffer',
+        'plate_table_cell_styles' => [
+            ['HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE',],
+            ['HEADER_STYLE','COLOUR_0',   'EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','HEADER_STYLE',],
+            ['HEADER_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','HEADER_STYLE',],
+            ['HEADER_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','HEADER_STYLE',],
+            ['HEADER_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','HEADER_STYLE',],
+            ['HEADER_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','HEADER_STYLE',],
+            ['HEADER_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','HEADER_STYLE',],
+            ['HEADER_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','HEADER_STYLE',],
+            ['HEADER_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','EMPTY_STYLE','HEADER_STYLE',],
+            ['HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE',],
+          ],
+      },
+    ]
+  };
+
+  my $pdf_data = wtsi_clarity::epp::sm::worksheet::_get_pdf_data($TEST_DATA4, 'my stamp' );
+
+  cmp_ok( $pdf_data->{'stamp'}, 'eq', $expected->{'stamp'}, "_get_pdf_data() should give the correct stamp.");
+  cmp_ok( scalar @{$pdf_data->{'pages'}}, '==', 2, "_get_pdf_data() should give the correct number of pages.");
+  my $page0 = @{$pdf_data->{'pages'}}[0];
+  my $exp_page0 = @{$expected->{'pages'}}[0];
+
+  foreach my $key (qw{title input_table_title output_table_title plate_table_title}) {
+    cmp_ok( $page0->{$key}, 'eq', $exp_page0->{$key}, "_get_pdf_data() should give the correct $key.");
+  }
+
+  is_deeply( $page0->{'input_table'},  $exp_page0->{'input_table'},  "input_table from _get_pdf_data() should be correct.");
+  is_deeply( $page0->{'output_table'}, $exp_page0->{'output_table'}, "output_table from _get_pdf_data() should be correct.");
+
+  is_deeply( $page0->{'plate_table'}, $exp_page0->{'plate_table'}, "plate_table from _get_pdf_data() should be correct.");
+  is_deeply( $page0->{'plate_table_cell_styles'}, $exp_page0->{'plate_table_cell_styles'}, "plate_table_cell_styles from _get_pdf_data() should be correct.");
+
+  my $page1 = @{$pdf_data->{'pages'}}[1];
+  my $exp_page1 = @{$expected->{'pages'}}[1];
+
+  foreach my $key (qw{title input_table_title output_table_title plate_table_title}) {
+    cmp_ok( $page1->{$key}, 'eq', $exp_page1->{$key}, "_get_pdf_data() should give the correct $key.");
+  }
+
+  is_deeply( $page1->{'input_table'},  $exp_page1->{'input_table'},  "input_table from _get_pdf_data() should be correct.");
+  is_deeply( $page1->{'output_table'}, $exp_page1->{'output_table'}, "output_table from _get_pdf_data() should be correct.");
+
+  is_deeply( $page1->{'plate_table'}, $exp_page1->{'plate_table'}, "plate_table from _get_pdf_data() should be correct.");
+  is_deeply( $page1->{'plate_table_cell_styles'}, $exp_page1->{'plate_table_cell_styles'}, "plate_table_cell_styles from _get_pdf_data() should be correct.");
 }
 
 1;
