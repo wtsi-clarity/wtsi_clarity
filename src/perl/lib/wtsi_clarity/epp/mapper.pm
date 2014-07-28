@@ -10,20 +10,21 @@ with 'MooseX::Getopt';
 our $VERSION = '0.0';
 
 Readonly::Hash my %ACTION2MODULE => (
-    'volume_check' => 'sm::volume_check',
-    'create_label' => 'sm::create_label',
-    'stamp'        => 'stamp',
-    'sample_received' => 'sm::sample_received',
-    'qc_complete' => 'sm::qc_complete',
+    'volume_check'            => 'sm::volume_check',
+    'create_label'            => 'sm::create_label',
+    'stamp'                   => 'stamp',
+    'sample_received'         => 'sm::sample_received',
+    'qc_complete'             => 'sm::qc_complete',
     'fluidigm_request_volume' => 'sm::fluidigm_request_volume',
-    'cherrypick_volume' => 'sm::cherrypick_volume',
-    'plate_purpose' => 'sm::plate_purpose',
-    'bed_verification' => 'sm::bed_verification',
-    'make_worksheet' => 'sm::worksheet',
-    'assign_to_workflow' => 'sm::assign_to_workflow',
-    'cp_bed_verification' => 'sm::cp_bed_verification',
-    'reactivate_stock_plate' => 'sm::reactivate_stock_plate',
-    'attach_dtx_file' => 'sm::attach_dtx_file',
+    'cherrypick_volume'       => 'sm::cherrypick_volume',
+    'plate_purpose'           => 'sm::plate_purpose',
+    'bed_verification'        => 'sm::bed_verification',
+    'make_worksheet'          => 'sm::worksheet',
+    'assign_to_workflow'      => 'sm::assign_to_workflow',
+    'cp_bed_verification'     => 'sm::cp_bed_verification',
+    'reactivate_stock_plate'  => 'sm::reactivate_stock_plate',
+    'attach_dtx_file'         => 'sm::attach_dtx_file',
+    'mq'                      => 'mq',
 );
 
 has 'action'  => (

@@ -14,7 +14,7 @@ use Readonly;
 
 use Net::SFTP::Foreign;
 
-use wtsi_clarity::util::config;
+with 'wtsi_clarity::util::configurable';
 
 our $VERSION = '0.0';
 
@@ -80,16 +80,6 @@ has 'content_type'=> (isa      => 'Str',
                       required => 0,
                       default  => $DEFAULT_CONTENT_TYPE,
                      );
-
-has 'config'      => (
-    isa             => 'wtsi_clarity::util::config',
-    is              => 'ro',
-    required        => 0,
-    lazy_build      => 1,
-);
-sub _build_config {
-  return wtsi_clarity::util::config->new();
-}
 
 =head2 user
 
