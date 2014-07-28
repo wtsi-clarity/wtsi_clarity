@@ -13,3 +13,6 @@ host = host1
 username = user3
 password = pword3
 
+[robot_file_dir]
+sm_volume_check=/Users/cs24/projects/clarity/wtsi_clarity/src/perl/t/data/volume_check
+sm_pico_green=/Users/cs24/projects/clarity/wtsi_clarity/src/perl/t/data/sm/attach_dtx_file

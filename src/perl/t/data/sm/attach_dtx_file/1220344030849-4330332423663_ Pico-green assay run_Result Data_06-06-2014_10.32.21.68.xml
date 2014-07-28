@@ -1,0 +1,1588 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:html="http://www.w3.org/TR/REC-html40">
+  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+    <LastAuthor>DTX-Software</LastAuthor>
+    <Created>06/06/2014</Created>
+    <Version>1.0</Version>
+  </DocumentProperties>
+  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+    <ProtectedStructure>False</ProtectedStructure>
+    <ProtectedWindows>False</ProtectedWindows>
+  </ExcelWorkbook>
+  <Styles>
+    <Style ss:ID="Default" ss:Name="Normal">
+      <Alignment ss:Vertical="Bottom" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" />
+    </Style>
+    <Style ss:ID="BCC">
+      <Alignment ss:Vertical="Center" ss:Horizontal="Center" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Bold="1" />
+    </Style>
+    <Style ss:ID="BLB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Left" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Bold="1" />
+    </Style>
+    <Style ss:ID="NRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" />
+    </Style>
+    <Style ss:ID="NLB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Left" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" />
+    </Style>
+    <Style ss:ID="DTRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" />
+      <NumberFormat ss:Format="General Date" />
+    </Style>
+    <Style ss:ID="ErrorNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#FF9900" />
+    </Style>
+    <Style ss:ID="UnusedNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#C0C0C0" />
+    </Style>
+    <Style ss:ID="IncorrectNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#33CCCC" />
+    </Style>
+    <Style ss:ID="OverflowNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#FF0000" />
+    </Style>
+    <Style ss:ID="OKNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" />
+    </Style>
+    <Style ss:ID="RejectedNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#33CC33" />
+    </Style>
+    <Style ss:ID="ASErrorNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#FF9900" />
+    </Style>
+    <Style ss:ID="ASUnusedNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#C0C0C0" />
+    </Style>
+    <Style ss:ID="ASUnderflowNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#33CCCC" />
+    </Style>
+    <Style ss:ID="ASOverflowNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#FF0000" />
+    </Style>
+    <Style ss:ID="ASExtrapolatedNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#FF00FF" />
+    </Style>
+    <Style ss:ID="ASNotEvaluatedNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#11FF00" />
+    </Style>
+    <Style ss:ID="ASOKNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" />
+    </Style>
+    <Style ss:ID="ASRejectedNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#33CC33" />
+    </Style>
+  </Styles>
+  <Worksheet ss:Name="General">
+    <Table x:FullColumns="1" x:FullRows="1">
+      <Column ss:AutoFitWidth="0" ss:Width="150" ss:Index="1" />
+      <Column ss:AutoFitWidth="0" ss:Width="150" ss:Index="2" />
+      <Row ss:Height="15" ss:Index="1">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Operator</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String" />
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="2">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Header</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String"> Pico-green assay run</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="3">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Identification</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String"> Pico-green assay run</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="4">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Date</Data>
+        </Cell>
+        <Cell ss:StyleID="DTRB" ss:Index="2">
+          <Data ss:Type="DateTime">2014-06-06T10:32:21</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="5">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Description</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String" />
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="6">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">PlateName</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">1220344030849-4330332423663</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="7">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">DateMeasured</Data>
+        </Cell>
+        <Cell ss:StyleID="DTRB" ss:Index="2">
+          <Data ss:Type="DateTime">2014-06-06T10:29:45</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="8">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">DateEvaluated</Data>
+        </Cell>
+        <Cell ss:StyleID="DTRB" ss:Index="2">
+          <Data ss:Type="DateTime">2014-06-06T10:32:19</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="9">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">ValidState</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">Measured</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="11">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Software</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">Multimode Analysis Software</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="12">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Version</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">3.1.0.1</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="14">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Instrument Name</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">DTX 880 (2)</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="15">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Serial Number</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">1197</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="17">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Labware</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String" />
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="18">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Name</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">x_DTX_Fluor_Greiner 96 black clear bottom</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="19">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Rows</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="Number">8</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="20">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Columns</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="Number">12</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="21">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">ProtectionState</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">Normal</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="22">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">WellShape</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">Round</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="23">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">BottomShape</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">Flat</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="24">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Created</Data>
+        </Cell>
+        <Cell ss:StyleID="DTRB" ss:Index="2">
+          <Data ss:Type="DateTime">2007-02-21T11:50:50</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="25">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">DateEdited</Data>
+        </Cell>
+        <Cell ss:StyleID="DTRB" ss:Index="2">
+          <Data ss:Type="DateTime">2007-05-13T19:42:46</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="26">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">LotNr</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">Lot 2013-03-11T12:19:19</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="27">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Optimized</Data>
+        </Cell>
+        <Cell ss:StyleID="DTRB" ss:Index="2">
+          <Data ss:Type="DateTime">2013-03-11T12:12:42</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="28">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Orientation</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">Landscape</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="29">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">ReadMode</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">Row</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="30">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Notes</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">µ-Clear, #655 096</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="32">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Protocol</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String" />
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="33">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">ProtocolName</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String"> Pico-green assay run</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="34">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">ApplicationType</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">Analysis</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="35">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">DateCreated</Data>
+        </Cell>
+        <Cell ss:StyleID="DTRB" ss:Index="2">
+          <Data ss:Type="DateTime">2007-05-13T20:46:13</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="36">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">DateEdited</Data>
+        </Cell>
+        <Cell ss:StyleID="DTRB" ss:Index="2">
+          <Data ss:Type="DateTime">2013-12-12T07:49:34</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="37">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">DateMeasured</Data>
+        </Cell>
+        <Cell ss:StyleID="DTRB" ss:Index="2">
+          <Data ss:Type="DateTime">2014-06-06T10:29:45</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="38">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">DateEvaluated</Data>
+        </Cell>
+        <Cell ss:StyleID="DTRB" ss:Index="2">
+          <Data ss:Type="DateTime">2014-06-06T10:32:19</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="39">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Notes</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String" />
+        </Cell>
+      </Row>
+    </Table>
+  </Worksheet>
+  <Worksheet ss:Name="Results_Plate_1">
+    <Table x:FullColumns="1" x:FullRows="1">
+      <Column ss:AutoFitWidth="0" ss:Width="100" ss:Index="1" />
+      <Column ss:AutoFitWidth="0" ss:Width="100" ss:Index="2" />
+      <Column ss:AutoFitWidth="0" ss:Width="100" ss:Index="3" />
+      <Row ss:Height="30" ss:Index="6">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">Layout</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">REDUCTION_A1 -  Mean(RFU)</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="7">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">A1</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S1</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1499520.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="8">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">A2</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S9</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1053724.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="9">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">A3</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S17</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">507112.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="10">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">A4</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S25</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">775045.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="11">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">A5</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S33</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">615407</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="12">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">A6</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S41</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">360449.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="13">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">A7</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S49</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">134634.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="14">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">A8</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S57</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">380846.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="15">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">A9</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S65</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">524689.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="16">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">A10</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S73</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">906611</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="17">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">A11</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S81</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">118578.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="18">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">A12</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S89</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">6646.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="19">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">B1</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S2</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">850484.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="20">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">B2</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S10</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1226834.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="21">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">B3</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S18</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">555555.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="22">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">B4</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S26</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">751063.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="23">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">B5</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S34</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">299512.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="24">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">B6</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S42</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">377708</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="25">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">B7</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S50</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">759975.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="26">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">B8</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S58</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">726412.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="27">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">B9</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S66</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">868303.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="28">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">B10</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S74</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">774974</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="29">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">B11</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S82</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">529920.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="30">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">B12</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S90</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">987292.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="31">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">C1</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S3</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">2356405.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="32">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">C2</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S11</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">827347</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="33">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">C3</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S19</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">625157.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="34">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">C4</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S27</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">5622</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="35">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">C5</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S35</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">5283.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="36">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">C6</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S43</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1643632.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="37">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">C7</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S51</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">553153</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="38">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">C8</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S59</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1391602.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="39">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">C9</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S67</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">958029.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="40">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">C10</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S75</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">753827</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="41">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">C11</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S83</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1011650.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="42">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">C12</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S91</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">898581</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="43">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">D1</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S4</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">735892.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="44">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">D2</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S12</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1182899</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="45">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">D3</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S20</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">848881.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="46">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">D4</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S28</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">5352.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="47">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">D5</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S36</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">591995.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="48">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">D6</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S44</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1001214.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="49">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">D7</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S52</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">866059.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="50">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">D8</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S60</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">953241.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="51">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">D9</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S68</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">693564.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="52">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">D10</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S76</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">921855</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="53">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">D11</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S84</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">755367.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="54">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">D12</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S92</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1156120.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="55">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">E1</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S5</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">754848.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="56">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">E2</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S13</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">835318.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="57">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">E3</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S21</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">951238.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="58">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">E4</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S29</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1191967</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="59">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">E5</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S37</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1281415.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="60">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">E6</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S45</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">794015.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="61">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">E7</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S53</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">594708.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="62">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">E8</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S61</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">627138.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="63">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">E9</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S69</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">4723.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="64">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">E10</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S77</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1110469.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="65">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">E11</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S85</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">859754</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="66">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">E12</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S93</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">883967</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="67">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">F1</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S6</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1973774.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="68">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">F2</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S14</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1562268.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="69">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">F3</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S22</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">2011137.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="70">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">F4</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S30</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">388620.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="71">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">F5</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S38</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">2316367</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="72">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">F6</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S46</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">84574.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="73">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">F7</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S54</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">700706</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="74">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">F8</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S62</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">511565.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="75">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">F9</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S70</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">446213</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="76">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">F10</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S78</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">706868.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="77">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">F11</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S86</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1527421.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="78">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">F12</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S94</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">860013.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="79">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">G1</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S7</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1094538.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="80">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">G2</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S15</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">284569.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="81">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">G3</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S23</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">437462.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="82">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">G4</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S31</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">3459829.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="83">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">G5</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S39</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">3021802.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="84">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">G6</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S47</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1019997</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="85">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">G7</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S55</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">739345.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="86">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">G8</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S63</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">703189.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="87">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">G9</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S71</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">990488.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="88">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">G10</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S79</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">930408.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="89">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">G11</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S87</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">413720.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="90">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">G12</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S95</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">246032.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="91">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">H1</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S8</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">685648</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="92">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">H2</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S16</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">3393276.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="93">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">H3</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S24</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">493810.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="94">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">H4</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S32</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">973984.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="95">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">H5</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S40</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">937039.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="96">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">H6</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S48</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">583519.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="97">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">H7</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S56</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">863982.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="98">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">H8</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S64</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1048976</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="99">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">H9</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S72</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1310471</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="100">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">H10</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S80</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1004900.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="101">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">H11</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S88</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1281784.75</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="102">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">H12</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">S96</Data>
+        </Cell>
+        <Cell ss:StyleID="ASOKNRB" ss:Index="3">
+          <Data ss:Type="Number">1030577.25</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="104">
+        <Cell ss:StyleID="NRB" ss:Index="1">
+          <Data ss:Type="String">ColorCode</Data>
+        </Cell>
+        <Cell ss:StyleID="NRB" ss:Index="2">
+          <Data ss:Type="String">AnaylsisStatus</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="105">
+        <Cell ss:StyleID="ASOKNRB" ss:Index="2">
+          <Data ss:Type="String">OK</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="106">
+        <Cell ss:StyleID="ASOverflowNRB" ss:Index="2">
+          <Data ss:Type="String">Overflow</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="107">
+        <Cell ss:StyleID="ASErrorNRB" ss:Index="2">
+          <Data ss:Type="String">Error</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="108">
+        <Cell ss:StyleID="ASUnderflowNRB" ss:Index="2">
+          <Data ss:Type="String">Underflow</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="109">
+        <Cell ss:StyleID="ASUnusedNRB" ss:Index="2">
+          <Data ss:Type="String">Unused</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="110">
+        <Cell ss:StyleID="ASExtrapolatedNRB" ss:Index="2">
+          <Data ss:Type="String">Extrapolated</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="111">
+        <Cell ss:StyleID="ASNotEvaluatedNRB" ss:Index="2">
+          <Data ss:Type="String">NotEvaluated</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="112">
+        <Cell ss:StyleID="ASRejectedNRB" ss:Index="2">
+          <Data ss:Type="String">Rejected</Data>
+        </Cell>
+      </Row>
+    </Table>
+  </Worksheet>
+  <Worksheet ss:Name="Parameters_Plate_1">
+    <Table x:FullColumns="1" x:FullRows="1">
+      <Row ss:Height="15" ss:Index="1">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">REDUCTION_A1</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="2">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Parameters</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="3">
+        <Cell ss:StyleID="NLB" ss:Index="1">
+          <Data ss:Type="String">Data Reduction Evaluation</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="4">
+        <Cell ss:StyleID="NLB" ss:Index="1">
+          <Data ss:Type="String">Type</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">:</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="3">
+          <Data ss:Type="String">Function</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="5">
+        <Cell ss:StyleID="NLB" ss:Index="1">
+          <Data ss:Type="String">Alias</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">:</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="3">
+          <Data ss:Type="String">REDUCTION_A1</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="6">
+        <Cell ss:StyleID="NLB" ss:Index="1">
+          <Data ss:Type="String">Units</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">:</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="3">
+          <Data ss:Type="String" />
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="7">
+        <Cell ss:StyleID="NLB" ss:Index="1">
+          <Data ss:Type="String">DataName</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">:</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="3">
+          <Data ss:Type="String" />
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="8">
+        <Cell ss:StyleID="NLB" ss:Index="1">
+          <Data ss:Type="String">Method</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">:</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="3">
+          <Data ss:Type="String">x_DTX880_Fluor_Int_Bottom fly mode</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="9">
+        <Cell ss:StyleID="NLB" ss:Index="1">
+          <Data ss:Type="String" />
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">:</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="3">
+          <Data ss:Type="String" />
+        </Cell>
+      </Row>
+    </Table>
+  </Worksheet>
+</Workbook>

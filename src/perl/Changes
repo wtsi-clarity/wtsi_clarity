@@ -1,5 +1,10 @@
 CHANGES for wtsi_clarity Perl project
 
+release 0.30
+  - allow calling epp with multiple actions
+  - reactivate stock plate action
+  - pico green - adds dtx and standard files
+
 release 0.29
   - bed verification tests use bed config with correct barcodes
   - volume check bug fixed: to get micro character,
