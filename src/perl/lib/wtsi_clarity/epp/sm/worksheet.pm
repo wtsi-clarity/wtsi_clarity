@@ -9,6 +9,7 @@ use File::Temp;
 use DateTime;
 use wtsi_clarity::util::request;
 use wtsi_clarity::util::well_mapper;
+use wtsi_clarity::util::pdf_worksheet_generator;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $ARTIFACT_PATH      => q(/prc:process/input-output-map/input/@post-process-uri);
@@ -35,21 +36,10 @@ Readonly::Scalar my $FREEZER_PATH       => q{WTSI Freezer};
 Readonly::Scalar my $SHELF_PATH         => q{WTSI Shelf};
 Readonly::Scalar my $TRAY_PATH          => q{WTSI Tray};
 Readonly::Scalar my $RACK_PATH          => q{WTSI Rack};
-
 ## use critic
-Readonly::Scalar my $col_width                => 40;
+
 Readonly::Scalar my $nb_col                   => 12;
 Readonly::Scalar my $nb_row                   => 8;
-Readonly::Scalar my $left_margin              => 20;
-Readonly::Scalar my $title_height             => 780;
-Readonly::Scalar my $title_size               => 20;
-Readonly::Scalar my $stamp_height             => 760;
-Readonly::Scalar my $stamp_size               => 8;
-Readonly::Scalar my $subtitle_shift           => 20;
-Readonly::Scalar my $subtitle_size            => 12;
-Readonly::Scalar my $source_table_height      => 700;
-Readonly::Scalar my $destination_table_height => 450;
-Readonly::Scalar my $buffer_table_height      => 350;
 Readonly::Scalar my $A_CHAR_CODE              => 64;
 
 extends 'wtsi_clarity::epp';
@@ -68,7 +58,15 @@ override 'run' => sub {
   my $stamp = _get_stamp($containers_data, $self->request->user);
 
   # pdf generation
-  my $worksheet_filename = _create_worksheet_file($containers_data, $stamp);
+  my $pdf_data = _get_pdf_data();
+
+  my $pdf_generator = wtsi_clarity::epp::util::pdf_worksheet_generator->new( 'pdf_data' => $pdf_data );
+  my $worksheet_file = $pdf_generator->create_worksheet_file()  or croak q{Impossible to create the pdf version of the worksheet!};
+
+  my $tmpdir = File::Temp->newdir( CLEANUP => 1 )               or croak q{Impossible to create the temporary folder for the pdf!};
+  my $filename = $tmpdir->dirname().'/worksheet.pdf';
+  $worksheet_file->saveas($filename)                            or croak q{Impossible to save the pdf version of the worksheet!};
+
 
   my $tecan_filename;
   # tecan file generation
@@ -82,8 +80,8 @@ override 'run' => sub {
   while (my ($uri, $output) = each %{$outputs} ) {
     my $name = ($self->find_elements($output,    q{/art:artifact/name}      ) )[0] ->textContent;
     if ($name eq 'Worksheet') {
-      $self->addfile_to_resource($uri, $worksheet_filename)
-        or croak qq[Could not add file $worksheet_filename to the resource $uri.];
+      $self->addfile_to_resource($uri, $filename)
+        or croak qq[Could not add file $filename to the resource $uri.];
     }
     if ($self->create_tecan && $name eq 'Tecan File') {
       $self->addfile_to_resource($uri, $tecan_filename)
@@ -223,125 +221,32 @@ sub _get_TECAN_file_content_per_URI {
 
 ################# worksheet #################
 
-sub _create_worksheet_file {
-  my ($containers_data, $stamp) = @_;
-  my $pdf = PDF::API2->new();
 
-  # for each output container, we produce a new page...
+sub _get_pdf_data {
+  my ($containers_data, $stamp) = @_;
+  my $pdf_data = {};
+  $pdf_data->{'stamp'} = $stamp;
+  $pdf_data->{'pages'} = [];
+
   while (my ($uri, $data) = each %{$containers_data->{'output_container_info'}} ) {
-    my $page = $pdf->page();
-    $page->mediabox('A4');
-    my $font_bold = $pdf->corefont('Helvetica-Bold');
-    my $font = $pdf->corefont('Helvetica');
+    my $page = {};
+    $page->{'title'} = _get_title($containers_data, $uri, q{Cherrypicking});
+    $page->{'input_table_title'} = q{Source plates};
+    $page->{'input_table'} = _get_source_plate_data($containers_data, $uri);
+
+    $page->{'output_table_title'} = q{Destination plates};
+    $page->{'output_table'} = _get_destination_plate_data($containers_data, $uri);
+
     my ($table_data, $table_properties) = _get_table_data($data->{'container_details'}, $nb_col, $nb_row);
 
-    _add_title_to_page($page, $font_bold, $containers_data, $uri);
-    _add_timestamp($page, $font, $stamp, $uri);
-    _add_sources_to_page($pdf, $page, $font_bold, $containers_data, $uri);
-    _add_destinations_to_page($pdf, $page, $font_bold, $containers_data, $uri);
-    _add_buffer_to_page($pdf, $page, $font_bold, $table_data, $table_properties);
+    $page->{'plate_table_title'} = q{Required buffer};
+    $page->{'plate_table'} = $table_data;
+    $page->{'plate_table_cell_styles'} = $table_properties;
+
+    push $pdf_data->{'pages'}, $page;
   }
 
-  my $tmpdir = File::Temp->newdir(CLEANUP => 1);
-  my $filename = $tmpdir->dirname().'/worksheet.pdf';
-  $pdf->saveas($filename);
-  return $filename;
-}
-
-sub _add_title_to_page {
-  my ($page, $font, $containers_data, $uri) = @_;
-  _add_text_to_page($page, $font, _get_title($containers_data, $uri, 'Cherrypicking'), $left_margin, $title_height, $title_size);
-  return;
-}
-
-sub _add_sources_to_page {
-  my ($pdf, $page, $font, $containers_data, $uri) = @_;
-  my $data = _get_source_plate_data($containers_data, $uri);
-  _add_text_to_page($page, $font, 'Source plates', $left_margin, $source_table_height+$subtitle_shift, $subtitle_size);
-  _add_table_to_page($pdf, $page, $data,           $left_margin, $source_table_height);
-  return;
-}
-
-sub _add_destinations_to_page {
-  my ($pdf, $page, $font, $containers_data, $uri) = @_;
-  my $data = _get_destination_plate_data($containers_data, $uri);
-  _add_text_to_page($page, $font, 'Destination plates', $left_margin, $destination_table_height+$subtitle_shift, $subtitle_size);
-  _add_table_to_page($pdf, $page, $data,                $left_margin, $destination_table_height);
-  return;
-}
-
-sub _add_buffer_to_page {
-  my ($pdf, $page, $font, $table_data, $table_properties) = @_;
-  _add_text_to_page($page, $font, 'Buffer required', $left_margin, $buffer_table_height+$subtitle_shift, $subtitle_size);
-  _add_buffer_table_to_page($pdf, $page, $table_data, $table_properties, $buffer_table_height);
-  return;
-}
-
-sub _add_buffer_table_to_page {
-  my ($pdf, $page, $table_data, $table_properties, $y) = @_;
-  my $pdftable = PDF::Table->new();
-
-  $pdftable->table(
-    # required params
-    $pdf, $page, $table_data,
-
-    x => $left_margin,
-    w => ($nb_col + 1)*$col_width,
-    start_y => $y,
-    start_h => 600,
-    padding => 2,
-    font  =>      $pdf->corefont('Courier-Bold', -encoding => 'latin1'),
-    cell_props => $table_properties,
-    column_props => [
-      { min_w => $col_width/2, max_w => $col_width/2, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width/2, max_w => $col_width/2, },
-    ]
-  );
-  return;
-}
-
-sub _add_timestamp {
-  my ($page, $font, $stamp, $uri) = @_;
-  _add_text_to_page($page, $font, $stamp, $left_margin, $stamp_height, $stamp_size);
-  return;
-}
-
-## no critic(Subroutines::ProhibitManyArgs)
-sub _add_text_to_page {
-  my ($page, $font, $content, $x, $y, $font_size) = @_;
-  my $text = $page->text();
-  $text->font($font, $font_size);
-  $text->translate($x, $y);
-  $text->text($content);
-  return;
-}
-## use critic
-
-sub _add_table_to_page {
-  my ($pdf, $page, $data, $x, $y) = @_;
-  my $pdftable_source = PDF::Table->new();
-  $pdftable_source->table(
-    $pdf, $page, $data,
-    x => $x, w => 400,
-    start_y    => $y,
-    start_h    => 600,
-    font_size  => 9,
-    padding    => 4,
-    font       => $pdf->corefont('Helvetica', -encoding => 'latin1'),
-  );
-  return;
+  return $pdf_data;
 }
 
 sub _get_title {
@@ -398,15 +303,15 @@ sub _get_table_data {
   my @table_properties = ();
   my @list_of_colours = ('#F5BA7F', '#F5E77D', '#7DD3F5', '#DB7DF5');
 
-  my $colours = _get_colour_data($data, @list_of_colours);
+  my $colour_indexes = _get_colour_indexes($data);
 
   foreach my $j (0..$nb_row+1) {
     my @row = ();
     my @row_properties = ();
     foreach my $i (0..$nb_col+1) {
-      my ($content, $properties) = _get_cell($data, $colours, $i, $j, $nb_col, $nb_row);
-      push @row, $content;
-      push @row_properties, $properties;
+      my ($content, $properties) = _get_cell($data, $colour_indexes, $i, $j, $nb_col, $nb_row);
+      push $row, $content;
+      push $row_properties, $properties;
     }
     push @table_data, \@row;
     push @table_properties, \@row_properties;
@@ -417,17 +322,17 @@ sub _get_table_data {
 
 ## no critic(Subroutines::ProhibitManyArgs)
 sub _get_cell {
-  my ($data, $colours, $i, $j, $nb_col, $nb_row) = @_;
+  my ($data, $colour_indexes, $i, $j, $nb_col, $nb_row) = @_;
 
   my $content;
   my $properties;
 
   if (my $pos = _get_location($i,$j, $nb_col, $nb_row)) {
-    $content = _get_cell_content($data, $pos);
-    $properties = _get_cell_properties($data, $colours, $pos);
+    $content    = _get_cell_content($data, $pos);
+    $properties = _get_cell_properties($data, $colour_indexes, $pos);
 
   } else {
-    $content = _get_legend_content($i,$j, $nb_col, $nb_row);
+    $content    = _get_legend_content($i,$j, $nb_col, $nb_row);
     $properties = _get_legend_properties($i,$j, $nb_col, $nb_row);
   }
   return ($content, $properties);
@@ -437,7 +342,7 @@ sub _get_cell {
 sub _get_cell_content {
   my ($data, $pos) = @_;
   my $cell = $data->{$pos};
-  if ($cell) {
+  if ($cell and %{$cell}) {
     my $container_id = $cell->{'input_id'};
     $container_id =~ s/\-//xms;
 
@@ -447,6 +352,7 @@ sub _get_cell_content {
     my $b = $cell->{'buffer_volume'};
     return $loc."\n".$id."\nv".(int $v).' b'.(int $b);
   }
+
   return q{};
 }
 
@@ -465,42 +371,30 @@ sub _get_legend_content {
 }
 
 sub _get_cell_properties {
-  my ($data, $colours, $pos) = @_;
+  my ($data, $colour_indexes, $pos) = @_;
   my $id = $data->{$pos}->{'input_id'};
   if (defined $id){
-    my $col = $colours->{$id};
-    return {
-      background_color => $col,
-      font_size=> 7,
-      justify => 'center',
-    };
+    my $col = $colour_indexes->{$id};
+    return "COLOUR_$col";
   } else {
-    return {
-      background_color => 'white',
-      font_size=> 7,
-      justify => 'center',
-    }
+    return 'EMPTY_STYLE'
   }
 }
 
 sub _get_legend_properties {
   my ($i, $j, $nb_col, $nb_row) = @_;
 
-  return {
-    background_color => 'white',
-    font_size=> 7,
-    justify => 'center',
-  }
+  return 'HEADER_STYLE';
 }
 
-sub _get_colour_data {
-  my ($data, @list_of_colours) = @_;
+sub _get_colour_indexes {
+  my ($data) = @_;
   my $hash_colour = {};
-
+  my $colour_index = 0;
   foreach my $key (sort keys %{$data}) {
     my $id = $data->{$key}->{'input_id'};
     if (defined $id && !defined $hash_colour->{$id}){
-      $hash_colour->{$id} = shift @list_of_colours;
+      $hash_colour->{$id} = $colour_index++;
     }
   }
   return $hash_colour;

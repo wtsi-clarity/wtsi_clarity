@@ -77,6 +77,7 @@ my $builder = $class->new(
                 'File::Basename'                  => 0,
                 'File::Spec::Functions'           => 0,
                 'File::Copy'                      => 0,
+                'File::Copy::Recursive'           => 0,
                 'File::Path'                      => 0,
                 'File::Spec::Functions'           => 0,
                 'File::Temp'                      => 0,
