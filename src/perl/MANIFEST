@@ -5,6 +5,7 @@ Build.PL
 bin/epp
 lib/wtsi_clarity/epp.pm
 lib/wtsi_clarity/epp/mapper.pm
+lib/wtsi_clarity/epp/mq.pm
 lib/wtsi_clarity/epp/stamp.pm
 lib/wtsi_clarity/epp/sm/create_label.pm
 lib/wtsi_clarity/epp/sm/plate_purpose.pm
@@ -15,11 +16,14 @@ lib/wtsi_clarity/epp/sm/cp_bed_verification.pm
 lib/wtsi_clarity/epp/sm/attach_dtx_file.pm
 lib/wtsi_clarity/epp/sm/reactivate_stock_plate.pm
 lib/wtsi_clarity/file_parsing/volume_check.pm
+lib/wtsi_clarity/mq/client.pm
+lib/wtsi_clarity/mq/message/epp.pm
 lib/wtsi_clarity/process_checks/bed_verification.pm
 lib/wtsi_clarity/util/barcode.pm
 lib/wtsi_clarity/util/clarity_elements.pm
 lib/wtsi_clarity/util/clarity_process.pm
 lib/wtsi_clarity/util/config.pm
+lib/wtsi_clarity/util/configurable.pm
 lib/wtsi_clarity/util/label.pm
 lib/wtsi_clarity/util/print.pm
 lib/wtsi_clarity/util/request.pm

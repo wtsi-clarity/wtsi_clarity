@@ -18,6 +18,7 @@ use_ok('wtsi_clarity::epp::sm::create_label');
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/create_label';
   #local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
+  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
   my $l = wtsi_clarity::epp::sm::create_label->new(
     process_url => 'http://clarity-ap:8080/api/v2/processes/24-67069');
 
@@ -29,12 +30,7 @@ use_ok('wtsi_clarity::epp::sm::create_label');
   $l = wtsi_clarity::epp::sm::create_label->new(
     process_url => 'http://clarity-ap:8080/api/v2/processes/24-67069');
   my $config = join q[/], $ENV{'HOME'}, '.wtsi_clarity', 'config';
-  SKIP: {
-    if ( !$ENV{'LIVE_TEST'} || !-e $config ) {
-      skip 'set LIVE_TEST to true to run and have config file in your home directory', 1;
-    }
-    lives_and(sub {like $l->_printer_url, qr/c2ed34d0-7214-0131-2f13-005056a81d80/}, 'got printer url');
-  }
+  lives_and(sub {like $l->_get_printer_url('d304bc'), qr/c2ed34d0-7214-0131-2f13-005056a81d80/}, 'got printer url');
 }
 
 {

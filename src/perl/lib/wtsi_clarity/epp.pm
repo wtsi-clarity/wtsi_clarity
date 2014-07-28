@@ -4,10 +4,9 @@ use Moose;
 use Carp;
 use XML::LibXML;
 
-use wtsi_clarity::util::config;
 use wtsi_clarity::util::request;
 
-with 'MooseX::Getopt';
+with qw/MooseX::Getopt wtsi_clarity::util::configurable/;
 
 our $VERSION = '0.0';
 
@@ -31,17 +30,6 @@ sub _build_base_url {
     croak q[Failed to get base url from ] . $self->process_url;
   }
   return $url;
-}
-
-has 'config'      => (
-  isa             => 'wtsi_clarity::util::config',
-  is              => 'ro',
-  required        => 0,
-  traits          => [ 'NoGetopt' ],
-  lazy_build      => 1,
-);
-sub _build_config {
-  return wtsi_clarity::util::config->new();
 }
 
 has 'xml_parser'  => (

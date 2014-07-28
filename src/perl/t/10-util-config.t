@@ -12,7 +12,7 @@ my $chome_name = 'WTSI_CLARITY_HOME';
   isa_ok( $c, 'wtsi_clarity::util::config');
   
   is($c->wtsi_clarity_home_var_name, $chome_name, 'homa var name from object instance');
-  is(wtsi_clarity::util::config->wtsi_clarity_home_var_name, $chome_name, 'homa var name called on package name');
+  is(wtsi_clarity::util::config->wtsi_clarity_home_var_name, $chome_name, 'home var name called on package name');
 
   #unset the env vars within this scope in case they are set in caller's environment
   local $ENV{'HOME'} = q[];
