@@ -2,8 +2,11 @@ package wtsi_clarity::file_parsing::dtx_concentration_calculator;
 
 use Moose;
 use Carp;
-use Data::Dumper;
 use wtsi_clarity::util::clarity_elements;
+use Readonly;
+
+Readonly::Scalar my $CV_LIMIT => 10.0;
+
 
 our $VERSION = '0.0';
 
@@ -54,32 +57,50 @@ sub _build_cvs {
   my ($self) = @_;
   my $results = {};
   while (my ($well, $data) = each %{$self->standard_fluorescence} ) {
-    my $average_fluorescence = $self->plateA_fluorescence->{$well} + $self->plateB_fluorescence->{$well};
-    $results->{$well} = abs($average_fluorescence * 0.5) * sqrt(2.0);
+    my $average_fluorescence = 0.5 *( $self->plateA_fluorescence->{$well} + $self->plateB_fluorescence->{$well} );
+
+    my $x1 = ($self->plateA_fluorescence->{$well} - $average_fluorescence) ** 2;
+    my $x2 = ($self->plateB_fluorescence->{$well} - $average_fluorescence) ** 2;
+
+    $results->{$well} = sqrt($x1 + $x2) * 100 / $average_fluorescence;
   }
   return $results;
 }
 
-sub get_concentrations {
+sub get_analysis_results {
   my ($self) = @_;
   my $whole_data = {
     'standard' => $self->standard_fluorescence,
     'plateA' => $self->plateA_fluorescence,
     'plateB' => $self->plateB_fluorescence,
     'cv' => $self->cvs,
-
    };
   my $fit_data = get_standard_coefficients($whole_data);
-  my $concentrations = {};
+  my $results = {};
 
   while (my ($well, $data) = each %{$self->standard_fluorescence} ) {
+    $results->{$well} = { 'concentration' => - 1.0,
+                          'cv' => - 1.0,
+                          'status' => 'unknown',
+                        };
     my $average_fluorescence = ($self->plateA_fluorescence->{$well} + $self->plateB_fluorescence->{$well}) * 0.5;
-    $concentrations->{$well} = ($average_fluorescence - $fit_data->{'intercept'}) / $fit_data->{'slope'};
+    $results->{$well}->{'concentration'} = ($average_fluorescence - $fit_data->{'intercept'}) / $fit_data->{'slope'};
+    $results->{$well}->{'cv'}            = $self->cvs->{$well};
+    $results->{$well}->{'status'}        = _get_status($self->cvs->{$well});
+    $results->{$well}->{'plateA_fluorescence'} = $self->plateA_fluorescence->{$well};
+    $results->{$well}->{'plateB_fluorescence'} = $self->plateB_fluorescence->{$well};
 
   }
 
+  return $results;
+}
 
-  return $concentrations;
+sub _get_status {
+  my $cv = shift;
+  if ($cv > $CV_LIMIT) {
+    return 'Failed';
+  }
+  return 'Passed';
 }
 
 sub get_standard_coefficients {
