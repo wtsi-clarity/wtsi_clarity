@@ -3,6 +3,7 @@ package wtsi_clarity::util::label;
 use Moose::Role;
 use Carp;
 use Readonly;
+use DateTime;
 
 our $VERSION = '0.0';
 
@@ -129,11 +130,13 @@ wtsi_clarity::util::label
 
 =item Readonly
 
+=item DataTime
+
 =back
 
 =head1 AUTHOR
 
-Carol Scott E<lt>ces@sanger.ac.ukE<gt>
+Chris Smith E<lt>c24@sanger.ac.ukE<gt>
 
 =head1 LICENSE AND COPYRIGHT
 
