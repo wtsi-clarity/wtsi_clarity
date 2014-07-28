@@ -845,24 +845,24 @@ my $EXPECTED_DATA_3 = {
   my $standard_fluorescences = $calculator->cvs();
 }
 
-{ #get_standard_intermediate_coefficients
-  my $res = wtsi_clarity::file_parsing::dtx_concentration_calculator::get_standard_intermediate_coefficients($TEST_DATA_2);
+{ #_get_standard_intermediate_coefficients
+  my $res = wtsi_clarity::file_parsing::dtx_concentration_calculator::_get_standard_intermediate_coefficients($TEST_DATA_2);
 
 
   while (my ($well, $exp) = each %{$EXPECTED_DATA_2} ) {
     my $expected = $EXPECTED_DATA_2->{$well};
     # print "$well ==> ".$res->{$well} ." -- $expected \n";
-    cmp_ok(abs($res->{$well} - $expected), '<', 0.1 , "get_standard_intermediate_coefficients( $well ) should give the correct intermediate coefficients.");
+    cmp_ok(abs($res->{$well} - $expected), '<', 0.1 , "_get_standard_intermediate_coefficients( $well ) should give the correct intermediate coefficients.");
   }
 }
 
-{ #get_standard_coefficients
-  my $res = wtsi_clarity::file_parsing::dtx_concentration_calculator::get_standard_coefficients($TEST_DATA_2);
+{ #_get_standard_coefficients
+  my $res = wtsi_clarity::file_parsing::dtx_concentration_calculator::_get_standard_coefficients($TEST_DATA_2);
 
 
   while (my ($well, $exp) = each %{$EXPECTED_DATA_3} ) {
     my $expected = $EXPECTED_DATA_3->{$well};
-    cmp_ok(abs($res->{$well} - $expected), '<', 0.1 , "get_standard_coefficients( $well ) should give the correct standard coefficients.");
+    cmp_ok(abs($res->{$well} - $expected), '<', 0.1 , "_get_standard_coefficients( $well ) should give the correct standard coefficients.");
   }
 }
 
