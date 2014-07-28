@@ -67,6 +67,8 @@ my $builder = $class->new(
           },
 
           'requires'    => {
+                'AnyEvent'                        => 0,
+                'AnyEvent::RabbitMQ'              => 0,
                 'Carp'                            => 0,
                 'Config::Auto'                    => 0,
                 'DateTime'                        => 0,

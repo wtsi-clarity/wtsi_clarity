@@ -107,7 +107,7 @@ wtsi_clarity::util::config
  Access to configuration options for the wtsi_clarity project.
  Either WTSI_CLARITY_HOME or HOME environment variable is examined
  as a location for the project configuration directory, .wtsi_clarity.
- The default name of teh configuration file is config.
+ The default name of the configuration file is config.
 
 =head1 SUBROUTINES/METHODS
 

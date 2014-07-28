@@ -1,5 +1,8 @@
 CHANGES for wtsi_clarity Perl project
 
+  - Rabbit message queue client
+  - role for accessing configuration file
+
 release 0.29
   - bed verification tests use bed config with correct barcodes
   - volume check bug fixed: to get micro character,
