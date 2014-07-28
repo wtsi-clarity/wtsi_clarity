@@ -310,8 +310,8 @@ sub _get_table_data {
     my @row_properties = ();
     foreach my $i (0..$nb_col+1) {
       my ($content, $properties) = _get_cell($data, $colour_indexes, $i, $j, $nb_col, $nb_row);
-      push $row, $content;
-      push $row_properties, $properties;
+      push @row, $content;
+      push @row_properties, $properties;
     }
     push @table_data, \@row;
     push @table_properties, \@row_properties;
