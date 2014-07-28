@@ -84,6 +84,7 @@ my $builder = $class->new(
                 'File::Temp'                      => 0,
                 'FindBin'                         => 0,
                 'JSON'                            => 0,
+                'JSON::Any'                       => 0,
                 'HTTP::Request'                   => 0,
                 'lib'                             => 0,
                 'LWP::UserAgent'                  => 0,

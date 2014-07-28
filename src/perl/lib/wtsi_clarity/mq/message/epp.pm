@@ -5,6 +5,7 @@ use namespace::autoclean;
 use Moose::Util::TypeConstraints;
 use MooseX::StrictConstructor;
 use MooseX::Storage;
+use JSON::Any;
 
 use wtsi_clarity::util::types;
 
