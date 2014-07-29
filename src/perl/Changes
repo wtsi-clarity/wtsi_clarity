@@ -3,7 +3,6 @@ CHANGES for wtsi_clarity Perl project
 release 0.31
   - Rabbit message queue client
   - role for accessing configuration file
-  - Picogreen calculation module
 
 release 0.30
   - allow calling epp with multiple actions
@@ -20,7 +19,7 @@ release 0.28
   - Added bed verification for cherrypicking
 
 release 0.27
-  - added assign_to_fluidigm 
+  - added assign_to_fluidigm
 
 release 0.26
   - added worksheet & tecan generation
