@@ -51,8 +51,8 @@ my $TEST_DATA = {
   my $pdf_generator = wtsi_clarity::util::pdf_worksheet_generator->new(pdf_data => $TEST_DATA);
   my $file = $pdf_generator->create_worksheet_file();
 
-  my $tmpdir = File::Temp->newdir( CLEANUP => 1 )               or croak q{Impossible to create the temporary folder for the pdf!};
-  my $filename = $tmpdir->dirname().'/worksheet.pdf';
+  my $tmpdir = File::Temp->newdir( CLEANUP => 0 )               or croak q{Impossible to create the temporary folder for the pdf!};
+  my $filename = '/Users/bm10/worksheet.pdf';
   $file->saveas($filename) ;
   ok(-e $filename,'create_worksheet_file should produce a file that can be saved as a pdf.');
 }
