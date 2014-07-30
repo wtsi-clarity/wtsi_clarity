@@ -835,10 +835,16 @@ my $EXPECTED_DATA_3 = {
 
 
 {
+  my $parser = XML::LibXML->new();
+
+  my $standard_doc = $parser->load_xml(location => $testdata_path.$standard_name) or croak 'File can not be found at ' . $testdata_path.$standard_name;
+  my $plateA_doc = $parser->load_xml(location => $testdata_path.$plateA_name) or croak 'File can not be found at ' . $testdata_path.$plateA_name;
+  my $plateB_doc = $parser->load_xml(location => $testdata_path.$plateB_name) or croak 'File can not be found at ' . $testdata_path.$plateB_name;
+
   my $calculator = wtsi_clarity::file_parsing::dtx_concentration_calculator->new(
-    standard_path => $testdata_path.$standard_name,
-    plateA_path   => $testdata_path.$plateA_name,
-    plateB_path   => $testdata_path.$plateB_name);
+    standard_doc => $standard_doc,
+    plateA_doc   => $plateA_doc,
+    plateB_doc   => $plateB_doc);
 
   isa_ok( $calculator, 'wtsi_clarity::file_parsing::dtx_concentration_calculator');
 
@@ -867,10 +873,16 @@ my $EXPECTED_DATA_3 = {
 }
 
 { #get_analysis_results
+  my $parser = XML::LibXML->new();
+
+  my $standard_doc = $parser->load_xml(location => $testdata_path.$standard_name) or croak 'File can not be found at ' . $testdata_path.$standard_name;
+  my $plateA_doc = $parser->load_xml(location => $testdata_path.$plateA_name) or croak 'File can not be found at ' . $testdata_path.$plateA_name;
+  my $plateB_doc = $parser->load_xml(location => $testdata_path.$plateB_name) or croak 'File can not be found at ' . $testdata_path.$plateB_name;
+
   my $calculator = wtsi_clarity::file_parsing::dtx_concentration_calculator->new(
-    standard_path => $testdata_path.$standard_name,
-    plateA_path   => $testdata_path.$plateA_name,
-    plateB_path   => $testdata_path.$plateB_name);
+    standard_doc => $standard_doc,
+    plateA_doc   => $plateA_doc,
+    plateB_doc   => $plateB_doc);
 
   isa_ok( $calculator, 'wtsi_clarity::file_parsing::dtx_concentration_calculator');
 

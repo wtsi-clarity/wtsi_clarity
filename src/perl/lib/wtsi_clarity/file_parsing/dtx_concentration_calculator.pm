@@ -15,19 +15,19 @@ Readonly::Scalar my $CELL_DATA_INDEX_3 => qq{.//ss:Cell[\@ss:Index=3]/ss:Data/te
 
 our $VERSION = '0.0';
 
-has 'standard_path' => (
+has 'standard_doc' => (
   is => 'ro',
-  isa => 'Str',
+  isa => 'XML::LibXML::Document',
 );
 
-has 'plateA_path' => (
+has 'plateA_doc' => (
   is => 'ro',
-  isa => 'Str',
+  isa => 'XML::LibXML::Document',
 );
 
-has 'plateB_path' => (
+has 'plateB_doc' => (
   is => 'ro',
-  isa => 'Str',
+  isa => 'XML::LibXML::Document',
 );
 
 has 'standard_fluorescence' => (
@@ -201,26 +201,21 @@ sub _get_standard_intermediate_coefficients {
 
 sub _build_standard_fluorescence {
   my ($self) = @_;
-  return $self->_get_fluorescence_from_file($self->standard_path)
+  return $self->_get_fluorescence_from_doc($self->standard_doc);
 }
 
 sub _build_plateA_fluorescence {
   my ($self) = @_;
-  return $self->_get_fluorescence_from_file($self->plateA_path)
+  return $self->_get_fluorescence_from_doc($self->plateA_doc);
 }
 
 sub _build_plateB_fluorescence {
   my ($self) = @_;
-  return $self->_get_fluorescence_from_file($self->plateB_path)
+  return $self->_get_fluorescence_from_doc($self->plateB_doc);
 }
 
-sub _get_fluorescence_from_file {
-  my ($self, $filepath) = @_;
-
-  my $parser = XML::LibXML->new();
-  my $xmldoc = $parser->load_xml(location => $filepath)
-      or croak 'File can not be found at ' . $filepath;
-
+sub _get_fluorescence_from_doc {
+  my ($self, $xmldoc) = @_;
   my $fluorescences = $self->_parse_xml($xmldoc);
   while (my ($well, $data) = each %{$fluorescences} ) {
     my $d = $data->{'d1m1'}*1.0 + $data->{'d2m1'}*1.0 + $data->{'d1m2'}*1.0 + $data->{'d2m2'}*1.0;
