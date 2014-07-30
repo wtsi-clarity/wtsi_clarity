@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 200;
+use Test::More tests => 202;
 use Test::Exception;
 use DateTime;
 use XML::LibXML;
@@ -306,6 +306,7 @@ my $TEST_DATA3 = {
       'plate_name' => 'PLATE_NAME',
       'barcode' => '1234567890123456',
       'wells' => '96',
+      'occ_wells' => '9',
       'type' => 'type1',
     },
   },
@@ -337,14 +338,15 @@ my $TEST_DATA4 = {
       'plate_name' => 'PLATE_NAME1',
       'barcode' => '12345678900001',
       'wells' => '96',
+      'occ_wells' => '1',
       'type' => 'type1',
     },
     'container_uri2' => {
         'container_details' =>{
           'A:1' => {
                  'input_location' => 'B:2',
-                 'sample_volume' => '1.2',
-                 'buffer_volume' => '8.8',
+                 'sample_volume' => '1.0',
+                 'buffer_volume' => '7.8',
                  'input_id' => '29',
                  'input_uri' => '29',
                },
@@ -352,6 +354,7 @@ my $TEST_DATA4 = {
       'purpose' => 'PLATE_PURPOSE_out',
       'plate_name' => 'PLATE_NAME2',
       'barcode' => '12345678900002',
+      'occ_wells' => '1',
       'wells' => '96',
       'type' => 'type1',
     },
@@ -450,15 +453,15 @@ my $TEST_DATA4 = {
     qq{A;00000027;;type27;27;;1.2},
     qq{D;12345678900001;;type1;1;;1.2},
     qq{W;},
-    qq{A;00000029;;type29;10;;1.2},
-    qq{D;12345678900002;;type1;1;;1.2},
+    qq{A;00000029;;type29;10;;1.0},
+    qq{D;12345678900002;;type1;1;;1.0},
     qq{W;},
 
     qq{A;BUFF;;96-TROUGH;27;;8.8},
     qq{D;12345678900001;;type1;1;;8.8},
     qq{W;},
-    qq{A;BUFF;;96-TROUGH;10;;8.8},
-    qq{D;12345678900002;;type1;1;;8.8},
+    qq{A;BUFF;;96-TROUGH;10;;7.8},
+    qq{D;12345678900002;;type1;1;;7.8},
     qq{W;},
 
     qq{C;},
@@ -540,7 +543,7 @@ my $TEST_DATA4 = {
 { # _get_table_data
   my @expected_data = (
     { 'in' => [0,0],  'out' => "", },
-    { 'in' => [1,1],  'out' => "A:1\n2723\nv1 b8", },
+    { 'in' => [1,1],  'out' => "A:1\n2723\nv2 b9", },
     { 'in' => [0,1],  'out' => ".\nA\n.", },
     { 'in' => [0,2],  'out' => ".\nB\n.", },
     { 'in' => [6,2],  'out' => ".\nB\n.", },
@@ -563,7 +566,7 @@ my $TEST_DATA4 = {
 { # _get_containers_data
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sm/worksheet';
   my $step = wtsi_clarity::epp::sm::worksheet->new(
-    process_url => 'http://clarity-ap:8080/api/v2/processes/24-102407');
+    process_url => 'http://clarity-ap:8080/api/v2/processes/24-102407', worksheet_type => 'cherrypicking');
 
   my $data = $step->_get_containers_data();
   my $container_uri = q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containers/27-8129};
@@ -584,7 +587,8 @@ my $TEST_DATA4 = {
       'exp_type' => "ABgene 0800",
     },
   );
-
+  use Data::Dumper;
+  # print Dumper $data;
   foreach my $datum (@expected_data) {
     my $out = $datum->{'param'};
     my $exp_loc = $datum->{'exp_location'};
@@ -603,6 +607,10 @@ my $TEST_DATA4 = {
     cmp_ok($in_id,  'eq', $exp_id,  "_get_containers_data(...) should give the container id. $out <-> $exp_id (found $in_id)");
     cmp_ok($in_type,'eq', $exp_typ, "_get_containers_data(...) should give the container type. $out <-> $exp_typ (found $in_type)");
   }
+
+  cmp_ok($data->{'output_container_info'}->{$container_uri}->{'wells'}, 'eq', 96, "_get_containers_data(...) should give the correct nb of wells");
+  cmp_ok($data->{'output_container_info'}->{$container_uri}->{'occ_wells'}, 'eq', 73, "_get_containers_data(...) should give the correct nb of wells");
+
 }
 
 { # _get_cell_properties
@@ -659,7 +667,7 @@ my $TEST_DATA4 = {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sm/worksheet';
   # local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
   my $step = wtsi_clarity::epp::sm::worksheet->new(
-    process_url => 'http://clarity-ap:8080/api/v2/processes/24-102407');
+    process_url => 'http://clarity-ap:8080/api/v2/processes/24-102407', worksheet_type => 'cherrypicking');
 
   my @expected_data = (
     { 'pos' => [0,0],  'style' => 'HEADER_STYLE'},
@@ -733,7 +741,7 @@ my $TEST_DATA4 = {
 
     { 'in' => [0,1],  'out' => "PLATE_NAME", },
     { 'in' => [1,1],  'out' => "1234567890123456", },
-    { 'in' => [2,1],  'out' => "96", },
+    { 'in' => [2,1],  'out' => "9", },
   );
   my $table = wtsi_clarity::epp::sm::worksheet::_get_destination_plate_data($TEST_DATA3, 'container_uri' );
 
@@ -763,7 +771,7 @@ my $TEST_DATA4 = {
                           ['PLATE_NAME29', '00000029', '000029', '000029', '000029', '000029' ]],
         'input_table_title' => 'Source plates',
         'output_table' => [['Plate name', 'Barcode', 'Wells'],
-                           ['PLATE_NAME2','12345678900002','96']],
+                           ['PLATE_NAME2','12345678900002','1']],
         'output_table_title' => 'Destination plates',
         'plate_table' => [['',1,2,3,4,5,6,7,8,9,10,11,12,''],
                           [".\nA\n.","B:2\n29\nv1 b8",'','','','','','','','','','','',".\nA\n."],
@@ -796,10 +804,10 @@ my $TEST_DATA4 = {
                           ['PLATE_NAME27', '00000027', '000021', '000022', '000023', '000024' ]],
         'input_table_title' => 'Source plates',
         'output_table' => [['Plate name', 'Barcode', 'Wells'],
-                           ['PLATE_NAME1','12345678900001','96']],
+                           ['PLATE_NAME1','12345678900001','1']],
         'output_table_title' => 'Destination plates',
         'plate_table' => [['',1,2,3,4,5,6,7,8,9,10,11,12,''],
-                          [".\nA\n.","C:4\n27\nv1 b8",'','','','','','','','','','','',".\nA\n."],
+                          [".\nA\n.","C:4\n27\nv2 b9",'','','','','','','','','','','',".\nA\n."],
                           [".\nB\n.",'','','','','','','','','','','','',".\nB\n."],
                           [".\nC\n.",'','','','','','','','','','','','',".\nC\n."],
                           [".\nD\n.",'','','','','','','','','','','','',".\nD\n."],
@@ -826,7 +834,7 @@ my $TEST_DATA4 = {
     ]
   };
 
-  my $pdf_data = wtsi_clarity::epp::sm::worksheet::_get_pdf_data($TEST_DATA4, 'my stamp' );
+  my $pdf_data = wtsi_clarity::epp::sm::worksheet::_get_pdf_data($TEST_DATA4, 'my stamp', {'action_title' => 'Cherrypicking'} );
 
   cmp_ok( $pdf_data->{'stamp'}, 'eq', $expected->{'stamp'}, "_get_pdf_data() should give the correct stamp.");
   cmp_ok( scalar @{$pdf_data->{'pages'}}, '==', 2, "_get_pdf_data() should give the correct number of pages.");
