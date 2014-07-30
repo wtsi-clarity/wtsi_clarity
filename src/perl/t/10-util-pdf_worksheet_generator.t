@@ -52,7 +52,7 @@ my $TEST_DATA = {
   my $file = $pdf_generator->create_worksheet_file();
 
   my $tmpdir = File::Temp->newdir( CLEANUP => 0 )               or croak q{Impossible to create the temporary folder for the pdf!};
-  my $filename = '/Users/bm10/worksheet.pdf';
+  my $filename = $tmpdir.'/worksheet.pdf';
   $file->saveas($filename) ;
   ok(-e $filename,'create_worksheet_file should produce a file that can be saved as a pdf.');
 }
