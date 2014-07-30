@@ -7,7 +7,7 @@ use PDF::API2;
 use PDF::Table;
 use File::Temp;
 use DateTime;
-use Data::Dumper;
+
 use wtsi_clarity::util::request;
 use wtsi_clarity::util::well_mapper;
 use wtsi_clarity::util::pdf_worksheet_generator;
