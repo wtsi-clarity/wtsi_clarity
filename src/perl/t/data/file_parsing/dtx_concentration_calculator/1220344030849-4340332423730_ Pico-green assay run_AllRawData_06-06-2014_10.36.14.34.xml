@@ -1,0 +1,4349 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:html="http://www.w3.org/TR/REC-html40">
+  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+    <LastAuthor>DTX-Software</LastAuthor>
+    <Created>06/06/2014</Created>
+    <Version>1.0</Version>
+  </DocumentProperties>
+  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+    <ProtectedStructure>False</ProtectedStructure>
+    <ProtectedWindows>False</ProtectedWindows>
+  </ExcelWorkbook>
+  <Styles>
+    <Style ss:ID="Default" ss:Name="Normal">
+      <Alignment ss:Vertical="Bottom" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" />
+    </Style>
+    <Style ss:ID="BCC">
+      <Alignment ss:Vertical="Center" ss:Horizontal="Center" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Bold="1" />
+    </Style>
+    <Style ss:ID="BLB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Left" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Bold="1" />
+    </Style>
+    <Style ss:ID="NRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" />
+    </Style>
+    <Style ss:ID="NLB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Left" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" />
+    </Style>
+    <Style ss:ID="DTRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" />
+      <NumberFormat ss:Format="General Date" />
+    </Style>
+    <Style ss:ID="ErrorNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#FF9900" />
+    </Style>
+    <Style ss:ID="UnusedNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#C0C0C0" />
+    </Style>
+    <Style ss:ID="IncorrectNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#33CCCC" />
+    </Style>
+    <Style ss:ID="OverflowNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#FF0000" />
+    </Style>
+    <Style ss:ID="OKNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" />
+    </Style>
+    <Style ss:ID="RejectedNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#33CC33" />
+    </Style>
+    <Style ss:ID="ASErrorNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#FF9900" />
+    </Style>
+    <Style ss:ID="ASUnusedNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#C0C0C0" />
+    </Style>
+    <Style ss:ID="ASUnderflowNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#33CCCC" />
+    </Style>
+    <Style ss:ID="ASOverflowNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#FF0000" />
+    </Style>
+    <Style ss:ID="ASExtrapolatedNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#FF00FF" />
+    </Style>
+    <Style ss:ID="ASNotEvaluatedNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#11FF00" />
+    </Style>
+    <Style ss:ID="ASOKNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" />
+    </Style>
+    <Style ss:ID="ASRejectedNRB">
+      <Alignment ss:Vertical="Bottom" ss:Horizontal="Right" ss:WrapText="1" />
+      <Font ss:FontName="Arial Unicode MS" ss:Family="Swiss" ss:Color="#33CC33" />
+    </Style>
+  </Styles>
+  <Worksheet ss:Name="General">
+    <Table x:FullColumns="1" x:FullRows="1">
+      <Column ss:AutoFitWidth="0" ss:Width="150" ss:Index="1" />
+      <Column ss:AutoFitWidth="0" ss:Width="150" ss:Index="2" />
+      <Row ss:Height="15" ss:Index="1">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Operator</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String" />
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="2">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Header</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String"> Pico-green assay run</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="3">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Identification</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String"> Pico-green assay run</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="4">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Date</Data>
+        </Cell>
+        <Cell ss:StyleID="DTRB" ss:Index="2">
+          <Data ss:Type="DateTime">2014-06-06T10:36:14</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="5">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Description</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String" />
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="6">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">PlateName</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">1220344030849-4340332423730</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="7">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">DateMeasured</Data>
+        </Cell>
+        <Cell ss:StyleID="DTRB" ss:Index="2">
+          <Data ss:Type="DateTime">2014-06-06T10:33:39</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="8">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">DateEvaluated</Data>
+        </Cell>
+        <Cell ss:StyleID="DTRB" ss:Index="2">
+          <Data ss:Type="DateTime">2014-06-06T10:36:13</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="9">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">ValidState</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">Measured</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="11">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Software</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">Multimode Analysis Software</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="12">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Version</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">3.1.0.1</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="14">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Instrument Name</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">DTX 880 (2)</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="15">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Serial Number</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">1197</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="17">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Labware</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String" />
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="18">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Name</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">x_DTX_Fluor_Greiner 96 black clear bottom</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="19">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Rows</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="Number">8</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="20">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Columns</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="Number">12</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="21">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">ProtectionState</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">Normal</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="22">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">WellShape</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">Round</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="23">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">BottomShape</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">Flat</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="24">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Created</Data>
+        </Cell>
+        <Cell ss:StyleID="DTRB" ss:Index="2">
+          <Data ss:Type="DateTime">2007-02-21T11:50:50</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="25">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">DateEdited</Data>
+        </Cell>
+        <Cell ss:StyleID="DTRB" ss:Index="2">
+          <Data ss:Type="DateTime">2007-05-13T19:42:46</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="26">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">LotNr</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">Lot 2013-03-11T12:19:19</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="27">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Optimized</Data>
+        </Cell>
+        <Cell ss:StyleID="DTRB" ss:Index="2">
+          <Data ss:Type="DateTime">2013-03-11T12:12:42</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="28">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Orientation</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">Landscape</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="29">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">ReadMode</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">Row</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="30">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Notes</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">µ-Clear, #655 096</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="32">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Protocol</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String" />
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="33">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">ProtocolName</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String"> Pico-green assay run</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="34">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">ApplicationType</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">Analysis</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="35">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">DateCreated</Data>
+        </Cell>
+        <Cell ss:StyleID="DTRB" ss:Index="2">
+          <Data ss:Type="DateTime">2007-05-13T20:46:13</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="36">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">DateEdited</Data>
+        </Cell>
+        <Cell ss:StyleID="DTRB" ss:Index="2">
+          <Data ss:Type="DateTime">2013-12-12T07:49:34</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="37">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">DateMeasured</Data>
+        </Cell>
+        <Cell ss:StyleID="DTRB" ss:Index="2">
+          <Data ss:Type="DateTime">2014-06-06T10:33:39</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="38">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">DateEvaluated</Data>
+        </Cell>
+        <Cell ss:StyleID="DTRB" ss:Index="2">
+          <Data ss:Type="DateTime">2014-06-06T10:36:13</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="39">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Notes</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String" />
+        </Cell>
+      </Row>
+    </Table>
+  </Worksheet>
+  <Worksheet ss:Name="Raw_P_1">
+    <Table x:FullColumns="1" x:FullRows="1">
+      <Column ss:AutoFitWidth="0" ss:Width="70" ss:Index="1" />
+      <Row ss:Height="15" ss:Index="7">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Method</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="8">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Sequence</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="9">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Name</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="10">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Point Y</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="11">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Point X</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="12">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Cycle</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="13">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Time (sec)</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="14">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Temperature (°C)</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="15">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well A.1</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="16">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well A.2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="17">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well A.3</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="18">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well A.4</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="19">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well A.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="20">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well A.6</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="21">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well A.7</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="22">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well A.8</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="23">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well A.9</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="24">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well A.10</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="25">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well A.11</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="26">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well A.12</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="27">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well B.1</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="28">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well B.2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="29">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well B.3</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="30">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well B.4</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="31">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well B.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="32">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well B.6</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="33">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well B.7</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="34">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well B.8</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="35">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well B.9</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="36">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well B.10</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="37">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well B.11</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="38">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well B.12</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="39">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well C.1</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="40">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well C.2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="41">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well C.3</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="42">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well C.4</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="43">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well C.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="44">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well C.6</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="45">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well C.7</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="46">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well C.8</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="47">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well C.9</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="48">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well C.10</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="49">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well C.11</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="50">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well C.12</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="51">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well D.1</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="52">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well D.2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="53">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well D.3</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="54">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well D.4</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="55">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well D.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="56">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well D.6</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="57">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well D.7</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="58">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well D.8</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="59">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well D.9</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="60">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well D.10</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="61">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well D.11</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="62">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well D.12</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="63">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well E.1</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="64">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well E.2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="65">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well E.3</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="66">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well E.4</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="67">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well E.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="68">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well E.6</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="69">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well E.7</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="70">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well E.8</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="71">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well E.9</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="72">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well E.10</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="73">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well E.11</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="74">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well E.12</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="75">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well F.1</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="76">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well F.2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="77">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well F.3</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="78">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well F.4</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="79">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well F.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="80">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well F.6</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="81">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well F.7</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="82">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well F.8</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="83">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well F.9</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="84">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well F.10</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="85">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well F.11</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="86">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well F.12</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="87">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well G.1</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="88">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well G.2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="89">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well G.3</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="90">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well G.4</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="91">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well G.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="92">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well G.6</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="93">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well G.7</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="94">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well G.8</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="95">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well G.9</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="96">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well G.10</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="97">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well G.11</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="98">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well G.12</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="99">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well H.1</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="100">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well H.2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="101">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well H.3</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="102">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well H.4</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="103">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well H.5</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="104">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well H.6</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="105">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well H.7</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="106">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well H.8</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="107">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well H.9</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="108">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well H.10</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="109">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well H.11</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="110">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Well H.12</Data>
+        </Cell>
+      </Row>
+    </Table>
+  </Worksheet>
+  <Worksheet ss:Name="Raw_P_1_Seq_1_Cycle1">
+    <Table x:FullColumns="1" x:FullRows="1">
+      <Column ss:AutoFitWidth="0" ss:Width="80" ss:Index="1" />
+      <Column ss:AutoFitWidth="0" ss:Width="80" ss:Index="2" />
+      <Column ss:AutoFitWidth="0" ss:Width="80" ss:Index="3" />
+      <Column ss:AutoFitWidth="0" ss:Width="80" ss:Index="4" />
+      <Column ss:AutoFitWidth="0" ss:Width="80" ss:Index="5" />
+      <Column ss:AutoFitWidth="0" ss:Width="80" ss:Index="6" />
+      <Column ss:AutoFitWidth="0" ss:Width="80" ss:Index="7" />
+      <Column ss:AutoFitWidth="0" ss:Width="80" ss:Index="8" />
+      <Column ss:AutoFitWidth="0" ss:Width="80" ss:Index="9" />
+      <Column ss:AutoFitWidth="0" ss:Width="80" ss:Index="10" />
+      <Column ss:AutoFitWidth="0" ss:Width="80" ss:Index="11" />
+      <Column ss:AutoFitWidth="0" ss:Width="80" ss:Index="12" />
+      <Column ss:AutoFitWidth="0" ss:Width="80" ss:Index="13" />
+      <Row ss:Height="15" ss:Index="1">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Cycle</Data>
+        </Cell>
+        <Cell ss:StyleID="NRB" ss:Index="2">
+          <Data ss:Type="Number">1</Data>
+        </Cell>
+        <Cell ss:StyleID="NRB" ss:Index="3">
+          <Data ss:Type="String">of</Data>
+        </Cell>
+        <Cell ss:StyleID="NRB" ss:Index="4">
+          <Data ss:Type="Number">1</Data>
+        </Cell>
+        <Cell ss:StyleID="NRB" ss:Index="6">
+          <Data ss:Type="String">ColorCode</Data>
+        </Cell>
+        <Cell ss:StyleID="OverflowNRB" ss:Index="7">
+          <Data ss:Type="String">Overflow</Data>
+        </Cell>
+        <Cell ss:StyleID="RejectedNRB" ss:Index="8">
+          <Data ss:Type="String">Rejected</Data>
+        </Cell>
+        <Cell ss:StyleID="NRB" ss:Index="10">
+          <Data ss:Type="String">Excitation Wavelength (nm)</Data>
+        </Cell>
+        <Cell ss:StyleID="NRB" ss:Index="11">
+          <Data ss:Type="String"> 485 SL 1</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="2">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Temperature</Data>
+        </Cell>
+        <Cell ss:StyleID="NRB" ss:Index="2">
+          <Data ss:Type="Number">17</Data>
+        </Cell>
+        <Cell ss:StyleID="NRB" ss:Index="3">
+          <Data ss:Type="String">°C</Data>
+        </Cell>
+        <Cell ss:StyleID="ErrorNRB" ss:Index="7">
+          <Data ss:Type="String">Error</Data>
+        </Cell>
+        <Cell ss:StyleID="NRB" ss:Index="10">
+          <Data ss:Type="String">Emission Wavelength (nm)</Data>
+        </Cell>
+        <Cell ss:StyleID="NRB" ss:Index="11">
+          <Data ss:Type="String"> 535 SL 1</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="3">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Time</Data>
+        </Cell>
+        <Cell ss:StyleID="NRB" ss:Index="2">
+          <Data ss:Type="Number">0</Data>
+        </Cell>
+        <Cell ss:StyleID="NRB" ss:Index="3">
+          <Data ss:Type="String">seconds</Data>
+        </Cell>
+        <Cell ss:StyleID="UnusedNRB" ss:Index="7">
+          <Data ss:Type="String">Unused</Data>
+        </Cell>
+        <Cell ss:StyleID="NRB" ss:Index="10">
+          <Data ss:Type="String">Integration Time</Data>
+        </Cell>
+        <Cell ss:StyleID="NRB" ss:Index="11">
+          <Data ss:Type="String"> 0.001</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="4">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">MatrixFormat</Data>
+        </Cell>
+        <Cell ss:StyleID="NRB" ss:Index="2">
+          <Data ss:Type="String">Well</Data>
+        </Cell>
+        <Cell ss:StyleID="IncorrectNRB" ss:Index="7">
+          <Data ss:Type="String">Incorrect</Data>
+        </Cell>
+        <Cell ss:StyleID="NRB" ss:Index="10">
+          <Data ss:Type="String" />
+        </Cell>
+        <Cell ss:StyleID="NRB" ss:Index="11">
+          <Data ss:Type="String" />
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="5">
+        <Cell ss:StyleID="OKNRB" ss:Index="7">
+          <Data ss:Type="String">OK</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="8">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well A.1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="9">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1628174</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1664329</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="10">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1415816</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1550941</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="12">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well A.2</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="13">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1096741</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1097866</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="14">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1055467</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1071745</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="16">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well A.3</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="17">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">508926</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">523385</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="18">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">504424</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">511085</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="20">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well A.4</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="21">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">860139</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">782002</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="22">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">781114</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">764578</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="24">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well A.5</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="25">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">620416</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">646985</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="26">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">608043</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">638073</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="28">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well A.6</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="29">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">384890</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">384068</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="30">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">356556</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">383296</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="32">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well A.7</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="33">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">144222</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">149449</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="34">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">125089</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">142979</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="36">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well A.8</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="37">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">391965</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">410528</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="38">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">370289</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">392058</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="40">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well A.9</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="41">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">577008</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">593981</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="42">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">467706</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">520578</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="44">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well A.10</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="45">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">888258</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">896531</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="46">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">783080</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">872828</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="48">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well A.11</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="49">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">135699</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">129927</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="50">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">114067</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">135151</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="52">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well A.12</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="53">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">9463</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">17688</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="54">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">12599</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">11711</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="56">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well B.1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="57">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">855047</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">933495</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="58">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">798239</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">938204</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="60">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well B.2</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="61">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1207499</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1266317</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="62">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1210543</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1217090</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="64">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well B.3</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="65">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">499884</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">607316</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="66">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">539473</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">589954</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="68">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well B.4</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="69">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">761277</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">839623</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="70">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">762875</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">771063</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="72">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well B.5</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="73">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">313022</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">306998</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="74">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">311418</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">307222</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="76">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well B.6</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="77">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">363594</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">369290</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="78">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">358006</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">404635</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="80">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well B.7</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="81">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">732093</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">872489</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="82">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">724146</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">804070</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="84">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well B.8</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="85">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">700253</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">832700</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="86">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">697359</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">743811</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="88">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well B.9</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="89">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">862197</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">978759</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="90">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">829856</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">937970</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="92">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well B.10</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="93">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">742987</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">832269</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="94">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">707650</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">815341</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="96">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well B.11</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="97">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">517299</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">581913</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="98">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">488090</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">537517</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="100">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well B.12</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="101">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1015742</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1054178</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="102">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">896411</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1024777</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="104">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well C.1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="105">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">2633663</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">2510792</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="106">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">2284263</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">2650515</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="108">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well C.2</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="109">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">855133</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">867509</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="110">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">807867</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">875220</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="112">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well C.3</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="113">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">651820</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">655445</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="114">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">594154</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">649782</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="116">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well C.4</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="117">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">6630</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">22846</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="118">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">10457</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">10439</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="120">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well C.5</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="121">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">11324</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">10605</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="122">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">9743</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">11849</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="124">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well C.6</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="125">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1608938</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1683140</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="126">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1556040</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1691059</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="128">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well C.7</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="129">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">552535</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">614330</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="130">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">529808</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">582583</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="132">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well C.8</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="133">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1310968</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1541881</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="134">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1224097</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1342760</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="136">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well C.9</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="137">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">999145</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1036605</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="138">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">885259</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1004161</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="140">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well C.10</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="141">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">767299</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">847019</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="142">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">671467</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">804512</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="144">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well C.11</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="145">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1045255</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1082660</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="146">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">921552</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1087951</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="148">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well C.12</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="149">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">967203</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">973594</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="150">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">803729</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">936076</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="152">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well D.1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="153">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">734446</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">785983</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="154">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">684478</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">759653</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="156">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well D.2</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="157">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1233408</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1204566</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="158">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1176692</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1200453</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="160">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well D.3</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="161">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">819717</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">853171</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="162">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">783795</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">801081</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="164">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well D.4</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="165">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">17948</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">11119</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="166">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">9040</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">11462</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="168">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well D.5</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="169">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">594753</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">629727</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="170">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">570274</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">584756</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="172">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well D.6</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="173">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1028869</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1019520</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="174">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">967231</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1014352</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="176">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well D.7</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="177">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">883477</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">955820</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="178">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">764131</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">859588</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="180">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well D.8</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="181">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">944758</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1013931</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="182">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">847518</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">951059</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="184">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well D.9</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="185">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">707803</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">764961</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="186">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">640985</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">752159</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="188">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well D.10</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="189">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">963514</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">959953</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="190">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">871002</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">963144</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="192">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well D.11</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="193">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">734025</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">769797</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="194">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">671305</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">756928</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="196">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well D.12</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="197">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1201662</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1209429</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="198">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1024043</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1208623</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="200">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well E.1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="201">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">801887</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">734808</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="202">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">679415</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">766607</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="204">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well E.2</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="205">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">851892</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">857355</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="206">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">761760</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">841508</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="208">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well E.3</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="209">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">940274</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">976947</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="210">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">893575</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">937728</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="212">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well E.4</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="213">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1189735</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1188961</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="214">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1122584</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1115994</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="216">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well E.5</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="217">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1342574</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1362478</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="218">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1291680</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1233167</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="220">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well E.6</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="221">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">802898</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">858832</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="222">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">722301</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">813122</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="224">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well E.7</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="225">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">594527</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">686731</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="226">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">549961</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">579465</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="228">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well E.8</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="229">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">610637</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">679174</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="230">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">594836</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">663235</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="232">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well E.9</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="233">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">12880</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">11464</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="234">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">8499</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">12357</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="236">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well E.10</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="237">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1151087</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1172863</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="238">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1008448</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1111496</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="240">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well E.11</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="241">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">888030</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">926348</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="242">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">748114</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">890974</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="244">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well E.12</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="245">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">966392</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1001769</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="246">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">780100</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">981162</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="248">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well F.1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="249">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">2041778</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">2059369</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="250">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1753529</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">2024108</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="252">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well F.2</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="253">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1590281</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1563162</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="254">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1432368</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1525347</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="256">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well F.3</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="257">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">2108879</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">2068842</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="258">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1735760</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">2018606</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="260">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well F.4</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="261">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">410462</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">403283</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="262">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">398454</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">386169</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="264">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well F.5</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="265">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">2290289</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">2436831</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="266">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">2151238</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">2261017</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="268">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well F.6</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="269">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">83204</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">94777</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="270">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">86943</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">91785</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="272">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well F.7</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="273">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">679757</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">782352</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="274">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">649980</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">722020</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="276">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well F.8</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="277">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">527211</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">559592</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="278">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">426416</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">520897</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="280">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well F.9</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="281">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">465098</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">484786</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="282">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">423726</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">470039</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="284">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well F.10</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="285">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">750911</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">735010</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="286">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">659899</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">711865</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="288">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well F.11</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="289">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1573053</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1656363</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="290">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1328291</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1605400</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="292">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well F.12</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="293">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">882374</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">949049</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="294">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">751668</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">949594</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="296">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well G.1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="297">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1112379</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1123028</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="298">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1011747</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1158179</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="300">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well G.2</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="301">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">306828</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">314593</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="302">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">289014</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">317006</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="304">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well G.3</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="305">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">450279</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">459605</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="306">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">442709</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">446365</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="308">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well G.4</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="309">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">3315278</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">3647810</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="310">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">3386710</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">3354693</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="312">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well G.5</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="313">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">2710985</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">3226617</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="314">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">2879745</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">3170015</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="316">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well G.6</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="317">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1036066</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1077386</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="318">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1036739</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1080190</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="320">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well G.7</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="321">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">723768</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">791686</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="322">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">703172</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">782127</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="324">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well G.8</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="325">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">696893</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">798486</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="326">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">696351</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">781210</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="328">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well G.9</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="329">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">982261</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1082167</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="330">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">937407</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1059050</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="332">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well G.10</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="333">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">957234</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">992901</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="334">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">892168</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">990673</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="336">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well G.11</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="337">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">415399</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">447081</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="338">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">387569</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">438801</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="340">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well G.12</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="341">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">249135</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">261889</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="342">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">220443</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">253219</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="344">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well H.1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="345">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">656217</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">693223</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="346">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">639045</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">731690</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="348">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well H.2</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="349">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">3658035</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">3367595</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="350">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">3248663</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">3607550</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="352">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well H.3</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="353">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">504658</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">482268</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="354">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">483807</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">515946</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="356">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well H.4</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="357">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1023686</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1044386</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="358">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1014121</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">978803</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="360">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well H.5</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="361">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">932928</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1015189</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="362">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">935747</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">979852</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="364">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well H.6</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="365">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">575761</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">632436</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="366">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">579938</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">636524</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="368">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well H.7</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="369">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">833386</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1017162</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="370">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">802933</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">957344</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="372">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well H.8</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="373">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1011019</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1182218</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="374">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">950777</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1159968</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="376">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well H.9</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="377">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1302634</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1439796</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="378">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1208276</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1384570</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="380">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well H.10</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="381">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1023069</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1112290</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="382">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">956243</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1122095</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="384">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well H.11</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="385">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1142981</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1226012</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="386">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1020156</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1194359</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="388">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">Well H.12</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="2">
+          <Data ss:Type="String">MeasurementValue-1</Data>
+        </Cell>
+        <Cell ss:StyleID="BCC" ss:Index="3">
+          <Data ss:Type="String">MeasurementValue-2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="389">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 1</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">1050812</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1158148</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="390">
+        <Cell ss:StyleID="BCC" ss:Index="1">
+          <Data ss:Type="String">DataRow 2</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="2">
+          <Data ss:Type="Number">898020</Data>
+        </Cell>
+        <Cell ss:StyleID="OKNRB" ss:Index="3">
+          <Data ss:Type="Number">1074109</Data>
+        </Cell>
+      </Row>
+    </Table>
+  </Worksheet>
+  <Worksheet ss:Name="Method_Info">
+    <Table x:FullColumns="1" x:FullRows="1">
+      <Column ss:AutoFitWidth="0" ss:Width="140" ss:Index="1" />
+      <Column ss:AutoFitWidth="0" ss:Width="140" ss:Index="2" />
+      <Column ss:AutoFitWidth="0" ss:Width="140" ss:Index="3" />
+      <Row ss:Height="15" ss:Index="2">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Methods</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String" />
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="3">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Name</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">x_DTX880_Fluor_Int_Bottom fly mode</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="4">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">SequenceNumber</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="Number">1</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="5">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Hardware</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">SL 1</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="6">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Excitation Wavelength (nm)</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String"> 485 SL 1</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="7">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Emission Wavelength (nm)</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String"> 535 SL 1</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="8">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Integration Time</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String"> 0.001</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="10">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Settings</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String" />
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="11">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Technic</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">FluorescenceIntensityBottom</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="12">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Type</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">Monochromatic, AreaScan</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="13">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">ReadHeight</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="Number">3</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="14">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">WellRows</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="Number">8</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="15">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">WellCols</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="Number">12</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="16">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Cycles</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="Number">1</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="17">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">PointsColumn</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="Number">2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="18">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">PointsRows</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="Number">2</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="19">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">MaximumValue</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="Number">3658035</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="20">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">MinimumValue</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="Number">6630</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="21">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Units</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">RFU</Data>
+        </Cell>
+      </Row>
+      <Row ss:Height="15" ss:Index="22">
+        <Cell ss:StyleID="BLB" ss:Index="1">
+          <Data ss:Type="String">Notes</Data>
+        </Cell>
+        <Cell ss:StyleID="NLB" ss:Index="2">
+          <Data ss:Type="String">+ | X:-2| Y:-1| Ex:-1| Em:-2| L:0| Sh:0| |Gains:1 3|Led: 5| LedCurrent:30.78mA|  LedPoti:14| LedLowPoti:165| LedLowRefADC:3752| RefNorm:56192| PMTPower:175| PMTThreshold:139| Background:369 @ 39649| :0.99679 5326 3752 55103 38205 86 138 10 | :-24 388 200 2282 59 160 0| :418 1560|Z-Pos: 300 2110 0 0 0</Data>
+        </Cell>
+      </Row>
+    </Table>
+  </Worksheet>
+</Workbook>
