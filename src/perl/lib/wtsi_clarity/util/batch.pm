@@ -51,7 +51,7 @@ sub batch_update {
 sub _check_batchable {
   my ($self, $batchable) = @_;
 
-  if (none { $batchable == $_ } @BATCHABLES) {
+  if (none { $batchable eq $_ } @BATCHABLES) {
     croak "$batchable cant not be retrieved with a batch request";
   }
 
