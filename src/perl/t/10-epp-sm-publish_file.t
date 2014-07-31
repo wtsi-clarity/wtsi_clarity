@@ -6,11 +6,11 @@ use XML::LibXML;
 use_ok('wtsi_clarity::epp::sm::publish_file');
 
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sm/publish_file';
-local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
+# local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
 {
   my $pf = wtsi_clarity::epp::sm::publish_file->new(
-    process_url => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-2995',
+    process_url => 'http://claritytest.com/processes/24-2995',
   );
 
   isa_ok($pf, 'wtsi_clarity::epp::sm::publish_file');
@@ -19,7 +19,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
 {
   my $pf = wtsi_clarity::epp::sm::publish_file->new(
-    process_url => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-2995',
+    process_url => 'http://claritytest.com/processes/24-2995',
   );
 
   my @output_uris = (
@@ -31,7 +31,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
 {
   my $pf = wtsi_clarity::epp::sm::publish_file->new(
-    process_url => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-2995',
+    process_url => 'http://claritytest.com/api/v2/processes/24-2995',
   );
 
   my $parser = XML::LibXML->new();
@@ -44,7 +44,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
 {
   my $pf = wtsi_clarity::epp::sm::publish_file->new(
-    process_url => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-2995',
+    process_url => 'http://claritytest.com/processes/24-2995',
   );
 
   my $parser = XML::LibXML->new();

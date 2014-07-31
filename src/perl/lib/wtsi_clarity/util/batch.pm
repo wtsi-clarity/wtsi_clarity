@@ -4,14 +4,23 @@ use Moose::Role;
 use Carp;
 use XML::LibXML;
 use Readonly;
+use List::Util qw/none/;
 
-requires 'request';
+requires 'post';
+requires 'config';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Array my @BATCHABLES => qw/artifacts containers files samples/;
 ## use critic
 
 our $VERSION = '0.0';
+
+has '_xml_parser'  => (
+  isa             => 'XML::LibXML',
+  is              => 'ro',
+  required        => 0,
+  default         => sub { return XML::LibXML->new(); },
+);
 
 sub batch_retrieve {
   my ($self, $batchable, $links) = @_;
@@ -42,7 +51,7 @@ sub batch_update {
 sub _check_batchable {
   my ($self, $batchable) = @_;
 
-  if (!($batchable ~~ @BATCHABLES)) {
+  if (none { $batchable == $_ } @BATCHABLES) {
     croak "$batchable cant not be retrieved with a batch request";
   }
 
@@ -53,10 +62,9 @@ sub _send_request {
   my ($self, $type, $batchable, $payload) = @_;
 
   my $uri = $self->config->clarity_api->{'base_uri'} . "/$batchable/batch/$type";
+  my $response = $self->post($uri, $payload->toString());
 
-  my $response = $self->request->post($uri, $payload->toString());
-
-  return $self->xml_parser->parse_string($response);
+  return $self->_xml_parser->parse_string($response);
 }
 
 1;

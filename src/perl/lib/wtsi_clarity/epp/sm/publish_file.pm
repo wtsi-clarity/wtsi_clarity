@@ -7,7 +7,6 @@ use List::MoreUtils qw/uniq/;
 
 extends 'wtsi_clarity::epp';
 
-with 'wtsi_clarity::util::batch';
 with 'wtsi_clarity::util::clarity_elements';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
@@ -23,9 +22,9 @@ override 'run' => sub {
   my $self= shift;
   super();
 
-  my $output_artifacts = $self->batch_retrieve('artifacts', $self->_output_uris);
+  my $output_artifacts = $self->request->batch_retrieve('artifacts', $self->_output_uris);
   my $file_uris        = $self->_extract_files($output_artifacts);
-  my $files            = $self->batch_retrieve('files', $file_uris);
+  my $files            = $self->request->batch_retrieve('files', $file_uris);
 
   $self->_set_files_to_published($files);
 };
@@ -57,7 +56,7 @@ sub _extract_files {
 
 sub _set_files_to_published {
   my ($self, $files_xml) = @_;
-  return $self->batch_update('files', $self->_set_is_published($files_xml));
+  return $self->request->batch_update('files', $self->_set_is_published($files_xml));
 }
 
 sub _set_is_published {
