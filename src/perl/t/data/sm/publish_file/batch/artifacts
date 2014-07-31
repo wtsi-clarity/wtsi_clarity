@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/92-7352?state=3552" limsid="92-7352">
+        <name>QC Report</name>
+        <type>ResultFile</type>
+        <output-type>ResultFile</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-2995" limsid="24-2995"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/SMI102A1" limsid="SMI102A1"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/SMI102A96" limsid="SMI102A96"/>
+        <file:file limsid="92-7352-40-168" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/files/92-7352-40-168"/>
+    </art:artifact>
+</art:details>
