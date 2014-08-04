@@ -566,7 +566,11 @@ my $TEST_DATA4 = {
 { # _get_containers_data
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sm/worksheet';
   my $step = wtsi_clarity::epp::sm::worksheet->new(
-    process_url => 'http://clarity-ap:8080/api/v2/processes/24-102407', worksheet_type => 'cherrypicking');
+                process_url => 'http://clarity-ap:8080/api/v2/processes/24-102407',
+                worksheet_type => 'cherrypicking',
+                worksheet_filename => 'xxxxx_worksheet.pdf',
+                tecan_filename => 'xxxxx_tecan.gwl',
+              );
 
   my $data = $step->_get_containers_data();
   my $container_uri = q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containers/27-8129};
@@ -667,7 +671,11 @@ my $TEST_DATA4 = {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sm/worksheet';
   # local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
   my $step = wtsi_clarity::epp::sm::worksheet->new(
-    process_url => 'http://clarity-ap:8080/api/v2/processes/24-102407', worksheet_type => 'cherrypicking');
+                process_url => 'http://clarity-ap:8080/api/v2/processes/24-102407',
+                worksheet_type => 'cherrypicking',
+                worksheet_filename => 'xxxxx_worksheet.pdf',
+                tecan_filename => 'xxxxx_tecan.gwl',
+              );
 
   my @expected_data = (
     { 'pos' => [0,0],  'style' => 'HEADER_STYLE'},

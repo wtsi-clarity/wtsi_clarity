@@ -66,33 +66,29 @@ override 'run' => sub {
   my $pdf_generator = wtsi_clarity::util::pdf_worksheet_generator->new( 'pdf_data' => $pdf_data );
   my $worksheet_file = $pdf_generator->create_worksheet_file()  or croak q{Impossible to create the pdf version of the worksheet!};
 
-  my $tmpdir = File::Temp->newdir( CLEANUP => 1 )               or croak q{Impossible to create the temporary folder for the pdf!};
-  my $filename = $tmpdir->dirname().'/worksheet.pdf';
-  $worksheet_file->saveas($filename)                            or croak q{Impossible to save the pdf version of the worksheet!};
+  $worksheet_file->saveas('./'.$self->worksheet_filename);
 
-  my $tecan_filename;
   # tecan file generation
   # temp way to only create the worksheet
-  if ($self->create_tecan) {
-    $tecan_filename = _create_tecan_file($containers_data, $stamp);
-  }
-
-  # uploading files
-  my $outputs       = $self->fetch_targets_hash($OUTPUT_FILES);
-  while (my ($uri, $output) = each %{$outputs} ) {
-    my $name = ($self->find_elements($output,    q{/art:artifact/name}      ) )[0] ->textContent;
-    if ($name eq 'Worksheet') {
-      $self->addfile_to_resource($uri, $filename)
-        or croak qq[Could not add file $filename to the resource $uri.];
-    }
-    if ($self->create_tecan && $name eq 'Tecan File') {
-      $self->addfile_to_resource($uri, $tecan_filename)
-        or croak qq[Could not add file $tecan_filename to the resource $uri.];
-    }
+  if ($self->tecan_filename) {
+    _create_tecan_file($containers_data, $stamp, $self->tecan_filename);
   }
 
   return 1;
 };
+
+has 'worksheet_filename' => (
+  isa => 'Str',
+  is => 'ro',
+  required => 1,
+);
+
+has 'tecan_filename' => (
+  isa => 'Str',
+  is => 'ro',
+  required => 1,
+);
+
 
 has 'worksheet_type' => (
   isa => 'Str',
@@ -128,13 +124,6 @@ sub _get_type_data {
   };
 }
 
-has 'create_tecan' => (
-  isa => 'Bool',
-  is  => 'ro',
-  required => 0,
-  default => 0,
-);
-
 ################# date & username ############
 
 sub _get_username {
@@ -155,12 +144,9 @@ sub _get_stamp {
 ################# tecan file #################
 
 sub _create_tecan_file {
-  my ($containers_data, $stamp) = @_;
+  my ($containers_data, $stamp, $full_filename) = @_;
 
   my $file_content = _get_TECAN_file_content($containers_data, $stamp);
-
-  my $tmpdirname = File::Temp->newdir(CLEANUP => 1)->dirname();
-  my $full_filename = qq{$tmpdirname/tecan.gwl};
 
   open my $fh, '>', $full_filename
     or croak qq{Could not create/open file '$full_filename'.};
