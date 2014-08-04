@@ -66,7 +66,7 @@ override 'run' => sub {
   my $pdf_generator = wtsi_clarity::util::pdf_worksheet_generator->new( 'pdf_data' => $pdf_data );
   my $worksheet_file = $pdf_generator->create_worksheet_file()  or croak q{Impossible to create the pdf version of the worksheet!};
 
-  $worksheet_file->saveas('./'.$self->worksheet_filename);
+  $worksheet_file->saveas(q{./}.$self->worksheet_filename);
 
   # tecan file generation
   # temp way to only create the worksheet
