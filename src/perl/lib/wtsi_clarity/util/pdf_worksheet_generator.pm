@@ -18,7 +18,7 @@ Readonly::Scalar my $subtitle_shift           => 20;
 Readonly::Scalar my $subtitle_size            => 12;
 Readonly::Scalar my $source_table_height      => 700;
 Readonly::Scalar my $destination_table_height => 450;
-Readonly::Scalar my $buffer_table_height      => 350;
+Readonly::Scalar my $buffer_table_height      => 375;
 
 has 'pdf_data' => (
   isa => 'HashRef',
@@ -144,7 +144,7 @@ sub _add_buffer_table_to_page {
     x => $left_margin,
     w => ($nb_core_col + 1)*$col_width,
     start_y => $y,
-    start_h => 600,
+    start_h => 375,
     padding => 2,
     font  =>      $pdf->corefont('Courier-Bold', -encoding => 'latin1'),
     cell_props => $table_properties,
@@ -177,7 +177,7 @@ sub _add_table_to_page {
     $pdf, $page, \@local_data,
     x => $x, w => 400,
     start_y    => $y,
-    start_h    => 600,
+    start_h    => 100,
     font_size  => 9,
     padding    => 4,
     font       => $pdf->corefont('Helvetica', -encoding => 'latin1'),

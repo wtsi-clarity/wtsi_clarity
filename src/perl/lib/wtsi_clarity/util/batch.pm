@@ -4,7 +4,7 @@ use Moose::Role;
 use Carp;
 use XML::LibXML;
 use Readonly;
-use List::Util qw/none/;
+use List::MoreUtils qw/none/;
 
 requires 'post';
 requires 'config';

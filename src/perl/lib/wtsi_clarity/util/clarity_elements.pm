@@ -164,6 +164,73 @@ sub trim_value {
   return $v;
 }
 
+sub find_elements_first_value {
+  my ($self, $doc, $xpath, $default) = @_;
+  return $self->_find_elements_first_result($doc, $xpath, 'other', 0,  $default)
+}
+
+sub find_elements_first_textContent {
+  my ($self, $doc, $xpath, $default) = @_;
+  return $self->_find_elements_first_result($doc, $xpath, 'other', 1,  $default)
+}
+
+sub find_udf_element_value {
+  my ($self, $doc, $xpath, $default) = @_;
+  return $self->_find_elements_first_result($doc, $xpath, 'udf', 0,  $default)
+}
+
+sub find_udf_element_textContent {
+  my ($self, $doc, $xpath, $default) = @_;
+  return $self->_find_elements_first_result($doc, $xpath, 'udf', 1,  $default)
+}
+
+sub find_clarity_element_value {
+  my ($self, $doc, $xpath, $default) = @_;
+  return $self->_find_elements_first_result($doc, $xpath, 'clarity', 0,  $default)
+}
+
+sub find_clarity_element_textContent {
+  my ($self, $doc, $xpath, $default) = @_;
+  return $self->_find_elements_first_result($doc, $xpath, 'clarity', 1,  $default)
+}
+
+sub _find_elements_first_result {
+  my ($self, $doc, $xpath, $type, $isText, $default) = @_;
+  my $element;
+
+  if ($type eq 'udf')
+  {
+    $element = $self->find_udf_element($doc, $xpath);
+  }
+  elsif ($type eq 'clarity')
+  {
+    $element = $self->find_clarity_element($doc, $xpath);
+  }
+  else
+  {
+    my @elements = $self->find_elements($doc, $xpath);
+
+    if (@elements) {
+      $element = $elements[0];
+    } else {
+      croak qq{Empty result when applying xpath with find_elements: '$xpath'.} ;
+    }
+  }
+
+  if (!$element) {
+    return $default if (defined $default) ;
+    croak qq{Empty result when applying xpath : '$xpath'.} ;
+  }
+
+  if ($isText) {
+    return $element->textContent;
+  } else {
+    return $element->getValue();
+  }
+}
+
+
+
 1;
 
 __END__
@@ -227,6 +294,38 @@ wtsi_clarity::util::clarity_elements
 
 =head2 create_clarity_element
   creates a new element, append it to the xml at the given position, and returns it
+
+
+=head2
+ find_elements_first_value - takes some XML, a xpath and an optional default value if not found.
+ Will return the *value* of the first element found.
+ if no element can be found, it will croak, except if a default value as been provided.
+
+=head2
+ find_elements_first_textContent - takes some XML, a xpath and an optional default value if not found.
+ Will return the *textContent* of the first element found.
+ if no element can be found, it will croak, except if a default value as been provided.
+
+=head2
+find_udf_element_value - takes some XML, an element name and an optional default value if not found.
+ Will return the *value* of the UDF element found.
+ if no element can be found, it will croak, except if a default value as been provided.
+
+=head2
+ find_udf_element_textContent - takes some XML, an element name and an optional default value if not found.
+ Will return the *textContent* of the UDF element found.
+ if no element can be found, it will croak, except if a default value as been provided.
+
+=head2
+ find_clarity_element_value - takes some XML, an element name and an optional default value if not found.
+ Will return the *value* of the clarity element found.
+ if no element can be found, it will croak, except if a default value as been provided.
+
+=head2
+ find_clarity_element_textContent - takes some XML, an element name and an optional default value if not found.
+ Will return the *textContent* of the clarity element found.
+ if no element can be found, it will croak, except if a default value as been provided.
+
 
 
 =head2 update_text
