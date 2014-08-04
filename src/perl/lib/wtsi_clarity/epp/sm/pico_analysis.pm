@@ -10,7 +10,7 @@ with 'wtsi_clarity::util::clarity_elements';
 with 'wtsi_clarity::util::clarity_elements_fetcher_role_util';
 with 'wtsi_clarity::util::clarity_process';
 
-## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar our $INPUT_URIS_PATH       => q(/prc:process/input-output-map/input/@uri);
 Readonly::Scalar our $ARTIFACT_PATH         => q(/art:details/art:artifact);
 Readonly::Scalar our $ARTIFACT_NAME_PATH    => q(/art:artifact/name);
@@ -23,7 +23,7 @@ Readonly::Scalar our $ARTIFACT_LIMSID_PATH  => q(@limsid);
 Readonly::Scalar our $STANDARD_PLATE_NAME   => q(StandardPlate);
 Readonly::Scalar our $PICO_ASSAY_PLATE_NAME => q(PicoAssay);
 Readonly::Scalar our $PROCESS_NAME          => q(Pico DTX (SM));
-## use critic
+## use critic
 
 our $VERSION = '0.0';
 
