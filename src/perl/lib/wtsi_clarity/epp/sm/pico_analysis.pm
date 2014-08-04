@@ -10,6 +10,7 @@ with 'wtsi_clarity::util::clarity_elements';
 with 'wtsi_clarity::util::clarity_elements_fetcher_role_util';
 with 'wtsi_clarity::util::clarity_process';
 
+## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar our $INPUT_URIS_PATH       => q(/prc:process/input-output-map/input/@uri);
 Readonly::Scalar our $ARTIFACT_PATH         => q(/art:details/art:artifact);
 Readonly::Scalar our $ARTIFACT_NAME_PATH    => q(/art:artifact/name);
@@ -22,6 +23,7 @@ Readonly::Scalar our $ARTIFACT_LIMSID_PATH  => q(@limsid);
 Readonly::Scalar our $STANDARD_PLATE_NAME   => q(StandardPlate);
 Readonly::Scalar our $PICO_ASSAY_PLATE_NAME => q(PicoAssay);
 Readonly::Scalar our $PROCESS_NAME          => q(Pico DTX (SM));
+## use critic
 
 our $VERSION = '0.0';
 
@@ -31,8 +33,7 @@ override 'run' => sub {
 
   my ($dtx1, $dtx2, $standard) = $self->_get_dtx_files();
 
-  use Data::Dumper;
-  print Dumper $dtx1, $dtx2, $standard;
+  return;
 };
 
 has '_input_uris' => (
@@ -123,7 +124,7 @@ sub _get_files {
 
   # Always two files...
   foreach (0..1) {
-    my ($file_name, $file_location) = $self->_extract_files($output_analyte_xml[$_]);
+    my ($file_name, $file_location) = $self->_extract_file_info($output_analyte_xml[$_]);
     if ($file_name eq $STANDARD_PLATE_NAME) {
       $standard = $file_location;
     } elsif ($file_name eq $PICO_ASSAY_PLATE_NAME) {
@@ -134,15 +135,31 @@ sub _get_files {
   return ($dtx, $standard);
 }
 
-sub _extract_files {
+sub _extract_file_info {
   my ($self, $output_analyte) = @_;
 
-  my $file_name = $output_analyte->findvalue($ARTIFACT_NAME_PATH);
-  my $file_url = $output_analyte->findvalue($FILE_URL_PATH);
+  my $file_url = $self->_extract_file_url($output_analyte);
   my $file_xml = $self->fetch_and_parse($file_url);
-  my $file_location = $file_xml->findvalue($FILE_CONTENT_LOCATION);
 
-  return ($file_name, $file_location);
+  return ($self->_extract_file_name($output_analyte), $self->_extract_file_location($file_xml));
+}
+
+sub _extract_file_url {
+  my ($self, $output_analyte) = @_;
+  my $file_url = $output_analyte->findvalue($FILE_URL_PATH);
+  return $file_url;
+}
+
+sub _extract_file_name {
+  my ($self, $output_analyte) = @_;
+  my $file_name = $output_analyte->findvalue($ARTIFACT_NAME_PATH);
+  return $file_name;
+}
+
+sub _extract_file_location {
+  my ($self, $file_xml) = @_;
+  my $file_location = $file_xml->findvalue($FILE_CONTENT_LOCATION);
+  return $file_location;
 }
 
 1;
