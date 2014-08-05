@@ -1,6 +1,8 @@
 CHANGES for wtsi_clarity Perl project
-release 0.31
+release 0.32
   - Refactored worksheet and adapted it to work with Fluidigm
+  - Publish QC Report
+  - Picogreen calculation module
 
 release 0.31
   - Rabbit message queue client
