@@ -56,7 +56,7 @@ sub _find_parent {
 sub find_previous_process {
   my ($self, $artifact_limsid, $process_name) = @_;
 
-  my $uri = $self->config->clarity_api->{'base_uri'} . '/processes?inputartifactlimsid=' . $artifact_limsid;
+  my $uri = $self->config->clarity_api->{'base_uri'} . '/processes/?inputartifactlimsid=' . $artifact_limsid;
   my $process_list_xml = $self->fetch_and_parse($uri);
 
   my @processes = $process_list_xml->findnodes($PROCESS_URI_PATH)->get_nodelist();
