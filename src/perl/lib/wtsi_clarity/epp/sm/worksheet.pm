@@ -7,9 +7,11 @@ use PDF::API2;
 use PDF::Table;
 use File::Temp;
 use DateTime;
+
 use wtsi_clarity::util::request;
 use wtsi_clarity::util::well_mapper;
 use wtsi_clarity::util::pdf_worksheet_generator;
+use POSIX;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $ARTIFACT_PATH      => q(/prc:process/input-output-map/input/@post-process-uri);
@@ -54,50 +56,73 @@ $File::Temp::KEEP_ALL = 1;
 override 'run' => sub {
   my $self= shift;
   super();
+
   my $containers_data = $self->_get_containers_data();
+  my $type_data = $self->_get_type_data();
   my $stamp = _get_stamp($containers_data, $self->request->user);
 
   # pdf generation
-  my $pdf_data = _get_pdf_data();
-
-  my $pdf_generator = wtsi_clarity::epp::util::pdf_worksheet_generator->new( 'pdf_data' => $pdf_data );
+  my $pdf_data = _get_pdf_data($containers_data, $stamp, $type_data);
+  my $pdf_generator = wtsi_clarity::util::pdf_worksheet_generator->new( 'pdf_data' => $pdf_data );
   my $worksheet_file = $pdf_generator->create_worksheet_file()  or croak q{Impossible to create the pdf version of the worksheet!};
 
-  my $tmpdir = File::Temp->newdir( CLEANUP => 1 )               or croak q{Impossible to create the temporary folder for the pdf!};
-  my $filename = $tmpdir->dirname().'/worksheet.pdf';
-  $worksheet_file->saveas($filename)                            or croak q{Impossible to save the pdf version of the worksheet!};
+  $worksheet_file->saveas(q{./}.$self->worksheet_filename);
 
-
-  my $tecan_filename;
   # tecan file generation
   # temp way to only create the worksheet
-  if ($self->create_tecan) {
-    $tecan_filename = _create_tecan_file($containers_data, $stamp);
-  }
-
-  # uploading files
-  my $outputs       = $self->fetch_targets_hash($OUTPUT_FILES);
-  while (my ($uri, $output) = each %{$outputs} ) {
-    my $name = ($self->find_elements($output,    q{/art:artifact/name}      ) )[0] ->textContent;
-    if ($name eq 'Worksheet') {
-      $self->addfile_to_resource($uri, $filename)
-        or croak qq[Could not add file $filename to the resource $uri.];
-    }
-    if ($self->create_tecan && $name eq 'Tecan File') {
-      $self->addfile_to_resource($uri, $tecan_filename)
-        or croak qq[Could not add file $tecan_filename to the resource $uri.];
-    }
+  if ($self->tecan_filename) {
+    _create_tecan_file($containers_data, $stamp, $self->tecan_filename);
   }
 
   return 1;
 };
 
-has 'create_tecan' => (
-  isa => 'Bool',
-  is  => 'ro',
-  required => 0,
-  default => 0,
+has 'worksheet_filename' => (
+  isa => 'Str',
+  is => 'ro',
+  required => 1,
 );
+
+has 'tecan_filename' => (
+  isa => 'Str',
+  is => 'ro',
+  required => 1,
+);
+
+
+has 'worksheet_type' => (
+  isa => 'Str',
+  is => 'ro',
+  required => 1,
+  trigger => \&_set_worksheet_type,
+);
+
+has 'action_title'              => ( isa => 'Str', is => 'rw', );
+
+sub _set_worksheet_type {
+  my ($self, $type, $old_type) = @_;
+
+  if ($type =~ /fluidigm/xms )
+  {
+    $self->action_title(q{Fluidigm});
+    return;
+  }
+
+  if ($type =~ /cherrypicking/xms )
+  {
+    $self->action_title(q{Cherrypicking});
+    return ;
+  }
+
+  croak qq{Unknown worksheet type! $type.};
+}
+
+sub _get_type_data {
+  my ($self) = @_;
+  return {
+    'action_title' => $self->action_title ,
+  };
+}
 
 ################# date & username ############
 
@@ -119,12 +144,9 @@ sub _get_stamp {
 ################# tecan file #################
 
 sub _create_tecan_file {
-  my ($containers_data, $stamp) = @_;
+  my ($containers_data, $stamp, $full_filename) = @_;
 
   my $file_content = _get_TECAN_file_content($containers_data, $stamp);
-
-  my $tmpdirname = File::Temp->newdir(CLEANUP => 1)->dirname();
-  my $full_filename = qq{$tmpdirname/tecan.gwl};
 
   open my $fh, '>', $full_filename
     or croak qq{Could not create/open file '$full_filename'.};
@@ -199,8 +221,6 @@ sub _get_TECAN_file_content_per_URI {
       my $input_type    = $data->{'input_container_info'}->{$input_uri}->{'type'};
       my $input_barcode = $data->{'input_container_info'}->{$input_uri}->{'barcode'};
 
-      # print "$input_barcode;;$input_type;$inp_loc_dec;;$sample_volume\n";
-
       my $input_sample_string  = qq{A;$input_barcode;;$input_type;$inp_loc_dec;;$sample_volume};
       my $output_sample_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$sample_volume};
       my $w_string = q{W;};
@@ -223,14 +243,14 @@ sub _get_TECAN_file_content_per_URI {
 
 
 sub _get_pdf_data {
-  my ($containers_data, $stamp) = @_;
+  my ($containers_data, $stamp, $type_data) = @_;
   my $pdf_data = {};
   $pdf_data->{'stamp'} = $stamp;
   $pdf_data->{'pages'} = [];
 
   while (my ($uri, $data) = each %{$containers_data->{'output_container_info'}} ) {
     my $page = {};
-    $page->{'title'} = _get_title($containers_data, $uri, q{Cherrypicking});
+    $page->{'title'} = _get_title($containers_data, $uri, $type_data->{'action_title'});
     $page->{'input_table_title'} = q{Source plates};
     $page->{'input_table'} = _get_source_plate_data($containers_data, $uri);
 
@@ -291,7 +311,7 @@ sub _get_destination_plate_data {
 
   my $plate_name = $data->{'output_container_info'}->{$uri}->{'plate_name'};
   my $barcode = $data->{'output_container_info'}->{$uri}->{'barcode'};
-  my $wells = $data->{'output_container_info'}->{$uri}->{'wells'};
+  my $wells = $data->{'output_container_info'}->{$uri}->{'occ_wells'};
   push @table_data, [$plate_name, $barcode, $wells];
   return \@table_data;
 }
@@ -350,7 +370,7 @@ sub _get_cell_content {
     my $loc = $cell->{'input_location'};
     my $v = $cell->{'sample_volume'};
     my $b = $cell->{'buffer_volume'};
-    return $loc."\n".$id."\nv".(int $v).' b'.(int $b);
+    return $loc."\n".$id."\nv".(ceil($v)).' b'.(ceil($b));
   }
 
   return q{};
@@ -413,6 +433,7 @@ sub _get_location {
   return (chr $A_CHAR_CODE+$j).q{:}.$i;
 }
 
+
 sub _get_containers_data {
   my ($self) = @_;
 
@@ -423,52 +444,42 @@ sub _get_containers_data {
   my $oi_map = $self->_get_oi_map($previous_processes);
 
   my $all_data = {};
-  my $process_id  = ($self->find_elements($self->process_doc, $PROCESS_ID_PATH))[0]->getValue();
+  my $process_id  = $self->find_elements_first_value($self->process_doc, $PROCESS_ID_PATH);
   $process_id =~ s/\-//xms;
   $all_data->{'process_id'} = $process_id;
 
-  $all_data->{'user_first_name'} = ($self->find_elements($self->process_doc, $TECHNICIAN_FIRSTNAME_PATH))[0]->getValue();
-  $all_data->{'user_last_name'}  = ($self->find_elements($self->process_doc, $TECHNICIAN_LASTNAME_PATH))[0]->getValue();
+  $all_data->{'user_first_name'} = $self->find_elements_first_value($self->process_doc, $TECHNICIAN_FIRSTNAME_PATH);
+  $all_data->{'user_last_name'}  = $self->find_elements_first_value($self->process_doc, $TECHNICIAN_LASTNAME_PATH);
 
   while (my ($uri, $out_artifact) = each %{$artifacts_tmp} ) {
     if ($uri =~ /(.*)[?].*/xms){
       my $in_artifact = $previous_artifacts->{$oi_map->{$uri}};
 
-
-      my $buffer_volume = 0;
-      my $sample_volume = 0;
-      my $out_location      = ($self->find_elements($out_artifact,    $LOCATION_PATH      ) )[0] ->textContent;
-      my $out_container_uri = ($self->find_elements($out_artifact,    $CONTAINER_URI_PATH ) )[0] ->getValue();
-      my $out_container_id  = ($self->find_elements($out_artifact,    $CONTAINER_ID_PATH  ) )[0] ->getValue();
-      my $sample_volume_elmt= ($self->find_udf_element($out_artifact, $SAMPLE_VOLUME_PATH ) ) ;
-      if ($sample_volume_elmt) {
-        $sample_volume     = ($sample_volume_elmt)->textContent;
-      }
-      my $buffer_volume_elmt= ($self->find_udf_element($out_artifact, $BUFFER_VOLUME_PATH ) ) ;
-      if ($buffer_volume_elmt) {
-        $buffer_volume      = ($buffer_volume_elmt)->textContent;
-      }
-      my $in_location       = ($self->find_elements($in_artifact,     $LOCATION_PATH      ) )[0] ->textContent;
-      my $in_container_uri  = ($self->find_elements($in_artifact,     $CONTAINER_URI_PATH ) )[0] ->getValue();
-      my $in_container_id   = ($self->find_elements($in_artifact,     $CONTAINER_ID_PATH  ) )[0] ->getValue();
+      my $out_location      = $self->find_elements_first_textContent($out_artifact, $LOCATION_PATH         );
+      my $out_container_uri = $self->find_elements_first_value      ($out_artifact, $CONTAINER_URI_PATH    );
+      my $out_container_id  = $self->find_elements_first_value      ($out_artifact, $CONTAINER_ID_PATH     );
+      my $sample_volume     = $self->find_udf_element_textContent   ($out_artifact, $SAMPLE_VOLUME_PATH, 0 );
+      my $buffer_volume     = $self->find_udf_element_textContent   ($out_artifact, $BUFFER_VOLUME_PATH, 0 );
+      my $in_location       = $self->find_elements_first_textContent($in_artifact,  $LOCATION_PATH         );
+      my $in_container_uri  = $self->find_elements_first_value      ($in_artifact,  $CONTAINER_URI_PATH    );
+      my $in_container_id   = $self->find_elements_first_value      ($in_artifact,  $CONTAINER_ID_PATH     );
 
       # we only do this part when it's a container that we don't know yet...
       if (!defined $all_data->{'output_container_info'}->{$out_container_uri})
       {
         my $out_container = $self->fetch_and_parse($out_container_uri);
 
-        my $barcode       = $self->find_clarity_element($out_container, 'name')->textContent;
-        my $purpose       = $self->find_udf_element($out_container,    $PURPOSE_PATH)  ->textContent;
-        if (!defined $purpose) { $purpose = ' Unknown ' ; }
+        my $barcode       = $self->find_clarity_element_textContent($out_container, 'name'                  );
+        my $purpose       = $self->find_udf_element_textContent    ($out_container, $PURPOSE_PATH, 'Unknown');
         my $name          = $out_container_id;
         $name =~ s/\-//xms;
 
         # to get the wells
-        my $out_container_type_uri  = ($self->find_elements($out_container, $CONTAINER_TYPE_URI) )[0] ->getValue();
-        my $out_container_type_name = ($self->find_elements($out_container, $CONTAINER_TYPE_NAME) )[0] ->getValue();
+        my $out_container_type_uri  = $self->find_elements_first_value($out_container, $CONTAINER_TYPE_URI ) ;
+        my $out_container_type_name = $self->find_elements_first_value($out_container, $CONTAINER_TYPE_NAME) ;
         my $out_container_type      = $self->fetch_and_parse($out_container_type_uri);
-        my $x  = ($self->find_elements($out_container_type,    $CONTAINER_TYPE_Y) )[0] ->textContent;
-        my $y  = ($self->find_elements($out_container_type,    $CONTAINER_TYPE_Y) )[0] ->textContent;
+        my $x  = $self->find_elements_first_textContent($out_container_type,    $CONTAINER_TYPE_X) ;
+        my $y  = $self->find_elements_first_textContent($out_container_type,    $CONTAINER_TYPE_Y) ;
 
         $all_data->{'output_container_info'}->{$out_container_uri}->{'purpose'}    = $purpose;
         $all_data->{'output_container_info'}->{$out_container_uri}->{'plate_name'} = $name;
@@ -482,23 +493,13 @@ sub _get_containers_data {
       {
         my $in_container= $self->fetch_and_parse($in_container_uri);
 
-        my $freezer = q{};
-        my $shelf   = q{};
-        my $tray    = q{};
-        my $rack    = q{};
+        my $freezer  = $self->find_udf_element_textContent($in_container,    $FREEZER_PATH, q{Unknown}) ;
+        my $shelf    = $self->find_udf_element_textContent($in_container,    $SHELF_PATH  , q{Unknown});
+        my $tray     = $self->find_udf_element_textContent($in_container,    $TRAY_PATH   , q{Unknown});
+        my $rack     = $self->find_udf_element_textContent($in_container,    $RACK_PATH   , q{Unknown});
 
-        my $freezer_elmt     = $self->find_udf_element($in_container,    $FREEZER_PATH) ;
-        my $shelf_elmt       = $self->find_udf_element($in_container,    $SHELF_PATH);
-        my $tray_elmt        = $self->find_udf_element($in_container,    $TRAY_PATH);
-        my $rack_elmt        = $self->find_udf_element($in_container,    $RACK_PATH);
-
-        if ($freezer_elmt) {   $freezer = $freezer_elmt->textContent; }
-        if ($shelf_elmt)   {   $shelf = $shelf_elmt->textContent;     }
-        if ($tray_elmt)    {   $tray = $tray_elmt->textContent;       }
-        if ($rack_elmt)    {   $rack = $rack_elmt->textContent;       }
-
-        my $barcode     = $self->find_clarity_element($in_container, 'name')      ->textContent;
-        my $type_name   = ($self->find_elements($in_container, $CONTAINER_TYPE_NAME) )[0] ->getValue();
+        my $barcode     = $self->find_clarity_element_textContent($in_container, 'name');
+        my $type_name   = $self->find_elements_first_value($in_container, $CONTAINER_TYPE_NAME);
         my $name        = $in_container_id;
         $name =~ s/\-//xms;
 
@@ -519,6 +520,10 @@ sub _get_containers_data {
                             'input_uri'            => $in_container_uri,
                           };
     }
+  }
+
+  while (my ($uri, $out_artifact) = each %{$all_data->{'output_container_info'}}) {
+    $out_artifact->{'occ_wells'} = scalar keys %{$out_artifact->{'container_details'}};
   }
 
   return $all_data;

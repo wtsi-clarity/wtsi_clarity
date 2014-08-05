@@ -15,6 +15,7 @@ use Readonly;
 use Net::SFTP::Foreign;
 
 with 'wtsi_clarity::util::configurable';
+with 'wtsi_clarity::util::batch';
 
 our $VERSION = '0.0';
 

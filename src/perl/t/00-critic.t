@@ -23,6 +23,7 @@ if($EVAL_ERROR) {
                         'Miscellanea::RequireRcsKeywords',
                         'ValuesAndExpressions::RequireConstantVersion',
                         'Miscellanea::ProhibitUnrestrictedNoCritic',
+                        'ValuesAndExpressions::ProhibitInterpolationOfLiterals',
                              ],
                  -verbose => "%m at %f line %l, policy %p\n",
                  -profile => 't/perlcriticrc',

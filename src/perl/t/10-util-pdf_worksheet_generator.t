@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 5;
+use Test::More tests => 4;
 use Test::Exception;
 use Test::Simple;
 use DateTime;
@@ -46,16 +46,6 @@ my $TEST_DATA = {
     },
   ]
 };
-
-{ # create_worksheet_file
-  my $pdf_generator = wtsi_clarity::util::pdf_worksheet_generator->new(pdf_data => $TEST_DATA);
-  my $file = $pdf_generator->create_worksheet_file();
-
-  my $tmpdir = File::Temp->newdir( CLEANUP => 1 )               or croak q{Impossible to create the temporary folder for the pdf!};
-  my $filename = $tmpdir->dirname().'/worksheet.pdf';
-  $file->saveas($filename) ;
-  ok(-e $filename,'create_worksheet_file should produce a file that can be saved as a pdf.');
-}
 
 { # create_worksheet_file
   my $pdf_generator = wtsi_clarity::util::pdf_worksheet_generator->new(pdf_data => $TEST_DATA);

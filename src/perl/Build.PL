@@ -105,6 +105,7 @@ my $builder = $class->new(
                 'warnings'                        => 0,
                 'XML::LibXML'                     => 0,
                 'URI::Escape'                     => 0,
+                'POSIX'                           => 0,
           },
 
           'dist'         => { COMPRESS => 'gzip', SUFFIX => 'gz', },
