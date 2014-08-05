@@ -35,7 +35,7 @@ local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sm/publish_file';
   );
 
   my $parser = XML::LibXML->new();
-  my $artifacts_xml = $parser->parse_file('t/data/sm/publish_file/batch/artifacts');
+  my $artifacts_xml = $parser->parse_file('t/data/sm/publish_file/POST/batch/artifacts');
 
   my @expected_results = ('http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/files/92-7352-40-168');
 
@@ -48,7 +48,7 @@ local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sm/publish_file';
   );
 
   my $parser = XML::LibXML->new();
-  my $files_xml = $parser->parse_file('t/data/sm/publish_file/batch/files');
+  my $files_xml = $parser->parse_file('t/data/sm/publish_file/POST/batch/files');
 
   $pf->_set_is_published($files_xml);
 
