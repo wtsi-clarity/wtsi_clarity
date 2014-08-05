@@ -3,7 +3,7 @@ use warnings;
 use Test::More tests => 18;
 use Test::Exception;
 use Test::MockObject::Extends;
-use File::Path;
+use File::Temp qw/ tempdir /;
 
 use_ok('wtsi_clarity::util::request');
 
@@ -43,7 +43,7 @@ sub read_file {
 
 ## Caching stuff...
 {
-  my $test_dir = 't/data/util/request/';
+  my $test_dir = tempdir( CLEANUP => 1);
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = $test_dir;
   
   my $r = wtsi_clarity::util::request->new();
@@ -59,6 +59,7 @@ sub read_file {
     my $test_url = 'http://www.fakeurl.com/api/v2/artifacts/123456';
     my $method_val = $methods{$method};
     local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
+    my $file_path = $test_dir . qq{/$method_val/artifacts/123456};
     
     $r->mock(q{_from_web}, sub {
       my ($self, $type, $uri, $content, $path) = @_;
@@ -68,7 +69,7 @@ sub read_file {
 
     $r->$method($test_url, '<link>1</link><link>2</link>');
 
-    my $file_contents = read_file($test_dir . qq{$method_val/artifacts/123456});
+    my $file_contents = read_file($file_path);
 
     is($file_contents, qq/$method_val - $test_url/, 'file written to correct place');
 
@@ -76,10 +77,10 @@ sub read_file {
 
     $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
     is($r->$method($test_url, 'nothing'), qq/$method_val - $test_url/, 'reads from the cache when SAVE2WTSICLARITY_WEBCACHE is false')
+
+
   }
 
-  ## Cleanup
-  File::Path::remove_tree($test_dir, { keep_root => 1 });
 }
 
 {
