@@ -135,14 +135,8 @@ wtsi_clarity::epp::sm::validate_tag_plate
 
 =head1 SYNOPSIS
 
-  my $request = wtsi_clarity::util::request->new(
-    'content_type'        => 'application/json',
-    'additional_headers'  => wtsi_clarity::util::request::ADDITIONAL_HEADERS_FOR_SS
-  );
-
   my $epp = wtsi_clarity::epp::sm::validate_tag_plate->new(
-    process_url => 'http://some.com/processes/151-12090',
-    request     => $request,
+    process_url => 'http://some.com/processes/151-12090'
   )->run();
 
 =head1 DESCRIPTION

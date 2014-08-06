@@ -9,7 +9,7 @@ our $VERSION = '0.0';
 
 =head2 ADDITIONAL_HEADERS_FOR_SS
 
-This additional header needs to communicate with Sequencescape's web service.
+This is an additional header needed for communicating with Sequencescape's web service.
 
 =cut
 
