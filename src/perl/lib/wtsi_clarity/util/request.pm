@@ -47,6 +47,8 @@ Readonly::Scalar our $LWP_TIMEOUT => 60;
 Readonly::Scalar our $DEFAULT_METHOD => q[GET];
 Readonly::Scalar our $DEFAULT_CONTENT_TYPE => q[application/xml];
 
+use constant ADDITIONAL_HEADERS_FOR_SS => {'X-Sequencescape-Client-ID' => '372d4ece3d05deda9b5588dd9d2b23a0', 'Cookie' => 'api_key='};
+
 =head2 cache_dir_var_name
 
 Name of the environmental variable that defines the location
@@ -206,6 +208,11 @@ sub _set_base_url {
     }
     return;
 }
+
+has 'additional_headers'=> (  isa      => 'HashRef',
+                              is       => 'ro',
+                              required => 0,
+                           );
 
 =head2 get
 
@@ -398,10 +405,19 @@ sub _from_web {
     $req->header('Accept',       $self->content_type);
     $req->header('Content-Type', $self->content_type);
     $req->header('User-Agent',   $self->useragent->agent());
-    my $res=$self->useragent()->request($req);
-    if(!$res->is_success()) {
-        croak "$type request to $uri failed: " . join q[ ], $res->status_line(), $res->decoded_content;
+
+    # if additional headers exits, then adds them too
+    if ($self->additional_headers) {
+        for my $header_key ( keys %{$self->additional_headers} ) {
+            $req->header($header_key => ${$self->additional_headers}{$header_key});
+        }
     }
+
+    my $res=$self->useragent()->request($req);
+
+    # workaround a bug in SS (getting back a 301 response with the correct response body)
+    if(!$res->is_success() && (!$res->is_redirect && $res->content ne undef)) {
+        croak "$type request to $uri failed: " . join q[ ], $res->status_line(), $res->decoded_content;
 
     return $res->decoded_content;
 }
