@@ -133,8 +133,8 @@ use_ok('wtsi_clarity::epp::stamp');
   my $dir = tempdir(CLEANUP => 1);
   `cp -R t/data/stamp_with_control $dir`;
    #remove tube container from test data
-  `rm $dir/stamp_with_control/containers/27-7555`;
-  my $control = "$dir/stamp_with_control/artifacts/151C-801PA1?state=359614";
+  `rm $dir/stamp_with_control/GET/containers/27-7555`;
+  my $control = "$dir/stamp_with_control/GET/artifacts/151C-801PA1?state=359614";
   my $control_xml = read_file $control;
   $control_xml =~ s/27-7555/27-7103/g;  #place control on the input plate
   $control_xml =~ s/1:1/H:12/g;         #in well H:12

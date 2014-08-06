@@ -219,24 +219,7 @@ requested resource from a cache.
 sub get {
     my ($self, $uri) = @_;
 
-    my $cache = $ENV{$self->cache_dir_var_name} ? $ENV{$self->cache_dir_var_name} : q[];
-    my $path = q[];
-    if ($cache) {
-        $self->_check_cache_dir($cache);
-        $path = $self->_create_path($uri);
-        if (!$path) {
-            croak qq[Empty path generated for $uri];
-        }
-    }
-
-    my $content = ($cache && !$ENV{$self->save2cache_dir_var_name}) ?
-                  $self->_from_cache($path, $uri) :
-                  $self->_from_web($uri, $path);
-    if (!$content) {
-        croak qq[Empty document at $uri $path];
-    }
-
-    return $content;
+    return $self->_request('GET', $uri);
 }
 
 =head2 post
@@ -259,27 +242,49 @@ sub put {
     return $self->_request('PUT',$uri, $content);
 }
 
+=head2 del
+
+Contacts a web service to perform a DELETE request.
+
+=cut
+sub del {
+    my ($self, $uri, $content) = @_;
+    return $self->_request('DELETE', $uri);
+}
+
 sub _request {
     my ($self, $type, $uri, $content) = @_;
 
     if ( !$type || $type !~ /GET|POST|PUT|DELETE/smx) {
         $type = !defined $type ? 'undefined' : $type;
-        croak qq[Invalid request type "$type", valid types are POST, PUT, DELETE];
+        croak qq[Invalid request type "$type", valid types are GET, POST, PUT, DELETE];
     }
-    $self->_set_base_url($uri);
 
-    my $req=HTTP::Request->new($type, $uri,undef, $content);
-    $req->header('encoding' =>   'UTF-8');
-    $req->header('Accept',       $self->content_type);
-    $req->header('Content-Type', $self->content_type);
-    $req->header('User-Agent',   $self->useragent->agent());
-    my $res=$self->useragent()->request($req);
-    if(!$res->is_success()) {
-        croak "$type request to $uri failed: " . join q[ ], $res->status_line(), $res->decoded_content;
+    my $cache = $ENV{$self->cache_dir_var_name} ? $ENV{$self->cache_dir_var_name} : q[];
+    my $path = q[];
+
+    if ($cache) {
+        $self->_check_cache_dir($cache);
+        $path = $self->_create_path($uri, $type);
+        if (!$path) {
+            croak qq[Empty path generated for $uri];
+        }
     }
-    return $res->decoded_content;
+
+    my $response = ($cache && !$ENV{$self->save2cache_dir_var_name}) ?
+                  $self->_from_cache($path, $uri) :
+                  $self->_from_web($type, $uri, $content, $path);
+
+    if (!$response) {
+        croak qq[Empty document at $uri $path];
+    }
+
+    if ($ENV{$self->save2cache_dir_var_name}) {
+      $self->_write2cache($path, $response);
+    }
+
+    return $response;
 }
-
 
 =head2 upload_file
 
@@ -320,24 +325,14 @@ sub download_file {
     return $sftp->disconnect();
 }
 
-=head2 del
-
-Contacts a web service to perform a DELETE request.
-
-=cut
-sub del {
-    my ($self, $uri, $content) = @_;
-    return $self->_request('DELETE',$uri);
-}
-
 sub _create_path {
-    my ( $self, $url ) = @_;
+    my ( $self, $url, $type ) = @_;
     my @components = split /\//xms, $url;
     my $query  = pop @components;
     my $entity = pop @components;
-    my $path;
+    my $path = $type;
     if ($query and $entity) {
-        $path = catdir($entity, $query);
+        $path = catdir($path, $entity, $query);
     }
     if ($path) {
         $path = catfile($ENV{$self->cache_dir_var_name}, $path);
@@ -383,9 +378,8 @@ sub _from_cache {
 }
 
 sub _from_web {
-    my ($self, $uri, $path) = @_;
+    my ($self, $type, $uri, $content, $path) = @_;
 
-    my $content;
     if ($path && $ENV{$self->save2cache_dir_var_name} && $ENV{$self->cache_dir_var_name}) {
         ##no critic (RequireCheckingReturnValueOfEval)
         eval {
@@ -397,11 +391,19 @@ sub _from_web {
         }
     }
 
-    $content = $self->_request('GET', $uri);
-    if ($ENV{$self->save2cache_dir_var_name}) {
-        $self->_write2cache($path, $content);
+    $self->_set_base_url($uri);
+
+    my $req=HTTP::Request->new($type, $uri,undef, $content);
+    $req->header('encoding' =>   'UTF-8');
+    $req->header('Accept',       $self->content_type);
+    $req->header('Content-Type', $self->content_type);
+    $req->header('User-Agent',   $self->useragent->agent());
+    my $res=$self->useragent()->request($req);
+    if(!$res->is_success()) {
+        croak "$type request to $uri failed: " . join q[ ], $res->status_line(), $res->decoded_content;
     }
-    return $content;
+
+    return $res->decoded_content;
 }
 
 sub _write2cache {

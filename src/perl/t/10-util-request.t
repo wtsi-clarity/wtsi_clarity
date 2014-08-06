@@ -1,10 +1,23 @@
 use strict;
 use warnings;
-use Test::More tests => 12;
+use Test::More tests => 18;
 use Test::Exception;
+use Test::MockObject::Extends;
+use File::Temp qw/ tempdir /;
 
 use_ok('wtsi_clarity::util::request');
 
+sub read_file {
+  my $file_path = shift;
+
+  local $/=undef;
+  open my $fh,  $file_path or die "Couldn't open file";
+  my $content = <$fh>;
+  close $fh;
+  return $content;
+}
+
+## Instanstiates correctly...
 {
   my $r = wtsi_clarity::util::request->new();
   isa_ok( $r, 'wtsi_clarity::util::request');
@@ -12,6 +25,7 @@ use_ok('wtsi_clarity::util::request');
   is ($r->save2cache_dir_var_name, q[SAVE2WTSICLARITY_WEBCACHE], 'save2cache dir var name');
 }
 
+## GET Request
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/cached/';
   local $ENV{'http_proxy'} = 'http://wibble';
@@ -22,12 +36,51 @@ use_ok('wtsi_clarity::util::request');
            } 'no error retrieving from cache';
   ok(!$r->base_url, 'base url not set');
 
-  local $/=undef;
-  open my $fh,  't/data/cached/processes/24-28177' or die "Couldn't open file";
-  my $xml = <$fh>;
-  close $fh;
+  my $xml = read_file('t/data/cached/GET/processes/24-28177');
 
   is ($data, $xml, 'content retrieved correctly');
+}
+
+## Caching stuff...
+{
+  my $test_dir = tempdir( CLEANUP => 1);
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = $test_dir;
+  
+  my $r = wtsi_clarity::util::request->new();
+  $r = Test::MockObject::Extends->new($r);
+
+  my %methods = (
+    post => 'POST',
+    put  => 'PUT',
+    del  => 'DELETE',
+  );
+
+  foreach my $method (keys %methods) {
+    my $test_url = 'http://www.fakeurl.com/api/v2/artifacts/123456';
+    my $method_val = $methods{$method};
+    local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
+    my $file_path = $test_dir . qq{/$method_val/artifacts/123456};
+    
+    $r->mock(q{_from_web}, sub {
+      my ($self, $type, $uri, $content, $path) = @_;
+      my $body = qq/$type - $uri/;
+      return $body;
+    });
+
+    $r->$method($test_url, '<link>1</link><link>2</link>');
+
+    my $file_contents = read_file($file_path);
+
+    is($file_contents, qq/$method_val - $test_url/, 'file written to correct place');
+
+    $r->unmock(q{_from_web});
+
+    $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
+    is($r->$method($test_url, 'nothing'), qq/$method_val - $test_url/, 'reads from the cache when SAVE2WTSICLARITY_WEBCACHE is false')
+
+
+  }
+
 }
 
 {
@@ -56,16 +109,16 @@ use_ok('wtsi_clarity::util::request');
      'put request succeeds';
     ok($new_data =~ /$new_date/, 'amended sample data returned');
 
-my $sample = q[<smp:samplecreation xmlns:smp="http://genologics.com/ri/sample" xmlns:udf="http://genologics.com/ri/userdefined">
-<name>mar_ina_test-11</name>
-<project limsid="GOU51" uri="] . $base . q[/projects/GOU51"/>
-<date-received>2014-05-01</date-received>
-<location><container limsid="27-151" uri="] . $base . q[/containers/27-151"/><value>H:12</value></location>
-<udf:field name="WTSI Sample Consent Withdrawn">false</udf:field>
-<udf:field name="WTSI Requested Size Range From">600</udf:field>
-<udf:field name="Reference Genome">Homo_sapiens (1000Genomes)</udf:field>
-</smp:samplecreation>
-];
+    my $sample = q[<smp:samplecreation xmlns:smp="http://genologics.com/ri/sample" xmlns:udf="http://genologics.com/ri/userdefined">
+    <name>mar_ina_test-11</name>
+    <project limsid="GOU51" uri="] . $base . q[/projects/GOU51"/>
+    <date-received>2014-05-01</date-received>
+    <location><container limsid="27-151" uri="] . $base . q[/containers/27-151"/><value>H:12</value></location>
+    <udf:field name="WTSI Sample Consent Withdrawn">false</udf:field>
+    <udf:field name="WTSI Requested Size Range From">600</udf:field>
+    <udf:field name="Reference Genome">Homo_sapiens (1000Genomes)</udf:field>
+    </smp:samplecreation>
+    ];
 
     throws_ok {$new_data = $r->post($samples_uri, $sample)}
       qr/The container placement: H:12 is a duplicate for container: 27-151/,
