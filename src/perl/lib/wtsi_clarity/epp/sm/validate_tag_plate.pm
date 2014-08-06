@@ -115,7 +115,6 @@ sub tag_plate {
   my $url = join('/', ($self->_gatekeeper_url, $self->_find_qcable_by_barcode_uuid, 'first'));
   
   my $response = $self->ss_request->post($url, $self->_search_content);
-  # print Dumper $response;
 
   my $parsed_response = parse_json($response);
   return  { 'state'     => $parsed_response->{'qcable'}->{'state'},
@@ -137,7 +136,7 @@ sub _search_content {
   my $self = shift;
   my $content = {}; 
   my $barcode_element = {};
-  $barcode_element->{'barcode'} = 1220344410696; #$self->_tag_plate_barcode;
+  $barcode_element->{'barcode'} = $self->_tag_plate_barcode;
   $content->{'search'} = $barcode_element;
   return JSON->new->allow_nonref->encode($content);
 }
