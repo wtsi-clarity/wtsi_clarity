@@ -7,7 +7,8 @@ use JSON::Parse 'parse_json';
 
 extends 'wtsi_clarity::epp';
 
-with 'wtsi_clarity::util::clarity_elements';
+with  'wtsi_clarity::util::clarity_elements',
+      'wtsi_clarity::util::sequencescape_request_role';
 
 our $VERSION = '0.0';
 
@@ -75,21 +76,6 @@ sub _build__valid_lot_type {
   return $self->config->tag_plate_validation->{'valid_lot_type'};
 }
 
-has 'ss_request' => (
-  isa => 'Object',
-  is  => 'ro',
-  required => 0,
-  lazy_build => 1,
-);
-sub _build_ss_request {
-  my $self = shift;
-
-  return wtsi_clarity::util::request->new(
-    'content_type'        => 'application/json',
-    'additional_headers'  => wtsi_clarity::util::request->ADDITIONAL_HEADERS_FOR_SS
-  );
-}
-
 override 'run' => sub {
   my $self = shift;
   super(); #call parent's run method
@@ -97,23 +83,21 @@ override 'run' => sub {
   my $tag_plate = $self->tag_plate;
 
   my $tag_plate_status = $tag_plate->{'state'};
-  my $lot_type = $self->lot_type($tag_plate->{'lot_uuid'}); 
+  my $lot_type = $self->lot_type($tag_plate->{'lot_uuid'});
 
-  if ($tag_plate_status eq $self->_valid_status && $lot_type eq $self->_valid_lot_type) {
-    print "The tag plate is valid";
-  } elsif ($tag_plate_status ne $self->_valid_status) {
+  if ($tag_plate_status ne $self->_valid_status) {
     croak sprintf 'The plate status: %s is not valid.', $tag_plate_status;
   } elsif ($lot_type ne $self->_valid_lot_type) {
     croak sprintf 'The lot type: %s is not valid.', $lot_type;
   }
 
-  return;
+  return 0;
 };
 
 sub tag_plate {
   my $self = shift;
-  my $url = join('/', ($self->_gatekeeper_url, $self->_find_qcable_by_barcode_uuid, 'first'));
-  
+  my $url = join q{/}, ($self->_gatekeeper_url, $self->_find_qcable_by_barcode_uuid, 'first');
+
   my $response = $self->ss_request->post($url, $self->_search_content);
 
   my $parsed_response = parse_json($response);
@@ -124,7 +108,7 @@ sub tag_plate {
 
 sub lot_type {
   my ($self, $lot_uuid) = @_;
-  my $url = join('/', ($self->_gatekeeper_url, $lot_uuid));
+  my $url = join q{/}, ($self->_gatekeeper_url, $lot_uuid);
 
   my $response = $self->ss_request->get($url);
   my $parsed_response = parse_json($response);
@@ -134,7 +118,7 @@ sub lot_type {
 
 sub _search_content {
   my $self = shift;
-  my $content = {}; 
+  my $content = {};
   my $barcode_element = {};
   $barcode_element->{'barcode'} = $self->_tag_plate_barcode;
   $content->{'search'} = $barcode_element;

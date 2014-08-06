@@ -47,8 +47,6 @@ Readonly::Scalar our $LWP_TIMEOUT => 60;
 Readonly::Scalar our $DEFAULT_METHOD => q[GET];
 Readonly::Scalar our $DEFAULT_CONTENT_TYPE => q[application/xml];
 
-use constant ADDITIONAL_HEADERS_FOR_SS => {'X-Sequencescape-Client-ID' => '372d4ece3d05deda9b5588dd9d2b23a0', 'Cookie' => 'api_key='};
-
 =head2 cache_dir_var_name
 
 Name of the environmental variable that defines the location
