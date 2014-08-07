@@ -51,7 +51,6 @@ sub create_worksheet_file {
     _add_title_to_page($page, $font_bold, $page_data->{'title'});
     _add_timestamp(    $page, $font,      $self->pdf_data->{'stamp'});
 
-
     _add_io_block_to_page($pdf, $page, $font_bold, $page_data->{'input_table'},  $page_data->{'input_table_title'},  $source_table_height);
     _add_io_block_to_page($pdf, $page, $font_bold, $page_data->{'output_table'}, $page_data->{'output_table_title'}, $destination_table_height);
 

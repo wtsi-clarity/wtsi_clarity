@@ -3,6 +3,8 @@ package wtsi_clarity::epp::sm::pico_analysis;
 use Moose;
 use Carp;
 use Readonly;
+use File::Temp qw/ tempdir /;
+use wtsi_clarity::file_parsing::dtx_concentration_calculator;
 
 extends 'wtsi_clarity::epp';
 
@@ -31,7 +33,23 @@ override 'run' => sub {
   my $self= shift;
   super();
 
+  # Fetch the files
   my ($dtx1, $dtx2, $standard) = $self->_get_dtx_files();
+
+  # Do the analysis
+  my $calculator = wtsi_clarity::file_parsing::dtx_concentration_calculator->new(
+    standard_doc => $standard,
+    plateA_doc   => $dtx1,
+    plateB_doc   => $dtx2,
+  );
+
+  my $results = $calculator->get_analysis_results();
+
+  # Format the results
+
+  # Pass the results to the PDF generator
+
+  # Attach PDF to process
 
   return;
 };
@@ -106,7 +124,31 @@ sub _get_dtx_files {
     $files{'standard'} = $standard;
   }
 
+  $self->_fetch_files(\%files);
+
   return ($files{'dtx1'}, $files{'dtx2'}, $files{'standard'});
+}
+
+sub _fetch_files {
+  my ($self, $files) = @_;
+  my $tempdir = tempdir( CLEANUP => 1);
+
+  foreach my $file_name (keys %{$files}) {
+    my $temp_file_path = $tempdir . qq{/$file_name};
+    my ($server, $remote_path) = _extract_locations($files->{$file_name});
+    my $file = $self->request->download_file($server, $remote_path, $temp_file_path);
+
+    $files->{$file_name} =  $self->xml_parser->load_xml(
+      location => $temp_file_path
+    );
+  }
+
+  return;
+}
+
+sub _extract_locations {
+  my $url = shift;
+  return $url =~ /sftp:\/\/([^\/]+)(.*)/smx;
 }
 
 sub _get_files {

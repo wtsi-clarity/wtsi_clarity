@@ -6,6 +6,8 @@ use Readonly;
 use List::MoreUtils qw/uniq/;
 
 requires 'request';
+requires 'config';
+requires 'fetch_and_parse';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $PARENT_PROCESS_PATH => q( /prc:process/input-output-map/input/parent-process/@uri );

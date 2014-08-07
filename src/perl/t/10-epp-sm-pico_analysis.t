@@ -57,7 +57,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
   );
 
   my $parser = XML::LibXML->new();
-  my $output_analyte = $parser->parse_file('t/data/sm/pico_analysis/artifacts/92-10870?state=5320');
+  my $output_analyte = $parser->parse_file('t/data/sm/pico_analysis/GET/artifacts/92-10870?state=5320');
 
   is ($pa->_extract_file_url($output_analyte), 'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/files/92-10870-40-178', 'Extracts the file url');
   is ($pa->_extract_file_name($output_analyte), 'PicoAssay', 'Extracts the file name');
@@ -70,7 +70,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
   );
 
   my $parser = XML::LibXML->new();
-  my $file = $parser->parse_file('t/data/sm/pico_analysis/files/92-10870-40-178');
+  my $file = $parser->parse_file('t/data/sm/pico_analysis/GET/files/92-10870-40-178');
 
   is ($pa->_extract_file_location($file), 'sftp://web-claritytest-01.internal.sanger.ac.uk/opt/gls/clarity/users/glsftp/Process/2014/7/24-4158/92-10870-40-177', 'Extracts the file location');
 }
