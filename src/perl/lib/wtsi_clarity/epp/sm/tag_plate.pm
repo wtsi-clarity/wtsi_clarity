@@ -1,4 +1,4 @@
-package wtsi_clarity::epp::sm::validate_tag_plate;
+package wtsi_clarity::epp::sm::tag_plate;
 
 use Moose;
 use Carp;

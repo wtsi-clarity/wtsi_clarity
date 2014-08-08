@@ -19,15 +19,15 @@ sub get_fake_response {
 my $test_dir = 't/data/sm/validate_tag_plate';
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = $test_dir;
 
-use_ok('wtsi_clarity::epp::sm::validate_tag_plate');
+use_ok('wtsi_clarity::epp::sm::tag_plate');
 
-my $epp = wtsi_clarity::epp::sm::validate_tag_plate->new(
+my $epp = wtsi_clarity::epp::sm::tag_plate->new(
     process_url => 'http://some.com/processes/151-12090'
   );
 
 # tests whether the attributtes are correct
 {
-  isa_ok( $epp, 'wtsi_clarity::epp::sm::validate_tag_plate');
+  isa_ok( $epp, 'wtsi_clarity::epp::sm::tag_plate');
 
   is($epp->_tag_plate_barcode, '1234567890123', 'Gets the tag plate barcode correctly');
   is($epp->_gatekeeper_url, 'http://dev.psd.sanger.ac.uk:6610/api/1', 'Gets the correct url for Gatekeeper.');
