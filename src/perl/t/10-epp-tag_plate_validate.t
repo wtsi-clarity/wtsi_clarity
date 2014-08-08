@@ -5,15 +5,15 @@ use wtsi_clarity::util::request;
 use Test::More tests => 14;
 
 sub get_fake_response {
-  my $lot_response_file = shift;
-  my $lot_response = do {
+  my $response_file = shift;
+  my $response = do {
     local $/ = undef;
-    open my $fh, "<", $lot_response_file
-        or die "could not open $lot_response_file: $!";
+    open my $fh, "<", $response_file
+        or die "could not open $response_file: $!";
     <$fh>;
   };
 
-  return $lot_response;
+  return $response;
 }
 
 my $test_dir = 't/data/sm/validate_tag_plate';
