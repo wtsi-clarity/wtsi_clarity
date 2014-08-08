@@ -22,7 +22,8 @@ local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = $test_dir;
 use_ok('wtsi_clarity::epp::sm::tag_plate');
 
 my $epp = wtsi_clarity::epp::sm::tag_plate->new(
-    process_url => 'http://some.com/processes/151-12090'
+    process_url       => 'http://some.com/processes/151-12090',
+    tag_plate_action  => 'validate',
   );
 
 # tests whether the attributtes are correct

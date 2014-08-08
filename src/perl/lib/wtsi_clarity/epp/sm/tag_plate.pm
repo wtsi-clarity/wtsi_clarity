@@ -1,6 +1,7 @@
 package wtsi_clarity::epp::sm::tag_plate;
 
 use Moose;
+use Moose::Util::TypeConstraints;
 use Carp;
 use JSON;
 use JSON::Parse 'parse_json';
@@ -76,6 +77,18 @@ sub _build__valid_lot_type {
   return $self->config->tag_plate_validation->{'valid_lot_type'};
 }
 
+subtype 'TagPlateActions'
+  => as       'Str'
+  => where    { /^validate$|^get_layout$/i }
+  => message  { qq/ The action you provided: $_, was not a valid action name./} ;
+
+has 'tag_plate_action' => (
+  isa => 'TagPlateActions',
+  is  => 'ro',
+  required => 1,
+);
+
+
 override 'run' => sub {
   my $self = shift;
   super(); #call parent's run method
@@ -135,8 +148,18 @@ wtsi_clarity::epp::sm::validate_tag_plate
 
 =head1 SYNOPSIS
 
+  If you want to validate a tag plate:
+
   my $epp = wtsi_clarity::epp::sm::validate_tag_plate->new(
-    process_url => 'http://some.com/processes/151-12090'
+    process_url => 'http://some.com/processes/151-12090',
+    tag_plate_action  => 'validate',
+  )->run();
+
+  If you want to get the layout of the tag plate:
+
+  my $epp = wtsi_clarity::epp::sm::validate_tag_plate->new(
+    process_url => 'http://some.com/processes/151-12090',
+    tag_plate_action  => 'get_layout',
   )->run();
 
 =head1 DESCRIPTION
