@@ -1,19 +1,11 @@
 package wtsi_clarity::util::sequencescape_request_role;
 
 use Moose::Role;
-use Readonly;
 
 use wtsi_clarity::util::request;
 
 our $VERSION = '0.0';
 
-=head2 ADDITIONAL_HEADERS_FOR_SS
-
-This is an additional header needed for communicating with Sequencescape's web service.
-
-=cut
-
-Readonly::Hash our %ADDITIONAL_HEADERS_FOR_SS => {'X-Sequencescape-Client-ID' => '372d4ece3d05deda9b5588dd9d2b23a0', 'Cookie' => 'api_key='};
 
 has 'ss_request' => (
   isa => 'wtsi_clarity::util::request',
@@ -26,8 +18,24 @@ sub _build_ss_request {
 
   return wtsi_clarity::util::request->new(
     'content_type'        => 'application/json',
-    'additional_headers'  => \%ADDITIONAL_HEADERS_FOR_SS
+    'additional_headers'  => $self->_get_additional_headers,
   );
+}
+
+=head2 _get_additional_headers
+
+This additional header needed for communicating with Sequencescape's web service.
+
+=cut
+
+sub _get_additional_headers {
+  my $self = shift;
+
+  my $ss_client_id = $self->config->tag_plate_validation->{'ss_client_id'};
+
+  return  { 'X-Sequencescape-Client-ID' => $ss_client_id,
+            'Cookie'                    => 'api_key='
+          }
 }
 
 1;
