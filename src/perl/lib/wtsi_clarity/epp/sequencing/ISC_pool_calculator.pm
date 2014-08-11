@@ -3,16 +3,13 @@ package wtsi_clarity::epp::sequencing::ISC_pool_calculator;
 use Moose;
 use Carp;
 use Readonly;
-use Data::Dumper;
 
 use POSIX;
 use Text::CSV;
 use List::MoreUtils qw/ uniq /;
 
-sub _filecontent_to_hash
-{
+sub _filecontent_to_hash {
   my ($data) = @_;
-  # print Dumper $data;
 
   my $csv_parser = Text::CSV->new();
   shift $data;
@@ -43,43 +40,10 @@ sub _filecontent_to_hash
       }
     }
   }
-  # print Dumper $output;
   return $output;
 }
 
-# sub _clean_label
-# {
-#   my ($label) = @_;
-#   if ($label =~ /\w0\d/) {
-#     $label =~ s/0//;
-#   }
-#   return $label;
-# }
-
-# sub build_pool_map
-# {
-#   my ($type) = @_;
-#   if ($type eq q{384_8_in_1} ) {
-
-#     my $letters = map { chr(ord('A') + $_-1) } (1..$NB_ROWS_96);
-#     my $t = map  $j = $_; return map ($_.$j) $letters; ) (1..$NB_ROWS_96)
-#     print Dumper $t;
-
-#     # for my $i (1..$NB_ROWS_384) {
-#     #   for my $j (1..$NB_COLS_384) {
-#     #     my $letter = chr(ord('A') + $i-1);
-#     #     # print "$letter$j\n";
-#     #   }
-#     # }
-
-
-#     return {};
-#   }
-#   croak qq{Unknown '$type' pool map!};
-# }
-
-sub _transform_mapping 
-{
+sub _transform_mapping {
   my ($mappings) = @_;
   my $new_mappings = {};
   foreach my $mapping (@$mappings) {
@@ -101,10 +65,7 @@ sub _transform_mapping
   return $new_mappings;
 }
 
-
-
-sub _update_concentrations_for_all_pools
-{
+sub _update_concentrations_for_all_pools {
   my $warnings = {};
   my ($mappings, $data, $min_volume, $max_volume, $max_total) = @_;
   while (my ($plate_name, $plate) = each %{$mappings} ) {
@@ -116,7 +77,6 @@ sub _update_concentrations_for_all_pools
   }
   return $warnings;
 }
-
 
 sub  _update_concentrations_for_one_pool {
   my ($dest_well, $data, $min_volume, $max_volume, $max_total) = @_;
@@ -174,7 +134,6 @@ sub  _update_concentrations_for_one_pool {
 
   return $warnings;
 }
-
 
 sub main
 {
