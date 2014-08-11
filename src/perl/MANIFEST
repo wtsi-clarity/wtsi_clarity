@@ -15,6 +15,8 @@ lib/wtsi_clarity/epp/sm/bed_verification.pm
 lib/wtsi_clarity/epp/sm/cp_bed_verification.pm
 lib/wtsi_clarity/epp/sm/attach_dtx_file.pm
 lib/wtsi_clarity/epp/sm/reactivate_stock_plate.pm
+lib/wtsi_clarity/epp/sm/pico_analysis.pm
+lib/wtsi_clarity/epp/sm/worksheet.pm
 lib/wtsi_clarity/file_parsing/volume_check.pm
 lib/wtsi_clarity/mq/client.pm
 lib/wtsi_clarity/mq/message/epp.pm
@@ -26,6 +28,11 @@ lib/wtsi_clarity/util/config.pm
 lib/wtsi_clarity/util/configurable.pm
 lib/wtsi_clarity/util/label.pm
 lib/wtsi_clarity/util/print.pm
+lib/wtsi_clarity/util/pdf_generator.pm
+lib/wtsi_clarity/util/pdf_generator/pico_analysis_results.pm
+lib/wtsi_clarity/util/pdf_generator/worksheet.pm
+lib/wtsi_clarity/util/pdf_generator/factory.pm
+lib/wtsi_clarity/util/pdf_generator/factory/pico_analysis_results.pm
 lib/wtsi_clarity/util/request.pm
 lib/wtsi_clarity/util/signature.pm
 lib/wtsi_clarity/util/types.pm
