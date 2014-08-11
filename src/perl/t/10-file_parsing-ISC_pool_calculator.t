@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 2;
+use Test::More tests => 23;
 use Test::Exception;
 use Test::Warn;
 use Carp;
@@ -1368,7 +1368,23 @@ use_ok('wtsi_clarity::epp::sequencing::ISC_pool_calculator', 'can use ISC_pool_c
   };
   my $output = wtsi_clarity::epp::sequencing::ISC_pool_calculator::_transform_mapping($mapping);
   is_deeply( $output,  $EXPECTED_DATA_2,  "_transform_mapping() should return the correct content.");
+}
 
+{
+  my $test_data = {
+    'hello'    => 'hello',
+    'hello '   => 'hello',
+    ' hello'   => 'hello',
+    ' hello '  => 'hello',
+    'hel lo'   => 'hel lo',
+    ' hel lo'  => 'hel lo',
+    'hel lo '  => 'hel lo',
+    ' hel lo ' => 'hel lo',
+  };
+  while (my ($input, $expected) = each %{$test_data} ) {
+    my $output = wtsi_clarity::epp::sequencing::ISC_pool_calculator::_cleanup_key($input);
+    is_deeply( $output,  $expected,  "_cleanup_key() should return the correct content.");
+  }
 }
 
 1;

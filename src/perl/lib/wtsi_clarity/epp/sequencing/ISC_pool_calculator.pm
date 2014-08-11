@@ -8,6 +8,9 @@ use POSIX;
 use Text::CSV;
 use List::MoreUtils qw/ uniq /;
 
+Readonly::Scalar my $CONCENTRATION_NORMALISER => 5;
+
+
 sub _filecontent_to_hash {
   # transforms the csv content into a hash.
   # the samples are duplicated. we pack them together.
@@ -19,18 +22,18 @@ sub _filecontent_to_hash {
   my $output = {};
   my @header = qw/Well_Label Sample_Name Peak_Count Total_Conc Molarity/;
 
-  foreach my $line (@$data) {
+  foreach my $line (@{$data}) {
     chomp $line;
     $csv_parser->parse($line);
     my @values = $csv_parser->fields();
     shift @values;
     my %hash;
     # create a hash with the headers as key, and trim the values;
-    @hash{@header} = map { $_ =~ s/^\s+|\s+$//g ; $_ } @values;
+    @hash{@header} = map { _cleanup_key($_) } @values;
 
     # only add this hash to the output if there's a molarity.
     if ($hash{'Molarity'}) {
-      $hash{'Sample_Name'} =~ /(\w\d)_.*/xms;
+      $hash{'Sample_Name'} =~ /(\w\d)_.*/xms or croak qq{Impossible to parse the file. The sample name is not correct ($line);};
       my $real_label = $1;
       if ($output->{ $real_label }){
         $output->{ $real_label }{'Molarity_2'} = $hash{'Molarity'};
@@ -45,12 +48,18 @@ sub _filecontent_to_hash {
   return $output;
 }
 
+sub _cleanup_key {
+  my $key = shift;
+  $key =~ s/^\s+|\s+$//xmsg ;
+  return $key;
+}
+
 sub _transform_mapping {
   # transforming an array of hashes describing the plexing
   # into something a bit better for the rest of the module
   my ($mappings) = @_;
   my $new_mappings = {};
-  foreach my $mapping (@$mappings) {
+  foreach my $mapping (@{$mappings}) {
     my $dest_plate   = $mapping->{ 'dest_plate'   };
     my $dest_well    = $mapping->{ 'dest_well'    };
     my $source_plate = $mapping->{ 'source_plate' };
@@ -70,8 +79,8 @@ sub _transform_mapping {
 }
 
 sub _update_concentrations_for_all_pools {
-  my $warnings = {};
   my ($mappings, $data, $min_volume, $max_volume, $max_total) = @_;
+  my $warnings = {};
   while (my ($plate_name, $plate) = each %{$mappings} ) {
     $warnings->{$plate_name} = {};
     while (my ($well_name, $dest_well) = each %{$plate} ) {
@@ -88,14 +97,14 @@ sub  _update_concentrations_for_one_pool {
   my $warnings = [];
 
   # get the molarity per sample, and get the lowest one
-  foreach my $source (@$dest_well) {
+  foreach my $source (@{$dest_well}) {
     my $source_plate = $source->{ 'source_plate' };
     my $source_well  = $source->{ 'source_well'  };
     my $mol1 = $data->{$source_plate}->{$source_well}->{'Molarity_1'};
     my $mol2 = $data->{$source_plate}->{$source_well}->{'Molarity_2'};
-    $mol1 = 0 if (!defined $mol1);
-    $mol2 = 0 if (!defined $mol2);
-    my $mol = 5 * 0.5 * ($mol1 + $mol2) ;
+    if (!defined $mol1) { $mol1 = 0 ; }
+    if (!defined $mol2) { $mol2 = 0 ; }
+    my $mol = $CONCENTRATION_NORMALISER * ($mol1 + $mol2) / 2 ;
     $source->{'Molarity'} = $mol;
     if ( $mol > 0 ) {
       if (!defined $min) { $min = $mol; }
@@ -111,7 +120,7 @@ sub  _update_concentrations_for_one_pool {
 
   # get the required volume for equi-molarity
   my $total = 0.0;
-  foreach my $source (@$dest_well) {
+  foreach my $source (@{$dest_well}) {
     my $mol = $source->{'Molarity'};
     if (0 >= $mol) {
       # special case: no data -> we set the volume to zero
@@ -130,7 +139,7 @@ sub  _update_concentrations_for_one_pool {
 
   # if the total volume is too big, we scale everything down.
   my $ratio = $max_total / $total ;
-  foreach my $source (@$dest_well) {
+  foreach my $source (@{$dest_well}) {
     if ($total > $max_total) {
       $source->{'Volume'} = $source->{'Volume'} * $ratio;
     }
@@ -151,9 +160,9 @@ sub get_volume_calculations_and_warnings
   my ($data, $mapping) = @_;
 
   my $hashed_data    = _filecontent_to_hash($data);
-  my $hashed_mapping = _transform_mapping($mappings);
+  my $hashed_mapping = _transform_mapping($mapping);
 
-  my $warnings       = _update_concentrations_for_all_pools($hashed_mapping, $hashed_data)
+  my $warnings       = _update_concentrations_for_all_pools($hashed_mapping, $hashed_data);
   return ($hashed_mapping, $warnings);
 }
 
