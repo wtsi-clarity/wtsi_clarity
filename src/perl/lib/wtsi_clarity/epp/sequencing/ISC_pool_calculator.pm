@@ -9,6 +9,8 @@ use Text::CSV;
 use List::MoreUtils qw/ uniq /;
 
 sub _filecontent_to_hash {
+  # transforms the csv content into a hash.
+  # the samples are duplicated. we pack them together.
   my ($data) = @_;
 
   my $csv_parser = Text::CSV->new();
@@ -44,6 +46,8 @@ sub _filecontent_to_hash {
 }
 
 sub _transform_mapping {
+  # transforming an array of hashes describing the plexing
+  # into something a bit better for the rest of the module
   my ($mappings) = @_;
   my $new_mappings = {};
   foreach my $mapping (@$mappings) {
@@ -82,6 +86,8 @@ sub  _update_concentrations_for_one_pool {
   my ($dest_well, $data, $min_volume, $max_volume, $max_total) = @_;
   my $min;
   my $warnings = [];
+
+  # get the molarity per sample, and get the lowest one
   foreach my $source (@$dest_well) {
     my $source_plate = $source->{ 'source_plate' };
     my $source_well  = $source->{ 'source_well'  };
@@ -97,40 +103,45 @@ sub  _update_concentrations_for_one_pool {
     }
   }
 
+  # if no minimum molarity, then there's no data to compute for this pool
   if (!defined $min || 0 >= $min) {
     push $warnings, qq{Warning: Too many concentration data missing! This well cannot be configured!};
     return $warnings;
   }
 
+  # get the required volume for equi-molarity
   my $total = 0.0;
   foreach my $source (@$dest_well) {
     my $mol = $source->{'Molarity'};
     if (0 >= $mol) {
+      # special case: no data -> we set the volume to zero
       my $source_plate = $source->{ 'source_plate' };
       my $source_well  = $source->{ 'source_well'  };
       push $warnings, qq{Warning: concentration data missing for [ plate $source_plate | well $source_well ]};
       $source->{'Volume'} = 0.0;
     } else {
+      # normal case: we make sure that he least concentrated well is the most used
       my $ratio = $mol / $min;
       $source->{'Volume'} = $max_volume / $ratio;
+      # and get the total volume
       $total += $source->{'Volume'};
     }
   }
 
-
+  # if the total volume is too big, we scale everything down.
   my $ratio = $max_total / $total ;
   foreach my $source (@$dest_well) {
     if ($total > $max_total) {
       $source->{'Volume'} = $source->{'Volume'} * $ratio;
     }
     if ($source->{'Volume'} < $min_volume) {
+      # if, once scaled, it's too low, we put a warning.
       my $source_plate = $source->{ 'source_plate' };
       my $source_well  = $source->{ 'source_well'  };
       my $v = $source->{'Volume'};
       push $warnings, qq{Warning: volume required from [ plate $source_plate | well $source_well ] if too low ( = $v )!};
     }
   }
-
 
   return $warnings;
 }
@@ -156,17 +167,23 @@ wtsi_clarity::epp::sequencing::ISC_pool_calculator
 
 =head1 SYNOPSIS
 
-  wtsi_clarity::epp::sequencing::ISC_pool_calculator->new(process_url => 'http://my.com/processes/3345')->run();
+  wtsi_clarity::epp::sequencing::ISC_pool_calculator::get_volume_calculations_and_warnings($data, $mapping);
 
 =head1 DESCRIPTION
 
-????  Creates a pdf document describing the plates, and upload it on the server, as an output for each output plate.
+offers a method to calculate the volumes needed to accomplish the pooling.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 process_url - required attribute
+=head2 $data is the content of the caliper CSV file
 
-=head2 run - executes the callback
+=head2 $mapping is an array of hashes, describing the plexing. Each one of them describing in which pool, each well will be added.
+       [
+        { 'source_plate' => '0001', 'source_well' =>  'A1', 'dest_plate' => '1000', 'dest_well' =>  'A1'},
+        { 'source_plate' => '0001', 'source_well' =>  'B1', 'dest_plate' => '1000', 'dest_well' =>  'A1'},
+        { 'source_plate' => '0002', 'source_well' =>  'A1', 'dest_plate' => '1000', 'dest_well' =>  'A1'},
+        ...
+       ]
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
@@ -179,6 +196,12 @@ wtsi_clarity::epp::sequencing::ISC_pool_calculator
 =item Carp
 
 =item Readonly
+
+=item POSIX;
+
+=item Text::CSV;
+
+=item List::MoreUtils qw/ uniq /;
 
 =back
 
