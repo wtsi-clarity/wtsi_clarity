@@ -52,7 +52,6 @@ with 'wtsi_clarity::util::uploader_role';
 
 our $VERSION = '0.0';
 
-$File::Temp::KEEP_ALL = 1;
 override 'run' => sub {
   my $self= shift;
   super();

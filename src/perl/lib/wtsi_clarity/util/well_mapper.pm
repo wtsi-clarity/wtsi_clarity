@@ -8,13 +8,15 @@ use Readonly;
 our $VERSION = '0.0';
 
 
-Readonly::Scalar my $NB_COLS => 12 ;
-Readonly::Scalar my $NB_ROWS => 8  ;
+Readonly::Scalar my $NB_COLS_96 => 12 ;
+Readonly::Scalar my $NB_ROWS_96 => 8  ;
+Readonly::Scalar my $NB_COLS_384 => 24 ;
+Readonly::Scalar my $NB_ROWS_384 => 16  ;
 
 sub get_location_in_decimal {
   my ($loc) = @_;
 
-  return _get_location_in_decimal($loc, $NB_ROWS, $NB_COLS);
+  return _get_location_in_decimal($loc, $NB_ROWS_96, $NB_COLS_96);
 }
 
 sub _get_location_in_decimal {
