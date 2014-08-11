@@ -1,4 +1,4 @@
-package wtsi_clarity::util::pdf_worksheet_generator;
+package wtsi_clarity::util::pdf_generator;
 
 use Moose;
 use Carp;
@@ -16,72 +16,57 @@ Readonly::Scalar my $stamp_height             => 760;
 Readonly::Scalar my $stamp_size               => 8;
 Readonly::Scalar my $subtitle_shift           => 20;
 Readonly::Scalar my $subtitle_size            => 12;
-Readonly::Scalar my $source_table_height      => 700;
-Readonly::Scalar my $destination_table_height => 450;
-Readonly::Scalar my $buffer_table_height      => 375;
 
 has 'pdf_data' => (
-  isa => 'HashRef',
-  is => 'ro',
+  isa      => 'HashRef',
+  is       => 'ro',
   required => 1,
 );
 
-sub _get_nb_row {
+has 'pdf' => (
+  isa      => 'PDF::API2',
+  is       => 'ro',
+  default   => sub { return PDF::API2->new(); },
+  required => 0,
+);
+
+sub get_nb_row {
   my ($data) = @_;
   return scalar @{$data};
 }
 
-sub _get_nb_col {
+sub get_nb_col {
   my ($data) = @_;
   return scalar @{$data->[0]};
 }
 
-sub create_worksheet_file {
-  my ($self) = @_;
-  my $pdf = PDF::API2->new();
-  my $font_bold = $pdf->corefont('Helvetica-Bold');
-  my $font = $pdf->corefont('Helvetica');
-
-
-  # for each output container, we produce a new page...
-  foreach my $page_data (@{$self->pdf_data->{'pages'}}) {
-    my $page = $pdf->page();
-    $page->mediabox('A4');
-
-    _add_title_to_page($page, $font_bold, $page_data->{'title'});
-    _add_timestamp(    $page, $font,      $self->pdf_data->{'stamp'});
-
-
-    _add_io_block_to_page($pdf, $page, $font_bold, $page_data->{'input_table'},  $page_data->{'input_table_title'},  $source_table_height);
-    _add_io_block_to_page($pdf, $page, $font_bold, $page_data->{'output_table'}, $page_data->{'output_table_title'}, $destination_table_height);
-
-    _add_buffer_block_to_page($pdf, $page, $font_bold, $page_data->{'plate_table'}, $page_data->{'plate_table_title'}, $page_data->{'plate_table_cell_styles'}, $buffer_table_height);
-  }
-  return $pdf;
+sub create {
+  my $self = shift;
+  croak 'This method should be overriden by a subclass';
 }
 ## no critic (Subroutines::ProhibitManyArgs)
-sub _add_io_block_to_page {
+sub add_io_block_to_page {
   my ($pdf, $page, $font, $table_data, $table_title, $y_pos) = @_;
-  _add_text_to_page($page, $font, $table_title, $left_margin, $y_pos+$subtitle_shift, $subtitle_size);
-  _add_table_to_page($pdf, $page, $table_data,  $left_margin, $y_pos);
+  add_text_to_page($page, $font, $table_title, $left_margin, $y_pos+$subtitle_shift, $subtitle_size);
+  add_table_to_page($pdf, $page, $table_data,  $left_margin, $y_pos);
   return;
 }
 
-sub _add_buffer_block_to_page {
+sub add_buffer_block_to_page {
   my ($pdf, $page, $font, $table_data, $table_title, $table_cell_styles, $y_pos) = @_;
-  _add_text_to_page($page, $font, $table_title, $left_margin, $y_pos+$subtitle_shift, $subtitle_size);
-  my $properties = _transform_all_properties($table_cell_styles);
-  _add_buffer_table_to_page($pdf, $page, $table_data, $properties , $y_pos);
+  add_text_to_page($page, $font, $table_title, $left_margin, $y_pos+$subtitle_shift, $subtitle_size);
+  my $properties = transform_all_properties($table_cell_styles);
+  add_buffer_table_to_page($pdf, $page, $table_data, $properties , $y_pos);
   return;
 }
 
-sub _transform_all_properties {
+sub transform_all_properties {
   my ($data) = @_;
   my $table_properties = [];
-  foreach my $j (0 .. _get_nb_row($data) - 1) {
+  foreach my $j (0 .. get_nb_row($data) - 1) {
     my $row_properties = [];
-    foreach my $i (0 .. _get_nb_col($data) - 1) {
-       push $row_properties, _transform_property($data->[$j]->[$i]);
+    foreach my $i (0 .. get_nb_col($data) - 1) {
+       push $row_properties, transform_property($data->[$j]->[$i]);
     }
     push $table_properties, $row_properties;
   }
@@ -89,8 +74,9 @@ sub _transform_all_properties {
   return $table_properties;
 }
 
-sub _transform_property {
+sub transform_property {
   my $property = shift ;
+  # orange, yellow, blue, magenta, pink, a different shade of magenta, a different shade of pink, cyan
   my @list_of_colours = ('#F5BA7F', '#F5E77D', '#7DD3F5', '#DB7DF5', '#F57FBA', '#F57DE7', '#F57DD3', '#7DF5DB');
   my $pdf_property ;
 
@@ -112,30 +98,49 @@ sub _transform_property {
         };
         last;
       };
+
+    /PASSED/xms and do {
+      $pdf_property = {
+        background_color => '#175C08',
+        font_size => 7,
+        justify => 'center',
+        font_color => '#FFF',
+      };
+      last;
+    };
+
+    /FAILED/xms and do {
+      $pdf_property = {
+        background_color => '#6B0200',
+        font_size => 7,
+        justify => 'center',
+        font_color => '#FFF',
+      }
+    }
   }
 
   return $pdf_property;
 }
 
-sub _add_title_to_page {
+sub add_title_to_page {
   my ($page, $font, $title) = @_;
-  _add_text_to_page($page, $font, $title, $left_margin, $title_height, $title_size);
+  add_text_to_page($page, $font, $title, $left_margin, $title_height, $title_size);
   return;
 }
 
-sub _add_timestamp {
+sub add_timestamp {
   my ($page, $font, $stamp) = @_;
-  _add_text_to_page($page, $font, $stamp, $left_margin, $stamp_height, $stamp_size);
+  add_text_to_page($page, $font, $stamp, $left_margin, $stamp_height, $stamp_size);
   return;
 }
 
-sub _add_buffer_table_to_page {
+sub add_buffer_table_to_page {
   my ($pdf, $page, $data, $table_properties, $y) = @_;
   my $pdftable = PDF::Table->new();
   my @table_data = @{$data}; # this pdf library eats the array ! So we need to give it a copy!
 
-  my $nb_core_col = _get_nb_col(\@table_data) - 2;
-  my $nb_core_row = _get_nb_row(\@table_data) - 2;
+  my $nb_core_col = get_nb_col(\@table_data) - 2;
+  my $nb_core_row = get_nb_row(\@table_data) - 2;
 
   $pdftable->table(
     # required params
@@ -168,7 +173,7 @@ sub _add_buffer_table_to_page {
   return;
 }
 
-sub _add_table_to_page {
+sub add_table_to_page {
   my ($pdf, $page, $data, $x, $y) = @_;
   my $pdftable_source = PDF::Table->new();
   my @local_data = @{$data}; # this pdf library eats the array ! So we need to give it a copy!
@@ -186,7 +191,7 @@ sub _add_table_to_page {
   return;
 }
 
-sub _add_text_to_page {
+sub add_text_to_page {
   my ($page, $font, $content, $x, $y, $font_size) = @_;
   my $text = $page->text();
   $text->font($font, $font_size);
@@ -202,23 +207,45 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::util::pdf_worksheet_generator
+wtsi_clarity::util::pdf_generator
 
 =head1 SYNOPSIS
 
-  my $generator = wtsi_clarity::util::pdf_worksheet_generator->new(pdf_data => ... );
-  my $file = $generator->create_worksheet_file();
+  my $generator = wtsi_clarity::util::pdf_generator->new(pdf_data => ... );
+  my $file = $generator->create();
 
 =head1 DESCRIPTION
 
-  Creates a pdf document describing the plates.
+  Abstract base class to create a pdf document
 
 =head1 SUBROUTINES/METHODS
 
 =head2 pdf_data - hash describing the data to display
 (see t/10-util-pdf_worksheet_generator.t for format)
 
-=head2 create_worksheet_file() - creates pdf file, which then can be saved using saveas().
+=head2 create() - creates pdf file, which then can be saved using saveas(). Must be overriden.
+
+=head2 add_buffer_block_to_page
+
+=head2 add_buffer_table_to_page
+
+=head2 add_io_block_to_page
+
+=head2 add_table_to_page
+
+=head2 add_text_to_page
+
+=head2 add_timestamp
+
+=head2 add_title_to_page
+
+=head2 get_nb_col
+
+=head2 get_nb_row
+
+=head2 transform_all_properties
+
+=head2 transform_property
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
