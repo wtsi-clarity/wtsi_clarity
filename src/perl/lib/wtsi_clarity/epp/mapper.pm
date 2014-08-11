@@ -26,6 +26,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'attach_dtx_file'         => 'sm::attach_dtx_file',
     'publish_file'            => 'sm::publish_file',
     'mq'                      => 'mq',
+    'pico_analysis'           => 'sm::pico_analysis',
 );
 
 has 'action'  => (

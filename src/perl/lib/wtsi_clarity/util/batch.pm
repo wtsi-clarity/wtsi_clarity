@@ -52,7 +52,7 @@ sub _check_batchable {
   my ($self, $batchable) = @_;
 
   if (none { $batchable eq $_ } @BATCHABLES) {
-    croak "$batchable cant not be retrieved with a batch request";
+    croak "$batchable can not be retrieved with a batch request";
   }
 
   return 1;
