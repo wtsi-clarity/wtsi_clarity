@@ -135,13 +135,15 @@ sub  _update_concentrations_for_one_pool {
   return $warnings;
 }
 
-sub main
+sub get_volume_calculations_and_warnings
 {
-  my (@data, $mapping) = @_;
+  my ($data, $mapping) = @_;
 
-  my $hashed_data = _filecontent_to_hash(@data);
+  my $hashed_data    = _filecontent_to_hash($data);
+  my $hashed_mapping = _transform_mapping($mappings);
 
-  return ;
+  my $warnings       = _update_concentrations_for_all_pools($hashed_mapping, $hashed_data)
+  return ($hashed_mapping, $warnings);
 }
 
 1;

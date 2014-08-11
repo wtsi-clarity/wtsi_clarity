@@ -1289,4 +1289,86 @@ use_ok('wtsi_clarity::epp::sequencing::ISC_pool_calculator', 'can use ISC_pool_c
   is_deeply( $warnings,  $EXPECTED_WARNING,  "_update_concentrations_for_one_pool() should return the correct warnings when the total volume must be rescaled.");
 }
 
+{
+  my $mapping = [
+    { 'source_plate' => '1', 'source_well' =>  'A1', 'dest_plate' => '10', 'dest_well' =>  'A1'},
+    { 'source_plate' => '1', 'source_well' =>  'B1', 'dest_plate' => '10', 'dest_well' =>  'A1'},
+    { 'source_plate' => '1', 'source_well' =>  'C1', 'dest_plate' => '10', 'dest_well' =>  'A1'},
+    { 'source_plate' => '1', 'source_well' =>  'D1', 'dest_plate' => '10', 'dest_well' =>  'A1'},
+    { 'source_plate' => '1', 'source_well' =>  'E1', 'dest_plate' => '10', 'dest_well' =>  'A1'},
+    { 'source_plate' => '1', 'source_well' =>  'F1', 'dest_plate' => '10', 'dest_well' =>  'A1'},
+    { 'source_plate' => '1', 'source_well' =>  'G1', 'dest_plate' => '10', 'dest_well' =>  'A1'},
+    { 'source_plate' => '1', 'source_well' =>  'H1', 'dest_plate' => '10', 'dest_well' =>  'A1'},
+    { 'source_plate' => '2', 'source_well' =>  'A1', 'dest_plate' => '10', 'dest_well' =>  'A1'},
+    { 'source_plate' => '2', 'source_well' =>  'B1', 'dest_plate' => '10', 'dest_well' =>  'A1'},
+    { 'source_plate' => '2', 'source_well' =>  'C1', 'dest_plate' => '10', 'dest_well' =>  'A1'},
+    { 'source_plate' => '2', 'source_well' =>  'D1', 'dest_plate' => '10', 'dest_well' =>  'A1'},
+    { 'source_plate' => '2', 'source_well' =>  'E1', 'dest_plate' => '10', 'dest_well' =>  'A1'},
+    { 'source_plate' => '2', 'source_well' =>  'F1', 'dest_plate' => '10', 'dest_well' =>  'A1'},
+    { 'source_plate' => '2', 'source_well' =>  'G1', 'dest_plate' => '10', 'dest_well' =>  'A1'},
+    { 'source_plate' => '2', 'source_well' =>  'H1', 'dest_plate' => '10', 'dest_well' =>  'A1'},
+    { 'source_plate' => '1', 'source_well' =>  'A2', 'dest_plate' => '10', 'dest_well' =>  'A2'},
+    { 'source_plate' => '1', 'source_well' =>  'B2', 'dest_plate' => '10', 'dest_well' =>  'A2'},
+    { 'source_plate' => '1', 'source_well' =>  'C2', 'dest_plate' => '10', 'dest_well' =>  'A2'},
+    { 'source_plate' => '1', 'source_well' =>  'D2', 'dest_plate' => '10', 'dest_well' =>  'A2'},
+    { 'source_plate' => '1', 'source_well' =>  'E2', 'dest_plate' => '10', 'dest_well' =>  'A2'},
+    { 'source_plate' => '1', 'source_well' =>  'F2', 'dest_plate' => '10', 'dest_well' =>  'A2'},
+    { 'source_plate' => '1', 'source_well' =>  'G2', 'dest_plate' => '10', 'dest_well' =>  'A2'},
+    { 'source_plate' => '1', 'source_well' =>  'H2', 'dest_plate' => '10', 'dest_well' =>  'A2'},
+    { 'source_plate' => '2', 'source_well' =>  'A3', 'dest_plate' => '10', 'dest_well' =>  'A2'},
+    { 'source_plate' => '2', 'source_well' =>  'B3', 'dest_plate' => '10', 'dest_well' =>  'A2'},
+    { 'source_plate' => '2', 'source_well' =>  'C3', 'dest_plate' => '10', 'dest_well' =>  'A2'},
+    { 'source_plate' => '2', 'source_well' =>  'D3', 'dest_plate' => '10', 'dest_well' =>  'A2'},
+    { 'source_plate' => '2', 'source_well' =>  'E3', 'dest_plate' => '10', 'dest_well' =>  'A2'},
+    { 'source_plate' => '2', 'source_well' =>  'F3', 'dest_plate' => '10', 'dest_well' =>  'A2'},
+    { 'source_plate' => '2', 'source_well' =>  'G3', 'dest_plate' => '10', 'dest_well' =>  'A2'},
+    { 'source_plate' => '2', 'source_well' =>  'H3', 'dest_plate' => '10', 'dest_well' =>  'A3'},
+  ];
+  my $EXPECTED_DATA_2 = {
+    '10' => {
+      'A1' => [
+        { 'source_plate' => '1', 'source_well' =>  'A1', },
+        { 'source_plate' => '1', 'source_well' =>  'B1', },
+        { 'source_plate' => '1', 'source_well' =>  'C1', },
+        { 'source_plate' => '1', 'source_well' =>  'D1', },
+        { 'source_plate' => '1', 'source_well' =>  'E1', },
+        { 'source_plate' => '1', 'source_well' =>  'F1', },
+        { 'source_plate' => '1', 'source_well' =>  'G1', },
+        { 'source_plate' => '1', 'source_well' =>  'H1', },
+        { 'source_plate' => '2', 'source_well' =>  'A1', },
+        { 'source_plate' => '2', 'source_well' =>  'B1', },
+        { 'source_plate' => '2', 'source_well' =>  'C1', },
+        { 'source_plate' => '2', 'source_well' =>  'D1', },
+        { 'source_plate' => '2', 'source_well' =>  'E1', },
+        { 'source_plate' => '2', 'source_well' =>  'F1', },
+        { 'source_plate' => '2', 'source_well' =>  'G1', },
+        { 'source_plate' => '2', 'source_well' =>  'H1', },
+      ],
+      'A2' => [
+        { 'source_plate' => '1', 'source_well' =>  'A2', },
+        { 'source_plate' => '1', 'source_well' =>  'B2', },
+        { 'source_plate' => '1', 'source_well' =>  'C2', },
+        { 'source_plate' => '1', 'source_well' =>  'D2', },
+        { 'source_plate' => '1', 'source_well' =>  'E2', },
+        { 'source_plate' => '1', 'source_well' =>  'F2', },
+        { 'source_plate' => '1', 'source_well' =>  'G2', },
+        { 'source_plate' => '1', 'source_well' =>  'H2', },
+        { 'source_plate' => '2', 'source_well' =>  'A3', },
+        { 'source_plate' => '2', 'source_well' =>  'B3', },
+        { 'source_plate' => '2', 'source_well' =>  'C3', },
+        { 'source_plate' => '2', 'source_well' =>  'D3', },
+        { 'source_plate' => '2', 'source_well' =>  'E3', },
+        { 'source_plate' => '2', 'source_well' =>  'F3', },
+        { 'source_plate' => '2', 'source_well' =>  'G3', },
+      ],
+      'A3' => [
+        { 'source_plate' => '2', 'source_well' =>  'H3', },
+      ],
+    },
+  };
+  my $output = wtsi_clarity::epp::sequencing::ISC_pool_calculator::_transform_mapping($mapping);
+  is_deeply( $output,  $EXPECTED_DATA_2,  "_transform_mapping() should return the correct content.");
+
+}
+
 1;
