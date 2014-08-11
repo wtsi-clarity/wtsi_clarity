@@ -3,6 +3,7 @@ package wtsi_clarity::util::pdf_generator::factory::pico_analysis_results;
 use Moose;
 use Carp;
 use Readonly;
+use DateTime;
 
 use wtsi_clarity::util::pdf_generator::pico_analysis_results;
 
@@ -49,11 +50,11 @@ sub build {
   my ($plate_table, $plate_table_cell_styles) = $self->_format_tables($parameters);
 
   my $pdf_data = {
-    'stamp' => 'Something',
+    'stamp' => 'Created: ' . DateTime->now->strftime('%A %d-%B-%Y at %H:%M:%S'),
     'pages' => [
       {
         'title' => 'Picogreen Analysis',
-        'plate_table_title' => 'Table',
+        'plate_table_title' => 'Results',
         'plate_table' => $plate_table,
         'plate_table_cell_styles' => $plate_table_cell_styles,
       }
@@ -118,7 +119,10 @@ sub table_footer_row {
 
 sub format_table_cell {
   my $cell = shift;
-  return join "\n", $cell->{'concentration'}, $cell->{'cv'}, $cell->{'status'};
+  my $concentration = sprintf '%.2f', $cell->{'concentration'};
+  my $cv = sprintf '%.2f', $cell->{'cv'};
+
+  return join "\n", $concentration, $cv, $cell->{'status'};
 }
 
 sub headers_row {

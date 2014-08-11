@@ -3,7 +3,7 @@ package wtsi_clarity::util::pdf_generator::pico_analysis_results;
 use Moose;
 use Readonly;
 
-Readonly::Scalar my $buffer_table_height => 375;
+Readonly::Scalar my $buffer_table_y_position => 700;
 
 extends 'wtsi_clarity::util::pdf_generator';
 
@@ -23,7 +23,7 @@ override 'create' => sub {
     wtsi_clarity::util::pdf_generator::add_title_to_page($page, $font_bold, $page_data->{'title'});
     wtsi_clarity::util::pdf_generator::add_timestamp($page, $font, $self->pdf_data->{'stamp'});
 
-    wtsi_clarity::util::pdf_generator::add_buffer_block_to_page($self->pdf, $page, $font_bold, $page_data->{'plate_table'}, $page_data->{'plate_table_title'}, $page_data->{'plate_table_cell_styles'}, $buffer_table_height);
+    wtsi_clarity::util::pdf_generator::add_buffer_block_to_page($self->pdf, $page, $font_bold, $page_data->{'plate_table'}, $page_data->{'plate_table_title'}, $page_data->{'plate_table_cell_styles'}, $buffer_table_y_position);
   }
 
   return $self->pdf;
