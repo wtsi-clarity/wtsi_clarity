@@ -5,6 +5,7 @@ use Carp;
 use Readonly;
 use File::Temp qw/ tempdir /;
 use wtsi_clarity::file_parsing::dtx_concentration_calculator;
+use wtsi_clarity::util::pdf_generator::factory;
 
 extends 'wtsi_clarity::epp';
 
@@ -29,6 +30,12 @@ Readonly::Scalar our $PROCESS_NAME          => q(Pico DTX (SM));
 
 our $VERSION = '0.0';
 
+has 'analysis_file' => (
+  isa => 'Str',
+  is  => 'ro',
+  required => 1,
+);
+
 override 'run' => sub {
   my $self= shift;
   super();
@@ -45,11 +52,11 @@ override 'run' => sub {
 
   my $results = $calculator->get_analysis_results();
 
-  # Format the results
-
   # Pass the results to the PDF generator
+  my $pdf = wtsi_clarity::util::pdf_generator::factory->createPDF('pico_analysis_results', $results);
 
   # Attach PDF to process
+  $pdf->saveas(q{./} . $self->analysis_file);
 
   return;
 };

@@ -10,6 +10,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 {
   my $pa = wtsi_clarity::epp::sm::pico_analysis->new(
+    analysis_file => '92-1234',
     process_url => 'http://claritytest.com/processes/24-11981',
   );
 
@@ -20,6 +21,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 # Input URIs
 {
   my $pa = wtsi_clarity::epp::sm::pico_analysis->new(
+    analysis_file => '92-1234',
     process_url => 'http://claritytest.com/processes/24-11981_b',
   );
 
@@ -36,6 +38,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 {
   my $pa = wtsi_clarity::epp::sm::pico_analysis->new(
+    analysis_file => '92-1234',
     process_url => 'http://claritytest.com/processes/24-11981_a',
   );
 
@@ -53,6 +56,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 # Extract file url / file name
 {
   my $pa = wtsi_clarity::epp::sm::pico_analysis->new(
+    analysis_file => '92-1234',
     process_url => 'http://claritytest.com/processes/24-11981',
   );
 
@@ -66,6 +70,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 # Extract file location
 {
   my $pa = wtsi_clarity::epp::sm::pico_analysis->new(
+    analysis_file => '92-1234',
     process_url => 'http://claritytest.com/processes/24-11981',
   );
 
