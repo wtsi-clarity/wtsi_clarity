@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 202;
+use Test::More tests => 203;
 use Test::Exception;
 use DateTime;
 use XML::LibXML;
@@ -573,9 +573,14 @@ my $TEST_DATA4 = {
               );
 
   my $data = $step->_get_containers_data();
+
+  my $input_uri     = q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containers/27-23};
+  my $input = $data->{'input_container_info'}->{$input_uri}->{'container_details'};
+
   my $container_uri = q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containers/27-8129};
   my $cont = $data->{'output_container_info'}->{$container_uri}->{'container_details'};
-  my @expected_data = (
+
+  my @expected_out_data = (
     { 'param' => 'D:1',
       'exp_location' => "B:2",
       'exp_sample_volume' => "1.2",
@@ -591,9 +596,8 @@ my $TEST_DATA4 = {
       'exp_type' => "ABgene 0800",
     },
   );
-  use Data::Dumper;
-  # print Dumper $data;
-  foreach my $datum (@expected_data) {
+
+  foreach my $datum (@expected_out_data) {
     my $out = $datum->{'param'};
     my $exp_loc = $datum->{'exp_location'};
     my $exp_smp = $datum->{'exp_sample_volume'};
@@ -605,16 +609,17 @@ my $TEST_DATA4 = {
     my $in_buf  = $cont->{$out}->{'buffer_volume'};
     my $in_id   = $cont->{$out}->{'input_id'};
     my $in_type = $data->{'output_container_info'}->{$container_uri}->{'type'};
-    cmp_ok($in_loc, 'eq', $exp_loc, "_get_containers_data(...) should give the correct relation $out <-> $exp_loc (found $in_loc). ");
-    cmp_ok($in_smp, 'eq', $exp_smp, "_get_containers_data(...) should give the sample volume. $out <-> $exp_smp (found $in_smp)");
-    cmp_ok($in_buf, 'eq', $exp_buf, "_get_containers_data(...) should give the buffer volume. $out <-> $exp_buf (found $in_buf)");
-    cmp_ok($in_id,  'eq', $exp_id,  "_get_containers_data(...) should give the container id. $out <-> $exp_id (found $in_id)");
-    cmp_ok($in_type,'eq', $exp_typ, "_get_containers_data(...) should give the container type. $out <-> $exp_typ (found $in_type)");
+    cmp_ok($in_loc, 'eq', $exp_loc, qq{_get_containers_data(...) should give the correct relation $out <-> $exp_loc (found $in_loc) });
+    cmp_ok($in_smp, 'eq', $exp_smp, qq{_get_containers_data(...) should give the sample volume.   $out <-> $exp_smp (found $in_smp) });
+    cmp_ok($in_buf, 'eq', $exp_buf, qq{_get_containers_data(...) should give the buffer volume.   $out <-> $exp_buf (found $in_buf) });
+    cmp_ok($in_id,  'eq', $exp_id,  qq{_get_containers_data(...) should give the container id.    $out <-> $exp_id  (found $in_id)  });
+    cmp_ok($in_type,'eq', $exp_typ, qq{_get_containers_data(...) should give the container type.  $out <-> $exp_typ (found $in_type)});
   }
 
   cmp_ok($data->{'output_container_info'}->{$container_uri}->{'wells'}, 'eq', 96, "_get_containers_data(...) should give the correct nb of wells");
   cmp_ok($data->{'output_container_info'}->{$container_uri}->{'occ_wells'}, 'eq', 73, "_get_containers_data(...) should give the correct nb of wells");
 
+  cmp_ok($data->{'input_container_info'}->{$input_uri}->{'purpose'}, 'eq', 'PLATE_PURPOSE_23', "_get_containers_data(...) should give the correct nb of wells");
 }
 
 { # _get_cell_properties
@@ -662,8 +667,7 @@ my $TEST_DATA4 = {
 { # _get_title
   my $title = wtsi_clarity::epp::sm::worksheet::_get_title($TEST_DATA3, 'container_uri', "Cherrypicking");
 
-  my $exp_title = q{Process PROCESS_ID - PLATE_PURPOSE_out - Cherrypicking};
-  # my $found = $cols->{$id};
+  my $exp_title = q{Process PROCESS_ID - PLATE_PURPOSE_27 -> PLATE_PURPOSE_out};
   cmp_ok($title, 'eq', $exp_title, "_get_title(...) should give $exp_title.");
 }
 
@@ -774,7 +778,7 @@ my $TEST_DATA4 = {
     'stamp' => 'my stamp',
     'pages' => [
       {
-        'title' => 'Process PROCESS_ID - PLATE_PURPOSE_out - Cherrypicking',
+        'title' => 'Process PROCESS_ID - PLATE_PURPOSE_29 -> PLATE_PURPOSE_out',
         'input_table' => [['Plate name', 'Barcode', 'Freezer', 'Shelf', 'Rack', 'Tray'],
                           ['PLATE_NAME29', '00000029', '000029', '000029', '000029', '000029' ]],
         'input_table_title' => 'Source plates',
@@ -807,7 +811,7 @@ my $TEST_DATA4 = {
           ],
       },
       {
-        'title' => 'Process PROCESS_ID - PLATE_PURPOSE_out - Cherrypicking',
+        'title' => 'Process PROCESS_ID - PLATE_PURPOSE_27 -> PLATE_PURPOSE_out',
         'input_table' => [['Plate name', 'Barcode', 'Freezer', 'Shelf', 'Rack', 'Tray'],
                           ['PLATE_NAME27', '00000027', '000021', '000022', '000023', '000024' ]],
         'input_table_title' => 'Source plates',
