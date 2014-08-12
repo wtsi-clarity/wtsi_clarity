@@ -1,4 +1,4 @@
-package wtsi_clarity::epp::sequencing::ISC_pool_calculator;
+package wtsi_clarity::file_parsing::ISC_pool_calculator;
 
 use Moose;
 use Carp;

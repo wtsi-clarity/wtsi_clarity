@@ -7,7 +7,7 @@ use Carp;
 use Data::Dumper;
 use Readonly;
 
-use_ok('wtsi_clarity::epp::sequencing::ISC_pool_calculator', 'can use ISC_pool_calculator');
+use_ok('wtsi_clarity::file_parsing::ISC_pool_calculator', 'can use ISC_pool_calculator');
 
 
 {
@@ -538,7 +538,7 @@ use_ok('wtsi_clarity::epp::sequencing::ISC_pool_calculator', 'can use ISC_pool_c
   open(my $fh, '<', $testdata_path."/".$file1) or croak  qq{'File can not be opened : $testdata_path/$file1 } ;
   my @array = <$fh>;
   close $fh;
-  my $output = wtsi_clarity::epp::sequencing::ISC_pool_calculator::_filecontent_to_hash(\@array, 1000);
+  my $output = wtsi_clarity::file_parsing::ISC_pool_calculator::_filecontent_to_hash(\@array, 1000);
   is_deeply( $output,  $EXPECTED_DATA_1,  "_filecontent_to_hash() should return the correct content.");
 }
 
@@ -876,7 +876,7 @@ use_ok('wtsi_clarity::epp::sequencing::ISC_pool_calculator', 'can use ISC_pool_c
                   }
         };
 
-  my $warnings = wtsi_clarity::epp::sequencing::ISC_pool_calculator::_update_concentrations_for_all_pools($mapping, $data, 5, 50, 200);
+  my $warnings = wtsi_clarity::file_parsing::ISC_pool_calculator::_update_concentrations_for_all_pools($mapping, $data, 5, 50, 200);
   is_deeply( $mapping,  $EXPECTED_DATA,    "_update_concentrations_for_all_pools() should return the correct content.");
   is_deeply( $warnings, $EXPECTED_WARNING, "_update_concentrations_for_all_pools() should return the correct warnings.");
 }
@@ -1136,7 +1136,7 @@ use_ok('wtsi_clarity::epp::sequencing::ISC_pool_calculator', 'can use ISC_pool_c
       ];
   my $EXPECTED_WARNING = [];
 
-  my $warnings = wtsi_clarity::epp::sequencing::ISC_pool_calculator::_update_concentrations_for_one_pool($mapping, $data, 5, 50, 200);
+  my $warnings = wtsi_clarity::file_parsing::ISC_pool_calculator::_update_concentrations_for_one_pool($mapping, $data, 5, 50, 200);
   is_deeply( $mapping,  $EXPECTED_DATA,  "_update_concentrations_for_one_pool() should return the correct content.");
   is_deeply( $warnings,  $EXPECTED_WARNING,  "_update_concentrations_for_one_pool() should return the correct warnings.");
 }
@@ -1176,7 +1176,7 @@ use_ok('wtsi_clarity::epp::sequencing::ISC_pool_calculator', 'can use ISC_pool_c
                       ];
 
   my $EXPECTED_WARNING = [ q{Warning: volume required from [ plate 1 | well A1 ] if too low ( = 1 )!} ];
-  my $warnings = wtsi_clarity::epp::sequencing::ISC_pool_calculator::_update_concentrations_for_one_pool($mapping, $data, 5, 50, 200);
+  my $warnings = wtsi_clarity::file_parsing::ISC_pool_calculator::_update_concentrations_for_one_pool($mapping, $data, 5, 50, 200);
   is_deeply( $mapping,  $EXPECTED_DATA,  "_update_concentrations_for_one_pool() should return the correct content when the molarity ratio is too high.");
   is_deeply( $warnings,  $EXPECTED_WARNING,  "_update_concentrations_for_one_pool() should return the correct warnings when the molarity ratio is too high.");
 }
@@ -1205,7 +1205,7 @@ use_ok('wtsi_clarity::epp::sequencing::ISC_pool_calculator', 'can use ISC_pool_c
                       ];
 
   my $EXPECTED_WARNING = [ ];
-  my $warnings = wtsi_clarity::epp::sequencing::ISC_pool_calculator::_update_concentrations_for_one_pool($mapping, $data, 5, 50, 200);
+  my $warnings = wtsi_clarity::file_parsing::ISC_pool_calculator::_update_concentrations_for_one_pool($mapping, $data, 5, 50, 200);
   is_deeply( $mapping,  $EXPECTED_DATA,  "_update_concentrations_for_one_pool() should return the correct content when there's only one well.");
   is_deeply( $warnings,  $EXPECTED_WARNING,  "_update_concentrations_for_one_pool() should return the correct warnings when there's only one well.");
 }
@@ -1245,7 +1245,7 @@ use_ok('wtsi_clarity::epp::sequencing::ISC_pool_calculator', 'can use ISC_pool_c
                       ];
 
   my $EXPECTED_WARNING = [ ];
-  my $warnings = wtsi_clarity::epp::sequencing::ISC_pool_calculator::_update_concentrations_for_one_pool($mapping, $data, 5, 50, 200);
+  my $warnings = wtsi_clarity::file_parsing::ISC_pool_calculator::_update_concentrations_for_one_pool($mapping, $data, 5, 50, 200);
   is_deeply( $mapping,  $EXPECTED_DATA,  "_update_concentrations_for_one_pool() should return the correct content when the total volume must not be rescaled.");
   is_deeply( $warnings,  $EXPECTED_WARNING,  "_update_concentrations_for_one_pool() should return the correct warnings when the total volume must not be rescaled.");
 }
@@ -1285,7 +1285,7 @@ use_ok('wtsi_clarity::epp::sequencing::ISC_pool_calculator', 'can use ISC_pool_c
                       ];
 
   my $EXPECTED_WARNING = [ ];
-  my $warnings = wtsi_clarity::epp::sequencing::ISC_pool_calculator::_update_concentrations_for_one_pool($mapping, $data, 5, 50, 80);
+  my $warnings = wtsi_clarity::file_parsing::ISC_pool_calculator::_update_concentrations_for_one_pool($mapping, $data, 5, 50, 80);
   is_deeply( $mapping,  $EXPECTED_DATA,  "_update_concentrations_for_one_pool() should return the correct content when the total volume must be rescaled.");
   is_deeply( $warnings,  $EXPECTED_WARNING,  "_update_concentrations_for_one_pool() should return the correct warnings when the total volume must be rescaled.");
 }
@@ -1367,7 +1367,7 @@ use_ok('wtsi_clarity::epp::sequencing::ISC_pool_calculator', 'can use ISC_pool_c
       ],
     },
   };
-  my $output = wtsi_clarity::epp::sequencing::ISC_pool_calculator::_transform_mapping($mapping);
+  my $output = wtsi_clarity::file_parsing::ISC_pool_calculator::_transform_mapping($mapping);
   is_deeply( $output,  $EXPECTED_DATA_2,  "_transform_mapping() should return the correct content.");
 }
 
@@ -1383,7 +1383,7 @@ use_ok('wtsi_clarity::epp::sequencing::ISC_pool_calculator', 'can use ISC_pool_c
     ' hel lo ' => 'hel lo',
   };
   while (my ($input, $expected) = each %{$test_data} ) {
-    my $output = wtsi_clarity::epp::sequencing::ISC_pool_calculator::_cleanup_key($input);
+    my $output = wtsi_clarity::file_parsing::ISC_pool_calculator::_cleanup_key($input);
     is_deeply( $output,  $expected,  "_cleanup_key() should return the correct content.");
   }
 }
@@ -1413,7 +1413,7 @@ use_ok('wtsi_clarity::epp::sequencing::ISC_pool_calculator', 'can use ISC_pool_c
   my @array = <$fh>;
   close $fh;
 
-  my $calc = wtsi_clarity::epp::sequencing::ISC_pool_calculator->new( data             =>\@array,
+  my $calc = wtsi_clarity::file_parsing::ISC_pool_calculator->new( data             =>\@array,
                                                                       mapping          => $mapping,
                                                                       min_volume       => 5,
                                                                       max_volume       => 50,
