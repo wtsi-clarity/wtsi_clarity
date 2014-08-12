@@ -16,7 +16,7 @@ sub get_fake_response {
   return $response;
 }
 
-my $test_dir = 't/data/sm/validate_tag_plate';
+my $test_dir = 't/data/sm/tag_plate';
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = $test_dir;
 
 use_ok('wtsi_clarity::epp::sm::tag_plate');
@@ -67,7 +67,8 @@ my $epp = wtsi_clarity::epp::sm::tag_plate->new(
 
   my $mocked_lot_request = Test::MockObject::Extends->new( $epp->ss_request );
   $mocked_lot_request->mock(q(get), sub{my ($self, $uri) = @_; return $lot_response;});
-  is($epp->lot_type($lot_uuid), 'NO IDT Tags', 'Gets the correct lot type name.');
+
+  is($epp->lot($lot_uuid)->{'lot_type'}, 'NO IDT Tags', 'Gets the correct lot type name.');
 }
 
 # tests the valid tag plate and valid lot type name
@@ -88,7 +89,7 @@ my $epp = wtsi_clarity::epp::sm::tag_plate->new(
 
   my $mocked_lot_request = Test::MockObject::Extends->new( $epp->ss_request );
   $mocked_lot_request->mock(q(get), sub{my ($self, $uri) = @_; return $lot_response;});
-  is($epp->lot_type($lot_uuid), 'IDT Tags', 'Gets the correct lot type name.');
+  is($epp->lot($lot_uuid)->{'lot_type'}, 'IDT Tags', 'Gets the correct lot type name.');
 }
 
 1;

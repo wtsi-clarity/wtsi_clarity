@@ -21,7 +21,8 @@ sm_pico_green=/Users/cs24/projects/clarity/wtsi_clarity/src/perl/t/data/sm/attac
 
 [tag_plate_validation]
 gatekeeper_url=http://dev.psd.sanger.ac.uk:6610/api/1
-ss_client_id=372d4ece3d05deda9b5588dd9d2b23a0
-find_qcable_by_barcode_uuid=4ad4af50-c568-11e3-ad09-3c4a9275d6c6
+ss_client_id=12345678901234567890123456789012
+user_uuid=00000000-0000-0000-0000-000000000001
+find_qcable_by_barcode_uuid=11111111-2222-3333-4444-555555555555
 qcable_state=available
 valid_lot_type=IDT Tags
