@@ -6,8 +6,6 @@ use Test::Warn;
 use Carp;
 use Data::Dumper;
 use Readonly;
-use Text::CSV::Simple;
-
 
 use_ok('wtsi_clarity::epp::sequencing::ISC_pool_calculator', 'can use ISC_pool_calculator');
 

@@ -10,6 +10,7 @@ use List::MoreUtils qw/ uniq /;
 
 Readonly::Scalar my $CONCENTRATION_NORMALISER => 5;
 
+our $VERSION = '0.0';
 
 sub _filecontent_to_hash {
   # transforms the csv content into a hash.
@@ -72,7 +73,7 @@ sub _transform_mapping {
       $new_mappings->{$dest_plate}->{$dest_well} = [];
     }
     my $details = { 'source_plate' => $source_plate, 'source_well' => $source_well };
-    push $new_mappings->{$dest_plate}->{$dest_well}, $details;
+    push @{$new_mappings->{$dest_plate}->{$dest_well}}, $details;
 
   }
   return $new_mappings;
@@ -114,7 +115,7 @@ sub  _update_concentrations_for_one_pool {
 
   # if no minimum molarity, then there's no data to compute for this pool
   if (!defined $min || 0 >= $min) {
-    push $warnings, qq{Warning: Too many concentration data missing! This well cannot be configured!};
+    push @{$warnings}, qq{Warning: Too many concentration data missing! This well cannot be configured!};
     return $warnings;
   }
 
@@ -126,7 +127,7 @@ sub  _update_concentrations_for_one_pool {
       # special case: no data -> we set the volume to zero
       my $source_plate = $source->{ 'source_plate' };
       my $source_well  = $source->{ 'source_well'  };
-      push $warnings, qq{Warning: concentration data missing for [ plate $source_plate | well $source_well ]};
+      push @{$warnings}, qq{Warning: concentration data missing for [ plate $source_plate | well $source_well ]};
       $source->{'Volume'} = 0.0;
     } else {
       # normal case: we make sure that he least concentrated well is the most used
@@ -148,7 +149,7 @@ sub  _update_concentrations_for_one_pool {
       my $source_plate = $source->{ 'source_plate' };
       my $source_well  = $source->{ 'source_well'  };
       my $v = $source->{'Volume'};
-      push $warnings, qq{Warning: volume required from [ plate $source_plate | well $source_well ] if too low ( = $v )!};
+      push @{$warnings}, qq{Warning: volume required from [ plate $source_plate | well $source_well ] if too low ( = $v )!};
     }
   }
 
@@ -184,9 +185,11 @@ offers a method to calculate the volumes needed to accomplish the pooling.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 $data is the content of the caliper CSV file
-
-=head2 $mapping is an array of hashes, describing the plexing. Each one of them describing in which pool, each well will be added.
+=head2 get_volume_calculations_and_warnings - Calculates the volumes needed to accomplish the poolin.
+       
+       $data is the content of the caliper CSV file.
+       
+       $mapping is an array of hashes, describing the plexing. Each one of them describing in which pool, each well will be added.
        [
         { 'source_plate' => '0001', 'source_well' =>  'A1', 'dest_plate' => '1000', 'dest_well' =>  'A1'},
         { 'source_plate' => '0001', 'source_well' =>  'B1', 'dest_plate' => '1000', 'dest_well' =>  'A1'},
