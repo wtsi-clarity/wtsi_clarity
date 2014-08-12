@@ -15,7 +15,7 @@ our $VERSION = '0.0';
 sub _filecontent_to_hash {
   # transforms the csv content into a hash.
   # the samples are duplicated. we pack them together.
-  my ($data) = @_;
+  my ($data, $barcode) = @_;
 
   my $csv_parser = Text::CSV->new();
   shift $data;
@@ -46,7 +46,8 @@ sub _filecontent_to_hash {
       }
     }
   }
-  return $output;
+  my $hashed_data = { $barcode => $output };
+  return $hashed_data;
 }
 
 sub _cleanup_key {
@@ -149,14 +150,52 @@ sub  _update_concentrations_for_one_pool {
 
 sub get_volume_calculations_and_warnings
 {
-  my ($data, $mapping) = @_;
+  my ($self) = @_;
 
-  my $hashed_data    = _filecontent_to_hash($data);
-  my $hashed_mapping = _transform_mapping($mapping);
+  my $hashed_data    = _filecontent_to_hash($self->data, $self->original_plate_barcode);
+  my $hashed_mapping = _transform_mapping($self->mapping);
 
-  my $warnings       = _update_concentrations_for_all_pools($hashed_mapping, $hashed_data);
+  my $warnings       = _update_concentrations_for_all_pools($hashed_mapping,
+                                                            $hashed_data,
+                                                            $self->min_volume,
+                                                            $self->max_volume,
+                                                            $self->max_total_volume);
   return ($hashed_mapping, $warnings);
 }
+
+has 'data' => (
+  is => 'ro',
+  isa => 'ArrayRef',
+  required => 1,
+);
+
+has 'mapping' => (
+  is => 'ro',
+  isa => 'ArrayRef',
+  required => 1,
+);
+
+has 'min_volume' => (
+  is => 'ro',
+  isa => 'Num',
+  required => 1,
+);
+has 'max_volume' => (
+  is => 'ro',
+  isa => 'Num',
+  required => 1,
+);
+has 'max_total_volume' => (
+  is => 'ro',
+  isa => 'Num',
+  required => 1,
+);
+has 'original_plate_barcode' => (
+  is => 'ro',
+  isa => 'Num',
+  required => 1,
+);
+
 
 1;
 
@@ -168,25 +207,45 @@ wtsi_clarity::epp::sequencing::ISC_pool_calculator
 
 =head1 SYNOPSIS
 
-  wtsi_clarity::epp::sequencing::ISC_pool_calculator::get_volume_calculations_and_warnings($data, $mapping);
+  my $calc = wtsi_clarity::epp::sequencing::ISC_pool_calculator->new( data             => $array,
+                                                                      mapping          => $mapping,
+                                                                      min_volume       => 5,
+                                                                      max_volume       => 50,
+                                                                      max_total_volume => 200,
+                                                                      original_plate_barcode => 1234567890123456,
+                                                                    );
+  $calc->get_volume_calculations_and_warnings();
 
 =head1 DESCRIPTION
 
-offers a method to calculate the volumes needed to accomplish the pooling.
+  offers a method to calculate the volumes needed to accomplish the pooling.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 get_volume_calculations_and_warnings - Calculates the volumes needed to accomplish the poolin.
+=head2  new - Creates the instance.
 
-       $data is the content of the caliper CSV file.
+        $data is the content of the caliper CSV file.
 
-       $mapping is an array of hashes, describing the plexing. Each one of them describing in which pool, each well will be added.
-       [
-        { 'source_plate' => '0001', 'source_well' =>  'A1', 'dest_plate' => '1000', 'dest_well' =>  'A1'},
-        { 'source_plate' => '0001', 'source_well' =>  'B1', 'dest_plate' => '1000', 'dest_well' =>  'A1'},
-        { 'source_plate' => '0002', 'source_well' =>  'A1', 'dest_plate' => '1000', 'dest_well' =>  'A1'},
-        ...
-       ]
+        $original_plate_barcode is the name/barcode of the plate associated with the $data. This is NOT the
+        name of the caliper plate
+
+        $mapping is an array of hashes, describing the plexing. Each one of them describing in which pool, each well will be added.
+        [
+          { 'source_plate' => '0001', 'source_well' =>  'A1', 'dest_plate' => '1000', 'dest_well' =>  'A1'},
+          { 'source_plate' => '0001', 'source_well' =>  'B1', 'dest_plate' => '1000', 'dest_well' =>  'A1'},
+          { 'source_plate' => '0002', 'source_well' =>  'A1', 'dest_plate' => '1000', 'dest_well' =>  'A1'},
+          ...
+        ]
+
+        $min_volume is the minimum volume that can be extracted from the source
+
+        $max_volume is the maximum volume that can be extracted from the source
+
+        $max_total_volume is the maximum total volume that can be pooled, i.e. the sum of the volumes extracted for one pool
+
+=head2  get_volume_calculations_and_warnings - Calculates the volumes needed to accomplish the pooling.
+        Returns the calculations data, as well as an array of potentials errors discovered
+
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
