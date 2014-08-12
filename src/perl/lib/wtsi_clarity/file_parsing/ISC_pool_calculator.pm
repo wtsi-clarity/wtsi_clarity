@@ -203,11 +203,11 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::epp::sequencing::ISC_pool_calculator
+wtsi_clarity::file_parsing::ISC_pool_calculator
 
 =head1 SYNOPSIS
 
-  my $calc = wtsi_clarity::epp::sequencing::ISC_pool_calculator->new( data             => $array,
+  my $calc = wtsi_clarity::file_parsing::ISC_pool_calculator->new( data             => $array,
                                                                       mapping          => $mapping,
                                                                       min_volume       => 5,
                                                                       max_volume       => 50,
