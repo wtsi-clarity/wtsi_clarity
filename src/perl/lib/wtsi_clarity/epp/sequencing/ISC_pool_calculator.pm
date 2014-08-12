@@ -61,20 +61,11 @@ sub _transform_mapping {
   my ($mappings) = @_;
   my $new_mappings = {};
   foreach my $mapping (@{$mappings}) {
-    my $dest_plate   = $mapping->{ 'dest_plate'   };
-    my $dest_well    = $mapping->{ 'dest_well'    };
-    my $source_plate = $mapping->{ 'source_plate' };
-    my $source_well  = $mapping->{ 'source_well'  };
-
-    if ( not $new_mappings->{$dest_plate} ) {
-      $new_mappings->{$dest_plate} = {};
-    }
-    if ( not $new_mappings->{$dest_plate}->{$dest_well} ) {
-      $new_mappings->{$dest_plate}->{$dest_well} = [];
-    }
-    my $details = { 'source_plate' => $source_plate, 'source_well' => $source_well };
-    push @{$new_mappings->{$dest_plate}->{$dest_well}}, $details;
-
+    push @{$new_mappings->{ $mapping->{ 'dest_plate' } }->{ $mapping->{ 'dest_well' } } },
+       {
+         'source_plate' => $mapping->{ 'source_plate' },
+         'source_well'  => $mapping->{ 'source_well'  },
+       };
   }
   return $new_mappings;
 }
@@ -186,9 +177,9 @@ offers a method to calculate the volumes needed to accomplish the pooling.
 =head1 SUBROUTINES/METHODS
 
 =head2 get_volume_calculations_and_warnings - Calculates the volumes needed to accomplish the poolin.
-       
+
        $data is the content of the caliper CSV file.
-       
+
        $mapping is an array of hashes, describing the plexing. Each one of them describing in which pool, each well will be added.
        [
         { 'source_plate' => '0001', 'source_well' =>  'A1', 'dest_plate' => '1000', 'dest_well' =>  'A1'},
