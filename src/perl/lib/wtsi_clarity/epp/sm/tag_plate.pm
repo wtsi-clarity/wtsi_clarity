@@ -93,15 +93,23 @@ sub _build__ss_user_uuid {
   return $self->config->tag_plate_validation->{'user_uuid'};
 }
 
-subtype 'TagPlateActions'
-  => as       'Str'
-  => where    { /^validate$|^get_layout$/isxm }
-  => message  { qq/ The action you provided: $_, was not a valid action name./} ;
 
-has 'tag_plate_action' => (
-  isa => 'TagPlateActions',
-  is  => 'ro',
-  required => 1,
+has 'lot_uuid' => (
+  isa       => 'Str',
+  is        => 'rw',
+  required  => 0,
+);
+
+has 'asset_uuid' => (
+  isa       => 'Str',
+  is        => 'rw',
+  required  => 0,
+);
+
+has 'template_uuid' => (
+  isa       => 'Str',
+  is        => 'rw',
+  required  => 0,
 );
 
 
@@ -109,17 +117,15 @@ override 'run' => sub {
   my $self = shift;
   super(); #call parent's run method
 
-  my $tag_plate_action = $self->tag_plate_action;
+  if ($self->validate_tag_plate) {
+    my $tag_plate_layout = $self->tag_plate_layout($self->template_uuid);
 
-  for ($tag_plate_action) {
-    /validate/isxm and do {
-        $self->validate_tag_plate;
-        last;
-      };
-    /get_layout/isxm and do {
-        $self->get_tag_plate_layout;
-        last;
-      };
+    # if we got back a tag plate layout, then we should set the tag plate to exhausted state
+    if ($tag_plate_layout ne undef) {
+      $self->set_tag_plate_to_exhausted($self->asset_uuid);
+    } else {
+      croak sprintf 'There was an error getting back the layout of the following asset: %s.', $self->asset_uuid;
+    }
   }
 
   return 0;
@@ -128,10 +134,16 @@ override 'run' => sub {
 sub validate_tag_plate {
   my $self = shift;
 
-  my $tag_plate = $self->tag_plate;
+  my $tag_plate = $self->_tag_plate;
 
+  $self->asset_uuid($tag_plate->{'asset_uuid'});
+  $self->lot_uuid($tag_plate->{'lot_uuid'});
   my $tag_plate_status = $tag_plate->{'state'};
-  my $lot= $self->lot($tag_plate->{'lot_uuid'});
+
+  my $lot= $self->_lot($self->lot_uuid);
+
+  $self->_set_template_uuid($lot->{'template_uuid'});
+
   my $lot_type = $lot->{'lot_type'};
 
   if ($tag_plate_status ne $self->_valid_status) {
@@ -140,39 +152,20 @@ sub validate_tag_plate {
     croak sprintf 'The lot type: %s is not valid.', $lot_type;
   }
 
-  return 0;
-}
-
-sub get_tag_plate_layout {
-  my $self = shift;
-
-  my $tag_plate = $self->tag_plate;
-
-  my $lot_uuid = $tag_plate->{'lot_uuid'};
-  my $asset_uuid = $tag_plate->{'asset_uuid'};
-
-  my $lot= $self->lot($tag_plate->{'lot_uuid'});
-  my $template_uuid = $lot->{'template_uuid'};
-
-  # TODO ke4 figure out what to do with the tag plate layout
-  my $tag_plate_layout = $self->tag_plate_layout($template_uuid);
-
-  # if we got back a tag plate layout, then we should set the tag plate to exhausted state
-  if ($tag_plate_layout ne undef) {
-    $self->set_tag_plate_to_exhausted($asset_uuid);
-  } else {
-    croak sprintf 'There was an error getting back the layout of the following asset: %s.', $asset_uuid;
-  }
-
-  return 0;
+  return 1;
 }
 
 
 
 sub tag_plate_layout {
-  my ($self, $template_uuid) = @_;
+  my $self = shift;
 
-  my $url = join q{/}, ($self->_gatekeeper_url, $template_uuid);
+  unless (defined $self->template_uuid) {
+    croak 'The template uuid of the tag plate is not set.';
+    return 0;
+  }
+
+  my $url = join q{/}, ($self->_gatekeeper_url, $self->template_uuid);
 
   my $response = $self->ss_request->get($url);
 
@@ -189,8 +182,12 @@ sub set_tag_plate_to_exhausted {
   return parse_json($response);
 }
 
+sub _set_template_uuid {
+    my ($self, $template_uuid) = @_;
+    $self->template_uuid($template_uuid);
+}
 
-sub tag_plate {
+sub _tag_plate {
   my $self = shift;
   my $url = join q{/}, ($self->_gatekeeper_url, $self->_find_qcable_by_barcode_uuid, 'first');
 
@@ -203,7 +200,7 @@ sub tag_plate {
           };
 }
 
-sub lot {
+sub _lot {
   my ($self, $lot_uuid) = @_;
   my $url = join q{/}, ($self->_gatekeeper_url, $lot_uuid);
 
@@ -286,25 +283,25 @@ wtsi_clarity::epp::sm::tag_plate
 This method validates the given tag plate if its is usable for this action.
 The tag plate should be in 'available' state
 and the relate lot type name should be 'IDT Tags'.
-The following 2 methods gather the date for the validation: tag_plate and lot.
+The following 2 methods gather the date for the validation: _tag_plate and _lot.
 
-=head2 tag_plate 
+=head2 _tag_plate
 
 Sends a POST request to a 3rd party application (Gatekeeper)
 and returns the following tag plate properties: state, lot_uuid, asset_uuid.
 The POST request body contains the UUID of the queried tag plate.
 
-=head2 lot
+=head2 _lot
 
 Sends a GET request to a 3rd party application (Gatekeeper)
 and returns the following lot properties: name of the lot type, UUID of the related template.
 
-=head2 get_tag_plate_layout
+# =head2 get_tag_plate_layout
 
-This method gets the layout of the given tag plate
-and sets its state to 'exhausted'.
-This method using the following 2 methods to execute this task:
-tag_plate_layout and set_tag_plate_to_exhausted.
+# This method gets the layout of the given tag plate
+# and sets its state to 'exhausted'.
+# This method using the following 2 methods to execute this task:
+# tag_plate_layout and set_tag_plate_to_exhausted.
 
 =head2 tag_plate_layout
 

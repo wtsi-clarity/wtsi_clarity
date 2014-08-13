@@ -48,9 +48,11 @@ my $epp = wtsi_clarity::epp::sm::tag_plate->new(
   my $mocked_tag_plate_request = Test::MockObject::Extends->new( $epp->ss_request );
   $mocked_tag_plate_request->mock(q(post), sub{my ($self, $uri, $content) = @_; return $tag_plate_response;});
 
-  is($epp->tag_plate->{'state'}, 'available', 'Gets the correct status of a valid tag plate.');
+  my $tag_plate = $epp->_tag_plate;
 
-  my $lot_uuid = $epp->tag_plate->{'lot_uuid'};
+  is($tag_plate->{'state'}, 'available', 'Gets the correct status of a valid tag plate.');
+
+  my $lot_uuid = $tag_plate->{'lot_uuid'};
   ok($lot_uuid =~ m/[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}/, 'Gets a correct UUID pattern of a lot.');
 
   my $lot_response_file = $test_dir. '/responses/valid_lot_response.json';
@@ -59,7 +61,7 @@ my $epp = wtsi_clarity::epp::sm::tag_plate->new(
   my $mocked_lot_request = Test::MockObject::Extends->new( $epp->ss_request );
   $mocked_lot_request->mock(q(get), sub{my ($self, $uri) = @_; return $lot_response;});
 
-  my $lot = $epp->lot($lot_uuid);
+  my $lot = $epp->_lot($lot_uuid);
 
   is($lot->{'lot_type'}, 'IDT Tags', 'Gets the correct lot type name.');
 
@@ -73,7 +75,9 @@ my $epp = wtsi_clarity::epp::sm::tag_plate->new(
   my $mocked_tag_plate_layout_request = Test::MockObject::Extends->new( $epp->ss_request );
   $mocked_tag_plate_layout_request->mock(q(get), sub{my ($self, $uri, $content) = @_; return $tag_plate_layout_response;});
 
-  my $tag_plate_layout = $epp->tag_plate_layout($template_uuid);
+  $epp->_set_template_uuid($template_uuid);
+
+  my $tag_plate_layout = $epp->tag_plate_layout;
 
   isa_ok($tag_plate_layout, 'HASH', 'Gets the correct data structure of the tag plate layout.');
 
@@ -90,7 +94,7 @@ my $epp = wtsi_clarity::epp::sm::tag_plate->new(
   my $mocked_tag_plate_request = Test::MockObject::Extends->new( $epp->ss_request );
   $mocked_tag_plate_request->mock(q(post), sub{my ($self, $uri, $content) = @_; return $tag_plate_response;});
 
-  my $asset_uuid = $epp->tag_plate->{'asset_uuid'};
+  my $asset_uuid = $epp->_tag_plate->{'asset_uuid'};
   ok($asset_uuid =~ m/[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}/, 'Gets a correct UUID pattern of an asset.');
   is($asset_uuid, '11111111-2222-3333-4444-666666666666', 'Gets the correct UUID of the asset.');
 
@@ -108,7 +112,7 @@ my $epp = wtsi_clarity::epp::sm::tag_plate->new(
 }
 
 # test to change the state of the tag plate with a valid state transition
-# TOD ke4 get valid response JSON for state change
+# TODO ke4 get valid response JSON for state change
 # {
 #   my $tag_plate_response_file = $test_dir. '/responses/valid_tag_plate_response.json';
 #   my $tag_plate_response = get_fake_response($tag_plate_response_file);

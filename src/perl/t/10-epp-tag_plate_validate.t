@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use Test::MockObject::Extends;
 use wtsi_clarity::util::request;
-use Test::More tests => 14;
+use Test::More tests => 15;
 
 sub get_fake_response {
   my $response_file = shift;
@@ -46,7 +46,7 @@ my $epp = wtsi_clarity::epp::sm::tag_plate->new(
   my $mocked_tag_plate_request = Test::MockObject::Extends->new( $epp->ss_request );
   $mocked_tag_plate_request->mock(q(post), sub{my ($self, $uri, $content) = @_; return $tag_plate_response;});
 
-  is($epp->tag_plate->{'state'}, 'created', 'Gets the correct status of an invalid tag plate.');
+  is($epp->_tag_plate->{'state'}, 'created', 'Gets the correct status of an invalid tag plate.');
 }
 
 # tests the valid tag plate and invalid lot type name
@@ -57,9 +57,11 @@ my $epp = wtsi_clarity::epp::sm::tag_plate->new(
   my $mocked_tag_plate_request = Test::MockObject::Extends->new( $epp->ss_request );
   $mocked_tag_plate_request->mock(q(post), sub{my ($self, $uri, $content) = @_; return $tag_plate_response;});
 
-  is($epp->tag_plate->{'state'}, 'available', 'Gets the correct status of a valid tag plate.');
+  my $tag_plate = $epp->_tag_plate;
 
-  my $lot_uuid = $epp->tag_plate->{'lot_uuid'};
+  is($tag_plate->{'state'}, 'available', 'Gets the correct status of a valid tag plate.');
+
+  my $lot_uuid = $tag_plate->{'lot_uuid'};
   ok($lot_uuid =~ m/[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}/, 'Gets a correct UUID pattern of a lot.');
 
   my $lot_response_file = $test_dir. '/responses/invalid_lot_response.json';
@@ -68,7 +70,7 @@ my $epp = wtsi_clarity::epp::sm::tag_plate->new(
   my $mocked_lot_request = Test::MockObject::Extends->new( $epp->ss_request );
   $mocked_lot_request->mock(q(get), sub{my ($self, $uri) = @_; return $lot_response;});
 
-  is($epp->lot($lot_uuid)->{'lot_type'}, 'NO IDT Tags', 'Gets the correct lot type name.');
+  is($epp->_lot($lot_uuid)->{'lot_type'}, 'NO IDT Tags', 'Gets the correct lot type name.');
 }
 
 # tests the valid tag plate and valid lot type name
@@ -79,9 +81,11 @@ my $epp = wtsi_clarity::epp::sm::tag_plate->new(
   my $mocked_tag_plate_request = Test::MockObject::Extends->new( $epp->ss_request );
   $mocked_tag_plate_request->mock(q(post), sub{my ($self, $uri, $content) = @_; return $tag_plate_response;});
 
-  is($epp->tag_plate->{'state'}, 'available', 'Gets the correct status of a valid tag plate.');
+  my $tag_plate = $epp->_tag_plate;
 
-  my $lot_uuid = $epp->tag_plate->{'lot_uuid'};
+  is($tag_plate->{'state'}, 'available', 'Gets the correct status of a valid tag plate.');
+
+  my $lot_uuid = $tag_plate->{'lot_uuid'};
   ok($lot_uuid =~ m/[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}/, 'Gets a correct UUID pattern of a lot.');
 
   my $lot_response_file = $test_dir. '/responses/valid_lot_response.json';
@@ -89,7 +93,24 @@ my $epp = wtsi_clarity::epp::sm::tag_plate->new(
 
   my $mocked_lot_request = Test::MockObject::Extends->new( $epp->ss_request );
   $mocked_lot_request->mock(q(get), sub{my ($self, $uri) = @_; return $lot_response;});
-  is($epp->lot($lot_uuid)->{'lot_type'}, 'IDT Tags', 'Gets the correct lot type name.');
+  is($epp->_lot($lot_uuid)->{'lot_type'}, 'IDT Tags', 'Gets the correct lot type name.');
+}
+
+# tests the validate_tag_plate method with valid responses
+{
+  my $tag_plate_response_file = $test_dir. '/responses/valid_tag_plate_response.json';
+  my $tag_plate_response = get_fake_response($tag_plate_response_file);
+
+  my $mocked_tag_plate_request = Test::MockObject::Extends->new( $epp->ss_request );
+  $mocked_tag_plate_request->mock(q(post), sub{my ($self, $uri, $content) = @_; return $tag_plate_response;});
+
+  my $lot_response_file = $test_dir. '/responses/valid_lot_response.json';
+  my $lot_response = get_fake_response($lot_response_file);
+
+  my $mocked_lot_request = Test::MockObject::Extends->new( $epp->ss_request );
+  $mocked_lot_request->mock(q(get), sub{my ($self, $uri) = @_; return $lot_response;});
+
+  is($epp->validate_tag_plate, 1, "The validation returns true for available tag plate with 'IDT Tags' lot type.");
 }
 
 1;
