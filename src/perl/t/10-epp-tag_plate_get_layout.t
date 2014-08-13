@@ -37,7 +37,7 @@ my $epp = wtsi_clarity::epp::sm::tag_plate->new(
 
   is($epp->_tag_plate_barcode, '1234567890123', 'Gets the tag plate barcode correctly');
   is($epp->_gatekeeper_url, 'http://dev.psd.sanger.ac.uk:6610/api/1', 'Gets the correct url for Gatekeeper.');
-  is($epp->_find_qcable_by_barcode_uuid, '4ad4af50-c568-11e3-ad09-3c4a9275d6c6', 'Gets the _find_qcable_by_barcode_uuid correctly');
+  is($epp->_find_qcable_by_barcode_uuid, '11111111-2222-3333-4444-555555555555', 'Gets the _find_qcable_by_barcode_uuid correctly');
   is($epp->_valid_status, 'available', 'Gets the valid status correctly');
   is($epp->_valid_lot_type, 'IDT Tags', 'Gets the valid lot type correctly');
   is($epp->_ss_user_uuid, '00000000-0000-0000-0000-000000000001', 'Gets the valid user uuid.');
