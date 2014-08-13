@@ -160,9 +160,8 @@ sub validate_tag_plate {
 sub tag_plate_layout {
   my $self = shift;
 
-  unless (defined $self->template_uuid) {
+  if (!defined $self->template_uuid) {
     croak 'The template uuid of the tag plate is not set.';
-    return 0;
   }
 
   my $url = join q{/}, ($self->_gatekeeper_url, $self->template_uuid);
@@ -185,6 +184,8 @@ sub set_tag_plate_to_exhausted {
 sub _set_template_uuid {
     my ($self, $template_uuid) = @_;
     $self->template_uuid($template_uuid);
+
+    return;
 }
 
 sub _tag_plate {
