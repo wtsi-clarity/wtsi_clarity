@@ -18,8 +18,11 @@ sub get_fake_response {
   return $response;
 }
 
+my $chome_name = 'WTSI_CLARITY_HOME';
 my $test_dir = 't/data/sm/tag_plate';
+
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = $test_dir;
+local $ENV{$chome_name}= q[t/data/config];
 
 use_ok('wtsi_clarity::epp::sm::tag_plate');
 
