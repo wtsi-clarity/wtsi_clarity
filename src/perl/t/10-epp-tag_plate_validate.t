@@ -25,8 +25,8 @@ local $ENV{$chome_name}= q[t/data/config];
 use_ok('wtsi_clarity::epp::sm::tag_plate');
 
 my $epp = wtsi_clarity::epp::sm::tag_plate->new(
-    process_url       => 'http://some.com/processes/151-12090',
-    tag_plate_action  => 'validate',
+    process_url           => 'http://some.com/processes/151-12090',
+    tag_layout_file_name  => 'test_layout_file_name',
   );
 
 # tests whether the attributtes are correct

@@ -17,6 +17,12 @@ our $VERSION = '0.0';
 Readonly::Scalar my $EXHAUSTED_STATE => q[exhausted];
 Readonly::Scalar my $STATE_CHANGE_PATH => q[state_changes];
 
+has 'tag_layout_file_name' => (
+  isa => 'Str',
+  is  => 'ro',
+  required => 1,
+);
+
 has '_tag_plate_barcode' => (
   isa => 'Str',
   is  => 'ro',
@@ -120,9 +126,13 @@ override 'run' => sub {
   if ($self->validate_tag_plate) {
     my $tag_plate_layout = $self->tag_plate_layout($self->template_uuid);
 
-    # if we got back a tag plate layout, then we should set the tag plate to exhausted state
-    if ($tag_plate_layout ne undef) {
-      $self->set_tag_plate_to_exhausted($self->asset_uuid);
+    # if we got back a tag plate layout,
+    # then we should write the tag layout to a file and
+    # set the tag plate to exhausted state
+    if (defined $tag_plate_layout) {
+      $self->_create_tag_layout_file($tag_plate_layout);
+
+     # $self->set_tag_plate_to_exhausted($self->asset_uuid);
     } else {
       croak sprintf 'There was an error getting back the layout of the following asset: %s.', $self->asset_uuid;
     }
@@ -245,6 +255,20 @@ sub _convert_to_JSON {
   return JSON->new->allow_nonref->encode($content);
 }
 
+sub _create_tag_layout_file {
+  my ($self, $json_content) = @_;
+
+  # TODO ke4 check which part of the JSON response should the file contains
+  my $file_content =
+    $self->_convert_to_JSON($json_content->{'tag_layout_template'}->{'tag_group'});
+  open my $fh, '>:encoding(UTF-8)', $self->tag_layout_file_name
+    or croak qq{Could not create/open file '$self->tag_layout_file_name'.};
+  print $fh $file_content;
+  close $fh;
+
+  return;
+}
+
 1;
 
 __END__
@@ -259,20 +283,22 @@ wtsi_clarity::epp::sm::tag_plate
 
   my $epp = wtsi_clarity::epp::sm::tag_plate->new(
     process_url => 'http://some.com/processes/151-12090',
-    tag_plate_action  => 'validate',
+    tag_layout_file_name  => 'file_name',
   )->run();
 
   If you want to get the layout of the tag plate:
 
   my $epp = wtsi_clarity::epp::sm::tag_plate->new(
     process_url => 'http://some.com/processes/151-12090',
-    tag_plate_action  => 'get_layout',
+    tag_layout_file_name  => 'file_name',
   )->run();
 
 =head1 DESCRIPTION
 
   Validates the plate whether it is in the correct state ('available')
   and it has got the correct lot type ('IDT Tags').
+  If the plate is valid, then it gets the layout of the tag plate
+  and sets the state of the tag plate to 'exhausted'.
 
 
 =head1 SUBROUTINES/METHODS
