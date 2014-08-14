@@ -419,8 +419,8 @@ sub _from_web {
     my $res=$self->useragent()->request($req);
 
     # workaround a bug in SS (getting back a 301 response with the correct response body)
-    if (($self->ss_request && (!defined $res->content || !$res->is_success() && !$res->is_redirect))
-        || !$res->is_success()) {
+    if (($self->ss_request && (!defined $res->decoded_content || !$res->is_success() && !$res->is_redirect))
+        || (!$self->ss_request && !$res->is_success())) {
       croak "$type request to $uri failed: " . join q[ ], $res->status_line(), $res->decoded_content;
     }
 
