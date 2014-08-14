@@ -137,6 +137,12 @@ has 'lot_uuid' => (
   required  => 0,
 );
 
+has 'qcable_uuid' => (
+  isa       => 'Str',
+  is        => 'rw',
+  required  => 0,
+);
+
 has 'asset_uuid' => (
   isa       => 'Str',
   is        => 'rw',
@@ -179,6 +185,7 @@ sub validate_tag_plate {
 
   $self->asset_uuid($tag_plate->{'asset_uuid'});
   $self->lot_uuid($tag_plate->{'lot_uuid'});
+  $self->qcable_uuid($tag_plate->{'qcable_uuid'});
   my $tag_plate_status = $tag_plate->{'state'};
 
   my $lot= $self->_lot($self->lot_uuid);
@@ -239,6 +246,7 @@ sub _tag_plate {
   return  { 'state'       => $parsed_response->{'qcable'}->{'state'},
             'lot_uuid'    => $parsed_response->{'qcable'}->{'lot'}->{'uuid'},
             'asset_uuid'  => $parsed_response->{'qcable'}->{'asset'}->{'uuid'},
+            'qcable_uuid'  => $parsed_response->{'qcable'}->{'uuid'},
           };
 }
 
@@ -290,6 +298,7 @@ sub _create_tag_layout_file {
   my ($self, $json_content) = @_;
 
   # TODO ke4 check which part of the JSON response should the file contains
+  $json_content->{'tag_layout_template'}->{'tag_group'}->{'tag_plate_qcable_uuid'} = $self->qcable_uuid;
   my $file_content =
     $self->_convert_to_JSON($json_content->{'tag_layout_template'}->{'tag_group'});
   open my $fh, '>:encoding(UTF-8)', $self->tag_layout_file_name
