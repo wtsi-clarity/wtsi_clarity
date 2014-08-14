@@ -212,6 +212,11 @@ has 'additional_headers'=> (  isa      => 'HashRef',
                               required => 0,
                            );
 
+has 'ss_request'=> (  isa       => 'Bool',
+                      is        => 'ro',
+                      required  => 0,
+                   );
+
 =head2 get
 
 Contacts a web service to perform a GET request.
@@ -414,8 +419,9 @@ sub _from_web {
     my $res=$self->useragent()->request($req);
 
     # workaround a bug in SS (getting back a 301 response with the correct response body)
-    if(!$res->is_success() && !$res->is_redirect && $res->content()) {
-        croak "$type request to $uri failed: " . join q[ ], $res->status_line(), $res->decoded_content;
+    if (($self->ss_request && (!defined $res->content || !$res->is_success() && !$res->is_redirect))
+        || !$res->is_success()) {
+      croak "$type request to $uri failed: " . join q[ ], $res->status_line(), $res->decoded_content;
     }
 
     return $res->decoded_content;

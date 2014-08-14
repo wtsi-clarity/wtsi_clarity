@@ -8,13 +8,45 @@ use JSON::Parse 'parse_json';
 
 extends 'wtsi_clarity::epp';
 
-with  'wtsi_clarity::util::clarity_elements',
-      'wtsi_clarity::util::sequencescape_request_role';
+with  'wtsi_clarity::util::clarity_elements';
 
 our $VERSION = '0.0';
 
 Readonly::Scalar my $EXHAUSTED_STATE => q[exhausted];
 Readonly::Scalar my $STATE_CHANGE_PATH => q[state_changes];
+
+
+has 'ss_request' => (
+  isa => 'wtsi_clarity::util::request',
+  is  => 'ro',
+  required => 0,
+  lazy_build => 1,
+);
+sub _build_ss_request {
+  my $self = shift;
+
+  return wtsi_clarity::util::request->new(
+    'content_type'        => 'application/json',
+    'additional_headers'  => $self->_get_additional_headers,
+    'ss_request'          => 1,
+  );
+}
+
+=head2 _get_additional_headers
+
+This additional header needed for communicating with Sequencescape's web service.
+
+=cut
+
+sub _get_additional_headers {
+  my $self = shift;
+
+  my $ss_client_id = $self->config->tag_plate_validation->{'ss_client_id'};
+
+  return  { 'X-Sequencescape-Client-ID' => $ss_client_id,
+            'Cookie'                    => 'api_key='
+          }
+}
 
 has 'tag_layout_file_name' => (
   isa => 'Str',
