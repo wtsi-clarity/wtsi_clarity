@@ -207,6 +207,16 @@ sub _set_base_url {
     return;
 }
 
+has 'additional_headers'=> (  isa      => 'HashRef',
+                              is       => 'ro',
+                              required => 0,
+                           );
+
+has 'ss_request'=> (  isa       => 'Bool',
+                      is        => 'ro',
+                      required  => 0,
+                   );
+
 =head2 get
 
 Contacts a web service to perform a GET request.
@@ -398,9 +408,20 @@ sub _from_web {
     $req->header('Accept',       $self->content_type);
     $req->header('Content-Type', $self->content_type);
     $req->header('User-Agent',   $self->useragent->agent());
+
+    # if additional headers exits, then adds them too
+    if ($self->additional_headers) {
+        for my $header_key ( keys %{$self->additional_headers} ) {
+            $req->header($header_key => ${$self->additional_headers}{$header_key});
+        }
+    }
+
     my $res=$self->useragent()->request($req);
-    if(!$res->is_success()) {
-        croak "$type request to $uri failed: " . join q[ ], $res->status_line(), $res->decoded_content;
+
+    # workaround a bug in SS (getting back a 301 response with the correct response body)
+    if (($self->ss_request && (!defined $res->decoded_content || !$res->is_success() && !$res->is_redirect))
+        || (!$self->ss_request && !$res->is_success())) {
+      croak "$type request to $uri failed: " . join q[ ], $res->status_line(), $res->decoded_content;
     }
 
     return $res->decoded_content;
