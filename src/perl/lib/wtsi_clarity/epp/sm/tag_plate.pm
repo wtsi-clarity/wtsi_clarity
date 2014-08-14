@@ -1,7 +1,6 @@
 package wtsi_clarity::epp::sm::tag_plate;
 
 use Moose;
-use Moose::Util::TypeConstraints;
 use Carp;
 use Readonly;
 use JSON;
@@ -262,9 +261,9 @@ sub _create_tag_layout_file {
   my $file_content =
     $self->_convert_to_JSON($json_content->{'tag_layout_template'}->{'tag_group'});
   open my $fh, '>:encoding(UTF-8)', $self->tag_layout_file_name
-    or croak qq{Could not create/open file '$self->tag_layout_file_name'.};
-  print $fh $file_content;
-  close $fh;
+    or croak sprintf 'Could not create/open file %s', $self->tag_layout_file_name;
+  print {$fh} $file_content or croak sprintf 'Failed to write the open %s', $self->tag_layout_file_name;
+  close $fh or croak sprintf 'Failed to close a filehandle for %s', $self->tag_layout_file_name;
 
   return;
 }
