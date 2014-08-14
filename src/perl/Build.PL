@@ -102,6 +102,7 @@ my $builder = $class->new(
                 'Net::SFTP::Foreign'              => 0,
                 'Readonly'                        => 0,
                 'strict'                          => 0,
+                'Text::CSV'                       => 0,
                 'Try::Tiny'                       => 0,
                 'warnings'                        => 0,
                 'XML::LibXML'                     => 0,
