@@ -8,6 +8,7 @@ use PDF::Table;
 use File::Temp;
 use DateTime;
 
+use Mojo::Collection;
 use wtsi_clarity::util::request;
 use wtsi_clarity::util::well_mapper;
 use wtsi_clarity::util::pdf_generator::worksheet;
@@ -269,10 +270,21 @@ sub _get_pdf_data {
 }
 
 sub _get_title {
-  my ($data, $uri, $action) = @_;
-  my $purpose = $data->{'output_container_info'}->{$uri}->{'purpose'};
-  my $process = $data->{'process_id'};
-  return 'Process '.$process.' - '.$purpose.' - '.$action;
+  my ($data, $out_uri, $action) = @_;
+
+  my $out_purpose = $data->{ q{output_container_info} }->{$out_uri}->{ q{purpose} };
+
+  # we get all the wells concerned by this output.
+  my $wells = Mojo::Collection->new( values %{$data->{ q{output_container_info} }->{$out_uri}->{ q{container_details} }} );
+  # we assume that all input plate have the same purpose !!
+  my $an_input_id = $wells->grep ( sub { return defined $_->{'input_id'}; } ) # we filter on the presence of an input_id
+                          ->map  ( sub { return         $_->{'input_id'}; } ) # we pluck the input_ids
+                          ->first;                                            # we only take the first one
+
+  my $in_purpose  = $data->{ q{input_container_info} }->{$an_input_id}->{ q{purpose} };
+
+  my $process = $data->{ q{process_id} };
+  return qq{Process $process - $in_purpose -> $out_purpose};
 }
 
 sub _get_source_plate_data {
@@ -445,31 +457,31 @@ sub _get_containers_data {
   my $all_data = {};
   my $process_id  = $self->find_elements_first_value($self->process_doc, $PROCESS_ID_PATH);
   $process_id =~ s/\-//xms;
-  $all_data->{'process_id'} = $process_id;
+  $all_data->{ q{process_id} } = $process_id;
 
-  $all_data->{'user_first_name'} = $self->find_elements_first_value($self->process_doc, $TECHNICIAN_FIRSTNAME_PATH);
-  $all_data->{'user_last_name'}  = $self->find_elements_first_value($self->process_doc, $TECHNICIAN_LASTNAME_PATH);
+  $all_data->{ q{user_first_name} } = $self->find_elements_first_value($self->process_doc, $TECHNICIAN_FIRSTNAME_PATH);
+  $all_data->{ q{user_last_name}  } = $self->find_elements_first_value($self->process_doc, $TECHNICIAN_LASTNAME_PATH);
 
   while (my ($uri, $out_artifact) = each %{$artifacts_tmp} ) {
     if ($uri =~ /(.*)[?].*/xms){
       my $in_artifact = $previous_artifacts->{$oi_map->{$uri}};
 
-      my $out_location      = $self->find_elements_first_textContent($out_artifact, $LOCATION_PATH         );
-      my $out_container_uri = $self->find_elements_first_value      ($out_artifact, $CONTAINER_URI_PATH    );
-      my $out_container_id  = $self->find_elements_first_value      ($out_artifact, $CONTAINER_ID_PATH     );
-      my $sample_volume     = $self->find_udf_element_textContent   ($out_artifact, $SAMPLE_VOLUME_PATH, 0 );
-      my $buffer_volume     = $self->find_udf_element_textContent   ($out_artifact, $BUFFER_VOLUME_PATH, 0 );
-      my $in_location       = $self->find_elements_first_textContent($in_artifact,  $LOCATION_PATH         );
-      my $in_container_uri  = $self->find_elements_first_value      ($in_artifact,  $CONTAINER_URI_PATH    );
-      my $in_container_id   = $self->find_elements_first_value      ($in_artifact,  $CONTAINER_ID_PATH     );
+      my $out_location      = $self->find_elements_first_textContent( $out_artifact, $LOCATION_PATH         );
+      my $out_container_uri = $self->find_elements_first_value      ( $out_artifact, $CONTAINER_URI_PATH    );
+      my $out_container_id  = $self->find_elements_first_value      ( $out_artifact, $CONTAINER_ID_PATH     );
+      my $sample_volume     = $self->find_udf_element_textContent   ( $out_artifact, $SAMPLE_VOLUME_PATH, 0 );
+      my $buffer_volume     = $self->find_udf_element_textContent   ( $out_artifact, $BUFFER_VOLUME_PATH, 0 );
+      my $in_location       = $self->find_elements_first_textContent( $in_artifact,  $LOCATION_PATH         );
+      my $in_container_uri  = $self->find_elements_first_value      ( $in_artifact,  $CONTAINER_URI_PATH    );
+      my $in_container_id   = $self->find_elements_first_value      ( $in_artifact,  $CONTAINER_ID_PATH     );
 
       # we only do this part when it's a container that we don't know yet...
       if (!defined $all_data->{'output_container_info'}->{$out_container_uri})
       {
         my $out_container = $self->fetch_and_parse($out_container_uri);
 
-        my $barcode       = $self->find_clarity_element_textContent($out_container, 'name'                  );
-        my $purpose       = $self->find_udf_element_textContent    ($out_container, $PURPOSE_PATH, 'Unknown');
+        my $barcode       = $self->find_clarity_element_textContent($out_container, q{name}                   );
+        my $purpose       = $self->find_udf_element_textContent    ($out_container, $PURPOSE_PATH, q{Unknown} );
         my $name          = $out_container_id;
         $name =~ s/\-//xms;
 
@@ -480,11 +492,11 @@ sub _get_containers_data {
         my $x  = $self->find_elements_first_textContent($out_container_type,    $CONTAINER_TYPE_X) ;
         my $y  = $self->find_elements_first_textContent($out_container_type,    $CONTAINER_TYPE_Y) ;
 
-        $all_data->{'output_container_info'}->{$out_container_uri}->{'purpose'}    = $purpose;
-        $all_data->{'output_container_info'}->{$out_container_uri}->{'plate_name'} = $name;
-        $all_data->{'output_container_info'}->{$out_container_uri}->{'barcode'}    = $barcode;
-        $all_data->{'output_container_info'}->{$out_container_uri}->{'type'}       = $out_container_type_name;
-        $all_data->{'output_container_info'}->{$out_container_uri}->{'wells'}      = $x*$y;
+        $all_data->{ q{output_container_info} }->{ $out_container_uri }->{ q{purpose}    } = $purpose;
+        $all_data->{ q{output_container_info} }->{ $out_container_uri }->{ q{plate_name} } = $name;
+        $all_data->{ q{output_container_info} }->{ $out_container_uri }->{ q{barcode}    } = $barcode;
+        $all_data->{ q{output_container_info} }->{ $out_container_uri }->{ q{type}       } = $out_container_type_name;
+        $all_data->{ q{output_container_info} }->{ $out_container_uri }->{ q{wells}      } = $x*$y;
       }
 
       # we only do this part when it's a container that we don't know yet...
@@ -492,37 +504,39 @@ sub _get_containers_data {
       {
         my $in_container= $self->fetch_and_parse($in_container_uri);
 
-        my $freezer  = $self->find_udf_element_textContent($in_container,    $FREEZER_PATH, q{Unknown}) ;
-        my $shelf    = $self->find_udf_element_textContent($in_container,    $SHELF_PATH  , q{Unknown});
-        my $tray     = $self->find_udf_element_textContent($in_container,    $TRAY_PATH   , q{Unknown});
-        my $rack     = $self->find_udf_element_textContent($in_container,    $RACK_PATH   , q{Unknown});
+        my $freezer  = $self->find_udf_element_textContent( $in_container, $FREEZER_PATH, q{Unknown} ) ;
+        my $shelf    = $self->find_udf_element_textContent( $in_container, $SHELF_PATH  , q{Unknown} );
+        my $tray     = $self->find_udf_element_textContent( $in_container, $TRAY_PATH   , q{Unknown} );
+        my $rack     = $self->find_udf_element_textContent( $in_container, $RACK_PATH   , q{Unknown} );
+        my $purpose  = $self->find_udf_element_textContent( $in_container, $PURPOSE_PATH, q{Unknown} );
 
-        my $barcode     = $self->find_clarity_element_textContent($in_container, 'name');
-        my $type_name   = $self->find_elements_first_value($in_container, $CONTAINER_TYPE_NAME);
-        my $name        = $in_container_id;
+        my $barcode   = $self->find_clarity_element_textContent($in_container, q{name});
+        my $type_name = $self->find_elements_first_value($in_container, $CONTAINER_TYPE_NAME);
+        my $name      = $in_container_id;
         $name =~ s/\-//xms;
 
-        $all_data->{'input_container_info' }->{$in_container_uri }->{'plate_name'} = $name;
-        $all_data->{'input_container_info' }->{$in_container_uri }->{'barcode'}    = $barcode;
-        $all_data->{'input_container_info' }->{$in_container_uri }->{'type'}    = $type_name;
-        $all_data->{'input_container_info' }->{$in_container_uri }->{'freezer'}    = $freezer;
-        $all_data->{'input_container_info' }->{$in_container_uri }->{'shelf'}      = $shelf;
-        $all_data->{'input_container_info' }->{$in_container_uri }->{'rack'}       = $rack;
-        $all_data->{'input_container_info' }->{$in_container_uri }->{'tray'}       = $tray;
+        $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{plate_name} } = $name;
+        $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{barcode}    } = $barcode;
+        $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{type}       } = $type_name;
+        $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{freezer}    } = $freezer;
+        $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{shelf}      } = $shelf;
+        $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{rack}       } = $rack;
+        $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{tray}       } = $tray;
+        $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{purpose}    } = $purpose;
       }
 
-      $all_data->{'output_container_info'}->{$out_container_uri}->{'container_details'}->{$out_location} = {
-                            'input_id'             => $in_container_id,
-                            'input_location'       => $in_location,
-                            'sample_volume'        => $sample_volume,
-                            'buffer_volume'        => $buffer_volume,
-                            'input_uri'            => $in_container_uri,
+      $all_data->{ q{output_container_info} }->{$out_container_uri}->{ q{container_details} }->{$out_location} = {
+                            q{input_id}             => $in_container_id,
+                            q{input_location}       => $in_location,
+                            q{sample_volume}        => $sample_volume,
+                            q{buffer_volume}        => $buffer_volume,
+                            q{input_uri}            => $in_container_uri,
                           };
     }
   }
 
-  while (my ($uri, $out_artifact) = each %{$all_data->{'output_container_info'}}) {
-    $out_artifact->{'occ_wells'} = scalar keys %{$out_artifact->{'container_details'}};
+  while (my ($uri, $out_artifact) = each %{$all_data->{ q{output_container_info} }}) {
+    $out_artifact->{ q{occ_wells} } = scalar keys %{$out_artifact->{ q{container_details} }};
   }
 
   return $all_data;

@@ -89,6 +89,7 @@ my $builder = $class->new(
                 'HTTP::Request'                   => 0,
                 'lib'                             => 0,
                 'LWP::UserAgent'                  => 0,
+                'Mojo::Collection'                => 0,
                 'Moose'                           => 0,
                 'Moose::Util::TypeConstraints'    => 0,
                 'MooseX::ClassAttribute'          => 0,
