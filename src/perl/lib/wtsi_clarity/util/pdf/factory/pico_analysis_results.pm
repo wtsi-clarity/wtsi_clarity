@@ -1,11 +1,11 @@
-package wtsi_clarity::util::pdf_generator::factory::pico_analysis_results;
+package wtsi_clarity::util::pdf::factory::pico_analysis_results;
 
 use Moose;
 use Carp;
 use Readonly;
 use DateTime;
 
-use wtsi_clarity::util::pdf_generator::pico_analysis_results;
+use wtsi_clarity::util::pdf::layout::pico_analysis_results;
 
 Readonly::Scalar our $HEADER_STYLE => q(HEADER_STYLE);
 Readonly::Scalar our $NUMBER_OF_COLUMNS => 12;
@@ -20,10 +20,10 @@ has 'plate_table' => (
     my $self = shift;
 
     return {
-      header_row => \&wtsi_clarity::util::pdf_generator::factory::pico_analysis_results::table_header_row,
-      row_first_column => \&wtsi_clarity::util::pdf_generator::factory::pico_analysis_results::table_row_first_column,
-      format_cell => \&wtsi_clarity::util::pdf_generator::factory::pico_analysis_results::format_table_cell,
-      footer_row => \&wtsi_clarity::util::pdf_generator::factory::pico_analysis_results::table_footer_row,
+      header_row => \&wtsi_clarity::util::pdf::factory::pico_analysis_results::table_header_row,
+      row_first_column => \&wtsi_clarity::util::pdf::factory::pico_analysis_results::table_row_first_column,
+      format_cell => \&wtsi_clarity::util::pdf::factory::pico_analysis_results::format_table_cell,
+      footer_row => \&wtsi_clarity::util::pdf::factory::pico_analysis_results::table_footer_row,
     }
   },
 );
@@ -36,10 +36,10 @@ has 'plate_style_table' => (
     my $self = shift;
 
     return {
-      header_row => \&wtsi_clarity::util::pdf_generator::factory::pico_analysis_results::headers_row,
-      row_first_column => \&wtsi_clarity::util::pdf_generator::factory::pico_analysis_results::style_row_first_column,
-      format_cell => \&wtsi_clarity::util::pdf_generator::factory::pico_analysis_results::format_style_table_cell,
-      footer_row => \&wtsi_clarity::util::pdf_generator::factory::pico_analysis_results::headers_row,
+      header_row => \&wtsi_clarity::util::pdf::factory::pico_analysis_results::headers_row,
+      row_first_column => \&wtsi_clarity::util::pdf::factory::pico_analysis_results::style_row_first_column,
+      format_cell => \&wtsi_clarity::util::pdf::factory::pico_analysis_results::format_style_table_cell,
+      footer_row => \&wtsi_clarity::util::pdf::factory::pico_analysis_results::headers_row,
     }
   },
 );
@@ -61,7 +61,7 @@ sub build {
     ]
   };
 
-  my $pico_pdf_generator = wtsi_clarity::util::pdf_generator::pico_analysis_results->new(pdf_data => $pdf_data);
+  my $pico_pdf_generator = wtsi_clarity::util::pdf::layout::pico_analysis_results->new(pdf_data => $pdf_data);
   return $pico_pdf_generator->create();
 }
 
@@ -144,12 +144,12 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::util::pdf_generator::factory::pico_analysis_results
+wtsi_clarity::util::pdf::factory::pico_analysis_results
 
 =head1 SYNOPSIS
   
-  use wtsi_clarity::util::pdf_generator::factory::pico_analysis_results;
-  my $factory = wtsi_clarity::util::pdf_generator::factory::pico_analysis_results->new();
+  use wtsi_clarity::util::pdf::factory::pico_analysis_results;
+  my $factory = wtsi_clarity::util::pdf::factory::pico_analysis_results->new();
   $factory->build($pdf_data);
   
 =head1 DESCRIPTION

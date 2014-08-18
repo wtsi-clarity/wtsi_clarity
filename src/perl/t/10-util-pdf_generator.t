@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use Test::More tests => 3;
 
-use_ok('wtsi_clarity::util::pdf_generator');
+use_ok('wtsi_clarity::util::pdf::pdf_generator');
 
 my $TEST_DATA = {
   'stamp' => 'made today',
@@ -42,12 +42,12 @@ my $TEST_DATA = {
 };
 
 { # _get_nb_row
-  my $nb_row = wtsi_clarity::util::pdf_generator::get_nb_row($TEST_DATA->{'pages'}->[0]->{'plate_table'});
+  my $nb_row = wtsi_clarity::util::pdf::pdf_generator::get_nb_row($TEST_DATA->{'pages'}->[0]->{'plate_table'});
   cmp_ok($nb_row, 'eq', 10, "_get_nb_row(...) should have the right nb of col.");
 }
 
 { # _get_nb_col
-  my $nb_col = wtsi_clarity::util::pdf_generator::get_nb_col($TEST_DATA->{'pages'}->[0]->{'plate_table'});
+  my $nb_col = wtsi_clarity::util::pdf::pdf_generator::get_nb_col($TEST_DATA->{'pages'}->[0]->{'plate_table'});
   cmp_ok($nb_col, 'eq', 14, "_get_nb_col(...) should have the right nb of col.");
 }
 
