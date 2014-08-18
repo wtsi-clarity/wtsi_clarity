@@ -22,7 +22,7 @@ our $VERSION = '0.0';
 has 'step_url' => (
   isa        => 'Str',
   is         => 'ro',
-  required   => 0,
+  required   => 1,
 );
 
 has 'container_type_name' => (
