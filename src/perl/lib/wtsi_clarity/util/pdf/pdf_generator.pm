@@ -1,4 +1,4 @@
-package wtsi_clarity::util::pdf_generator;
+package wtsi_clarity::util::pdf::pdf_generator;
 
 use Moose;
 use Carp;

@@ -1,11 +1,11 @@
-package wtsi_clarity::util::pdf_generator::factory::pico_analysis_results;
+package wtsi_clarity::util::pdf::factory::pico_analysis_results;
 
 use Moose;
 use Carp;
 use Readonly;
 use DateTime;
 
-use wtsi_clarity::util::pdf_generator::pico_analysis_results;
+use wtsi_clarity::util::pdf::layout::pico_analysis_results;
 
 Readonly::Scalar our $HEADER_STYLE => q(HEADER_STYLE);
 Readonly::Scalar our $NUMBER_OF_COLUMNS => 12;
@@ -61,7 +61,7 @@ sub build {
     ]
   };
 
-  my $pico_pdf_generator = wtsi_clarity::util::pdf_generator::pico_analysis_results->new(pdf_data => $pdf_data);
+  my $pico_pdf_generator = wtsi_clarity::util::pdf::layout::pico_analysis_results->new(pdf_data => $pdf_data);
   return $pico_pdf_generator->create();
 }
 

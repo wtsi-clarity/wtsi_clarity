@@ -1,11 +1,9 @@
-package wtsi_clarity::util::pdf_generator::worksheet;
+package wtsi_clarity::util::pdf::layout::pico_analysis_results;
 
 use Moose;
 use Readonly;
 
-Readonly::Scalar my $source_table_height      => 700;
-Readonly::Scalar my $destination_table_height => 450;
-Readonly::Scalar my $buffer_table_height      => 375;
+Readonly::Scalar my $buffer_table_y_position => 700;
 
 extends 'wtsi_clarity::util::pdf_generator';
 
@@ -25,10 +23,7 @@ override 'create' => sub {
     wtsi_clarity::util::pdf_generator::add_title_to_page($page, $font_bold, $page_data->{'title'});
     wtsi_clarity::util::pdf_generator::add_timestamp($page, $font, $self->pdf_data->{'stamp'});
 
-    wtsi_clarity::util::pdf_generator::add_io_block_to_page($self->pdf, $page, $font_bold, $page_data->{'input_table'}, $page_data->{'input_table_title'}, $source_table_height);
-    wtsi_clarity::util::pdf_generator::add_io_block_to_page($self->pdf, $page, $font_bold, $page_data->{'output_table'}, $page_data->{'output_table_title'}, $destination_table_height);
-
-    wtsi_clarity::util::pdf_generator::add_buffer_block_to_page($self->pdf, $page, $font_bold, $page_data->{'plate_table'}, $page_data->{'plate_table_title'}, $page_data->{'plate_table_cell_styles'}, $buffer_table_height);
+    wtsi_clarity::util::pdf_generator::add_buffer_block_to_page($self->pdf, $page, $font_bold, $page_data->{'plate_table'}, $page_data->{'plate_table_title'}, $page_data->{'plate_table_cell_styles'}, $buffer_table_y_position);
   }
 
   return $self->pdf;
@@ -40,21 +35,21 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::util::pdf_generator::worksheet
+wtsi_clarity::util::pdf_generator::pico_analysis_results
 
 =head1 SYNOPSIS
 
-  my $generator = wtsi_clarity::util::pdf_generator::worksheet->new(pdf_data => ... );
+  my $generator = wtsi_clarity::util::pdf_generator::pico_analysis_results->new(pdf_data => ... );
   my $file = $generator->create();
 
 =head1 DESCRIPTION
 
-  Creates a worksheet pdf document describing the plates.
+  Creates a pdf document describing the plates.
 
 =head1 SUBROUTINES/METHODS
 
 =head2 pdf_data - hash describing the data to display
-(see t/10-util-pdf_generator-worksheet.t for format)
+(see t/10-util-pdf_worksheet_generator.t for format)
 
 =head2 create() - creates pdf file, which then can be saved using saveas().
 
@@ -72,7 +67,7 @@ wtsi_clarity::util::pdf_generator::worksheet
 
 =head1 AUTHOR
 
-Chris Smith E<lt>cs24@sanger.ac.ukE<gt>
+Benoit Mangili E<lt>bm10@sanger.ac.ukE<gt>
 
 =head1 LICENSE AND COPYRIGHT
 
