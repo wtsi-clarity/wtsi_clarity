@@ -8,7 +8,7 @@ use XML::LibXML;
 use Carp;
 use File::Temp;
 
-use_ok('wtsi_clarity::util::pdf_generator::worksheet', 'can use wtsi_clarity::util::pdf_worksheet_generator' );
+use_ok('wtsi_clarity::util::pdf::layout::worksheet', 'can use wtsi_clarity::util::pdf::layout::worksheet' );
 
 my $TEST_DATA = {
   'stamp' => 'made today',
@@ -48,7 +48,7 @@ my $TEST_DATA = {
 };
 
 { # create_worksheet_file
-  my $worksheet_pdf_generator = wtsi_clarity::util::pdf_generator::worksheet->new(pdf_data => $TEST_DATA);
+  my $worksheet_pdf_generator = wtsi_clarity::util::pdf::layout::worksheet->new(pdf_data => $TEST_DATA);
   my $file = $worksheet_pdf_generator->create();
   ok($file,'create_worksheet_file should produce a file.');
 }

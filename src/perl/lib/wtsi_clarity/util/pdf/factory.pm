@@ -1,10 +1,10 @@
-package wtsi_clarity::util::pdf_generator::factory;
+package wtsi_clarity::util::pdf::factory;
 
 use Moose;
 use Carp;
 use Readonly;
 
-use wtsi_clarity::util::pdf_generator::factory::pico_analysis_results;
+use wtsi_clarity::util::pdf::factory::pico_analysis_results;
 # TODO use wtsi_clarity::util::pdf_generator::factory::worksheet;
 
 our $VERSION = '0.0';
@@ -14,7 +14,7 @@ sub createPDF {
   my $pdf_factory;
 
   if ($pdf_type eq 'pico_analysis_results') {
-    $pdf_factory = wtsi_clarity::util::pdf_generator::factory::pico_analysis_results->new();
+    $pdf_factory = wtsi_clarity::util::pdf::factory::pico_analysis_results->new();
   # TODO
   # } elsif ($pdf_type eq 'worksheet') {
   # $pdf_factory = wtsi_clarity::util::pdf_generator::factory::worksheet->new();
@@ -31,12 +31,12 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::util::pdf_generator::factory
+wtsi_clarity::util::pdf::factory
 
 =head1 SYNOPSIS
   
-  use wtsi_clarity::util::pdf_generator::factory;
-  my $pdf_doc = wtsi_clarity::util::pdf_generator::factory->createPDF('pdf_type', pdf_data);
+  use wtsi_clarity::util::pdf::factory;
+  my $pdf_doc = wtsi_clarity::util::pdf::factory->createPDF('pdf_type', pdf_data);
   
 =head1 DESCRIPTION
 

@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use Test::More tests => 10;
 
-use_ok('wtsi_clarity::util::pdf_generator::factory::pico_analysis_results');
+use_ok('wtsi_clarity::util::pdf::factory::pico_analysis_results');
 
 {
   my $CELL = {
@@ -15,33 +15,33 @@ use_ok('wtsi_clarity::util::pdf_generator::factory::pico_analysis_results');
 
   my $OUTPUT = "5.67\n0.34\nPassed";
 
-  is(wtsi_clarity::util::pdf_generator::factory::pico_analysis_results::format_table_cell($CELL), $OUTPUT, 'Formats a table cell correctly');
+  is(wtsi_clarity::util::pdf::factory::pico_analysis_results::format_table_cell($CELL), $OUTPUT, 'Formats a table cell correctly');
 }
 
 {
   my $HEADER_ROW = [0,1,2,3,4,5,6,7,8,9,10,11,12];
-  is_deeply(wtsi_clarity::util::pdf_generator::factory::pico_analysis_results::table_header_row(), $HEADER_ROW, 'Creates a header row');
+  is_deeply(wtsi_clarity::util::pdf::factory::pico_analysis_results::table_header_row(), $HEADER_ROW, 'Creates a header row');
 }
 
 {
   my $FOOTER_ROW = ['*',1,2,3,4,5,6,7,8,9,10,11,12];
-  is_deeply(wtsi_clarity::util::pdf_generator::factory::pico_analysis_results::table_footer_row(), $FOOTER_ROW, 'Creates a footer row');
+  is_deeply(wtsi_clarity::util::pdf::factory::pico_analysis_results::table_footer_row(), $FOOTER_ROW, 'Creates a footer row');
 }
 
 {
   my $HEADER_STYLE = ['HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE','HEADER_STYLE'];
-  is_deeply(wtsi_clarity::util::pdf_generator::factory::pico_analysis_results::headers_row(), $HEADER_STYLE, 'Creates a header style row');
+  is_deeply(wtsi_clarity::util::pdf::factory::pico_analysis_results::headers_row(), $HEADER_STYLE, 'Creates a header style row');
 }
 
 {
   my $INPUT = { 'status' => 'Passed' };
   my $RESULT = 'PASSED';
-  is(wtsi_clarity::util::pdf_generator::factory::pico_analysis_results::format_style_table_cell($INPUT), 'PASSED', 'Formats a style cell correctly');
+  is(wtsi_clarity::util::pdf::factory::pico_analysis_results::format_style_table_cell($INPUT), 'PASSED', 'Formats a style cell correctly');
 }
 
 {
   my $INPUT = 'A';
-  is(wtsi_clarity::util::pdf_generator::factory::pico_analysis_results::table_row_first_column($INPUT), 'A', 'Creates the first column correctly');
+  is(wtsi_clarity::util::pdf::factory::pico_analysis_results::table_row_first_column($INPUT), 'A', 'Creates the first column correctly');
 }
 
 {
@@ -1219,7 +1219,7 @@ Passed'
           ];
 
   # my $table_data = 
-  my $factory = wtsi_clarity::util::pdf_generator::factory::pico_analysis_results->new();
+  my $factory = wtsi_clarity::util::pdf::factory::pico_analysis_results->new();
   my $file = $factory->build($table_info);
 
   is_deeply($factory->_format($factory->plate_table, $table_info), $table_data);

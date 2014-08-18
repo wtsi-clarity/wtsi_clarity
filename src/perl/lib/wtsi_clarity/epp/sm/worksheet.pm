@@ -11,7 +11,7 @@ use DateTime;
 use Mojo::Collection;
 use wtsi_clarity::util::request;
 use wtsi_clarity::util::well_mapper;
-use wtsi_clarity::util::pdf_generator::worksheet;
+use wtsi_clarity::util::pdf::layout::worksheet;
 use POSIX;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
@@ -63,7 +63,7 @@ override 'run' => sub {
 
   # pdf generation
   my $pdf_data = _get_pdf_data($containers_data, $stamp, $type_data);
-  my $pdf_generator = wtsi_clarity::util::pdf_generator::worksheet->new( 'pdf_data' => $pdf_data );
+  my $pdf_generator = wtsi_clarity::util::pdf::layout::worksheet->new( 'pdf_data' => $pdf_data );
   my $worksheet_file = $pdf_generator->create() or croak q{Impossible to create the pdf version of the worksheet!};
 
   $worksheet_file->saveas(q{./}.$self->worksheet_filename);
