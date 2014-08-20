@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 36;
+use Test::More tests => 45;
 use Test::Exception;
 use File::Temp qw/tempdir/;
 use File::Slurp;
@@ -32,6 +32,7 @@ use_ok('wtsi_clarity::epp::stamp');
   delete $s->_analytes->{$containers[0]}->{'doc'};
   my @wells = sort map { $s->_analytes->{$containers[0]}->{$_}->{'well'} } (keys %{$s->_analytes->{$containers[0]}});
   is (join(q[ ], @wells), 'B:11 D:11 E:11 G:9 H:9', 'sorted wells');
+
 }
 
 {
@@ -78,7 +79,7 @@ use_ok('wtsi_clarity::epp::stamp');
 
   my $doc;
   lives_ok { $doc = $s->_create_placements_doc } 'placement doc created';
-  lives_ok { $s->_create_output_placements($doc) } 'individual placements created';
+  lives_ok { $s->_create_duplicate_output_placements($doc) } 'individual placements created';
 }
 
 {
@@ -127,6 +128,7 @@ use_ok('wtsi_clarity::epp::stamp');
   is ($s->_container_type->[1],
       '<type uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containertypes/105" name="ABgene 0800"/>',
       'second container type derived correctly from name');
+
 }
 
 {
@@ -151,6 +153,53 @@ use_ok('wtsi_clarity::epp::stamp');
   is (scalar @containers, 1, 'one input container');
   is (scalar(map { $_ =~ /\Ahttp/ } keys %{$s->_analytes->{$containers[0]}}), 5,
     'control will be stamped');
+}
+
+{
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/stamp';
+  my $s = wtsi_clarity::epp::stamp->new(
+            process_url => 'http://clarity-ap:8080/api/v2/processes/24-16122',
+            step_url => 'some',
+          );
+
+  my $climsid = '27-4536';
+  my $curi = 'http://c.com/containers/' . $climsid;
+  my $h = {
+    'limsid' => $climsid,
+    'uri'    => $curi,
+  };
+  foreach my $analyte (keys %{$s->_analytes}) {
+    push @{$s->_analytes->{$analyte}->{'output_containers'}}, $h;
+  }
+
+  my $doc;
+  my $output_placements;
+  lives_ok { $doc = $s->_create_placements_doc } 'Can create placements doc';
+  lives_ok { $output_placements = $s->_create_output_placements($doc) } 'Can create placements';
+}
+
+{
+
+  my $s = wtsi_clarity::epp::stamp->new(
+            process_url => 'http://clarity-ap:8080/api/v2/processes/24-16122',
+            step_url => 'some',
+            copy_on_target => 0
+          );
+
+  my ($well1, $well2) = $s->_calculate_destination_wells('A:1');
+  is($well1, 'A:1', 'The first well is A:1');
+  is($well2, 'B:1', 'The second well is B:1');
+
+  my ($well3, $well4) = $s->_calculate_destination_wells('B:1');
+  is($well3, 'C:1', 'The first well is C:1');
+  is($well4, 'D:1', 'The second well is D:1');
+
+  my ($well5, $well6) = $s->_calculate_destination_wells('A:2');
+  is($well5, 'A:3', 'The first well is A:3');
+  is($well6, 'B:3', 'The second well is B:3');
+
+  throws_ok { $s->_calculate_destination_wells('I:1') } qr/Source plate must be a 96 well plate/,
+    'Only accepts 96 well plates';
 }
 
 1;

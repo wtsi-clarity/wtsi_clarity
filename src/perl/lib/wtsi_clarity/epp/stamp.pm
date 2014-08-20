@@ -25,6 +25,13 @@ has 'step_url' => (
   required   => 1,
 );
 
+has 'copy_on_target' => (
+  isa => 'Bool',
+  is  => 'ro',
+  required => 0,
+  default => 0,
+);
+
 has 'container_type_name' => (
   isa        => 'ArrayRef[Str]',
   is         => 'ro',
@@ -142,7 +149,13 @@ override 'run' => sub {
   $self->epp_log('Step url is ' . $self->step_url);
   $self->_create_containers();
   my $doc = $self->_create_placements_doc;
-  $doc = $self->_create_output_placements($doc);
+
+  if ($self->copy_on_target) {
+    $doc = $self->_create_output_placements($doc);
+  } else {
+    $doc = $self->_create_duplicate_output_placements($doc);
+  }
+
   $self->request->post($self->step_url . '/placements', $doc->toString);
   return;
 };
@@ -195,7 +208,7 @@ sub _create_placements_doc {
   return XML::LibXML->load_xml(string => $pXML);
 }
 
-sub _create_output_placements {
+sub _create_duplicate_output_placements {
   my ($self, $doc) = @_;
 
   my @placements = $doc->findnodes(q{ /stp:placements/output-placements });
@@ -218,15 +231,8 @@ sub _create_output_placements {
         if (!$uri) {
           croak qq[No target analyte uri for container index $container_index];
         }
-        my $placement = $doc->createElement('output-placement');
-        $placement->setAttribute( 'uri', $uri );
-        my $location = $doc->createElement('location');
-        $placement->addChild($location);
-        my $container = $doc->createElement('container');
-        $location->addChild($container);
-        $container->setAttribute( 'uri', $output_container->{'uri'} );
-        $container->setAttribute( 'limsid', $output_container->{'limsid'} );
-        $location->appendTextChild('value', $well);
+
+        my $placement = $self->_create_placement($doc, $uri, $output_container, $well);
         $placements[0]->addChild($placement);
 
         $container_index++;
@@ -235,6 +241,78 @@ sub _create_output_placements {
   }
 
   return $doc;
+}
+
+sub _create_output_placements {
+  my ($self, $doc) = @_;
+
+  my @placements = $doc->findnodes(q{ /stp:placements/output-placements });
+  if (!@placements) {
+    croak 'Placements element not found';
+  }
+
+  foreach my $input_container ( keys %{$self->_analytes}) {
+
+    foreach my $input_analyte ( keys %{$self->_analytes->{$input_container} } ) {
+      if ( $input_analyte eq 'output_containers' || $input_analyte eq 'doc' ) {
+        next;
+      }
+
+      my ($destination_well_1, $destination_well_2) = $self->_calculate_destination_wells($self->_analytes->{$input_container}->{$input_analyte}->{'well'});
+      my $output_container = @{$self->_analytes->{$input_container}->{'output_containers'}}[0]; # Always just 1 here
+
+      my $output_artifact_uris = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'};
+
+      my $placement = $self->_create_placement($doc, $output_artifact_uris->[0], $output_container, $destination_well_1);
+      $placements[0]->addChild($placement);
+
+      $placement = $self->_create_placement($doc, $output_artifact_uris->[1], $output_container, $destination_well_2);
+      $placements[0]->addChild($placement);
+    }
+  }
+
+  return $doc;
+}
+
+sub _calculate_destination_wells {
+  my ($self, $source_well) = @_;
+  my $ord_of_A = ord 'A';
+  my $ord_of_H = ord 'H';
+
+  my ($row, $column) = split /:/sxm, $source_well;
+
+  my $ord_of_row = ord $row;
+
+  if ($ord_of_row < $ord_of_A or $ord_of_row > $ord_of_H) {
+    croak "Source plate must be a 96 well plate";
+  }
+
+  my $destination_row = (2 * $ord_of_row) - $ord_of_A;
+  my $destination_column = (2 * $column) - 1;
+
+  my $well1 = join q{:}, chr $destination_row, $destination_column;
+  my $well2 = join q{:}, chr ($destination_row + 1), $destination_column;
+
+  return ($well1, $well2);
+}
+
+sub _create_placement {
+  my ($self, $doc, $output_artifact_uri, $output_container, $well) = @_;
+  my $placement = $doc->createElement('output-placement');
+  $placement->setAttribute( 'uri', $output_artifact_uri );
+
+  my $location = $doc->createElement('location');
+  $placement->addChild($location);
+
+  my $container = $doc->createElement('container');
+
+  $location->addChild($container);
+  $location->appendTextChild('value', $well);
+
+  $container->setAttribute( 'uri', $output_container->{'uri'} );
+  $container->setAttribute( 'limsid', $output_container->{'limsid'} );
+
+  return $placement;
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -248,7 +326,7 @@ __END__
 wtsi_clarity::epp::stamp
 
 =head1 SYNOPSIS
-  
+
   1:1 and N:N scanarios, output container type will be copied from the input
   containers:
 
@@ -280,7 +358,16 @@ wtsi_clarity::epp::stamp
        step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970,
        container_type_name => ['ABgene 0800', 'ABgene 0765']
   )->run();
-  
+
+  1:1 scenario, double outputs of inputs
+
+  wtsi_clarity::epp::stamp->new(
+    process_url => 'http://clarity-ap:8080/processes/3345',
+    step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970',
+    container_type_name => ['384 Well Plate'],
+    copy_on_target => 1
+  )->run();
+
 =head1 DESCRIPTION
 
   Stamps the content of source plates to desctination plates.
