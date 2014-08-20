@@ -151,9 +151,9 @@ override 'run' => sub {
   my $doc = $self->_create_placements_doc;
 
   if ($self->copy_on_target) {
-    $doc = $self->_create_output_placements($doc);
+    $doc = $self->_stamp_with_copy($doc);
   } else {
-    $doc = $self->_create_duplicate_output_placements($doc);
+    $doc = $self->_direct_stamp($doc);
   }
 
   $self->request->post($self->step_url . '/placements', $doc->toString);
@@ -208,7 +208,7 @@ sub _create_placements_doc {
   return XML::LibXML->load_xml(string => $pXML);
 }
 
-sub _create_duplicate_output_placements {
+sub _direct_stamp {
   my ($self, $doc) = @_;
 
   my @placements = $doc->findnodes(q{ /stp:placements/output-placements });
@@ -243,7 +243,7 @@ sub _create_duplicate_output_placements {
   return $doc;
 }
 
-sub _create_output_placements {
+sub _stamp_with_copy {
   my ($self, $doc) = @_;
 
   my @placements = $doc->findnodes(q{ /stp:placements/output-placements });

@@ -79,7 +79,7 @@ use_ok('wtsi_clarity::epp::stamp');
 
   my $doc;
   lives_ok { $doc = $s->_create_placements_doc } 'placement doc created';
-  lives_ok { $s->_create_duplicate_output_placements($doc) } 'individual placements created';
+  lives_ok { $s->_direct_stamp($doc) } 'individual placements created';
 }
 
 {
@@ -175,7 +175,7 @@ use_ok('wtsi_clarity::epp::stamp');
   my $doc;
   my $output_placements;
   lives_ok { $doc = $s->_create_placements_doc } 'Can create placements doc';
-  lives_ok { $output_placements = $s->_create_output_placements($doc) } 'Can create placements';
+  lives_ok { $output_placements = $s->_stamp_with_copy($doc) } 'Can create placements';
 }
 
 {
