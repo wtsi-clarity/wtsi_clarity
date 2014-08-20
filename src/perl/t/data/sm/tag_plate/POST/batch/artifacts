@@ -1,0 +1,59 @@
+<?xml version="1.0" standalone="yes" ?>
+<art:details xmlns:art="http://genologics.com/ri/artifact" xmlns:file="http://genologics.com/ri/file" xmlns:udf="http://genologics.com/ri/userdefined">
+  <art:artifact limsid="2-34205" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-34205?state=14505">
+    <name>1_LibPCR</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process limsid="151-16106" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/151-16106"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+      <container limsid="27-605" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-605"/>
+      <value>A:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample limsid="LAB106A193" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/LAB106A193"/>
+    <reagent-label name="Human G0341"/>
+  </art:artifact>
+  <art:artifact limsid="2-34206" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-34206?state=14506">
+    <name>9_LibPCR</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process limsid="151-16106" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/151-16106"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+      <container limsid="27-605" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-605"/>
+      <value>B:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample limsid="LAB106A201" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/LAB106A201"/>
+    <reagent-label name="Human G0341"/>
+  </art:artifact>
+  <art:artifact limsid="2-34207" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-34207?state=14507">
+    <name>17_LibPCR</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process limsid="151-16106" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/151-16106"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+      <container limsid="27-605" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-605"/>
+      <value>C:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample limsid="LAB106A209" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/LAB106A209"/>
+    <reagent-label name="Human G0341"/>
+  </art:artifact>
+  <art:artifact limsid="2-34208" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-34208?state=14508">
+    <name>25_LibPCR</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process limsid="151-16106" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/151-16106"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+      <container limsid="27-605" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-605"/>
+      <value>D:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample limsid="LAB106A217" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/LAB106A217"/>
+    <reagent-label name="Human G0341"/>
+  </art:artifact>
+</art:details>
