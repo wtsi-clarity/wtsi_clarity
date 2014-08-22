@@ -20,28 +20,14 @@ Readonly::Scalar our $SUPPLIER_NAME_PATH => q( /smp:sample/udf:field[@name=') . 
 Readonly::Scalar my  $DATE_RECEIVED_PATH => q( /smp:sample/date-received );
 ## use critic
 
-has '_uuid' => (
-  isa        => 'Str',
-  is         => 'ro',
-  required   => 0,
-  lazy_build => 1,
+has '_ss_request' => (
+  isa => 'wtsi_clarity::util::request',
+  is  => 'ro',
+  required => 0,
+  default => sub {
+    return wtsi_clarity::util::request->new('content_type' => 'application/json');
+  },
 );
-sub _build__uuid {
-  my $self = shift;
-
-  my $request = wtsi_clarity::util::request->new('content_type' => 'application/json');
-  my $url = $self->config->uuid_api->{'uri'};
-  my $response = $request->get($url);
-  if (!$response) {
-    croak qq[Empty response from $url];
-  }
-  my $response_json = decode_json $response;
-  if (!$response_json->{'uuid'}) {
-    croak qq[Could not get uuid from $url];
-  }
-
-  return $response_json->{'uuid'};
-}
 
 has '_date' => (
   isa        => 'Str',
@@ -105,10 +91,29 @@ sub _update_sample {
 
   my $nameElem = $self->find_clarity_element($sampleDoc, 'name');
   $self->add_udf_element($sampleDoc, $SUPPLIER_UDF_FIELD_NAME, $nameElem->textContent);
-  $self->add_clarity_element($sampleDoc, 'name', $self->_uuid);
+  $self->add_clarity_element($sampleDoc, 'name', $self->_get_uuid);
   $self->add_clarity_element($sampleDoc, 'date-received', $self->_date);
 
   return;
+}
+
+sub _get_uuid {
+  my $self = shift;
+
+  my $url = $self->config->uuid_api->{'uri'};
+  my $response = $self->_ss_request->get($url);
+
+  if (!$response) {
+    croak qq[Empty response from $url];
+  }
+
+  my $response_json = decode_json $response;
+
+  if (!$response_json->{'uuid'}) {
+    croak qq[Could not get uuid from $url];
+  }
+
+  return $response_json->{'uuid'};
 }
 
 1;
