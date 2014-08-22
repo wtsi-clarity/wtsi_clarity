@@ -12,6 +12,9 @@ host = host1
 username = user3
 password = pword3
 
+[uuid_api]
+uri = http://uuid.web.service/
+
 [printing]
 service_url=http://psd2g.internal.sanger.ac.uk:8000/lims-support
 

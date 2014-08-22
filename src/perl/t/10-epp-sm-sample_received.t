@@ -17,6 +17,7 @@ use_ok('wtsi_clarity::epp::sm::sample_received');
 
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sample_received';
+  local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
   my $s = wtsi_clarity::epp::sm::sample_received->new(
      process_url => q[http://clarity-ap:8080/api/v2/processes/JAC2A6000],
   );
@@ -38,6 +39,7 @@ use_ok('wtsi_clarity::epp::sm::sample_received');
 
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sample_received';
+  local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
 
   my $ss_request_mock = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
 
@@ -71,6 +73,7 @@ use_ok('wtsi_clarity::epp::sm::sample_received');
 # uuid_request
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sample_received';
+  local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
 
   my $s = wtsi_clarity::epp::sm::sample_received->new(
      process_url => q[http://clarity-ap:8080/api/v2/processes/JAC2A6000],
@@ -81,6 +84,7 @@ use_ok('wtsi_clarity::epp::sm::sample_received');
 
 # get_uuid
 {
+  local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sample_received';
 
   my $ss_request_mock = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
@@ -100,6 +104,7 @@ use_ok('wtsi_clarity::epp::sm::sample_received');
 
 # get_uuid - croak if empty response
 {
+  local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sample_received';
 
   my $ss_request_mock = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
@@ -119,6 +124,7 @@ use_ok('wtsi_clarity::epp::sm::sample_received');
 
 # get_uuid - croak no uuid
 {
+  local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sample_received';
 
   my $ss_request_mock = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
