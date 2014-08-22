@@ -8,7 +8,7 @@
         <last-name>Gourtovaia</last-name>
     </submitter>
     <artifact limsid="SCO106A2PA1" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/SCO106A2PA1?state=2206"/>
-    <udf:field type="Numeric" name="Sample Conc. (ng\µL) (SM)">203.44</udf:field>
+    <udf:field type="Numeric" name="Sample Conc. (ng\/µL) (SM)">203.44</udf:field>
     <udf:field type="Numeric" name="Volume (µL) (SM)">18.0809</udf:field>
     <udf:field type="String" name="Application">Whole genome sequencing</udf:field>
     <udf:field type="String" name="Pooling">No</udf:field>
