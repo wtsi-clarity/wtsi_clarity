@@ -16,6 +16,7 @@ use Net::SFTP::Foreign;
 
 with 'wtsi_clarity::util::configurable';
 with 'wtsi_clarity::util::batch';
+with 'wtsi_clarity::util::clarity_query';
 
 our $VERSION = '0.0';
 
