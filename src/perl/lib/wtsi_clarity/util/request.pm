@@ -13,6 +13,7 @@ use File::Spec::Functions;
 use Readonly;
 
 use Net::SFTP::Foreign;
+use Digest::MD5;
 
 with 'wtsi_clarity::util::configurable';
 with 'wtsi_clarity::util::batch';
@@ -275,7 +276,7 @@ sub _request {
 
     if ($cache) {
         $self->_check_cache_dir($cache);
-        $path = $self->_create_path($uri, $type);
+        $path = $self->_create_path($uri, $type, $content);
         if (!$path) {
             croak qq[Empty path generated for $uri];
         }
@@ -336,16 +337,27 @@ sub download_file {
 }
 
 sub _create_path {
-    my ( $self, $url, $type ) = @_;
+    my ( $self, $url, $type, $content ) = @_;
+
+    my $base_url = $self->config->clarity_api->{'base_uri'}."/";
+    $url =~ s/$base_url//xms;
     my @components = split /\//xms, $url;
-    my $query  = pop @components;
-    my $entity = pop @components;
-    my $path = $type;
+    my $entity  = shift @components;
+    my $query   = shift @components;
+
+    if($content) {
+        my $md5 = "_".Digest::MD5::md5_hex($content);
+        $query .= $md5;
+        }
+    my $path;
     if ($query and $entity) {
-        $path = catdir($path, $entity, $query);
+        $path = catdir($type, $entity, $query);
     }
+
     if ($path) {
         $path = catfile($ENV{$self->cache_dir_var_name}, $path);
+    } else {
+        croak qq{Wrong URL format for caching.}
     }
     return $path;
 }
@@ -389,17 +401,6 @@ sub _from_cache {
 
 sub _from_web {
     my ($self, $type, $uri, $content, $path) = @_;
-
-    if ($path && $ENV{$self->save2cache_dir_var_name} && $ENV{$self->cache_dir_var_name}) {
-        ##no critic (RequireCheckingReturnValueOfEval)
-        eval {
-          $content = $self->_from_cache($path, $uri);
-        };
-        ##use critic
-        if ($content) {
-            return $content;
-        }
-    }
 
     $self->_set_base_url($uri);
 
