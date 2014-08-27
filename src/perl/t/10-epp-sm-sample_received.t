@@ -1,7 +1,11 @@
 use strict;
 use warnings;
-use Test::More tests => 13;
+use Test::More tests => 17;
 use Test::Warn;
+use Test::Exception;
+use Test::MockObject::Extends;
+use JSON qw/encode_json/;
+use wtsi_clarity::util::request;
 
 use_ok('wtsi_clarity::epp::sm::sample_received');
 
@@ -13,6 +17,7 @@ use_ok('wtsi_clarity::epp::sm::sample_received');
 
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sample_received';
+  local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
   my $s = wtsi_clarity::epp::sm::sample_received->new(
      process_url => q[http://clarity-ap:8080/api/v2/processes/JAC2A6000],
   );
@@ -34,13 +39,23 @@ use_ok('wtsi_clarity::epp::sm::sample_received');
 
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sample_received';
-  my $uuid = 'jdghfdhgfdgfh';
+  local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
+
+  my $ss_request_mock = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
+
+  $ss_request_mock->mock(q(get), sub{
+    my ($self, $url) = @_;
+    return encode_json { 'uuid' => 12345 };
+  });
+
   my $date = '28-May-2013';
+
   my $s = wtsi_clarity::epp::sm::sample_received->new(
      process_url => q[http://clarity-ap:8080/api/v2/processes/JAC2A6000],
-     _uuid => $uuid,
+     _ss_request => $ss_request_mock,
      _date => $date
   );
+
   my $sample_doc = $s->fetch_and_parse(q[http://clarity-ap:8080/api/v2/samples/JON1301A293]);
   $s->_update_sample($sample_doc);
   my @nodes = $sample_doc->findnodes( $wtsi_clarity::epp::sm::sample_received::SUPPLIER_NAME_PATH );
@@ -48,11 +63,83 @@ use_ok('wtsi_clarity::epp::sm::sample_received');
   cmp_ok($nodes[0]->textContent, 'eq', 'Test a', 'supplier udf should be correct.');
 
   @nodes = $sample_doc->findnodes( q{ /smp:sample/name });
-  cmp_ok($nodes[0]->textContent, 'eq', $uuid, 'should change sample name to uuid');
+  cmp_ok($nodes[0]->textContent, 'eq', '12345', 'should change sample name to uuid');
 
   @nodes = $sample_doc->findnodes( q{/smp:sample/date-received});
   cmp_ok(scalar(@nodes), '==', 1, 'should find date-received.');
   is ($nodes[0]->textContent, $date, 'should set date-received');
+}
+
+# uuid_request
+{
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sample_received';
+  local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
+
+  my $s = wtsi_clarity::epp::sm::sample_received->new(
+     process_url => q[http://clarity-ap:8080/api/v2/processes/JAC2A6000],
+  );
+
+  isa_ok($s->_ss_request, "wtsi_clarity::util::request");
+}
+
+# get_uuid
+{
+  local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sample_received';
+
+  my $ss_request_mock = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
+
+  $ss_request_mock->mock(q(get), sub{
+    my ($self, $url) = @_;
+    return encode_json { 'uuid' => 12345 };
+  });
+
+  my $s = wtsi_clarity::epp::sm::sample_received->new(
+     process_url => q[http://clarity-ap:8080/api/v2/processes/JAC2A6000],
+     _ss_request => $ss_request_mock,
+  );
+
+  is($s->_get_uuid(), 12345, 'Successfully retrieves a uuid');
+}
+
+# get_uuid - croak if empty response
+{
+  local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sample_received';
+
+  my $ss_request_mock = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
+
+  $ss_request_mock->mock(q(get), sub{
+    my ($self, $url) = @_;
+    return undef;
+  });
+
+  my $s = wtsi_clarity::epp::sm::sample_received->new(
+     process_url => q[http://clarity-ap:8080/api/v2/processes/JAC2A6000],
+     _ss_request => $ss_request_mock,
+  );
+
+  throws_ok { $s->_get_uuid() } qr/Empty response/, "Throws error if response is empty";
+}
+
+# get_uuid - croak no uuid
+{
+  local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sample_received';
+
+  my $ss_request_mock = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
+
+  $ss_request_mock->mock(q(get), sub{
+    my ($self, $url) = @_;
+    return encode_json { 'not_uuid' => 12345 };
+  });
+
+  my $s = wtsi_clarity::epp::sm::sample_received->new(
+     process_url => q[http://clarity-ap:8080/api/v2/processes/JAC2A6000],
+     _ss_request => $ss_request_mock,
+  );
+
+  throws_ok { $s->_get_uuid() } qr/Could not get uuid/, "Throws error if uuid does not exist";
 }
 
 1;
