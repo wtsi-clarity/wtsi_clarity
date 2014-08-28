@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 45;
+use Test::More tests => 37;
 use Test::Exception;
 use File::Temp qw/tempdir/;
 use File::Slurp;
