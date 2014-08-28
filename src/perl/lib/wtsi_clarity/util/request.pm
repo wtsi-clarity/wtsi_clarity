@@ -17,6 +17,7 @@ use Digest::MD5;
 
 with 'wtsi_clarity::util::configurable';
 with 'wtsi_clarity::util::batch';
+with 'wtsi_clarity::util::clarity_query';
 
 our $VERSION = '0.0';
 
@@ -177,7 +178,16 @@ sub _build_useragent {
     $ua->agent(join q[/], __PACKAGE__, $VERSION);
     $ua->timeout($LWP_TIMEOUT);
     $ua->env_proxy();
-    $ua->credentials($self->config->clarity_api->{'base_uri'}, $REALM, $self->user, $self->password);
+
+    # the credential requires the network location to follow the HOST:PORT format.
+    # we use the base_uri to find this value
+    my $host_port = $self->config->clarity_api->{'base_uri'};
+    if ( $host_port =~ /http:/xms ) {
+        ##no critic (RegularExpressions::ProhibitEscapedMetacharacters)
+        ($host_port) = ( $host_port =~ m/http:\/\/([\w\d:\-\.]+).*/xms );
+        ##use critic
+    }
+    $ua->credentials( $host_port, $REALM, $self->user, $self->password);
     return $ua;
 }
 
@@ -398,7 +408,6 @@ sub _from_cache {
 
 sub _from_web {
     my ($self, $type, $uri, $content, $path) = @_;
-
     if ($path && $ENV{$self->save2cache_dir_var_name} && $ENV{$self->cache_dir_var_name}) {
         ##no critic (RequireCheckingReturnValueOfEval)
         eval {
@@ -409,7 +418,6 @@ sub _from_web {
             return $content;
         }
     }
-
     my $req=HTTP::Request->new($type, $uri,undef, $content);
     $req->header('encoding' =>   'UTF-8');
     $req->header('Accept',       $self->content_type);
@@ -422,7 +430,6 @@ sub _from_web {
             $req->header($header_key => ${$self->additional_headers}{$header_key});
         }
     }
-
     my $res=$self->useragent()->request($req);
 
     # workaround a bug in SS (getting back a 301 response with the correct response body)

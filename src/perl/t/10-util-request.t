@@ -149,8 +149,14 @@ sub read_file {
     if ( !$ENV{'LIVE_TEST'} ) {
       skip 'set LIVE_TEST to true to run', 5;
     }
-    my $samples_uri = $base_uri . q{/samples};
-    my $sample_uri = $samples_uri . q{/GOU51A7};
+
+    local $ENV{'WTSI_CLARITY_HOME'}= q[];
+    my $config = wtsi_clarity::util::config->new();
+    my $live_base_uri = $config->clarity_api->{'base_uri'};
+
+    my $samples_uri = $live_base_uri . q{/samples};
+    my $sample_uri = $samples_uri . q{/SMI102A12};
+
     my $r = wtsi_clarity::util::request->new();
     my $data = $r->get($sample_uri);
     ok($data, 'data received');
