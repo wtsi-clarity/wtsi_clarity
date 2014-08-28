@@ -1,14 +1,16 @@
 use strict;
 use warnings;
 use Carp;
-use Test::More tests => 7;
+use Test::More tests => 10;
 use XML::LibXML;
 use Data::Dumper;
 use XML::SemanticDiff;
 
 use_ok('wtsi_clarity::epp::sm::pico_analysis');
 
-my $base_url = q{http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2};
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+my $config = wtsi_clarity::util::config->new();
+my $base_url = $config->clarity_api->{'base_uri'};
 
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sm/pico_analysis';
 local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;

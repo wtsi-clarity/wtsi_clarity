@@ -177,12 +177,12 @@ sub _update_output_artifacts {
         my $artifact = $_;
         my $artifact_id = $artifact->findvalue( q{@limsid} );
         my $loc = $self->_input_to_output_map->{$artifact_id}->{'location'};
-        add_element_to_entity($artifact,'Concentration', $data->{$loc}->{'concentration'});
+        _add_element_to_entity($artifact,'Concentration', $data->{$loc}->{'concentration'});
        } ) ;
   return $self->_output_artifact_details;
 }
 
-sub add_element_to_entity {
+sub _add_element_to_entity {
   my ($sample, $udf_name, $udf_value) = @_;
   my $node = $sample->ownerDocument()->createElement($udf_name);
   $node->appendTextNode($udf_value);

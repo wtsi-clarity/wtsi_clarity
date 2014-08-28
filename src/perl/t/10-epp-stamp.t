@@ -6,6 +6,7 @@ use File::Temp qw/tempdir/;
 use File::Slurp;
 
 use_ok('wtsi_clarity::epp::stamp');
+my $base_uri =  'http://testserver.com:1234/here' ;
 
 {
   my $s = wtsi_clarity::epp::stamp->new(process_url => 'some', step_url => 'some');
@@ -43,14 +44,14 @@ use_ok('wtsi_clarity::epp::stamp');
 
     local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/stamp';
     my $s = wtsi_clarity::epp::stamp->new(
-      process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-98502',
+      process_url => $base_uri . '/processes/24-98502',
       step_url    => 'some'
     );
     lives_ok { $s->_analytes } 'got all info from clarity';
     is ($s->container_type_name->[0], 'ABgene 0800', 'container name retrieved correctly');
     is ($s->_validate_container_type, 0, 'container type validation flag unset');
     is ($s->_container_type->[0],
-       '<type uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containertypes/105" name="ABgene 0800"/>',
+       '<type uri="'. $base_uri . '/containertypes/105" name="ABgene 0800"/>',
        'container type value');
 
     local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = q[];
@@ -66,7 +67,7 @@ use_ok('wtsi_clarity::epp::stamp');
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/stamp';
   my $s = wtsi_clarity::epp::stamp->new(
-    process_url => 'http://clarity-ap:8080/api/v2/processes/24-98502',
+    process_url => $base_uri . '/processes/24-98502',
     step_url    => 'some'
   );
   lives_ok { $s->_analytes } 'got all info from clarity';
@@ -85,9 +86,9 @@ use_ok('wtsi_clarity::epp::stamp');
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/stamp_with_control';
   my $s = wtsi_clarity::epp::stamp->new(
-              process_url => 'http://clarity-ap:8080/api/v2/processes/24-99904',
+              process_url => $base_uri . '/processes/24-99904',
               step_url => 'some');
-  lives_ok { $s->_analytes } 'got all info from clarity';
+  lives_ok { $s->_analytes } 'got all info from clarity (no container type name)';
   my @containers = keys %{$s->_analytes};
   is (scalar @containers, 1, 'one input container, control tube is skipped');
 }
@@ -96,26 +97,26 @@ use_ok('wtsi_clarity::epp::stamp');
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/stamp_with_control';
   #local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
   my $s = wtsi_clarity::epp::stamp->new(
-              process_url => 'http://clarity-ap:8080/api/v2/processes/24-99904',
+              process_url => $base_uri . '/processes/24-99904',
               step_url => 'some',
               container_type_name => ['ABgene 0800']);
-  lives_ok { $s->_analytes } 'got all info from clarity';
+  lives_ok { $s->_analytes } q{got all info from clarity ('ABgene 0800')};
   my @containers = keys %{$s->_analytes};
   is (scalar @containers, 1, 'one input container, control tube is skipped');
   ok ($s->_validate_container_type, 'validate container flag is true');
   is ($s->_container_type->[0],
-      '<type uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containertypes/105" name="ABgene 0800"/>',
+      '<type uri="' . $base_uri . '/containertypes/105" name="ABgene 0800"/>',
       'container type derived correctly from name');
 }
 
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/stamp_with_control';
   my $s = wtsi_clarity::epp::stamp->new(
-              process_url => 'http://clarity-ap:8080/api/v2/processes/24-99904',
+              process_url => $base_uri . '/processes/24-99904',
               step_url => 'some',
               container_type_name => ['ABgene 0765', 'ABgene 0800']);
 
-  lives_ok { $s->_analytes } 'got all info from clarity';
+  lives_ok { $s->_analytes } q{got all info from clarity ('ABgene 0765', 'ABgene 0800')};
   my @containers = keys %{$s->_analytes};
   is (scalar @containers, 1, 'one input container, control tube is skipped');
   is (scalar(map { $_ =~ /\Ahttp/ } keys %{$s->_analytes->{$containers[0]}}), 4, 'control will not be stamped');
@@ -123,10 +124,10 @@ use_ok('wtsi_clarity::epp::stamp');
   ok ($s->_validate_container_type, 'validate container flag is true');
   is (scalar @{$s->_container_type}, 2, 'two container types retrieved');
   is ($s->_container_type->[0],
-      '<type uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containertypes/106" name="ABgene 0765"/>',
+      '<type uri="' . $base_uri . '/containertypes/106" name="ABgene 0765"/>',
       'first container type derived correctly from name');
   is ($s->_container_type->[1],
-      '<type uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containertypes/105" name="ABgene 0800"/>',
+      '<type uri="' . $base_uri . '/containertypes/105" name="ABgene 0800"/>',
       'second container type derived correctly from name');
 
 }
@@ -146,7 +147,7 @@ use_ok('wtsi_clarity::epp::stamp');
 
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = "$dir/stamp_with_control";
   my $s = wtsi_clarity::epp::stamp->new(
-              process_url => 'http://clarity-ap:8080/api/v2/processes/24-99904',
+              process_url => $base_uri . '/processes/24-99904',
               step_url => 'some');
   lives_ok { $s->_analytes } 'got all info from clarity';
   my @containers = keys %{$s->_analytes};
@@ -158,7 +159,7 @@ use_ok('wtsi_clarity::epp::stamp');
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/stamp';
   my $s = wtsi_clarity::epp::stamp->new(
-            process_url => 'http://clarity-ap:8080/api/v2/processes/24-16122',
+            process_url => $base_uri . '/processes/24-16122',
             step_url => 'some',
           );
 

@@ -8,6 +8,8 @@ use Carp;
 use lib qw ( t );
 use util::xml;
 
+my $base_uri = q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2};
+
 use_ok('wtsi_clarity::epp::sm::cherrypick_volume', 'can use wtsi_clarity::epp::sm::cherrypick_volume' );
 use_ok('util::xml', 'can use wtsi_clarity::t::util::xml' );
 
@@ -18,7 +20,7 @@ my $espilon = 0.000001;
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sm/cherrypick_volume';
   # local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
   my $step = wtsi_clarity::epp::sm::cherrypick_volume->new(
-    process_url => 'http://clarity-ap:8080/api/v2/processes/24-102066');
+    process_url => $base_uri . '/processes/24-102066');
 
   lives_ok { $step->fetch_and_update_targets($step->process_doc) } 'In case (1), the class managed to fetch and updates the artifact';
 
@@ -28,11 +30,11 @@ my $espilon = 0.000001;
   my $BUFFER_PATH = q(/art:artifact/udf:field[@name='Cherrypick Buffer Volume']);
 
   my %expected_result = (
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JON1301A251PA1?state=360076' => [5/45 , 10 - 5/45 ],
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JON1301A252PA1?state=360082' => [5/3  , 10 - 5/3  ],
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JON1301A253PA1?state=360058' => [5/9  , 10 - 5/9  ],
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JON1301A254PA1?state=360086' => [5/35 , 10 - 5/35 ],
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JON1301A255PA1?state=360078' => [2    , 10 - 2    ],
+    $base_uri . '/artifacts/JON1301A251PA1?state=360076' => [5/45 , 10 - 5/45 ],
+    $base_uri . '/artifacts/JON1301A252PA1?state=360082' => [5/3  , 10 - 5/3  ],
+    $base_uri . '/artifacts/JON1301A253PA1?state=360058' => [5/9  , 10 - 5/9  ],
+    $base_uri . '/artifacts/JON1301A254PA1?state=360086' => [5/35 , 10 - 5/35 ],
+    $base_uri . '/artifacts/JON1301A255PA1?state=360078' => [2    , 10 - 2    ],
   );
 
   foreach my $sampleURI (keys %{$step->_targets})
@@ -56,7 +58,7 @@ my $espilon = 0.000001;
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sm/cherrypick_volume';
   # local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
   my $step = wtsi_clarity::epp::sm::cherrypick_volume->new(
-    process_url => 'http://clarity-ap:8080/api/v2/processes/24-102067');
+    process_url => $base_uri . '/processes/24-102067');
 
   lives_ok { $step->fetch_and_update_targets($step->process_doc) } 'In case (2), the class managed to fetch and updates the artifact';
 
@@ -66,19 +68,19 @@ my $espilon = 0.000001;
   my $BUFFER_PATH = q(/art:artifact/udf:field[@name='Cherrypick Buffer Volume']);
 
   my %expected_result = (
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/201' => [ 25/450 ,  0.1 - 25/450 ],
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/202' => [ 25/50  ,  0 ],
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/203' => [ 1.0    ,  0 ],
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/204' => [ 1.0    ,  0 ],
+    $base_uri . '/artifacts/201' => [ 25/450 ,  0.1 - 25/450 ],
+    $base_uri . '/artifacts/202' => [ 25/50  ,  0 ],
+    $base_uri . '/artifacts/203' => [ 1.0    ,  0 ],
+    $base_uri . '/artifacts/204' => [ 1.0    ,  0 ],
 
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/211' => [ 25/450 ,  0.1 - 25/450 ],
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/212' => [ 25/75  ,  0.0 ],
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/213' => [ 0.5    ,  0.0 ],
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/214' => [ 0.5    ,  0.0 ],
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/221' => [ 25/600 ,  0.1 - 25/600 ],
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/222' => [ 0.05   ,  0.1 - 0.05   ],
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/223' => [ 0.05   ,  0.1 - 0.05   ],
-    'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/224' => [ 0.05   ,  0.1 - 0.05   ],
+    $base_uri . '/artifacts/211' => [ 25/450 ,  0.1 - 25/450 ],
+    $base_uri . '/artifacts/212' => [ 25/75  ,  0.0 ],
+    $base_uri . '/artifacts/213' => [ 0.5    ,  0.0 ],
+    $base_uri . '/artifacts/214' => [ 0.5    ,  0.0 ],
+    $base_uri . '/artifacts/221' => [ 25/600 ,  0.1 - 25/600 ],
+    $base_uri . '/artifacts/222' => [ 0.05   ,  0.1 - 0.05   ],
+    $base_uri . '/artifacts/223' => [ 0.05   ,  0.1 - 0.05   ],
+    $base_uri . '/artifacts/224' => [ 0.05   ,  0.1 - 0.05   ],
   );
 
   foreach my $sampleURI (keys %expected_result) #{$step->_targets})
@@ -108,7 +110,7 @@ my $espilon = 0.000001;
 #   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sm/cherrypick_volume';
 #   # local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 #   my $step = wtsi_clarity::epp::sm::cherrypick_volume->new(
-#     process_url => 'http://clarity-ap:8080/api/v2/processes/24-102068');
+#     process_url => $base_uri . '/processes/24-102068');
 #
 #   lives_ok { $step->fetch_and_update_targets($step->process_doc) } 'In case (3), the class managed to fetch and updates the artifact';
 #
@@ -118,11 +120,11 @@ my $espilon = 0.000001;
 #   my $BUFFER_PATH = q(/art:artifact/udf:field[@name='Cherrypick Buffer Volume']);
 #
 #   my %expected_result = (
-#     'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JON1301A251PA1?state=360076' => [50,''],
-#     'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JON1301A252PA1?state=360082' => [50,''],
-#     'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JON1301A253PA1?state=360058' => [50,''],
-#     'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JON1301A254PA1?state=360086' => [50,''],
-#     'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JON1301A255PA1?state=360078' => [ 2,''],
+#     $base_uri . '/artifacts/JON1301A251PA1?state=360076' => [50,''],
+#     $base_uri . '/artifacts/JON1301A252PA1?state=360082' => [50,''],
+#     $base_uri . '/artifacts/JON1301A253PA1?state=360058' => [50,''],
+#     $base_uri . '/artifacts/JON1301A254PA1?state=360086' => [50,''],
+#     $base_uri . '/artifacts/JON1301A255PA1?state=360078' => [ 2,''],
 #   );
 #
 #   foreach my $sampleURI (keys %{$step->_targets})

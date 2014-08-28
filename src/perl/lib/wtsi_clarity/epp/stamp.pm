@@ -67,7 +67,7 @@ sub _build__container_type {
   if ($self->_validate_container_type) {
     foreach my $name (@{$names}) {
       my $ename = uri_escape($name);
-      my $url = $self->base_url . q{containertypes?name=} . $ename;
+      my $url = $self->config->clarity_api->{'base_uri'} . q{/containertypes?name=} . $ename;
       my $doc = $self->fetch_and_parse($url);
       my @nodes =  $doc->findnodes(q{/ctp:container-types/container-type});
       if (!@nodes) {
@@ -177,7 +177,7 @@ sub _create_containers {
       my $xml = $xml_header;
       $xml .= $output_container_type_xml;
       $xml .= $xml_footer;
-      my $url = $self->base_url . 'containers';
+      my $url = $self->config->clarity_api->{'base_uri'} . '/containers';
       my $container_doc = XML::LibXML->load_xml(string => $self->request->post($url, $xml));
       ##no critic (RequireInterpolationOfMetachars)
       my $h = { 'limsid' => $container_doc->findvalue(q{ /con:container/@limsid }),
