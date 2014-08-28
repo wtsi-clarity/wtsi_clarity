@@ -4,6 +4,12 @@ use Test::More tests => 34;
 use Test::Exception;
 use DateTime;
 
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+
+use wtsi_clarity::util::config;
+my $config = wtsi_clarity::util::config->new();
+my $base_uri = $config->clarity_api->{'base_uri'};
+
 use_ok('wtsi_clarity::epp::sm::create_label');
 
 {
@@ -20,7 +26,7 @@ use_ok('wtsi_clarity::epp::sm::create_label');
   #local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
   local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
   my $l = wtsi_clarity::epp::sm::create_label->new(
-    process_url => 'http://clarity-ap:8080/api/v2/processes/24-67069');
+    process_url => $base_uri . '/processes/24-67069');
 
   lives_and(sub {is $l->printer, 'd304bc'}, 'correct trimmed printer name');
   lives_and(sub {is $l->user, 'D. Brooks'}, 'correct user name');
@@ -28,7 +34,7 @@ use_ok('wtsi_clarity::epp::sm::create_label');
   lives_and(sub {is $l->_plate_purpose, 'Stock Plate'}, 'plate purpose as given');
 
   $l = wtsi_clarity::epp::sm::create_label->new(
-    process_url => 'http://clarity-ap:8080/api/v2/processes/24-67069');
+    process_url => $base_uri . '/processes/24-67069');
   my $config = join q[/], $ENV{'HOME'}, '.wtsi_clarity', 'config';
   lives_and(sub {like $l->_get_printer_url('d304bc'), qr/c2ed34d0-7214-0131-2f13-005056a81d80/}, 'got printer url');
 }
@@ -36,7 +42,7 @@ use_ok('wtsi_clarity::epp::sm::create_label');
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/create_label';
   my $l = wtsi_clarity::epp::sm::create_label->new(
-    process_url => 'http://clarity-ap:8080/api/v2/processes/24-67069_custom');
+    process_url => $base_uri . '/processes/24-67069_custom');
 
   throws_ok { $l->printer} qr/Printer udf field should be defined/, 'error when printer not defined';
   lives_and(sub {is $l->user, q[]}, 'no user name by default');
@@ -48,7 +54,7 @@ use_ok('wtsi_clarity::epp::sm::create_label');
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/create_label';
   #local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
   my $l = wtsi_clarity::epp::sm::create_label->new(
-     process_url => 'http://clarity-ap:8080/api/v2/processes/24-67069',
+     process_url => $base_uri . '/processes/24-67069',
      source_plate => 1,
      _date => my $dt = DateTime->new(
         year       => 2014,
@@ -125,7 +131,7 @@ use_ok('wtsi_clarity::epp::sm::create_label');
   );
 
   my $l = wtsi_clarity::epp::sm::create_label->new(
-     process_url => 'http://clarity-ap:8080/api/v2/processes/24-97619',
+     process_url => $base_uri . '/processes/24-97619',
      increment_purpose => 1,
      _date => $dt,
   ); 
@@ -179,7 +185,7 @@ use_ok('wtsi_clarity::epp::sm::create_label');
   is_deeply($l->_generate_labels(), $label, 'label hash representation');
 
   $l = wtsi_clarity::epp::sm::create_label->new(
-     process_url => 'http://clarity-ap:8080/api/v2/processes/24-97619',
+     process_url => $base_uri . '/processes/24-97619',
      _date => $dt,
   );
 

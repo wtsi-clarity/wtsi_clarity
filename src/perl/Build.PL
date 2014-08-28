@@ -107,6 +107,7 @@ my $builder = $class->new(
                 'Try::Tiny'                       => 0,
                 'warnings'                        => 0,
                 'XML::LibXML'                     => 0,
+                'XML::SemanticDiff'               => 0,
                 'URI::Escape'                     => 0,
                 'POSIX'                           => 0,
           },

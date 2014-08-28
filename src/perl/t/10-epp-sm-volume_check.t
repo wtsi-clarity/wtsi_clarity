@@ -11,12 +11,20 @@ use Cwd;
 
 my $dir = tempdir( CLEANUP => 1);
 
+# load the original test config file
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+use wtsi_clarity::util::config;
+my $config = wtsi_clarity::util::config->new();
+my $base_uri = $config->clarity_api->{'base_uri'};
+
 sub _write_config {
   my $robot_dir = shift;
   my $file = catfile $dir, 'config';
   open my $fh, '>', $file or croak "Cannot open file $file for writing";
   print $fh "[robot_file_dir]\n";
   print $fh "sm_volume_check=$robot_dir\n";
+  print $fh "[clarity_api]\n";
+  print $fh "base_uri = $base_uri\n";
   close $fh or carp "Cannot close file $file";
 }
 

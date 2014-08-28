@@ -4,6 +4,12 @@ use Test::Exception;
 use Test::More tests => 19;
 use JSON;
 
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+
+use wtsi_clarity::util::config;
+my $config = wtsi_clarity::util::config->new();
+my $base_uri = $config->clarity_api->{'base_uri'};
+
 use_ok('wtsi_clarity::epp::sm::cp_bed_verification');
 
 {
@@ -11,7 +17,7 @@ use_ok('wtsi_clarity::epp::sm::cp_bed_verification');
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   my $process = wtsi_clarity::epp::sm::cp_bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-104741',
+    process_url => $base_uri . '/processes/24-104741',
   );
 
   can_ok($process, qw/ run /);
@@ -23,13 +29,13 @@ use_ok('wtsi_clarity::epp::sm::cp_bed_verification');
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   my $process = wtsi_clarity::epp::sm::cp_bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-104741',
+    process_url => $base_uri . '/processes/24-104741',
   );
 
   is($process->_robot_id, '014296', 'Extracts the robot_id correctly');
 
   $process = wtsi_clarity::epp::sm::cp_bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-104741_a',
+    process_url => $base_uri . '/processes/24-104741_a',
   );
 
   throws_ok { $process->_robot_id } qr/Robot ID must be set first/, 
@@ -42,13 +48,13 @@ use_ok('wtsi_clarity::epp::sm::cp_bed_verification');
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   my $process = wtsi_clarity::epp::sm::cp_bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-104741',
+    process_url => $base_uri . '/processes/24-104741',
   );
 
   is($process->_output_limsid, '92-699696', 'Extracts the first output limsid correctly');
 
   $process = wtsi_clarity::epp::sm::cp_bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-104741_a',
+    process_url => $base_uri . '/processes/24-104741_a',
   );
 
   throws_ok { $process->_output_limsid } qr/Can not find output/, 
@@ -61,7 +67,7 @@ use_ok('wtsi_clarity::epp::sm::cp_bed_verification');
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   my $process = wtsi_clarity::epp::sm::cp_bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-104741',
+    process_url => $base_uri . '/processes/24-104741',
   );
 
   is($process->_process_limsid, '24-104741', 'Extracts the process limsid correctly');
@@ -73,7 +79,7 @@ use_ok('wtsi_clarity::epp::sm::cp_bed_verification');
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   my $process = wtsi_clarity::epp::sm::cp_bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-104741',
+    process_url => $base_uri . '/processes/24-104741',
   );
 
   my %result = (
@@ -90,7 +96,7 @@ use_ok('wtsi_clarity::epp::sm::cp_bed_verification');
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   my $process = wtsi_clarity::epp::sm::cp_bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-104741',
+    process_url => $base_uri . '/processes/24-104741',
   );
 
   my %result = (
@@ -107,7 +113,7 @@ use_ok('wtsi_clarity::epp::sm::cp_bed_verification');
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   my $process = wtsi_clarity::epp::sm::cp_bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-104741',
+    process_url => $base_uri . '/processes/24-104741',
   );
 
   is($process->_input_limsid, '2-665711', 'Extracts the limsid of the first input');
@@ -119,7 +125,7 @@ use_ok('wtsi_clarity::epp::sm::cp_bed_verification');
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   my $process = wtsi_clarity::epp::sm::cp_bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-104741',
+    process_url => $base_uri . '/processes/24-104741',
     _tecan_file => 't/data/sm/bed_verification/cherrypick/tecan.gwl',
   );
 
@@ -148,7 +154,7 @@ use_ok('wtsi_clarity::epp::sm::cp_bed_verification');
   );
 
   my $process = wtsi_clarity::epp::sm::cp_bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-104741',
+    process_url => $base_uri . '/processes/24-104741',
     _tecan_bed_config => $config,
     _file_input_output => \%file_input_output,
     _robot_id => '014296'
@@ -175,7 +181,7 @@ use_ok('wtsi_clarity::epp::sm::cp_bed_verification');
   is_deeply($process->_plate_bed_map, \@result, "Creates the plate_bed_map correctly");
 
   $process = wtsi_clarity::epp::sm::cp_bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-104741',
+    process_url => $base_uri . '/processes/24-104741',
     _tecan_bed_config => $config,
     _file_input_output => \%file_input_output,
     _robot_id => '123456789' # False robot id
@@ -187,7 +193,7 @@ use_ok('wtsi_clarity::epp::sm::cp_bed_verification');
   delete $config->{'014296'}{'beds'}{'SCRC1'};
 
   $process = wtsi_clarity::epp::sm::cp_bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-104741',
+    process_url => $base_uri . '/processes/24-104741',
     _tecan_bed_config => $config,
     _file_input_output => \%file_input_output,
     _robot_id => '014296'
@@ -203,7 +209,7 @@ use_ok('wtsi_clarity::epp::sm::cp_bed_verification');
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   my $process = wtsi_clarity::epp::sm::cp_bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-104741'
+    process_url => $base_uri . '/processes/24-104741'
   );
 
   my $test_input = {
