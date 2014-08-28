@@ -9,6 +9,8 @@ use lib qw ( t );
 use util::xml;
 use Data::Dumper;
 
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+
 use_ok('wtsi_clarity::epp::sm::worksheet', 'can use wtsi_clarity::epp::sm::worksheet' );
 use_ok('util::xml', 'can use wtsi_clarity::t::util::xml' );
 

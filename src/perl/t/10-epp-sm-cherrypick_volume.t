@@ -8,6 +8,7 @@ use Carp;
 use lib qw ( t );
 use util::xml;
 
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 my $base_uri = q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2};
 
 use_ok('wtsi_clarity::epp::sm::cherrypick_volume', 'can use wtsi_clarity::epp::sm::cherrypick_volume' );

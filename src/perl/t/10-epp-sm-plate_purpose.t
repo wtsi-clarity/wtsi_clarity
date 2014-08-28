@@ -8,9 +8,10 @@ use Carp;
 use lib qw ( t );
 use util::xml;
 
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+
 use_ok('wtsi_clarity::epp::sm::plate_purpose', 'can use wtsi_clarity::epp::sm::plate_purpose' );
 use_ok('util::xml', 'can use wtsi_clarity::t::util::xml' );
-
 
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/plate_purpose';

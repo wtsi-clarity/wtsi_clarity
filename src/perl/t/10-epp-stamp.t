@@ -5,6 +5,8 @@ use Test::Exception;
 use File::Temp qw/tempdir/;
 use File::Slurp;
 
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+
 use_ok('wtsi_clarity::epp::stamp');
 my $base_uri =  'http://testserver.com:1234/here' ;
 

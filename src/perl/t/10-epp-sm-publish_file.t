@@ -3,6 +3,8 @@ use warnings;
 use Test::More tests => 6;
 use XML::LibXML;
 
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+
 use_ok('wtsi_clarity::epp::sm::publish_file');
 
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sm/publish_file';
