@@ -10,7 +10,16 @@ our $VERSION = '0.0';
 sub query_artifacts {
   my ($self, $criteria) = @_;
 
-  my $uri = $self->_build_query_url( _build_query($criteria) );
+  my $uri = $self->_build_query_url( q{artifacts}, _build_query($criteria) );
+  my $response = $self->get($uri);
+
+  return $response;
+}
+
+sub query_processes {
+  my ($self, $criteria) = @_;
+
+  my $uri = $self->_build_query_url( q{processes},  _build_query($criteria) );
   my $response = $self->get($uri);
 
   return $response;
@@ -18,18 +27,19 @@ sub query_artifacts {
 
 sub _build_query_url
 {
-  my ($self, $query) = @_;
-  return  $self->config->clarity_api->{'base_uri'} . "/artifacts?" . uri_escape ($query);
+  my ($self, $resource, $query) = @_;
+  return  $self->config->clarity_api->{'base_uri'} . qq{/$resource?} . uri_escape ($query);
 }
 
 sub _build_query
 {
-  my ($criteria) = @_;
+  my ($resource, $criteria) = @_;
 
   my $map_key = {
-    sample_id => 'samplelimsid',
-    step => 'process-type',
-    type => 'type',
+    sample_id   => 'samplelimsid',
+    artifact_id => 'inputartifactlimsid',
+    step        => 'process-type',
+    type        => 'type',
   };
   my $query = q{};
 
@@ -37,7 +47,15 @@ sub _build_query
   ->map(sub {
               my $key  = $map_key ->{$_};
               my $crit = $criteria->{$_};
-             return qq{$key=$crit};
+              # make an array of non array value...
+              if(ref($crit) ne 'ARRAY'){
+                $crit = [$crit];
+              }
+              return c->new(@{$crit})
+                      ->map( sub {
+                              return qq[$key=$_];
+                            } )
+                      ->join( q{&} );
             } )
   ->join( q{&} );
 }
