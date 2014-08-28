@@ -1,15 +1,15 @@
-package wtsi_clarity::util::pdf_generator::pico_analysis_results;
+package wtsi_clarity::util::pdf::layout::pico_analysis_results;
 
 use Moose;
 use Readonly;
 
 Readonly::Scalar my $buffer_table_y_position => 700;
 
-extends 'wtsi_clarity::util::pdf_generator';
+extends 'wtsi_clarity::util::pdf::pdf_generator';
 
 our $VERSION = '0.0';
 
-override 'create' => sub {
+sub create {
   my $self = shift;
 
   my $font_bold = $self->pdf->corefont('Helvetica-Bold');
@@ -20,10 +20,10 @@ override 'create' => sub {
     my $page = $self->pdf->page();
     $page->mediabox('A4');
 
-    wtsi_clarity::util::pdf_generator::add_title_to_page($page, $font_bold, $page_data->{'title'});
-    wtsi_clarity::util::pdf_generator::add_timestamp($page, $font, $self->pdf_data->{'stamp'});
+    wtsi_clarity::util::pdf::pdf_generator::add_title_to_page($page, $font_bold, $page_data->{'title'});
+    wtsi_clarity::util::pdf::pdf_generator::add_timestamp($page, $font, $self->pdf_data->{'stamp'});
 
-    wtsi_clarity::util::pdf_generator::add_buffer_block_to_page($self->pdf, $page, $font_bold, $page_data->{'plate_table'}, $page_data->{'plate_table_title'}, $page_data->{'plate_table_cell_styles'}, $buffer_table_y_position);
+    wtsi_clarity::util::pdf::pdf_generator::add_buffer_block_to_page($self->pdf, $page, $font_bold, $page_data->{'plate_table'}, $page_data->{'plate_table_title'}, $page_data->{'plate_table_cell_styles'}, $buffer_table_y_position);
   }
 
   return $self->pdf;
@@ -35,11 +35,11 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::util::pdf_generator::pico_analysis_results
+wtsi_clarity::util::pdf::layout::pico_analysis_results
 
 =head1 SYNOPSIS
 
-  my $generator = wtsi_clarity::util::pdf_generator::pico_analysis_results->new(pdf_data => ... );
+  my $generator = wtsi_clarity::util::pdf::layout::pico_analysis_results->new(pdf_data => ... );
   my $file = $generator->create();
 
 =head1 DESCRIPTION

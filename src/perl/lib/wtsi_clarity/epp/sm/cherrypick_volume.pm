@@ -11,7 +11,7 @@ Readonly::Scalar my $SAMPLE_PATH          => q(/art:artifact/sample/@uri);
 Readonly::Scalar my $ARTIFACT_PATH        => q{/smp:sample/artifact/@uri};
 Readonly::Scalar my $SAMPLE_VOLUME_NAME   => q(Cherrypick Sample Volume);
 Readonly::Scalar my $BUFFER_VOLUME_NAME   => q(Cherrypick Buffer Volume);
-Readonly::Scalar my $CONCENTRATION_PATH   => q{/smp:sample/udf:field[@name="Sample Conc. (ng\µL) (SM)"]};
+Readonly::Scalar my $CONCENTRATION_PATH   => q{/smp:sample/udf:field[@name="Sample Conc. (ng\/µL) (SM)"]};
 Readonly::Scalar my $AVAILABLE_VOL_PATH   => q{/smp:sample/udf:field[@name="WTSI Working Volume (µL) (SM)"]};
 
 Readonly::Scalar my $MODE_SELECTOR                             => q(/prc:process/udf:field[@name="Pick by"]);
@@ -97,7 +97,12 @@ sub _build_data_source {
     my $smp = $hash_samples->{$analyte[0]->textContent};
     my @concentration = $smp->findnodes( $CONCENTRATION_PATH )->get_nodelist();
     my @volume        = $smp->findnodes( $AVAILABLE_VOL_PATH )->get_nodelist();
-
+    if (@concentration <= 0) {
+      croak qq{Could not find the concentration required! ($CONCENTRATION_PATH) };
+    }
+    if (@volume <= 0) {
+      croak qq{Could not find the volume required! ($AVAILABLE_VOL_PATH) };
+    }
     $data_hash->{$art_uri} = [$concentration[0]->textContent , $volume[0]->textContent];
   }
 

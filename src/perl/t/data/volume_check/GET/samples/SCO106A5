@@ -8,7 +8,7 @@
         <last-name>Gourtovaia</last-name>
     </submitter>
     <artifact limsid="SCO106A5PA1" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/SCO106A5PA1?state=2209"/>
-    <udf:field type="Numeric" name="Sample Conc. (ng\µL) (SM)">189.37</udf:field>
+    <udf:field type="Numeric" name="Sample Conc. (ng\/µL) (SM)">189.37</udf:field>
     <udf:field type="Numeric" name="Volume (µL) (SM)">79.6323</udf:field>
     <udf:field type="String" name="Application">TruSeq mRNA sequencing</udf:field>
     <udf:field type="String" name="Pooling">Yes (n=6 per lane)</udf:field>

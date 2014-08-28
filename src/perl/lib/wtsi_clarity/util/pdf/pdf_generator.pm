@@ -1,4 +1,4 @@
-package wtsi_clarity::util::pdf_generator;
+package wtsi_clarity::util::pdf::pdf_generator;
 
 use Moose;
 use Carp;
@@ -40,10 +40,6 @@ sub get_nb_col {
   return scalar @{$data->[0]};
 }
 
-sub create {
-  my $self = shift;
-  croak 'This method should be overriden by a subclass';
-}
 ## no critic (Subroutines::ProhibitManyArgs)
 sub add_io_block_to_page {
   my ($pdf, $page, $font, $table_data, $table_title, $y_pos) = @_;
@@ -207,11 +203,11 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::util::pdf_generator
+wtsi_clarity::util::pdf::pdf_generator
 
 =head1 SYNOPSIS
 
-  my $generator = wtsi_clarity::util::pdf_generator->new(pdf_data => ... );
+  my $generator = wtsi_clarity::util::pdf::pdf_generator->new(pdf_data => ... );
   my $file = $generator->create();
 
 =head1 DESCRIPTION

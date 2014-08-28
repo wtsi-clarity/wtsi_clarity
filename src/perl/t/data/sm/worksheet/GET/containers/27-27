@@ -288,6 +288,7 @@
     <placement uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A96PA1" limsid="GIB11A96PA1">
         <value>A:1</value>
     </placement>
+    <udf:field type="String" name="WTSI Container Purpose Name">PLATE_PURPOSE_27</udf:field>
     <udf:field type="String" name="WTSI Freezer">0000001</udf:field>
     <udf:field type="String" name="WTSI Shelf">0000002</udf:field>
     <udf:field type="String" name="WTSI Rack">0000003</udf:field>

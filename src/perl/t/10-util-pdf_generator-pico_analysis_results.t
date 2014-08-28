@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use Test::More tests => 2;
 
-use_ok('wtsi_clarity::util::pdf_generator::pico_analysis_results', 'can use wtsi_clarity::util::pdf_worksheet_generator' );
+use_ok('wtsi_clarity::util::pdf::layout::pico_analysis_results', 'can use wtsi_clarity::util::pdf_worksheet_generator' );
 
 my $TEST_DATA = {
   'stamp' => 'made with love today',
@@ -39,7 +39,7 @@ my $TEST_DATA = {
 
 
 { # create_worksheet_file
-  my $pico_pdf_generator = wtsi_clarity::util::pdf_generator::pico_analysis_results->new(pdf_data => $TEST_DATA);
+  my $pico_pdf_generator = wtsi_clarity::util::pdf::layout::pico_analysis_results->new(pdf_data => $TEST_DATA);
   my $file = $pico_pdf_generator->create();
   ok($file,'create_worksheet_file should produce a file.');
   # $file->saveas('./pico_worksheet.pdf');

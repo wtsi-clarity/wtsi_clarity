@@ -1,4 +1,4 @@
-package wtsi_clarity::util::pdf_generator::worksheet;
+package wtsi_clarity::util::pdf::layout::worksheet;
 
 use Moose;
 use Readonly;
@@ -7,11 +7,11 @@ Readonly::Scalar my $source_table_height      => 700;
 Readonly::Scalar my $destination_table_height => 450;
 Readonly::Scalar my $buffer_table_height      => 375;
 
-extends 'wtsi_clarity::util::pdf_generator';
+extends 'wtsi_clarity::util::pdf::pdf_generator';
 
 our $VERSION = '0.0';
 
-override 'create' => sub {
+sub create {
   my $self = shift;
 
   my $font_bold = $self->pdf->corefont('Helvetica-Bold');
@@ -22,13 +22,13 @@ override 'create' => sub {
     my $page = $self->pdf->page();
     $page->mediabox('A4');
 
-    wtsi_clarity::util::pdf_generator::add_title_to_page($page, $font_bold, $page_data->{'title'});
-    wtsi_clarity::util::pdf_generator::add_timestamp($page, $font, $self->pdf_data->{'stamp'});
+    wtsi_clarity::util::pdf::pdf_generator::add_title_to_page($page, $font_bold, $page_data->{'title'});
+    wtsi_clarity::util::pdf::pdf_generator::add_timestamp($page, $font, $self->pdf_data->{'stamp'});
 
-    wtsi_clarity::util::pdf_generator::add_io_block_to_page($self->pdf, $page, $font_bold, $page_data->{'input_table'}, $page_data->{'input_table_title'}, $source_table_height);
-    wtsi_clarity::util::pdf_generator::add_io_block_to_page($self->pdf, $page, $font_bold, $page_data->{'output_table'}, $page_data->{'output_table_title'}, $destination_table_height);
+    wtsi_clarity::util::pdf::pdf_generator::add_io_block_to_page($self->pdf, $page, $font_bold, $page_data->{'input_table'}, $page_data->{'input_table_title'}, $source_table_height);
+    wtsi_clarity::util::pdf::pdf_generator::add_io_block_to_page($self->pdf, $page, $font_bold, $page_data->{'output_table'}, $page_data->{'output_table_title'}, $destination_table_height);
 
-    wtsi_clarity::util::pdf_generator::add_buffer_block_to_page($self->pdf, $page, $font_bold, $page_data->{'plate_table'}, $page_data->{'plate_table_title'}, $page_data->{'plate_table_cell_styles'}, $buffer_table_height);
+    wtsi_clarity::util::pdf::pdf_generator::add_buffer_block_to_page($self->pdf, $page, $font_bold, $page_data->{'plate_table'}, $page_data->{'plate_table_title'}, $page_data->{'plate_table_cell_styles'}, $buffer_table_height);
   }
 
   return $self->pdf;
@@ -40,11 +40,11 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::util::pdf_generator::worksheet
+wtsi_clarity::util::pdf::layout::worksheet
 
 =head1 SYNOPSIS
 
-  my $generator = wtsi_clarity::util::pdf_generator::worksheet->new(pdf_data => ... );
+  my $generator = wtsi_clarity::util::pdf::layout::worksheet->new(pdf_data => ... );
   my $file = $generator->create();
 
 =head1 DESCRIPTION

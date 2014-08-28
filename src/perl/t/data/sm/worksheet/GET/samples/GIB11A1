@@ -9,7 +9,7 @@
     </submitter>
     <artifact limsid="GIB11A1PA1" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/GIB11A1PA1?state=867"/>
     <udf:field type="Boolean" name="Control?">false</udf:field>
-    <udf:field type="Numeric" name="Sample Conc. (ng\µL) (SM)">100</udf:field>
+    <udf:field type="Numeric" name="Sample Conc. (ng\/µL) (SM)">100</udf:field>
     <udf:field type="Numeric" name="Volume (µL) (SM)">100</udf:field>
     <udf:field type="String" name="WTSI Working Volume (µL) (SM)">100</udf:field>
 </smp:sample>
