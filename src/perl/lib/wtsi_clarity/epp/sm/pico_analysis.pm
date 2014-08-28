@@ -61,6 +61,7 @@ override 'run' => sub {
   # Attach PDF to process
   $pdf->saveas(q{./} . $self->analysis_file);
 
+  $self->_update_output_artifacts($results);
   # Pushes the updated version of the output artifacts onto the server
   my $response = $self->request->batch_update('artifacts', $self->_output_artifact_details);
 
@@ -91,7 +92,7 @@ has '_output_artifact_details' => (
 
 sub _build__output_artifact_details {
   my $self = shift;
-  my $base_url = $self->config->clarity_api->{'base_uri'}."/";
+  my $base_url = $self->config->clarity_api->{'base_uri'}.q{/};
 
   my @uris = c->new(@{$self->_output_ids})
               ->map( sub {
@@ -123,9 +124,11 @@ sub _build__input_to_output_map {
   # }
   my $input_containers_map = c->new($self->_input_artifact_details->findnodes(q{/art:details/art:artifact})->get_nodelist())
               ->reduce( sub {
-                my $input_id = $b->findvalue( q{./@limsid} );
-                my $container_id = $b->findvalue( q{./location[1]/container/@limsid} );
-                my $location = $b->findvalue( q{./location[1]/value} );
+                ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+                my $input_id      = $b->findvalue( q{./@limsid}                       );
+                my $container_id  = $b->findvalue( q{./location[1]/container/@limsid} );
+                my $location      = $b->findvalue( q{./location[1]/value}             );
+                ## use critic
                 $a->{ $input_id } = { 'input_id' => $input_id, 'container_id' => $container_id, 'location' => $location };
                 $a; } , {});
 
@@ -142,8 +145,10 @@ sub _build__input_to_output_map {
   #   }
   # }
   $input_containers_map = $c_in_out->reduce( sub {
-    my $input_id = $b->findvalue ( q{input/@limsid} );
+    ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+    my $input_id  = $b->findvalue ( q{input/@limsid}  );
     my $output_id = $b->findvalue ( q{output/@limsid} );
+    ## use critic
     if (!defined $a->{$input_id} ) {
       croak qq{ There is a missing source artifacts in the input-output-map! ( $input_id )};
     }
@@ -171,14 +176,15 @@ sub _build__input_to_output_map {
 
 sub _update_output_artifacts {
   my ($self, $data) = @_;
-
+    ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
   c ->new($self->_output_artifact_details->findnodes(q{/art:details/art:artifact})->get_nodelist())
     ->each(sub{
-        my $artifact = $_;
+        my $artifact    = $_;
         my $artifact_id = $artifact->findvalue( q{@limsid} );
-        my $loc = $self->_input_to_output_map->{$artifact_id}->{'location'};
+        my $loc         = $self->_input_to_output_map->{$artifact_id}->{'location'};
         _add_element_to_entity($artifact,'Concentration', $data->{$loc}->{'concentration'});
        } ) ;
+  ## use critic
   return $self->_output_artifact_details;
 }
 
@@ -187,6 +193,7 @@ sub _add_element_to_entity {
   my $node = $sample->ownerDocument()->createElement($udf_name);
   $node->appendTextNode($udf_value);
   $sample->addChild($node);
+  return $node;
 };
 
 has '_input_uris' => (
