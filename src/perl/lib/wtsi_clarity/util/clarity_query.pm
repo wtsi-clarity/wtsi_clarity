@@ -25,7 +25,6 @@ sub _build_query_url
 sub _build_query
 {
   my ($criteria) = @_;
-  # print ">>",Dumper $criteria;
 
   my $map_key = {
     sample_id => 'samplelimsid',
@@ -35,8 +34,12 @@ sub _build_query
   my $query = q{};
 
   return c->new(sort keys %{$criteria})
-  ->map(sub{ $map_key->{$_} . '=' . $criteria->{$_} })
-  ->join("&");
+  ->map(sub {
+              my $key  = $map_key ->{$_};
+              my $crit = $criteria->{$_};
+             return qq{$key=$crit};
+            } )
+  ->join( q{&} );
 }
 
 1;

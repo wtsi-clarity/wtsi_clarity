@@ -320,7 +320,7 @@ sub _create_path {
     my $second_element;
 
     my $short_url = $url;
-    if ($url =~ /$base_uri/) {
+    if ($url =~ /$base_uri/xms) {
         # if we match the clarity-uri, then we know the format
         $short_url =~ s/$base_uri//xms;
         @components     = split /\//xms, $short_url;
