@@ -183,7 +183,9 @@ sub _build_useragent {
     # we use the base_uri to find this value
     my $host_port = $self->config->clarity_api->{'base_uri'};
     if ( $host_port =~ /http:/xms ) {
-        ($host_port) = ( $host_port =~ m/http:\/\/([\w\d:\-\.]+).*/ );
+        ##no critic (RegularExpressions::ProhibitEscapedMetacharacters)
+        ($host_port) = ( $host_port =~ m/http:\/\/([\w\d:\-\.]+).*/xms );
+        ##use critic
     }
     $ua->credentials( $host_port, $REALM, $self->user, $self->password);
     return $ua;
