@@ -3,7 +3,7 @@ package wtsi_clarity::util::clarity_query;
 use Moose::Role;
 use Carp;
 use Mojo::Collection 'c';
-
+use URI::Escape;
 
 our $VERSION = '0.0';
 
@@ -19,7 +19,7 @@ sub query_artifacts {
 sub _build_query_url
 {
   my ($self, $query) = @_;
-  return uri_escape ( $self->config->clarity_api->{'base_uri'} . "/artifacts?$query" );
+  return  $self->config->clarity_api->{'base_uri'} . "/artifacts?" . uri_escape ($query);
 }
 
 sub _build_query
