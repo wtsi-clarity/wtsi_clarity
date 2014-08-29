@@ -13,9 +13,11 @@ use File::Spec::Functions;
 use Readonly;
 
 use Net::SFTP::Foreign;
+use Digest::MD5;
 
 with 'wtsi_clarity::util::configurable';
 with 'wtsi_clarity::util::batch';
+with 'wtsi_clarity::util::clarity_query';
 
 our $VERSION = '0.0';
 
@@ -157,18 +159,6 @@ sub _build_ftppassword {
     return $p;
 }
 
-=head2 base_url
-
-Base urls for API calls; if not provided,
-will be generated from the first requested URL.
-
-=cut
-has 'base_url'      => (isa        => 'Maybe[Str]',
-                        is         => 'ro',
-                        required   => 0,
-                        'writer'   => '_write_base_url',
-                       );
-
 =head2 useragent
 
 Useragent for making an HTTP request.
@@ -181,30 +171,24 @@ has 'useragent' => (isa        => 'Object',
                    );
 sub _build_useragent {
     my $self = shift;
-    if (!$self->base_url) {
-        croak q[Base url is needed for authentication];
+    if (!$self->config->clarity_api->{'base_uri'}) {
+        croak q[Base uri is needed for authentication];
     }
     my $ua = LWP::UserAgent->new();
     $ua->agent(join q[/], __PACKAGE__, $VERSION);
     $ua->timeout($LWP_TIMEOUT);
     $ua->env_proxy();
-    $ua->credentials($self->base_url, $REALM, $self->user, $self->password);
-    return $ua;
-}
 
-sub _set_base_url {
-    my ($self, $url) = @_;
-    if (!$url) {
-        croak q[URL argument should be provided];
+    # the credential requires the network location to follow the HOST:PORT format.
+    # we use the base_uri to find this value
+    my $host_port = $self->config->clarity_api->{'base_uri'};
+    if ( $host_port =~ /http:/xms ) {
+        ##no critic (RegularExpressions::ProhibitEscapedMetacharacters)
+        ($host_port) = ( $host_port =~ m/http:\/\/([\w\d:\-\.]+).*/xms );
+        ##use critic
     }
-    my ($base_url) = $url =~ /https?:\/\/([^\/]+)\//smx;
-    if (!$base_url) {
-        croak qq[Cannot get base url from $url];
-    }
-    if (!$self->base_url) {
-        $self->_write_base_url($base_url);
-    }
-    return;
+    $ua->credentials( $host_port, $REALM, $self->user, $self->password);
+    return $ua;
 }
 
 has 'additional_headers'=> (  isa      => 'HashRef',
@@ -275,7 +259,7 @@ sub _request {
 
     if ($cache) {
         $self->_check_cache_dir($cache);
-        $path = $self->_create_path($uri, $type);
+        $path = $self->_create_path($uri, $type, $content);
         if (!$path) {
             croak qq[Empty path generated for $uri];
         }
@@ -336,18 +320,53 @@ sub download_file {
 }
 
 sub _create_path {
-    my ( $self, $url, $type ) = @_;
-    my @components = split /\//xms, $url;
-    my $query  = pop @components;
-    my $entity = pop @components;
-    my $path = $type;
-    if ($query and $entity) {
-        $path = catdir($path, $entity, $query);
+    my ( $self, $url, $type, $content ) = @_;
+
+    my $base_uri = $self->config->clarity_api->{'base_uri'}.q{/};
+
+    my $path;
+    my @components;
+    my $first_element;
+    my $second_element;
+
+    my $short_url = $url;
+    if ($url =~ /$base_uri/xms) {
+        # if we match the clarity-uri, then we know the format
+        $short_url =~ s/$base_uri//xms;
+        @components     = split /\//xms, $short_url;
+        $first_element  = shift @components;
+        $second_element = shift @components;
+    } else {
+        @components     = split /\//xms, $url;
+        $second_element = pop @components;
+        $first_element  = pop @components;
+        $path = $type;
     }
+
+    if($content) {
+        $second_element .= _decorate_resource_name($content);
+    }
+
+    if ($second_element and $first_element) {
+        # matching  BASE_URI/resourcename/query
+        $path = catdir($type, $first_element, $second_element);
+    } elsif ($first_element) {
+        # matching  BASE_URI/query
+        $path = catdir($type, $first_element);
+    }
+
     if ($path) {
-        $path = catfile($ENV{$self->cache_dir_var_name}, $path);
+        $path = catfile($ENV{$self->cache_dir_var_name} || q{}, $path);
+    } else {
+        if (!$content) { $content = q/(No payload)/; }
+        croak qq{Wrong URL format for caching.\n    $type\n    $url  (in short : $short_url )\n    with "$content"\n    Is it matching the base url correct ? ($base_uri)\n   }
     }
     return $path;
+}
+
+sub _decorate_resource_name {
+    my ($content) = @_;
+    return q/_/ . Digest::MD5::md5_hex($content);
 }
 
 sub _check_cache_dir {
@@ -389,7 +408,6 @@ sub _from_cache {
 
 sub _from_web {
     my ($self, $type, $uri, $content, $path) = @_;
-
     if ($path && $ENV{$self->save2cache_dir_var_name} && $ENV{$self->cache_dir_var_name}) {
         ##no critic (RequireCheckingReturnValueOfEval)
         eval {
@@ -400,9 +418,6 @@ sub _from_web {
             return $content;
         }
     }
-
-    $self->_set_base_url($uri);
-
     my $req=HTTP::Request->new($type, $uri,undef, $content);
     $req->header('encoding' =>   'UTF-8');
     $req->header('Accept',       $self->content_type);
@@ -415,7 +430,6 @@ sub _from_web {
             $req->header($header_key => ${$self->additional_headers}{$header_key});
         }
     }
-
     my $res=$self->useragent()->request($req);
 
     # workaround a bug in SS (getting back a 301 response with the correct response body)

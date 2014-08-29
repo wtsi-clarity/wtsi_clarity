@@ -6,6 +6,7 @@ use Readonly;
 use File::Temp qw/ tempdir /;
 use wtsi_clarity::file_parsing::dtx_concentration_calculator;
 use wtsi_clarity::util::pdf::factory;
+use Mojo::Collection 'c';
 
 extends 'wtsi_clarity::epp';
 
@@ -14,7 +15,9 @@ with 'wtsi_clarity::util::clarity_elements_fetcher_role_util';
 with 'wtsi_clarity::util::clarity_process';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+Readonly::Scalar our $IN_OUT_PATH           => q(/prc:process/input-output-map/output[@output-type='Analyte']/..);
 Readonly::Scalar our $INPUT_URIS_PATH       => q(/prc:process/input-output-map/input/@uri);
+Readonly::Scalar our $OUTPUT_IDS_PATH       => q(/prc:process/input-output-map/output[@output-type='Analyte']/@limsid);
 Readonly::Scalar our $ARTIFACT_PATH         => q(/art:details/art:artifact);
 Readonly::Scalar our $ARTIFACT_NAME_PATH    => q(/art:artifact/name);
 Readonly::Scalar our $CONTAINER_LIMSID_PATH => q(location/container/@limsid);
@@ -58,7 +61,139 @@ override 'run' => sub {
   # Attach PDF to process
   $pdf->saveas(q{./} . $self->analysis_file);
 
+  $self->_update_output_artifacts($results);
+  # Pushes the updated version of the output artifacts onto the server
+  my $response = $self->request->batch_update('artifacts', $self->_output_artifact_details);
+
   return;
+};
+
+
+has '_output_ids' => (
+  isa        => 'ArrayRef',
+  is         => 'ro',
+  required   => 0,
+  lazy_build => 1,
+);
+
+sub _build__output_ids {
+  my ($self) = @_;
+  my $node_list = $self->process_doc->findnodes($OUTPUT_IDS_PATH);
+  my @ids = map { $_->getValue() } $node_list->get_nodelist();
+  return \@ids;
+}
+
+has '_output_artifact_details' => (
+  isa => 'XML::LibXML::Document',
+  is  => 'ro',
+  required => 0,
+  lazy_build => 1,
+);
+
+sub _build__output_artifact_details {
+  my $self = shift;
+  my $base_url = $self->config->clarity_api->{'base_uri'}.q{/};
+
+  my @uris = c->new(@{$self->_output_ids})
+              ->map( sub {
+                  return $base_url.'/artifacts/'.$_;
+                } )
+              ->each;
+
+  return $self->request->batch_retrieve('artifacts', \@uris );
+};
+
+has '_input_to_output_map' => (
+  isa        => 'HashRef',
+  is         => 'ro',
+  required   => 0,
+  lazy_build => 1,
+);
+
+sub _build__input_to_output_map {
+  my $self = shift;
+  my %input_to_output_map = ();
+
+  # we make this
+  # {
+  #   input_id => {
+  #     'input_id'     => lims id of the input artifact
+  #     'container_id' => container id of the input artifact (which is the same than for the output)
+  #     'location'     => location of the input artifact (which is the same than for the output)
+  #   }
+  # }
+  my $input_containers_map = c->new($self->_input_artifact_details->findnodes(q{/art:details/art:artifact})->get_nodelist())
+              ->reduce( sub {
+                ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+                my $input_id      = $b->findvalue( q{./@limsid}                       );
+                my $container_id  = $b->findvalue( q{./location[1]/container/@limsid} );
+                my $location      = $b->findvalue( q{./location[1]/value}             );
+                ## use critic
+                $a->{ $input_id } = { 'input_id' => $input_id, 'container_id' => $container_id, 'location' => $location };
+                $a; } , {});
+
+  my $c_in_out = c->new($self->process_doc->findnodes($IN_OUT_PATH)->get_nodelist());
+
+
+  # then we add the output lims id using the input-output-map
+  # {
+  #   input_id => {
+  #     'input_id'     => ...
+  #     'container_id' => ...
+  #     'location'     => ...
+  #     'output_id'    => lims id of the output artifact
+  #   }
+  # }
+  $input_containers_map = $c_in_out->reduce( sub {
+    ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+    my $input_id  = $b->findvalue ( q{input/@limsid}  );
+    my $output_id = $b->findvalue ( q{output/@limsid} );
+    ## use critic
+    if (!defined $a->{$input_id} ) {
+      croak qq{ There is a missing source artifacts in the input-output-map! ( $input_id )};
+    }
+    $a->{$input_id}->{'output_id'} = $output_id;
+    return $a;
+  }, $input_containers_map );
+
+  # then we flip the input and output keys the output lims id using the input-output-map
+  # {
+  #   output_id => {
+  #     'input_id'     => ...
+  #     'container_id' => ...
+  #     'location'     => ...
+  #   }
+  # }
+  foreach my $input_id (keys %{$input_containers_map}) {
+    my $output_id = $input_containers_map->{$input_id}->{'output_id'};
+    delete $input_containers_map->{$input_id}->{'output_id'};
+    $input_containers_map->{$output_id} = $input_containers_map->{$input_id};
+    delete $input_containers_map->{$input_id};
+  }
+
+  return $input_containers_map;
+}
+
+sub _update_output_artifacts {
+  my ($self, $data) = @_;
+    ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+  c ->new($self->_output_artifact_details->findnodes(q{/art:details/art:artifact})->get_nodelist())
+    ->each(sub{
+        my $artifact    = $_;
+        my $artifact_id = $artifact->findvalue( q{@limsid} );
+        my $loc         = $self->_input_to_output_map->{$artifact_id}->{'location'};
+        _add_element_to_entity($artifact,'Concentration', $data->{$loc}->{'concentration'});
+       } ) ;
+  ## use critic
+  return $self->_output_artifact_details;
+}
+
+sub _add_element_to_entity {
+  my ($sample, $udf_name, $udf_value) = @_;
+  my $node = $sample->ownerDocument()->createElement($udf_name);
+  $node->appendTextNode($udf_value);
+  $sample->addChild($node);
+  return $node;
 };
 
 has '_input_uris' => (

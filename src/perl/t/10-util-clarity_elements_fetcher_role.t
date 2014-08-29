@@ -4,6 +4,8 @@ use Test::More tests => 7;
 use Cwd;
 use XML::LibXML;
 
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+my $base_uri = q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2};
 
 ##################  start of test class ####################
 package test::10_util_clarity_elements_fetcher_role_test_class;
@@ -37,10 +39,10 @@ sub update_one_target_data {
 
 sub get_data {
   my ($self, $targetDoc, $targetURI) = @_;
-  if ($targetURI eq 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containers/27-7562'){
+  if ($targetURI eq $base_uri . '/containers/27-7562'){
     return '7562';
   }
-  if ($targetURI eq 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containers/27-7563'){
+  if ($targetURI eq $base_uri . '/containers/27-7563'){
     return '7563';
   }
 };
@@ -55,7 +57,7 @@ use util::xml;
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/util/element_fetcher';
   my $testInstance = test::10_util_clarity_elements_fetcher_role_test_class->new(
-     process_url => q[http://clarity-ap:8080/api/v2/processes/24-99912],
+     process_url => $base_uri . q[/processes/24-99912],
   );
 
   $testInstance->fetch_and_update_targets($testInstance->process_doc);
@@ -64,15 +66,15 @@ use util::xml;
 
 
   while (my ($targetURI, $targetDoc) = each %{$hash} ) {
-    cmp_ok($targetURI, '~~', [ 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containers/27-7562',
-                               'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containers/27-7563'],
+    cmp_ok($targetURI, '~~', [ $base_uri . '/containers/27-7562',
+                               $base_uri . '/containers/27-7563'],
                                'The keys of the target hash should be their URI.' );
     my @nodes = util::xml::find_elements ($targetDoc, q{/con:container/udf:field[@name="WTSI Container Purpose Name"]} );
     cmp_ok(scalar(@nodes), '==', 1, 'supplier udf tag should be created.');
-    if ($targetURI eq 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containers/27-7562'){
+    if ($targetURI eq $base_uri . '/containers/27-7562'){
       cmp_ok($nodes[0]->textContent, 'eq', '7562', 'udf value should be correct.');
     }
-    if ($targetURI eq 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containers/27-7563'){
+    if ($targetURI eq $base_uri . '/containers/27-7563'){
       cmp_ok($nodes[0]->textContent, 'eq', '7563', 'udf value should be correct.');
     }
   }

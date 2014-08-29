@@ -3,6 +3,13 @@ use warnings;
 use Test::Exception;
 use Test::More tests => 15;
 
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+
+use wtsi_clarity::util::config;
+my $config = wtsi_clarity::util::config->new();
+my $base_uri = $config->clarity_api->{'base_uri'};
+
+
 use_ok('wtsi_clarity::epp::sm::bed_verification');
 
 {
@@ -10,7 +17,7 @@ use_ok('wtsi_clarity::epp::sm::bed_verification');
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   my $process = wtsi_clarity::epp::sm::bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-102433',
+    process_url => $base_uri . '/processes/24-102433',
     step_name => 'working_dilution',
   );
 
@@ -23,7 +30,7 @@ use_ok('wtsi_clarity::epp::sm::bed_verification');
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   my $process = wtsi_clarity::epp::sm::bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-102433',
+    process_url => $base_uri . '/processes/24-102433',
     step_name => 'working_dilution',
   );
 
@@ -39,15 +46,15 @@ use_ok('wtsi_clarity::epp::sm::bed_verification');
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   my $process = wtsi_clarity::epp::sm::bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-102433',
+    process_url => $base_uri . '/processes/24-102433',
     step_name => 'working_dilution',
   );
 
-  is($process->_robot_barcode(), '009851', 'Can extract the robot barcode from the process doc');
+  is($process->_robot_barcode, '009851', 'Can extract the robot barcode from the process doc');
 
   # Note different process XML
   $process = wtsi_clarity::epp::sm::bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-102433_a',
+    process_url => $base_uri . '/processes/24-102433_a',
     step_name => 'working_dilution',
   );
 
@@ -61,7 +68,7 @@ use_ok('wtsi_clarity::epp::sm::bed_verification');
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   my $process = wtsi_clarity::epp::sm::bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-102433_b',
+    process_url => $base_uri . '/processes/24-102433_b',
     step_name => 'working_dilution',
   );
 
@@ -78,7 +85,7 @@ use_ok('wtsi_clarity::epp::sm::bed_verification');
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   my $process = wtsi_clarity::epp::sm::bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-102433_b',
+    process_url => $base_uri . '/processes/24-102433_b',
     step_name => 'working_dilution',
   );
 
@@ -95,7 +102,7 @@ use_ok('wtsi_clarity::epp::sm::bed_verification');
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   my $process = wtsi_clarity::epp::sm::bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-103751',
+    process_url => $base_uri . '/processes/24-103751',
     step_name => 'pico_assay_plate',
   );
 
@@ -112,7 +119,7 @@ use_ok('wtsi_clarity::epp::sm::bed_verification');
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   $process = wtsi_clarity::epp::sm::bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-102433_c',
+    process_url => $base_uri . '/processes/24-102433_c',
     step_name => 'working_dilution',
   );
 
@@ -135,7 +142,7 @@ use_ok('wtsi_clarity::epp::sm::bed_verification');
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   $process = wtsi_clarity::epp::sm::bed_verification->new(
-    process_url => 'http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-103751',
+    process_url => $base_uri . '/processes/24-103751',
     step_name => 'fludigm_192_24_ifc',
   );
 

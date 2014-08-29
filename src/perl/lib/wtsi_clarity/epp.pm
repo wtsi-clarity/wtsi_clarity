@@ -16,22 +16,6 @@ has 'process_url'  => (
   required        => 1,
 );
 
-has 'base_url'  => (
-  isa             => 'Str',
-  is              => 'ro',
-  required        => 0,
-  traits          => [ 'NoGetopt' ],
-  lazy_build      => 1,
-);
-sub _build_base_url {
-  my $self = shift;
-  my ($url) = $self->process_url =~ /(\S+\/)\w+\/\w+/smx;
-  if (!$url) {
-    croak q[Failed to get base url from ] . $self->process_url;
-  }
-  return $url;
-}
-
 has 'xml_parser'  => (
   isa             => 'XML::LibXML',
   is              => 'ro',
@@ -54,6 +38,7 @@ has 'process_doc'  => (
   traits          => [ 'NoGetopt' ],
   lazy_build      => 1,
 );
+
 sub _build_process_doc {
   my ($self) = @_;
   return $self->fetch_and_parse($self->process_url);

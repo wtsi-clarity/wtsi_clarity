@@ -1,9 +1,15 @@
 use strict;
 use warnings;
-use Test::More tests => 18;
+use Test::More tests => 20;
 use Test::Exception;
 use Test::MockObject::Extends;
 use File::Temp qw/ tempdir /;
+use Digest::MD5;
+
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+use wtsi_clarity::util::config;
+my $config = wtsi_clarity::util::config->new();
+my $base_uri = $config->clarity_api->{'base_uri'};
 
 use_ok('wtsi_clarity::util::request');
 
@@ -11,7 +17,7 @@ sub read_file {
   my $file_path = shift;
 
   local $/=undef;
-  open my $fh,  $file_path or die "Couldn't open file";
+  open my $fh,  $file_path or die "Couldn't open file $file_path";
   my $content = <$fh>;
   close $fh;
   return $content;
@@ -32,53 +38,108 @@ sub read_file {
   my $r = wtsi_clarity::util::request->new();
   my $data;
   lives_ok {
-    $data = $r->get(q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/processes/24-28177})
+    $data = $r->get($base_uri . q{/processes/24-28177})
            } 'no error retrieving from cache';
-  ok(!$r->base_url, 'base url not set');
 
   my $xml = read_file('t/data/cached/GET/processes/24-28177');
 
   is ($data, $xml, 'content retrieved correctly');
 }
 
+
+{ # _create_path
+  my $data = [
+    {
+      input   => {
+        'url'     => $base_uri . '/resource/resource_id',
+        'type'    => 'GET',
+        'content' => undef,
+      },
+      expected => '/GET/resource/resource_id',
+    },
+    {
+      input   => {
+        'url'     => $base_uri . '/resource/resource_id',
+        'type'    => 'POST',
+        'content' => 'payload',
+      },
+      expected => '/POST/resource/resource_id' . wtsi_clarity::util::request::_decorate_resource_name('payload'),
+    }
+  ];
+
+    use Data::Dumper;
+  my $r = wtsi_clarity::util::request->new();
+
+  foreach my $datum (@{$data}) {
+    my $url     = $datum->{'input'}->{'url'};
+    my $type    = $datum->{'input'}->{'type'};
+    my $content = $datum->{'input'}->{'content'};
+    my $path = $r->_create_path($url, $type, $content);
+
+    if (!defined $content) {
+      $content = q{(no payload)};
+    }
+    cmp_ok($path, 'eq', $datum->{'expected'} , qq/_create_path should return the correct cache path (from $url, $type, $content)/);
+  }
+}
+
+{ # _decorate_resource_name
+  my $data = [
+    {
+      input    => 'payload',
+      expected => "_" . Digest::MD5::md5_hex('payload'),
+    }
+  ];
+  my $r = wtsi_clarity::util::request->new();
+
+  foreach my $datum (@{$data}) {
+    my $content = $datum->{'input'};
+    my $result = wtsi_clarity::util::request::_decorate_resource_name($content);
+    cmp_ok($result, 'eq', $datum->{'expected'} , qq/_decorate_resource_name should return the correct value (from $content)/);
+  }
+}
+
 ## Caching stuff...
 {
   my $test_dir = tempdir( CLEANUP => 1);
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = $test_dir;
-  
+
   my $r = wtsi_clarity::util::request->new();
   $r = Test::MockObject::Extends->new($r);
 
-  my %methods = (
-    post => 'POST',
-    put  => 'PUT',
-    del  => 'DELETE',
+  my %methods_tested = (
+    post => {verb => 'POST',   payload => '<link>1</link><link>2</link>' },
+    put  => {verb => 'PUT',    payload => 'payload'                      },
+    del  => {verb => 'DELETE'                                            },
   );
 
-  foreach my $method (keys %methods) {
-    my $test_url = 'http://www.fakeurl.com/api/v2/artifacts/123456';
-    my $method_val = $methods{$method};
+  foreach my $method (keys %methods_tested) {
+    my $test_url = $base_uri . '/artifacts/123456';
+    my $method_verb = $methods_tested{$method}->{'verb'};
     local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
-    my $file_path = $test_dir . qq{/$method_val/artifacts/123456};
-    
+    my $file_path = $test_dir . qq{/$method_verb/artifacts/123456};
+
     $r->mock(q{_from_web}, sub {
       my ($self, $type, $uri, $content, $path) = @_;
       my $body = qq/$type - $uri/;
       return $body;
     });
 
-    $r->$method($test_url, '<link>1</link><link>2</link>');
+    my $payload = $methods_tested{$method}->{'payload'};
+    my $deco = q{};
+    if ($payload) {
+      $deco = wtsi_clarity::util::request::_decorate_resource_name( $payload );
+    }
+    $r->$method($test_url, $payload);
 
-    my $file_contents = read_file($file_path);
+    my $file_contents = read_file($file_path.$deco);
 
-    is($file_contents, qq/$method_val - $test_url/, 'file written to correct place');
+    is($file_contents, qq/$method_verb - $test_url/, qq{file written to correct place ($method_verb - $test_url)});
 
     $r->unmock(q{_from_web});
 
     $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-    is($r->$method($test_url, 'nothing'), qq/$method_val - $test_url/, 'reads from the cache when SAVE2WTSICLARITY_WEBCACHE is false')
-
-
+    is($r->$method($test_url, $payload), qq/$method_verb - $test_url/, qq{reads from the cache when SAVE2WTSICLARITY_WEBCACHE is false ($method_verb - $test_url)} )
   }
 
 }
@@ -88,9 +149,14 @@ sub read_file {
     if ( !$ENV{'LIVE_TEST'} ) {
       skip 'set LIVE_TEST to true to run', 5;
     }
-    my $base = q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2};
-    my $samples_uri = $base . q{/samples};
-    my $sample_uri = $samples_uri . q{/GOU51A7};
+
+    local $ENV{'WTSI_CLARITY_HOME'}= q[];
+    my $config = wtsi_clarity::util::config->new();
+    my $live_base_uri = $config->clarity_api->{'base_uri'};
+
+    my $samples_uri = $live_base_uri . q{/samples};
+    my $sample_uri = $samples_uri . q{/SMI102A12};
+
     my $r = wtsi_clarity::util::request->new();
     my $data = $r->get($sample_uri);
     ok($data, 'data received');
@@ -111,9 +177,9 @@ sub read_file {
 
     my $sample = q[<smp:samplecreation xmlns:smp="http://genologics.com/ri/sample" xmlns:udf="http://genologics.com/ri/userdefined">
     <name>mar_ina_test-11</name>
-    <project limsid="GOU51" uri="] . $base . q[/projects/GOU51"/>
+    <project limsid="GOU51" uri="] . $base_uri . q[/projects/GOU51"/>
     <date-received>2014-05-01</date-received>
-    <location><container limsid="27-151" uri="] . $base . q[/containers/27-151"/><value>H:12</value></location>
+    <location><container limsid="27-151" uri="] . $base_uri . q[/containers/27-151"/><value>H:12</value></location>
     <udf:field name="WTSI Sample Consent Withdrawn">false</udf:field>
     <udf:field name="WTSI Requested Size Range From">600</udf:field>
     <udf:field name="Reference Genome">Homo_sapiens (1000Genomes)</udf:field>
