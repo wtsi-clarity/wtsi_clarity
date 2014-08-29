@@ -1,5 +1,16 @@
 CHANGES for wtsi_clarity Perl project
 
+release 0.35
+  - adding results to analytes for Picogreen analysis
+  - fixing bug regarding UserAgent config
+
+release 0.34
+  - Validate tag plate with gatekeeper
+  - Bug fixes
+  - local config for tests
+  - Refactoring on worksheet generator
+  - ISC pool calculator
+
 release 0.33
   -Picogreen epp module
 
