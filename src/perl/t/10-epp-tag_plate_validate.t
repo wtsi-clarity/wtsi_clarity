@@ -26,6 +26,7 @@ use_ok('wtsi_clarity::epp::sm::tag_plate');
 
 my $epp = wtsi_clarity::epp::sm::tag_plate->new(
     process_url           => 'http://some.com/processes/151-12090',
+    step_url              => 'http://some.com/steps/151-16106',
     tag_layout_file_name  => 'test_layout_file_name',
   );
 

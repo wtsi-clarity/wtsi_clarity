@@ -4,7 +4,10 @@ use Moose;
 use Carp;
 use Readonly;
 use JSON;
+use XML::LibXML::NodeList;
 use JSON::Parse 'parse_json';
+
+use wtsi_clarity::util::well_mapper;
 
 extends 'wtsi_clarity::epp';
 
@@ -14,7 +17,10 @@ our $VERSION = '0.0';
 
 Readonly::Scalar my $EXHAUSTED_STATE => q[exhausted];
 Readonly::Scalar my $STATE_CHANGE_PATH => q[state_changes];
-
+Readonly::Scalar my $OUTPUT_REAGENT_OUTPUT_PATH=> qq{/stp:reagents/output-reagents/output[\@uri='$uri']};
+Readonly::Scalar my $REAGENT_ARTIFACT_URI_PATH => qq[/stp:reagents/output-reagents/output/reagent-label/../\@uri];
+Readonly::Scalar my $BATCH_REAGENT_ARTIFACT_PATH => q[/art:details/art:artifact];
+Readonly::Scalar my $REAGENT_LOCATION_PATH => q[./location/*[local-name()="value"]];
 
 has 'ss_request' => (
   isa => 'wtsi_clarity::util::request',
@@ -52,6 +58,12 @@ has 'tag_layout_file_name' => (
   isa => 'Str',
   is  => 'ro',
   required => 1,
+);
+
+has 'step_url' => (
+  isa        => 'Str',
+  is         => 'ro',
+  required   => 1,
 );
 
 has '_tag_plate_barcode' => (
@@ -169,7 +181,21 @@ override 'run' => sub {
     if (defined $tag_plate_layout) {
       $self->_create_tag_layout_file($tag_plate_layout);
 
-     # $self->set_tag_plate_to_exhausted($self->asset_uuid);
+      $self->set_tag_plate_to_exhausted($self->asset_uuid);
+
+      # gets the reagents XML document
+      my $reagents = $self->_get_reagents;
+
+      # gets the artifacts
+      my $reagent_uris = $self->_get_reagent_uris($reagents);
+      my $reagent_artifacts = $self->_get_reagent_artifacts($reagent_uris);
+
+      $self->add_tags_to_reagents($reagent_artifacts, $tag_plate_layout, $reagents);
+
+      # POST the new reagent setup in the API
+      my $uri = $reagents->getAttribute('uri');
+      $self->post_reagents($uri, $reagents);
+
     } else {
       croak sprintf 'There was an error getting back the layout of the following asset: %s.', $self->asset_uuid;
     }
@@ -262,6 +288,75 @@ sub _lot {
           };
 }
 
+sub _get_reagent_uris {
+  my ($self, $reagents_xml) = @_;
+
+  my @reagents_uris= map { $_->value } $reagents_xml->findnodes($REAGENT_ARTIFACT_URI_PATH)->get_nodelist;
+
+  if (scalar @reagents_uris <= 0) {
+    croak q{Reagents artifact uris could not be found.};
+  }
+
+  return \@reagents_uris;
+}
+
+sub _get_reagents {
+  my $self = shift;
+
+  my $response = $self->request->get($self->step_url . '/reagents')
+    or croak q{Could not get the list of reagents.};
+
+  return XML::LibXML->load_xml( string => $response );
+}
+
+sub _get_reagent_artifacts {
+  my ($self, @reagents_uris) = @_;
+
+  my $reagent_artifacts_response = $self->request->batch_retrieve('artifacts', @reagents_uris)
+    or croak q{Could not get the list of reagent artifacts.};
+
+  my $reagent_artifacts_xml = XML::LibXML->load_xml( string => $reagent_artifacts_response );
+
+  my @reagent_artifact_xmls = $reagent_artifacts_xml->findnodes($BATCH_REAGENT_ARTIFACT_PATH)->get_nodelist;
+
+  return \@reagent_artifact_xmls;
+}
+
+sub add_tags_to_reagents {
+  my ($self, $reagent_artifacts, $tag_plate_layout, $reagents) = @_;
+
+  foreach my $reagent_artifact (@{$reagent_artifacts}) {
+    my $uri = $reagent_artifact->getAttribute('uri');
+    if (!$uri) {
+      croak qq[Target analyte uri not defined for container $reagent_artifact];
+    }
+    ($uri) = $uri =~ /\A([^?]*)/smx; #drop part of the uri starting with ? (state)
+
+    my $position = $reagent_artifact->findvalue($REAGENT_LOCATION_PATH);
+    my $positionIndex = wtsi_clarity::util::well_mapper::get_location_in_decimal($position);
+
+    my $tag_plate_name = $tag_plate_layout->{'tag_layout_template'}->{'name'};
+    my $tag = $tag_plate_layout->{'tag_layout_template'}->{'tag_group'}->{'tags'}->{$positionIndex};
+    my $reagentName = $tag_plate_name . ' (' . $tag . ')';
+
+    my $reagent_label = $reagents->createElement('reagent-label');
+    $reagent_label->setAttribute('name', $reagentName);
+    my @output_nodes =
+      $reagents->findnodes($OUTPUT_REAGENT_OUTPUT_PATH);
+    $output_nodes[0]->appendChild($reagent_label);
+  }
+
+  return 1;
+}
+
+sub post_reagents {
+  my ($self, $url, $reagents) = @_;
+  my $response = $self->equest->post($url, $reagents)
+    or croak q{Could not POST the new reagents setup.};
+
+  return 1;
+}
+
 sub _search_content {
   my $self = shift;
   my $content = {};
@@ -319,17 +414,9 @@ wtsi_clarity::epp::sm::tag_plate
 
 =head1 SYNOPSIS
 
-  If you want to validate a tag plate:
-
   my $epp = wtsi_clarity::epp::sm::tag_plate->new(
     process_url => 'http://some.com/processes/151-12090',
-    tag_layout_file_name  => 'file_name',
-  )->run();
-
-  If you want to get the layout of the tag plate:
-
-  my $epp = wtsi_clarity::epp::sm::tag_plate->new(
-    process_url => 'http://some.com/processes/151-12090',
+    step_url => 'http://some.com/steps/151-16106',
     tag_layout_file_name  => 'file_name',
   )->run();
 
@@ -339,6 +426,7 @@ wtsi_clarity::epp::sm::tag_plate
   and it has got the correct lot type ('IDT Tags').
   If the plate is valid, then it gets the layout of the tag plate
   and sets the state of the tag plate to 'exhausted'.
+  At the last step it applies the tags to the reagents setup and updates it.
 
 
 =head1 SUBROUTINES/METHODS
@@ -380,6 +468,13 @@ and gets the layout of the related tag plate.
 Sends a POST request to a 3rd party application (Gatekeeper)
 and sets the related tag plate to exhausted state.
 
+=head2 add_tags_to_reagents
+
+Adds the relevant tags to the reagents.
+
+=head2 post_reagents
+
+Sends a POST request with the new reagents setup.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

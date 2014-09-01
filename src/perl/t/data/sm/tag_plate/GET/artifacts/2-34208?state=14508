@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<art:artifact limsid="2-34208" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-34208?state=14508" xmlns:art="http://genologics.com/ri/artifact" xmlns:file="http://genologics.com/ri/file" xmlns:udf="http://genologics.com/ri/userdefined">
+  <name>25_LibPCR</name>
+  <type>Analyte</type>
+  <output-type>Analyte</output-type>
+  <parent-process limsid="151-16106" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/151-16106"/>
+  <qc-flag>UNKNOWN</qc-flag>
+  <location>
+    <container limsid="27-605" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-605"/>
+    <value>D:1</value>
+  </location>
+  <working-flag>true</working-flag>
+  <sample limsid="LAB106A217" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/LAB106A217"/>
+  <reagent-label name="Human G0341"/>
+</art:artifact>
