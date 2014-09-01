@@ -1,37 +1,51 @@
 package wtsi_clarity::util::well_mapper;
 
-use strict;
-use warnings;
+use Moose::Role;
 use Carp;
-use Readonly;
 
 our $VERSION = '0.0';
 
+sub well_location_index {
+  my ($self, $loc, $nb_rows, $nb_cols) = @_;
 
-Readonly::Scalar my $NB_COLS_96 => 12 ;
-Readonly::Scalar my $NB_ROWS_96 => 8  ;
-Readonly::Scalar my $NB_COLS_384 => 24 ;
-Readonly::Scalar my $NB_ROWS_384 => 16  ;
+  if (!$loc) {
+    croak 'Well address should be given';
+  }
 
-sub get_location_in_decimal {
-  my ($loc) = @_;
+  if (!$nb_rows) {
+    croak 'Number of rows has to be given';
+  }
 
-  return _get_location_in_decimal($loc, $NB_ROWS_96, $NB_COLS_96);
-}
+  if (!$nb_cols) {
+    croak 'Number of columns has to be given';
+  }
 
-sub _get_location_in_decimal {
-  my ($loc, $nb_rows, $nb_cols) = @_;
-  my ($letter, $number) = $loc =~ /(\w):(\d+)/xms;
+  my ($letter, $number) = $loc =~ /\A(\w):(\d+)/xms;
+  if (!$letter || !$number) {
+    croak "Well location format '$loc' is not recornised";
+  }
+
+  if ($number > $nb_cols) {
+    croak "Invalid column address '$number' for $nb_rows:$nb_cols layout";
+  }
 
   ## no critic(CodeLayout::ProhibitParensWithBuiltins)
   my $letter_as_number = 1 + ord( uc ($letter) ) - ord('A');
   ## use critic
 
-  my $res = ($number-1)*$nb_rows + $letter_as_number;
+  if ($letter_as_number > $nb_rows) {
+    croak "Invalid row address '$letter' for $nb_rows:$nb_cols layout";
+  }
 
-  return $res;
+  my $index =  ($number-1)*$nb_rows + $letter_as_number;
+  if ($index <= 0 || $index > $nb_rows*$nb_cols) {
+    croak "Got invalid index $index for '$loc' with $nb_rows:$nb_cols layout";
+  }
+
+  return $index;
 }
 
+no Moose::Role;
 
 1;
 
@@ -39,7 +53,7 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::util::well_mapper
+  wtsi_clarity::util::well_mapper
 
 =head1 SYNOPSIS
 
@@ -47,24 +61,35 @@ wtsi_clarity::util::well_mapper
 
 =head1 DESCRIPTION
 
- Utility methods to help converting well denominations
+  Utility to help converting well location notations
 
 =head1 SUBROUTINES/METHODS
 
-=head2 get_location_in_decimal
-    converts a location with B:3 format into a location in decimal (B:3 -> 11)
+=head2 well_location_index
 
+  Converts a location with B:3 format into a location in decimal (B:3 -> 11)
+
+  my $num_rows = 8;
+  my $num_columns = 12;
+  my $index = $self->well_location_index('B:3', $num_rows, $num_columns);
+  # alternatively, can be used as a package-level method
+  $index = wtsi_clarity::util::well_mapper->well_location_index('B:3', $num_rows, $num_columns);
+  
 =head1 CONFIGURATION AND ENVIRONMENT
 
 =head1 DEPENDENCIES
 
 =over
 
+=item Moose::Role
+
+=item Carp
+
 =back
 
 =head1 AUTHOR
 
-Carol Scott E<lt>ces@sanger.ac.ukE<gt>
+Chris Smith E<lt>mcs24@sanger.ac.ukE<gt>
 
 =head1 LICENSE AND COPYRIGHT
 

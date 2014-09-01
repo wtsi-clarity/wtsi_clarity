@@ -25,7 +25,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'reactivate_stock_plate'  => 'sm::reactivate_stock_plate',
     'attach_dtx_file'         => 'sm::attach_dtx_file',
     'publish_file'            => 'sm::publish_file',
-    'tag_plate'               => 'sm::tag_plate',
+    'tag_plate'               => 'ics::tag_plate',
     'mq'                      => 'mq',
     'pico_analysis'           => 'sm::pico_analysis',
 );

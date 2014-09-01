@@ -36,9 +36,9 @@ try {
     $action->run();
   }
 } catch {
-  my $error = $_;
-  $error =~ s/[\r\n]+//gmsx;
-  die "$error\n";
+  my $error = "$_\n";
+  print $error || carp 'Failed to print error to STDOUT';
+  croak $error;
 };
 
 0;
