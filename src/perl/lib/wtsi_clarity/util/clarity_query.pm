@@ -4,14 +4,22 @@ use Moose::Role;
 use Carp;
 use Mojo::Collection 'c';
 use URI::Escape;
+use XML::LibXML;
 
 our $VERSION = '0.0';
+
+has '_xml_parser'  => (
+  isa             => 'XML::LibXML',
+  is              => 'ro',
+  required        => 0,
+  default         => sub { return XML::LibXML->new(); },
+);
 
 sub query_artifacts {
   my ($self, $criteria) = @_;
 
-  my $uri = $self->_build_query_url( q{artifacts}, _build_query($criteria) );
-  my $response = $self->get($uri);
+  my $uri = $self->_build_query_url( q{artifacts}, _build_query(q{artifacts}, $criteria) );
+  my $response = $self->_xml_parser->parse_string($self->get($uri));
 
   return $response;
 }
@@ -19,8 +27,8 @@ sub query_artifacts {
 sub query_processes {
   my ($self, $criteria) = @_;
 
-  my $uri = $self->_build_query_url( q{processes},  _build_query($criteria) );
-  my $response = $self->get($uri);
+  my $uri = $self->_build_query_url( q{processes}, _build_query(q{processes}, $criteria) );
+  my $response = $self->_xml_parser->parse_string($self->get($uri));
 
   return $response;
 }
@@ -40,12 +48,20 @@ sub _build_query
     artifact_id => 'inputartifactlimsid',
     step        => 'process-type',
     type        => 'type',
+    udf         => 'udf',
   };
   my $query = q{};
 
   return c->new(sort keys %{$criteria})
   ->map(sub {
-              my $key  = $map_key ->{$_};
+
+              my $raw_key = $_;
+              my $key  = $map_key->{$raw_key};
+              my $operator = q{=};
+              if (!$key && $raw_key =~ m/(udf.*)([=]+)/ ) {
+                $key = $1;
+                $operator = $2;
+              }
               my $crit = $criteria->{$_};
               # make an array of non array value...
               if(ref($crit) ne 'ARRAY'){
@@ -53,7 +69,7 @@ sub _build_query
               }
               return c->new(@{$crit})
                       ->map( sub {
-                              return qq[$key=$_];
+                              return qq[$key$operator$_];
                             } )
                       ->join( q{&} );
             } )

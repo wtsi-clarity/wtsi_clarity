@@ -48,6 +48,12 @@ use_ok('wtsi_clarity::util::clarity_query');
       'resource' => 'artifacts',
       'expected' => 'samplelimsid=1234567890',
     },
+    { 'input' => {
+        'udf.Concentration.max=0' => 0,
+      },
+      'resource' => 'artifacts',
+      'expected' => 'udf.Concentration.max=0',
+    },
   ];
 
   foreach my $data (@{$test_data}) {
