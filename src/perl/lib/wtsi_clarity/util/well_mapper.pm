@@ -37,12 +37,7 @@ sub well_location_index {
     croak "Invalid row address '$letter' for $nb_rows:$nb_cols layout";
   }
 
-  my $index =  ($number-1)*$nb_rows + $letter_as_number;
-  if ($index <= 0 || $index > $nb_rows*$nb_cols) {
-    croak "Got invalid index $index for '$loc' with $nb_rows:$nb_cols layout";
-  }
-
-  return $index;
+  return  ($number-1)*$nb_rows + $letter_as_number;
 }
 
 no Moose::Role;
