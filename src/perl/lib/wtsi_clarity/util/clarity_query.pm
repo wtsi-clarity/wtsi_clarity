@@ -5,6 +5,7 @@ use Carp;
 use Mojo::Collection 'c';
 use URI::Escape;
 use XML::LibXML;
+use Data::Dumper;
 
 our $VERSION = '0.0';
 
@@ -58,9 +59,13 @@ sub _build_query
               my $raw_key = $_;
               my $key  = $map_key->{$raw_key};
               my $operator = q{=};
-              if (!$key && $raw_key =~ m/(udf.*)([=]+)/ ) {
+              if (!$key && $raw_key =~ m/(udf.*)([=]+)/xms ) {
                 $key = $1;
                 $operator = $2;
+              }
+
+              if (!$key) {
+                croak qq{couldn't find a key to build the query! }, Dumper $criteria;
               }
               my $crit = $criteria->{$_};
               # make an array of non array value...

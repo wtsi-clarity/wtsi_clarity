@@ -322,7 +322,6 @@ sub download_file {
 
 sub _create_path {
     my ( $self, $url, $type, $content ) = @_;
-    print "URL  : $url\n";
 
     my $base_uri = $self->config->clarity_api->{'base_uri'}.q{/};
 
@@ -364,7 +363,6 @@ sub _create_path {
         croak qq{Wrong URL format for caching.\n    $type\n    $url  (in short : $short_url )\n    with "$content"\n    Is it matching the base url correct ? ($base_uri)\n   }
     }
 
-    print "PATH : $path\n";
     return $path;
 }
 

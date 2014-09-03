@@ -2,7 +2,7 @@
 <art:details xmlns:art="http://genologics.com/ri/artifact" xmlns:file="http://genologics.com/ri/file" xmlns:udf="http://genologics.com/ri/userdefined">
 
 
-  <art:artifact limsid="2-2001" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-23784?state=2-0001">
+  <art:artifact limsid="2-1001" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-1001">
     <name>1_STA</name>
     <type>Analyte</type>
     <output-type>Analyte</output-type>
@@ -17,7 +17,7 @@
     <udf:field name="Concentration" type="Numeric">25</udf:field>
   </art:artifact>
 
-  <art:artifact limsid="2-2002" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-23784?state=2-0002">
+  <art:artifact limsid="2-1002" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-1002">
     <name>1_STA</name>
     <type>Analyte</type>
     <output-type>Analyte</output-type>
@@ -32,7 +32,7 @@
     <udf:field name="Concentration" type="Numeric">26</udf:field>
   </art:artifact>
 
-  <art:artifact limsid="2-2003" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-23784?state=2-0003">
+  <art:artifact limsid="2-1003" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-1003">
     <name>1_STA</name>
     <type>Analyte</type>
     <output-type>Analyte</output-type>
