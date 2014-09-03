@@ -22,10 +22,7 @@ service_url=http://psd2g.internal.sanger.ac.uk:8000/lims-support
 sm_volume_check=/Users/cs24/projects/clarity/wtsi_clarity/src/perl/t/data/volume_check
 sm_pico_green=/Users/cs24/projects/clarity/wtsi_clarity/src/perl/t/data/sm/attach_dtx_file
 
-[tag_plate_validation]
-gatekeeper_url=http://dev.psd.sanger.ac.uk:6610/api/1
-ss_client_id=12345678901234567890123456789012
-user_uuid=00000000-0000-0000-0000-000000000001
-find_qcable_by_barcode_uuid=11111111-2222-3333-4444-555555555555
-qcable_state=available
-valid_lot_type=IDT Tags
+[tag_plate]
+gatekeeper_url = http://dev.com/api/1
+user_uuid = 666
+search_path = 555

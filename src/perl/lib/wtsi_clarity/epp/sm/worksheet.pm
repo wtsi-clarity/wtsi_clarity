@@ -5,14 +5,20 @@ use Carp;
 use Readonly;
 use PDF::API2;
 use PDF::Table;
-use File::Temp;
 use DateTime;
-
+use POSIX;
 use Mojo::Collection;
 use wtsi_clarity::util::request;
-use wtsi_clarity::util::well_mapper;
 use wtsi_clarity::util::pdf::layout::worksheet;
-use POSIX;
+use wtsi_clarity::util::well_mapper;
+
+extends 'wtsi_clarity::epp';
+with qw/ wtsi_clarity::util::clarity_elements_fetcher_role_util
+         wtsi_clarity::util::clarity_elements
+         wtsi_clarity::util::uploader_role
+      /;
+
+our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $ARTIFACT_PATH      => q(/prc:process/input-output-map/input/@post-process-uri);
@@ -44,14 +50,6 @@ Readonly::Scalar my $RACK_PATH          => q{WTSI Rack};
 Readonly::Scalar my $nb_col                   => 12;
 Readonly::Scalar my $nb_row                   => 8;
 Readonly::Scalar my $A_CHAR_CODE              => 64;
-
-extends 'wtsi_clarity::epp';
-with 'wtsi_clarity::util::clarity_elements_fetcher_role_util';
-with 'wtsi_clarity::util::clarity_elements';
-with 'wtsi_clarity::util::uploader_role';
-
-
-our $VERSION = '0.0';
 
 override 'run' => sub {
   my $self= shift;
@@ -213,8 +211,8 @@ sub _get_TECAN_file_content_per_URI {
   foreach my $out_loc (sort keys %{$output_container->{'container_details'}} ) {
     my $in_details  = $output_container->{'container_details'}->{$out_loc};
     if ( scalar keys %{$in_details}  ) {
-      my $out_loc_dec = wtsi_clarity::util::well_mapper::get_location_in_decimal($out_loc);
-      my $inp_loc_dec = wtsi_clarity::util::well_mapper::get_location_in_decimal($in_details->{'input_location'});
+      my $out_loc_dec = wtsi_clarity::util::well_mapper->well_location_index($out_loc, $nb_row, $nb_col);
+      my $inp_loc_dec = wtsi_clarity::util::well_mapper->well_location_index($in_details->{'input_location'}, $nb_row, $nb_col);
       my $sample_volume = $in_details->{'sample_volume'};
       my $buffer_volume = $in_details->{'buffer_volume'};
       my $input_uri = $in_details->{'input_uri'};
@@ -608,9 +606,11 @@ wtsi_clarity::epp::sm::worksheet
 
 =item PDF::Table
 
-=item File::Temp
-
 =item DateTime
+
+=item Mojo::Collection
+
+=item POSIX
 
 =back
 

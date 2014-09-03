@@ -1,10 +1,10 @@
 use strict;
 use warnings;
-use Test::More tests => 97;
+use Test::More tests => 104;
 use Test::Exception;
-use Carp;
+use Moose::Meta::Class;
 
-use_ok('wtsi_clarity::util::well_mapper', 'can use wtsi_clarity::util::well_mapper' );
+use_ok('wtsi_clarity::util::well_mapper');
 
 
 { # _get_TECAN_file_content
@@ -107,10 +107,33 @@ use_ok('wtsi_clarity::util::well_mapper', 'can use wtsi_clarity::util::well_mapp
     'H:12' =>96,
   );
 
+  my $num_rows = 8;
+  my $num_cols = 12;
+  my $obj = Moose::Meta::Class->create_anon_class(
+    roles => [qw/wtsi_clarity::util::well_mapper/])->new_object();
 
-  while (my ($loc, $exp_loc) = each %expected_data ) {
-    # print $loc," ", $exp_loc, "<\n";
-    my $val = wtsi_clarity::util::well_mapper::get_location_in_decimal( $loc );
-    cmp_ok($val, 'eq', $exp_loc, "_get_location_in_decimal(...) should give the correct content.");
+  throws_ok {$obj->well_location_index()} qr/Well address should be given/,
+    'Error not giving well address';
+  throws_ok {$obj->well_location_index('A:1')} qr/Number of rows has to be given/,
+    'Error not giving number of rows';
+  throws_ok {$obj->well_location_index('A:1', $num_rows)} qr/Number of columns has to be given/,
+    'Error not giving number of rows';
+  throws_ok {$obj->well_location_index('1:B', $num_rows, $num_cols)}
+    qr/Well location format '1:B' is not recornised/,
+    'Error on wrong well address format';
+  throws_ok {$obj->well_location_index('B:14', $num_rows, $num_cols)}
+    qr/Invalid column address '14' for 8:12 layout/,
+    'Error on invalid column number';
+  throws_ok {$obj->well_location_index('L:12', $num_rows, $num_cols)}
+    qr/Invalid row address 'L' for 8:12 layout/,
+    'Error on invalid row';
+
+  is($obj->well_location_index( 'b:2', $num_rows, $num_cols ), 10, 'mapping for b:2');
+
+  foreach my $loc (keys %expected_data ) {
+    cmp_ok($obj->well_location_index( $loc, $num_rows, $num_cols ), 'eq', $expected_data{$loc},
+      "mapping for $loc");
   }
 }
+
+1;
