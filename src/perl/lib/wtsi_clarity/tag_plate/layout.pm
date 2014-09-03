@@ -83,7 +83,7 @@ __END__
 =head1 SYNOPSIS
 
   use wtsi_clarity::tag_plate::service;
-  my $gatekeeper_layout =  wtsi_clarity::tag_plate::service->new()->get_layout();
+  my $gatekeeper_layout =  wtsi_clarity::tag_plate::service->new(barcode => 'some')->get_layout();
   my $l = wtsi_clarity::tag_plate::layout->new(gatekeeper_info => $gatekeeper_layout);
   my $tag_set_name = $l->tag_set_name();
   my (tag_index, $tag_sequence) = $l->get_tag_info('A1');

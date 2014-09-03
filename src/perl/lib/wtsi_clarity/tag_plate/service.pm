@@ -28,7 +28,7 @@ has '_gkurl' => (
 );
 sub _build__gkurl {
   my $self = shift;
-  return $self->config->tag_plate_validation->{'gatekeeper_url'};
+  return $self->config->tag_plate->{'gatekeeper_url'};
 }
 
 has '_gkrequest' => (
@@ -39,22 +39,14 @@ has '_gkrequest' => (
 );
 sub _build__gkrequest {
   my $self = shift;
-  my $client = $self->config->tag_plate_validation->{'client_id'};
+  my $client = $self->config->tag_plate->{'user_uuid'};
   if (!$client) {
-    croak 'Client id is not defined in the configuration file';
+    croak 'user uuid is not defined in the configuration file';
   }
-  my $cookie = $self->config->tag_plate_validation->{'cookie'};
-  if (!$cookie) {
-    croak 'Cookie is not defined in the configuration file';
-  }
-  my $headers = {
-    'X-Sequencescape-Client-ID' => $client,
-    'Cookie'                    => $cookie,
-  };
 
   return wtsi_clarity::util::request->new(
     'content_type'        => 'application/json',
-    'additional_headers'  => $headers,
+    'additional_headers'  => { 'X-Sequencescape-Client-ID' => $client, },
     'ss_request'          => 1,
   );
 }
@@ -68,9 +60,9 @@ has '_tag_plate' => (
 sub _build__tag_plate {
   my ($self) = @_;
 
-  my $path = $self->config->tag_plate_validation->{'validation_path'};
+  my $path = $self->config->tag_plate->{'search_path'};
   if (!$path) {
-    croak 'Validation path is not defined in the configuration file';
+    croak 'Search path is not defined in the configuration file';
   }
   my $url = join q{/}, ($self->_gkurl, $path, 'first');
   my $response = $self->_gkrequest->post($url, to_json({'search' => {'barcode' => $self->barcode,},}) );
@@ -113,7 +105,7 @@ sub get_layout {
     croak 'The template uuid of the tag plate is not set';
   }
 
-  my $expected = $self->config->tag_plate_validation->{'template_uuid'};
+  my $expected = $self->config->tag_plate->{'template_uuid'};
   if ($expected && ($template_uuid ne $expected)) {
     croak "Unexpected template identifier $template_uuid";
   }
@@ -129,7 +121,7 @@ sub get_layout {
 sub mark_as_used {
   my ($self) = @_;
 
-  my $user = $self->config->tag_plate_validation->{'user_uuid'};
+  my $user = $self->config->tag_plate->{'user_uuid'};
   if (!$user) {
     croak 'User uuid is not found in the configuration file';
   }
@@ -157,7 +149,7 @@ wtsi_clarity::tag_plate::service
 
 =head1 SYNOPSIS
 
-  my $gk = wtsi_clarity::tag_plate::service($plate_barcode);
+  my $gk = wtsi_clarity::tag_plate::service->new(barcode => $plate_barcode);
   $gk->validate(); #error if the plate is not valid
   $gk->get_layout();
   $gk->mark_as_used();
