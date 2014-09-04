@@ -95,8 +95,6 @@ wtsi_clarity::epp
 
 =head2 process_url - required attribute
 
-=head2 base_url - base url for api calls; if not given is derived from process url
-
 =head2 run - executes the callback, should be implemented by child classes
 
 =head2 epp_log - simple logging procedure
