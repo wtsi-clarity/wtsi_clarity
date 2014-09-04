@@ -29,16 +29,16 @@ override 'run' => sub {
   my @nodes = $self->process_doc->getDocumentElement()->findnodes($INPUT_PATH)->get_nodelist();
   my @uris = map { $_->getValue() } @nodes;
 
-  my $workflows_raw = $self->request->get($self->base_url.'configuration/workflows')
-    or croak q{Could not get the list of workflows.};
+  my $request_uri = $self->config->clarity_api->{'base_uri'}.'/configuration/workflows';
+  my $workflows_raw = $self->request->get($request_uri) or croak qq{Could not get the list of workflows. ($request_uri)};
   my $workflows = XML::LibXML->load_xml(string => $workflows_raw );
 
   my $workflow_uri = _get_workflow_url($self->new_wf, $workflows);
 
   my $req = _make_rerouting_request($workflow_uri, \@uris)->toString();
 
-  my $response = $self->request->post($self->base_url.'route/artifacts', $req)
-    or croak q{Could not send successful request for rerouting.};
+  my $post_uri = $self->config->clarity_api->{'base_uri'}.'/route/artifacts' ;
+  my $response = $self->request->post(, $req) or croak qq{Could not send successful request for rerouting. ($post_uri)};
 
   return $response;
 };

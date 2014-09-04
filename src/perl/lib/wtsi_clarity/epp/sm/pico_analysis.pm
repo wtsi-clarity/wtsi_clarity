@@ -92,7 +92,7 @@ has '_output_artifact_details' => (
 
 sub _build__output_artifact_details {
   my $self = shift;
-  my $base_url = $self->config->clarity_api->{'base_uri'}.q{/};
+  my $base_url = $self->config->clarity_api->{'base_uri'};
 
   my @uris = c->new(@{$self->_output_ids})
               ->map( sub {
