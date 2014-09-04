@@ -43,7 +43,7 @@ sub addfile_to_resource {
   my $storage_request = _get_storage_request($destination_uri, $filename)
     or croak qq[Could not request storage for file $filename.\n];
 
-  my $storage_raw = $self->request->post(($self->base_url).'glsstorage', $storage_request->toString());
+  my $storage_raw = $self->request->post(($self->config->clarity_api->{'base_uri'}).'/glsstorage', $storage_request->toString());
   if (!$storage_raw) {
     croak qq[Impossible to retrieve the destination path for uploading $filename.\n];
   }
@@ -59,7 +59,7 @@ sub addfile_to_resource {
   $self->request->upload_file($server, $remote_directory, $filename, $newfilename )
     or croak qq[Could not upload the file > $filename as $remote_directory // $newfilename on the server.\n];
 
-  return $self->request->post($self->base_url.'files', $storage_raw);
+  return $self->request->post($self->config->clarity_api->{'base_uri'}.'/files', $storage_raw);
 }
 
 1;

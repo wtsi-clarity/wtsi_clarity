@@ -1,5 +1,11 @@
 CHANGES for wtsi_clarity Perl project
 
+release 0.36
+  - Gatekeeper tag plate service access refactored
+  - well mapper module converted to a Moose role, input validation added
+  - epp scripts print error to STDOUT before exiting with an error
+  - bug fixing
+
 release 0.35
   - adding results to analytes for Picogreen analysis
   - fixing bug regarding UserAgent config

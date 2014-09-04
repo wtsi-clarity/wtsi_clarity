@@ -178,16 +178,17 @@ sub _build_useragent {
     $ua->agent(join q[/], __PACKAGE__, $VERSION);
     $ua->timeout($LWP_TIMEOUT);
     $ua->env_proxy();
-
-    # the credential requires the network location to follow the HOST:PORT format.
-    # we use the base_uri to find this value
-    my $host_port = $self->config->clarity_api->{'base_uri'};
-    if ( $host_port =~ /http:/xms ) {
-        ##no critic (RegularExpressions::ProhibitEscapedMetacharacters)
-        ($host_port) = ( $host_port =~ m/http:\/\/([\w\d:\-\.]+).*/xms );
-        ##use critic
+    if (!$self->ss_request) {
+        # the credential requires the network location to follow the HOST:PORT format.
+        # we use the base_uri to find this value
+        my $host_port = $self->config->clarity_api->{'base_uri'};
+        if ( $host_port =~ /http:/xms ) {
+            ##no critic (RegularExpressions::ProhibitEscapedMetacharacters)
+            ($host_port) = ( $host_port =~ m/http:\/\/([\w\d:\-\.]+).*/xms );
+            ##use critic
+        }
+        $ua->credentials( $host_port, $REALM, $self->user, $self->password);
     }
-    $ua->credentials( $host_port, $REALM, $self->user, $self->password);
     return $ua;
 }
 
@@ -427,7 +428,7 @@ sub _from_web {
     # if additional headers exits, then adds them too
     if ($self->additional_headers) {
         for my $header_key ( keys %{$self->additional_headers} ) {
-            $req->header($header_key => ${$self->additional_headers}{$header_key});
+            $req->header($header_key, $self->additional_headers->{$header_key});
         }
     }
     my $res=$self->useragent()->request($req);

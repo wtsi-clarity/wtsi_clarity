@@ -20,7 +20,7 @@ Readonly::Array  my @CONF_ITEMS      => qw/ clarity_api
                                             robot_file_dir
                                             printing
                                             ftp_user
-                                            tag_plate_validation
+                                            tag_plate
                                           /;
 
 has 'dir_path'  => (
