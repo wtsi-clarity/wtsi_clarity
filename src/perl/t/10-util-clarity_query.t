@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 5;
+use Test::More tests => 8;
 use Test::Exception;
 
 use_ok('wtsi_clarity::util::clarity_query');

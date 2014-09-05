@@ -101,13 +101,21 @@ wtsi_clarity::util::clarity_query
 =head1 SUBROUTINES/METHODS
 
 =head2 query_artifacts
-  Takes a series of criteria (as a hash to find artifacts.
+  Takes a series of criteria (as a hash) to find artifacts.
 
   criteria hash example :
   {
     sample_id => 'ABC12345',
     step => 'PicoGreen',
     type => 'Analyte',
+  }
+
+=head2 query_processes
+  Takes a series of criteria (as a hash) to find processes.
+
+  criteria hash example :
+  {
+    sample_id => 'ABC12345',
   }
 
 =head1 CONFIGURATION AND ENVIRONMENT

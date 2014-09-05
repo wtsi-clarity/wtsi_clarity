@@ -1,17 +1,23 @@
 use strict;
 use warnings;
-use Test::More tests => 13;
+use Test::More tests => 10;
 use Test::Exception;
 use Test::Deep;
 use Test::MockObject::Extends;
 use Data::Dumper;
-# local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+
 
 use wtsi_clarity::util::config;
+
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+
 my $config = wtsi_clarity::util::config->new();
 my $base_uri = $config->clarity_api->{'base_uri'};
 
 use_ok('wtsi_clarity::epp::report');
+
+local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/report';
+local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 
 { # _get_artifact_ids_with_udf
@@ -142,14 +148,14 @@ use_ok('wtsi_clarity::epp::report');
 
 #######################################################
 # WIP use this to create the output file...
-# {
-#   print qq{_get_all_udf_values\n};
-#   my $m = wtsi_clarity::epp::report->new(
-#     process_url => $base_uri . '/processes/24-999'
-#   );
+{
+  print qq{_get_all_udf_values\n};
+  my $m = wtsi_clarity::epp::report->new(
+    process_url => $base_uri . '/processes/24-999'
+  );
 
-#   my $res = $m->_main_method();
-# }
+  my $res = $m->_main_method();
+}
 
 
 

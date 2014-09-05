@@ -213,6 +213,7 @@ sub _find_elements_first_result {
     if (@elements) {
       $element = $elements[0];
     } else {
+      return $default if (defined $default) ;
       croak qq{Empty result when applying xpath with find_elements: '$xpath'.} ;
     }
   }
