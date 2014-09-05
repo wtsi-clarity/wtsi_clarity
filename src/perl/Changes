@@ -1,5 +1,7 @@
 CHANGES for wtsi_clarity Perl project
 
+  - tag indices registration via reagents API
+
 release 0.36
   - Gatekeeper tag plate service access refactored
   - well mapper module converted to a Moose role, input validation added
