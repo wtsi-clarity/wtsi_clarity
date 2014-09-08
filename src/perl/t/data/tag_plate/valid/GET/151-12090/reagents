@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="yes"?>
+<stp:reagents xmlns:stp="http://genologics.com/ri/step" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/steps/151-12090/reagents">
+    <step uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/steps/151-12090" rel="steps"/>
+    <configuration uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/protocols/104/steps/281">Library PCR set up</configuration>
+    <reagent-category>DNA Control</reagent-category>
+    <output-reagents>
+        <output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-24975" />
+        <output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-24977" />     
+        <output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-25404" />
+        <output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-25409" />
+        <output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-25410" />
+        <output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-25411" />
+        <output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-25431" />
+        <output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-25433" />
+        <output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-25509" />
+        <output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-25510" />
+        <output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-25511" />
+    </output-reagents>
+</stp:reagents>
