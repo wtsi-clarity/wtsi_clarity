@@ -6,6 +6,7 @@ use Readonly;
 use Mojo::Collection 'c';
 use URI::Escape;
 use List::Compare;
+use Try::Tiny;
 
 our $VERSION = '0.0';
 
@@ -20,6 +21,12 @@ Readonly::Scalar my $SMP_DETAIL_ARTIFACTS_IDS_PATH => q{/smp:details/smp:sample/
 Readonly::Scalar my $ARTEFACTS_ARTEFACT_CONTAINTER_IDS_PATH => q{/art:details/art:artifact/location/container/@limsid};
 Readonly::Scalar my $ARTEFACTS_ARTEFACT_IDS_PATH => q{/art:artifacts/artifact/@limsid};
 Readonly::Scalar my $THOUSANDTH  => 0.001;
+Readonly::Scalar my $DILUTION_COMPENSATION_FACTOR  => 50;
+
+Readonly::Scalar my $UDF_VOLUME         => qq{Volume};
+Readonly::Scalar my $UDF_CONCENTRATION  => qq{Concentration};
+Readonly::Scalar my $PRC_VOLUME         => qq{Volume Check (SM)};
+Readonly::Scalar my $PRC_CONCENTRATION  => qq{Picogreen Analysis (SM)};
 ## use critic
 
 
@@ -33,6 +40,12 @@ override 'run' => sub {
 sub _main_method{
   my ($self) = @_;
   my $data = $self->_generate_csv_content();
+
+  my $missing_data = $self->_get_first_missing_necessary_data();
+  if ($missing_data) {
+    confess qq{Impossible to produce the report: "$missing_data" could not be found on the genealogy of some samples. Have you run all the necessary steps on the samples? };
+  }
+
   my $process_id  = $self->find_elements_first_value($self->process_doc, $PROCESS_ID_PATH);
   _saveas($data, q{./}.$process_id);
   return;
@@ -44,7 +57,7 @@ sub _saveas {
   my ($content, $path) = @_;
 
   open my $fh, '>', $path
-    or croak qq{Could not create/open file '$path'.};
+    or confess qq{Could not create/open file '$path'.};
   foreach my $line (@{$content})
   {
       ## no critic(InputOutput::RequireCheckedSyscalls)
@@ -52,7 +65,7 @@ sub _saveas {
       ## use critic
   }
   close $fh
-    or croak qq{ Unable to close $path.};
+    or confess qq{ Unable to close $path.};
 
   return $path;
 };
@@ -164,13 +177,11 @@ sub _get_supplier_sample_name {
 sub _get_well {
   my ($self, $sample_id) = @_;
   return $self->_location_of_samples->{$sample_id}->{'well'};
-  return "??";
 }
 
 sub _get_plate {
   my ($self, $sample_id) = @_;
   return $self->_location_of_samples->{$sample_id}->{'plate'};
-  return "??";
 }
 
 sub _get_supplier_volume {
@@ -186,20 +197,19 @@ sub _get_supplier_gender {
 sub _get_concentration {
   my ($self, $sample_id) = @_;
 
-# ........................
-
-  return $self->_get_value_from_data('Concentration', $sample_id) ;
+  return $self->_get_value_from_data($UDF_CONCENTRATION, $sample_id) * $DILUTION_COMPENSATION_FACTOR;
 }
 
 sub _get_measured_volume {
   my ($self, $sample_id) = @_;
-  return $self->_get_value_from_data('Cherrypick Sample Volume', $sample_id) ;
+  return $self->_get_value_from_data($UDF_VOLUME, $sample_id) ;
+  return 0;
 }
 
 sub _get_total_micrograms {
   my ($self, $sample_id) = @_;
-  my $data = $self->_all_udf_values->{$sample_id};
-  return $data->{'Concentration'} * $data->{'Cherrypick Sample Volume'} * $THOUSANDTH ;
+  return $self->_get_concentration($sample_id) * $self->_get_measured_volume($sample_id) * $THOUSANDTH ;
+  return 0;
 }
 
 sub _get_genotyping_status {
@@ -255,6 +265,22 @@ sub _get_value_from_data {
 # end of methods implementing the columns of the report
 ########################################################
 
+sub _grab_values {
+  my ($self, $xml_doc, $xpath) = @_;
+
+  my @nodes;
+  try {
+    @nodes = $xml_doc->findnodes($xpath)->get_nodelist();
+  } catch {
+    @nodes = ();
+  };
+
+  my @ids = c ->new(@nodes)
+              ->map( sub { $_->getValue(); } )
+              ->each();
+  return \@ids;
+}
+
 has '_input_artifacts_ids' => (
   isa => 'ArrayRef',
   is  => 'ro',
@@ -264,9 +290,7 @@ has '_input_artifacts_ids' => (
 
 sub _build__input_artifacts_ids {
   my ($self) = @_;
-  my $node_list = $self->process_doc->findnodes($INPUT_ARTIFACTS_IDS_PATH);
-  my @ids = map { $_->getValue() } $node_list->get_nodelist();
-  return \@ids;
+  return $self->_grab_values($self->process_doc, $INPUT_ARTIFACTS_IDS_PATH);
 }
 
 has '_input_artifacts_details' => (
@@ -297,11 +321,7 @@ has '_sample_ids' => (
 
 sub _build__sample_ids {
   my ($self) = @_;
-  my @ids =  c->new($self->_input_artifacts_details->findnodes($ART_DETAIL_SAMPLE_IDS_PATH)->get_nodelist())
-              ->map( sub { $_->getValue(); } )
-              ->each();
-
-  return \@ids;
+  return $self->_grab_values($self->_input_artifacts_details, $ART_DETAIL_SAMPLE_IDS_PATH);
 }
 
 has '_sample_details' => (
@@ -324,6 +344,33 @@ sub _build__sample_details {
   return $self->request->batch_retrieve('samples', \@uris );
 };
 
+has '_required_sources' => (
+  isa => 'HashRef',
+  is  => 'ro',
+  required => 0,
+  default => sub {
+      return {
+        q{concentration} => {
+          src_process => $PRC_CONCENTRATION,
+          src_udf_name=> $UDF_CONCENTRATION,
+        },
+        q{cherry_volume} => {
+          src_process => $PRC_VOLUME,
+          src_udf_name=> $UDF_VOLUME,
+        },
+      };
+    },
+);
+
+has '_extra_sources' => (
+  isa => 'HashRef',
+  is  => 'ro',
+  required => 0,
+  default => sub {
+      return { };
+    },
+);
+
 has '_all_udf_values' => (
   isa => 'HashRef',
   is  => 'ro',
@@ -331,27 +378,34 @@ has '_all_udf_values' => (
   lazy_build => 1,
 );
 
+sub _get_first_missing_necessary_data {
+  my($self) = @_;
+  my $c_udfs = c->new( keys $self->_required_sources )
+                ->map( sub { $self->_required_sources->{$_}->{'src_udf_name'}; });
+
+  my $notfound = $c_udfs->first(sub {
+                    my $udf_name = $_;
+                    return c->new( @{$self->_sample_ids} )
+                            ->first(sub {
+                                my $sample_id = $_;
+                                return !defined $self->_all_udf_values->{$sample_id}->{$udf_name};
+                            });
+                  });
+  return $notfound;
+}
+
 sub _build__all_udf_values {
   my ($self) = @_;
 
-  my $src_data = {
-    q{concentration} => {
-      src_process => q{Picogreen Analysis (SM)},
-      src_udf_name=> q{Concentration},
-    },
-    q{cherry_volume} => {
-      src_process => q{Process2001},
-      src_udf_name=> q{Cherrypick Sample Volume},
-    },
-  };
+  my %src_data = (%{$self->_extra_sources}, %{$self->_required_sources});
 
-  while (my ($param_name, $parameter) = each %{$src_data} ) {
+  while (my ($param_name, $parameter) = each %src_data ) {
     $parameter->{'results'} = $self->_get_udf_values($parameter->{'src_process'}, $parameter->{'src_udf_name'});
   };
 
   my $data = {};
 
-  while (my ($param_name, $parameter) = each %{$src_data} ) {
+  while (my ($param_name, $parameter) = each %src_data ) {
     my @sample_ids = sort keys $parameter->{'results'};
     my $name = $parameter->{'src_udf_name'};
     foreach my $sample_id (@sample_ids) {
@@ -372,14 +426,7 @@ sub _get_artifact_ids_with_udf {
     sample_id => $self->_sample_ids(),
     });
 
-
-  my @res = c->new($res_arts_doc->findnodes($ARTEFACTS_ARTEFACT_IDS_PATH)->get_nodelist())
-              ->map( sub {
-                  my $el = $_;
-                  return $el->getValue();
-                } )
-              ->each();
-  return \@res;
+  return $self->_grab_values($res_arts_doc, $ARTEFACTS_ARTEFACT_IDS_PATH);
 };
 
 sub _get_udf_values {
@@ -388,15 +435,25 @@ sub _get_udf_values {
   my ($self, $step, $udf_name, $sample_id) = @_;
   my $artifacts_ids = $self->_get_artifact_ids_with_udf($step, $udf_name, $sample_id);
   my $artifacts = $self->request->batch_retrieve('artifacts', $artifacts_ids);
-  my $res = c->new($artifacts->findnodes(q{/art:details/art:artifact})->get_nodelist())
+  my @nodes;
+  try {
+    @nodes = $artifacts->findnodes(q{/art:details/art:artifact})->get_nodelist();
+  } catch {
+    @nodes = ();
+  };
+
+  use Encode qw/encode decode/;
+
+  my $res = c->new(@nodes)
               ->reduce( sub {
                 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
                 my $found_sample_id      = $b->findvalue( q{./sample/@limsid}                 );
                 my $udf_value            = $b->findvalue( qq{./udf:field[\@name="$udf_name"]} );
                 ## use critic
                 if (defined $a->{$found_sample_id} && defined $a->{$found_sample_id}->{$udf_name}) {
-                  croak qq{The sample $found_sample_id possesses more than one value associated with "$udf_name". It is not currently possible to deal with it.};
+                  confess qq{The sample $found_sample_id possesses more than one value associated with "$udf_name". It is not currently possible to deal with it.};
                 }
+
                 $a->{ $found_sample_id } = { $udf_name => $udf_value };
                 $a; } , {});
   return $res;
@@ -411,10 +468,7 @@ has '_original_artifact_ids' => (
 
 sub _build__original_artifact_ids {
   my $self = shift;
-  my @ids =  c->new($self->_sample_details->findnodes($SMP_DETAIL_ARTIFACTS_IDS_PATH)->get_nodelist())
-              ->map( sub { $_->getValue(); } )
-              ->each();
-  return \@ids;
+  return $self->_grab_values($self->_sample_details, $SMP_DETAIL_ARTIFACTS_IDS_PATH);
 }
 
 has '_original_artifact_details' => (
@@ -444,10 +498,7 @@ has '_original_container_ids' => (
 
 sub _build__original_container_ids {
   my $self = shift;
-  my @ids =  c->new($self->_original_artifact_details->findnodes($ARTEFACTS_ARTEFACT_CONTAINTER_IDS_PATH)->get_nodelist())
-              ->map( sub { $_->getValue(); } )
-              ->each();
-  return \@ids;
+  return $self->_grab_values($self->_original_artifact_details, $ARTEFACTS_ARTEFACT_CONTAINTER_IDS_PATH);
 }
 
 has '_original_container_details' => (

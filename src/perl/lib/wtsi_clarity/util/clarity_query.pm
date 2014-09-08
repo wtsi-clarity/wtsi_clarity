@@ -37,7 +37,10 @@ sub query_processes {
 sub _build_query_url
 {
   my ($self, $resource, $query) = @_;
-  return  $self->config->clarity_api->{'base_uri'} . qq{/$resource?} . uri_escape ($query);
+
+  $query =~ s/\s/%20/gxms;
+
+  return  $self->config->clarity_api->{'base_uri'} . qq{/$resource?} . ($query);
 }
 
 sub _build_query
