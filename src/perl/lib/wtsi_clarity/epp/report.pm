@@ -203,13 +203,11 @@ sub _get_concentration {
 sub _get_measured_volume {
   my ($self, $sample_id) = @_;
   return $self->_get_value_from_data($UDF_VOLUME, $sample_id) ;
-  return 0;
 }
 
 sub _get_total_micrograms {
   my ($self, $sample_id) = @_;
   return $self->_get_concentration($sample_id) * $self->_get_measured_volume($sample_id) * $THOUSANDTH ;
-  return 0;
 }
 
 sub _get_genotyping_status {
