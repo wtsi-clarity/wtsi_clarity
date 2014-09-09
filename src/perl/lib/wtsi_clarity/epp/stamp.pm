@@ -199,7 +199,7 @@ sub _build__output_container_details {
   my $self = shift;
   my $base_url = $self->config->clarity_api->{'base_uri'};
 
-  my $output_ids = $self->_grab_values($self->process_doc, $OUTPUT_IDS_PATH);
+  my $output_ids = $self->grab_values($self->process_doc, $OUTPUT_IDS_PATH);
   my @output_uris = c ->new(@{$output_ids})
                       ->uniq()
                       ->map( sub {
@@ -208,7 +208,7 @@ sub _build__output_container_details {
                       ->each;
   my $output_details = $self->request->batch_retrieve('artifacts', \@output_uris );
 
-  my $container_ids = $self->_grab_values($output_details, $BATCH_CONTAINER_PATH);
+  my $container_ids = $self->grab_values($output_details, $BATCH_CONTAINER_PATH);
   my @container_uris = c->new(@{$container_ids})
                         ->uniq()
                         ->map( sub {
@@ -229,7 +229,7 @@ sub _update_plate_name_with_previous_name {
   my $self = shift;
 
   while (my ($in_container_uri, $in_container_map) = each %{$self->_analytes} ) {
-    my $names = $self->_grab_values($in_container_map->{'doc'}, $CONTAINER_NAME_PATH);
+    my $names = $self->grab_values($in_container_map->{'doc'}, $CONTAINER_NAME_PATH);
 
     if ( @{$names} < 1 ) {
       confess qq{One input container ($in_container_uri) has no name!};
@@ -253,22 +253,6 @@ sub _update_plate_name_with_previous_name {
   }
 
   return $self->_output_container_details;
-}
-
-sub _grab_values {
-  my ($self, $xml_doc, $xpath) = @_;
-
-  my @nodes;
-  try {
-    @nodes = $xml_doc->findnodes($xpath)->get_nodelist();
-  } catch {
-    @nodes = ();
-  };
-
-  my @ids = c ->new(@nodes)
-              ->map( sub { $_->getValue(); } )
-              ->each();
-  return \@ids;
 }
 
 sub _create_containers {

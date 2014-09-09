@@ -263,22 +263,6 @@ sub _get_value_from_data {
 # end of methods implementing the columns of the report
 ########################################################
 
-sub _grab_values {
-  my ($self, $xml_doc, $xpath) = @_;
-
-  my @nodes;
-  try {
-    @nodes = $xml_doc->findnodes($xpath)->get_nodelist();
-  } catch {
-    @nodes = ();
-  };
-
-  my @ids = c ->new(@nodes)
-              ->map( sub { $_->getValue(); } )
-              ->each();
-  return \@ids;
-}
-
 has '_input_artifacts_ids' => (
   isa => 'ArrayRef',
   is  => 'ro',
@@ -288,7 +272,7 @@ has '_input_artifacts_ids' => (
 
 sub _build__input_artifacts_ids {
   my ($self) = @_;
-  return $self->_grab_values($self->process_doc, $INPUT_ARTIFACTS_IDS_PATH);
+  return $self->grab_values($self->process_doc, $INPUT_ARTIFACTS_IDS_PATH);
 }
 
 has '_input_artifacts_details' => (
@@ -319,7 +303,7 @@ has '_sample_ids' => (
 
 sub _build__sample_ids {
   my ($self) = @_;
-  return $self->_grab_values($self->_input_artifacts_details, $ART_DETAIL_SAMPLE_IDS_PATH);
+  return $self->grab_values($self->_input_artifacts_details, $ART_DETAIL_SAMPLE_IDS_PATH);
 }
 
 has '_sample_details' => (
@@ -424,7 +408,7 @@ sub _get_artifact_ids_with_udf {
     sample_id => $self->_sample_ids(),
     });
 
-  return $self->_grab_values($res_arts_doc, $ARTEFACTS_ARTEFACT_IDS_PATH);
+  return $self->grab_values($res_arts_doc, $ARTEFACTS_ARTEFACT_IDS_PATH);
 };
 
 sub _get_udf_values {
@@ -466,7 +450,7 @@ has '_original_artifact_ids' => (
 
 sub _build__original_artifact_ids {
   my $self = shift;
-  return $self->_grab_values($self->_sample_details, $SMP_DETAIL_ARTIFACTS_IDS_PATH);
+  return $self->grab_values($self->_sample_details, $SMP_DETAIL_ARTIFACTS_IDS_PATH);
 }
 
 has '_original_artifact_details' => (
@@ -496,7 +480,7 @@ has '_original_container_ids' => (
 
 sub _build__original_container_ids {
   my $self = shift;
-  return $self->_grab_values($self->_original_artifact_details, $ARTEFACTS_ARTEFACT_CONTAINTER_IDS_PATH);
+  return $self->grab_values($self->_original_artifact_details, $ARTEFACTS_ARTEFACT_CONTAINTER_IDS_PATH);
 }
 
 has '_original_container_details' => (

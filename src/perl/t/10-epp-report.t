@@ -238,14 +238,14 @@ my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report->new(
 
 ######################################################
 # WIP use this to create the output file...
-{
-  print qq{_main_method\n};
-  my $m = wtsi_clarity::epp::report->new(
-    process_url => $base_uri . '/processes/24-999'
-  );
+# {
+#   print qq{_main_method\n};
+#   my $m = wtsi_clarity::epp::report->new(
+#     process_url => $base_uri . '/processes/24-999'
+#   );
 
-  my $res = $m->_main_method();
-}
+#   my $res = $m->_main_method();
+# }
 
 
 
