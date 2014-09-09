@@ -1,0 +1,32 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:details xmlns:smp="http://genologics.com/ri/sample" xmlns:udf="http://genologics.com/ri/userdefined">
+  <smp:sample limsid="SAMPLE0001" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/SAMPLE0001?state=2-3001">
+    <name>Stock plate control</name>
+    <date-received>2014-08-29</date-received>
+    <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+      <first-name>Friedrich</first-name>
+      <last-name>Nietzsche</last-name>
+    </submitter>
+    <udf:field name="WTSI Study ID" type="Numeric">12345678</udf:field>
+    <artifact limsid="2-0001" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-0001"/>
+  </smp:sample>
+  <smp:sample limsid="SAMPLE0002" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/SAMPLE0002?state=2-3002">
+    <name>Stock plate control</name>
+    <date-received>2014-08-29</date-received>
+    <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+      <first-name>Friedrich</first-name>
+      <last-name>Nietzsche</last-name>
+    </submitter>
+    <udf:field name="WTSI Study ID" type="Numeric">12345678</udf:field>
+    <artifact limsid="2-0002" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-0002"/>
+  </smp:sample>
+  <smp:sample limsid="SAMPLE0003" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/SAMPLE0003?state=2-3003">
+    <name>Stock plate control</name>
+    <date-received>2014-08-29</date-received>
+    <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+      <first-name>Friedrich</first-name>
+      <last-name>Nietzsche</last-name>
+    </submitter>
+    <artifact limsid="2-0003" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-0003"/>
+  </smp:sample>
+</smp:details>

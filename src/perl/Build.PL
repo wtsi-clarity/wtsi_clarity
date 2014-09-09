@@ -88,6 +88,7 @@ my $builder = $class->new(
                 'JSON::Parse'                     => 0,
                 'HTTP::Request'                   => 0,
                 'lib'                             => 0,
+                'List::Compare'                   => 0,
                 'LWP::UserAgent'                  => 0,
                 'Mojo::Collection'                => 0,
                 'Moose'                           => 0,
