@@ -31,7 +31,7 @@ Readonly::Hash my %ACTION2MODULE => (
 
     'stamp'                   => 'stamp',
     'mq'                      => 'mq',
-    'make_report'             => 'report',
+    'make_report'             => 'report_maker',
 );
 
 has 'action'  => (
