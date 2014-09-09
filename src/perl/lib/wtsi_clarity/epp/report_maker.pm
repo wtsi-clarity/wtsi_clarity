@@ -31,6 +31,13 @@ Readonly::Scalar my $PRC_VOLUME         => qq{Volume Check (SM)};
 Readonly::Scalar my $PRC_CONCENTRATION  => qq{Picogreen Analysis (SM)};
 ## use critic
 
+has 'produce_report_anyway' => (
+  isa      => 'Bool',
+  is       => 'ro',
+  required => 0,
+  default  => 0,
+);
+
 has 'report_file' => (
   is => 'ro',
   isa => 'wtsi_clarity::util::textfile',
@@ -63,7 +70,7 @@ sub _main_method{
   my $data = $self->internal_csv_output();
 
   my $missing_data = $self->_get_first_missing_necessary_data();
-  if ($missing_data) {
+  if ($missing_data && !$self->produce_report_anyway) {
     confess qq{Impossible to produce the report: "$missing_data" could not be found on the genealogy of some samples. Have you run all the necessary steps on the samples? };
   }
 
