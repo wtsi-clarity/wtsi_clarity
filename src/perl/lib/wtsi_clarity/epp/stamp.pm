@@ -6,15 +6,21 @@ use Readonly;
 use Carp;
 use URI::Escape;
 use XML::LibXML;
+use Mojo::Collection 'c';
+use Try::Tiny;
 
 extends 'wtsi_clarity::epp';
+with 'wtsi_clarity::util::clarity_elements';
 
 ##no critic ValuesAndExpressions::RequireInterpolationOfMetachars
-Readonly::Scalar my $IO_MAP_PATH    => q{ /prc:process/input-output-map[output[@output-type='Analyte']]};
-Readonly::Scalar my $CONTAINER_PATH => q{ /art:artifact/location/container/@uri };
-Readonly::Scalar my $WELL_PATH      => q{ /art:artifact/location/value };
-Readonly::Scalar my $CONTAINER_TYPE_NAME_PATH => q{ /con:container/type/@name };
-Readonly::Scalar my $CONTROL_PATH   => q{ /art:artifact/control-type };
+Readonly::Scalar my $IO_MAP_PATH              => q{ /prc:process/input-output-map[output[@output-type='Analyte']]};
+Readonly::Scalar my $OUTPUT_IDS_PATH          => q{ /prc:process/input-output-map/output[@output-type='Analyte']/@limsid};
+Readonly::Scalar my $CONTAINER_PATH           => q{ /art:artifact/location/container/@uri };
+Readonly::Scalar my $BATCH_CONTAINER_PATH     => q{ /art:details/art:artifact/location/container/@limsid };
+Readonly::Scalar my $WELL_PATH                => q{ /art:artifact/location/value };
+Readonly::Scalar my $CONTAINER_TYPE_NAME_PATH => q{ /con:container/type/@name[1] };
+Readonly::Scalar my $CONTAINER_NAME_PATH      => q{ /con:container/name/text() };
+Readonly::Scalar my $CONTROL_PATH             => q{ /art:artifact/control-type };
 ##use critic
 
 our $VERSION = '0.0';
@@ -26,10 +32,10 @@ has 'step_url' => (
 );
 
 has 'copy_on_target' => (
-  isa => 'Bool',
-  is  => 'ro',
+  isa      => 'Bool',
+  is       => 'ro',
   required => 0,
-  default => 0,
+  default  => 0,
 );
 
 has 'container_type_name' => (
@@ -38,6 +44,14 @@ has 'container_type_name' => (
   required   => 0,
   lazy_build => 1,
 );
+
+has 'shadow_plate' => (
+  isa      => 'Bool',
+  is       => 'ro',
+  required => 0,
+  default  => 0,
+);
+
 sub _build_container_type_name {
   my $self = shift;
   my @container_urls = keys %{$self->_analytes};
@@ -60,6 +74,7 @@ has '_container_type' => (
   required   => 0,
   lazy_build => 1,
 );
+
 sub _build__container_type {
   my $self = shift;
   my $names = $self->container_type_name;
@@ -67,9 +82,9 @@ sub _build__container_type {
   if ($self->_validate_container_type) {
     foreach my $name (@{$names}) {
       my $ename = uri_escape($name);
-      my $url = $self->config->clarity_api->{'base_uri'} . q{/containertypes?name=} . $ename;
-      my $doc = $self->fetch_and_parse($url);
-      my @nodes =  $doc->findnodes(q{/ctp:container-types/container-type});
+      my $url   = $self->config->clarity_api->{'base_uri'} . q{/containertypes?name=} . $ename;
+      my $doc   = $self->fetch_and_parse($url);
+      my @nodes = $doc->findnodes(q{/ctp:container-types/container-type});
       if (!@nodes) {
         croak qq[Did not find container type entry at $url];
       }
@@ -79,8 +94,8 @@ sub _build__container_type {
     }
   } else {
     my @container_urls = keys %{$self->_analytes};
-    my $doc = $self->_analytes->{$container_urls[0]}->{'doc'};
-    my @nodes =  $doc->findnodes(q{ /con:container/type });
+    my $doc   = $self->_analytes->{$container_urls[0]}->{'doc'};
+    my @nodes = $doc->findnodes(q{ /con:container/type });
     push @types, $nodes[0]->toString();
   }
   return \@types;
@@ -92,6 +107,7 @@ has '_analytes' => (
   required   => 0,
   lazy_build => 1,
 );
+
 sub _build__analytes {
   my $self = shift;
 
@@ -105,7 +121,7 @@ sub _build__analytes {
     ##no critic (RequireInterpolationOfMetachars)
     my $url = $anode->findvalue(q{./input/@uri});
     ##use critic
-    my $analyte_dom = $self->fetch_and_parse($url);
+    my $analyte_dom   = $self->fetch_and_parse($url);
     my $container_url = $analyte_dom->findvalue($CONTAINER_PATH);
     if (!$container_url) {
       croak qq[Container not defined for $url];
@@ -147,24 +163,119 @@ override 'run' => sub {
   my $self = shift;
   super(); #call parent's run method
   $self->epp_log('Step url is ' . $self->step_url);
+
+  if ($self->shadow_plate && $self->copy_on_target ) {
+    croak qq{One cannot use the shadow plate stamping with the copy_on_target option!};
+  }
+
   $self->_create_containers();
   my $doc = $self->_create_placements_doc;
 
   if ($self->copy_on_target) {
+    # in terms of wells, one well (e.g. A1) will be transfered to several wells (hence the 'copy') on the output plates
     $doc = $self->_stamp_with_copy($doc);
   } else {
+    # in terms of wells, one well (e.g. A1) will be transfered to only one well on the output plate
     $doc = $self->_direct_stamp($doc);
   }
 
   $self->request->post($self->step_url . '/placements', $doc->toString);
+
+  if ($self->shadow_plate) {
+    $self->_tranfer_plate_name();
+  }
+
   return;
 };
+
+has '_output_container_details' => (
+  isa => 'XML::LibXML::Document',
+  is  => 'ro',
+  required => 0,
+  lazy_build => 1,
+);
+
+sub _build__output_container_details {
+  my $self = shift;
+  my $base_url = $self->config->clarity_api->{'base_uri'};
+
+  my $output_ids = $self->_grab_values($self->process_doc, $OUTPUT_IDS_PATH);
+  my @output_uris = c ->new(@{$output_ids})
+                      ->uniq()
+                      ->map( sub {
+                          return $base_url.'/artifacts/'.$_;
+                        } )
+                      ->each;
+  my $output_details = $self->request->batch_retrieve('artifacts', \@output_uris );
+
+  my $container_ids = $self->_grab_values($output_details, $BATCH_CONTAINER_PATH);
+  my @container_uris = c->new(@{$container_ids})
+                        ->uniq()
+                        ->map( sub {
+                            return $base_url.'/containers/'.$_;
+                          } )
+                        ->each;
+  return $self->request->batch_retrieve('containers', \@container_uris );
+};
+
+sub _tranfer_plate_name {
+  my $self = shift;
+  $self ->_update_plate_name_with_previous_name();
+
+  return $self->request->batch_update('containers', $self->_output_container_details);
+}
+
+sub _update_plate_name_with_previous_name {
+  my $self = shift;
+
+  while (my ($in_container_uri, $in_container_map) = each %{$self->_analytes} ) {
+    my $names = $self->_grab_values($in_container_map->{'doc'}, $CONTAINER_NAME_PATH);
+
+    if ( @{$names} < 1 ) {
+      confess qq{One input container ($in_container_uri) has no name!};
+    }
+
+    my @output_containers = @{$in_container_map->{'output_containers'}};
+
+    if ( @output_containers < 1 ) {
+      confess qq{There is no output container for this input ($in_container_uri)! The shadow stamping cannot be applied!};
+    }
+    if ( @output_containers > 1 ) {
+      confess qq{There are more than one output container for this input ($in_container_uri)! The shadow stamping cannot be applied!};
+    }
+
+    my $output_container_id = $output_containers[0]->{'limsid'};
+
+    my @containers = c->new($self->_output_container_details->findnodes( qq{/con:details/con:container[\@limsid="$output_container_id"]/name} )->get_nodelist())
+                      ->each(sub{
+                          $self->update_text($_, @{$names}[0] );
+                        } ) ;
+  }
+
+  return $self->_output_container_details;
+}
+
+sub _grab_values {
+  my ($self, $xml_doc, $xpath) = @_;
+
+  my @nodes;
+  try {
+    @nodes = $xml_doc->findnodes($xpath)->get_nodelist();
+  } catch {
+    @nodes = ();
+  };
+
+  my @ids = c ->new(@nodes)
+              ->map( sub { $_->getValue(); } )
+              ->each();
+  return \@ids;
+}
 
 sub _create_containers {
   my $self = shift;
 
   my $xml_header = '<?xml version="1.0" encoding="UTF-8"?>';
-  $xml_header .= '<con:container xmlns:con="http://genologics.com/ri/container">';
+  $xml_header   .= '<con:container xmlns:con="http://genologics.com/ri/container">';
   my $xml_footer = '</con:container>';
 
   if ((scalar @{$self->container_type_name} > 1) &&
@@ -175,13 +286,14 @@ sub _create_containers {
   foreach my $input_container ( keys %{$self->_analytes}) {
     foreach my $output_container_type_xml (@{$self->_container_type}) {
       my $xml = $xml_header;
-      $xml .= $output_container_type_xml;
-      $xml .= $xml_footer;
+      $xml   .= $output_container_type_xml;
+      $xml   .= $xml_footer;
       my $url = $self->config->clarity_api->{'base_uri'} . '/containers';
       my $container_doc = XML::LibXML->load_xml(string => $self->request->post($url, $xml));
       ##no critic (RequireInterpolationOfMetachars)
       my $h = { 'limsid' => $container_doc->findvalue(q{ /con:container/@limsid }),
-              'uri'    => $container_doc->findvalue(q{ /con:container/@uri }) };
+                'uri'    => $container_doc->findvalue(q{ /con:container/@uri    }),
+                'doc'    => $container_doc,                                         };
       ##use critic
       push @{$self->_analytes->{$input_container}->{'output_containers'}}, $h;
     }
@@ -193,9 +305,9 @@ sub _create_placements_doc {
   my $self = shift;
 
   my $pXML = '<?xml version="1.0" encoding="UTF-8"?>';
-  $pXML .= '<stp:placements xmlns:stp="http://genologics.com/ri/step" uri="' . $self->process_url . '/placements">';
-  $pXML .= '<step uri="' . $self->step_url . '"/>';
-  $pXML .= '<selected-containers>';
+  $pXML   .= '<stp:placements xmlns:stp="http://genologics.com/ri/step" uri="' . $self->process_url . '/placements">';
+  $pXML   .= '<step uri="' . $self->step_url . '"/>';
+  $pXML   .= '<selected-containers>';
   foreach my $input_container ( keys %{$self->_analytes}) {
     foreach my $output_container (@{$self->_analytes->{$input_container}->{'output_containers'}}) {
       my $container_url = $output_container->{'uri'} ;
@@ -332,14 +444,23 @@ wtsi_clarity::epp::stamp
 
   wtsi_clarity::epp:stamp->new(
        process_url => 'http://clarity-ap:8080/processes/3345',
-       step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970
+       step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970',
+  )->run();
+
+  1:1 shadow plate scanario, output container type will be copied from the input
+  containers, which will have the same barcode (name):
+
+  wtsi_clarity::epp:stamp->new(
+       process_url => 'http://clarity-ap:8080/processes/3345',
+       step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970',
+       shadow_plate => 1,
   )->run();
 
   1:1 and N:N scanarios with explicit output container type name:
 
   wtsi_clarity::epp:stamp->new(
        process_url => 'http://clarity-ap:8080/processes/3345',
-       step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970,
+       step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970',
        container_type_name => ['ABgene 0800']
   )->run();
 
@@ -347,7 +468,7 @@ wtsi_clarity::epp::stamp
 
   wtsi_clarity::epp:stamp->new(
        process_url => 'http://clarity-ap:8080/processes/3345',
-       step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970,
+       step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970',
        container_type_name => ['ABgene 0800', 'ABgene 0800']
   )->run();
 
@@ -355,7 +476,7 @@ wtsi_clarity::epp::stamp
 
   wtsi_clarity::epp:stamp->new(
        process_url => 'http://clarity-ap:8080/processes/3345',
-       step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970,
+       step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970',
        container_type_name => ['ABgene 0800', 'ABgene 0765']
   )->run();
 
