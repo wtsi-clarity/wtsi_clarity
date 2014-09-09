@@ -39,14 +39,14 @@ has '_gkrequest' => (
 );
 sub _build__gkrequest {
   my $self = shift;
-  my $client = $self->config->tag_plate->{'user_uuid'};
-  if (!$client) {
-    croak 'user uuid is not defined in the configuration file';
+  my $api_key = $self->config->tag_plate->{'api_key'};
+  if (!$api_key) {
+    croak 'api key for GateKeeper is not defined in the configuration file.';
   }
 
   return wtsi_clarity::util::request->new(
     'content_type'        => 'application/json',
-    'additional_headers'  => { 'X-Sequencescape-Client-ID' => $client, },
+    'additional_headers'  => { 'Cookie' => "api_key=$api_key"},
     'ss_request'          => 1,
   );
 }
