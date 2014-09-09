@@ -6,6 +6,7 @@ use Test::MockObject::Extends;
 use File::Temp qw/ tempdir /;
 use Digest::MD5;
 
+local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = q{};
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 use wtsi_clarity::util::config;
 my $config = wtsi_clarity::util::config->new();

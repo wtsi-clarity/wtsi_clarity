@@ -4,6 +4,8 @@ use Moose::Role;
 use Carp;
 use Readonly;
 use XML::LibXML;
+use Try::Tiny;
+use Mojo::Collection 'c';
 
 our $VERSION = '0.0';
 
@@ -164,6 +166,22 @@ sub trim_value {
   return $v;
 }
 
+sub grab_values {
+  my ($self, $xml_doc, $xpath) = @_;
+
+  my @nodes;
+  try {
+    @nodes = $xml_doc->findnodes($xpath)->get_nodelist();
+  } catch {
+    @nodes = ();
+  };
+
+  my @ids = c ->new(@nodes)
+              ->map( sub { $_->getValue(); } )
+              ->each();
+  return \@ids;
+}
+
 sub find_elements_first_value {
   my ($self, $doc, $xpath, $default) = @_;
   return $self->_find_elements_first_result($doc, $xpath, 'other', 0,  $default)
@@ -213,6 +231,7 @@ sub _find_elements_first_result {
     if (@elements) {
       $element = $elements[0];
     } else {
+      return $default if (defined $default) ;
       croak qq{Empty result when applying xpath with find_elements: '$xpath'.} ;
     }
   }
@@ -287,8 +306,11 @@ wtsi_clarity::util::clarity_elements
   node, or undef if not found.
 
 =head2
-  find_elements - takes some XML and an element name. Will return all the elements found.
-  
+  find_elements - takes some XML and an element name. Will return all the elements (nodes) found.
+
+=head2
+  grab_values - return a list of values extracted using an xpath
+
 =head2 create_udf_element
   creates a new UDF element, append it to the xml at the given position, and returns it
 

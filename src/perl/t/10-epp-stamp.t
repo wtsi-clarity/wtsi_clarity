@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 37;
+use Test::More tests => 38;
 use Test::Exception;
 use File::Temp qw/tempdir/;
 use File::Slurp;
@@ -175,6 +175,35 @@ my $base_uri =  'http://testserver.com:1234/here' ;
 
   throws_ok { $s->_calculate_destination_wells('I:1') } qr/Source plate must be a 96 well plate/,
     'Only accepts 96 well plates';
+}
+
+{
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/stamp_shadow';
+  use Mojo::Collection 'c';
+
+  my $expected = { '27-2001' => 'barcode-00001-0002'};
+  my $s = wtsi_clarity::epp::stamp->new(
+            process_url => 'http://clarity-ap:8080/api/v2/processes/24-16122',
+            step_url => 'some',
+            shadow_plate => 1
+          );
+
+  $s->_create_containers();
+  my $doc = $s->_create_placements_doc;
+  $doc = $s->_direct_stamp($doc);
+
+  $s->_update_plate_name_with_previous_name();
+  my $res = $s->_output_container_details;
+
+  my $details = c->new($res->findnodes( qq{/con:details/con:container} )->get_nodelist())
+    ->reduce(sub {
+      my $id = $b->findvalue( qq{\@limsid} );
+      my $barcode = $b->findvalue( qq{name/text()} );
+      $a->{$id} = $barcode;
+      $a;
+    }, {});
+
+  is_deeply($details, $expected, qq{_update_plate_name_with_previous_name should update the _output_container_details with the correct name.});
 }
 
 1;

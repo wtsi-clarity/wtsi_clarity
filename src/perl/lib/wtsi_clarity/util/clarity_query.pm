@@ -4,40 +4,82 @@ use Moose::Role;
 use Carp;
 use Mojo::Collection 'c';
 use URI::Escape;
+use XML::LibXML;
+use Data::Dumper;
 
 our $VERSION = '0.0';
+
+has '_xml_parser'  => (
+  isa             => 'XML::LibXML',
+  is              => 'ro',
+  required        => 0,
+  default         => sub { return XML::LibXML->new(); },
+);
 
 sub query_artifacts {
   my ($self, $criteria) = @_;
 
-  my $uri = $self->_build_query_url( _build_query($criteria) );
-  my $response = $self->get($uri);
+  my $uri = $self->_build_query_url( q{artifacts}, _build_query(q{artifacts}, $criteria) );
+  my $response = $self->_xml_parser->parse_string($self->get($uri));
+
+  return $response;
+}
+
+sub query_processes {
+  my ($self, $criteria) = @_;
+
+  my $uri = $self->_build_query_url( q{processes}, _build_query(q{processes}, $criteria) );
+  my $response = $self->_xml_parser->parse_string($self->get($uri));
 
   return $response;
 }
 
 sub _build_query_url
 {
-  my ($self, $query) = @_;
-  return  $self->config->clarity_api->{'base_uri'} . "/artifacts?" . uri_escape ($query);
+  my ($self, $resource, $query) = @_;
+
+  $query =~ s/\s/%20/gxms;
+
+  return  $self->config->clarity_api->{'base_uri'} . qq{/$resource?} . ($query);
 }
 
 sub _build_query
 {
-  my ($criteria) = @_;
+  my ($resource, $criteria) = @_;
 
   my $map_key = {
-    sample_id => 'samplelimsid',
-    step => 'process-type',
-    type => 'type',
+    sample_id   => 'samplelimsid',
+    artifact_id => 'inputartifactlimsid',
+    step        => 'process-type',
+    type        => 'type',
+    udf         => 'udf',
   };
   my $query = q{};
 
   return c->new(sort keys %{$criteria})
   ->map(sub {
-              my $key  = $map_key ->{$_};
+
+              my $raw_key = $_;
+              my $key  = $map_key->{$raw_key};
+              my $operator = q{=};
+              if (!$key && $raw_key =~ m/(udf.*)([=]+)/xms ) {
+                $key = $1;
+                $operator = $2;
+              }
+
+              if (!$key) {
+                croak qq{couldn't find a key to build the query! }, Dumper $criteria;
+              }
               my $crit = $criteria->{$_};
-             return qq{$key=$crit};
+              # make an array of non array value...
+              if(ref($crit) ne 'ARRAY'){
+                $crit = [$crit];
+              }
+              return c->new(@{$crit})
+                      ->map( sub {
+                              return qq[$key$operator$_];
+                            } )
+                      ->join( q{&} );
             } )
   ->join( q{&} );
 }
@@ -62,13 +104,21 @@ wtsi_clarity::util::clarity_query
 =head1 SUBROUTINES/METHODS
 
 =head2 query_artifacts
-  Takes a series of criteria (as a hash to find artifacts.
+  Takes a series of criteria (as a hash) to find artifacts.
 
   criteria hash example :
   {
     sample_id => 'ABC12345',
     step => 'PicoGreen',
     type => 'Analyte',
+  }
+
+=head2 query_processes
+  Takes a series of criteria (as a hash) to find processes.
+
+  criteria hash example :
+  {
+    sample_id => 'ABC12345',
   }
 
 =head1 CONFIGURATION AND ENVIRONMENT
