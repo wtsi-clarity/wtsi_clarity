@@ -12,14 +12,14 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 my $config = wtsi_clarity::util::config->new();
 my $base_uri = $config->clarity_api->{'base_uri'};
 
-use_ok('wtsi_clarity::epp::report');
+use_ok('wtsi_clarity::epp::report_maker');
 
-local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/report';
+local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/report_maker';
 local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 
 { # _get_artifact_ids_with_udf
-  my $m = wtsi_clarity::epp::report->new(
+  my $m = wtsi_clarity::epp::report_maker->new(
     process_url => $base_uri . '/processes/24-999'
   );
 
@@ -29,7 +29,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 }
 
 { # _get_udf_values
-  my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report->new(
+  my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report_maker->new(
     process_url => $base_uri . '/processes/24-999'
   ) );
   $m->mock(q(_required_sources), sub{
@@ -61,7 +61,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 }
 
 { # _get_udf_values
-  my $m = wtsi_clarity::epp::report->new(
+  my $m = wtsi_clarity::epp::report_maker->new(
     process_url => $base_uri . '/processes/24-999'
   );
 
@@ -81,7 +81,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 }
 
 { # _get_udf_values
-my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report->new(
+my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report_maker->new(
     process_url => $base_uri . '/processes/24-999'
   ) );
   $m->mock(q(_required_sources), sub{
@@ -104,7 +104,7 @@ my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report->new(
 }
 
 { # _build__all_udf_values
-  my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report->new(
+  my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report_maker->new(
     process_url => $base_uri . '/processes/24-999'
   ) );
   $m->mock(q(_required_sources), sub{
@@ -145,7 +145,7 @@ my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report->new(
     ' Word3 word4 ' => '_get_word3_word4',
     };
   while (my ($test, $expected) = each %{$testdata} ) {
-    my $res = wtsi_clarity::epp::report::_get_nethod_name_from_header($test);
+    my $res = wtsi_clarity::epp::report_maker::_get_nethod_name_from_header($test);
 
     cmp_ok($res, 'eq', $expected, qq{_get_nethod_name_from_header should return the correct name.} );
   }
@@ -156,7 +156,7 @@ my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report->new(
     'Status' => '_get_status',
     'hello' => '_get_not_implemented_yet',
     };
-  my $m = wtsi_clarity::epp::report->new(
+  my $m = wtsi_clarity::epp::report_maker->new(
     process_url => $base_uri . '/processes/24-999'
   );
   while (my ($test, $expected) = each %{$testdata} ) {
@@ -167,7 +167,7 @@ my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report->new(
 }
 
 { # _get_first_missing_necessary_data
-  my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report->new(
+  my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report_maker->new(
     process_url => $base_uri . '/processes/24-999'
   ) );
   $m->mock(q(_required_sources), sub{
@@ -187,7 +187,7 @@ my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report->new(
 }
 
 { # _get_first_missing_necessary_data
-  my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report->new(
+  my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report_maker->new(
     process_url => $base_uri . '/processes/24-999'
   ) );
   $m->mock(q(_required_sources), sub{
@@ -211,7 +211,7 @@ my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report->new(
 }
 
 { # _build__all_udf_values
-  my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report->new(
+  my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report_maker->new(
     process_url => $base_uri . '/processes/24-999'
   ) );
   $m->mock(q(_required_sources), sub{
@@ -235,19 +235,5 @@ my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report->new(
    qr{Impossible to produce the report: "Impossible Value" could not be found on the genealogy of some samples. Have you run all the necessary steps on the samples?},
    q{_main_method should croak if not all the data are present.} ;
 }
-
-######################################################
-# WIP use this to create the output file...
-# {
-#   print qq{_main_method\n};
-#   my $m = wtsi_clarity::epp::report->new(
-#     process_url => $base_uri . '/processes/24-999'
-#   );
-
-#   my $res = $m->_main_method();
-# }
-
-
-
 
 1;

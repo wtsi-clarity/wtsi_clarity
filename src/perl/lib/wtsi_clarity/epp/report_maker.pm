@@ -7,6 +7,8 @@ use Mojo::Collection 'c';
 use URI::Escape;
 use List::Compare;
 use Try::Tiny;
+use wtsi_clarity::util::textfile;
+use wtsi_clarity::util::report;
 
 our $VERSION = '0.0';
 
@@ -14,14 +16,14 @@ extends 'wtsi_clarity::epp';
 with 'wtsi_clarity::util::clarity_elements';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $PROCESS_ID_PATH          => q(/prc:process/@limsid);
-Readonly::Scalar my $INPUT_ARTIFACTS_IDS_PATH => q(/prc:process/input-output-map/input/@limsid);
-Readonly::Scalar my $ART_DETAIL_SAMPLE_IDS_PATH => q{/art:details/art:artifact/sample/@limsid};
-Readonly::Scalar my $SMP_DETAIL_ARTIFACTS_IDS_PATH => q{/smp:details/smp:sample/artifact/@limsid};
+Readonly::Scalar my $PROCESS_ID_PATH                        => q(/prc:process/@limsid);
+Readonly::Scalar my $INPUT_ARTIFACTS_IDS_PATH               => q(/prc:process/input-output-map/input/@limsid);
+Readonly::Scalar my $ART_DETAIL_SAMPLE_IDS_PATH             => q{/art:details/art:artifact/sample/@limsid};
+Readonly::Scalar my $SMP_DETAIL_ARTIFACTS_IDS_PATH          => q{/smp:details/smp:sample/artifact/@limsid};
 Readonly::Scalar my $ARTEFACTS_ARTEFACT_CONTAINTER_IDS_PATH => q{/art:details/art:artifact/location/container/@limsid};
-Readonly::Scalar my $ARTEFACTS_ARTEFACT_IDS_PATH => q{/art:artifacts/artifact/@limsid};
-Readonly::Scalar my $THOUSANDTH  => 0.001;
-Readonly::Scalar my $DILUTION_COMPENSATION_FACTOR  => 50;
+Readonly::Scalar my $ARTEFACTS_ARTEFACT_IDS_PATH            => q{/art:artifacts/artifact/@limsid};
+Readonly::Scalar my $THOUSANDTH                             => 0.001;
+Readonly::Scalar my $DILUTION_COMPENSATION_FACTOR           => 50;
 
 Readonly::Scalar my $UDF_VOLUME         => qq{Volume};
 Readonly::Scalar my $UDF_CONCENTRATION  => qq{Concentration};
@@ -29,6 +31,25 @@ Readonly::Scalar my $PRC_VOLUME         => qq{Volume Check (SM)};
 Readonly::Scalar my $PRC_CONCENTRATION  => qq{Picogreen Analysis (SM)};
 ## use critic
 
+has 'report_file' => (
+  is => 'ro',
+  isa => 'wtsi_clarity::util::textfile',
+  required => 0,
+  lazy_build => 1,
+);
+
+sub _build_report_file {
+  my ($self) = @_;
+  my $files = [];
+  return wtsi_clarity::util::report->new()->get_file($self->internal_csv_output);
+}
+
+has 'internal_csv_output' => (
+  is => 'ro',
+  isa => 'ArrayRef',
+  required => 0,
+  lazy_build => 1,
+);
 
 override 'run' => sub {
   my $self= shift;
@@ -39,7 +60,7 @@ override 'run' => sub {
 
 sub _main_method{
   my ($self) = @_;
-  my $data = $self->_generate_csv_content();
+  my $data = $self->internal_csv_output();
 
   my $missing_data = $self->_get_first_missing_necessary_data();
   if ($missing_data) {
@@ -47,85 +68,27 @@ sub _main_method{
   }
 
   my $process_id  = $self->find_elements_first_value($self->process_doc, $PROCESS_ID_PATH);
-  _saveas($data, q{./}.$process_id);
+  $self->report_file->saveas(q{./}.$process_id);
   return;
 }
 
-#######################################################
-# WIP : should use a CSV class to deal with this !!
-sub _saveas {
-  my ($content, $path) = @_;
-
-  open my $fh, '>', $path
-    or confess qq{Could not create/open file '$path'.};
-  foreach my $line (@{$content})
-  {
-      ## no critic(InputOutput::RequireCheckedSyscalls)
-      print {$fh} qq{$line\n}; # Print each entry in our array to the file
-      ## use critic
-  }
-  close $fh
-    or confess qq{ Unable to close $path.};
-
-  return $path;
-};
-
-sub _generate_csv_content {
+sub _build_internal_csv_output {
   my ($self) = @_;
-  my @headers =("Status",
-                "Study",
-                "Supplier",
-                "Sanger Sample Name",
-                "Supplier Sample Name",
-                "Plate",
-                "Well",
-                "Supplier Volume",
-                "Supplier Gender",
-                "Concentration",
-                "Measured Volume",
-                "Total micrograms",
-                "Fluidigm Count",
-                "Fluidigm Gender",
-                # "Pico",
-                # "Gel",
-                # "Qc Status",
-                # "QC started date",
-                # "Pico date",
-                # "Gel QC date",
-                # "Seq stamp date",
-                "Genotyping Status",
-                "Genotyping Chip",
-                "Genotyping Infinium Barcode",
-                "Genotyping Barcode",
-                "Genotyping Well Cohort",
-                # "Country of Origin",
-                # "Geographical Region",
-                # "Ethnicity",
-                # "DNA Source",
-                # "Is Resubmitted",
-                # "Control",
-              );
-
-  my $headers_line = join ', ', @headers;
-
+  my $report = wtsi_clarity::util::report->new();
   my @content =c->new(@{$self->_sample_ids})
                 ->map( sub {
                   my $sample_id = $_;
-                  return c->new(@headers)
-                          ->map( sub {
-                            my $method = $self->_get_method_from_header($_);
-                            return $self->$method($sample_id);
-                          })
-                          ->join( q{, } );
+                  return c->new(@{$report->headers})
+                          ->reduce( sub {
+                            my $method = $self->_get_method_from_header($b);
+                            my $value = $self->$method($sample_id);
+                            $a->{$b} = $value;
+                            $a;
+                          }, {});
                 })
                 ->each();
-  unshift @content, $headers_line;
-
   return \@content;
 }
-# WIP
-#######################################################
-
 
 sub _get_method_from_header {
   my ($self,$header) = @_;
@@ -545,15 +508,15 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::epp::report
+wtsi_clarity::epp::report_maker
 
 =head1 SYNOPSIS
 
-  wtsi_clarity::epp::report->new(process_url => 'http://my.com/processes/3345')->run();
+  wtsi_clarity::epp::report_maker->new(process_url => 'http://my.com/processes/3345')->run();
 
 =head1 DESCRIPTION
 
-  Creates a csv QC report, and upload it on the server, as an output for the step.
+  Creates a QC report, and upload it on the server, as an output for the step.
   Activate the stock plate corresponding to the sample that went through the QC process.
 
 =head1 SUBROUTINES/METHODS
@@ -561,7 +524,6 @@ wtsi_clarity::epp::report
 =head2 process_url - required attribute
 
 =head2 run - executes the callback
-
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
@@ -582,6 +544,12 @@ wtsi_clarity::epp::report
 =item URI::Escape
 
 =item List::Compare
+
+=item Try::Tiny
+
+=item wtsi_clarity::util::textfile
+
+=item wtsi_clarity::util::report
 
 =back
 
