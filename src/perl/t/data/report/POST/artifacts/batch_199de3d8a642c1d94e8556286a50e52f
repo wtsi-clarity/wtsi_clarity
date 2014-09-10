@@ -1,0 +1,50 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:art="http://genologics.com/ri/artifact" xmlns:file="http://genologics.com/ri/file" xmlns:udf="http://genologics.com/ri/userdefined">
+
+
+  <art:artifact limsid="2-1001" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-1001">
+    <name>1_STA</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process limsid="24-2001" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-2001"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+      <container limsid="27-2001" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2001"/>
+      <value>A:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample limsid="SAMPLE0001" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/SAMPLE0001"/>
+    <udf:field name="Concentration" type="Numeric">25</udf:field>
+  </art:artifact>
+
+  <art:artifact limsid="2-1002" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-1002">
+    <name>1_STA</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process limsid="24-2001" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-2001"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+      <container limsid="27-2001" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2001"/>
+      <value>A:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample limsid="SAMPLE0002" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/SAMPLE0002"/>
+    <udf:field name="Concentration" type="Numeric">26</udf:field>
+  </art:artifact>
+
+  <art:artifact limsid="2-1003" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-1003">
+    <name>1_STA</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process limsid="24-2001" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-2001"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+      <container limsid="27-2001" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2001"/>
+      <value>A:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample limsid="SAMPLE0003" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/SAMPLE0003"/>
+    <udf:field name="Concentration" type="Numeric">27</udf:field>
+  </art:artifact>
+
+</art:details>

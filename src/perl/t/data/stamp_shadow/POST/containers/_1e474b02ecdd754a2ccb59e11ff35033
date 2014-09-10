@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="yes"?>
+<con:container xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2001" limsid="27-2001">
+    <name>27-2001</name>
+    <type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containertypes/4" name="96 Well Plate"/>
+    <occupied-wells>1</occupied-wells>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-1001" limsid="2-1001">
+        <value>A:1</value>
+    </placement>
+    <state>Populated</state>
+</con:container>

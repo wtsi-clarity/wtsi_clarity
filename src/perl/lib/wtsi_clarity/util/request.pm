@@ -362,6 +362,7 @@ sub _create_path {
         if (!$content) { $content = q/(No payload)/; }
         croak qq{Wrong URL format for caching.\n    $type\n    $url  (in short : $short_url )\n    with "$content"\n    Is it matching the base url correct ? ($base_uri)\n   }
     }
+
     return $path;
 }
 
