@@ -1,4 +1,4 @@
-package wtsi_clarity::epp::report;
+package wtsi_clarity::epp::report_maker;
 
 use Moose;
 use Carp;
