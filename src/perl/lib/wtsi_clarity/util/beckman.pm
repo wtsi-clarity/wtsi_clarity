@@ -35,11 +35,6 @@ has 'headers' => (
 sub get_file {
   my ($self, $csv_data) = @_;
 
-
-  if (!defined $self->writer_type) {
-    croak qq{Writer for Becman is not implemented yet.}
-  }
-
   my $factory = wtsi_clarity::util::csv::factory->new();
   return $factory->create(type    => $self->writer_type,
                           headers => $self->headers,

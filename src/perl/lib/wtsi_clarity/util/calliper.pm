@@ -30,10 +30,6 @@ has 'headers' => (
 sub interpret {
   my ($self, $file_content, $barcode) = @_;
 
-  if (!defined $self->reader_type) {
-    croak qq{Reader for Calliper is not implemented yet.}
-  }
-
   my $factory = wtsi_clarity::util::csv::factory->new();
   return $factory->create(type          => $self->reader_type,
                           headers       => $self->headers,
