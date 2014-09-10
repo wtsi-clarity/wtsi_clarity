@@ -113,7 +113,7 @@ sub _generate_csv_content {
                   my $sample_id = $_;
                   return c->new(@headers)
                           ->map( sub {
-                            my $method = $self->_get_nethod_from_header($_);
+                            my $method = $self->_get_method_from_header($_);
                             return $self->$method($sample_id);
                           })
                           ->join( q{, } );
@@ -127,7 +127,7 @@ sub _generate_csv_content {
 #######################################################
 
 
-sub _get_nethod_from_header {
+sub _get_method_from_header {
   my ($self,$header) = @_;
   my $name = _get_nethod_name_from_header($header);
   if ($self->can($name)) {
