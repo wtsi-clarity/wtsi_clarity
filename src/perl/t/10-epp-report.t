@@ -151,7 +151,7 @@ my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report->new(
   }
 }
 
-{ # _get_nethod_from_header  (batch_199de3d8a642c1d94e8556286a50e52f)
+{ # _get_method_from_header  (batch_199de3d8a642c1d94e8556286a50e52f)
   my $testdata = {
     'Status' => '_get_status',
     'hello' => '_get_not_implemented_yet',
@@ -160,9 +160,9 @@ my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::report->new(
     process_url => $base_uri . '/processes/24-999'
   );
   while (my ($test, $expected) = each %{$testdata} ) {
-    my $res = $m->_get_nethod_from_header($test);
+    my $res = $m->_get_method_from_header($test);
 
-    is_deeply($res, $expected, qq{_get_nethod_from_header should return the correct name.} );
+    is_deeply($res, $expected, qq{_get_method_from_header should return the correct name.} );
   }
 }
 
