@@ -3,6 +3,7 @@ package wtsi_clarity::genotyping::fluidigm::file_wrapper;
 use Moose;
 use Carp;
 use Readonly;
+use English qw{-no_match_vars};
 
 use wtsi_clarity::util::types;
 use wtsi_clarity::util::string qw/trim/;
@@ -14,52 +15,60 @@ Readonly::Scalar my $HEADER_BARCODE_COL => 2;
 
 Readonly::Scalar my $HEADER_CONF_THRESHOLD_ROW => 5;
 Readonly::Scalar my $HEADER_CONF_THRESHOLD_COL => 1;
+Readonly::Scalar my $EXPECTED_NUM_COLUMNS => 12;
 
-has 'file_name' =>
-  (is       => 'ro',
-   isa      => 'WtsiClarityReadableFile',
-   required => 1);
+has 'file_name' => (
+  is       => 'ro',
+  isa      => 'WtsiClarityReadableFile',
+  required => 1,
+);
 
-has 'header' =>
-  (is     => 'ro',
-   isa    => 'ArrayRef[Str]',
-   writer => '_write_header');
+has 'header' => (
+  is     => 'ro',
+  isa    => 'ArrayRef[Str]',
+  writer => '_write_header',
+);
 
-has 'column_names' =>
-  (is     => 'ro',
-   isa    => 'ArrayRef[Str]',
-   writer => '_write_column_names');
+has 'column_names' => (
+  is     => 'ro',
+  isa    => 'ArrayRef[Str]',
+  writer => '_write_column_names',
+);
 
-has 'fluidigm_barcode' =>
-  (is       => 'ro',
-   isa      => 'Str',
-   required => 1,
-   lazy     => 1,
-   builder  => '_build_fluidigm_barcode');
+has 'fluidigm_barcode' => (
+  is       => 'ro',
+  isa      => 'Str',
+  required => 1,
+  lazy     => 1,
+  builder  => '_build_fluidigm_barcode',
+);
 
-has 'content' =>
-  (is      => 'ro',
-   isa     => 'HashRef',
-   default => sub { return {} },
-   writer  => '_write_content');
+has 'content' => (
+  is      => 'ro',
+  isa     => 'HashRef',
+  default => sub { return {} },
+  writer  => '_write_content',
+);
 
 sub BUILD {
   my ($self) = @_;
 
   open my $in, '<:encoding(utf8)', $self->file_name
     or croak "Failed to open Fluidigm export file '",
-                     $self->file_name, "': $!";
+                     $self->file_name, "': $OS_ERROR";
   my ($header, $column_names, $sample_data) = $self->_parse_fluidigm_table($in);
-  close $in;
+  close $in or croak "Unable to close Fluidigm export file";
 
   $self->_write_header($header);
   $self->_write_column_names($column_names);
   $self->_write_content($sample_data);
+
+  return;
 }
 
 sub _parse_fluidigm_table {
   my ($self, $fh) = @_;
-  binmode($fh, ':utf8');
+  binmode $fh, ':encoding(utf8)';
 
   # True if we are in the header lines from 'Chip Run Info' to 'Allele
   # Axis Mapping' inclusive
@@ -75,7 +84,6 @@ sub _parse_fluidigm_table {
 
   # For error reporting
   my $line_num = 0;
-  my $expected_num_columns = 12;
   my $num_sample_rows = 0;
 
   my @header;
@@ -83,48 +91,49 @@ sub _parse_fluidigm_table {
 
   while (my $line = <$fh>) {
     ++$line_num;
-    chomp($line);
-    next if $line =~ m/^\s*$/;
+    chomp $line;
+    next if $line =~ m/^\s*$/sxm;
 
-    if ($line =~ /^Chip Run Info/) { $in_header = 1 }
-    if ($line =~ /^Experiment/)    { $in_header = 0 }
-    if ($line =~ /^ID/)            { $in_column_names = 1 }
-    if ($line =~ /^S[0-9]+\-[A-Z][0-9]+/) {
+    ## no critic ()
+    if ($line =~ /^Chip Run Info/sm) { $in_header = 1 }
+    if ($line =~ /^Experiment/sm)    { $in_header = 0 }
+    if ($line =~ /^ID/sxm)            { $in_column_names = 1 }
+    if ($line =~ /^S\d+\-[A-Z]\d+/sm) {
       $in_column_names = 0;
       $in_sample_block = 1;
     }
 
     if ($in_header) {
-      push(@header, $line);
+      push @header, $line;
       next;
     }
 
     if ($in_column_names) {
-      @column_names = map { trim($_) } split(',', $line);
+      @column_names = map { trim $_ } split /,/sxm, $line;
       my $num_columns = scalar @column_names;
-      unless ($num_columns == $expected_num_columns) {
-        croak "Parse error: expected $expected_num_columns ",
+      if ($num_columns != $EXPECTED_NUM_COLUMNS) {
+        croak "Parse error: expected $EXPECTED_NUM_COLUMNS ",
                           "columns, but found $num_columns at line $line_num";
       }
       next;
     }
 
     if ($in_sample_block) {
-      my @columns = map { trim($_) } split(',', $line);
+      my @columns = map { trim $_ } split /,/sxm, $line;
       my $num_columns = scalar @columns;
-      unless ($num_columns == $expected_num_columns) {
-        croak "Parse error: expected $expected_num_columns ",
+      if ($num_columns != $EXPECTED_NUM_COLUMNS) {
+        croak "Parse error: expected $EXPECTED_NUM_COLUMNS ",
                           "columns, but found $num_columns at line $line_num";
       }
 
       my $id = $columns[0];
-      my ($sample_address, $assay_num) = split('-', $id);
+      my ($sample_address, $assay_num) = split /-/sxm, $id;
 
-      unless ($sample_address) {
+      if (!$sample_address) {
         croak "Parse error: no sample address in '$id' ",
                           "at line $line_num";
       }
-      unless ($assay_num) {
+      if (!$assay_num) {
         croak "Parse error: no assay number in '$id' ",
                           "at line $line_num";
       }
@@ -133,27 +142,28 @@ sub _parse_fluidigm_table {
         $sample_data{$sample_address} = [];
       }
 
-      push(@{$sample_data{$sample_address}}, \@columns);
+      push @{$sample_data{$sample_address}}, \@columns;
       $num_sample_rows++;
       next;
     }
   }
 
-  unless (@header) {
+  if (!@header) {
     croak "Parse error: no header rows found";
   }
-  unless (@column_names) {
+  if (!@column_names) {
     croak "Parse error: no column names found";
   }
 
+  ## no critic (MagicNumbers)
   if ($num_sample_rows == (96 * 96)) {
-    unless (scalar keys %sample_data == 96) {
+    if (scalar keys %sample_data != 96) {
       croak "Parse error: expected data for 96 samples, found ",
                         scalar keys %sample_data;
     }
   }
   elsif ($num_sample_rows == (192 * 24)) {
-    unless (scalar keys %sample_data == 192) {
+    if (scalar keys %sample_data != 192) {
       croak "Parse error: expected data for 192 samples, found ",
                         scalar keys %sample_data;
     }
@@ -203,6 +213,8 @@ wtsi_clarity::genotyping::fluidigm::file_wrapper
 =item Carp
 
 =item Readonly
+
+=item English
 
 =back
 

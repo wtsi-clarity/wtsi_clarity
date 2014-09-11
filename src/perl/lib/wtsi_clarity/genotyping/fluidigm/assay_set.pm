@@ -36,7 +36,12 @@ sub _build_call_rate {
   my $self = shift;
 
   my $denominator = scalar @{$self->assay_results};
-  my $numerator = reduce { $a++ if $b->is_call; return $a; } 0, @{$self->assay_results};
+  my $numerator = reduce {
+    if ($b->is_call) {
+      $a++;
+    };
+    return $a;
+  } 0, @{$self->assay_results};
 
   return "$numerator/$denominator";
 }
@@ -75,8 +80,9 @@ sub BUILD {
 
   foreach my $assay_result (@{$self->file_content}) {
 
-    my $num_fields = scalar @$assay_result;
-    unless ($num_fields == 12) {
+## no critic (MagicNumbers)
+    my $num_fields = scalar @{$assay_result};
+    if ($num_fields != 12) {
       croak "Invalid Fluidigm record: expected 12 fields but found $num_fields";
     }
 
@@ -94,14 +100,18 @@ sub BUILD {
       x_intensity    => $assay_result->[10],
       y_intensity    => $assay_result->[11],
     );
+## use critic
 
     push @assays, $assay;
-    push @gender_set, $assay->final if $assay->is_gender_marker;
+    if ($assay->is_gender_marker) {
+      push @gender_set, $assay->final;
+    }
   }
 
   $self->write_assay_results(\@assays);
   $self->write_gender_set(\@gender_set);
 
+  return;
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -151,22 +161,29 @@ for a number of SNPs.
 
 =back
 
+=head1 CONFIGURATION AND ENVIRONMENT
+
 =head1 AUTHOR
 
-Chris Smith <cs24@sanger.ac.uk>
+Chris Smith E<lt>cs24@sanger.ac.ukE<gt>
 
-=head1 COPYRIGHT AND DISCLAIMER
+=head1 LICENSE AND COPYRIGHT
 
-Copyright (c) 2014 Genome Research Limited. All Rights Reserved.
+Copyright (C) 2014 Genome Research Ltd.
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the Perl Artistic License or the GNU General
-Public License as published by the Free Software Foundation, either
-version 3 of the License, or (at your option) any later version.
+This file is part of wtsi_clarity project.
+
+wtsi_clarity is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 =cut

@@ -23,8 +23,8 @@ sub trim {
   my ($str) = @_;
 
   my $copy = $str;
-  $copy =~ s/^\s*//;
-  $copy =~ s/\s*$//;
+  $copy =~ s/^\s*//sxm;
+  $copy =~ s/\s*$//sxm;
 
   return $copy;
 }

@@ -60,7 +60,7 @@ sub _build__output_artifacts {
   my $self = shift;
 
   my $ids = $self->grab_values($self->process_doc, $OUTPUT_ARTIFACTS_URI_PATH);
-  my @uris = map { join '/', $self->config->clarity_api->{'base_uri'}, 'artifacts', $_ } @{$ids};
+  my @uris = map { join q{/}, $self->config->clarity_api->{'base_uri'}, 'artifacts', $_ } @{$ids};
 
   return $self->request->batch_retrieve('artifacts', \@uris);
 }
@@ -81,7 +81,10 @@ override 'run' => sub {
 
     # convert location to well position
     my $well_location = 'S';
+
+    ## no critic (ValuesAndExpressions::ProhibitMagicNumbers)
     $well_location .= sprintf '%02d', $self->well_location_index($location, 8, 12);
+    ## use critic
 
     # find that sample in sample_assay_set, next if it wasn't done for some reason...
     next if (!exists $sample_assay_set{$well_location});

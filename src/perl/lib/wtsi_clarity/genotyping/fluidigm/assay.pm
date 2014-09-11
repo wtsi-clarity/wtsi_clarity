@@ -44,7 +44,7 @@ sub is_control {
   #
   # or some combination of the above.
 
-  return ($self->snp_assayed eq '' or
+  return ($self->snp_assayed eq q{} or
           $self->sample_name eq $EMPTY_NAME or
           $self->type        eq $NO_TEMPLATE_CONTROL);
 }
@@ -62,7 +62,7 @@ sub is_control {
 sub is_call {
   my ($self) = @_;
 
-  $self->final ne $NO_CALL;
+  return $self->final ne $NO_CALL;
 }
 
 =head2 is_gender_marker
@@ -78,7 +78,7 @@ sub is_call {
 sub is_gender_marker {
   my $self = shift;
 
-  return $self->snp_assayed =~ /^GS/;
+  return $self->snp_assayed =~ /^GS/sxm;
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -91,29 +91,64 @@ __END__
 
 =head1 NAME
 
-WTSI::NPG::Genotyping::Fluidigm::AssayResult
+wtsi_clarity::genotyping::fluidigm::assay
+
+=head1 SYNOPSIS
+
+  my $assay = wtsi_clarity::genotyping::fluidigm::assay->new(
+      assay          => 'S26-A01',
+      snp_assayed    => '',
+      x_allele       => 'C',
+      y_allele       => 'T',
+      sample_name    => 'ABC0123456789',
+      type           => 'Unknown',
+      auto           => 'No Call',
+      confidence     => '0.1',
+      final          => 'XY',
+      converted_call => 'C:T',
+      x_intensity    => '0.1',
+      y_intensity    => '0.1'
+    );
 
 =head1 DESCRIPTION
 
-A class which represents the result of a Fluidigm assay of one SNP for
-one sample.
+  Respresents a single assay
+
+=head1 SUBROUTINES/METHODS
+
+=head1 CONFIGURATION AND ENVIRONMENT
+
+=head1 DEPENDENCIES
+
+=over
+
+=item Moose
+
+=item Readonly
+
+=back
 
 =head1 AUTHOR
 
-Keith James <kdj@sanger.ac.uk>
+Chris Smith E<lt>cs24@sanger.ac.ukE<gt>
 
-=head1 COPYRIGHT AND DISCLAIMER
+=head1 LICENSE AND COPYRIGHT
 
-Copyright (c) 2014 Genome Research Limited. All Rights Reserved.
+Copyright (C) 2014 Genome Research Ltd.
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the Perl Artistic License or the GNU General
-Public License as published by the Free Software Foundation, either
-version 3 of the License, or (at your option) any later version.
+This file is part of wtsi_clarity project.
+
+wtsi_clarity is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 =cut
