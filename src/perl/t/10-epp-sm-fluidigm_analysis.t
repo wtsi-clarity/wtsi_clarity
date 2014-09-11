@@ -44,5 +44,15 @@ sub _write_config {
     process_url => 'http://clartiy-ap/processes/24-16130'
   );
 
-  is($epp->_get_filepath, '/fake/dir/5345895674125', 'Successfully gets the right filepath');
+  is($epp->_filepath, 't/data/genotyping/fluidigm/5345895674125', 'Successfully gets the right filepath');
 }
+
+# {
+#   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
+#   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = $test_dir;
+#   # local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
+
+#   my $epp = wtsi_clarity::epp::sm::fluidigm_analysis->new(
+#     process_url => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-16927/'
+#   )->run();
+# }

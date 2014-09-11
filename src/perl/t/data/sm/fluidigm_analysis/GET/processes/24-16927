@@ -1,5 +1,5 @@
 <?xml version="1.0" standalone="yes"?>
-<prc:process limsid="24-16130" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-16130" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+<prc:process limsid="24-16927" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-16927" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
   <type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processtypes/64">Fluidigm 96.96 IFC Analysis (SM)</type>
   <technician uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/19">
     <first-name>Christopher</first-name>
@@ -7,10 +7,10 @@
   </technician>
   <input-output-map>
     <input limsid="SMI102A104PA1" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/SMI102A104PA1?state=1233" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/SMI102A104PA1?state=1233"/>
-    <output limsid="92-38861" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/92-38861?state=16811"/>
+    <output limsid="2-40655" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-40655?state=17705"/>
   </input-output-map>
   <input-output-map>
     <input limsid="SMI102A96PA1" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/SMI102A96PA1?state=1181" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/SMI102A96PA1?state=1181"/>
-    <output limsid="92-38861" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/92-38861?state=16811"/>
+    <output limsid="2-40656" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-40656?state=17706"/>
   </input-output-map>
 </prc:process>

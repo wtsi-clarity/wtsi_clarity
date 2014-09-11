@@ -4,10 +4,18 @@ use Moose;
 use Carp;
 use Readonly;
 
+use wtsi_clarity::genotyping::fluidigm;
+with qw/ wtsi_clarity::util::clarity_elements wtsi_clarity::util::well_mapper /;
+
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $FIRST_ANALYTE_PATH => q{ /prc:process/input-output-map[1]/input/@uri };
 Readonly::Scalar my $CONTAINER_PATH => q{ /art:artifact/location/container/@uri };
 Readonly::Scalar my $CONTAINER_NAME => q{ /con:container/name };
+Readonly::Scalar my $OUTPUT_ARTIFACTS_URI_PATH => q{ /prc:process/input-output-map/output/@limsid };
+Readonly::Scalar my $BATCH_ARTIFACT_PATH => q{ /art:details/art:artifact };
+Readonly::Scalar my $LOCATION_PATH => q{ location/value };
+Readonly::Scalar my $CALL_RATE => q{WTSI Fluidigm Call Rate (SM)};
+Readonly::Scalar my $GENDER => q{WTSI Fluidigm Gender (SM)};
 ## use critic
 
 extends 'wtsi_clarity::epp';
@@ -16,7 +24,7 @@ with 'wtsi_clarity::util::clarity_elements_fetcher_role_util';
 our $VERSION = '0.0';
 
 has '_filename' => (
-  isa => 'Any',
+  isa => 'Str',
   is  => 'ro',
   required => 0,
   lazy_build => 1,
@@ -29,21 +37,67 @@ sub _build__filename {
   return $container->findvalue($CONTAINER_NAME);
 }
 
-sub _get_filepath {
+has '_filepath' => (
+  isa => 'Str',
+  is  => 'ro',
+  required => 0,
+  lazy_build => 1,
+);
+
+sub _build__filepath {
   my $self = shift;
   return join q{/}, $self->config->robot_file_dir->{'fluidigm_analysis'}, $self->_filename;
+}
+
+has '_output_artifacts' => (
+  isa => 'XML::LibXML::Document',
+  is  => 'ro',
+  required => 0,
+  lazy_build => 1,
+);
+
+sub _build__output_artifacts {
+  my $self = shift;
+
+  my $ids = $self->grab_values($self->process_doc, $OUTPUT_ARTIFACTS_URI_PATH);
+  my @uris = map { join '/', $self->config->clarity_api->{'base_uri'}, 'artifacts', $_ } @{$ids};
+
+  return $self->request->batch_retrieve('artifacts', \@uris);
 }
 
 override 'run' => sub {
   my $self = shift;
   super();
 
-  # Find file
-  my $filepath = $self->_get_filepath();
-
   # Parse the file
+  my %sample_assay_set = wtsi_clarity::genotyping::fluidigm
+                          ->new(directory => $self->_filepath)
+                          ->parse();
 
-  # Update the sample with call rate and gender
+  # Loop through sample assay set updating artifacts
+  foreach my $artifact ($self->_output_artifacts->findnodes($BATCH_ARTIFACT_PATH)->get_nodelist()) {
+    # get location of the artifact
+    my $location = $artifact->findvalue($LOCATION_PATH);
+
+    # convert location to well position
+    my $well_location = 'S';
+    $well_location .= sprintf '%02d', $self->well_location_index($location, 8, 12);
+
+    # find that sample in sample_assay_set, next if it wasn't done for some reason...
+    next if (!exists $sample_assay_set{$well_location});
+
+    my $sample_assay = $sample_assay_set{$well_location};
+
+    # update artifact with gender and call rate
+    my $call_rate_node = $self->create_udf_element($self->_output_artifacts, $CALL_RATE, $sample_assay->call_rate);
+    my $gender_node = $self->create_udf_element($self->_output_artifacts, $GENDER, $sample_assay->gender);
+
+    $artifact->appendChild($call_rate_node);
+    $artifact->appendChild($gender_node);
+  }
+
+  # update artifacts
+  $self->request->batch_update('artifacts', $self->_output_artifacts);
 
   return;
 };
