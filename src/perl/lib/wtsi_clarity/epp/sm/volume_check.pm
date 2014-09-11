@@ -34,17 +34,17 @@ sub _build_input {
 }
 
 has 'output'  => (
-  isa             => 'Str',
-  is              => 'ro',
-  required        => 1,
+  isa      => 'Str',
+  is       => 'ro',
+  required => 1,
 );
 
 has 'robot_file'  => (
-  isa             => 'WtsiClarityReadableFile',
-  is              => 'ro',
-  required        => 0,
-  traits          => [ 'NoGetopt' ],
-  lazy_build      => 1,
+  isa        => 'WtsiClarityReadableFile',
+  is         => 'ro',
+  required   => 0,
+  traits     => [ 'NoGetopt' ],
+  lazy_build => 1,
 );
 
 sub _build_robot_file {

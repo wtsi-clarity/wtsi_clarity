@@ -1,42 +1,51 @@
-package wtsi_clarity::util::types;
+package wtsi_clarity::util::string;
 
-use Moose::Util::TypeConstraints;
+use strict;
+use warnings;
+
+use base 'Exporter';
 
 our $VERSION = '0.0';
 
-subtype 'WtsiClarityReadableFile'
-      => as 'Str'
-      => where { -r $_ };
+our @EXPORT_OK = qw/trim/;
 
-subtype 'WtsiClarityExecutable'
-      => as 'Str'
-      => where { -x $_ };
+=head2 trim
 
-subtype 'WtsiClarityDirectory'
-      => as 'Str'
-      => where { -d $_ };
+  Arg [1]    : string
 
-no Moose::Util::TypeConstraints;
+  Example    : $trimmed = trim("  foo ");
+  Description: Trim leading and trailing whitespace, withina  line, from a copy
+               of the argument. Return the trimmed string.
+  Returntype : Str
+
+=cut
+sub trim {
+  my ($str) = @_;
+
+  my $copy = $str;
+  $copy =~ s/^\s*//sxm;
+  $copy =~ s/\s*$//sxm;
+
+  return $copy;
+}
 
 1;
+
 __END__
 
 =head1 NAME
 
-wtsi_clarity::util::types
+wtsi_clarity::util::string
 
 =head1 SYNOPSIS
 
-  package mypackage;
-  use wtsi_clarity::util::types;
+use wtsi_clarity::util::string qw/trim/;
 
-  has 'dir_path'  => (
-    isa  => 'WtsiClarityDirectory',
-  );
+my $trimmed_string = trim($str);
 
 =head1 DESCRIPTION
 
-  Custom Moose types for the wtsi_clarity project.
+Currently just one utility method for manipulting strings
 
 =head1 SUBROUTINES/METHODS
 
@@ -44,19 +53,13 @@ wtsi_clarity::util::types
 
 =head1 DEPENDENCIES
 
-=over
-
-=item Moose::Util::TypeConstraints
-
-=back
-
 =head1 AUTHOR
 
-Author: Marina Gourtovaia E<lt>mg8@sanger.ac.ukE<gt>
+Chris Smith E<lt>cs24@sanger.ac.ukE<gt>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (C) 2014 GRL
+Copyright (C) 2014 Genome Research Ltd.
 
 This file is part of wtsi_clarity project.
 
