@@ -31,6 +31,10 @@ sub batch_retrieve {
   my $links_elem = XML::LibXML::Element->new('links');
   $links_elem->setNamespace('http://genologics.com/ri', 'ri');
 
+  if (!@{$links}) {
+    return XML::LibXML::Document->createDocument();
+  }
+
   foreach my $link (@{$links}) {
     my $link_elem = XML::LibXML::Element->new('link');
     $link_elem->setAttribute('uri', $link);

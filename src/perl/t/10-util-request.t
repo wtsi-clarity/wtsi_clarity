@@ -1,11 +1,12 @@
 use strict;
 use warnings;
-use Test::More tests => 20;
+use Test::More tests => 15;
 use Test::Exception;
 use Test::MockObject::Extends;
 use File::Temp qw/ tempdir /;
 use Digest::MD5;
 
+local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = q{};
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 use wtsi_clarity::util::config;
 my $config = wtsi_clarity::util::config->new();
@@ -142,58 +143,6 @@ sub read_file {
     is($r->$method($test_url, $payload), qq/$method_verb - $test_url/, qq{reads from the cache when SAVE2WTSICLARITY_WEBCACHE is false ($method_verb - $test_url)} )
   }
 
-}
-
-{
-  SKIP: {
-    if ( !$ENV{'LIVE_TEST'} ) {
-      skip 'set LIVE_TEST to true to run', 5;
-    }
-
-    local $ENV{'WTSI_CLARITY_HOME'}= q[];
-    my $config = wtsi_clarity::util::config->new();
-    my $live_base_uri = $config->clarity_api->{'base_uri'};
-
-    my $samples_uri = $live_base_uri . q{/samples};
-    my $sample_uri = $samples_uri . q{/SMI102A12};
-
-    my $r = wtsi_clarity::util::request->new();
-    my $data = $r->get($sample_uri);
-    ok($data, 'data received');
-    is($r->base_url, 'clarity-ap.internal.sanger.ac.uk:8080', 'base url correct');
-    my $old_date = '2013-10-31';
-    my $new_date = '2013-10-21';
-    if ($data =~ /$new_date/) {
-      my $temp = $new_date;
-      $new_date = $old_date;
-      $old_date = $temp;
-    }
-    $data =~ s/$old_date/$new_date/;
-    my $new_data;
-    $r = wtsi_clarity::util::request->new();
-    lives_ok {$new_data = $r->put($sample_uri, $data)}
-     'put request succeeds';
-    ok($new_data =~ /$new_date/, 'amended sample data returned');
-
-    my $sample = q[<smp:samplecreation xmlns:smp="http://genologics.com/ri/sample" xmlns:udf="http://genologics.com/ri/userdefined">
-    <name>mar_ina_test-11</name>
-    <project limsid="GOU51" uri="] . $base_uri . q[/projects/GOU51"/>
-    <date-received>2014-05-01</date-received>
-    <location><container limsid="27-151" uri="] . $base_uri . q[/containers/27-151"/><value>H:12</value></location>
-    <udf:field name="WTSI Sample Consent Withdrawn">false</udf:field>
-    <udf:field name="WTSI Requested Size Range From">600</udf:field>
-    <udf:field name="Reference Genome">Homo_sapiens (1000Genomes)</udf:field>
-    </smp:samplecreation>
-    ];
-
-    throws_ok {$new_data = $r->post($samples_uri, $sample)}
-      qr/The container placement: H:12 is a duplicate for container: 27-151/,
-      'cannot create a new sample in the same well'
-
-    #lives_ok {$new_data = $r->post($sample_uri)}
-    #  'delete request succeeds';
-    #diag $new_data;
-  }
 }
 
 1;

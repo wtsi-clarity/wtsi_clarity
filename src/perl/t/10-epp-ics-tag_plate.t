@@ -27,7 +27,7 @@ my $epp = wtsi_clarity::epp::ics::tag_plate->new(
   validate    => 1
 );
 isa_ok( $epp, 'wtsi_clarity::epp::ics::tag_plate');
-is($epp->_barcode, 'ABCD1234', 'Gets the tag plate barcode correctly');
+is($epp->barcode, 'ABCD1234', 'Gets the tag plate barcode correctly');
 lives_ok { $epp->run } 'runs validation';
 
 $epp = wtsi_clarity::epp::ics::tag_plate->new(

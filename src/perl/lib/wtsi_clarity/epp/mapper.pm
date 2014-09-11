@@ -12,7 +12,6 @@ our $VERSION = '0.0';
 Readonly::Hash my %ACTION2MODULE => (
     'volume_check'            => 'sm::volume_check',
     'create_label'            => 'sm::create_label',
-    'stamp'                   => 'stamp',
     'sample_received'         => 'sm::sample_received',
     'qc_complete'             => 'sm::qc_complete',
     'fluidigm_request_volume' => 'sm::fluidigm_request_volume',
@@ -25,9 +24,14 @@ Readonly::Hash my %ACTION2MODULE => (
     'reactivate_stock_plate'  => 'sm::reactivate_stock_plate',
     'attach_dtx_file'         => 'sm::attach_dtx_file',
     'publish_file'            => 'sm::publish_file',
-    'tag_plate'               => 'ics::tag_plate',
-    'mq'                      => 'mq',
     'pico_analysis'           => 'sm::pico_analysis',
+
+    'tag_plate'               => 'ics::tag_plate',
+    'indexing'                => 'ics::indexing',
+
+    'stamp'                   => 'stamp',
+    'mq'                      => 'mq',
+    'make_report'             => 'report_maker',
 );
 
 has 'action'  => (

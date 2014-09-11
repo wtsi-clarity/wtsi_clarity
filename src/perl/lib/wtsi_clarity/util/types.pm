@@ -29,10 +29,10 @@ wtsi_clarity::util::types
 
   package mypackage;
   use wtsi_clarity::util::types;
-  
+
   has 'dir_path'  => (
     isa  => 'WtsiClarityDirectory',
-  ); 
+  );
 
 =head1 DESCRIPTION
 

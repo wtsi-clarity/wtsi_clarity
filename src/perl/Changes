@@ -1,5 +1,10 @@
 CHANGES for wtsi_clarity Perl project
 
+release 0.37
+  - Fluidigm Analysis
+  - tag indices registration via reagents API
+  - Adding report
+
 release 0.36
   - Gatekeeper tag plate service access refactored
   - well mapper module converted to a Moose role, input validation added

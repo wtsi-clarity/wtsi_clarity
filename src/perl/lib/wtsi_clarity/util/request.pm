@@ -362,6 +362,7 @@ sub _create_path {
         if (!$content) { $content = q/(No payload)/; }
         croak qq{Wrong URL format for caching.\n    $type\n    $url  (in short : $short_url )\n    with "$content"\n    Is it matching the base url correct ? ($base_uri)\n   }
     }
+
     return $path;
 }
 
@@ -410,13 +411,14 @@ sub _from_cache {
 sub _from_web {
     my ($self, $type, $uri, $content, $path) = @_;
     if ($path && $ENV{$self->save2cache_dir_var_name} && $ENV{$self->cache_dir_var_name}) {
+        my $result;
         ##no critic (RequireCheckingReturnValueOfEval)
         eval {
-          $content = $self->_from_cache($path, $uri);
+          $result = $self->_from_cache($path, $uri);
         };
         ##use critic
-        if ($content) {
-            return $content;
+        if ($result) {
+            return $result;
         }
     }
     my $req=HTTP::Request->new($type, $uri,undef, $content);

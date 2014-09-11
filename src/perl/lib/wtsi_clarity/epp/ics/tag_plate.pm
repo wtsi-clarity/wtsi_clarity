@@ -2,10 +2,14 @@ package wtsi_clarity::epp::ics::tag_plate;
 
 use Moose;
 use Carp;
+use Readonly;
 use wtsi_clarity::tag_plate::service;
 
 extends 'wtsi_clarity::epp';
-with 'wtsi_clarity::util::clarity_elements';
+with qw/ 
+        wtsi_clarity::util::clarity_elements
+        wtsi_clarity::epp::ics::tag_plate_common
+       /;
 
 our $VERSION = '0.0';
 
@@ -20,22 +24,6 @@ has 'exhaust'  => (
     is         => 'ro',
     required   => 0,
 );
-
-
-has '_barcode' => (
-    isa        => 'Str',
-    is         => 'ro',
-    required   => 0,
-   lazy_build  => 1,
-);
-sub _build__barcode {
-  my $self = shift;
-  my $tag_plate_barcode = $self->find_udf_element($self->process_doc, 'Tag Plate');
-  if (!$tag_plate_barcode) {
-    croak 'Need Tag Plate barcode';
-  }
-  return $tag_plate_barcode->textContent;
-}
 
 sub BUILD {
   my $self = shift;
@@ -52,7 +40,7 @@ override 'run' => sub {
   my $self = shift;
 
   super(); #call parent's run method
-  my $service = wtsi_clarity::tag_plate::service->new(barcode => $self->_barcode);
+  my $service = wtsi_clarity::tag_plate::service->new(barcode => $self->barcode);
   if ($self->validate) {
     $service->validate();
   }
@@ -62,6 +50,8 @@ override 'run' => sub {
 
   return;
 };
+
+no Moose;
 
 1;
 
