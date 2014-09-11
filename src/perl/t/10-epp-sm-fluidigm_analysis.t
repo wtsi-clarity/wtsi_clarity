@@ -29,6 +29,7 @@ sub _write_config {
     process_url => 'http://clartiy-ap/processes/24-16130'
   );
 
+  local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
   # local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = $test_dir;
 
