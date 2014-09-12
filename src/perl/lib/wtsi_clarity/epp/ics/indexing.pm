@@ -17,6 +17,7 @@ our $VERSION = '0.0';
 
 ##no critic (ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $REAGENT_ARTIFACT_URI_PATH => q{/stp:reagents/output-reagents/output};
+Readonly::Scalar my $REAGENT_CATEGORY_PATH => q{/stp:reagents/reagent-category};
 Readonly::Scalar my $OUTPUT_URI_PATH           => q{/prc:process/input-output-map[output/@output-type='Analyte']};
 Readonly::Scalar my $URI_SEARCH_STRING         => q{@uri};
 Readonly::Scalar my $LIMSID_SEARCH_STRING      => q{@limsid};
@@ -47,12 +48,23 @@ has '_reagents_doc'  => (
   is              => 'ro',
   required        => 0,
   lazy_build      => 1,
+  trigger         => \&_build__reagent_category,
 );
 sub _build__reagents_doc {
   my $self = shift;
   return $self->fetch_and_parse($self->_reagents_url);
 }
 
+has '_reagent_category' => (
+  isa         => 'Str',
+  is          => 'ro',
+  required    => 0,
+  lazy_build  => 1,
+);
+sub _build__reagent_category {
+  my $self = shift;
+  return $self->_reagents_doc->findvalue($REAGENT_CATEGORY_PATH);
+}
 
 has '_output_location_map'  => (
   isa             => 'HashRef',
@@ -165,12 +177,8 @@ sub _index {
 }
 
 sub _reagent_name{
-  my ($self, $index, $sequence) = @_;
-  return sprintf 'Tag: plate {%s}, set {%s}, {%i %s}',
-    $self->barcode,
-    $self->_tag_layout->tag_set_name,
-    $index,
-    $sequence;
+  my ($self, $index) = @_;
+  return sprintf $self->_reagent_category. ' (tag %i)', $index;
 }
 
 1;
