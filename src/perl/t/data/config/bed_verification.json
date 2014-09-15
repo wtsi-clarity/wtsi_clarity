@@ -115,5 +115,23 @@
         }
       ]
     }
+  },
+  "post_lib_pcr_qc_stamp": {
+    "4880000010706": {
+      "mappings": [
+        {
+          "source": [{ "bed": 1, "barcode": 1}],
+          "destination": [{ "bed": 2, "barcode": 2}]
+        }
+      ]
+    },
+    "4880000012724": {
+      "mappings": [
+        {
+          "source": [{ "bed": 3, "barcode": 3}],
+          "destination": [{ "bed": 4, "barcode": 4}]
+        }
+      ]
+    }
   }
 }

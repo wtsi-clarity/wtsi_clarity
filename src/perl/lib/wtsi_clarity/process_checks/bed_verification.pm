@@ -22,17 +22,22 @@ sub verify {
     croak qq/robot id incorrect for process $process_name/;
   }
 
-  my $process = $self->config->{$process_name}->{$robot_id};
+  my $process_config = $self->_extract_process_config($process_name, $robot_id);
 
   foreach my $input_mapping (@{$mappings}) {
 
     my $source = $input_mapping->{source};
-    my $config_mapping = $self->_find_mapping_by_bed($process, $source->[0]->{bed});
+    my $config_mapping = $self->_find_mapping_by_bed($process_config, $source->[0]->{bed});
 
     return 0 if $self->_verify_mapping($input_mapping, $config_mapping) == 0;
   }
 
   return 1;
+}
+
+sub _extract_process_config {
+  my ($self, $process_name, $robot_id) = @_;
+  return $self->config->{$process_name}->{$robot_id};
 }
 
 sub _verify_mapping {
