@@ -18,21 +18,26 @@ sub verify {
     croak qq/bed verification config can not be found for process $process_name/;
   }
 
-  my $process = $self->config->{$process_name};
-
-  if ($process->{robot} ne $robot_id) {
+  if (!exists $self->config->{$process_name}->{$robot_id}) {
     croak qq/robot id incorrect for process $process_name/;
   }
+
+  my $process_config = $self->_extract_process_config($process_name, $robot_id);
 
   foreach my $input_mapping (@{$mappings}) {
 
     my $source = $input_mapping->{source};
-    my $config_mapping = $self->_find_mapping_by_bed($process, $source->[0]->{bed});
+    my $config_mapping = $self->_find_mapping_by_bed($process_config, $source->[0]->{bed});
 
     return 0 if $self->_verify_mapping($input_mapping, $config_mapping) == 0;
   }
 
   return 1;
+}
+
+sub _extract_process_config {
+  my ($self, $process_name, $robot_id) = @_;
+  return $self->config->{$process_name}->{$robot_id};
 }
 
 sub _verify_mapping {
@@ -104,7 +109,7 @@ wtsi_clarity::process_checks::bed_verification
   $c->verify($process_name, $robot_id, $mappings);
 
 =head1 DESCRIPTION
-  Provides the method verify to determine whether beds have been scanned into 
+  Provides the method verify to determine whether beds have been scanned into
   the correct place on a machine.
 
 =head1 SUBROUTINES/METHODS

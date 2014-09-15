@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use JSON;
 use utf8;
-use Test::More tests => 13;
+use Test::More tests => 15;
 use Test::Exception;
 
 use_ok('wtsi_clarity::process_checks::bed_verification');
@@ -10,7 +10,7 @@ use_ok('wtsi_clarity::process_checks::bed_verification');
 open( my $fh, '<:encoding(UTF-8)', 't/data/config/bed_verification.json' );
 local $/;
 my $json_text = <$fh>;
-my $config = decode_json($json_text); 
+my $config = decode_json($json_text);
 
 {
   my $c = wtsi_clarity::process_checks::bed_verification->new(config => $config);
@@ -20,7 +20,7 @@ my $config = decode_json($json_text);
 
 # Tests for the verify method to make sure it throws correctly
 {
-  my $c = wtsi_clarity::process_checks::bed_verification->new(config => $config);  
+  my $c = wtsi_clarity::process_checks::bed_verification->new(config => $config);
   throws_ok { $c->verify('rubbish') }
     qr/bed verification config can not be found for process rubbish/,
     'throw error if the process name is not a valid process';
@@ -45,8 +45,8 @@ my $config = decode_json($json_text);
   @source = ({ bed => 2, barcode => 123 });
   @destination = ({ bed => 3, barcode => 580040003686 });
   @mappings = ({
-    source => \@source, 
-    destination => \@destination 
+    source => \@source,
+    destination => \@destination
   });
 
   throws_ok { $c->verify('working_dilution', '009851', \@mappings) }
@@ -63,10 +63,10 @@ my $config = decode_json($json_text);
   my @destination = ({ bed => 3, barcode => 580040003686 });
   my @mappings = ({
     source => \@source,
-    destination => \@destination 
+    destination => \@destination
   });
 
-  is($c->verify('working_dilution', '009851', \@mappings), 1, 'Returns the correct result with one source/destination mapping'); 
+  is($c->verify('working_dilution', '009851', \@mappings), 1, 'Returns the correct result with one source/destination mapping');
 
   # Multiple outputs
   @source = ({ bed => 6, barcode => 580030006666 });
@@ -76,7 +76,7 @@ my $config = decode_json($json_text);
   );
   @mappings = ({
     source => \@source,
-    destination => \@destination  
+    destination => \@destination
   });
 
   is($c->verify('pico_assay_plate', '010468', \@mappings), 1, 'Returns correct result for multiple destinations');
@@ -99,10 +99,10 @@ my $config = decode_json($json_text);
   my @destination = ({ bed => 4, barcode => 580040323423 });
   my @mappings = ({
     source => \@source,
-    destination => \@destination 
+    destination => \@destination
   });
 
-  is($c->verify('working_dilution', '009851', \@mappings), 0, 'Returns the correct result with one source/destination mapping'); 
+  is($c->verify('working_dilution', '009851', \@mappings), 0, 'Returns the correct result with one source/destination mapping');
 
   # Multiple outputs
   @source = ({ bed => 6, barcode => 580030006666 });
@@ -112,7 +112,7 @@ my $config = decode_json($json_text);
   );
   @mappings = ({
     source => \@source,
-    destination => \@destination  
+    destination => \@destination
   });
 
   is($c->verify('pico_assay_plate', '010468', \@mappings), 0, 'Returns correct result for multiple destinations');
@@ -124,4 +124,30 @@ my $config = decode_json($json_text);
     destination => \@destination
   });
   is($c->verify('fluidigm_192_24_ifc', '014219', \@mappings), 0, "Returns correct result for multiple sources");
+}
+
+# Test gets back correct config when multiple robots in process
+{
+  my $c = wtsi_clarity::process_checks::bed_verification->new(config => $config);
+
+  my $robot1_config = {
+    'mappings' => [
+      {
+        'source' => [{ 'bed' => 1, 'barcode' => 1}],
+        'destination' => [{ 'bed' => 2, 'barcode' => 2}]
+      }
+    ]
+  };
+
+  my $robot2_config = {
+    "mappings" => [
+      {
+        "source" => [{ "bed" => 3, "barcode" => 3}],
+        "destination" => [{ "bed" => 4, "barcode" => 4}]
+      }
+    ]
+  };
+
+  is_deeply($c->_extract_process_config('post_lib_pcr_qc_stamp', 4880000010706), $robot1_config, 'Extracts the correct process config');
+  is_deeply($c->_extract_process_config('post_lib_pcr_qc_stamp', 4880000012724), $robot2_config, 'Extracts the correct process config');
 }
