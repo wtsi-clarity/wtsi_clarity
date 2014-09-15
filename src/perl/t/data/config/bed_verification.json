@@ -1,111 +1,119 @@
 {
   "working_dilution":{
-    "robot":"009851",
-    "mappings": [
-      {
-        "source": [{ "bed": 2, "barcode": 580040002672 }],
-        "destination": [{ "bed": 3, "barcode": 580040003686 }]
-      },
-      {
-        "source": [{ "bed": 5, "barcode": 580040005703 }],
-        "destination": [{ "bed": 6, "barcode": 580040006717 }]
-      },{
-        "source": [{ "bed": 8, "barcode": 580040008735 }],
-        "destination": [{ "bed": 9, "barcode": 580040009749 }]
-      },{
-        "source": [{ "bed": 11, "barcode": 580040011681 }],
-        "destination": [{ "bed": 12, "barcode": 580040012695 }]
-      }
-    ]
-  }, 
+    "009851" : {
+      "mappings": [
+        {
+          "source": [{ "bed": 2, "barcode": 580040002672 }],
+          "destination": [{ "bed": 3, "barcode": 580040003686 }]
+        },
+        {
+          "source": [{ "bed": 5, "barcode": 580040005703 }],
+          "destination": [{ "bed": 6, "barcode": 580040006717 }]
+        },{
+          "source": [{ "bed": 8, "barcode": 580040008735 }],
+          "destination": [{ "bed": 9, "barcode": 580040009749 }]
+        },{
+          "source": [{ "bed": 11, "barcode": 580040011681 }],
+          "destination": [{ "bed": 12, "barcode": 580040012695 }]
+        }
+      ]
+    }
+  },
   "pico_dilution": {
-    "robot":"009851",
-    "mappings": [
-      {
-        "source": [{ "bed": 2, "barcode": 5800400002672 }],
-        "destination": [{ "bed": 3, "barcode": 580040003686 }]
-      },
-      {
-        "source": [{ "bed": 5, "barcode": 580040005703 }],
-        "destination": [{ "bed": 6, "barcode": 580040006717 }]
-      },{
-        "source": [{ "bed": 8, "barcode": 580040008735 }],
-        "destination": [{ "bed": 9, "barcode": 580040009749 }]
-      },{
-        "source": [{ "bed": 11, "barcode": 580040011681 }],
-        "destination": [{ "bed": 12, "barcode": 580040012695 }]
-      }
-    ]
+    "009851" : {
+      "mappings": [
+        {
+          "source": [{ "bed": 2, "barcode": 5800400002672 }],
+          "destination": [{ "bed": 3, "barcode": 580040003686 }]
+        },
+        {
+          "source": [{ "bed": 5, "barcode": 580040005703 }],
+          "destination": [{ "bed": 6, "barcode": 580040006717 }]
+        },{
+          "source": [{ "bed": 8, "barcode": 580040008735 }],
+          "destination": [{ "bed": 9, "barcode": 580040009749 }]
+        },{
+          "source": [{ "bed": 11, "barcode": 580040011681 }],
+          "destination": [{ "bed": 12, "barcode": 580040012695 }]
+        }
+      ]
+    }
   },
   "pico_assay_plate": {
-    "robot":"010468",
-    "mappings": [
-      {
-        "source": [{ "bed": 6, "barcode": 580030006666 }],
-        "destination": [
-          { "bed": 7, "barcode": 580030007670 },
-          { "bed": 8, "barcode": 580030008684 }
-        ]  
-      }
-    ]
+    "010468": {
+      "mappings": [
+        {
+          "source": [{ "bed": 6, "barcode": 580030006666 }],
+          "destination": [
+            { "bed": 7, "barcode": 580030007670 },
+            { "bed": 8, "barcode": 580030008684 }
+          ]
+        }
+      ]
+    }
   },
-  
+
   "e-gel": {
-    "robot": "010468",
-    "mappings": [
-      {
-        "source": [{ "bed": 2, "barcode": 580030002859 }],
-        "destination": [{ "bed": 3, "barcode": 580030003863 }]
-      },
-      {
-        "source": [{ "bed": 6, "barcode": 580030006666 }],
-        "destination": [{ "bed": 7, "barcode": 580030007670 }]
-      },
-      {
-        "source": [{ "bed": 9, "barcode": 580030009698 }],
-        "destination": [{ "bed": 10, "barcode": 580030010854 }]
-      },
-      {
-        "source": [{ "bed": 13, "barcode": 580000013847 }],
-        "destination": [{ "bed": 14, "barcode": 580000014851 }]
-      }
-    ]
+    "010468": {
+      "mappings": [
+        {
+          "source": [{ "bed": 2, "barcode": 580030002859 }],
+          "destination": [{ "bed": 3, "barcode": 580030003863 }]
+        },
+        {
+          "source": [{ "bed": 6, "barcode": 580030006666 }],
+          "destination": [{ "bed": 7, "barcode": 580030007670 }]
+        },
+        {
+          "source": [{ "bed": 9, "barcode": 580030009698 }],
+          "destination": [{ "bed": 10, "barcode": 580030010854 }]
+        },
+        {
+          "source": [{ "bed": 13, "barcode": 580000013847 }],
+          "destination": [{ "bed": 14, "barcode": 580000014851 }]
+        }
+      ]
+    }
   },
-    
+
   "fluidigm_sta": {
-    "robot": "014219",
-    "mappings": [
-      {
-        "source": [{ "bed": 1, "barcode": 580020001794 }],
-        "destination": [{ "bed": 21, "barcode": 580020021839 }]
-      }
-    ]
+    "014219": {
+      "mappings": [
+        {
+          "source": [{ "bed": 1, "barcode": 580020001794 }],
+          "destination": [{ "bed": 21, "barcode": 580020021839 }]
+        }
+      ]
+    }
   },
   "fluidigm_snp": {
-    "robot": "014219",
-    "mappings": [
-      {
-        "source": [{ "bed": 1, "barcode": 580020001794 }],
-        "destination": [{ "bed": 21, "barcode": 580020021839 }]
-      }
-    ]
+    "014219" : {
+      "mappings": [
+        {
+          "source": [{ "bed": 1, "barcode": 580020001794 }],
+          "destination": [{ "bed": 21, "barcode": 580020021839 }]
+        }
+      ]
+    }
   },
   "fluidigm_96_96_ifc": {
-    "robot": "014219",
-    "mappings": [
-      {
-        "source": [{ "bed": 1, "barcode": 580020001794 }],
-        "destination": [{ "bed": 21, "barcode": 580020021839 }]
-      }
-    ]
+    "014219": {
+      "mappings": [
+        {
+          "source": [{ "bed": 1, "barcode": 580020001794 }],
+          "destination": [{ "bed": 21, "barcode": 580020021839 }]
+        }
+      ]
+    }
   },
   "fluidigm_192_24_ifc": {
-    "robot": "014219",
-    "mappings": [
-      {
-        "source": [{ "bed": 1, "barcode": 580020001794 }, { "bed": 2, "barcode": 580020002807 }],
-        "destination": [{ "bed": 21, "barcode": 580020021839 }]
-      }
-    ]
+    "014219": {
+      "mappings": [
+        {
+          "source": [{ "bed": 1, "barcode": 580020001794 }, { "bed": 2, "barcode": 580020002807 }],
+          "destination": [{ "bed": 21, "barcode": 580020021839 }]
+        }
+      ]
+    }
   }
 }
