@@ -36,7 +36,7 @@ use_ok('wtsi_clarity::epp::sm::bed_verification');
 
   is($process->_extract_plate_number('Bed 2 (Input Plate 1)'), '2', '1) Can extract the correct barcode from the udf string');
   is($process->_extract_plate_number('Bed 3 (Output Plate 1)'), '3', '2) Can extract the correct barcode from the udf string');
-  throws_ok { $process->_extract_plate_number('jibberish') } qr/Plate number not found\n/, 
+  throws_ok { $process->_extract_plate_number('jibberish') } qr/Plate number not found\n/,
     'Throws an error when it can not find a number';
 }
 
@@ -58,7 +58,7 @@ use_ok('wtsi_clarity::epp::sm::bed_verification');
     step_name => 'working_dilution',
   );
 
-  throws_ok { $process->_robot_barcode() } qr/Robot ID must be set for bed verification\n/, 
+  throws_ok { $process->_robot_barcode() } qr/Robot ID must be set for bed verification\n/,
     'Throws an error when it can not find the Robot ID';
 }
 
@@ -139,7 +139,7 @@ use_ok('wtsi_clarity::epp::sm::bed_verification');
   is_deeply($process->_bed_container_pairs, \@mappings, "Builds bed container pairs correctly");
 
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sm/bed_verification/fluidigm_many_to_one/';
-  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
+  # local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   $process = wtsi_clarity::epp::sm::bed_verification->new(
     process_url => $base_uri . '/processes/24-103751',
@@ -148,7 +148,7 @@ use_ok('wtsi_clarity::epp::sm::bed_verification');
 
   @source = ({ bed => 1, barcode => 580020001794}, {bed => 2, barcode => 580020002807 });
   @destination = ({ bed => 21, barcode => 580020021839});
-  
+
   @mappings = ({
     source => \@source,
     destination => \@destination
