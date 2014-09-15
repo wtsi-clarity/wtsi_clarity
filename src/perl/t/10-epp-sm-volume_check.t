@@ -13,6 +13,7 @@ my $dir = tempdir( CLEANUP => 1);
 
 # load the original test config file
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+# local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = '/t/data/volume_check';
 use wtsi_clarity::util::config;
 my $config = wtsi_clarity::util::config->new();
 my $base_uri = $config->clarity_api->{'base_uri'};
@@ -52,7 +53,7 @@ my $current = cwd;
 
   local $ENV{http_proxy} = 'http://my';
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = $current . '/t/data/volume_check';
-  #local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
+  # local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   use wtsi_clarity::util::request;
   my $r = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
@@ -60,12 +61,12 @@ my $current = cwd;
 
   my $epp = wtsi_clarity::epp::sm::volume_check->new(
     request     => $r,
-    process_url => 'http://clarity-ap:8080/api/v2/processes/24-64486',
+    process_url => 'http://clarity-ap:8080/api/v2/processes/24-17469',
     input       => $in,
     output      => $out,
   );
   is ($epp->robot_file, $file, 'robot file located correctly');
-  throws_ok { $epp->run }  qr/Well location H:12 does not exist in volume check file/,
+  throws_ok { $epp->run }  qr/Well location A:1 does not exist in volume check file/,
     'well is missing in an empty robot file';
 
   my $f = join q[/], $current, 't/data/volume_check/test_1.CSV';
@@ -74,7 +75,7 @@ my $current = cwd;
 
   $epp = wtsi_clarity::epp::sm::volume_check->new(
     request     => $r,
-    process_url => 'http://clarity-ap:8080/api/v2/processes/24-64486',
+    process_url => 'http://clarity-ap:8080/api/v2/processes/24-17469',
     input       => $in,
     output      => $out,
   );

@@ -25,6 +25,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'attach_dtx_file'         => 'sm::attach_dtx_file',
     'publish_file'            => 'sm::publish_file',
     'pico_analysis'           => 'sm::pico_analysis',
+    'fluidigm_analysis'       => 'sm::fluidigm_analysis',
 
     'tag_plate'               => 'ics::tag_plate',
     'indexing'                => 'ics::indexing',
