@@ -8,9 +8,9 @@
         <last-name>Test</last-name>
     </submitter>
     <artifact limsid="JON1301A255PA1" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/JON1301A255PA1?state=360078"/>
-    <udf:field type="Numeric" name="Sample Conc. (ng\/µL) (SM)">20</udf:field>
-    <udf:field type="Numeric" name="Volume (µL) (SM)">2</udf:field>
-    <udf:field type="Numeric" name="WTSI Working Volume (µL) (SM)">2</udf:field>
+    <udf:field type="Numeric" name="Sample Conc. (ng\/ÂµL) (SM)">20</udf:field>
+    <udf:field type="Numeric" name="Volume (ÂµL) (SM)">2</udf:field>
+    <udf:field type="Numeric" name="WTSI Working Volume (ÂµL) (SM)">2</udf:field>
     <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
     <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
     <udf:field type="String" name="WTSI Phenotype">Not Applicable</udf:field>
@@ -18,7 +18,7 @@
     <udf:field type="String" name="WTSI Fluidigm Call Rate (SM)">24/24</udf:field>
     <udf:field type="String" name="WTSI Fluidigm Gender (SM)">MM</udf:field>
     <udf:field type="String" name="WTSI Supplier Sample Name (SM)">24.0</udf:field>
-    <udf:field type="String" name="WTSI Total µg (SM)">2.0</udf:field>
+    <udf:field type="String" name="WTSI Total Âµg (SM)">2.0</udf:field>
     <udf:field type="String" name="WTSI QC Comment">Pass</udf:field>
     <udf:field type="Date" name="QC Complete">2014-06-17</udf:field>
 </smp:sample>
