@@ -10,9 +10,8 @@ use wtsi_clarity::file_parsing::volume_check;
 use wtsi_clarity::util::types;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $ANALYTE_PATH => q( prc:process/input-output-map[output/@output-generation-type='PerAllInputs'] );
+Readonly::Scalar my $ANALYTE_PATH => q( prc:process/input-output-map[output/@output-generation-type='PerInput'] );
 Readonly::Scalar my $LOCATION_PATH => q ( art:artifact/location/value );
-Readonly::Scalar my $URI_PATH => q ( art:artifact/sample/@uri );
 ## use critic
 
 extends 'wtsi_clarity::epp';
@@ -58,7 +57,7 @@ override 'run' => sub {
 
   # Parse the robot file
   my $parsed_file = $self->_parse_robot_file();
-  $self->_fetch_and_update_samples($parsed_file);
+  $self->_update_analytes($parsed_file);
 
   copy($self->robot_file, $self->output)
     or croak sprintf 'Failed to copy %s to %s', $self->robot_file, $self->output;
@@ -71,16 +70,15 @@ sub _parse_robot_file {
   return $parser->parse();
 }
 
-sub _fetch_and_update_samples {
+sub _update_analytes {
   my ($self, $parsed_file) = @_;
 
   foreach my $analyteNode ($self->process_doc->findnodes($ANALYTE_PATH)) {
-    my $uri = $self->_extract_analyte_uri($analyteNode);
-    my $analyteDoc = $self->fetch_and_parse($uri);
-    my $sampleInfo = $self->_extract_sample_info($analyteDoc);
-    my $sampleDoc = $self->fetch_and_parse($sampleInfo->{'uri'});
+    my $analyteUri = $self->_extract_analyte_uri($analyteNode);
+    my $analyteDoc = $self->fetch_and_parse($analyteUri);
+    my $wellLocation = $self->_extract_well_location($analyteDoc);
 
-    $self->_updateSample($sampleDoc, $sampleInfo, $parsed_file);
+    $self->_update_analyte($analyteUri, $analyteDoc, $wellLocation, $parsed_file);
   }
 
   return;
@@ -88,27 +86,24 @@ sub _fetch_and_update_samples {
 
 sub _extract_analyte_uri {
   my ($self, $analyte) = @_;
-  my $url = $analyte->findvalue(qw (input/@uri) );
+  my $url = $analyte->findvalue(qw (output/@uri) );
   return $url;
 }
 
-sub _extract_sample_info {
+sub _extract_well_location {
   my ($self, $analyteDoc) = @_;
-  my %info = ();
-  $info{'wellLocation'} = $analyteDoc->findvalue($LOCATION_PATH);
-  $info{'uri'} = $analyteDoc->findvalue($URI_PATH);
-  return \%info;
+  return $analyteDoc->findvalue($LOCATION_PATH);
 }
 
-sub _updateSample {
-  my ($self, $sampleDoc, $sampleInfo, $parsed_file) = @_;
+sub _update_analyte {
+  my ($self, $analyteUri, $analyteDoc, $wellLocation, $parsed_file) = @_;
 
-  my $wellLocation = $sampleInfo->{'wellLocation'};
   croak "Well location $wellLocation does not exist in volume check file " . $self->robot_file if (!exists($parsed_file->{$wellLocation}));
 
   my $newVolume = $parsed_file->{$wellLocation};
-  $self->update_udf_element($sampleDoc, "Volume (\N{U+00B5}L) (SM)", $newVolume);
-  $self->request->put($sampleInfo->{'uri'}, $sampleDoc->toString());
+  $self->add_udf_element($analyteDoc, "Volume", $newVolume);
+
+  $self->request->put($analyteUri, $analyteDoc->toString());
 
   return;
 }

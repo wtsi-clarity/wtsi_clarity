@@ -8,7 +8,7 @@
   limsid="213">
 
     <artifact limsid="203" uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/artifacts/213"/>
-    <udf:field type="Numeric" name="Sample Conc. (ng\/µL) (SM)"     >  40 </udf:field>
-    <udf:field type="Numeric" name="Volume (µL) (SM)"              > 100 </udf:field>
-    <udf:field type="Numeric" name="WTSI Working Volume (µL) (SM)" > 0.5 </udf:field>
+    <udf:field type="Numeric" name="Sample Conc. (ng\/ÂµL) (SM)"     >  40 </udf:field>
+    <udf:field type="Numeric" name="Volume (ÂµL) (SM)"              > 100 </udf:field>
+    <udf:field type="Numeric" name="WTSI Working Volume (ÂµL) (SM)" > 0.5 </udf:field>
 </smp:sample>
