@@ -29,6 +29,11 @@ Readonly::Scalar my $UDF_VOLUME         => qq{Volume};
 Readonly::Scalar my $UDF_CONCENTRATION  => qq{Concentration};
 Readonly::Scalar my $PRC_VOLUME         => qq{Volume Check (SM)};
 Readonly::Scalar my $PRC_CONCENTRATION  => qq{Picogreen Analysis (SM)};
+Readonly::Scalar my $CALL_RATE          => qq{WTSI Fluidigm Call Rate (SM)};
+Readonly::Scalar my $PRC_CALL_RATE      => qq{Fluidigm Analysis};
+Readonly::Scalar my $FLUIDIGM_GENDER    => qq{WTSI Fluidigm Gender (SM)};
+Readonly::Scalar my $PRC_FLUIDIGM_GENDER=> qq{Fluidigm Analysis};
+
 ## use critic
 
 has 'produce_report_anyway' => (
@@ -180,6 +185,16 @@ sub _get_total_micrograms {
   return $self->_get_concentration($sample_id) * $self->_get_measured_volume($sample_id) * $THOUSANDTH ;
 }
 
+sub _get_fluidigm_count {
+  my ($self, $sample_id) = @_;
+  return $self->_get_value_from_data($CALL_RATE, $sample_id);
+}
+
+sub _get_fluidigm_gender {
+  my ($self, $sample_id) = @_;
+  return $self->_get_value_from_data($FLUIDIGM_GENDER, $sample_id);
+}
+
 sub _get_genotyping_status {
   my ($self, $sample_id) = @_;
   return q{};
@@ -223,7 +238,7 @@ sub _get_value_from_data {
   if (!defined $data) {
     return qq{[Sample id not present ($sample_id)]} ;
   }
-  if (!defined $data->{$udf_name}) {
+  if (!defined $data->{$udf_name} || !$data->{$udf_name}) {
     return qq{[UDF not present ($udf_name)]} ;
   }
   return $data->{$udf_name} ;
@@ -305,6 +320,14 @@ has '_required_sources' => (
         q{concentration} => {
           src_process => $PRC_CONCENTRATION,
           src_udf_name=> $UDF_CONCENTRATION,
+        },
+        q{call_rate} => {
+          src_process => $PRC_CALL_RATE,
+          src_udf_name=> $CALL_RATE,
+        },
+        q{fluidigm_gender} => {
+          src_process => $PRC_FLUIDIGM_GENDER,
+          src_udf_name=> $FLUIDIGM_GENDER,
         },
         q{cherry_volume} => {
           src_process => $PRC_VOLUME,
