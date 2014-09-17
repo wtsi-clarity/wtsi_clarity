@@ -18,6 +18,7 @@ Readonly::Scalar my  $URI_PATH => q ( art:artifact/sample/@uri );
 Readonly::Scalar my  $SUPPLIER_UDF_FIELD_NAME  => 'WTSI Supplier Sample Name (SM)';
 Readonly::Scalar our $SUPPLIER_NAME_PATH => q( /smp:sample/udf:field[@name=') . $SUPPLIER_UDF_FIELD_NAME . q('] );
 Readonly::Scalar my  $DATE_RECEIVED_PATH => q( /smp:sample/date-received );
+Readonly::Scalar my  $WTSI_DONOR_ID => q(WTSI Donor ID);
 ## use critic
 
 has '_ss_request' => (
@@ -86,13 +87,24 @@ sub _is_new_sample {
   return 1;
 }
 
+sub _is_donor_id_set {
+  my ($self, $sampleDoc) = @_;
+  return (defined $self->find_udf_element($sampleDoc, $WTSI_DONOR_ID)) ? 1 : 0;
+}
+
 sub _update_sample {
   my ($self, $sampleDoc) = @_;
 
   my $nameElem = $self->find_clarity_element($sampleDoc, 'name');
+  my $uuid = $self->_get_uuid();
+
   $self->add_udf_element($sampleDoc, $SUPPLIER_UDF_FIELD_NAME, $nameElem->textContent);
-  $self->add_clarity_element($sampleDoc, 'name', $self->_get_uuid);
+  $self->add_clarity_element($sampleDoc, 'name', $uuid);
   $self->add_clarity_element($sampleDoc, 'date-received', $self->_date);
+
+  if (!$self->_is_donor_id_set($sampleDoc)) {
+    $self->add_udf_element($sampleDoc, $WTSI_DONOR_ID, $uuid);
+  }
 
   return;
 }
