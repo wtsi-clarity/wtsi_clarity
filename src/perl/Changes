@@ -1,5 +1,8 @@
 CHANGES for wtsi_clarity Perl project
-
+release 0.40
+  - renaming the actions
+  - updated sample_received to hamdle correctly the donor ID
+  
 release 0.39
   - Fixed volume check to update the Analytes
   - Added Fluidigm analysis to mapper

@@ -66,7 +66,7 @@ wtsi_clarity::mq::message::epp
       step_start  => 1,
       timestamp   => DateTime->now(),
   );
-  print $m->timestamp; prints a formatted string
+  print $m->timestamp; # prints a formatted string
 
   $m = wtsi_clarity::mq::message::epp->new(
       process_url => 'some',
@@ -74,8 +74,8 @@ wtsi_clarity::mq::message::epp
       step_start  => 1,
       timestamp   => 'some time',
   );
-  print $m->timestamp; prints "some time"
- 
+  print $m->timestamp; # prints "some time"
+
 
 =head1 DESCRIPTION
 
