@@ -145,7 +145,7 @@ use_ok('wtsi_clarity::epp::sm::sample_uuid_assigner');
 # donor id gets set to sample uuid if originally empty
 {
   local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sample_received';
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_uuid_assigner';
 
   my $ss_request_mock = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
   my $date = '28-May-2013';
@@ -155,7 +155,7 @@ use_ok('wtsi_clarity::epp::sm::sample_uuid_assigner');
     return encode_json { 'uuid' => 12345 };
   });
 
-  my $s = wtsi_clarity::epp::sm::sample_received->new(
+  my $s = wtsi_clarity::epp::sm::sample_uuid_assigner->new(
      process_url => q[http://clarity-ap:8080/api/v2/processes/JAC2A6000],
      _ss_request => $ss_request_mock,
      _date       => $date,
