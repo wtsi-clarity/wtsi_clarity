@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 17;
+use Test::More tests => 21;
 use Test::Warn;
 use Test::Exception;
 use Test::MockObject::Extends;
@@ -140,6 +140,38 @@ use_ok('wtsi_clarity::epp::sm::sample_received');
   );
 
   throws_ok { $s->_get_uuid() } qr/Could not get uuid/, "Throws error if uuid does not exist";
+}
+
+# donor id gets set to sample uuid if originally empty
+{
+  local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/sample_received';
+
+  my $ss_request_mock = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
+  my $date = '28-May-2013';
+
+  $ss_request_mock->mock(q(get), sub{
+    my ($self, $url) = @_;
+    return encode_json { 'uuid' => 12345 };
+  });
+
+  my $s = wtsi_clarity::epp::sm::sample_received->new(
+     process_url => q[http://clarity-ap:8080/api/v2/processes/JAC2A6000],
+     _ss_request => $ss_request_mock,
+     _date       => $date,
+  );
+
+  my $sample_doc = $s->fetch_and_parse(q[http://clarity-ap:8080/api/v2/samples/JON1407A937]);
+  my $sample_doc_b = $s->fetch_and_parse(q[http://clarity-ap:8080/api/v2/samples/JON1407A937_b]);
+
+  is($s->_is_donor_id_set($sample_doc), 0, 'Returns false if donor id is not set (or present)');
+  is($s->_is_donor_id_set($sample_doc_b), 1, 'Returns true if donor id is set');
+
+  $s->_update_sample($sample_doc);
+  $s->_update_sample($sample_doc_b);
+
+  is($sample_doc->findvalue("//udf:field[\@name='WTSI Donor ID']"), 12345, 'Uses sample UUID if Donor ID is not set');
+  is($sample_doc_b->findvalue("//udf:field[\@name='WTSI Donor ID']"), 'JDKEIEWDS98', 'Donor ID stays the same if it was already set');
 }
 
 1;
