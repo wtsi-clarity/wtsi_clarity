@@ -7,18 +7,18 @@ use Test::MockObject::Extends;
 use JSON qw/encode_json/;
 use wtsi_clarity::util::request;
 
-use_ok('wtsi_clarity::epp::sm::sample_uuid_assigner');
+use_ok('wtsi_clarity::epp::sm::sample_receiver');
 
 {
-  my $dr = wtsi_clarity::epp::sm::sample_uuid_assigner->new(process_url => 'http://myprocess.com');
-  isa_ok($dr, 'wtsi_clarity::epp::sm::sample_uuid_assigner');
+  my $dr = wtsi_clarity::epp::sm::sample_receiver->new(process_url => 'http://myprocess.com');
+  isa_ok($dr, 'wtsi_clarity::epp::sm::sample_receiver');
   can_ok($dr, qw/ run /);
 }
 
 {
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_uuid_assigner';
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_receiver';
   local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
-  my $s = wtsi_clarity::epp::sm::sample_uuid_assigner->new(
+  my $s = wtsi_clarity::epp::sm::sample_receiver->new(
      process_url => q[http://clarity-ap:8080/api/v2/processes/JAC2A6000],
   );
 
@@ -38,7 +38,7 @@ use_ok('wtsi_clarity::epp::sm::sample_uuid_assigner');
 }
 
 {
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_uuid_assigner';
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_receiver';
   local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
 
   my $ss_request_mock = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
@@ -50,7 +50,7 @@ use_ok('wtsi_clarity::epp::sm::sample_uuid_assigner');
 
   my $date = '28-May-2013';
 
-  my $s = wtsi_clarity::epp::sm::sample_uuid_assigner->new(
+  my $s = wtsi_clarity::epp::sm::sample_receiver->new(
      process_url => q[http://clarity-ap:8080/api/v2/processes/JAC2A6000],
      _ss_request => $ss_request_mock,
      _date => $date
@@ -58,7 +58,7 @@ use_ok('wtsi_clarity::epp::sm::sample_uuid_assigner');
 
   my $sample_doc = $s->fetch_and_parse(q[http://clarity-ap:8080/api/v2/samples/JON1301A293]);
   $s->_update_sample($sample_doc);
-  my @nodes = $sample_doc->findnodes( $wtsi_clarity::epp::sm::sample_uuid_assigner::SUPPLIER_NAME_PATH );
+  my @nodes = $sample_doc->findnodes( $wtsi_clarity::epp::sm::sample_receiver::SUPPLIER_NAME_PATH );
   cmp_ok(scalar(@nodes), '==', 1, 'supplier udf should be created.');
   cmp_ok($nodes[0]->textContent, 'eq', 'Test a', 'supplier udf should be correct.');
 
@@ -72,10 +72,10 @@ use_ok('wtsi_clarity::epp::sm::sample_uuid_assigner');
 
 # uuid_request
 {
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_uuid_assigner';
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_receiver';
   local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
 
-  my $s = wtsi_clarity::epp::sm::sample_uuid_assigner->new(
+  my $s = wtsi_clarity::epp::sm::sample_receiver->new(
      process_url => q[http://clarity-ap:8080/api/v2/processes/JAC2A6000],
   );
 
@@ -85,7 +85,7 @@ use_ok('wtsi_clarity::epp::sm::sample_uuid_assigner');
 # get_uuid
 {
   local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_uuid_assigner';
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_receiver';
 
   my $ss_request_mock = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
 
@@ -94,7 +94,7 @@ use_ok('wtsi_clarity::epp::sm::sample_uuid_assigner');
     return encode_json { 'uuid' => 12345 };
   });
 
-  my $s = wtsi_clarity::epp::sm::sample_uuid_assigner->new(
+  my $s = wtsi_clarity::epp::sm::sample_receiver->new(
      process_url => q[http://clarity-ap:8080/api/v2/processes/JAC2A6000],
      _ss_request => $ss_request_mock,
   );
@@ -105,7 +105,7 @@ use_ok('wtsi_clarity::epp::sm::sample_uuid_assigner');
 # get_uuid - croak if empty response
 {
   local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_uuid_assigner';
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_receiver';
 
   my $ss_request_mock = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
 
@@ -114,7 +114,7 @@ use_ok('wtsi_clarity::epp::sm::sample_uuid_assigner');
     return undef;
   });
 
-  my $s = wtsi_clarity::epp::sm::sample_uuid_assigner->new(
+  my $s = wtsi_clarity::epp::sm::sample_receiver->new(
      process_url => q[http://clarity-ap:8080/api/v2/processes/JAC2A6000],
      _ss_request => $ss_request_mock,
   );
@@ -125,7 +125,7 @@ use_ok('wtsi_clarity::epp::sm::sample_uuid_assigner');
 # get_uuid - croak no uuid
 {
   local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_uuid_assigner';
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_receiver';
 
   my $ss_request_mock = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
 
@@ -134,7 +134,7 @@ use_ok('wtsi_clarity::epp::sm::sample_uuid_assigner');
     return encode_json { 'not_uuid' => 12345 };
   });
 
-  my $s = wtsi_clarity::epp::sm::sample_uuid_assigner->new(
+  my $s = wtsi_clarity::epp::sm::sample_receiver->new(
      process_url => q[http://clarity-ap:8080/api/v2/processes/JAC2A6000],
      _ss_request => $ss_request_mock,
   );
@@ -145,7 +145,7 @@ use_ok('wtsi_clarity::epp::sm::sample_uuid_assigner');
 # donor id gets set to sample uuid if originally empty
 {
   local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_uuid_assigner';
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_receiver';
 
   my $ss_request_mock = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
   my $date = '28-May-2013';
@@ -155,7 +155,7 @@ use_ok('wtsi_clarity::epp::sm::sample_uuid_assigner');
     return encode_json { 'uuid' => 12345 };
   });
 
-  my $s = wtsi_clarity::epp::sm::sample_uuid_assigner->new(
+  my $s = wtsi_clarity::epp::sm::sample_receiver->new(
      process_url => q[http://clarity-ap:8080/api/v2/processes/JAC2A6000],
      _ss_request => $ss_request_mock,
      _date       => $date,

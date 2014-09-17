@@ -20,7 +20,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'queue_message'                  => 'generic::messenger',
 
     'check_volume'                   => 'sm::volume_checker',
-    'assign_sample_uuid'             => 'sm::sample_uuid_assigner',
+    'receive_sample'                 => 'sm::sample_receiver',
     'update_qc_date'                 => 'sm::qc_date_updater',
     'update_fluidigm_request_volume' => 'sm::fluidigm_request_volume_updater',
     'update_cherrypick_volume'       => 'sm::cherrypick_volume_updater',

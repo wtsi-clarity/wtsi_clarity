@@ -1,4 +1,4 @@
-package wtsi_clarity::epp::sm::sample_uuid_assigner;
+package wtsi_clarity::epp::sm::sample_receiver;
 
 use Moose;
 use Carp;
@@ -134,11 +134,11 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::epp::sm::sample_uuid_assigner
+wtsi_clarity::epp::sm::sample_receiver
 
 =head1 SYNOPSIS
 
-  wtsi_clarity::epp:sm::sample_uuid_assigner->new(process_url => 'http://my.com/processes/3345')->run();
+  wtsi_clarity::epp:sm::sample_receiver->new(process_url => 'http://my.com/processes/3345')->run();
 
 =head1 DESCRIPTION
 
