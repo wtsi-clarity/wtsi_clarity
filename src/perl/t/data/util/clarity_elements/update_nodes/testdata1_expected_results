@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="yes"?>
+<root xmlns:udf="http://genologics.com/ri/userdefined" >
+  <a>hello<b>new_value</b></a>
+  <a>cool<b>new_value</b></a>
+  <a><b>new_value</b></a>
+  <a>
+    <b>new_value</b>
+  </a>
+  <a>
+    <b>new_value</b>
+  </a>
+  <a>
+    <field xmlns="http://genologics.com/ri/userdefined" name="b">456</field>
+    <b>new_value</b>
+  </a>
+  <a>
+    <udf:field name="b">456</udf:field>
+    <b>new_value</b>
+  </a>
+ </root>
+
