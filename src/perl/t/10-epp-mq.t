@@ -5,22 +5,22 @@ use Test::More tests => 12;
 use Test::Exception;
 
 use_ok('wtsi_clarity::mq::message::epp');
-use_ok('wtsi_clarity::epp::mq');
+use_ok('wtsi_clarity::epp::generic::messenger');
 
 {
   my $m;
-  lives_ok {$m = wtsi_clarity::epp::mq->new(
+  lives_ok {$m = wtsi_clarity::epp::generic::messenger->new(
        process_url => 'http://some.com/process/XM4567',
        step_url    => 'http://some.com/step/AS456')}
     'object created with step_url and process_url sttributes';
-  isa_ok( $m, 'wtsi_clarity::epp::mq');
+  isa_ok( $m, 'wtsi_clarity::epp::generic::messenger');
   ok(!$m->step_start, 'step_start defaults to false');
   is(ref $m->_date, 'DateTime', 'default datetime object created');
 }
 
 {
   my $date = DateTime->now();
-  my $m =  wtsi_clarity::epp::mq->new(
+  my $m =  wtsi_clarity::epp::generic::messenger->new(
        process_url => 'http://some.com/process/XM4567',
        step_url    => 'http://some.com/step/AS456',
        _date       => $date,
