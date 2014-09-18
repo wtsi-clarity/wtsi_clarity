@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="yes"?>
+<root xmlns:udf="http://genologics.com/ri/userdefined" >
+  <a>hello</a>
+  <a>cool</a>
+  <a/>
+  <a>
+    <b/>
+  </a>
+  <a>
+    <b>1234</b>
+  </a>
+  <a>
+    <field xmlns="http://genologics.com/ri/userdefined" name="b">456</field>
+  </a>
+  <a>
+    <udf:field name="b">456</udf:field>
+  </a>
+ </root>
+

@@ -18,6 +18,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'publish_file'                   => 'generic::file_publisher',
     'stamp'                          => 'generic::stamper',
     'queue_message'                  => 'generic::messenger',
+    'store_plate'                    => 'generic::plate_storer',
 
     'check_volume'                   => 'sm::volume_checker',
     'receive_sample'                 => 'sm::sample_receiver',
