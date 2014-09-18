@@ -12,6 +12,8 @@ use wtsi_clarity::epp::mapper;
 
 our $VERSION = '0';
 
+my $current_action;
+
 try {
   my $process_url;
   my @actions;
@@ -33,12 +35,13 @@ try {
 
   # Executing the instantiated actions one by one
   foreach my $action (@actions) {
-    $action->run();
+    $current_action = $action;
+    $current_action->run();
   }
 } catch {
   my $error = "$_\n";
   print $error || carp 'Failed to print error to STDOUT';
-  croak $error;
+  $current_action->display_error($error);
 };
 
 0;

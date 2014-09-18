@@ -6,7 +6,9 @@ use XML::LibXML;
 
 use wtsi_clarity::util::request;
 
-with qw/MooseX::Getopt wtsi_clarity::util::configurable/;
+with qw/MooseX::Getopt
+        wtsi_clarity::util::configurable
+        wtsi_clarity::util::display_message_role/;
 
 our $VERSION = '0.0';
 
