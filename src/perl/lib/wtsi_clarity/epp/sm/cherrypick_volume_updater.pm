@@ -1,7 +1,7 @@
 package wtsi_clarity::epp::sm::cherrypick_volume_updater;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use XML::LibXML;
 use Readonly;
 
@@ -66,7 +66,7 @@ sub get_data {
     $result = _volume_calculation($volume, $avail_volume);
   }
   else{
-    croak q/Unknown option!/;
+    croak( q/Unknown option!/);
   }
   return $result;
 };
@@ -98,10 +98,10 @@ sub _build_data_source {
     my @concentration = $smp->findnodes( $CONCENTRATION_PATH )->get_nodelist();
     my @volume        = $smp->findnodes( $AVAILABLE_VOL_PATH )->get_nodelist();
     if (@concentration <= 0) {
-      croak qq{Could not find the concentration required! ($CONCENTRATION_PATH) };
+      croak( qq{Could not find the concentration required! ($CONCENTRATION_PATH) });
     }
     if (@volume <= 0) {
-      croak qq{Could not find the volume required! ($AVAILABLE_VOL_PATH) };
+      croak( qq{Could not find the volume required! ($AVAILABLE_VOL_PATH) });
     }
     $data_hash->{$art_uri} = [$concentration[0]->textContent , $volume[0]->textContent];
   }
@@ -124,7 +124,7 @@ sub _ng_min_max_calculation {
   my ($required_amount, $min_volume, $max_volume, $concentration, $avail_volume) = @_;
   my $vs = $required_amount / $concentration ;
   my $vb;
-  croak q /The minimum volume must be smaller than the maximum volume./ if ($min_volume >= $max_volume) ;
+  croak( q /The minimum volume must be smaller than the maximum volume./ ) if ($min_volume >= $max_volume);
 
   if ( $avail_volume >= $max_volume ) {
     if ($vs < $min_volume) {
@@ -214,7 +214,7 @@ wtsi_clarity::epp::sm::cherrypick_volume_updater
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item XML::LibXML
 

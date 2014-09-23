@@ -36,7 +36,7 @@ use_ok('wtsi_clarity::epp::generic::bed_verifier');
 
   is($process->_extract_plate_number('Bed 2 (Input Plate 1)'), '2', '1) Can extract the correct barcode from the udf string');
   is($process->_extract_plate_number('Bed 3 (Output Plate 1)'), '3', '2) Can extract the correct barcode from the udf string');
-  throws_ok { $process->_extract_plate_number('jibberish') } qr/Plate number not found\n/,
+  throws_ok { $process->_extract_plate_number('jibberish') } qr/Plate number not found/,
     'Throws an error when it can not find a number';
 }
 
@@ -58,7 +58,7 @@ use_ok('wtsi_clarity::epp::generic::bed_verifier');
     step_name => 'working_dilution',
   );
 
-  throws_ok { $process->_robot_barcode() } qr/Robot ID must be set for bed verification\n/,
+  throws_ok { $process->_robot_barcode() } qr/Robot ID must be set for bed verification/,
     'Throws an error when it can not find the Robot ID';
 }
 

@@ -837,9 +837,9 @@ my $EXPECTED_DATA_3 = {
 {
   my $parser = XML::LibXML->new();
 
-  my $standard_doc = $parser->load_xml(location => $testdata_path.$standard_name) or croak 'File can not be found at ' . $testdata_path.$standard_name;
-  my $plateA_doc = $parser->load_xml(location => $testdata_path.$plateA_name) or croak 'File can not be found at ' . $testdata_path.$plateA_name;
-  my $plateB_doc = $parser->load_xml(location => $testdata_path.$plateB_name) or croak 'File can not be found at ' . $testdata_path.$plateB_name;
+  my $standard_doc = $parser->load_xml(location => $testdata_path.$standard_name) or croak  'File can not be found at ' . $testdata_path.$standard_name;
+  my $plateA_doc = $parser->load_xml(location => $testdata_path.$plateA_name) or croak  'File can not be found at ' . $testdata_path.$plateA_name;
+  my $plateB_doc = $parser->load_xml(location => $testdata_path.$plateB_name) or croak  'File can not be found at ' . $testdata_path.$plateB_name;
 
   my $calculator = wtsi_clarity::file_parsing::dtx_concentration_calculator->new(
     standard_doc => $standard_doc,
@@ -875,9 +875,9 @@ my $EXPECTED_DATA_3 = {
 { #get_analysis_results
   my $parser = XML::LibXML->new();
 
-  my $standard_doc = $parser->load_xml(location => $testdata_path.$standard_name) or croak 'File can not be found at ' . $testdata_path.$standard_name;
-  my $plateA_doc = $parser->load_xml(location => $testdata_path.$plateA_name) or croak 'File can not be found at ' . $testdata_path.$plateA_name;
-  my $plateB_doc = $parser->load_xml(location => $testdata_path.$plateB_name) or croak 'File can not be found at ' . $testdata_path.$plateB_name;
+  my $standard_doc = $parser->load_xml(location => $testdata_path.$standard_name) or croak  'File can not be found at ' . $testdata_path.$standard_name;
+  my $plateA_doc = $parser->load_xml(location => $testdata_path.$plateA_name) or croak  'File can not be found at ' . $testdata_path.$plateA_name;
+  my $plateB_doc = $parser->load_xml(location => $testdata_path.$plateB_name) or croak  'File can not be found at ' . $testdata_path.$plateB_name;
 
   my $calculator = wtsi_clarity::file_parsing::dtx_concentration_calculator->new(
     standard_doc => $standard_doc,

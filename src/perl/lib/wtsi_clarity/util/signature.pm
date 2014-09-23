@@ -2,7 +2,7 @@ package wtsi_clarity::util::signature;
 
 use Moose;
 use Digest::MD5 qw(md5_base64);
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use Readonly;
 use namespace::autoclean;
 
@@ -22,7 +22,7 @@ sub encode {
 
   my $length = $self->sig_length;
   if ($length > $MAX_LENGTH) {
-    croak qq[Maximum signature length is $MAX_LENGTH];
+    croak( qq[Maximum signature length is $MAX_LENGTH]);
   }
 
   my $result = md5_base64(@inputs);
@@ -64,7 +64,7 @@ wtsi_clarity::util::signature
 
 =item Digest::MD5
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Readonly
 

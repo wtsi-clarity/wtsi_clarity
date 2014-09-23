@@ -1,7 +1,7 @@
 package wtsi_clarity::epp::sm::dtx_file_attacher;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use Readonly;
 use File::Copy;
 
@@ -42,7 +42,7 @@ sub _build__standard_barcode {
 
   my $standard_barcode = $self->find_udf_element($self->process_doc, 'Standard Barcode');
 
-  croak 'Standard barcode has not been set' if (!defined $standard_barcode);
+  croak( 'Standard barcode has not been set' ) if (!defined $standard_barcode);
 
   return $standard_barcode->textContent;
 }
@@ -61,7 +61,7 @@ sub _build__container_barcode {
   my $container_doc = (values %{$container_hash})[0];
   my $container_barcode = $container_doc->findvalue('/con:container/name');
 
-  croak 'Container barcode is not set' if ($container_barcode eq q{});
+  croak( 'Container barcode is not set' ) if ($container_barcode eq q{});
 
   return $container_barcode;
 }
@@ -120,11 +120,11 @@ sub _get_file_path {
   my @file_list = glob $file_path_pattern;
 
   if (scalar @file_list > 1) {
-    croak 'Multiple files are available for ' . $file_path_pattern;
+    croak( 'Multiple files are available for ' . $file_path_pattern);
   }
 
   if (scalar @file_list == 0) {
-    croak 'Could not find file ' . $file_path_pattern;
+    croak( 'Could not find file ' . $file_path_pattern);
   }
 
   my $file = shift @file_list;
@@ -142,10 +142,10 @@ sub attach_files_to_process {
   my ($dtx_file, $standard_file) = $self->_get_files();
 
   copy ($dtx_file, q{./} . $self->new_pico_assay_file_name)
-    or croak sprintf 'Failed to copy %s', $dtx_file;
+    or croak( sprintf 'Failed to copy %s', $dtx_file);
 
   copy ($standard_file, q{./} . $self->new_standard_file_name)
-    or croak sprintf 'Failed to copy %s', $standard_file;
+    or croak( sprintf 'Failed to copy %s', $standard_file);
 
   return;
 }
@@ -193,7 +193,7 @@ wtsi_clarity::epp::sm::dtx_file_attacher
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Readonly
 

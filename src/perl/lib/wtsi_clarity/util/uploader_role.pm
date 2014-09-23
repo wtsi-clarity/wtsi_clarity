@@ -1,7 +1,7 @@
 package wtsi_clarity::util::uploader_role;
 
 use Moose::Role;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use XML::LibXML;
 
 use wtsi_clarity::util::request;
@@ -41,11 +41,11 @@ sub addfile_to_resource {
   my ($self, $destination_uri, $filename) = @_;
 
   my $storage_request = _get_storage_request($destination_uri, $filename)
-    or croak qq[Could not request storage for file $filename.\n];
+    or croak( qq[Could not request storage for file $filename.\n]);
 
   my $storage_raw = $self->request->post(($self->config->clarity_api->{'base_uri'}).'/glsstorage', $storage_request->toString());
   if (!$storage_raw) {
-    croak qq[Impossible to retrieve the destination path for uploading $filename.\n];
+    croak( qq[Impossible to retrieve the destination path for uploading $filename.\n]);
   }
   my $storage = XML::LibXML->load_xml(string => $storage_raw);
 
@@ -53,11 +53,11 @@ sub addfile_to_resource {
 
   my ($server, $remote_directory, $newfilename) = _extract_locations ($content_location);
   if (!$remote_directory) {
-      croak qq[Cannot get base url from $content_location.\n];
+      croak( qq[Cannot get base url from $content_location.\n]);
   }
 
   $self->request->upload_file($server, $remote_directory, $filename, $newfilename )
-    or croak qq[Could not upload the file > $filename as $remote_directory // $newfilename on the server.\n];
+    or croak( qq[Could not upload the file > $filename as $remote_directory // $newfilename on the server.\n]);
 
   return $self->request->post($self->config->clarity_api->{'base_uri'}.'/files', $storage_raw);
 }
@@ -91,7 +91,7 @@ wtsi_clarity::util::uploader_role
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item XML::LibXML
 

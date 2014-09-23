@@ -72,7 +72,7 @@ wtsi_clarity::epp::sm::fluidigm_request_volume_updater
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item XML::LibXML
 

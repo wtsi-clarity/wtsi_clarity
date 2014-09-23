@@ -94,7 +94,7 @@ wtsi_clarity::util::report
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Readonly
 

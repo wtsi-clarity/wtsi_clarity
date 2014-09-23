@@ -1,7 +1,7 @@
 package wtsi_clarity::util::well_mapper;
 
 use Moose::Role;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 
 our $VERSION = '0.0';
 
@@ -9,24 +9,24 @@ sub well_location_index {
   my ($self, $loc, $nb_rows, $nb_cols) = @_;
 
   if (!$loc) {
-    croak 'Well address should be given';
+    croak( 'Well address should be given');
   }
 
   if (!$nb_rows) {
-    croak 'Number of rows has to be given';
+    croak( 'Number of rows has to be given');
   }
 
   if (!$nb_cols) {
-    croak 'Number of columns has to be given';
+    croak( 'Number of columns has to be given');
   }
 
   my ($letter, $number) = $loc =~ /\A(\w):(\d+)/xms;
   if (!$letter || !$number) {
-    croak "Well location format '$loc' is not recornised";
+    croak( "Well location format '$loc' is not recornised");
   }
 
   if ($number > $nb_cols) {
-    croak "Invalid column address '$number' for $nb_rows:$nb_cols layout";
+    croak( "Invalid column address '$number' for $nb_rows:$nb_cols layout");
   }
 
   ## no critic(CodeLayout::ProhibitParensWithBuiltins)
@@ -34,7 +34,7 @@ sub well_location_index {
   ## use critic
 
   if ($letter_as_number > $nb_rows) {
-    croak "Invalid row address '$letter' for $nb_rows:$nb_cols layout";
+    croak( "Invalid row address '$letter' for $nb_rows:$nb_cols layout");
   }
 
   return  ($number-1)*$nb_rows + $letter_as_number;
@@ -78,7 +78,7 @@ __END__
 
 =item Moose::Role
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =back
 

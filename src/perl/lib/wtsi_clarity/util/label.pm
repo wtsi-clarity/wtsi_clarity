@@ -1,7 +1,7 @@
 package wtsi_clarity::util::label;
 
 use Moose::Role;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use Readonly;
 use DateTime;
 
@@ -84,7 +84,7 @@ sub _format_label {
         },
     }};
   } else {
-    croak qq[Unknown container type $type, known types: tube, plate];
+    croak( qq[Unknown container type $type, known types: tube, plate]);
   }
 
   return $label;
@@ -126,7 +126,7 @@ wtsi_clarity::util::label
 
 =item Moose::Role
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Readonly
 

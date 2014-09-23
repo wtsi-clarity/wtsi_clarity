@@ -136,7 +136,7 @@ wtsi_clarity::epp::sm::fluidigm_analyser
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Readonly
 

@@ -1,7 +1,7 @@
 package wtsi_clarity::epp::sm::pico_analyser;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use Readonly;
 use File::Temp qw/ tempdir /;
 use wtsi_clarity::file_parsing::dtx_concentration_calculator;
@@ -150,7 +150,7 @@ sub _build__input_to_output_map {
     my $output_id = $b->findvalue ( q{output/@limsid} );
     ## use critic
     if (!defined $a->{$input_id} ) {
-      croak qq{ There is a missing source artifacts in the input-output-map! ( $input_id )};
+      croak( qq{ There is a missing source artifacts in the input-output-map! ( $input_id )});
     }
     $a->{$input_id}->{'output_id'} = $output_id;
     return $a;
@@ -377,7 +377,7 @@ wtsi_clarity::epp::sm::pico_analyser
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Readonly
 

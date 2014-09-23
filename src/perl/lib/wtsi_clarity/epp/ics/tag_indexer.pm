@@ -1,7 +1,7 @@
 package wtsi_clarity::epp::ics::tag_indexer;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use Readonly;
 
 use wtsi_clarity::tag_plate::service;
@@ -38,7 +38,7 @@ has '_reagents_url'  => (
 sub _build__reagents_url {
   my $self = shift;
   if (!$self->can('step_url') || !$self->step_url) {
-    croak 'To get reagent info, step url should be defined';
+    croak( 'To get reagent info, step url should be defined');
   }
   return join q[/], $self->step_url, 'reagents';
 }
@@ -82,7 +82,7 @@ sub _build__output_location_map {
   }
 
   if (!@uris) {
-    croak 'No output analytes found';
+    croak( 'No output analytes found');
   }
 
   my $batch_artifacts_doc = $self->request->batch_retrieve('artifacts', \@uris);
@@ -93,21 +93,21 @@ sub _build__output_location_map {
 
     my $uri = $art->findvalue($URI_SEARCH_STRING);
     if (!$uri) {
-      croak 'Failed to get analyte uri';
+      croak( 'Failed to get analyte uri');
     }
     $uri =~ s/[?].*\z//xsm; # remove state for caching
 
     my $container = $art->findvalue(q(location/container/) . $LIMSID_SEARCH_STRING);
     if (!$container) {
-      croak "No container information for $uri";
+      croak( "No container information for $uri");
     }
     my @wells = $art->findnodes(q(location/value));
     if (!@wells) {
-      croak "No well information for $uri";
+      croak( "No well information for $uri");
     }
     my $well = $wells[0]->textContent;
     if (!$well) {
-      croak "Well information is not set for $uri";
+      croak( "Well information is not set for $uri");
     }
 
     $map->{$container}->{$uri} = $well;
@@ -115,10 +115,10 @@ sub _build__output_location_map {
 
   my @containers = keys %{$map};
   if (!@containers) {
-    croak 'No information about wells';
+    croak( 'No information about wells');
   }
   if (scalar @containers > 1) {
-    croak 'More than one output container';
+    croak( 'More than one output container');
   }
 
   return $map->{$containers[0]};
@@ -155,11 +155,11 @@ sub _index {
 
     my $ar_uri = $output->findvalue($URI_SEARCH_STRING);
     if (!$ar_uri) {
-      croak 'Failed to get analyte uri in the listing of reagents';
+      croak( 'Failed to get analyte uri in the listing of reagents');
     }
     my $location = $self->_output_location_map->{$ar_uri};
     if (!$location) {
-      croak "Failed to get well address for $ar_uri";
+      croak( "Failed to get well address for $ar_uri");
     }
     delete $self->_output_location_map->{$ar_uri};
 
@@ -170,7 +170,7 @@ sub _index {
   }
 
   if (keys %{$self->_output_location_map}) {
-    croak 'Left with locations not listed in reagents xml';
+    croak( 'Left with locations not listed in reagents xml');
   }
 
   return;
@@ -210,7 +210,7 @@ __END__
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =back
 

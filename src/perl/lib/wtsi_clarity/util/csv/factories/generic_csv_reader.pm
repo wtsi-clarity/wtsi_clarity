@@ -3,13 +3,14 @@ package wtsi_clarity::util::csv::factories::generic_csv_reader;
 use Moose;
 use Carp;
 use Text::CSV;
+use wtsi_clarity::util::error_reporter qw/croak/;
 
 our $VERSION = '0.0';
 
 sub build {
   my ($self, %args) = @_;
 
-  my $file_content = $args{'file_content'} || croak qq{Requires a file content!};
+  my $file_content = $args{'file_content'} || croak( qq{Requires a file content!});
 
   my $csv_parser = Text::CSV->new();
   my $header_line = shift $file_content;
@@ -65,7 +66,7 @@ wtsi_clarity::util::csv::factories::generic_csv_reader
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item wtsi_clarity::util::textfile
 

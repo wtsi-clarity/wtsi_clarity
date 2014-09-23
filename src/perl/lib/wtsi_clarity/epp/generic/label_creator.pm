@@ -1,7 +1,7 @@
 package wtsi_clarity::epp::generic::label_creator;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use Readonly;
 use DateTime;
 use namespace::autoclean;
@@ -90,15 +90,15 @@ sub _build_printer {
 
   my @nodes = $self->process_doc->findnodes($PRINTER_PATH);
   if (!@nodes) {
-    croak 'Printer udf field should be defined for the process';
+    croak( 'Printer udf field should be defined for the process');
   }
   if (scalar @nodes > 1) {
-    croak 'Multiple printer udf fields are defined for the process';
+    croak( 'Multiple printer udf fields are defined for the process');
   }
 
   my $printer = $self->trim_value($nodes[0]->textContent);
   if (!$printer) {
-    croak 'Printer name should be defined';
+    croak( 'Printer name should be defined');
   }
   return $printer;
 }
@@ -141,7 +141,7 @@ sub _build__num_copies {
     return $DEFAULT_NUM_COPIES ;
   }
   if (scalar @nodes > 1) {
-    croak 'Multiple barcode copies udf fields are defined for the process';
+    croak( 'Multiple barcode copies udf fields are defined for the process');
   }
   return $nodes[0]->textContent || $DEFAULT_NUM_COPIES;
 }
@@ -156,7 +156,7 @@ sub _build__plate_purpose {
   my $self = shift;
   my @nodes = $self->process_doc->findnodes($PLATE_PURPOSE_PATH);
   if (scalar @nodes > 1) {
-    croak 'Multiple plate purpose udf fields are defined for the process';
+    croak( 'Multiple plate purpose udf fields are defined for the process');
   }
   if (@nodes) {
     return $self->trim_value($nodes[0]->textContent);
@@ -188,7 +188,7 @@ sub _build__container {
   my $iopath = $self->source_plate ? $IO_MAP_PATH : $IO_MAP_PATH_ANALYTE_OUTPUT;
   my @nodes = $self->process_doc->findnodes($iopath);
   if (!@nodes) {
-    croak 'No analytes registered';
+    croak( 'No analytes registered');
   }
 
   my $containers = {};
@@ -200,7 +200,7 @@ sub _build__container {
     my $analyte_dom = $self->fetch_and_parse($url);
     my $container_url = $analyte_dom->findvalue($CONTAINER_PATH);
     if (!$container_url) {
-      croak qq[Container not defined for $url];
+      croak( qq[Container not defined for $url]);
     }
 
     if (!exists $containers->{$container_url}) {
@@ -210,13 +210,13 @@ sub _build__container {
     if (!@control_flag) { # Sample list should not contain controls
       my $sample_lims_id = $analyte_dom->findvalue($SAMPLE_PATH);
       if (!$sample_lims_id) {
-        croak qq[Sample lims id not defined for $url];
+        croak( qq[Sample lims id not defined for $url]);
       }
       push @{$containers->{$container_url}->{'samples'}}, $sample_lims_id;
     }
   }
   if (scalar keys %{$containers} == 0) {
-    croak q[Failed to get containers for process ] . $self->process_url;
+    croak( q[Failed to get containers for process ] . $self->process_url);
   }
 
   return $containers;
@@ -232,7 +232,7 @@ has '_plate_purpose_suffix' => (
 sub _generate_barcode {
   my ($self, $container_id) = @_;
   if (!$container_id) {
-    croak 'Container id is not given';
+    croak( 'Container id is not given');
   }
   $container_id =~ s/-//smxg;
   return calculateBarcode($self->_barcode_prefix, $container_id);
@@ -296,7 +296,7 @@ sub _set_container_data {
     my $doc = $container->{'doc'};
     my $lims_id = $doc->findvalue($CONTAINER_LIMSID_PATH);
     if (!$lims_id) {
-      croak qq[No limsid for $container_url];
+      croak( qq[No limsid for $container_url]);
     }
     $container->{'limsid'} = $lims_id;
     if ($self->source_plate) {  # SM first step only
@@ -336,14 +336,14 @@ sub _copy_purpose {
 
   my $nodes = $doc->findnodes($CONTAINER_PURPOSE_PATH);
   if ($nodes->size > 1) {
-    croak 'Only one container purpose node is possible';
+    croak( 'Only one container purpose node is possible');
   }
 
   my $purpose;
   if ($nodes->size == 1) { # At cherry-picking stage purpose is preset
     $purpose = $nodes->pop()->textContent();
     if (!$purpose) {
-      croak qq[No purpose in $CONTAINER_PURPOSE_PATH];
+      croak( qq[No purpose in $CONTAINER_PURPOSE_PATH]);
     }
   } else {
     $purpose = $self->_plate_purpose;
@@ -365,14 +365,14 @@ sub _copy_supplier_container_name {
                           # otherwise we might overwrite the value.
     my @nodes = $doc->findnodes($CONTAINER_NAME_PATH);
     if (!@nodes || scalar @nodes > 1) {
-      croak 'Only one container name node is possible';
+      croak( 'Only one container name node is possible');
     }
     my $name = $nodes[0]->textContent();
     if ($name) {
       $name = $self->trim_value($name);
     }
     if (!$name) {
-      croak 'Container name undefined';
+      croak( 'Container name undefined');
     }
     $self->add_udf_element($doc, 'Supplier Container Name', $name);
   }
@@ -384,7 +384,7 @@ sub _copy_barcode2container {
 
   my $nodes = $doc->findnodes($CONTAINER_NAME_PATH);
   if ($nodes->size == 0 || $nodes->size > 1) {
-    croak 'Multiple or none container name nodes';
+    croak( 'Multiple or none container name nodes');
   }
   $self->update_text($nodes->pop(), $barcode);
   return;
@@ -445,7 +445,7 @@ wtsi_clarity::epp::generic::label_creator
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item namespace::autoclean
 

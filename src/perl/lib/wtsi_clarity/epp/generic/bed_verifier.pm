@@ -1,7 +1,7 @@
 package wtsi_clarity::epp::generic::bed_verifier;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use Readonly;
 use File::Spec::Functions;
 use File::Slurp;
@@ -44,7 +44,7 @@ sub _build__robot_barcode {
   my $rbc = $self->process_doc->findvalue($ROBOT_BARCODE_PATH);
 
   if ($rbc eq q{}) {
-    croak qq[Robot ID must be set for bed verification\n];
+    croak( qq[Robot ID must be set for bed verification\n]);
   }
 
   return $rbc;
@@ -61,7 +61,7 @@ sub _get_input_plates {
   my $nodes = $self->process_doc->findnodes($BEDS_PATH);
 
   if ($nodes->size() == 0) {
-    croak qq[Could not find any input plates\n];
+    croak( qq[Could not find any input plates\n]);
   }
 
   my %h = ();
@@ -117,7 +117,7 @@ sub _extract_plate_name {
     return $input_plate_name;
   }
 
-  croak qq[Could not find matching plate name for $bed_name\n];
+  croak( qq[Could not find matching plate name for $bed_name\n]);
 }
 
 sub _extract_plate_number {
@@ -127,7 +127,7 @@ sub _extract_plate_number {
   if ( $bed_name =~ /(\d+)/sxm ) {
     $plate_number = $1;
   } else {
-    croak qq[Plate number not found\n];
+    croak( qq[Plate number not found\n]);
   }
 
   return $plate_number;
@@ -144,7 +144,7 @@ sub _get_output_plate_from_input {
   my $output_plate_list = $self->process_doc->findnodes($output_path);
 
   if ($output_plate_list->size() == 0) {
-    croak "Could not find output plate $input_plate_name\n";
+    croak( "Could not find output plate $input_plate_name\n");
   }
 
   return $output_plate_list;
@@ -198,11 +198,11 @@ sub _build__bed_config_file {
   my $self = shift;
   my $file_path = catfile($self->config->dir_path, $BED_VERIFICATION_CONFIG);
   open my $fh, '<:encoding(UTF-8)', $file_path
-    or croak qq[Could not retrive the configuration file at $file_path\n];
+    or croak( qq[Could not retrive the configuration file at $file_path\n]);
   local $RS = undef;
   my $json_text = <$fh>;
   close $fh
-    or croak qq[Could not close handle to $file_path\n];
+    or croak( qq[Could not close handle to $file_path\n]);
   return decode_json($json_text);
 }
 
@@ -265,7 +265,7 @@ override 'run' => sub {
 
   if (!$verified) {
     $self->_punish_user_by_resetting_everything();
-    croak "Bed verification has failed\n";
+    croak( "Bed verification has failed\n");
   }
 
   return;
@@ -288,7 +288,7 @@ sub _verify_plates_positioned_correctly {
     my $input_elem = $self->process_doc->findnodes( qq[ prc:process/udf:field[text()='$input_plate']]);
 
     if ($input_elem->size() == 0) {
-      croak qq[Could not find plate with barcode $input_plate\n];
+      croak( qq[Could not find plate with barcode $input_plate\n]);
     }
 
     my $input_elem_name = $input_elem->pop()->findvalue('@name');
@@ -297,7 +297,7 @@ sub _verify_plates_positioned_correctly {
     my $output_elem_value = $self->process_doc->findvalue( qq[ prc:process/udf:field[\@name='$input_elem_name']]);
 
     if ($output_elem_value eq q{}) {
-      croak qq[Could not find the field for plate $input_elem_name\n];
+      croak( qq[Could not find the field for plate $input_elem_name\n]);
     }
 
     my $output_plate = $barcode_map->{ $input_plate }[0];
@@ -350,7 +350,7 @@ wtsi_clarity::epp::generic::bed_verifier
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item File::Spec::Functions
 

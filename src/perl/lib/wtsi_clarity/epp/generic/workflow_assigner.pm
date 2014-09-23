@@ -1,7 +1,7 @@
 package wtsi_clarity::epp::generic::workflow_assigner;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use XML::LibXML;
 use Readonly;
 
@@ -30,7 +30,7 @@ override 'run' => sub {
   my @uris = map { $_->getValue() } @nodes;
 
   my $request_uri = $self->config->clarity_api->{'base_uri'}.'/configuration/workflows';
-  my $workflows_raw = $self->request->get($request_uri) or croak qq{Could not get the list of workflows. ($request_uri)};
+  my $workflows_raw = $self->request->get($request_uri) or croak( qq{Could not get the list of workflows. ($request_uri)});
   my $workflows = XML::LibXML->load_xml(string => $workflows_raw );
 
   my $workflow_uri = _get_workflow_url($self->new_wf, $workflows);
@@ -38,7 +38,7 @@ override 'run' => sub {
   my $req = _make_rerouting_request($workflow_uri, \@uris)->toString();
 
   my $post_uri = $self->config->clarity_api->{'base_uri'}.'/route/artifacts' ;
-  my $response = $self->request->post($post_uri, $req) or croak qq{Could not send successful request for rerouting. ($post_uri)};
+  my $response = $self->request->post($post_uri, $req) or croak( qq{Could not send successful request for rerouting. ($post_uri)});
 
   return $response;
 };
@@ -47,7 +47,7 @@ sub _get_workflow_url {
   my ($workflow_name, $workflows) = @_;
   my @workflows_nodes = $workflows->findnodes( qq{ /wkfcnf:workflows/workflow[\@name='$workflow_name'] } )->get_nodelist();
   if (scalar @workflows_nodes <= 0) {
-    croak qq{Workflow '$workflow_name' not found};
+    croak( qq{Workflow '$workflow_name' not found});
   }
   return ($workflows_nodes[0])->getAttribute('uri');
 }
@@ -102,7 +102,7 @@ wtsi_clarity::epp::generic::workflow_assigner
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item XML::LibXML
 

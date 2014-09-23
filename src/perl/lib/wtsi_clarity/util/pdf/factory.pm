@@ -1,7 +1,7 @@
 package wtsi_clarity::util::pdf::factory;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use Readonly;
 
 use wtsi_clarity::util::pdf::factory::pico_analysis_results;
@@ -19,7 +19,7 @@ sub createPDF {
   # } elsif ($pdf_type eq 'worksheet') {
   # $pdf_factory = wtsi_clarity::util::pdf_generator::factory::worksheet->new();
   } else {
-    croak "PDF type $pdf_type can not be created";
+    croak( "PDF type $pdf_type can not be created");
   }
 
   return $pdf_factory->build($parameters);
@@ -54,7 +54,7 @@ wtsi_clarity::util::pdf::factory
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Readonly
 

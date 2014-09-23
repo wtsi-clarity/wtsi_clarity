@@ -1,7 +1,7 @@
 package wtsi_clarity::util::textfile;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 
 our $VERSION = '0.0';
 
@@ -14,7 +14,7 @@ sub saveas {
   my ($self, $path) = @_;
 
   open my $fh, '>', $path
-    or croak qq{Could not create/open file '$path'.};
+    or croak( qq{Could not create/open file '$path'.});
   foreach my $line (@{$self->content})
   {
       ## no critic(InputOutput::RequireCheckedSyscalls)
@@ -22,7 +22,7 @@ sub saveas {
       ## use critic
   }
   close $fh
-    or croak qq{ Unable to close $path.};
+    or croak( qq{ Unable to close $path.});
 
   return $path;
 };
@@ -32,12 +32,12 @@ sub read_content {
   my ($self, $path) = @_;
 
   open my $fh, '<', $path
-    or croak qq{Could not open file '$path'.};
+    or croak( qq{Could not open file '$path'.});
 
   my @array = <$fh>;
 
   close $fh
-    or croak qq{ Unable to close $path.};
+    or croak( qq{ Unable to close $path.});
 
   $self->content(\@array);
 
@@ -88,7 +88,7 @@ wtsi_clarity::util::textfile
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =back
 

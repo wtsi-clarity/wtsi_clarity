@@ -1,10 +1,10 @@
 package wtsi_clarity::epp::sm::volume_checker;
 
 use Moose;
-use Carp;
 use File::Copy;
 use File::Spec::Functions;
 use Readonly;
+use wtsi_clarity::util::error_reporter qw/croak/;
 
 use wtsi_clarity::file_parsing::volume_checker;
 use wtsi_clarity::util::types;
@@ -60,7 +60,7 @@ override 'run' => sub {
   $self->_update_analytes($parsed_file);
 
   copy($self->robot_file, $self->output)
-    or croak sprintf 'Failed to copy %s to %s', $self->robot_file, $self->output;
+    or croak( sprintf 'Failed to copy %s to %s', $self->robot_file, $self->output);
   return;
 };
 
@@ -98,7 +98,7 @@ sub _extract_well_location {
 sub _update_analyte {
   my ($self, $analyteUri, $analyteDoc, $wellLocation, $parsed_file) = @_;
 
-  croak "Well location $wellLocation does not exist in volume check file " . $self->robot_file if (!exists($parsed_file->{$wellLocation}));
+  croak( "Well location $wellLocation does not exist in volume check file " . $self->robot_file ) if (!exists($parsed_file->{$wellLocation}));
 
   my $newVolume = $parsed_file->{$wellLocation};
   $self->add_udf_element($analyteDoc, "Volume", $newVolume);
@@ -147,7 +147,7 @@ wtsi_clarity::epp::sm::volume_checker
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item File::Copy
 

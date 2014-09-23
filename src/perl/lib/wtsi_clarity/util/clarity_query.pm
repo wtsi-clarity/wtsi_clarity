@@ -6,6 +6,7 @@ use Mojo::Collection 'c';
 use URI::Escape;
 use XML::LibXML;
 use Data::Dumper;
+use wtsi_clarity::util::error_reporter qw/croak/;
 
 our $VERSION = '0.0';
 
@@ -68,7 +69,7 @@ sub _build_query
               }
 
               if (!$key) {
-                croak qq{couldn't find a key to build the query! }, Dumper $criteria;
+                croak( qq{couldn't find a key to build the query! }, Dumper $criteria);
               }
               my $crit = $criteria->{$_};
               # make an array of non array value...
@@ -129,7 +130,7 @@ wtsi_clarity::util::clarity_query
 
 =item Moose::Role
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Mojo::Collection
 

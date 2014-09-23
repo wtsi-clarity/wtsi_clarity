@@ -2,7 +2,7 @@ package wtsi_clarity::mq::client;
 
 use Moose;
 use Readonly;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 #use AnyEvent;
 use AnyEvent::RabbitMQ;
 
@@ -84,7 +84,7 @@ sub send_message {
         on_failure => $cv,
         on_close   => sub {
           my $method_frame = shift->method_frame;
-          croak $method_frame->reply_code, $method_frame->reply_text;
+          croak( $method_frame->reply_code, $method_frame->reply_text );
         }
       );
     },
@@ -94,9 +94,9 @@ sub send_message {
       my $why = shift;
       if (ref $why) {
         my $method_frame = $why->method_frame;
-        croak $method_frame->reply_code, q[: ], $method_frame->reply_text;
+        croak( $method_frame->reply_code, q[: ], $method_frame->reply_text );
       } else {
-        croak $why;
+        croak( $why );
       }
     },
   );
@@ -152,7 +152,7 @@ wtsi_clarity::mq::client
 
 =item Readonly
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item AnyEvent
 

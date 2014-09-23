@@ -1,7 +1,7 @@
 package wtsi_clarity::util::request;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use English qw( -no_match_vars );
 use MooseX::StrictConstructor;
 use MooseX::ClassAttribute;
@@ -98,7 +98,7 @@ has 'user'      => (isa        => 'Str',
 sub _build_user {
     my $self = shift;
     my $user = $self->config->clarity_api->{'username'} ||
-        croak q[Cannot retrieve username from the configuration file];
+        croak( q[Cannot retrieve username from the configuration file]);
     return $user;
 }
 
@@ -117,7 +117,7 @@ has 'ftpuser'      => (isa        => 'Str',
 sub _build_ftpuser {
     my $self = shift;
     my $user = $self->config->ftp_user->{'username'} ||
-        croak q[Cannot retrieve ftp username from the configuration file];
+        croak( q[Cannot retrieve ftp username from the configuration file]);
     return $user;
 }
 
@@ -135,7 +135,7 @@ has 'password'      => (isa        => 'Str',
 sub _build_password {
     my $self = shift;
     my $p = $self->config->clarity_api->{'password'} ||
-        croak q[Cannot retrieve password from the configuration file];
+        croak( q[Cannot retrieve password from the configuration file]);
     return $p;
 }
 
@@ -155,7 +155,7 @@ has 'ftppassword'      => (isa        => 'Str',
 sub _build_ftppassword {
     my $self = shift;
     my $p = $self->config->ftp_user->{'password'} ||
-        croak q[Cannot retrieve ftp password from the configuration file];
+        croak( q[Cannot retrieve ftp password from the configuration file]);
     return $p;
 }
 
@@ -172,7 +172,7 @@ has 'useragent' => (isa        => 'Object',
 sub _build_useragent {
     my $self = shift;
     if (!$self->config->clarity_api->{'base_uri'}) {
-        croak q[Base uri is needed for authentication];
+        croak( q[Base uri is needed for authentication]);
     }
     my $ua = LWP::UserAgent->new();
     $ua->agent(join q[/], __PACKAGE__, $VERSION);
@@ -252,7 +252,7 @@ sub _request {
 
     if ( !$type || $type !~ /GET|POST|PUT|DELETE/smx) {
         $type = !defined $type ? 'undefined' : $type;
-        croak qq[Invalid request type "$type", valid types are GET, POST, PUT, DELETE];
+        croak( qq[Invalid request type "$type", valid types are GET, POST, PUT, DELETE]);
     }
 
     my $cache = $ENV{$self->cache_dir_var_name} ? $ENV{$self->cache_dir_var_name} : q[];
@@ -262,7 +262,7 @@ sub _request {
         $self->_check_cache_dir($cache);
         $path = $self->_create_path($uri, $type, $content);
         if (!$path) {
-            croak qq[Empty path generated for $uri];
+            croak( qq[Empty path generated for $uri]);
         }
     }
 
@@ -271,7 +271,7 @@ sub _request {
                   $self->_from_web($type, $uri, $content, $path);
 
     if (!$response) {
-        croak qq[Empty document at $uri $path];
+        croak( qq[Empty document at $uri $path]);
     }
 
     if ($ENV{$self->save2cache_dir_var_name}) {
@@ -292,10 +292,10 @@ sub upload_file {
     my $sftp=Net::SFTP::Foreign->new($server,
             'user'=>$self->ftpuser,
             'password' => $self->ftppassword,
-            ) or croak qq{could not open connection to $server. };
+            ) or croak( qq{could not open connection to $server. });
     $sftp->mkdir(qq{/$remote_directory}); # we let this call fail silently, as it *should* indicate that the folder already exists.
     $sftp->put($oldfilename, qq{/$remote_directory/$newfilename} )
-      or croak qq{could not upload the file $oldfilename as $remote_directory / $newfilename on the server $server.\n}.$sftp->error;
+      or croak( qq{could not upload the file $oldfilename as $remote_directory / $newfilename on the server $server.\n}.$sftp->error);
 
     return $sftp->disconnect();
 }
@@ -312,10 +312,10 @@ sub download_file {
     my $sftp=Net::SFTP::Foreign->new($server,
             'user'=>$self->ftpuser,
             'password' => $self->ftppassword,
-            ) or croak qq{could not open connection to $server};
+            ) or croak( qq{could not open connection to $server});
 
     $sftp->get($remote_path, $local_path)
-        or croak qq ( Failed to fetch the file at $remote_path);
+        or croak( qq ( Failed to fetch the file at $remote_path));
 
     return $sftp->disconnect();
 }
@@ -360,7 +360,7 @@ sub _create_path {
         $path = catfile($ENV{$self->cache_dir_var_name} || q{}, $path);
     } else {
         if (!$content) { $content = q/(No payload)/; }
-        croak qq{Wrong URL format for caching.\n    $type\n    $url  (in short : $short_url )\n    with "$content"\n    Is it matching the base url correct ? ($base_uri)\n   }
+        croak ( qq{Wrong URL format for caching.\n    $type\n    $url  (in short : $short_url )\n    with "$content"\n    Is it matching the base url correct ? ($base_uri)\n   } ) ;
     }
 
     return $path;
@@ -375,18 +375,18 @@ sub _check_cache_dir {
     my ($self, $cache) = @_;
 
     if (!-e $cache) {
-       croak qq[Cache directory $cache does not exist];
+       croak( qq[Cache directory $cache does not exist]);
     }
     if (!-d $cache) {
-       croak qq[$cache (a proposed cache directory) is not a directory];
+       croak( qq[$cache (a proposed cache directory) is not a directory]);
     }
     if ($ENV{$self->save2cache_dir_var_name}) {
         if (!-w $cache) {
-            croak qq[Cache directory $cache is not writable];
+            croak( qq[Cache directory $cache is not writable]);
         }
     } else {
         if (!-r $cache) {
-            croak qq[Cache directory $cache is not readable];
+            croak( qq[Cache directory $cache is not readable]);
         }
     }
     return 1;
@@ -396,14 +396,14 @@ sub _from_cache {
     my ($self, $path, $uri) = @_;
 
     if (!-e $path) {
-        croak qq[$path for $uri is not in the cache];
+        croak( qq[$path for $uri is not in the cache]);
     }
 
     local $RS = undef;
-    open my $fh, q[<], $path or croak qq[Error when opening $path for reading: $ERRNO];
-    if (!defined $fh) { croak qq[Undefined filehandle returned for $path]; }
-    my $content = defined $fh ? <$fh> : croak qq[Failed to read from an open $path: $ERRNO];
-    close $fh or croak qq[Failed to close a filehandle for $path: $ERRNO];
+    open my $fh, q[<], $path or croak( qq[Error when opening $path for reading: $ERRNO]);
+    if (!defined $fh) { croak( qq[Undefined filehandle returned for $path]); }
+    my $content = defined $fh ? <$fh> : croak( qq[Failed to read from an open $path: $ERRNO]);
+    close $fh or croak( qq[Failed to close a filehandle for $path: $ERRNO]);
 
     return $content;
 }
@@ -438,7 +438,7 @@ sub _from_web {
     # workaround a bug in SS (getting back a 301 response with the correct response body)
     if (($self->ss_request && (!defined $res->decoded_content || !$res->is_success() && !$res->is_redirect))
         || (!$self->ss_request && !$res->is_success())) {
-      croak "$type request to $uri failed: " . join q[ ], $res->status_line(), $res->decoded_content;
+      croak( "$type request to $uri failed: " . join q[ ], $res->status_line(), $res->decoded_content);
     }
 
     return $res->decoded_content;
@@ -450,16 +450,16 @@ sub _write2cache {
     my ($name,$dir,$suffix) = fileparse($path);
     if (-e $dir) {
         if (!-d $dir) {
-            croak qq[$dir should be a directory];
+            croak( qq[$dir should be a directory]);
         }
     } else {
         File::Path::make_path($dir);
     }
 
-    open my $fh, q[>:encoding(UTF-8)], $path or croak qq[Error when opening $path for writing: $ERRNO];
-    $fh or croak qq[Undefined filehandle returned for $path];
-    print {$fh} $content or croak qq[Failed to write to open $path: $ERRNO];
-    close $fh or croak qq[Failed to close a filehandle for $path: $ERRNO];
+    open my $fh, q[>:encoding(UTF-8)], $path or croak( qq[Error when opening $path for writing: $ERRNO]);
+    $fh or croak( qq[Undefined filehandle returned for $path]);
+    print {$fh} $content or croak( qq[Failed to write to open $path: $ERRNO]);
+    close $fh or croak( qq[Failed to close a filehandle for $path: $ERRNO]);
     return;
 }
 
@@ -481,7 +481,7 @@ __END__
 
 =item Readonly
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item English
 

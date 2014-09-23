@@ -1,7 +1,7 @@
 package wtsi_clarity::util::print;
 
 use Moose::Role;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use JSON;
 
 use wtsi_clarity::util::request;
@@ -32,7 +32,7 @@ sub _get_printer_url {
 
   my $print_service = $self->config->printing->{'service_url'};
   if (!$print_service) {
-    croak q[service_url entry should be defined in the printing section of the configuration file];
+    croak( q[service_url entry should be defined in the printing section of the configuration file]);
   }
   my $url =  "$print_service/label_printers/page\=1";
   my $p;
@@ -43,13 +43,13 @@ sub _get_printer_url {
   foreach my $t ( @{$text->{'label_printers'}} ){
     if ($t->{'name'} && $t->{'name'} eq $printer_name){
       if (!$t->{'uuid'}) {
-        croak qq[No uuid for printer $printer_name]
+        croak ( qq[No uuid for printer $printer_name] );
       }
       $p = join q[/], $print_service, $t->{'uuid'};
     }
   }
   if (!$p) {
-    croak qq[Failed to get printer $printer_name details from $url]
+    croak ( qq[Failed to get printer $printer_name details from $url] ) ;
   }
   return $p;
 }
@@ -84,7 +84,7 @@ wtsi_clarity::util::print
 
 =item Moose::Role;
 
-=item Carp;
+=item wtsi_clarity::util::error_reporter;
 
 =item JSON;
 

@@ -1,7 +1,7 @@
 package wtsi_clarity::file_parsing::ISC_pool_calculator;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use Readonly;
 
 use POSIX;
@@ -34,7 +34,7 @@ sub _filecontent_to_hash {
 
     # only add this hash to the output if there's a molarity.
     if ($hash{'Molarity'}) {
-      $hash{'Sample_Name'} =~ /(\w\d)_.*/xms or croak qq{Impossible to parse the file. The sample name is not correct ($line);};
+      $hash{'Sample_Name'} =~ /(\w\d)_.*/xms or croak( qq{Impossible to parse the file. The sample name is not correct ($line);});
       my $real_label = $1;
       if ($output->{ $real_label }){
         $output->{ $real_label }{'Molarity_2'} = $hash{'Molarity'};
@@ -255,7 +255,7 @@ wtsi_clarity::file_parsing::ISC_pool_calculator
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Readonly
 

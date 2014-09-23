@@ -1,7 +1,7 @@
 package wtsi_clarity::genotyping::fluidigm::file_wrapper;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use Readonly;
 use English qw{-no_match_vars};
 
@@ -54,10 +54,9 @@ sub BUILD {
   my ($self) = @_;
 
   open my $in, '<:encoding(utf8)', $self->file_name
-    or croak "Failed to open Fluidigm export file '",
-                     $self->file_name, "': $OS_ERROR";
+    or croak( "Failed to open Fluidigm export file '" . $self->file_name . "': $OS_ERROR" );
   my ($header, $column_names, $sample_data) = $self->_parse_fluidigm_table($in);
-  close $in or croak "Unable to close Fluidigm export file";
+  close $in or croak( "Unable to close Fluidigm export file" );
 
   $self->_write_header($header);
   $self->_write_column_names($column_names);
@@ -112,8 +111,7 @@ sub _parse_fluidigm_table {
       @column_names = map { trim $_ } split /,/sxm, $line;
       my $num_columns = scalar @column_names;
       if ($num_columns != $EXPECTED_NUM_COLUMNS) {
-        croak "Parse error: expected $EXPECTED_NUM_COLUMNS ",
-                          "columns, but found $num_columns at line $line_num";
+        croak ( "Parse error: expected $EXPECTED_NUM_COLUMNS columns, but found $num_columns at line $line_num" );
       }
       next;
     }
@@ -122,20 +120,17 @@ sub _parse_fluidigm_table {
       my @columns = map { trim $_ } split /,/sxm, $line;
       my $num_columns = scalar @columns;
       if ($num_columns != $EXPECTED_NUM_COLUMNS) {
-        croak "Parse error: expected $EXPECTED_NUM_COLUMNS ",
-                          "columns, but found $num_columns at line $line_num";
+        croak ( "Parse error: expected $EXPECTED_NUM_COLUMNS columns, but found $num_columns at line $line_num" );
       }
 
       my $id = $columns[0];
       my ($sample_address, $assay_num) = split /-/sxm, $id;
 
       if (!$sample_address) {
-        croak "Parse error: no sample address in '$id' ",
-                          "at line $line_num";
+        croak ( "Parse error: no sample address in '$id' at line $line_num" );
       }
       if (!$assay_num) {
-        croak "Parse error: no assay number in '$id' ",
-                          "at line $line_num";
+        croak ( "Parse error: no assay number in '$id' at line $line_num" );
       }
 
       if (! exists $sample_data{$sample_address}) {
@@ -149,28 +144,25 @@ sub _parse_fluidigm_table {
   }
 
   if (!@header) {
-    croak "Parse error: no header rows found";
+    croak( "Parse error: no header rows found");
   }
   if (!@column_names) {
-    croak "Parse error: no column names found";
+    croak( "Parse error: no column names found");
   }
 
   ## no critic (MagicNumbers)
   if ($num_sample_rows == (96 * 96)) {
     if (scalar keys %sample_data != 96) {
-      croak "Parse error: expected data for 96 samples, found ",
-                        scalar keys %sample_data;
+      croak( "Parse error: expected data for 96 samples, found ". scalar keys %sample_data );
     }
   }
   elsif ($num_sample_rows == (192 * 24)) {
     if (scalar keys %sample_data != 192) {
-      croak "Parse error: expected data for 192 samples, found ",
-                        scalar keys %sample_data;
+      croak( "Parse error: expected data for 192 samples, found " . scalar keys %sample_data );
     }
   }
   else {
-    croak "Parse error: expected ", 96 * 96, " or ", 192 * 24,
-                      " sample data rows, found $num_sample_rows";
+    croak( "Parse error: expected " , 96 * 96 , " or " , 192 * 24 , " sample data rows, found $num_sample_rows" );
   }
 
   return (\@header, \@column_names, \%sample_data);
@@ -210,7 +202,7 @@ wtsi_clarity::genotyping::fluidigm::file_wrapper
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Readonly
 

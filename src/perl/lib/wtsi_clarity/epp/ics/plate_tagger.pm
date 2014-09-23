@@ -1,7 +1,7 @@
 package wtsi_clarity::epp::ics::plate_tagger;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use Readonly;
 use wtsi_clarity::tag_plate::service;
 
@@ -28,10 +28,10 @@ has 'exhaust'  => (
 sub BUILD {
   my $self = shift;
   if ($self->validate && $self->exhaust) {
-    croak 'Both "validate" and "exhaust" options cannot be true';
+    croak( 'Both "validate" and "exhaust" options cannot be true');
   }
   if (!$self->validate && !$self->exhaust) {
-    croak 'Either "validate" or "exhaust" option should be specified';
+    croak( 'Either "validate" or "exhaust" option should be specified');
   }
   return;
 }
@@ -99,7 +99,7 @@ __END__
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item wtsi_clarity::tag_plate::service
 

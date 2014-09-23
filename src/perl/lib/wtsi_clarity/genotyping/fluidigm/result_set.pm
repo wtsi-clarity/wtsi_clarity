@@ -2,7 +2,7 @@ package wtsi_clarity::genotyping::fluidigm::result_set;
 
 use Moose;
 use Readonly;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 
 use wtsi_clarity::util::types;
 
@@ -55,7 +55,7 @@ sub BUILD {
   # find .tif files
   my @tif = glob($self->data_directory.'/*\.{tif,tiff}');
   if (@tif!=$EXPECTED_TIF_TOTAL) {
-    croak "Should have exactly $EXPECTED_TIF_TOTAL .tif files in " . $self->data_directory;
+    croak( "Should have exactly $EXPECTED_TIF_TOTAL .tif files in " . $self->data_directory);
   }
 
   $self->_tif_files(\@tif);
@@ -103,7 +103,7 @@ wtsi_clarity::genotyping::fluidigm::result_set
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Readonly
 

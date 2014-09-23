@@ -535,7 +535,7 @@ use_ok('wtsi_clarity::file_parsing::ISC_pool_calculator', 'can use ISC_pool_calc
   Readonly::Scalar my $testdata_path => q(./t/data/file_parsing/ISC_pool_calculator/);
   Readonly::Scalar my $file1 => q(Caliper1_344745_ISC_1_5_2014-07-01_12-55-09_WellTable.csv);
 
-  open(my $fh, '<', $testdata_path."/".$file1) or croak  qq{'File can not be opened : $testdata_path/$file1 } ;
+  open(my $fh, '<', $testdata_path."/".$file1) or croak   qq{'File can not be opened : $testdata_path/$file1 } ;
   my @array = <$fh>;
   close $fh;
   my $output = wtsi_clarity::file_parsing::ISC_pool_calculator::_filecontent_to_hash(\@array, 1000);
@@ -1409,7 +1409,7 @@ use_ok('wtsi_clarity::file_parsing::ISC_pool_calculator', 'can use ISC_pool_calc
   Readonly::Scalar my $testdata_path => q(./t/data/file_parsing/ISC_pool_calculator/);
   Readonly::Scalar my $file1 => q(Caliper_output_testdata_1.csv);
 
-  open(my $fh, '<', $testdata_path."/".$file1) or croak  qq{'File can not be opened : $testdata_path/$file1 } ;
+  open(my $fh, '<', $testdata_path."/".$file1) or croak   qq{'File can not be opened : $testdata_path/$file1 } ;
   my @array = <$fh>;
   close $fh;
 

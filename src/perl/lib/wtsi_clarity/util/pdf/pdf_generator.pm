@@ -251,7 +251,7 @@ wtsi_clarity::util::pdf::pdf_generator
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Readonly
 

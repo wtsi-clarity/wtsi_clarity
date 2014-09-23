@@ -110,7 +110,7 @@ wtsi_clarity::util::clarity_process
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item List::MoreUtils
 

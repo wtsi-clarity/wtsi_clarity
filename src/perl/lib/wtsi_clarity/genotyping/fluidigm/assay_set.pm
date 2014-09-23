@@ -1,7 +1,7 @@
 package wtsi_clarity::genotyping::fluidigm::assay_set;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use Readonly;
 use List::Util qw / reduce /;
 use List::MoreUtils qw/ uniq /;
@@ -83,7 +83,7 @@ sub BUILD {
 ## no critic (MagicNumbers)
     my $num_fields = scalar @{$assay_result};
     if ($num_fields != 12) {
-      croak "Invalid Fluidigm record: expected 12 fields but found $num_fields";
+      croak( "Invalid Fluidigm record: expected 12 fields but found $num_fields");
     }
 
     my $assay = wtsi_clarity::genotyping::fluidigm::assay->new(
@@ -149,7 +149,7 @@ for a number of SNPs.
 
 =item Moose;
 
-=item Carp;
+=item wtsi_clarity::util::error_reporter;
 
 =item Readonly;
 

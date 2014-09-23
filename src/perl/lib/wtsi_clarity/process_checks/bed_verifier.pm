@@ -1,7 +1,7 @@
 package wtsi_clarity::process_checks::bed_verifier;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 
 our $VERSION = '0.0';
 
@@ -15,11 +15,11 @@ sub verify {
   my ($self, $process_name, $robot_id, $mappings) = @_;
 
   if (!exists ($self->config->{$process_name})) {
-    croak qq/bed verification config can not be found for process $process_name/;
+    croak( qq/bed verification config can not be found for process $process_name/);
   }
 
   if (!exists $self->config->{$process_name}->{$robot_id}) {
-    croak qq/robot id incorrect for process $process_name/;
+    croak( qq/robot id incorrect for process $process_name/);
   }
 
   my $process_config = $self->_extract_process_config($process_name, $robot_id);
@@ -61,7 +61,7 @@ sub _verify_beds {
     }
 
     if ($bed->{barcode} != $matching_config_bed->{barcode}) {
-      croak qq/ Barcode for source bed $bed->{bed} is different to config /;
+      croak( qq/ Barcode for source bed $bed->{bed} is different to config /);
     }
   }
 
@@ -91,7 +91,7 @@ sub _find_mapping_by_bed {
     }
   }
   # Hopefully would not get to here...
-  croak qq/ Bed $bed is not source bed for process /;
+  croak( qq/ Bed $bed is not source bed for process /);
 }
 
 1;
@@ -142,7 +142,7 @@ wtsi_clarity::process_checks::bed_verifier
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =back
 

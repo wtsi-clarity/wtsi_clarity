@@ -1,7 +1,7 @@
 package wtsi_clarity::file_parsing::volume_checker;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 
 our $VERSION = '0.0';
 
@@ -24,12 +24,12 @@ sub parse {
   my $self = shift;
 
   open my $volume_check_file, '<', $self->file_path
-    or croak 'File can not be found at ' . $self->file_path;
+    or croak( 'File can not be found at ' . $self->file_path);
 
   my $result = $self->_parse_file($volume_check_file);
 
   close $volume_check_file
-    or carp 'Error closing volume check file';
+    or croak ('Error closing volume check file' );
 
   return $result;
 }
@@ -47,7 +47,7 @@ sub _parse_file {
 
     $tube_location = $self->_format_tube_location($tube_location);
 
-    croak "Volume already set for well $tube_location" if (exists $result{$tube_location});
+    croak( "Volume already set for well $tube_location") if (exists $result{$tube_location}) ;
 
     $result{$tube_location} = sprintf '%.4f', $volume;
   }
@@ -94,7 +94,7 @@ well locations as keys and volumes as values.
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =back
 

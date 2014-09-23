@@ -58,15 +58,15 @@ sub calculateBarcode {
     my ($type,$number) = @_;
 
     if (!$type) {
-      croak 'Barcode prefix is needed for barcode generation';
+      croak( 'Barcode prefix is needed for barcode generation');
     }
     if (!$number) {
-      croak 'ID is needed for barcode generation';
+      croak( 'ID is needed for barcode generation');
     }
 
     my $cl = makeID($type ."-". $number);
     if(!$cl) {
-      croak 'Failed to generate id';
+      croak( 'Failed to generate id');
     }
 
     my $bc = numberPrefix($type) + ($number * 100);
@@ -132,7 +132,7 @@ wtsi_clarity::util::barcode
 
 =item warnings
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Exporter
 

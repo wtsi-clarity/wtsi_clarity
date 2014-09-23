@@ -1,7 +1,7 @@
 package wtsi_clarity::epp::sm::sample_receiver;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use Readonly;
 use DateTime;
 use JSON qw / decode_json /;
@@ -116,13 +116,13 @@ sub _get_uuid {
   my $response = $self->_ss_request->get($url);
 
   if (!$response) {
-    croak qq[Empty response from $url];
+    croak( qq[Empty response from $url]);
   }
 
   my $response_json = decode_json $response;
 
   if (!$response_json->{'uuid'}) {
-    croak qq[Could not get uuid from $url];
+    croak( qq[Could not get uuid from $url]);
   }
 
   return $response_json->{'uuid'};
@@ -163,7 +163,7 @@ wtsi_clarity::epp::sm::sample_receiver
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Readonly
 
