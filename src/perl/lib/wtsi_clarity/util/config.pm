@@ -7,6 +7,7 @@ use Config::Auto;
 use Carp;
 
 use wtsi_clarity::util::types;
+use wtsi_clarity::util::error_reporter qw/croak/;
 
 our $VERSION = '0.0';
 
@@ -36,7 +37,7 @@ sub _build_dir_path {
   my $error =
       q[Neither WTSI_CLARITY_HOME not HOME environment variable is defined, cannot find location of the wtsi_clarity project configuration directory];
   return $clarity_home ? $clarity_home : (
-         $home ? catdir($home, $CONF_DIR) : croak $error);
+         $home ? catdir($home, $CONF_DIR) : croak( $error));
 }
 
 has 'file'  => (
@@ -81,7 +82,7 @@ sub _inject_conf_option_builders {
     *{$build_method} = sub {
         my $self = shift;
         if (!exists $self->_data->{$conf_item}) {
-          croak qq["$conf_item" configuration option is not defined in ] . $self->file;
+          croak( qq["$conf_item" configuration option is not defined in ] . $self->file);
         }
         return $self->_data->{$conf_item};
     };
@@ -145,7 +146,7 @@ wtsi_clarity::util::config
 
 =item Config::Auto
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =back
 

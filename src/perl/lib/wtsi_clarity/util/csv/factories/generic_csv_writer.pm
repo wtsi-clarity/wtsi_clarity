@@ -1,7 +1,7 @@
 package wtsi_clarity::util::csv::factories::generic_csv_writer;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use wtsi_clarity::util::textfile;
 use Mojo::Collection;
 use Data::Dumper;
@@ -11,8 +11,8 @@ our $VERSION = '0.0';
 sub build {
   my ($self, %args) = @_;
 
-  my $headers  = $args{'headers'} || croak qq{Requires headers!};
-  my $csv_data = $args{'data'}    || croak qq{Requires some data to write down!};
+  my $headers  = $args{'headers'} || croak( qq{Requires headers!});
+  my $csv_data = $args{'data'}    || croak( qq{Requires some data to write down!});
 
   my $text_data = [];
   my $c_headers = Mojo::Collection->new(@{$headers});
@@ -56,7 +56,7 @@ wtsi_clarity::util::csv::factories::generic_csv_writer
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item wtsi_clarity::util::textfile
 

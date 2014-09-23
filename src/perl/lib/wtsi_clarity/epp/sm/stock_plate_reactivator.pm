@@ -1,7 +1,7 @@
 package wtsi_clarity::epp::sm::stock_plate_reactivator;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use Readonly;
 
 use wtsi_clarity::epp::generic::workflow_assigner;
@@ -32,7 +32,7 @@ override 'run' => sub {
   my $parent_processes = $self->find_parent($self->from_process, $self->process_url);
 
   if (scalar @{ $parent_processes } == 0) {
-    croak 'None of the samples in these plates seem to have gone through ' . $self->from_process;
+    croak( 'None of the samples in these plates seem to have gone through ' . $self->from_process);
   }
 
   foreach my $parent_process_url (@{ $parent_processes }) {
@@ -74,7 +74,7 @@ wtsi_clarity::epp::sm::stock_plate_reactivator
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item XML::LibXML
 

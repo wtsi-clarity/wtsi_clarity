@@ -313,7 +313,7 @@ wtsi_clarity::file_parsing::dtx_concentration_calculator
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item wtsi_clarity::util::clarity_elements;
 

@@ -6,6 +6,7 @@ use Readonly;
 use XML::LibXML;
 use Try::Tiny;
 use Mojo::Collection 'c';
+use wtsi_clarity::util::error_reporter qw/croak/;
 
 our $VERSION = '0.0';
 
@@ -23,7 +24,7 @@ sub _set_udf_element {
 sub _set_any_element {
   my ($self, $xml, $name, $value, $override, $is_udf) = @_;
 ## use critic
-  croak q/Missing argument: is_udf flag must be set/ if !defined $is_udf;
+  croak( q/Missing argument: is_udf flag must be set/ ) if !defined $is_udf;
   # find if the element already exists...
   my $oldElement = $is_udf ?  $self->find_udf_element($xml, $name):
                               $self->find_clarity_element($xml, $name);
@@ -53,7 +54,7 @@ sub _overwrite_element {
   if ($element->hasChildNodes()) {
     my $firstchild = $element->firstChild();
     if (!$firstchild->isa('XML::LibXML::Text')) {
-      croak q(It seems that a udf element has children elements which are not text!);
+      croak( q(It seems that a udf element has children elements which are not text!));
     }
     $firstchild->setData($value);
     return $element;
@@ -100,7 +101,7 @@ sub find_udf_element {
   my $nodeList = $xpc->findnodes($xpath);
 
   if ($nodeList->size() > 1) {
-    croak qq/ Found more than one element for $name /;
+    croak( qq/ Found more than one element for $name /);
   }
 
   return $nodeList->size() == 0 ? undef : $nodeList->pop();
@@ -114,7 +115,7 @@ sub find_clarity_element {
   my $nodeList = $xpc->findnodes($xpath);
 
   if ($nodeList->size() > 1) {
-    croak qq/ Found more than one element for $name /;
+    croak( qq/ Found more than one element for $name /);
   }
 
   return $nodeList->size() == 0 ? undef : $nodeList->pop();
@@ -232,13 +233,13 @@ sub _find_elements_first_result {
       $element = $elements[0];
     } else {
       return $default if (defined $default) ;
-      croak qq{Empty result when applying xpath with find_elements: '$xpath'.} ;
+      croak( qq{Empty result when applying xpath with find_elements: '$xpath'.} );
     }
   }
 
   if (!$element) {
     return $default if (defined $default) ;
-    croak qq{Empty result when applying xpath : '$xpath'.} ;
+    croak( qq{Empty result when applying xpath : '$xpath'.} );
   }
 
   if ($isText) {
@@ -362,7 +363,7 @@ find_udf_element_value - takes some XML, an element name and an optional default
 
 =item Moose::Role
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Readonly
 

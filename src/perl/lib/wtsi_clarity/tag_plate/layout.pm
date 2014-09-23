@@ -1,8 +1,8 @@
 package wtsi_clarity::tag_plate::layout;
 
 use Moose;
-use Carp;
 use Readonly;
+use wtsi_clarity::util::error_reporter qw/croak/;
 
 with 'wtsi_clarity::util::well_mapper';
 
@@ -41,21 +41,21 @@ sub _build__tags {
   my $self = shift;
 
   if (!exists $self->gatekeeper_info->{'tag_layout_template'}) {
-    croak 'Layout template is missing';
+    croak( 'Layout template is missing');
   }
   if (!$self->gatekeeper_info->{'tag_layout_template'}->{'direction'} ||
       $self->gatekeeper_info->{'tag_layout_template'}->{'direction'} ne $KNOWN_DIRECTION) {
-    croak 'Missing or unexpected direction';
+    croak( 'Missing or unexpected direction');
   }
 
   my $tags = $self->gatekeeper_info->{'tag_layout_template'}->{'tag_group'}->{'tags'};
   if (!$tags) {
-    croak 'Tags section is missing in the layout';
+    croak( 'Tags section is missing in the layout');
   }
 
   my $plate_size = $NB_ROWS_96 * $NB_COLS_96;
   if (scalar keys %{$tags} < $plate_size) {
-    croak "Less than $plate_size tags defined in the layout";
+    croak( "Less than $plate_size tags defined in the layout");
   }
 
   return $tags;
@@ -67,7 +67,7 @@ sub tag_info {
   my $tag_index = $self->well_location_index($well_address, $NB_ROWS_96, $NB_COLS_96);
   my $tag_sequence = $self->_tags->{$tag_index};
   if (!$tag_sequence) {
-    croak "Failed to get tag sequence for $well_address (index $tag_index)";
+    croak( "Failed to get tag sequence for $well_address (index $tag_index)");
   }
   return ($tag_index, $tag_sequence);
 }

@@ -1,7 +1,7 @@
 package wtsi_clarity::epp::sm::report_maker;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use Readonly;
 use Mojo::Collection 'c';
 use URI::Escape;
@@ -66,17 +66,18 @@ has 'internal_csv_output' => (
 override 'run' => sub {
   my $self= shift;
   super();
-  _main_method();
+  $self->_main_method();
   return;
 };
 
 sub _main_method{
   my ($self) = @_;
+
   my $data = $self->internal_csv_output();
 
   my $missing_data = $self->_get_first_missing_necessary_data();
   if ($missing_data && !$self->produce_report_anyway) {
-    confess qq{Impossible to produce the report: "$missing_data" could not be found on the genealogy of some samples. Have you run all the necessary steps on the samples? };
+    croak (qq{Impossible to produce the report: "$missing_data" could not be found on the genealogy of some samples. Have you run all the necessary steps on the samples? } );
   }
 
   my $process_id  = $self->find_elements_first_value($self->process_doc, $PROCESS_ID_PATH);
@@ -426,7 +427,7 @@ sub _get_udf_values {
                 my $udf_value            = $b->findvalue( qq{./udf:field[\@name="$udf_name"]} );
                 ## use critic
                 if (defined $a->{$found_sample_id} && defined $a->{$found_sample_id}->{$udf_name}) {
-                  confess qq{The sample $found_sample_id possesses more than one value associated with "$udf_name". It is not currently possible to deal with it.};
+                  croak (qq{The sample $found_sample_id possesses more than one value associated with "$udf_name". It is not currently possible to deal with it.} );
                 }
 
                 $a->{ $found_sample_id } = { $udf_name => $udf_value };
@@ -563,7 +564,7 @@ wtsi_clarity::epp::sm::report_maker
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Readonly
 

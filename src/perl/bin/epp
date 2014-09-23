@@ -9,7 +9,7 @@ use English qw(-no_match_vars);
 use Try::Tiny;
 
 use wtsi_clarity::epp::mapper;
-
+use wtsi_clarity::util::error_reporter;
 our $VERSION = '0';
 
 my $current_action;
@@ -23,7 +23,7 @@ try {
   foreach my $package_name (@package_names) {
     my $loaded = eval "require $package_name";
     if (!$loaded) {
-      croak qq[Failed to require $package_name: $EVAL_ERROR];
+      wtsi_clarity::util::error_reporter::croak( qq[Failed to require $package_name: $EVAL_ERROR]);
     }
     if (!defined $process_url) {
       push @actions, $package_name->new_with_options();
@@ -39,9 +39,11 @@ try {
     $current_action->run();
   }
 } catch {
-  my $error = "$_\n";
-  print $error || carp 'Failed to print error to STDOUT';
-  $current_action->display_error($error);
+  my $error = $_;
+  if ($error =~ /^\[ERROR\]/xms){ # already formatted properly
+    croak $error;
+  }
+  croak wtsi_clarity::util::error_reporter::croak_with_stack($error);
 };
 
 0;

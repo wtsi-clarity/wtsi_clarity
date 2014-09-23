@@ -77,7 +77,7 @@ wtsi_clarity::epp::generic::plate_purpose_updater
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item XML::LibXML
 

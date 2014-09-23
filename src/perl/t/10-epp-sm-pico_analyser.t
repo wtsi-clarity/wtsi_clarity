@@ -149,7 +149,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
   my $parser = XML::LibXML->new();
 
-  my $expected_results = $parser->load_xml(location => $testdata_path.$test_data) or croak 'File cannot be found at ' . $testdata_path.$test_data;
+  my $expected_results = $parser->load_xml(location => $testdata_path.$test_data) or croak  'File cannot be found at ' . $testdata_path.$test_data;
 
   my $data = {
     'B:1' => {

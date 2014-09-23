@@ -1,7 +1,7 @@
 package wtsi_clarity::epp::generic::worksheet_attacher;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use Readonly;
 use PDF::API2;
 use PDF::Table;
@@ -62,7 +62,7 @@ override 'run' => sub {
   # pdf generation
   my $pdf_data = _get_pdf_data($containers_data, $stamp, $type_data);
   my $pdf_generator = wtsi_clarity::util::pdf::layout::worksheet->new( 'pdf_data' => $pdf_data );
-  my $worksheet_file = $pdf_generator->create() or croak q{Impossible to create the pdf version of the worksheet!};
+  my $worksheet_file = $pdf_generator->create() or croak( q{Impossible to create the pdf version of the worksheet!});
 
   $worksheet_file->saveas(q{./}.$self->worksheet_filename);
 
@@ -112,7 +112,7 @@ sub _set_worksheet_type {
     return ;
   }
 
-  croak qq{Unknown worksheet type! $type.};
+  croak( qq{Unknown worksheet type! $type.});
 }
 
 sub _get_type_data {
@@ -147,7 +147,7 @@ sub _create_tecan_file {
   my $file_content = _get_TECAN_file_content($containers_data, $stamp);
 
   open my $fh, '>', $full_filename
-    or croak qq{Could not create/open file '$full_filename'.};
+    or croak( qq{Could not create/open file '$full_filename'.});
   foreach my $line (@{$file_content})
   {
       ## no critic(InputOutput::RequireCheckedSyscalls)
@@ -155,7 +155,7 @@ sub _create_tecan_file {
       ## use critic
   }
   close $fh
-    or croak qq{ Unable to close $full_filename.};
+    or croak( qq{ Unable to close $full_filename.});
   return $full_filename;
 }
 
@@ -598,7 +598,7 @@ wtsi_clarity::epp::generic::worksheet_attacher
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Readonly
 

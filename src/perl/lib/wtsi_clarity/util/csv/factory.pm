@@ -1,7 +1,7 @@
 package wtsi_clarity::util::csv::factory;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use Readonly;
 use Data::Dumper;
 
@@ -14,7 +14,7 @@ our $VERSION = '0.0';
 sub create {
   my ($self, %args) = @_;
 
-  my $csv_type = $args{'type'} || croak qq{Requires a csv type to generate an instance !};
+  my $csv_type = $args{'type'} || croak( qq{Requires a csv type to generate an instance !});
 
   my $csv_factory;
 
@@ -28,7 +28,7 @@ sub create {
   } elsif ( $csv_type eq 'calliper_reader') {
     $csv_factory = wtsi_clarity::util::csv::factories::calliper_csv_reader->new();
   } else {
-    croak "CSV file of type $csv_type cannot be created";
+    croak( "CSV file of type $csv_type cannot be created");
   }
   ##use critic
 
@@ -66,7 +66,7 @@ wtsi_clarity::util::csv::factory
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Readonly
 

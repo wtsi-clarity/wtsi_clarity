@@ -21,7 +21,7 @@ my $base_uri = $config->clarity_api->{'base_uri'};
 sub _write_config {
   my $robot_dir = shift;
   my $file = catfile $dir, 'config';
-  open my $fh, '>', $file or croak "Cannot open file $file for writing";
+  open my $fh, '>', $file or croak  "Cannot open file $file for writing";
   print $fh "[robot_file_dir]\n";
   print $fh "sm_volume_check=$robot_dir\n";
   print $fh "[clarity_api]\n";

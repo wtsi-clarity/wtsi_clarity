@@ -22,7 +22,7 @@ lib/wtsi_clarity/epp/sm/fluidigm_analyser.pm
 lib/wtsi_clarity/epp/sm/fluidigm_request_volume_updater.pm
 lib/wtsi_clarity/epp/sm/pico_analyser.pm
 lib/wtsi_clarity/epp/sm/report_maker.pm
-lib/wtsi_clarity/epp/sm/sample_uuid_assigner.pm
+lib/wtsi_clarity/epp/sm/sample_reciever.pm
 lib/wtsi_clarity/epp/sm/stock_plate_reactivator.pm
 lib/wtsi_clarity/epp/sm/volume_checker.pm
 lib/wtsi_clarity/epp.pm
@@ -51,7 +51,7 @@ lib/wtsi_clarity/util/clarity_process.pm
 lib/wtsi_clarity/util/clarity_query.pm
 lib/wtsi_clarity/util/config.pm
 lib/wtsi_clarity/util/configurable.pm
-lib/wtsi_clarity/util/display_message_role.pm
+lib/wtsi_clarity/util/error_reporter.pm
 lib/wtsi_clarity/util/csv/factories/calliper_csv_reader.pm
 lib/wtsi_clarity/util/csv/factories/generic_csv_reader.pm
 lib/wtsi_clarity/util/csv/factories/generic_csv_writer.pm

@@ -72,7 +72,7 @@ wtsi_clarity::epp::mapper
 
 =item Getopt::Long
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =back
 

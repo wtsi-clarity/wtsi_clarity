@@ -100,7 +100,7 @@ my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::sm::report_maker->new
   throws_ok
    { $m->_get_udf_values('Volume Check (SM)-rerun', qq{Volume}) }
    qr{The sample SAMPLE0002 possesses more than one value associated with "Volume". It is not currently possible to deal with it.},
-   q{_get_udf_values should croak if the process has been rerun} ;
+   q{_get_udf_values should croak  if the process has been rerun} ;
 }
 
 { # _build__all_udf_values
@@ -233,7 +233,7 @@ my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::sm::report_maker->new
   throws_ok
    { $m->_main_method() }
    qr{Impossible to produce the report: "Impossible Value" could not be found on the genealogy of some samples. Have you run all the necessary steps on the samples?},
-   q{_main_method should croak if not all the data are present.} ;
+   q{_main_method should croak  if not all the data are present.} ;
 }
 
 1;

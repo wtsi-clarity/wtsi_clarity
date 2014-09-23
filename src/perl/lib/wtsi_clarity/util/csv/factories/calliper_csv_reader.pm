@@ -6,6 +6,7 @@ use Data::Dumper;
 use wtsi_clarity::util::textfile;
 use Mojo::Collection;
 use Text::CSV;
+use wtsi_clarity::util::error_reporter qw/croak/;
 
 our $VERSION = '0.0';
 
@@ -15,9 +16,9 @@ sub build {
   my ($self, %args) = @_;
 
 
-  my $headers      = $args{'headers'}      || croak qq{Requires headers!};
-  my $file_content = $args{'file_content'} || croak qq{Requires a file content!};
-  my $barcode      = $args{'barcode'}      || croak qq{Requires the barcode of the original plate!};
+  my $headers      = $args{'headers'}      || croak( qq{Requires headers!});
+  my $file_content = $args{'file_content'} || croak( qq{Requires a file content!});
+  my $barcode      = $args{'barcode'}      || croak( qq{Requires the barcode of the original plate!});
 
   my $csv_parser = Text::CSV->new();
   shift $file_content;
@@ -35,7 +36,7 @@ sub build {
 
     # only add this hash to the output if there's a molarity.
     if ($hash{'Molarity'}) {
-      $hash{'Sample_Name'} =~ /(\w\d)_.*/xms or croak qq{Impossible to parse the file. The sample name is not correct ($line);};
+      $hash{'Sample_Name'} =~ /(\w\d)_.*/xms or croak( qq{Impossible to parse the file. The sample name is not correct ($line);});
       my $real_label = $1;
       if ($output->{ $real_label }){
         $output->{ $real_label }{'Molarity_2'} = $hash{'Molarity'};
@@ -89,7 +90,7 @@ wtsi_clarity::util::csv::factories::calliper_csv_reader
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item wtsi_clarity::util::textfile
 

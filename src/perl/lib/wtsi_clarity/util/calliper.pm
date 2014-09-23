@@ -69,7 +69,7 @@ wtsi_clarity::util::calliper
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Readonly
 

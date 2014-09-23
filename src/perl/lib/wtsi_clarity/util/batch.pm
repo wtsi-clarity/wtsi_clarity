@@ -5,6 +5,7 @@ use Carp;
 use XML::LibXML;
 use Readonly;
 use List::MoreUtils qw/none/;
+use wtsi_clarity::util::error_reporter qw/croak/;
 
 requires 'post';
 requires 'config';
@@ -56,7 +57,7 @@ sub _check_batchable {
   my ($self, $batchable) = @_;
 
   if (none { $batchable eq $_ } @BATCHABLES) {
-    croak "$batchable can not be retrieved with a batch request";
+    croak("$batchable can not be retrieved with a batch request");
   }
 
   return 1;
@@ -112,7 +113,7 @@ wtsi_clarity::util::batch
 
 =item Moose::Role
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Readonly
 

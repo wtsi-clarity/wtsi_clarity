@@ -11,7 +11,7 @@ my $test_dir = 't/data/epp/sm/fluidigm_analyser';
 sub _write_config {
   my $dir = shift;
   my $file = catfile $dir, 'config';
-  open my $fh, '>', $file or croak "Cannot open file $file for writing";
+  open my $fh, '>', $file or croak  "Cannot open file $file for writing";
   print $fh "[robot_file_dir]\n";
   print $fh "fluidigm_analysis=$dir\n";
   close $fh or carp "Cannot close file $file";

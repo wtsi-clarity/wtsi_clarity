@@ -66,7 +66,7 @@ wtsi_clarity::genotyping::fluidigm
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item wtsi_clarity::genotyping::fluidigm::result_set;
 

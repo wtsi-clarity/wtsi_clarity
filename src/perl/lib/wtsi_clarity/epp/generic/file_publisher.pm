@@ -101,7 +101,7 @@ wtsi_clarity::epp::generic::file_publisher
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item Readonly
 

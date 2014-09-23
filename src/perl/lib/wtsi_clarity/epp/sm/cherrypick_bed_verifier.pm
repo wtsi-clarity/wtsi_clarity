@@ -1,7 +1,7 @@
 package wtsi_clarity::epp::sm::cherrypick_bed_verifier;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use Readonly;
 use File::Temp;
 use File::Slurp;
@@ -46,11 +46,11 @@ sub _build__tecan_bed_config {
   my $self = shift;
   my $file_path = catfile($self->config->dir_path, $TECAN_CONFIG_FILE);
   open my $fh, '<:encoding(UTF-8)', $file_path
-    or croak qq[Could not retrive the configuration file at $file_path\n];
+    or croak( qq[Could not retrive the configuration file at $file_path\n]);
   local $RS = undef;
   my $json_text = <$fh>;
   close $fh
-    or croak qq[Could not close handle to $file_path\n];
+    or croak( qq[Could not close handle to $file_path\n]);
 
   return decode_json($json_text);
 }
@@ -71,7 +71,7 @@ sub _build__robot_id {
   my $robot_id = $self->process_doc->findvalue($ROBOT_PATH);
 
   if ($robot_id eq q()) {
-    croak 'Robot ID must be set first';
+    croak( 'Robot ID must be set first');
   }
 
   return $robot_id;
@@ -95,7 +95,7 @@ sub _build__output_limsid {
   my $output_limsid = $self->process_doc->findvalue($OUTPUT_LIMSID_PATH);
 
   if ($output_limsid eq q()) {
-    croak 'Can not find output';
+    croak( 'Can not find output');
   }
 
   return $output_limsid;
@@ -261,7 +261,7 @@ sub _find_tecan_analyte {
     }
   }
 
-  croak q(Couldn't find an artifact with the name Tecan File);
+  croak( q(Couldn't find an artifact with the name Tecan File));
 }
 
 =head2 _file_input_output
@@ -287,11 +287,11 @@ sub _build__file_input_output {
   my $self = shift;
 
   open my $fh, '<', $self->_tecan_file
-    or croak qq ( Failed to open $self->_tecan_file );
+    or croak( qq ( Failed to open $self->_tecan_file ));
 
   my $input_output_map = $self->_parse_tecan_file($fh);
 
-  close $fh or croak 'Could not close connection to tecan file';
+  close $fh or croak( 'Could not close connection to tecan file');
 
   return $input_output_map;
 };
@@ -346,14 +346,14 @@ sub _build__plate_bed_map {
   my @plate_bed_map = ();
 
   if (!exists $self->_tecan_bed_config->{$self->_robot_id}) {
-    croak 'Could not find tecan config for robot ' . $self->_robot_id;
+    croak( 'Could not find tecan config for robot ' . $self->_robot_id);
   }
 
   my $beds = $self->_tecan_bed_config->{$self->_robot_id}{'beds'};
 
   foreach my $plate (keys %{$self->_file_input_output}) {
     if (!exists $self->_tecan_bed_config->{$self->_robot_id}{'beds'}{$plate}) {
-      croak "Could not find config for plate $plate";
+      croak( "Could not find config for plate $plate");
     }
 
     my $conf = $beds->{$plate};
@@ -391,19 +391,19 @@ sub validate {
     my $plate = 'Plate ' . $bed_plate_pair->{'bed'};
 
     if (!exists $udf_beds->{$bed}) {
-      croak "Could not find $bed";
+      croak( "Could not find $bed");
     }
 
     if ($udf_beds->{$bed} ne $bed_plate_pair->{'barcode'}) {
-      croak "$bed barcode should be " . $bed_plate_pair->{'barcode'};
+      croak( "$bed barcode should be " . $bed_plate_pair->{'barcode'});
     }
 
     if (!exists $udf_plates->{$plate}) {
-      croak "Could not find $plate";
+      croak( "Could not find $plate");
     }
 
     if ($udf_plates->{$plate} ne $bed_plate_pair->{'plate_barcode'}) {
-      croak "Plate barcode in $bed should be equal to " . $bed_plate_pair->{'plate_barcode'};
+      croak( "Plate barcode in $bed should be equal to " . $bed_plate_pair->{'plate_barcode'});
     }
   }
 
@@ -452,7 +452,7 @@ wtsi_clarity::epp::sm::cherrypick_bed_verifier
 =over
 
 =item Moose
-=item Carp
+=item wtsi_clarity::util::error_reporter
 =item Readonly
 =item File::Temp
 =item File::Slurp

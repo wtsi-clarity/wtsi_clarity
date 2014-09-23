@@ -1,7 +1,7 @@
 package wtsi_clarity::epp::ics::tag_plate_common;
 
 use Moose::Role;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use Readonly;
 
 our $VERSION = '0.0';
@@ -20,11 +20,11 @@ sub _build_barcode {
   my $self = shift;
   my $tag_plate_barcode = $self->find_udf_element($self->process_doc, $TAG_PLATE_BARCODE_UDF_NAME);
   if (!$tag_plate_barcode) {
-    croak "'$TAG_PLATE_BARCODE_UDF_NAME' udf process field is missing";
+    croak( "'$TAG_PLATE_BARCODE_UDF_NAME' udf process field is missing");
   }
   my $barcode = $tag_plate_barcode->textContent;
   if (!$barcode) {
-    croak 'Tag plate barcode value is not set';
+    croak( 'Tag plate barcode value is not set');
   }
   return $barcode;
 }
@@ -61,7 +61,7 @@ __END__
 
 =item Readonly
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =back
 

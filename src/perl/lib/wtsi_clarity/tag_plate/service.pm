@@ -6,6 +6,8 @@ use Readonly;
 use JSON;
 
 use wtsi_clarity::util::request;
+use wtsi_clarity::util::error_reporter qw/croak/;
+
 with qw/MooseX::Getopt wtsi_clarity::util::configurable/;
 
 our $VERSION = '0.0';
@@ -41,7 +43,7 @@ sub _build__gkrequest {
   my $self = shift;
   my $api_key = $self->config->tag_plate->{'api_key'};
   if (!$api_key) {
-    croak 'api key for GateKeeper is not defined in the configuration file.';
+    croak( 'api key for GateKeeper is not defined in the configuration file.');
   }
 
   return wtsi_clarity::util::request->new(
@@ -62,7 +64,7 @@ sub _build__tag_plate {
 
   my $path = $self->config->tag_plate->{'search_path'};
   if (!$path) {
-    croak 'Search path is not defined in the configuration file';
+    croak( 'Search path is not defined in the configuration file');
   }
   my $url = join q{/}, ($self->_gkurl, $path, 'first');
   my $response = $self->_gkrequest->post($url, to_json({'search' => {'barcode' => $self->barcode,},}) );
@@ -74,7 +76,7 @@ sub _build__tag_plate {
              };
   foreach my $key (keys %{$meta}) {
     if (!$meta->{$key}) {
-      croak "Failed to get '$key' info about the tag plate";
+      croak( "Failed to get '$key' info about the tag plate");
     }
   }
 
@@ -92,7 +94,7 @@ sub validate {
   my ($self) = @_;
   my $state = $self->_tag_plate->{'state'};
   if ($state ne $GATEKEEPER_VALID_PLATE_STATUS) {
-    croak "Plate status '$state' is not valid.";
+    croak( "Plate status '$state' is not valid.");
   }
   return;
 }
@@ -102,18 +104,18 @@ sub get_layout {
 
   my $template_uuid = $self->_template_uuid();
   if (!$template_uuid) {
-    croak 'The template uuid of the tag plate is not set';
+    croak( 'The template uuid of the tag plate is not set');
   }
 
   my $expected = $self->config->tag_plate->{'template_uuid'};
   if ($expected && ($template_uuid ne $expected)) {
-    croak "Unexpected template identifier $template_uuid";
+    croak( "Unexpected template identifier $template_uuid");
   }
 
   my $url = join q{/}, ($self->_gkurl, $template_uuid);
   my $layout =  from_json($self->_gkrequest->get($url));
   if (!exists $layout->{'tag_layout_template'}) {
-    croak 'Layout template is missing';
+    croak( 'Layout template is missing');
   }
   return $layout;
 }
@@ -123,7 +125,7 @@ sub mark_as_used {
 
   my $user = $self->config->tag_plate->{'user_uuid'};
   if (!$user) {
-    croak 'User uuid is not found in the configuration file';
+    croak( 'User uuid is not found in the configuration file');
   }
 
   my $meta = $self->_tag_plate();
@@ -181,7 +183,7 @@ wtsi_clarity::tag_plate::service
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item JSON
 

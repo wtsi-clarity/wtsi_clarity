@@ -1,7 +1,7 @@
 package wtsi_clarity::epp::mapper;
 
 use Moose;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use Readonly;
 use Getopt::Long qw(:config pass_through);
 
@@ -45,7 +45,7 @@ sub package_names {
   my @package_names;
   foreach my $action (@{$self->action}) {
     if (!exists $ACTION2MODULE{$action}) {
-      croak q[No callback for action ] . $action;
+      croak( q[No callback for action ] . $action);
     }
     push @package_names, 'wtsi_clarity::epp::' . $ACTION2MODULE{$action};
   }
@@ -91,7 +91,7 @@ wtsi_clarity::epp::mapper
 
 =item Getopt::Long
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =back
 

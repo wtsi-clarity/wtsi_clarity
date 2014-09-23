@@ -3,7 +3,7 @@ package wtsi_clarity::epp::generic::stamper;
 use Moose;
 use namespace::autoclean;
 use Readonly;
-use Carp;
+use wtsi_clarity::util::error_reporter qw/croak/;
 use URI::Escape;
 use XML::LibXML;
 use Mojo::Collection 'c';
@@ -86,7 +86,7 @@ sub _build__container_type {
       my $doc   = $self->fetch_and_parse($url);
       my @nodes = $doc->findnodes(q{/ctp:container-types/container-type});
       if (!@nodes) {
-        croak qq[Did not find container type entry at $url];
+        croak( qq[Did not find container type entry at $url]);
       }
       my $xml = $nodes[0]->toString();
       $xml =~ s/container-type/type/xms;
@@ -113,7 +113,7 @@ sub _build__analytes {
 
   my @nodes = $self->process_doc->findnodes($IO_MAP_PATH);
   if (!@nodes) {
-    croak 'No analytes registered';
+    croak( 'No analytes registered');
   }
 
   my $containers = {};
@@ -124,7 +124,7 @@ sub _build__analytes {
     my $analyte_dom   = $self->fetch_and_parse($url);
     my $container_url = $analyte_dom->findvalue($CONTAINER_PATH);
     if (!$container_url) {
-      croak qq[Container not defined for $url];
+      croak( qq[Container not defined for $url]);
     }
 
     if (!exists $containers->{$container_url}) {
@@ -140,7 +140,7 @@ sub _build__analytes {
     }
     my $well = $analyte_dom->findvalue($WELL_PATH);
     if (!$well) {
-      croak 'Well not defined';
+      croak( 'Well not defined');
     }
     $containers->{$container_url}->{$url}->{'well'} = $well;
     ##no critic (RequireInterpolationOfMetachars)
@@ -148,13 +148,13 @@ sub _build__analytes {
                                                    # of type 'Analyte'
     ##use critic
     if (!$uri) {
-      croak qq[Target analyte uri not defined for container $container_url input analyte $url];
+      croak( qq[Target analyte uri not defined for container $container_url input analyte $url]);
     }
     ($uri) = $uri =~ /\A([^?]*)/smx; #drop part of the uri starting with ? (state)
     push @{$containers->{$container_url}->{$url}->{'target_analyte_uri'}}, $uri;
   }
   if (scalar keys %{$containers} == 0) {
-    croak q[Failed to get input containers for process ] . $self->process_url;
+    croak( q[Failed to get input containers for process ] . $self->process_url);
   }
   return $containers;
 }
@@ -165,7 +165,7 @@ override 'run' => sub {
   $self->epp_log('Step url is ' . $self->step_url);
 
   if ($self->shadow_plate && $self->copy_on_target ) {
-    croak qq{One cannot use the shadow plate stamping with the copy_on_target option!};
+    croak( qq{One cannot use the shadow plate stamping with the copy_on_target option!});
   }
 
   $self->_create_containers();
@@ -264,7 +264,7 @@ sub _create_containers {
 
   if ((scalar @{$self->container_type_name} > 1) &&
       (scalar keys %{$self->_analytes} > 1)) {
-    croak 'Multiple container type names are not compatible with multiple input containers';
+    croak( 'Multiple container type names are not compatible with multiple input containers');
   }
 
   foreach my $input_container ( keys %{$self->_analytes}) {
@@ -309,7 +309,7 @@ sub _direct_stamp {
 
   my @placements = $doc->findnodes(q{ /stp:placements/output-placements });
   if (!@placements) {
-    croak 'Placements element not found';
+    croak( 'Placements element not found');
   }
 
   foreach my $input_container ( keys %{$self->_analytes}) {
@@ -325,7 +325,7 @@ sub _direct_stamp {
       foreach my $output_container ( @{$self->_analytes->{$input_container}->{'output_containers'}} ) {
         my $uri = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'}->[$container_index];
         if (!$uri) {
-          croak qq[No target analyte uri for container index $container_index];
+          croak( qq[No target analyte uri for container index $container_index]);
         }
 
         my $placement = $self->_create_placement($doc, $uri, $output_container, $well);
@@ -344,7 +344,7 @@ sub _stamp_with_copy {
 
   my @placements = $doc->findnodes(q{ /stp:placements/output-placements });
   if (!@placements) {
-    croak 'Placements element not found';
+    croak( 'Placements element not found');
   }
 
   foreach my $input_container ( keys %{$self->_analytes}) {
@@ -380,7 +380,7 @@ sub _calculate_destination_wells {
   my $ord_of_row = ord $row;
 
   if ($ord_of_row < $ord_of_A or $ord_of_row > $ord_of_H) {
-    croak "Source plate must be a 96 well plate";
+    croak( "Source plate must be a 96 well plate");
   }
 
   my $destination_row = (2 * $ord_of_row) - $ord_of_A;
@@ -505,7 +505,7 @@ wtsi_clarity::epp::generic::stamper
 
 =item Moose
 
-=item Carp
+=item wtsi_clarity::util::error_reporter
 
 =item namespace::autoclean
 
