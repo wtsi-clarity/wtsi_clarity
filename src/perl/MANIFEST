@@ -8,6 +8,7 @@ lib/wtsi_clarity/epp/generic/file_publisher.pm
 lib/wtsi_clarity/epp/generic/label_creator.pm
 lib/wtsi_clarity/epp/generic/messenger.pm
 lib/wtsi_clarity/epp/generic/plate_purpose_updater.pm
+lib/wtsi_clarity/epp/generic/plate_storer.pm
 lib/wtsi_clarity/epp/generic/stamper.pm
 lib/wtsi_clarity/epp/generic/workflow_assigner.pm
 lib/wtsi_clarity/epp/generic/worksheet_attacher.pm

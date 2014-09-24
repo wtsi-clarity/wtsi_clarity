@@ -5,8 +5,6 @@ use Carp;
 use Readonly;
 use List::MoreUtils qw/uniq/;
 use Mojo::Collection 'c';
-use Data::Dumper;
-
 
 extends 'wtsi_clarity::epp';
 
