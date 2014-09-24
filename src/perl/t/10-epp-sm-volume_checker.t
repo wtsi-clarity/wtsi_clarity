@@ -70,7 +70,7 @@ my $current = cwd;
   throws_ok { $epp->run }  qr/Well location A:1 does not exist in volume check file/,
     'well is missing in an empty robot file';
 
-  my $f = join q[/], $current, 't/data/epp/sm/volume_checker/test_1.csv';
+  my $f = join q[/], $current, 't/data/epp/sm/volume_checker/test_1.CSV';
   my $command = "cp $f $dir/$in_up_extension";
   `$command`;
 
