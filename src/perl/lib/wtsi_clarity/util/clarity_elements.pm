@@ -127,6 +127,55 @@ sub find_elements {
 }
 
 
+sub update_nodes {
+  my ($self, %args) = @_;
+  my $document = $args{'document'} || croak qq{Requires an XML document!};
+  my $xpath_location = $args{'xpath'} || croak qq{Requires an XPath!};
+  my $type           = $args{'type'} || croak qq{Requires a type of xml element to be updated!};
+  my $name           = $args{'udf_name'} || $args{'element_name'}  || croak qq{Requires the name of the xml element to be updated!};
+  if ($args{'udf_name'} && $args{'element_name'}) {
+    confess qq{Only one type of 'name' can be given at the same time!};
+  }
+  if ($args{'type'} ne qq{Text}) {
+    croak qq{Only the text value of a node can be updated for now! Other options (such as attribute) are not implemented yet!};
+  }
+
+  my $value = q{};
+  if ($args{'value'}) {
+    $value = $args{'value'};
+  }
+
+  my $is_udf = defined $args{'udf_name'};
+
+  my $xpath_element;
+  if ($is_udf) {
+    $xpath_element  = qq{./udf:field[\@name='$name']};
+  }
+  else
+  {
+    $xpath_element = qq{./$name};
+  }
+  c->new($document->findnodes( $xpath_location )->get_nodelist())
+    ->each(sub {
+      my @elements = $_->findnodes($xpath_element)->get_nodelist();
+      if (@elements > 0) {
+        c->new(@elements)->each(sub {
+          $self->update_text($_, $value);
+        });
+      } else {
+        my $el;
+        if ($is_udf) {
+          $el = $self->create_udf_element($document, $name, $value);
+        } else {
+          $el = $self->create_clarity_element($document, $name, $value);
+        }
+        $_->appendChild($el);
+      }
+    });
+
+  return $document;
+}
+
 sub create_udf_element {
   my ($self, $xml_el, $udf_name, $udf_value) = @_;
   my $url = 'http://genologics.com/ri/userdefined';
@@ -317,6 +366,8 @@ wtsi_clarity::util::clarity_elements
 =head2 create_clarity_element
   creates a new element, append it to the xml at the given position, and returns it
 
+=head2 update_nodes
+  update arbitrary elements on an xml tree
 
 =head2
  find_elements_first_value - takes some XML, a xpath and an optional default value if not found.
