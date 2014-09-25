@@ -72,7 +72,7 @@ sub _get_input_plates {
 
     # If it has a letter at the end
     if ($plate_name =~ /[[:lower:]]$/sxm) {
-      # Pop the letter off 
+      # Pop the letter off
       chop $plate_name;
 
       # Add name as a key to some hash
@@ -86,7 +86,7 @@ sub _get_input_plates {
           ->process_doc
           ->findnodes(qq[/prc:process/udf:field[starts-with(\@name, "Bed") and contains(\@name, "$plate_name")]]);
 
-      # Add result as list on hash value 
+      # Add result as list on hash value
       $h{ $plate_name } = $grouped_plates;
 
     # else just add it to the array
@@ -120,7 +120,7 @@ sub _extract_plate_name {
   croak qq[Could not find matching plate name for $bed_name\n];
 }
 
-sub _extract_plate_number {
+sub _extract_bed_number {
   my ($self, $bed_name) = @_;
   my $plate_number;
 
@@ -139,7 +139,7 @@ sub _get_output_plate_from_input {
   # Search and replace to find the output
   $input_plate_name =~ s/Input/Output/gsm;
 
-  my $output_path = qq [ /prc:process/udf:field[contains(\@name, '$input_plate_name') and starts-with(\@name, 'Bed')] ];
+  my $output_path = qq [ /prc:process/udf:field[starts-with(\@name, 'Bed') and contains(\@name, '$input_plate_name')] ];
 
   my $output_plate_list = $self->process_doc->findnodes($output_path);
 
@@ -167,7 +167,7 @@ sub _build__bed_container_pairs {
 
     my @source = map {
       {
-        bed => $self->_extract_plate_number($_->findvalue('@name')),
+        bed => $self->_extract_bed_number($_->findvalue('@name')),
         barcode => $_->textContent()
       }
     } @{$node_list};
@@ -177,7 +177,7 @@ sub _build__bed_container_pairs {
 
     my @destination = map {
       {
-        bed     => $self->_extract_plate_number($_->findvalue('@name')),
+        bed     => $self->_extract_bed_number($_->findvalue('@name')),
         barcode => $_->textContent()
       };
     } $output_plates->get_nodelist();
