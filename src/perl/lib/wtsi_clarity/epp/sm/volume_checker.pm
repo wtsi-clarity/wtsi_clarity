@@ -16,7 +16,8 @@ Readonly::Scalar my $LOCATION_PATH => q ( art:artifact/location/value );
 
 extends 'wtsi_clarity::epp';
 
-with 'wtsi_clarity::util::clarity_elements';
+with  'wtsi_clarity::util::clarity_elements',
+      'wtsi_clarity::util::filename';
 
 our $VERSION = '0.0';
 
@@ -48,7 +49,10 @@ has 'robot_file'  => (
 
 sub _build_robot_file {
   my $self = shift;
-  return catfile $self->config->robot_file_dir->{'sm_volume_check'}, $self->input;
+
+  my $filename = $self->with_uppercase_extension($self->input);
+
+  return catfile $self->config->robot_file_dir->{'sm_volume_check'}, $filename;
 }
 
 override 'run' => sub {

@@ -56,6 +56,7 @@ lib/wtsi_clarity/util/csv/factories/calliper_csv_reader.pm
 lib/wtsi_clarity/util/csv/factories/generic_csv_reader.pm
 lib/wtsi_clarity/util/csv/factories/generic_csv_writer.pm
 lib/wtsi_clarity/util/csv/factory.pm
+lib/wtsi_clarity/util/filename.pm
 lib/wtsi_clarity/util/label.pm
 lib/wtsi_clarity/util/pdf/factory/pico_analysis_results.pm
 lib/wtsi_clarity/util/pdf/factory.pm
