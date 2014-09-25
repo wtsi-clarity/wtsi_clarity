@@ -41,9 +41,10 @@ my $current = cwd;
 
 {
   _write_config($dir);
-  my $in = 'robot_in.csv';
+  my $in_up_extension = 'robot_in.CSV';
+  my $in_low_extension = 'robot_in.csv';
   my $out = 'robot_out.csv';
-  my $file = catfile($dir, $in);
+  my $file = catfile($dir, $in_up_extension);
   `touch $file`;
 
   local $ENV{'WTSI_CLARITY_HOME'} = $dir;
@@ -62,7 +63,7 @@ my $current = cwd;
   my $epp = wtsi_clarity::epp::sm::volume_checker->new(
     request     => $r,
     process_url => 'http://clarity-ap:8080/api/v2/processes/24-17469',
-    input       => $in,
+    input       => $in_low_extension,
     output      => $out,
   );
   is ($epp->robot_file, $file, 'robot file located correctly');
@@ -70,13 +71,13 @@ my $current = cwd;
     'well is missing in an empty robot file';
 
   my $f = join q[/], $current, 't/data/epp/sm/volume_checker/test_1.CSV';
-  my $command = "cp $f $dir/$in";
+  my $command = "cp $f $dir/$in_up_extension";
   `$command`;
 
   $epp = wtsi_clarity::epp::sm::volume_checker->new(
     request     => $r,
     process_url => 'http://clarity-ap:8080/api/v2/processes/24-17469',
-    input       => $in,
+    input       => $in_low_extension,
     output      => $out,
   );
   warning_like { $epp->run }

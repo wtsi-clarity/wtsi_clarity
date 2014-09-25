@@ -8,6 +8,7 @@ lib/wtsi_clarity/epp/generic/file_publisher.pm
 lib/wtsi_clarity/epp/generic/label_creator.pm
 lib/wtsi_clarity/epp/generic/messenger.pm
 lib/wtsi_clarity/epp/generic/plate_purpose_updater.pm
+lib/wtsi_clarity/epp/generic/plate_storer.pm
 lib/wtsi_clarity/epp/generic/stamper.pm
 lib/wtsi_clarity/epp/generic/workflow_assigner.pm
 lib/wtsi_clarity/epp/generic/worksheet_attacher.pm
@@ -55,6 +56,7 @@ lib/wtsi_clarity/util/csv/factories/calliper_csv_reader.pm
 lib/wtsi_clarity/util/csv/factories/generic_csv_reader.pm
 lib/wtsi_clarity/util/csv/factories/generic_csv_writer.pm
 lib/wtsi_clarity/util/csv/factory.pm
+lib/wtsi_clarity/util/filename.pm
 lib/wtsi_clarity/util/label.pm
 lib/wtsi_clarity/util/pdf/factory/pico_analysis_results.pm
 lib/wtsi_clarity/util/pdf/factory.pm
