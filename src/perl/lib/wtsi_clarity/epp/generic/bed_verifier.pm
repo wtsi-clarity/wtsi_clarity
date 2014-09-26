@@ -139,7 +139,8 @@ sub _get_output_plate_from_input {
   # Search and replace to find the output
   $input_plate_name =~ s/Input/Output/gsm;
 
-  my $output_path = qq [ /prc:process/udf:field[starts-with(\@name, 'Bed') and contains(\@name, '$input_plate_name')] ];
+  # my $output_path = qq [ /prc:process/udf:field[starts-with(\@name, 'Bed') and contains(\@name, '$input_plate_name')] ];
+  my $output_path = qq [ /prc:process/udf:field[contains(\@name, '$input_plate_name')] and starts-with(\@name, 'Bed')];
 
   my $output_plate_list = $self->process_doc->findnodes($output_path);
 
