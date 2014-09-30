@@ -7,41 +7,75 @@ use lib ( -d "$Bin/../lib/perl5" ? "$Bin/../lib/perl5" : "$Bin/../lib" );
 use Carp;
 use English qw(-no_match_vars);
 use Try::Tiny;
+use Capture::Tiny ':all';
+use DateTime;
+use Readonly;
 
 use wtsi_clarity::epp::mapper;
 
 our $VERSION = '0';
 
-try {
-  my $process_url;
-  my @actions;
-  my @package_names = wtsi_clarity::epp::mapper->new_with_options()->package_names;
+Readonly::Scalar my $MAX_ERROR_MSG_LENGTH => 700;
 
-  # Creating the action object(s)
-  foreach my $package_name (@package_names) {
-    my $loaded = eval "require $package_name";
-    if (!$loaded) {
-      croak qq[Failed to require $package_name: $EVAL_ERROR];
-    }
-    if (!defined $process_url) {
-      push @actions, $package_name->new_with_options();
-      $process_url = $actions[0]->process_url;
-    } else {
-      push @actions, $package_name->new_with_options(process_url=>$process_url);
-    }
-  }
+sub _format_long_error_message {
+  my $error_msg = shift;
 
-  # Executing the instantiated actions one by one
-  foreach my $action (@actions) {
-    $action->run();
-  }
-} catch {
-  my $error = "$_\n";
-  print $error || carp 'Failed to print error to STDOUT';
-  croak $error;
+  my $msg = join q[   ], split /\R/smx, $error_msg;
+
+  return substr $msg, 0, $MAX_ERROR_MSG_LENGTH ;
+}
+
+sub _remove_run_method_log_entry {
+  my $error = shift;
+
+  $error =~ s/Run\smethod\sis\scalled[^\n]*\n//smx;
+
+  return $error;
+}
+
+sub _add_error_msg_id {
+  return DateTime->now->strftime(' [Error ID: %d%m%Y%H%M%S] ');
+}
+
+my $exit_code = 0;
+
+my $stderr = capture_stderr {
+  try {
+    my $process_url;
+    my @actions;
+    my @package_names = wtsi_clarity::epp::mapper->new_with_options()->package_names;
+
+    # Creating the action object(s)
+    foreach my $package_name (@package_names) {
+      my $loaded = eval "require $package_name";
+      if (!$loaded) {
+        croak qq[Failed to require $package_name: $EVAL_ERROR];
+      }
+      if (!defined $process_url) {
+        push @actions, $package_name->new_with_options();
+        $process_url = $actions[0]->process_url;
+      } else {
+        push @actions, $package_name->new_with_options(process_url=>$process_url);
+      }
+    }
+
+    # Executing the instantiated actions one by one
+    foreach my $action (@actions) {
+      $action->run();
+    }
+  } catch {
+   $exit_code = 1;
+   print {*STDERR} $_;
+ };
 };
 
-0;
+print _format_long_error_message($stderr);
+
+if ($exit_code) {
+  croak _add_error_msg_id . _format_long_error_message(_remove_run_method_log_entry($stderr));
+}
+
+exit $exit_code;
 
 __END__
 
@@ -87,6 +121,12 @@ __END__
 =item English
 
 =item Try:Tiny
+
+=item Capture::Tiny
+
+=item DateTime
+
+=item Readonly
 
 =back
 

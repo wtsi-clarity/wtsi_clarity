@@ -49,6 +49,8 @@ Readonly::Scalar our $LWP_TIMEOUT => 60;
 Readonly::Scalar our $DEFAULT_METHOD => q[GET];
 Readonly::Scalar our $DEFAULT_CONTENT_TYPE => q[application/xml];
 
+Readonly::Scalar my $EXCEPTION_MESSAGE_PATH => q[exc:exception/message];
+
 =head2 cache_dir_var_name
 
 Name of the environmental variable that defines the location
@@ -438,10 +440,43 @@ sub _from_web {
     # workaround a bug in SS (getting back a 301 response with the correct response body)
     if (($self->ss_request && (!defined $res->decoded_content || !$res->is_success() && !$res->is_redirect))
         || (!$self->ss_request && !$res->is_success())) {
-      croak "$type request to $uri failed: " . join q[ ], $res->status_line(), $res->decoded_content;
+      croak "$type request to $uri failed: " . join q[ ], $res->status_line(), $self->_error_message($res->decoded_content);
     }
 
     return $res->decoded_content;
+}
+
+sub _error_message {
+    my ($self, $decoded_content) = @_;
+    my $error_msg;
+
+    my $exception_msg = $self->_get_exception_message($decoded_content);
+
+    if ($exception_msg) {
+      $error_msg = $exception_msg;
+    } else {
+      $error_msg = $decoded_content;
+    }
+
+    return $error_msg;
+}
+
+sub _get_exception_message {
+    my ($self, $content) = @_;
+
+    my $parser = XML::LibXML->new();
+    my $xml_msg;
+
+    ##no critic (RequireCheckingReturnValueOfEval)
+    eval {
+        $xml_msg = $parser->load_xml(string => $content);
+    };
+    ##use critic
+    if ($EVAL_ERROR) {
+        return;
+    }
+
+    return $xml_msg->findnodes($EXCEPTION_MESSAGE_PATH)->pop()->textContent;
 }
 
 sub _write2cache {

@@ -111,6 +111,7 @@ my $builder = $class->new(
                 'XML::SemanticDiff'               => 0,
                 'URI::Escape'                     => 0,
                 'POSIX'                           => 0,
+                'Capture::Tiny'                   => 0,
           },
 
           'dist'         => { COMPRESS => 'gzip', SUFFIX => 'gz', },

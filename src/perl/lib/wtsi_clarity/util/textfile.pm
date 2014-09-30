@@ -17,9 +17,7 @@ sub saveas {
     or croak qq{Could not create/open file '$path'.};
   foreach my $line (@{$self->content})
   {
-      ## no critic(InputOutput::RequireCheckedSyscalls)
       print {$fh} qq{$line\n}; # Print each entry in our array to the file
-      ## use critic
   }
   close $fh
     or croak qq{ Unable to close $path.};
