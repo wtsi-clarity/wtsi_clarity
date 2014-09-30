@@ -65,11 +65,11 @@ my $stderr = capture_stderr {
     }
   } catch {
    $exit_code = 1;
-   print {*STDERR} $_;
+   print {*STDERR} $_ or croak qq[Failed to write to the STDERR];
  };
 };
 
-print _format_long_error_message($stderr);
+print _format_long_error_message($stderr) or croak qq[Failed to print the error message to the output];
 
 if ($exit_code) {
   croak _add_error_msg_id . _format_long_error_message(_remove_run_method_log_entry($stderr));

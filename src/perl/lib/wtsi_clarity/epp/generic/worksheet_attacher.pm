@@ -150,7 +150,7 @@ sub _create_tecan_file {
     or croak qq{Could not create/open file '$full_filename'.};
   foreach my $line (@{$file_content})
   {
-      print {$fh} qq{$line\n}; # Print each entry in our array to the file
+      print {$fh} qq{$line\n} or croak qq[Failed to write to the file: $fh]; # Print each entry in our array to the file
   }
   close $fh
     or croak qq{ Unable to close $full_filename.};
