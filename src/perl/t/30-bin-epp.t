@@ -41,7 +41,7 @@ foreach my $file (@additional_files_to_copy) {
 
 
 {
-  system("$dir/bin/epp --action test_action1 --process_url dummy_url 1>$dir/lib/stderr.txt");
+  system("$dir/bin/epp --action test_action1 --process_url dummy_url 2>$dir/lib/stderr.txt");
   open (my $fh, "<", "$dir/lib/stderr.txt");
   my $stderr;
   chomp($stderr = <$fh>);
@@ -53,7 +53,7 @@ foreach my $file (@additional_files_to_copy) {
 }
 
 {
-  system("$dir/bin/epp --action test_action1 --action test_action2 --process_url dummy_url 1>$dir/lib/stderr.txt");
+  system("$dir/bin/epp --action test_action1 --action test_action2 --process_url dummy_url 2>$dir/lib/stderr.txt");
   open (my $fh, "<", "$dir/lib/stderr.txt");
   my $stderr = "";
   while(my $line = <$fh>) {
@@ -61,7 +61,7 @@ foreach my $file (@additional_files_to_copy) {
     $stderr = $stderr . $line;
   }
   is( $stderr,
-      "Run method from wtsi_clarity::epp::sm::test_action1   ".
+      "Run method from wtsi_clarity::epp::sm::test_action1".
       "Run method from wtsi_clarity::epp::sm::test_action2",
       'callback runs OK, logs process details'
     );
@@ -69,7 +69,7 @@ foreach my $file (@additional_files_to_copy) {
 }
 
 {
-  system("$dir/bin/epp --action test_action1 --action test_action3 --process_url dummy_url --test_action3_attr test_action3_attr_value 1>$dir/lib/stderr.txt");
+  system("$dir/bin/epp --action test_action1 --action test_action3 --process_url dummy_url --test_action3_attr test_action3_attr_value 2>$dir/lib/stderr.txt");
   open (my $fh, "<", "$dir/lib/stderr.txt");
   my $stderr = "";
   while(my $line = <$fh>) {
@@ -77,7 +77,7 @@ foreach my $file (@additional_files_to_copy) {
     $stderr = $stderr . $line;
   }
   is( $stderr,
-      "Run method from wtsi_clarity::epp::sm::test_action1   ".
+      "Run method from wtsi_clarity::epp::sm::test_action1".
       "Run method from wtsi_clarity::epp::sm::test_action3".
       "test_action3_attr attribute value is test_action3_attr_value",
       'callback runs OK, logs process details'
