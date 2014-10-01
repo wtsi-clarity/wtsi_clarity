@@ -23,7 +23,7 @@ lib/wtsi_clarity/epp/sm/fluidigm_analyser.pm
 lib/wtsi_clarity/epp/sm/fluidigm_request_volume_updater.pm
 lib/wtsi_clarity/epp/sm/pico_analyser.pm
 lib/wtsi_clarity/epp/sm/report_maker.pm
-lib/wtsi_clarity/epp/sm/sample_uuid_assigner.pm
+lib/wtsi_clarity/epp/sm/sample_receiver.pm
 lib/wtsi_clarity/epp/sm/stock_plate_reactivator.pm
 lib/wtsi_clarity/epp/sm/volume_checker.pm
 lib/wtsi_clarity/epp.pm
@@ -35,6 +35,7 @@ lib/wtsi_clarity/genotyping/fluidigm/assay_set.pm
 lib/wtsi_clarity/genotyping/fluidigm/file_wrapper.pm
 lib/wtsi_clarity/genotyping/fluidigm/result_set.pm
 lib/wtsi_clarity/genotyping/fluidigm.pm
+lib/wtsi_clarity/ics/agilent/file_validator.pm
 lib/wtsi_clarity/mq/client.pm
 lib/wtsi_clarity/mq/message/epp.pm
 lib/wtsi_clarity/process_checks/bed_verifier.pm
