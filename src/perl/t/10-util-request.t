@@ -1,9 +1,10 @@
 use strict;
 use warnings;
-use Test::More tests => 15;
+use Test::More tests => 16;
 use Test::Exception;
 use Test::MockObject::Extends;
 use File::Temp qw/ tempdir /;
+use Cwd;
 use Digest::MD5;
 
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = q{};
@@ -143,6 +144,15 @@ sub read_file {
     is($r->$method($test_url, $payload), qq/$method_verb - $test_url/, qq{reads from the cache when SAVE2WTSICLARITY_WEBCACHE is false ($method_verb - $test_url)} )
   }
 
+  ## Test for getting the exception message from a REST response
+  {
+    my $testdata_path  = q{/t/data/util/request/error_response.xml};
+    my $r = wtsi_clarity::util::request->new();
+    my $xml_response = XML::LibXML->load_xml(location => cwd . $testdata_path);
+    my $expected_message = "Reagents cannot be added to this step because it is not an indexing step.";
+
+    is($r->_error_message($xml_response), $expected_message, qq{Gets the correct message from an exception response});
+  }
 }
 
 1;
