@@ -36,6 +36,7 @@ lib/wtsi_clarity/genotyping/fluidigm/file_wrapper.pm
 lib/wtsi_clarity/genotyping/fluidigm/result_set.pm
 lib/wtsi_clarity/genotyping/fluidigm.pm
 lib/wtsi_clarity/ics/agilent/file_validator.pm
+lib/wtsi_clarity/ics/agilent/analyser.pm
 lib/wtsi_clarity/mq/client.pm
 lib/wtsi_clarity/mq/message/epp.pm
 lib/wtsi_clarity/process_checks/bed_verifier.pm
