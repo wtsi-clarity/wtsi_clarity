@@ -13,7 +13,7 @@ use_ok('wtsi_clarity::ics::agilent::file_validator');
     file_names => $files,
   );
 
-  is (scalar keys $fv->wells, 24, 'Returns 24 wells');
+  is (scalar keys $fv->_wells, 24, 'Returns 24 wells');
 
   my $wells = {
     'A1' => {
