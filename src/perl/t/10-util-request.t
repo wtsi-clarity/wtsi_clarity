@@ -1,11 +1,12 @@
 use strict;
 use warnings;
-use Test::More tests => 16;
+use Test::More tests => 17;
 use Test::Exception;
 use Test::MockObject::Extends;
 use File::Temp qw/ tempdir /;
 use Cwd;
 use Digest::MD5;
+use Carp;
 
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = q{};
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
@@ -144,14 +145,34 @@ sub read_file {
     is($r->$method($test_url, $payload), qq/$method_verb - $test_url/, qq{reads from the cache when SAVE2WTSICLARITY_WEBCACHE is false ($method_verb - $test_url)} )
   }
 
+  sub _read_file {
+    my $path = shift;
+
+    open my $fh, q[<], $path or croak qq{Error when opening $path for reading.};
+    if (!defined $fh) { croak qq[Undefined filehandle returned for $path]; }
+    my $content = defined $fh ? do { local $/; <$fh> } : croak qq[Failed to read from an open $path.];
+    close $fh or croak qq[Failed to close a filehandle for $path.];
+
+    return $content;
+  }
+
   ## Test for getting the exception message from a REST response
   {
     my $testdata_path  = q{/t/data/util/request/error_response.xml};
     my $r = wtsi_clarity::util::request->new();
-    my $xml_response = XML::LibXML->load_xml(location => cwd . $testdata_path);
+    my $xml_response_str = _read_file(cwd . $testdata_path);
     my $expected_message = "Reagents cannot be added to this step because it is not an indexing step.";
 
-    is($r->_error_message($xml_response), $expected_message, qq{Gets the correct message from an exception response});
+    is($r->_error_message($xml_response_str), $expected_message, qq{Gets the correct message from an exception response});
+  }
+
+  {
+    my $testdata_path  = q{/t/data/util/request/bad_error_response.xml};
+    my $r = wtsi_clarity::util::request->new();
+    my $response_str = _read_file(cwd . $testdata_path);
+    my $expected_message = "Just a text message";
+
+    is($r->_error_message($response_str), $expected_message, qq{Gets the correct message from the response});
   }
 }
 
