@@ -8,12 +8,21 @@ use Mojo::Collection 'c';
 
 our $VERSION = '0.0';
 
+=head2 mapping_details
+  Description: Describes the mapping between the source plate
+               and the differents output files
+  Returntype : HashRef
+=cut
 has 'mapping_details' => (
   is => 'ro',
   isa => 'HashRef',
   required => 1,
 );
 
+=head2 files_content
+  Description: maps the result file names with the LibXML::Document which represents them
+  Returntype : HashRef
+=cut
 has 'files_content' => (
   is => 'ro',
   isa => 'HashRef',
