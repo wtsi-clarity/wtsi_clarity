@@ -11,6 +11,7 @@ use File::Basename;
 use File::Path;
 use File::Spec::Functions;
 use Readonly;
+use XML::LibXML;
 
 use Net::SFTP::Foreign;
 use Digest::MD5;
@@ -450,33 +451,14 @@ sub _error_message {
     my ($self, $decoded_content) = @_;
     my $error_msg;
 
-    my $exception_msg = $self->_get_exception_message($decoded_content);
-
-    if ($exception_msg) {
-      $error_msg = $exception_msg;
-    } else {
-      $error_msg = $decoded_content;
-    }
+    eval {
+        my $xml_msg = XML::LibXML->new()->load_xml(string => $decoded_content);
+        $error_msg = $xml_msg->findnodes($EXCEPTION_MESSAGE_PATH)->pop()->textContent;
+    } or do {
+        $error_msg = $decoded_content;
+    };
 
     return $error_msg;
-}
-
-sub _get_exception_message {
-    my ($self, $content) = @_;
-
-    my $parser = XML::LibXML->new();
-    my $xml_msg;
-
-    ##no critic (RequireCheckingReturnValueOfEval)
-    eval {
-        $xml_msg = $parser->load_xml(string => $content);
-    };
-    ##use critic
-    if ($EVAL_ERROR) {
-        return;
-    }
-
-    return $xml_msg->findnodes($EXCEPTION_MESSAGE_PATH)->pop()->textContent;
 }
 
 sub _write2cache {
