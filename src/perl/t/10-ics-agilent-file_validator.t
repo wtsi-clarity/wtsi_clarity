@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 39;
+use Test::More tests => 38;
 use Test::Exception;
 
 use_ok('wtsi_clarity::ics::agilent::file_validator');
@@ -137,14 +137,6 @@ use_ok('wtsi_clarity::ics::agilent::file_validator');
 }
 
 # Let's do some validation...
-# Fails when more than 4 files
-{
-  my $files = ['123_C1_D1', '123_A1_B1', '123_G1_H1', '123_E1_F1', '123_A2_B2'];
-
-  throws_ok { wtsi_clarity::ics::agilent::file_validator->new(file_names => $files); }
-    qr/5 files found. There should only be a maximum of 4/, 'Croaks when 5 files added';
-}
-
 # Fails when barcodes don't match
 {
   my $files = ['123456_A1_B1', '123_C1_D1', '123_E1_F1', '123_G1_H1'];

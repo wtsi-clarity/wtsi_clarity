@@ -11,7 +11,6 @@ use wtsi_clarity::util::well_mapper;
 our $VERSION = 0.0;
 
 Readonly::Scalar my $FILE_NAME_DELIMITER => '_';
-Readonly::Scalar my $MAX_NUMBER_OF_FILES => 4;
 Readonly::Scalar my $SOURCE_WELLS_PER_CHIP => 6;
 Readonly::Scalar my $MAX_COLUMNS_FROM_SOURCE => 3;
 
@@ -154,19 +153,8 @@ sub _find_index {
 sub _validate_files {
   my $self = shift;
 
-  $self->_validate_number_of_files();
   $self->_validate_barcodes_match();
   $self->_validate_wells_sequential();
-
-  return;
-}
-
-sub _validate_number_of_files {
-  my $self = shift;
-
-  if ($self->files->size > $MAX_NUMBER_OF_FILES) {
-    croak $self->files->size . ' files found. There should only be a maximum of ' . $MAX_NUMBER_OF_FILES;
-  }
 
   return;
 }
