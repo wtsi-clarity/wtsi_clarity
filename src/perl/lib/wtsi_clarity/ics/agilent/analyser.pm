@@ -57,7 +57,7 @@ sub _build__data_set {
   my ($self) = @_;
 
   # for each file
-  returns c->new(keys $self->files_content)
+  return c->new(keys $self->files_content)
     ->reduce(sub{
       my $filename = $b;
       my $doc = $self->files_content->{$filename};
