@@ -2,7 +2,7 @@ package wtsi_clarity::ics::agilent::analyser;
 
 use Moose;
 use Carp;
-use wtsi_clarity::util::clarity_elements;
+use XML::LibXML;
 use Readonly;
 use Mojo::Collection 'c';
 
