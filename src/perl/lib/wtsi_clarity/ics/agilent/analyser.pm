@@ -29,7 +29,7 @@ has 'files_content' => (
   required => 1,
 );
 
-Readonly::Scalar my $SAMPLE_PATH  => q{/Chipset/Chips[1]/Chip[1]/Files[1]/File[1]/Samples[1]/Sample[Category!='Ladder']};
+Readonly::Scalar my $SAMPLE_PATH  => q{/Chipset/Chips[1]/Chip[1]/Files[1]/File[1]/Samples[1]/Sample[Category='Sample']};
 Readonly::Scalar my $PEAK_SUBPATH => qq{DAResultStructures[1]/DARIntegrator[1]/Channel[1]/PeaksMolecular[1]/PeakMolecular[2]};
 
 sub get_analysis_results {

@@ -11,23 +11,23 @@ use_ok('wtsi_clarity::ics::agilent::analyser');
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $testdata_path => q(./t/data/ics/agilent/);
-Readonly::Scalar my $file1_name => q(1234567890_A1_B4.xml);
-Readonly::Scalar my $file2_name => q(1234567890_A1_B4_wrong.xml);
+Readonly::Scalar my $file1_name => q(1234567890_A1_A6.xml);
+Readonly::Scalar my $file2_name => q(1234567890_A1_A6_wrong.xml);
 ## use critic
 
 { # get_analysis_results should work
   my $parser = XML::LibXML->new();
   my $file1 = $parser->load_xml(location => $testdata_path.$file1_name) or croak 'File can not be found at ' . $testdata_path.$file1_name;
   my $mapping = {
-    'A:1' => { 'filename' => '1234567890_A1_B4', 'wells' => [ '1', '2' ]},
-    'A:2' => { 'filename' => '1234567890_A1_B4', 'wells' => [ '3', '4' ]},
-    'A:3' => { 'filename' => '1234567890_A1_B4', 'wells' => [ '5', '6' ]},
-    'A:4' => { 'filename' => '1234567890_A1_B4', 'wells' => [ '7', '8' ]},
-    'A:5' => { 'filename' => '1234567890_A1_B4', 'wells' => [ '11', '12' ]},
-    'A:6' => { 'filename' => '1234567890_A1_B4', 'wells' => [ '9', '10' ]},
+    'A:1' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '1', '2' ]},
+    'A:2' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '3', '4' ]},
+    'A:3' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '5', '6' ]},
+    'A:4' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '7', '8' ]},
+    'A:5' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '11', '12' ]},
+    'A:6' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '9', '10' ]},
   };
   my $files_content = {
-    '1234567890_A1_B4' => $file1,
+    '1234567890_A1_A6' => $file1,
   };
   my $instance = wtsi_clarity::ics::agilent::analyser->new(mapping_details => $mapping, files_content => $files_content);
   isa_ok( $instance, 'wtsi_clarity::ics::agilent::analyser');
@@ -73,20 +73,20 @@ Readonly::Scalar my $file2_name => q(1234567890_A1_B4_wrong.xml);
   my $parser = XML::LibXML->new();
   my $file1 = $parser->load_xml(location => $testdata_path.$file1_name) or croak 'File can not be found at ' . $testdata_path.$file1_name;
   my $mapping = {
-    'A:1' => { 'filename' => '1234567890_A1_B4', 'wells' => [ '1', '2' ]},
-    'A:2' => { 'filename' => '1234567890_A1_B4', 'wells' => [ '3', '4' ]},
-    'A:3' => { 'filename' => '1234567890_A1_B4', 'wells' => [ '5', '6' ]},
-    'A:4' => { 'filename' => '1234567890_A1_B4', 'wells' => [ '7', '8' ]},
-    'A:5' => { 'filename' => '1234567890_A1_B4', 'wells' => [ '11', '12' ]},
-    'A:6' => { 'filename' => '1234567890_A1_B4', 'wells' => [ '9', '10' ]},
+    'A:1' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '1', '2' ]},
+    'A:2' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '3', '4' ]},
+    'A:3' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '5', '6' ]},
+    'A:4' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '7', '8' ]},
+    'A:5' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '11', '12' ]},
+    'A:6' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '9', '10' ]},
   };
   my $files_content = {
-    '1234567890_A1_B4' => $file1,
+    '1234567890_A1_A6' => $file1,
   };
 
   my $instance = wtsi_clarity::ics::agilent::analyser->new(mapping_details => $mapping, files_content => $files_content);
   my $results = $instance->_data_set();
-  my $expected = { '1234567890_A1_B4' => {
+  my $expected = { '1234567890_A1_A6' => {
                                   '6' => {
                                          'molarity' => '73.45164',
                                          'concentration' => '13.97738',
@@ -157,20 +157,20 @@ Readonly::Scalar my $file2_name => q(1234567890_A1_B4_wrong.xml);
   my $parser = XML::LibXML->new();
   my $file1 = $parser->load_xml(location => $testdata_path.$file2_name) or croak 'File can not be found at ' . $testdata_path.$file2_name;
   my $mapping = {
-    'A:1' => { 'filename' => '1234567890_A1_B4', 'wells' => [ '1', '2' ]},
-    'A:2' => { 'filename' => '1234567890_A1_B4', 'wells' => [ '3', '4' ]},
-    'A:3' => { 'filename' => '1234567890_A1_B4', 'wells' => [ '5', '6' ]},
-    'A:4' => { 'filename' => '1234567890_A1_B4', 'wells' => [ '7', '8' ]},
-    'A:5' => { 'filename' => '1234567890_A1_B4', 'wells' => [ '11', '12' ]},
-    'A:6' => { 'filename' => '1234567890_A1_B4', 'wells' => [ '9', '10' ]},
+    'A:1' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '1', '2' ]},
+    'A:2' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '3', '4' ]},
+    'A:3' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '5', '6' ]},
+    'A:4' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '7', '8' ]},
+    'A:5' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '11', '12' ]},
+    'A:6' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '9', '10' ]},
   };
   my $files_content = {
-    '1234567890_A1_B4' => $file1,
+    '1234567890_A1_A6' => $file1,
   };
 
   my $instance = wtsi_clarity::ics::agilent::analyser->new(mapping_details => $mapping, files_content => $files_content);
   throws_ok { $instance->_data_set(); print Dumper $instance->_data_set; }
-  qr/The number of 'Concentration' tag is not correct. The XML '1234567890_A1_B4' is not well formed/,
+  qr/The number of 'Concentration' tag is not correct. The XML '1234567890_A1_A6' is not well formed/,
   qq/_data_set should fail properly with the wrong input./;
 }
 
