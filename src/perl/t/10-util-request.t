@@ -145,35 +145,37 @@ sub read_file {
     is($r->$method($test_url, $payload), qq/$method_verb - $test_url/, qq{reads from the cache when SAVE2WTSICLARITY_WEBCACHE is false ($method_verb - $test_url)} )
   }
 
-  sub _read_file {
-    my $path = shift;
+}
 
-    open my $fh, q[<], $path or croak qq{Error when opening $path for reading.};
-    if (!defined $fh) { croak qq[Undefined filehandle returned for $path]; }
-    my $content = defined $fh ? do { local $/; <$fh> } : croak qq[Failed to read from an open $path.];
-    close $fh or croak qq[Failed to close a filehandle for $path.];
+sub _read_file {
+  my $path = shift;
 
-    return $content;
-  }
+  open my $fh, q[<], $path or croak qq{Error when opening $path for reading.};
+  if (!defined $fh) { croak qq[Undefined filehandle returned for $path]; }
+  my $content = defined $fh ? do { local $/; <$fh> } : croak qq[Failed to read from an open $path.];
+  close $fh or croak qq[Failed to close a filehandle for $path.];
 
-  ## Test for getting the exception message from a REST response
-  {
-    my $testdata_path  = q{/t/data/util/request/error_response.xml};
-    my $r = wtsi_clarity::util::request->new();
-    my $xml_response_str = _read_file(cwd . $testdata_path);
-    my $expected_message = "Reagents cannot be added to this step because it is not an indexing step.";
+  return $content;
+}
 
-    is($r->_error_message($xml_response_str), $expected_message, qq{Gets the correct message from an exception response});
-  }
+## Test for getting the exception message from a REST response
+{
+  my $testdata_path  = q{/t/data/util/request/error_response.xml};
+  my $r = wtsi_clarity::util::request->new();
+  my $xml_response_str = _read_file(cwd . $testdata_path);
+  my $expected_message = "Reagents cannot be added to this step because it is not an indexing step.";
 
-  {
-    my $testdata_path  = q{/t/data/util/request/bad_error_response.xml};
-    my $r = wtsi_clarity::util::request->new();
-    my $response_str = _read_file(cwd . $testdata_path);
-    my $expected_message = "Just a text message";
+  is($r->_error_message($xml_response_str), $expected_message, qq{Gets the correct message from an exception response});
+}
 
-    is($r->_error_message($response_str), $expected_message, qq{Gets the correct message from the response});
-  }
+## Test for getting back the REST response if there is no exception message in it
+{
+  my $testdata_path  = q{/t/data/util/request/bad_error_response.xml};
+  my $r = wtsi_clarity::util::request->new();
+  my $response_str = _read_file(cwd . $testdata_path);
+  my $expected_message = "Just a text message";
+
+  is($r->_error_message($response_str), $expected_message, qq{Gets the correct message from the response});
 }
 
 1;
