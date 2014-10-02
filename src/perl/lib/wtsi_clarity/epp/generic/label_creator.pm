@@ -13,12 +13,6 @@ with 'wtsi_clarity::util::clarity_elements';
 with 'wtsi_clarity::util::print';
 with 'wtsi_clarity::util::label';
 
-#########################
-# TODO
-#
-# have short project name on the label?
-#
-
 our $VERSION = '0.0';
 
 ##no critic (ValuesAndExpressions::RequireInterpolationOfMetachars)
@@ -35,8 +29,7 @@ Readonly::Scalar my $CONTAINER_PATH           => q{ /art:artifact/location/conta
 Readonly::Scalar my $SAMPLE_PATH              => q{ /art:artifact/sample/@limsid };
 Readonly::Scalar my $CONTROL_PATH             => q{ /art:artifact/control-type };
 Readonly::Scalar my $DEFAULT_BARCODE_PREFIX   => q{SM};
-Readonly::Scalar my $BARCODE_PREFIX_PATH      =>
-  q{ /prc:process/udf:field(@name, 'Barcode Prefix') };
+Readonly::Scalar my $BARCODE_PREFIX_UDF_NAME  => q{Barcode Prefix};
 
 Readonly::Scalar my $CONTAINER_LIMSID_PATH    => q{ /con:container/@limsid };
 Readonly::Scalar my $SUPPLIER_CONTAINER_NAME_PATH =>
@@ -168,8 +161,13 @@ has '_barcode_prefix' => (
   isa        => 'Str',
   is         => 'ro',
   required   => 0,
-  default    => $DEFAULT_BARCODE_PREFIX,
+  lazy_build => 1,
 );
+sub _build__barcode_prefix {
+  my $self = shift;
+  return $self->find_udf_element_textContent(
+    $self->process_doc, $BARCODE_PREFIX_UDF_NAME, $DEFAULT_BARCODE_PREFIX);
+}
 
 has '_container' => (
   isa        => 'HashRef',
