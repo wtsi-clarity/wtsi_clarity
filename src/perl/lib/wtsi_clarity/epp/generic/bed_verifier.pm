@@ -256,17 +256,13 @@ override 'run' => sub {
   my $self = shift;
   super();
 
-  my $verified = 0;
   try {
-    $verified = $self->_verify();
+    $self->_verify();
   } catch {
-    $self->epp_log("Bed verification error $_");
-  };
-
-  if (!$verified) {
+    my $error = $_;
     $self->_punish_user_by_resetting_everything();
-    croak "Bed verification has failed\n";
-  }
+    croak "Bed verification has failed: $error";
+  };
 
   return;
 };
