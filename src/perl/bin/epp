@@ -7,10 +7,26 @@ use lib ( -d "$Bin/../lib/perl5" ? "$Bin/../lib/perl5" : "$Bin/../lib" );
 use Carp;
 use English qw(-no_match_vars);
 use Try::Tiny;
+use DateTime;
+use Readonly;
 
 use wtsi_clarity::epp::mapper;
 
 our $VERSION = '0';
+
+Readonly::Scalar my $MAX_ERROR_MSG_LENGTH => 700;
+
+sub _format_long_error_message {
+  my $error_msg = shift;
+
+  my $msg = join q[   ], split /\R/smx, $error_msg;
+
+  return substr $msg, 0, $MAX_ERROR_MSG_LENGTH ;
+}
+
+sub _add_error_msg_id {
+  return DateTime->now->strftime(' [Error ID: %d%m%Y%H%M%S] ');
+}
 
 try {
   my $process_url;
@@ -36,9 +52,9 @@ try {
     $action->run();
   }
 } catch {
-  my $error = "$_\n";
-  print $error || carp 'Failed to print error to STDOUT';
-  croak $error;
+  my $error = $_;
+  print {*STDERR} $error or croak qq[Failed to write to the STDERR];
+  croak _add_error_msg_id . _format_long_error_message($error);
 };
 
 0;
@@ -87,6 +103,10 @@ __END__
 =item English
 
 =item Try:Tiny
+
+=item DateTime
+
+=item Readonly
 
 =back
 
