@@ -454,6 +454,7 @@ sub _error_message {
     eval {
         my $xml_msg = XML::LibXML->new()->load_xml(string => $decoded_content);
         $error_msg = $xml_msg->findnodes($EXCEPTION_MESSAGE_PATH)->pop()->textContent;
+        1;
     } or do {
         $error_msg = $decoded_content;
     };
