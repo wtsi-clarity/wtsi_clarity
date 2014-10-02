@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 34;
+use Test::More tests => 36;
 use Test::Exception;
 use DateTime;
 
@@ -194,7 +194,14 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
 
   # increment_purpose flag is false
   $label->{'label_printer'}->{'labels'}->[0]->{'plate'}->{'label_text'}->{'role'} = 'Pico Assay';
-  is_deeply($l->_generate_labels(), $label, 'label hash representation');
+  is_deeply($l->_generate_labels(), $label, 'purpose is not incremented in the label');
+
+  is($l->_barcode_prefix, 'SM', 'default barcode prefix');
+  $l = wtsi_clarity::epp::generic::label_creator->new(
+     process_url => $base_uri . '/processes/24-97619_custom',
+     _date => $dt,
+  );
+  is($l->_barcode_prefix, 'IC', 'barcode prefix from the process');
 }
 
 1;
