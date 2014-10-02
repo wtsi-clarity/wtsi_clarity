@@ -1,6 +1,7 @@
 CHANGES for wtsi_clarity Perl project
 
-release XXX
+release 0.45
+  - modified error messages to more descriptive
   - added Agilent analyser
   - get barcode prefix from process xml
 
