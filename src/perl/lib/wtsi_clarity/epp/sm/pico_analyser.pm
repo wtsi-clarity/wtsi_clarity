@@ -5,6 +5,7 @@ use Carp;
 use Readonly;
 use File::Temp qw/ tempdir /;
 use wtsi_clarity::file_parsing::dtx_concentration_calculator;
+use wtsi_clarity::file_parsing::dtx_parser;
 use wtsi_clarity::util::pdf::factory;
 use Mojo::Collection 'c';
 
@@ -48,9 +49,9 @@ override 'run' => sub {
 
   # Do the analysis
   my $calculator = wtsi_clarity::file_parsing::dtx_concentration_calculator->new(
-    standard_doc => $standard,
-    plateA_doc   => $dtx1,
-    plateB_doc   => $dtx2,
+    standard_doc => $self->_dtx_parser->parse($standard),
+    plateA_doc   => $self->_dtx_parser->parse($dtx1),
+    plateB_doc   => $self->_dtx_parser->parse($dtx2),
   );
 
   my $results = $calculator->get_analysis_results();
@@ -68,6 +69,12 @@ override 'run' => sub {
   return;
 };
 
+has '_dtx_parser' => (
+  isa      => 'wtsi_clarity::file_parsing::dtx_parser',
+  is       => 'ro',
+  required => 0,
+  default  => sub { return wtsi_clarity::file_parsing::dtx_parser->new(); },
+);
 
 has '_output_ids' => (
   isa        => 'ArrayRef',
@@ -280,9 +287,7 @@ sub _fetch_files {
     my ($server, $remote_path) = _extract_locations($files->{$file_name});
     my $file = $self->request->download_file($server, $remote_path, $temp_file_path);
 
-    $files->{$file_name} =  $self->xml_parser->load_xml(
-      location => $temp_file_path
-    );
+    $files->{$file_name} = $temp_file_path;
   }
 
   return;
@@ -362,7 +367,7 @@ wtsi_clarity::epp::sm::pico_analyser
 
 =head1 DESCRIPTION
 
-  Will find the DTX files for the 2 plates, fetch their standard file, run analysis and 
+  Will find the DTX files for the 2 plates, fetch their standard file, run analysis and
   produce a PDF of the results
 
 =head1 SUBROUTINES/METHODS
