@@ -18,6 +18,8 @@ our $VERSION = '0.0';
 ##no critic (ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $REAGENT_ARTIFACT_URI_PATH => q{/stp:reagents/output-reagents/output};
 Readonly::Scalar my $REAGENT_CATEGORY_PATH     => q{/stp:reagents/reagent-category};
+Readonly::Scalar my $DETAILS_ARTIFACT_PATH     => q{/art:details/art:artifact};
+Readonly::Scalar my $REAGENT_LABEL_PATH        => q{/art:artifact/reagent-label};
 Readonly::Scalar my $OUTPUT_URI_PATH           => q{/prc:process/input-output-map[output/@output-type='Analyte']};
 Readonly::Scalar my $URI_SEARCH_STRING         => q{@uri};
 Readonly::Scalar my $LIMSID_SEARCH_STRING      => q{@limsid};
@@ -29,50 +31,13 @@ has 'step_url'  => (
   required        => 1,
 );
 
-has '_reagents_url'  => (
-  isa             => 'Str',
-  is              => 'ro',
-  required        => 0,
-  lazy_build      => 1,
-);
-sub _build__reagents_url {
-  my $self = shift;
-  if (!$self->can('step_url') || !$self->step_url) {
-    croak 'To get reagent info, step url should be defined';
-  }
-  return join q[/], $self->step_url, 'reagents';
-}
-
-has '_reagents_doc'  => (
+has '_batch_artifacts_doc' => (
   isa             => 'XML::LibXML::Document',
-  is              => 'ro',
-  required        => 0,
-  lazy_build      => 1,
-  trigger         => \&_build__reagent_category,
-);
-sub _build__reagents_doc {
-  my $self = shift;
-  return $self->fetch_and_parse($self->_reagents_url);
-}
-
-has '_reagent_category' => (
-  isa         => 'Str',
-  is          => 'ro',
-  required    => 0,
-  lazy_build  => 1,
-);
-sub _build__reagent_category {
-  my $self = shift;
-  return $self->_reagents_doc->findvalue($REAGENT_CATEGORY_PATH);
-}
-
-has '_output_location_map'  => (
-  isa             => 'HashRef',
-  is              => 'ro',
+  is              => 'rw',
   required        => 0,
   lazy_build      => 1,
 );
-sub _build__output_location_map {
+sub _build__batch_artifacts_doc {
   my $self = shift;
 
   my @uris = ();
@@ -85,12 +50,21 @@ sub _build__output_location_map {
     croak 'No output analytes found';
   }
 
-  my $batch_artifacts_doc = $self->request->batch_retrieve('artifacts', \@uris);
+  return $self->request->batch_retrieve('artifacts', \@uris);
+}
+
+has '_output_location_map'  => (
+  isa             => 'HashRef',
+  is              => 'ro',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build__output_location_map {
+  my $self = shift;
 
   my $map = {};
 
-  foreach my $art ($batch_artifacts_doc->findnodes(q(/art:details/art:artifact))) {
-
+  foreach my $art ($self->_batch_artifacts_doc->findnodes($DETAILS_ARTIFACT_PATH)) {
     my $uri = $art->findvalue($URI_SEARCH_STRING);
     if (!$uri) {
       croak 'Failed to get analyte uri';
@@ -143,7 +117,7 @@ override 'run' => sub {
 
   super(); #call parent's run method
   $self->_index();
-  $self->request->post($self->_reagents_url, $self->_reagents_doc->toString());
+  $self->request->batch_update('artifacts', $self->_batch_artifacts_doc);
 
   return;
 };
@@ -151,34 +125,39 @@ override 'run' => sub {
 sub _index {
   my $self = shift;
 
-  foreach my $output ($self->_reagents_doc->findnodes($REAGENT_ARTIFACT_URI_PATH)) {
+  my @analytes_uris = keys $self->_output_location_map;
 
-    my $ar_uri = $output->findvalue($URI_SEARCH_STRING);
-    if (!$ar_uri) {
-      croak 'Failed to get analyte uri in the listing of reagents';
-    }
-    my $location = $self->_output_location_map->{$ar_uri};
-    if (!$location) {
-      croak "Failed to get well address for $ar_uri";
-    }
-    delete $self->_output_location_map->{$ar_uri};
-
-    my $new_reagent = $self->_reagents_doc->createElement('reagent-label');
-    $new_reagent->setAttribute('name',
-      $self->_reagent_name( $self->_tag_layout->tag_info($location) ) );
-    $output->addChild($new_reagent);
-  }
-
-  if (keys %{$self->_output_location_map}) {
-    croak 'Left with locations not listed in reagents xml';
+  foreach my $analyte_xml ($self->_batch_artifacts_doc->findnodes($DETAILS_ARTIFACT_PATH)) {
+    my $location = $analyte_xml->getElementsByTagName(q[value])->[0]->textContent;
+    my ($location_index, $tag) = $self->_tag_layout->tag_info($location);
+    $self->_add_tags_to_analyte($analyte_xml, $tag);
   }
 
   return;
 }
 
-sub _reagent_name{
-  my ($self, $index) = @_;
-  return sprintf $self->_reagent_category. ' (tag %i)', $index;
+sub _add_tags_to_analyte {
+  my ($self, $analyte_xml, $tag) = @_;
+
+  $self->_remove_reagent_labels($analyte_xml);
+
+  my $reagent_label = XML::LibXML::Element->new('reagent-label');
+  $reagent_label->setAttribute('name', $tag);
+  $analyte_xml->addChild($reagent_label);
+
+  return $analyte_xml;
+}
+
+sub _remove_reagent_labels {
+  my ($self, $analyte_xml) = @_;
+
+  my @reagent_labels = $analyte_xml->findnodes($REAGENT_LABEL_PATH);
+  foreach my $reagent_label (@reagent_labels) {
+    my $parent_node = $reagent_label->parentNode;
+    $parent_node->removeChild( $reagent_label );
+  }
+
+  return;
 }
 
 1;
