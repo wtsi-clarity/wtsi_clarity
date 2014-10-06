@@ -1,33 +1,26 @@
 package wtsi_clarity::file_parsing::dtx_concentration_calculator;
 
 use Moose;
-use Carp;
-use wtsi_clarity::util::clarity_elements;
 use Readonly;
 
 Readonly::Scalar my $CV_LIMIT => 10.0;
-
-Readonly::Scalar my $ALL_ROWS          => qq{/ss:Workbook/ss:Worksheet[\@ss:Name='Raw_P_1_Seq_1_Cycle1']/ss:Table/ss:Row};
-Readonly::Scalar my $CELL_DATA_INDEX_1 => qq{.//ss:Cell[\@ss:Index=1]/ss:Data/text()};
-Readonly::Scalar my $CELL_DATA_INDEX_2 => qq{.//ss:Cell[\@ss:Index=2]/ss:Data/text()};
-Readonly::Scalar my $CELL_DATA_INDEX_3 => qq{.//ss:Cell[\@ss:Index=3]/ss:Data/text()};
 
 
 our $VERSION = '0.0';
 
 has 'standard_doc' => (
   is => 'ro',
-  isa => 'XML::LibXML::Document',
+  isa => 'HashRef',
 );
 
 has 'plateA_doc' => (
   is => 'ro',
-  isa => 'XML::LibXML::Document',
+  isa => 'HashRef',
 );
 
 has 'plateB_doc' => (
   is => 'ro',
-  isa => 'XML::LibXML::Document',
+  isa => 'HashRef',
 );
 
 has 'standard_fluorescence' => (
@@ -215,60 +208,12 @@ sub _build_plateB_fluorescence {
 }
 
 sub _get_fluorescence_from_doc {
-  my ($self, $xmldoc) = @_;
-  my $fluorescences = $self->_parse_xml($xmldoc);
+  my ($self, $fluorescences) = @_;
   while (my ($well, $data) = each %{$fluorescences} ) {
     my $d = $data->{'d1m1'}*1.0 + $data->{'d2m1'}*1.0 + $data->{'d1m2'}*1.0 + $data->{'d2m2'}*1.0;
     $fluorescences->{$well} = 0.25 * ( $data->{'d1m1'} + $data->{'d2m1'} + $data->{'d1m2'} + $data->{'d2m2'} );
   }
   return $fluorescences;
-}
-
-sub _parse_xml {
-  my ($self, $xmldoc) = @_;
-  my $results = {};
-
-  my $root = $xmldoc->getDocumentElement();#
-  my $xpc = XML::LibXML::XPathContext->new($root);
-  $xpc->registerNs('ss', 'urn:schemas-microsoft-com:office:spreadsheet');
-
-  for(0..95) {
-    my $i = $_;
-    my $well_str;
-    my $datarow1_measurement1;
-    my $datarow1_measurement2;
-    my $datarow2_measurement1;
-    my $datarow2_measurement2;
-    for(0..2) {
-      my $j = $_;
-      my $n = $i*4 + $j + 8;
-      my $filter = "[\@ss:Index=$n]";
-      my @rows = $xpc->findnodes( qq{$ALL_ROWS$filter} );
-      if (0 == $j){ # well
-        $well_str = ($rows[0]->findnodes($CELL_DATA_INDEX_1))[0];
-        $well_str =~ s/Well\s//xms;
-        $well_str =~ s/[.]/:/xms;
-      }
-      if (1 == $j){ # datarow 1
-        $datarow1_measurement1 = ($rows[0]->findnodes( $CELL_DATA_INDEX_2 ))[0]->nodeValue;
-        $datarow1_measurement1 =~ s/Well\s//xms;
-        $datarow1_measurement1 =~ s/[.]/:/xms;
-        $datarow1_measurement2 = ($rows[0]->findnodes( $CELL_DATA_INDEX_3 ))[0]->nodeValue;
-        $datarow1_measurement2 =~ s/Well\s//xms;
-        $datarow1_measurement2 =~ s/[.]/:/xms;
-      }
-      if (2 == $j){ # datarow 2
-        $datarow2_measurement1 = ($rows[0]->findnodes( $CELL_DATA_INDEX_2 ))[0]->nodeValue;
-        $datarow2_measurement1 =~ s/Well\s//xms;
-        $datarow2_measurement1 =~ s/[.]/:/xms;
-        $datarow2_measurement2 = ($rows[0]->findnodes( $CELL_DATA_INDEX_3 ))[0]->nodeValue;
-        $datarow2_measurement2 =~ s/Well\s//xms;
-        $datarow2_measurement2 =~ s/[.]/:/xms;
-      }
-    }
-    $results->{$well_str} = { d1m1=>$datarow1_measurement1, d1m2=>$datarow1_measurement2, d2m1=>$datarow2_measurement1, d2m2=>$datarow2_measurement2};
-  }
-  return $results;
 }
 
 ## use critic
@@ -312,10 +257,6 @@ wtsi_clarity::file_parsing::dtx_concentration_calculator
 =over
 
 =item Moose
-
-=item Carp
-
-=item wtsi_clarity::util::clarity_elements;
 
 =item Readonly
 

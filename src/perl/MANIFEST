@@ -28,6 +28,7 @@ lib/wtsi_clarity/epp/sm/stock_plate_reactivator.pm
 lib/wtsi_clarity/epp/sm/volume_checker.pm
 lib/wtsi_clarity/epp.pm
 lib/wtsi_clarity/file_parsing/dtx_concentration_calculator.pm
+lib/wtsi_clarity/file_parsing/dtx_parser.pm
 lib/wtsi_clarity/file_parsing/ISC_pool_calculator.pm
 lib/wtsi_clarity/file_parsing/volume_checker.pm
 lib/wtsi_clarity/genotyping/fluidigm/assay.pm
