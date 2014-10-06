@@ -208,7 +208,7 @@ sub update_text {
 }
 
 sub trim_value {
-  my ($self,$v) = @_;
+  my ($self, $v) = @_;
   if ($v) {
     $v =~ s/^\s+|\s+$//smxg;
   }
@@ -218,11 +218,9 @@ sub trim_value {
 sub grab_values {
   my ($self, $xml_doc, $xpath) = @_;
 
-  my @nodes;
+  my @nodes = ();
   try {
     @nodes = $xml_doc->findnodes($xpath)->get_nodelist();
-  } catch {
-    @nodes = ();
   };
 
   my @ids = c ->new(@nodes)
@@ -233,55 +231,46 @@ sub grab_values {
 
 sub find_elements_first_value {
   my ($self, $doc, $xpath, $default) = @_;
-  return $self->_find_elements_first_result($doc, $xpath, 'other', 0,  $default)
+  return $self->_find_elements_first_result($doc, $xpath, 'other', 0,  $default);
 }
 
 sub find_elements_first_textContent {
   my ($self, $doc, $xpath, $default) = @_;
-  return $self->_find_elements_first_result($doc, $xpath, 'other', 1,  $default)
+  return $self->_find_elements_first_result($doc, $xpath, 'other', 1,  $default);
 }
 
 sub find_udf_element_value {
   my ($self, $doc, $xpath, $default) = @_;
-  return $self->_find_elements_first_result($doc, $xpath, 'udf', 0,  $default)
+  return $self->_find_elements_first_result($doc, $xpath, 'udf', 0,  $default);
 }
 
 sub find_udf_element_textContent {
   my ($self, $doc, $xpath, $default) = @_;
-  return $self->_find_elements_first_result($doc, $xpath, 'udf', 1,  $default)
+  return $self->_find_elements_first_result($doc, $xpath, 'udf', 1,  $default);
 }
 
 sub find_clarity_element_value {
   my ($self, $doc, $xpath, $default) = @_;
-  return $self->_find_elements_first_result($doc, $xpath, 'clarity', 0,  $default)
+  return $self->_find_elements_first_result($doc, $xpath, 'clarity', 0,  $default);
 }
 
 sub find_clarity_element_textContent {
   my ($self, $doc, $xpath, $default) = @_;
-  return $self->_find_elements_first_result($doc, $xpath, 'clarity', 1,  $default)
+  return $self->_find_elements_first_result($doc, $xpath, 'clarity', 1,  $default);
 }
 
 sub _find_elements_first_result {
   my ($self, $doc, $xpath, $type, $isText, $default) = @_;
+
   my $element;
-
-  if ($type eq 'udf')
-  {
+  if ($type eq 'udf') {
     $element = $self->find_udf_element($doc, $xpath);
-  }
-  elsif ($type eq 'clarity')
-  {
+  } elsif ($type eq 'clarity') {
     $element = $self->find_clarity_element($doc, $xpath);
-  }
-  else
-  {
+  } else {
     my @elements = $self->find_elements($doc, $xpath);
-
     if (@elements) {
       $element = $elements[0];
-    } else {
-      return $default if (defined $default) ;
-      croak qq{Empty result when applying xpath with find_elements: '$xpath'.} ;
     }
   }
 
@@ -290,11 +279,7 @@ sub _find_elements_first_result {
     croak qq{Empty result when applying xpath : '$xpath'.} ;
   }
 
-  if ($isText) {
-    return $element->textContent;
-  } else {
-    return $element->getValue();
-  }
+  return $isText ? $element->textContent : $element->getValue();
 }
 
 

@@ -1,10 +1,12 @@
 use strict;
 use warnings;
-use Test::More tests => 15;
+use Test::More tests => 17;
 use Test::Exception;
 use Test::MockObject::Extends;
 use File::Temp qw/ tempdir /;
+use Cwd;
 use Digest::MD5;
+use Carp;
 
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = q{};
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
@@ -143,6 +145,25 @@ sub read_file {
     is($r->$method($test_url, $payload), qq/$method_verb - $test_url/, qq{reads from the cache when SAVE2WTSICLARITY_WEBCACHE is false ($method_verb - $test_url)} )
   }
 
+}
+
+## Test for getting the exception message from a REST response
+{
+  my $r = wtsi_clarity::util::request->new();
+  my $expected_message = "Reagents cannot be added to this step because it is not an indexing step.";
+  my $xml_response_str = q{<?xml version="1.0" standalone="yes"?><exc:exception xmlns:exc="http://genologics.com/ri/exception"><message>};
+  $xml_response_str .= $expected_message . q{</message></exc:exception>};
+
+  is($r->_error_message($xml_response_str), $expected_message, qq{Gets the correct message from an exception response});
+}
+
+## Test for getting back the REST response if there is no exception message in it
+{
+  my $r = wtsi_clarity::util::request->new();
+  my $expected_message = "Just a text message";
+  my $response_str = $expected_message;
+
+  is($r->_error_message($response_str), $expected_message, qq{Gets the correct message from the response});
 }
 
 1;

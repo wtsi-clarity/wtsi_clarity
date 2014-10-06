@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use Test::Exception;
-use Test::More tests => 15;
+use Test::More tests => 20;
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 
@@ -34,9 +34,11 @@ use_ok('wtsi_clarity::epp::generic::bed_verifier');
     step_name => 'working_dilution',
   );
 
-  is($process->_extract_plate_number('Bed 2 (Input Plate 1)'), '2', '1) Can extract the correct barcode from the udf string');
-  is($process->_extract_plate_number('Bed 3 (Output Plate 1)'), '3', '2) Can extract the correct barcode from the udf string');
-  throws_ok { $process->_extract_plate_number('jibberish') } qr/Plate number not found\n/,
+  is($process->_extract_bed_number('Bed 2 (Input Plate 1)'), '2', '1) Can extract the correct barcode from the udf string');
+  is($process->_extract_bed_number('Bed 3 (Output Plate 1)'), '3', '2) Can extract the correct barcode from the udf string');
+  is($process->_extract_bed_number('Bed 8 (Output Plate 1b)'), '8', '3) Can extract the correct barcode from the udf string (that has a letter in)');
+
+  throws_ok { $process->_extract_bed_number('jibberish') } qr/Plate number not found\n/,
     'Throws an error when it can not find a number';
 }
 
@@ -74,6 +76,8 @@ use_ok('wtsi_clarity::epp::generic::bed_verifier');
 
   is($process->_extract_plate_name('Bed 2 (Input Plate 1)', 0), 'Input Plate 1', '1) Extracts the plate name correctly');
   is($process->_extract_plate_name('Bed 3 (Output Plate 1)', 0), 'Output Plate 1', '2) Extracts the plate name correctly');
+  is($process->_extract_plate_name('Bed 14 (Output Plate 1a)', 0), 'Output Plate 1a', '3) Extracts the plate name correctly');
+  is($process->_extract_plate_name('Bed 14 (Output Plate 1a)', 1), 'Output Plate 1', '3) Extracts the plate name correctly');
 
   throws_ok { $process->_extract_plate_name('nothing to extract here')} qr/Could not find matching plate name/,
     'Throws an error if it can not extract a plate name';
@@ -94,6 +98,15 @@ use_ok('wtsi_clarity::epp::generic::bed_verifier');
 
   throws_ok { $process->_get_output_plate_from_input('plate that does not exist') } qr/Could not find output plate/,
     'Throws an error if it can not find the matching output plate';
+
+  my $process2 = wtsi_clarity::epp::generic::bed_verifier->new(
+    process_url => $base_uri . '/processes/24-103751',
+    step_name   => 'working_dilution',
+  );
+
+  my $output_plates = $process2->_get_output_plate_from_input('Input Plate 1');
+  isa_ok($output_plates, 'XML::LibXML::NodeList');
+  is($output_plates->size(), 2, 'Gets the correct number of output plates');
 }
 
 # _bed_container_pairs

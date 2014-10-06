@@ -11,6 +11,7 @@ use File::Basename;
 use File::Path;
 use File::Spec::Functions;
 use Readonly;
+use XML::LibXML;
 
 use Net::SFTP::Foreign;
 use Digest::MD5;
@@ -48,6 +49,8 @@ Readonly::Scalar our $SAVE2CACHE_VAR_NAME => q[SAVE2WTSICLARITY_WEBCACHE];
 Readonly::Scalar our $LWP_TIMEOUT => 60;
 Readonly::Scalar our $DEFAULT_METHOD => q[GET];
 Readonly::Scalar our $DEFAULT_CONTENT_TYPE => q[application/xml];
+
+Readonly::Scalar my $EXCEPTION_MESSAGE_PATH => q[exc:exception/message];
 
 =head2 cache_dir_var_name
 
@@ -438,10 +441,25 @@ sub _from_web {
     # workaround a bug in SS (getting back a 301 response with the correct response body)
     if (($self->ss_request && (!defined $res->decoded_content || !$res->is_success() && !$res->is_redirect))
         || (!$self->ss_request && !$res->is_success())) {
-      croak "$type request to $uri failed: " . join q[ ], $res->status_line(), $res->decoded_content;
+      croak "$type request to $uri failed: " . join q[ ], $res->status_line(), $self->_error_message($res->decoded_content);
     }
 
     return $res->decoded_content;
+}
+
+sub _error_message {
+    my ($self, $decoded_content) = @_;
+    my $error_msg;
+
+    eval {
+        my $xml_msg = XML::LibXML->new()->load_xml(string => $decoded_content);
+        $error_msg = $xml_msg->findnodes($EXCEPTION_MESSAGE_PATH)->pop()->textContent;
+        1;
+    } or do {
+        $error_msg = $decoded_content;
+    };
+
+    return $error_msg;
 }
 
 sub _write2cache {
