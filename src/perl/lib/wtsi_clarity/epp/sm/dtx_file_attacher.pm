@@ -4,6 +4,9 @@ use Moose;
 use Carp;
 use Readonly;
 use File::Copy;
+use Try::Tiny;
+
+use wtsi_clarity::file_parsing::dtx_parser;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $FIRST_INPUT_URI_PATH => q(/prc:process/input-output-map[1]/input/@uri);
@@ -113,6 +116,13 @@ sub _build__standard_file_path {
   return qq{"$dir/$file_name"};
 };
 
+has '_dtx_parser' => (
+  isa      => 'wtsi_clarity::file_parsing::dtx_parser',
+  is       => 'ro',
+  required => 0,
+  default  => sub { return wtsi_clarity::file_parsing::dtx_parser->new(); },
+);
+
 sub _get_file_path {
   my $self = shift;
   my $file_path_pattern = shift;
@@ -138,8 +148,7 @@ sub _get_files {
 }
 
 sub attach_files_to_process {
-  my $self = shift;
-  my ($dtx_file, $standard_file) = $self->_get_files();
+  my ($self, $dtx_file, $standard_file) = @_;
 
   copy ($dtx_file, q{./} . $self->new_pico_assay_file_name)
     or croak sprintf 'Failed to copy %s', $dtx_file;
@@ -150,11 +159,29 @@ sub attach_files_to_process {
   return;
 }
 
+sub _validate_files {
+  my ($self, %files) = @_;
+
+  while (my ($file_name, $file_path) = each %files) {
+    try {
+      $self->_dtx_parser->parse($file_path);
+    } catch {
+      croak "$file_name file is empty or invalid";
+    }
+  }
+
+  return 1;
+}
+
 override 'run' => sub {
   my $self = shift;
   super();
 
-  $self->attach_files_to_process();
+  my ($dtx_file, $standard_file) = $self->_get_files();
+
+  $self->_validate_files(DTX => $dtx_file, Standard => $standard_file);
+
+  $self->attach_files_to_process($dtx_file, $standard_file);
 
   return;
 };

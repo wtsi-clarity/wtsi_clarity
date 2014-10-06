@@ -1,11 +1,13 @@
 use strict;
 use warnings;
-use Test::More tests => 7;
+use Test::More tests => 9;
+use Test::Exception;
 use File::Temp qw/ tempdir /;
 use File::Spec::Functions;
 use Carp;
 
 my $dir = tempdir( CLEANUP => 1);
+my $test_dir = 't/data/epp/sm/dtx_file_attacher';
 
 # load the original test config file
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
@@ -25,13 +27,12 @@ sub _write_config {
   close $fh or carp "Cannot close file $file";
 }
 
+# creates a new test config file
+_write_config($dir);
+
 use_ok('wtsi_clarity::epp::sm::dtx_file_attacher');
 
 {
-  # creates a new test config file
-  _write_config($dir);
-
-  my $test_dir = 't/data/epp/sm/dtx_file_attacher';
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = $test_dir;
   local $ENV{'WTSI_CLARITY_HOME'} = $dir;
 
@@ -65,6 +66,66 @@ use_ok('wtsi_clarity::epp::sm::dtx_file_attacher');
 
   is ($dtx_file, $dtx_path, 'finds the dtx file');
   is($standard_file, $standard_path, 'finds the standard file');
+}
+
+# should croak when an empty DTX file is found
+{
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = $test_dir;
+  local $ENV{'WTSI_CLARITY_HOME'} = $dir;
+
+  my $epp = wtsi_clarity::epp::sm::dtx_file_attacher->new(
+    process_url => $base_uri . '/processes/24-3053_a',
+    new_pico_assay_file_name => 'pico_assay_file',
+    new_standard_file_name => 'standard_file_name',
+  );
+
+  my $dtx_file_name = '1234-5678_ Pico-green assay run_AllRawData_06-06-2014_10.32.21.68.xml';
+  (my $escaped_dtx_file_name = $dtx_file_name) =~ s/\s/\\ /g;
+
+  my $standard_file_name = '1234_ Pico-green assay run_AllRawData_06-06-2014_10.32.21.68.xml';
+  (my $escaped_standard_file_name = $standard_file_name) =~ s/\s/\\ /g;
+
+  my $command = "cp $test_dir/$escaped_dtx_file_name $dir/$escaped_dtx_file_name";
+  `$command`;
+
+  $command = "cp $test_dir/$escaped_standard_file_name $dir/$escaped_standard_file_name";
+  `$command`;
+
+  my $dtx_path = "$dir/$dtx_file_name";
+  my $standard_path = "$dir/$standard_file_name";
+
+  throws_ok { $epp->_validate_files(DTX => $dtx_path, Standard => $standard_path); } qr/DTX file is empty or invalid/,
+    q/Croaks when the DTX file is invalid or empty/;
+}
+
+# should croak when an empty standard file is found
+{
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = $test_dir;
+  local $ENV{'WTSI_CLARITY_HOME'} = $dir;
+
+  my $epp = wtsi_clarity::epp::sm::dtx_file_attacher->new(
+    process_url => $base_uri . '/processes/24-3053_b',
+    new_pico_assay_file_name => 'pico_assay_file',
+    new_standard_file_name => 'standard_file_name',
+  );
+
+  my $dtx_file_name = '1234a-5678_ Pico-green assay run_AllRawData_06-06-2014_10.32.21.68.xml';
+  (my $escaped_dtx_file_name = $dtx_file_name) =~ s/\s/\\ /g;
+
+  my $standard_file_name = '1234a_ Pico-green assay run_AllRawData_06-06-2014_10.32.21.68.xml';
+  (my $escaped_standard_file_name = $standard_file_name) =~ s/\s/\\ /g;
+
+  my $command = "cp $test_dir/$escaped_dtx_file_name $dir/$escaped_dtx_file_name";
+  `$command`;
+
+  $command = "cp $test_dir/$escaped_standard_file_name $dir/$escaped_standard_file_name";
+  `$command`;
+
+  my $dtx_path = "$dir/$dtx_file_name";
+  my $standard_path = "$dir/$standard_file_name";
+
+  throws_ok { $epp->_validate_files(DTX => $dtx_path, Standard => $standard_path); } qr/Standard file is empty or invalid/,
+    q/Croaks when the DTX file is invalid empty/;
 }
 
 1;
