@@ -16,13 +16,10 @@ with qw/
 our $VERSION = '0.0';
 
 ##no critic (ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $REAGENT_ARTIFACT_URI_PATH => q{/stp:reagents/output-reagents/output};
-Readonly::Scalar my $REAGENT_CATEGORY_PATH     => q{/stp:reagents/reagent-category};
 Readonly::Scalar my $DETAILS_ARTIFACT_PATH     => q{/art:details/art:artifact};
 Readonly::Scalar my $REAGENT_LABEL_PATH        => q{/art:artifact/reagent-label};
 Readonly::Scalar my $OUTPUT_URI_PATH           => q{/prc:process/input-output-map[output/@output-type='Analyte']};
 Readonly::Scalar my $URI_SEARCH_STRING         => q{@uri};
-Readonly::Scalar my $LIMSID_SEARCH_STRING      => q{@limsid};
 ##use critic
 
 has '_batch_artifacts_doc' => (
@@ -45,51 +42,6 @@ sub _build__batch_artifacts_doc {
   }
 
   return $self->request->batch_retrieve('artifacts', \@uris);
-}
-
-has '_output_location_map'  => (
-  isa             => 'HashRef',
-  is              => 'ro',
-  required        => 0,
-  lazy_build      => 1,
-);
-sub _build__output_location_map {
-  my $self = shift;
-
-  my $map = {};
-
-  foreach my $art ($self->_batch_artifacts_doc->findnodes($DETAILS_ARTIFACT_PATH)) {
-    my $uri = $art->findvalue($URI_SEARCH_STRING);
-    if (!$uri) {
-      croak 'Failed to get analyte uri';
-    }
-    $uri =~ s/[?].*\z//xsm; # remove state for caching
-
-    my $container = $art->findvalue(q(location/container/) . $LIMSID_SEARCH_STRING);
-    if (!$container) {
-      croak "No container information for $uri";
-    }
-    my @wells = $art->findnodes(q(location/value));
-    if (!@wells) {
-      croak "No well information for $uri";
-    }
-    my $well = $wells[0]->textContent;
-    if (!$well) {
-      croak "Well information is not set for $uri";
-    }
-
-    $map->{$container}->{$uri} = $well;
-  }
-
-  my @containers = keys %{$map};
-  if (!@containers) {
-    croak 'No information about wells';
-  }
-  if (scalar @containers > 1) {
-    croak 'More than one output container';
-  }
-
-  return $map->{$containers[0]};
 }
 
 has '_tag_layout' => (
@@ -118,8 +70,6 @@ override 'run' => sub {
 
 sub _index {
   my $self = shift;
-
-  my @analytes_uris = keys $self->_output_location_map;
 
   foreach my $analyte_xml ($self->_batch_artifacts_doc->findnodes($DETAILS_ARTIFACT_PATH)) {
     my $location = $analyte_xml->getElementsByTagName(q[value])->[0]->textContent;

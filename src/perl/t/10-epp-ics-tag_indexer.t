@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 21;
+use Test::More tests => 17;
 use Test::Exception;
 use Test::Deep;
 use XML::LibXML;
@@ -16,34 +16,10 @@ use_ok ('wtsi_clarity::epp::ics::tag_indexer');
 
 my $i = wtsi_clarity::epp::ics::tag_indexer->new(
     process_url => 'http://clarity.ac.uk:8080/api/v2/processes/24-17451',
-    step_url => 'http://clarity.ac.uk:8080/api/v2/steps/24-17451'
 );
 my $prefix = q[http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/];
 
 isa_ok( $i, 'wtsi_clarity::epp::ics::tag_indexer');
-
-{
-  my $map;
-  lives_ok { $map = $i->_output_location_map } 'output location map created';
-
-  lives_ok {$i->_output_location_map } 'got output map';
-  my %map = (
-    $prefix .'2-41782' => 'E:1',
-    $prefix .'2-41783' => 'F:1',
-    $prefix .'2-41784' => 'C:3',
-    $prefix .'2-41785' => 'D:3',
-    $prefix .'2-41786' => 'A:3',
-    $prefix .'2-41787' => 'B:3',
-    $prefix .'2-41788' => 'G:2',
-    $prefix .'2-41789' => 'H:2',
-    $prefix .'2-41794' => 'G:5',
-    $prefix .'2-41795' => 'H:5',
-    $prefix .'2-41796' => 'A:6',
-  );
-
-  is(scalar keys %{$i->_output_location_map}, 11, 'correct number of artifacts in the output map');
-  is_deeply($i->_output_location_map, \%map, 'output map content correct');
-}
 
 {
   lives_ok { $i->_index } 'indexing runs ok';
@@ -82,7 +58,6 @@ isa_ok( $i, 'wtsi_clarity::epp::ics::tag_indexer');
 
   my $i = wtsi_clarity::epp::ics::tag_indexer->new(
     process_url => 'http://clarity.ac.uk:8080/api/v2/processes/24-17451',
-    step_url => 'http://clarity.ac.uk:8080/api/v2/steps/24-17451'
   );
 
   $i->_index;
