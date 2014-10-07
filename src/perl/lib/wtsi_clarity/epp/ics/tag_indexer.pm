@@ -25,12 +25,6 @@ Readonly::Scalar my $URI_SEARCH_STRING         => q{@uri};
 Readonly::Scalar my $LIMSID_SEARCH_STRING      => q{@limsid};
 ##use critic
 
-has 'step_url'  => (
-  isa             => 'Str',
-  is              => 'ro',
-  required        => 1,
-);
-
 has '_batch_artifacts_doc' => (
   isa             => 'XML::LibXML::Document',
   is              => 'rw',
@@ -130,22 +124,30 @@ sub _index {
   foreach my $analyte_xml ($self->_batch_artifacts_doc->findnodes($DETAILS_ARTIFACT_PATH)) {
     my $location = $analyte_xml->getElementsByTagName(q[value])->[0]->textContent;
     my ($location_index, $tag) = $self->_tag_layout->tag_info($location);
-    $self->_add_tags_to_analyte($analyte_xml, $tag);
+    $self->_add_tags_to_analyte($analyte_xml, $location_index, $tag);
   }
 
   return;
 }
 
 sub _add_tags_to_analyte {
-  my ($self, $analyte_xml, $tag) = @_;
+  my ($self, $analyte_xml, $location_index, $tag) = @_;
 
   $self->_remove_reagent_labels($analyte_xml);
 
   my $reagent_label = XML::LibXML::Element->new('reagent-label');
-  $reagent_label->setAttribute('name', $tag);
+  $reagent_label->setAttribute('name', $self->_reagent_name($location_index, $tag));
   $analyte_xml->addChild($reagent_label);
 
   return $analyte_xml;
+}
+
+sub _reagent_name {
+  my ($self, $location_index, $tag) = @_;
+
+  my $tagset_name = $self->_tag_layout->tag_set_name;
+
+  return sprintf '%s: tag %s (%s)', $tagset_name, $location_index, $tag;
 }
 
 sub _remove_reagent_labels {
