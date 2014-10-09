@@ -48,8 +48,6 @@ override 'run' => sub {
   return $self->_main_method();
 };
 
-use Data::Dumper;
-
 sub _main_method {
   my $self = shift;
   $self->_precheck();
