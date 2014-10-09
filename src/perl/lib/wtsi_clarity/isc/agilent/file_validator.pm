@@ -1,4 +1,4 @@
-package wtsi_clarity::ics::agilent::file_validator;
+package wtsi_clarity::isc::agilent::file_validator;
 
 use Moose;
 use Carp;
@@ -209,11 +209,11 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::ics::agilent::file_validator
+wtsi_clarity::isc::agilent::file_validator
 
 =head1 SYNOPSIS
 
-  my $validator = wtsi_clarity::ics::agilent::file_validator->new(file_names => $file_names);
+  my $validator = wtsi_clarity::isc::agilent::file_validator->new(file_names => $file_names);
   my $wells = $validator->files_by_well();
 
   $wells == {

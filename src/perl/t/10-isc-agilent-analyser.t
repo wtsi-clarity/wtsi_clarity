@@ -7,10 +7,10 @@ use Carp;
 use Data::Dumper;
 use Readonly;
 
-use_ok('wtsi_clarity::ics::agilent::analyser');
+use_ok('wtsi_clarity::isc::agilent::analyser');
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $testdata_path => q(./t/data/ics/agilent/);
+Readonly::Scalar my $testdata_path => q(./t/data/isc/agilent/);
 Readonly::Scalar my $file1_name => q(1234567890_A1_A6.xml);
 Readonly::Scalar my $file2_name => q(1234567890_A1_A6_wrong.xml);
 ## use critic
@@ -29,8 +29,8 @@ Readonly::Scalar my $file2_name => q(1234567890_A1_A6_wrong.xml);
   my $files_content = {
     '1234567890_A1_A6' => $file1,
   };
-  my $instance = wtsi_clarity::ics::agilent::analyser->new(mapping_details => $mapping, files_content => $files_content);
-  isa_ok( $instance, 'wtsi_clarity::ics::agilent::analyser');
+  my $instance = wtsi_clarity::isc::agilent::analyser->new(mapping_details => $mapping, files_content => $files_content);
+  isa_ok( $instance, 'wtsi_clarity::isc::agilent::analyser');
 
   my $results = $instance->get_analysis_results();
   my $expected = {
@@ -84,7 +84,7 @@ Readonly::Scalar my $file2_name => q(1234567890_A1_A6_wrong.xml);
     '1234567890_A1_A6' => $file1,
   };
 
-  my $instance = wtsi_clarity::ics::agilent::analyser->new(mapping_details => $mapping, files_content => $files_content);
+  my $instance = wtsi_clarity::isc::agilent::analyser->new(mapping_details => $mapping, files_content => $files_content);
   my $results = $instance->_data_set();
   my $expected = { '1234567890_A1_A6' => {
                                   '6' => {
@@ -168,7 +168,7 @@ Readonly::Scalar my $file2_name => q(1234567890_A1_A6_wrong.xml);
     '1234567890_A1_A6' => $file1,
   };
 
-  my $instance = wtsi_clarity::ics::agilent::analyser->new(mapping_details => $mapping, files_content => $files_content);
+  my $instance = wtsi_clarity::isc::agilent::analyser->new(mapping_details => $mapping, files_content => $files_content);
   throws_ok { $instance->_data_set(); print Dumper $instance->_data_set; }
   qr/The number of 'Concentration' tag is not correct. The XML '1234567890_A1_A6' is not well formed/,
   qq/_data_set should fail properly with the wrong input./;
@@ -199,7 +199,7 @@ Readonly::Scalar my $file2_name => q(1234567890_A1_A6_wrong.xml);
   my $measure = 'concentration';
   my $filename = "truc";
 
-  my $results = wtsi_clarity::ics::agilent::analyser::_average_of_measurement($data_set, $filename, $source, $output_wells, $measure);
+  my $results = wtsi_clarity::isc::agilent::analyser::_average_of_measurement($data_set, $filename, $source, $output_wells, $measure);
   my $expected = 200;
   cmp_ok($results, '==', $expected, qq/_average_of_measurement should return the correct results./);
 }
@@ -229,7 +229,7 @@ Readonly::Scalar my $file2_name => q(1234567890_A1_A6_wrong.xml);
   my $measure = 'concentration';
   my $filename = "truc";
 
-  throws_ok { wtsi_clarity::ics::agilent::analyser::_average_of_measurement($data_set, $filename, $source, $output_wells, $measure) }
+  throws_ok { wtsi_clarity::isc::agilent::analyser::_average_of_measurement($data_set, $filename, $source, $output_wells, $measure) }
     qr/The plate $filename is expected to contain a well 7!/,
     qq/_average_of_measurement should fail when an output well is missing./;
 }
@@ -259,7 +259,7 @@ Readonly::Scalar my $file2_name => q(1234567890_A1_A6_wrong.xml);
   my $measure = 'concentration';
   my $filename = "truc";
 
-  throws_ok { wtsi_clarity::ics::agilent::analyser::_average_of_measurement($data_set, $filename, $source, $output_wells, $measure) }
+  throws_ok { wtsi_clarity::isc::agilent::analyser::_average_of_measurement($data_set, $filename, $source, $output_wells, $measure) }
     qr/One needs at least one output well value for the source well .* in $filename to calculate an average 'concentration'/,
     qq/_average_of_measurement should fail when there is no output well./;
 }

@@ -12,12 +12,12 @@ use Data::Dumper;
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/isc/agilent_analyser';
 
-use_ok ('wtsi_clarity::epp::ics::agilent_analyser');
+use_ok ('wtsi_clarity::epp::isc::agilent_analyser');
 
 
 {
   my $errors = { 'A01' => qq{some error}, 'Z34' => qq{some error},  };
-  my $res = wtsi_clarity::epp::ics::agilent_analyser::_make_error_report($errors);
+  my $res = wtsi_clarity::epp::isc::agilent_analyser::_make_error_report($errors);
   my $expected = qq{The wells [A01, Z34] are out of range!};
   cmp_ok($res, 'eq', $expected, '_make_error_report should return a properly concatenated string');
 }
@@ -27,7 +27,7 @@ use_ok ('wtsi_clarity::epp::ics::agilent_analyser');
   my $location = 'A01';
   my $results = { 'concentration' => 12.3 , 'molarity' => 27, 'size' => 12  };
   my $range   = { 'conc_min' => 10, 'conc_max' => 100, 'molarity_min' => 10, 'molarity_max' => 50, 'size_min' => 10, 'size_max' => 50 };
-  my $res = wtsi_clarity::epp::ics::agilent_analyser::_check_range_for_one_result($location, $results, $range);
+  my $res = wtsi_clarity::epp::isc::agilent_analyser::_check_range_for_one_result($location, $results, $range);
   my $expected = qq{};
   cmp_ok($res, 'eq', $expected, '_check_range_for_one_result should return nothing');
 }
@@ -37,7 +37,7 @@ use_ok ('wtsi_clarity::epp::ics::agilent_analyser');
   my $location = 'A01';
   my $results = { 'concentration' => 120.3 , 'molarity' => 27, 'size' => 12  };
   my $range   = { 'conc_min' => 10, 'conc_max' => 100, 'molarity_min' => 10, 'molarity_max' => 50, 'size_min' => 10, 'size_max' => 50 };
-  my $res = wtsi_clarity::epp::ics::agilent_analyser::_check_range_for_one_result($location, $results, $range);
+  my $res = wtsi_clarity::epp::isc::agilent_analyser::_check_range_for_one_result($location, $results, $range);
   my $expected = q{Concentration is out of range for well A01.};
   cmp_ok($res, 'eq', $expected, '_check_range_for_one_result should return an error when concentration is out of range');
 }
@@ -47,7 +47,7 @@ use_ok ('wtsi_clarity::epp::ics::agilent_analyser');
   my $location = 'A01';
   my $results = { 'concentration' => 12.3 , 'molarity' => 270, 'size' => 12 };
   my $range   = { 'conc_min' => 10, 'conc_max' => 100, 'molarity_min' => 10, 'molarity_max' => 50, 'size_min' => 10, 'size_max' => 50  };
-  my $res = wtsi_clarity::epp::ics::agilent_analyser::_check_range_for_one_result($location, $results, $range);
+  my $res = wtsi_clarity::epp::isc::agilent_analyser::_check_range_for_one_result($location, $results, $range);
   my $expected = q{Molarity is out of range for well A01.};
   cmp_ok($res, 'eq', $expected, '_check_range_for_one_result should return an error when molarity is out of range');
 }
@@ -57,7 +57,7 @@ use_ok ('wtsi_clarity::epp::ics::agilent_analyser');
   my $location = 'A01';
   my $results = { 'concentration' => 12.3 , 'molarity' => 27, 'size' => 102 };
   my $range   = { 'conc_min' => 10, 'conc_max' => 100, 'molarity_min' => 10, 'molarity_max' => 50, 'size_min' => 10, 'size_max' => 50  };
-  my $res = wtsi_clarity::epp::ics::agilent_analyser::_check_range_for_one_result($location, $results, $range);
+  my $res = wtsi_clarity::epp::isc::agilent_analyser::_check_range_for_one_result($location, $results, $range);
   my $expected = q{Size is out of range for well A01.};
   cmp_ok($res, 'eq', $expected, '_check_range_for_one_result should return an error when size is out of range');
 }
@@ -70,7 +70,7 @@ use_ok ('wtsi_clarity::epp::ics::agilent_analyser');
   my $config = wtsi_clarity::util::config->new();
   my $base_uri = $config->clarity_api->{'base_uri'};
 
-  my $m = wtsi_clarity::epp::ics::agilent_analyser->new(
+  my $m = wtsi_clarity::epp::isc::agilent_analyser->new(
     process_url => $base_uri .'/processes/24-18008'
   );
   throws_ok {
@@ -87,7 +87,7 @@ use_ok ('wtsi_clarity::epp::ics::agilent_analyser');
   my $config = wtsi_clarity::util::config->new();
   my $base_uri = $config->clarity_api->{'base_uri'};
 
-  my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::ics::agilent_analyser->new(
+  my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::isc::agilent_analyser->new(
     process_url => $base_uri .'/processes/24-18008'
   ) ) ;
 
@@ -124,7 +124,7 @@ use_ok ('wtsi_clarity::epp::ics::agilent_analyser');
 
 
 {
-  my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::ics::agilent_analyser->new(
+  my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::isc::agilent_analyser->new(
     process_url => '/something/'
   ) );
   $m->mock(q(_map_artid_location), sub{
@@ -154,7 +154,7 @@ use_ok ('wtsi_clarity::epp::ics::agilent_analyser');
 
 
 {
-  my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::ics::agilent_analyser->new(
+  my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::isc::agilent_analyser->new(
     process_url => '/something/'
   ) );
   $m->mock(q(_map_artid_location), sub{
@@ -184,7 +184,7 @@ use_ok ('wtsi_clarity::epp::ics::agilent_analyser');
 
 
 {
-  my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::ics::agilent_analyser->new(
+  my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::isc::agilent_analyser->new(
     process_url => '/something/'
   ) );
   $m->mock(q(_map_artid_location), sub{

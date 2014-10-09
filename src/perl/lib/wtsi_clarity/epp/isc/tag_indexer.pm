@@ -1,4 +1,4 @@
-package wtsi_clarity::epp::ics::tag_indexer;
+package wtsi_clarity::epp::isc::tag_indexer;
 
 use Moose;
 use Carp;
@@ -10,7 +10,7 @@ use wtsi_clarity::tag_plate::layout;
 extends 'wtsi_clarity::epp';
 with qw/
         wtsi_clarity::util::clarity_elements
-        wtsi_clarity::epp::ics::tag_plate_common
+        wtsi_clarity::epp::isc::tag_plate_common
        /;
 
 our $VERSION = '0.0';
@@ -118,7 +118,7 @@ __END__
 
 =head1 NAME
 
- wtsi_clarity::epp::ics::tag_indexer
+ wtsi_clarity::epp::isc::tag_indexer
 
 =head1 SYNOPSIS
 

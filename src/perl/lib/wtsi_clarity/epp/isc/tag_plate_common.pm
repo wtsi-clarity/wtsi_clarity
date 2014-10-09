@@ -1,4 +1,4 @@
-package wtsi_clarity::epp::ics::tag_plate_common;
+package wtsi_clarity::epp::isc::tag_plate_common;
 
 use Moose::Role;
 use Carp;
@@ -37,7 +37,7 @@ __END__
 
 =head1 NAME
 
- wtsi_clarity::epp::ics::tag_plate_common
+ wtsi_clarity::epp::isc::tag_plate_common
 
 =head1 SYNOPSIS
 

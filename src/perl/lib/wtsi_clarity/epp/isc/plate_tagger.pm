@@ -1,4 +1,4 @@
-package wtsi_clarity::epp::ics::plate_tagger;
+package wtsi_clarity::epp::isc::plate_tagger;
 
 use Moose;
 use Carp;
@@ -8,7 +8,7 @@ use wtsi_clarity::tag_plate::service;
 extends 'wtsi_clarity::epp';
 with qw/
         wtsi_clarity::util::clarity_elements
-        wtsi_clarity::epp::ics::tag_plate_common
+        wtsi_clarity::epp::isc::tag_plate_common
        /;
 
 our $VERSION = '0.0';
@@ -59,14 +59,14 @@ __END__
 
 =head1 NAME
 
- wtsi_clarity::epp::ics::plate_tagger
+ wtsi_clarity::epp::isc::plate_tagger
 
 =head1 SYNOPSIS
 
   Either 'validate' or 'exhaust' option should be set;
 
-  wtsi_clarity::epp::ics::plate_tagger->new(process_url => 'some', validate => 1)->run();
-  wtsi_clarity::epp::ics::plate_tagger->new(process_url => 'some', exhaust  => 1)->run();
+  wtsi_clarity::epp::isc::plate_tagger->new(process_url => 'some', validate => 1)->run();
+  wtsi_clarity::epp::isc::plate_tagger->new(process_url => 'some', exhaust  => 1)->run();
 
 =head1 DESCRIPTION
 

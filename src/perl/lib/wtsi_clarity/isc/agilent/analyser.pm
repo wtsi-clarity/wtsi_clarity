@@ -1,4 +1,4 @@
-package wtsi_clarity::ics::agilent::analyser;
+package wtsi_clarity::isc::agilent::analyser;
 
 use Moose;
 use Carp;
@@ -134,7 +134,7 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::ics::agilent::analyser
+wtsi_clarity::isc::agilent::analyser
 
 =head1 SYNOPSIS
 
@@ -151,7 +151,7 @@ wtsi_clarity::ics::agilent::analyser
     '1234567890_A1_B4' => $parser->load_xml(...),
   };
 
-  my $analyser = wtsi_clarity::ics::agilent::analyser->new(
+  my $analyser = wtsi_clarity::isc::agilent::analyser->new(
     mapping_details => $mapping,
     files_content   => $files_content,
   );

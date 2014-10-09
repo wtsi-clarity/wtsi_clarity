@@ -3,13 +3,13 @@ use warnings;
 use Test::More tests => 38;
 use Test::Exception;
 
-use_ok('wtsi_clarity::ics::agilent::file_validator');
+use_ok('wtsi_clarity::isc::agilent::file_validator');
 
 # Path of eternal happiness...
 {
   my $files = ['123_A1_F1', '123_G1_D2', '123_E2_B3', '123_C3_H3'];
 
-  my $fv = wtsi_clarity::ics::agilent::file_validator->new(
+  my $fv = wtsi_clarity::isc::agilent::file_validator->new(
     file_names => $files,
   );
 
@@ -121,7 +121,7 @@ use_ok('wtsi_clarity::ics::agilent::file_validator');
 {
   my $file_names = ['12345_H1_I9', '12345_A1_G1'];
 
-  my $file_val = wtsi_clarity::ics::agilent::file_validator->new(file_names => $file_names);
+  my $file_val = wtsi_clarity::isc::agilent::file_validator->new(file_names => $file_names);
   isa_ok($file_val->files, 'Mojo::Collection', 'Builds us a collection of file objects');
 
   is($file_val->files->size(), 2, 'Builds a collection of 2 file objects');
@@ -141,7 +141,7 @@ use_ok('wtsi_clarity::ics::agilent::file_validator');
 {
   my $files = ['123456_A1_B1', '123_C1_D1', '123_E1_F1', '123_G1_H1'];
 
-    throws_ok { wtsi_clarity::ics::agilent::file_validator->new(file_names => $files); }
+    throws_ok { wtsi_clarity::isc::agilent::file_validator->new(file_names => $files); }
       qr/Barcodes on files do not match/, 'Croaks when barcodes do not match';
 }
 
@@ -149,7 +149,7 @@ use_ok('wtsi_clarity::ics::agilent::file_validator');
 {
   my $files = ['123_A1_B1', '123_D1_E1', '123_F1_G1', '123_H1_A2'];
 
-  throws_ok { wtsi_clarity::ics::agilent::file_validator->new(file_names => $files); }
+  throws_ok { wtsi_clarity::isc::agilent::file_validator->new(file_names => $files); }
     qr/There is a problem with the sequence of wells given in the file names/,
     'Croaks when there is a gap between wells';
 }
@@ -158,7 +158,7 @@ use_ok('wtsi_clarity::ics::agilent::file_validator');
 {
   my $files = ['123_A1_B1', '123_B1_E1', '123_F1_G1', '123_H1_A2'];
 
-  throws_ok { wtsi_clarity::ics::agilent::file_validator->new(file_names => $files); }
+  throws_ok { wtsi_clarity::isc::agilent::file_validator->new(file_names => $files); }
     qr/There is a problem with the sequence of wells given in the file names/,
     'Croaks when there are overlapping wells';
 }
@@ -167,7 +167,7 @@ use_ok('wtsi_clarity::ics::agilent::file_validator');
 {
   my $files = ['123_A1_B1'];
 
-  my $fv = wtsi_clarity::ics::agilent::file_validator->new(file_names => $files);
+  my $fv = wtsi_clarity::isc::agilent::file_validator->new(file_names => $files);
 
   my $test_data = {
     A1 => [1, 2],

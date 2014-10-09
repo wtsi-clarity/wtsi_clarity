@@ -9,17 +9,17 @@ use Test::MockObject::Extends;
 # local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
-local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/ics/plate_tagger/valid';
-my $test_data_dir = q[t/data/epp/ics/plate_tagger];
+local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/isc/plate_tagger/valid';
+my $test_data_dir = q[t/data/epp/isc/plate_tagger];
 
-use_ok ('wtsi_clarity::epp::ics::tag_indexer');
+use_ok ('wtsi_clarity::epp::isc::tag_indexer');
 
-my $i = wtsi_clarity::epp::ics::tag_indexer->new(
+my $i = wtsi_clarity::epp::isc::tag_indexer->new(
     process_url => 'http://clarity.ac.uk:8080/api/v2/processes/24-17451',
 );
 my $prefix = q[http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/];
 
-isa_ok( $i, 'wtsi_clarity::epp::ics::tag_indexer');
+isa_ok( $i, 'wtsi_clarity::epp::isc::tag_indexer');
 
 {
   lives_ok { $i->_index } 'indexing runs ok';
@@ -56,7 +56,7 @@ isa_ok( $i, 'wtsi_clarity::epp::ics::tag_indexer');
     $prefix .'2-41796' => 'Sanger_168tags - 10 mer tags: tag 41 (TCCAGTCG)',
   );
 
-  my $i = wtsi_clarity::epp::ics::tag_indexer->new(
+  my $i = wtsi_clarity::epp::isc::tag_indexer->new(
     process_url => 'http://clarity.ac.uk:8080/api/v2/processes/24-17451',
   );
 

@@ -1,12 +1,12 @@
-package wtsi_clarity::epp::ics::agilent_analyser;
+package wtsi_clarity::epp::isc::agilent_analyser;
 
 use Moose;
 use Carp;
 use Readonly;
 use Mojo::Collection 'c';
 
-use wtsi_clarity::ics::agilent::analyser;
-use wtsi_clarity::ics::agilent::file_validator;
+use wtsi_clarity::isc::agilent::analyser;
+use wtsi_clarity::isc::agilent::file_validator;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $INPUT_IDS                      => q{ /prc:process/input-output-map/input/@limsid };
@@ -247,7 +247,7 @@ sub _build__mapping_details{
   my $self = shift;
 
   my @filenames = $self->_get_filenames_available_for_parsing();
-  my $validation = wtsi_clarity::ics::agilent::file_validator->new(file_names => \@filenames);
+  my $validation = wtsi_clarity::isc::agilent::file_validator->new(file_names => \@filenames);
   return $validation->files_by_well();
 }
 
@@ -272,7 +272,7 @@ sub _build__files_content {
 
 sub _build__analysis_results {
   my $self = shift;
-  my $analyser = wtsi_clarity::ics::agilent::analyser->new( mapping_details => $self->_mapping_details,
+  my $analyser = wtsi_clarity::isc::agilent::analyser->new( mapping_details => $self->_mapping_details,
                                                             files_content   => $self->_files_content   );
   return $analyser->get_analysis_results();
 }
@@ -299,7 +299,7 @@ sub _check_range {
                         my $loc = $b;
                         my $results = $self->_analysis_results->{$loc};
 
-                        my $artifact_id = %map_location_artid->{$loc};
+                        my $artifact_id = $map_location_artid{$loc};
                         my $range = $self->_map_artid_range->{$artifact_id};
                         my $error = _check_range_for_one_result($loc, $results, $range);
                         if ($error) {
@@ -425,7 +425,7 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::epp::ics::agilent_analyser
+wtsi_clarity::epp::isc::agilent_analyser
 
 =head1 SYNOPSIS
 
