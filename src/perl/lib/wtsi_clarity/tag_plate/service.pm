@@ -44,9 +44,17 @@ sub _build__gkrequest {
     croak 'api key for GateKeeper is not defined in the configuration file.';
   }
 
+  my $ss_client_id = $self->config->tag_plate->{'ss_client_id'};
+  if (!$ss_client_id) {
+    croak 'Sequencescape Client ID for GateKeeper is not defined in the configuration file.';
+  }
+
   return wtsi_clarity::util::request->new(
     'content_type'        => 'application/json',
-    'additional_headers'  => { 'Cookie' => "api_key=$api_key"},
+    'additional_headers'  => {
+                                'X-Sequencescape-Client-ID' => "$ss_client_id",
+                                'Cookie' => "api_key=$api_key"
+                             },
     'ss_request'          => 1,
   );
 }
