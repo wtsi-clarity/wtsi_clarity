@@ -40,7 +40,7 @@ sub get_analysis_results {
           ->reduce(sub{
               my $source_well = $b;
               my $wells    = $self->mapping_details->{$source_well}{'wells'};
-              my $filename = $self->mapping_details->{$source_well}{'filename'};
+              my $filename = $self->mapping_details->{$source_well}{'file_path'};
               my $concentration = _average_of_measurement($self->_data_set, $filename, $source_well, $wells, 'concentration');
               my $molarity = _average_of_measurement($self->_data_set, $filename, $source_well, $wells, 'molarity');
               my $size = _average_of_measurement($self->_data_set, $filename, $source_well, $wells, 'size');

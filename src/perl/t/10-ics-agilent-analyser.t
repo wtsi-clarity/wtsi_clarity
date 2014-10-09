@@ -19,12 +19,12 @@ Readonly::Scalar my $file2_name => q(1234567890_A1_A6_wrong.xml);
   my $parser = XML::LibXML->new();
   my $file1 = $parser->load_xml(location => $testdata_path.$file1_name) or croak 'File can not be found at ' . $testdata_path.$file1_name;
   my $mapping = {
-    'A:1' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '1', '2' ]},
-    'A:2' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '3', '4' ]},
-    'A:3' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '5', '6' ]},
-    'A:4' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '7', '8' ]},
-    'A:5' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '11', '12' ]},
-    'A:6' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '9', '10' ]},
+    'A:1' => { 'file_path' => '1234567890_A1_A6', 'wells' => [ '1', '2' ]},
+    'A:2' => { 'file_path' => '1234567890_A1_A6', 'wells' => [ '3', '4' ]},
+    'A:3' => { 'file_path' => '1234567890_A1_A6', 'wells' => [ '5', '6' ]},
+    'A:4' => { 'file_path' => '1234567890_A1_A6', 'wells' => [ '7', '8' ]},
+    'A:5' => { 'file_path' => '1234567890_A1_A6', 'wells' => [ '11', '12' ]},
+    'A:6' => { 'file_path' => '1234567890_A1_A6', 'wells' => [ '9', '10' ]},
   };
   my $files_content = {
     '1234567890_A1_A6' => $file1,
@@ -73,12 +73,12 @@ Readonly::Scalar my $file2_name => q(1234567890_A1_A6_wrong.xml);
   my $parser = XML::LibXML->new();
   my $file1 = $parser->load_xml(location => $testdata_path.$file1_name) or croak 'File can not be found at ' . $testdata_path.$file1_name;
   my $mapping = {
-    'A:1' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '1', '2' ]},
-    'A:2' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '3', '4' ]},
-    'A:3' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '5', '6' ]},
-    'A:4' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '7', '8' ]},
-    'A:5' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '11', '12' ]},
-    'A:6' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '9', '10' ]},
+    'A:1' => { 'file_path' => '1234567890_A1_A6', 'wells' => [ '1', '2' ]},
+    'A:2' => { 'file_path' => '1234567890_A1_A6', 'wells' => [ '3', '4' ]},
+    'A:3' => { 'file_path' => '1234567890_A1_A6', 'wells' => [ '5', '6' ]},
+    'A:4' => { 'file_path' => '1234567890_A1_A6', 'wells' => [ '7', '8' ]},
+    'A:5' => { 'file_path' => '1234567890_A1_A6', 'wells' => [ '11', '12' ]},
+    'A:6' => { 'file_path' => '1234567890_A1_A6', 'wells' => [ '9', '10' ]},
   };
   my $files_content = {
     '1234567890_A1_A6' => $file1,
@@ -157,12 +157,12 @@ Readonly::Scalar my $file2_name => q(1234567890_A1_A6_wrong.xml);
   my $parser = XML::LibXML->new();
   my $file1 = $parser->load_xml(location => $testdata_path.$file2_name) or croak 'File can not be found at ' . $testdata_path.$file2_name;
   my $mapping = {
-    'A:1' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '1', '2' ]},
-    'A:2' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '3', '4' ]},
-    'A:3' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '5', '6' ]},
-    'A:4' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '7', '8' ]},
-    'A:5' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '11', '12' ]},
-    'A:6' => { 'filename' => '1234567890_A1_A6', 'wells' => [ '9', '10' ]},
+    'A:1' => { 'file_path' => '1234567890_A1_A6', 'wells' => [ '1', '2' ]},
+    'A:2' => { 'file_path' => '1234567890_A1_A6', 'wells' => [ '3', '4' ]},
+    'A:3' => { 'file_path' => '1234567890_A1_A6', 'wells' => [ '5', '6' ]},
+    'A:4' => { 'file_path' => '1234567890_A1_A6', 'wells' => [ '7', '8' ]},
+    'A:5' => { 'file_path' => '1234567890_A1_A6', 'wells' => [ '11', '12' ]},
+    'A:6' => { 'file_path' => '1234567890_A1_A6', 'wells' => [ '9', '10' ]},
   };
   my $files_content = {
     '1234567890_A1_A6' => $file1,

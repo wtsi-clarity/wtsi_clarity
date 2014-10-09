@@ -46,6 +46,7 @@ sub _build_files {
 
   foreach my $file (@{$self->file_names}) {
     my ($barcode, $start_well, $end_well) = split $FILE_NAME_DELIMITER, $file;
+    $end_well =~ s/[.]xml|[.]XML//xms;
 
     push @files, {
       file_name => $file,
@@ -84,7 +85,7 @@ sub _build_files_by_well {
 
     for ($index_of_start_well..$index_of_end_well) {
       my $well = $self->_wells->[$_];
-      $files_by_well{$well}->{'file'} = $file->{'file_name'};
+      $files_by_well{$well}->{'file_path'} = $file->{'file_name'};
       $files_by_well{$well}->{'wells'} = $self->_map_well($well);
     }
   }
@@ -212,7 +213,8 @@ wtsi_clarity::ics::agilent::file_validator
 
 =head1 SYNOPSIS
 
-  my $wells = wtsi_clarity::ics::agilent::file_validator->new(file_names => $file_names);
+  my $validator = wtsi_clarity::ics::agilent::file_validator->new(file_names => $file_names);
+  my $wells = $validator->files_by_well();
 
   $wells == {
     A1: {

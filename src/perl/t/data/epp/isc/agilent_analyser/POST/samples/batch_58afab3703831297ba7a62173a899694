@@ -1,0 +1,1523 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample">
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A25" limsid="DEA52A25">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A25PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A25PA1?state=286"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">125</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A26" limsid="DEA52A26">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A26PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A26PA1?state=308"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">126</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A23" limsid="DEA52A23">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A23PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A23PA1?state=197"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">123</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A24" limsid="DEA52A24">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A24PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A24PA1?state=317"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">124</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A29" limsid="DEA52A29">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A29PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A29PA1?state=262"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">129</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A30" limsid="DEA52A30">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A30PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A30PA1?state=335"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">130</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A27" limsid="DEA52A27">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A27PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A27PA1?state=267"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">127</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A28" limsid="DEA52A28">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A28PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A28PA1?state=339"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">128</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A33" limsid="DEA52A33">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A33PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A33PA1?state=287"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">133</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A34" limsid="DEA52A34">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A34PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A34PA1?state=329"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">134</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A31" limsid="DEA52A31">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A31PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A31PA1?state=328"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">131</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A32" limsid="DEA52A32">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A32PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A32PA1?state=306"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">132</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A37" limsid="DEA52A37">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A37PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A37PA1?state=294"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">137</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A38" limsid="DEA52A38">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A38PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A38PA1?state=337"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">138</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A35" limsid="DEA52A35">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A35PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A35PA1?state=255"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">135</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A36" limsid="DEA52A36">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A36PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A36PA1?state=275"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">136</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A42" limsid="DEA52A42">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A42PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A42PA1?state=253"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">142</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A41" limsid="DEA52A41">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A41PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A41PA1?state=299"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">141</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A40" limsid="DEA52A40">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A40PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A40PA1?state=340"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">140</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A39" limsid="DEA52A39">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A39PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A39PA1?state=289"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">139</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A46" limsid="DEA52A46">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A46PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A46PA1?state=324"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">146</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A45" limsid="DEA52A45">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A45PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A45PA1?state=261"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">145</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A44" limsid="DEA52A44">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A44PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A44PA1?state=316"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">144</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A43" limsid="DEA52A43">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A43PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A43PA1?state=336"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">143</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A50" limsid="DEA52A50">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A50PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A50PA1?state=333"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">150</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A49" limsid="DEA52A49">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A49PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A49PA1?state=288"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">149</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A48" limsid="DEA52A48">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A48PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A48PA1?state=292"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">148</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A47" limsid="DEA52A47">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A47PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A47PA1?state=330"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">147</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A54" limsid="DEA52A54">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A54PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A54PA1?state=268"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">154</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A53" limsid="DEA52A53">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A53PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A53PA1?state=325"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">153</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A52" limsid="DEA52A52">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A52PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A52PA1?state=311"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">152</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A51" limsid="DEA52A51">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A51PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A51PA1?state=273"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">151</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A1" limsid="DEA52A1">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A1PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A1PA1?state=320"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">101</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A2" limsid="DEA52A2">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A2PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A2PA1?state=259"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">102</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A3" limsid="DEA52A3">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A3PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A3PA1?state=264"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">103</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A4" limsid="DEA52A4">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A4PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A4PA1?state=272"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">104</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A5" limsid="DEA52A5">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A5PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A5PA1?state=257"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">105</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A6" limsid="DEA52A6">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A6PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A6PA1?state=277"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">106</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A8" limsid="DEA52A8">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A8PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A8PA1?state=310"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">108</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A7" limsid="DEA52A7">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A7PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A7PA1?state=281"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">107</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A10" limsid="DEA52A10">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A10PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A10PA1?state=290"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">110</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A9" limsid="DEA52A9">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A9PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A9PA1?state=285"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">109</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A12" limsid="DEA52A12">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A12PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A12PA1?state=296"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">112</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A11" limsid="DEA52A11">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A11PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A11PA1?state=263"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">111</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A14" limsid="DEA52A14">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A14PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A14PA1?state=298"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">114</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A13" limsid="DEA52A13">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A13PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A13PA1?state=303"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">113</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A16" limsid="DEA52A16">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A16PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A16PA1?state=312"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">116</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A15" limsid="DEA52A15">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A15PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A15PA1?state=304"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">115</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A18" limsid="DEA52A18">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A18PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A18PA1?state=301"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">118</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A17" limsid="DEA52A17">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A17PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A17PA1?state=318"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">117</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A20" limsid="DEA52A20">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A20PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A20PA1?state=327"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">120</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A19" limsid="DEA52A19">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A19PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A19PA1?state=196"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">119</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A22" limsid="DEA52A22">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A22PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A22PA1?state=254"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">122</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A21" limsid="DEA52A21">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A21PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A21PA1?state=319"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">121</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A95" limsid="DEA52A95">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A95PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A95PA1?state=326"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">195</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A94" limsid="DEA52A94">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A94PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A94PA1?state=258"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">194</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A93" limsid="DEA52A93">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A93PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A93PA1?state=265"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">193</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A92" limsid="DEA52A92">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A92PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A92PA1?state=266"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">192</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A91" limsid="DEA52A91">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A91PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A91PA1?state=305"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">191</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A90" limsid="DEA52A90">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A90PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A90PA1?state=282"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">190</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A89" limsid="DEA52A89">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A89PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A89PA1?state=297"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">189</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A88" limsid="DEA52A88">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A88PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A88PA1?state=284"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">188</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A87" limsid="DEA52A87">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A87PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A87PA1?state=314"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">187</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A68" limsid="DEA52A68">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A68PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A68PA1?state=307"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">168</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A67" limsid="DEA52A67">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A67PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A67PA1?state=334"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">167</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A70" limsid="DEA52A70">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A70PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A70PA1?state=256"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">170</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A69" limsid="DEA52A69">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A69PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A69PA1?state=322"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">169</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A64" limsid="DEA52A64">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A64PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A64PA1?state=278"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">164</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A63" limsid="DEA52A63">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A63PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A63PA1?state=271"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">163</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A66" limsid="DEA52A66">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A66PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A66PA1?state=331"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">166</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A65" limsid="DEA52A65">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A65PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A65PA1?state=270"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">165</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A60" limsid="DEA52A60">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A60PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A60PA1?state=338"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">160</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A59" limsid="DEA52A59">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A59PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A59PA1?state=276"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">159</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A62" limsid="DEA52A62">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A62PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A62PA1?state=283"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">162</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A61" limsid="DEA52A61">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A61PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A61PA1?state=309"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">161</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A56" limsid="DEA52A56">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A56PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A56PA1?state=295"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">156</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A55" limsid="DEA52A55">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A55PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A55PA1?state=323"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">155</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A58" limsid="DEA52A58">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A58PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A58PA1?state=200"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">158</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A57" limsid="DEA52A57">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A57PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A57PA1?state=199"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">157</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A83" limsid="DEA52A83">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A83PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A83PA1?state=252"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">183</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A84" limsid="DEA52A84">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A84PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A84PA1?state=321"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">184</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A85" limsid="DEA52A85">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A85PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A85PA1?state=293"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">185</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A86" limsid="DEA52A86">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A86PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A86PA1?state=280"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">186</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A79" limsid="DEA52A79">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A79PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A79PA1?state=269"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">179</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A80" limsid="DEA52A80">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A80PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A80PA1?state=291"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">180</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A81" limsid="DEA52A81">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A81PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A81PA1?state=332"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">181</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A82" limsid="DEA52A82">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A82PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A82PA1?state=274"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">182</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A75" limsid="DEA52A75">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A75PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A75PA1?state=198"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">175</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A76" limsid="DEA52A76">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A76PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A76PA1?state=302"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">176</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A77" limsid="DEA52A77">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A77PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A77PA1?state=300"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">177</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A78" limsid="DEA52A78">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A78PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A78PA1?state=251"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">178</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A71" limsid="DEA52A71">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A71PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A71PA1?state=315"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">171</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A72" limsid="DEA52A72">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A72PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A72PA1?state=313"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">172</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A73" limsid="DEA52A73">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A73PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A73PA1?state=260"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">173</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A74" limsid="DEA52A74">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA52"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/20">
+            <first-name>Andrew</first-name>
+            <last-name>Dearlove</last-name>
+        </submitter>
+        <artifact limsid="DEA52A74PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA52A74PA1?state=279"/>
+        <udf:field type="Numeric" name="Concentration Max">100</udf:field>
+        <udf:field type="Numeric" name="Concentration Min">10</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">174</udf:field>
+    </smp:sample>
+</smp:details>

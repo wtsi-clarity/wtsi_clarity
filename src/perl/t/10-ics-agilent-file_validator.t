@@ -17,99 +17,99 @@ use_ok('wtsi_clarity::ics::agilent::file_validator');
 
   my $wells = {
     'A1' => {
-      'file'  => '123_A1_F1',
+      'file_path'  => '123_A1_F1',
       'wells' => [1, 2],
     },
     'B1' => {
-      'file'  => '123_A1_F1',
+      'file_path'  => '123_A1_F1',
       'wells' => [3, 4],
     },
     'C1' => {
-      'file'  => '123_A1_F1',
+      'file_path'  => '123_A1_F1',
       'wells' => [5, 6],
     },
     'D1' => {
-      'file'  => '123_A1_F1',
+      'file_path'  => '123_A1_F1',
       'wells' => [7, 8],
     },
     'E1' => {
-      'file'  => '123_A1_F1',
+      'file_path'  => '123_A1_F1',
       'wells' => [9, 10],
     },
     'F1' => {
-      'file'  => '123_A1_F1',
+      'file_path'  => '123_A1_F1',
       'wells' => [11, 12],
     },
     'G1' => {
-      'file'  => '123_G1_D2',
+      'file_path'  => '123_G1_D2',
       'wells' => [1, 2],
     },
     'H1' => {
-      'file'  => '123_G1_D2',
+      'file_path'  => '123_G1_D2',
       'wells' => [3, 4],
     },
     'A2' => {
-      'file'  => '123_G1_D2',
+      'file_path'  => '123_G1_D2',
       'wells' => [5, 6],
     },
     'B2' => {
-      'file'  => '123_G1_D2',
+      'file_path'  => '123_G1_D2',
       'wells' => [7, 8],
     },
     'C2' => {
-      'file'  => '123_G1_D2',
+      'file_path'  => '123_G1_D2',
       'wells' => [9, 10],
     },
     'D2' => {
-      'file'  => '123_G1_D2',
+      'file_path'  => '123_G1_D2',
       'wells' => [11, 12],
     },
     'E2' => {
-      'file'  => '123_E2_B3',
+      'file_path'  => '123_E2_B3',
       'wells' => [1, 2],
     },
     'F2' => {
-      'file'  => '123_E2_B3',
+      'file_path'  => '123_E2_B3',
       'wells' => [3, 4],
     },
     'G2' => {
-      'file'  => '123_E2_B3',
+      'file_path'  => '123_E2_B3',
       'wells' => [5, 6],
     },
     'H2' => {
-      'file'  => '123_E2_B3',
+      'file_path'  => '123_E2_B3',
       'wells' => [7, 8],
     },
     'A3' => {
-      'file'  => '123_E2_B3',
+      'file_path'  => '123_E2_B3',
       'wells' => [9, 10],
     },
     'B3' => {
-      'file'  => '123_E2_B3',
+      'file_path'  => '123_E2_B3',
       'wells' => [11, 12],
     },
     'C3' => {
-      'file'  => '123_C3_H3',
+      'file_path'  => '123_C3_H3',
       'wells' => [1, 2],
     },
     'D3' => {
-      'file'  => '123_C3_H3',
+      'file_path'  => '123_C3_H3',
       'wells' => [3, 4],
     },
     'E3' => {
-      'file'  => '123_C3_H3',
+      'file_path'  => '123_C3_H3',
       'wells' => [5, 6],
     },
     'F3' => {
-      'file'  => '123_C3_H3',
+      'file_path'  => '123_C3_H3',
       'wells' => [7, 8],
     },
     'G3' => {
-      'file'  => '123_C3_H3',
+      'file_path'  => '123_C3_H3',
       'wells' => [9, 10],
     },
     'H3' => {
-      'file'  => '123_C3_H3',
+      'file_path'  => '123_C3_H3',
       'wells' => [11, 12],
     }
   };
