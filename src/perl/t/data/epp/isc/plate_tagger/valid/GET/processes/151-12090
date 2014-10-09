@@ -1,0 +1,57 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="151-12090" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/151-12090" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processtypes/140">Sanger 168 Tag Index Addition</type>
+  <technician uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/7">
+    <first-name>Karoly</first-name>
+    <last-name>Erdos</last-name>
+  </technician>
+  <input-output-map>
+    <input limsid="LAB106A89PA1" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A89PA1?state=10632" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A89PA1?state=10632"/>
+    <output limsid="2-24975" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-24975?state=10475"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A91PA1" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A91PA1?state=10644" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A91PA1?state=10644"/>
+    <output limsid="2-24977" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-24977?state=10477"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A69PA1" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A69PA1?state=10616" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A69PA1?state=10616"/>
+    <output limsid="2-25404" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-25404?state=10704"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A59PA1" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A59PA1?state=7238" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A59PA1?state=7238"/>
+    <output limsid="2-25411" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-25411?state=10711"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A62PA1" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A62PA1?state=10620" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A62PA1?state=10620"/>
+    <output limsid="2-25410" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-25410?state=10710"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A61PA1" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A61PA1?state=10557" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A61PA1?state=10557"/>
+    <output limsid="2-25409" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-25409?state=10709"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A1PA1" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A1PA1?state=10595" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A1PA1?state=10595"/>
+    <output limsid="2-25431" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-25431?state=10731"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A18PA1" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A18PA1?state=10536" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A18PA1?state=10536"/>
+    <output limsid="2-25511" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-25511?state=10761"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A17PA1" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A17PA1?state=10564" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A17PA1?state=10564"/>
+    <output limsid="2-25510" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-25510?state=10760"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A20PA1" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A20PA1?state=10637" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A20PA1?state=10637"/>
+    <output limsid="2-25509" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-25509?state=10759"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A3PA1" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A3PA1?state=10532" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/LAB106A3PA1?state=10532"/>
+    <output limsid="2-25433" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-25433?state=10733"/>
+  </input-output-map>
+  <udf:field name="Program Used" type="String">96 Tag.pro</udf:field>
+  <udf:field name="Tag Plate" type="String">ABCD1234</udf:field>
+  <udf:field name="Workstation" type="String">Bravo WS1</udf:field>
+  <udf:field name="Plate Purpose" type="String">Lib PCR</udf:field>
+  <process-parameter name="Validate Tag Plate"/>
+</prc:process>
