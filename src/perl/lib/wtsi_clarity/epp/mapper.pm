@@ -33,6 +33,7 @@ Readonly::Hash my %ACTION2MODULE => (
 
     'tag_plate'                      => 'ics::plate_tagger',
     'index_tag'                      => 'ics::tag_indexer',
+    'analyse_agilent'                => 'ics::agilent_analyser',
 );
 
 has 'action'  => (

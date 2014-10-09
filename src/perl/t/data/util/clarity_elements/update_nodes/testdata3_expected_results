@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="yes"?>
+<root xmlns:udf="http://genologics.com/ri/userdefined" >
+  <a>hello<field xmlns="http://genologics.com/ri/userdefined" name="b">0</field></a>
+  <a>cool<field xmlns="http://genologics.com/ri/userdefined" name="b">0</field></a>
+  <a><field xmlns="http://genologics.com/ri/userdefined" name="b">0</field></a>
+  <a>
+    <b/>
+    <field xmlns="http://genologics.com/ri/userdefined" name="b">0</field>
+  </a>
+  <a>
+    <b>1234</b>
+    <field xmlns="http://genologics.com/ri/userdefined" name="b">0</field>
+  </a>
+  <a>
+    <field xmlns="http://genologics.com/ri/userdefined" name="b">0</field>
+  </a>
+  <a>
+    <udf:field name="b">0</udf:field>
+  </a>
+ </root>
+

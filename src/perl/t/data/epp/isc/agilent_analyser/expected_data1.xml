@@ -1,0 +1,1245 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:art="http://genologics.com/ri/artifact" xmlns:file="http://genologics.com/ri/file" xmlns:udf="http://genologics.com/ri/userdefined">
+    <art:artifact limsid="2-49037" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49037?state=22337">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>A:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A25" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A25"/>
+        <udf:field name="Concentration" type="Numeric">123456</udf:field>
+    </art:artifact>
+    <art:artifact limsid="2-49038" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49038?state=22338">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>B:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A26" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A26"/>
+    </art:artifact>
+    <art:artifact limsid="2-49039" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49039?state=22339">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>G:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A23" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A23"/>
+    </art:artifact>
+    <art:artifact limsid="2-49040" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49040?state=22340">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>H:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A24" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A24"/>
+    </art:artifact>
+    <art:artifact limsid="2-49041" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49041?state=22341">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>E:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A29" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A29"/>
+    </art:artifact>
+    <art:artifact limsid="2-49042" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49042?state=22342">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>F:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A30" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A30"/>
+    </art:artifact>
+    <art:artifact limsid="2-49043" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49043?state=22343">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>C:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A27" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A27"/>
+    </art:artifact>
+    <art:artifact limsid="2-49044" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49044?state=22344">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>D:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A28" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A28"/>
+    </art:artifact>
+    <art:artifact limsid="2-49045" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49045?state=22345">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>A:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A33" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A33"/>
+    </art:artifact>
+    <art:artifact limsid="2-49046" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49046?state=22346">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>B:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A34" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A34"/>
+    </art:artifact>
+    <art:artifact limsid="2-49047" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49047?state=22347">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>G:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A31" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A31"/>
+    </art:artifact>
+    <art:artifact limsid="2-49048" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49048?state=22348">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>H:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A32" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A32"/>
+    </art:artifact>
+    <art:artifact limsid="2-49049" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49049?state=22349">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>E:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A37" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A37"/>
+    </art:artifact>
+    <art:artifact limsid="2-49050" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49050?state=22350">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>F:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A38" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A38"/>
+    </art:artifact>
+    <art:artifact limsid="2-49101" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49101?state=22351">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>C:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A35" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A35"/>
+    </art:artifact>
+    <art:artifact limsid="2-49102" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49102?state=22352">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>D:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A36" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A36"/>
+    </art:artifact>
+    <art:artifact limsid="2-49103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49103?state=22353">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>B:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A42" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A42"/>
+    </art:artifact>
+    <art:artifact limsid="2-49104" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49104?state=22354">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>A:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A41" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A41"/>
+    </art:artifact>
+    <art:artifact limsid="2-49105" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49105?state=22355">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>H:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A40" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A40"/>
+    </art:artifact>
+    <art:artifact limsid="2-49106" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49106?state=22356">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>G:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A39" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A39"/>
+    </art:artifact>
+    <art:artifact limsid="2-49107" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49107?state=22357">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>F:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A46" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A46"/>
+    </art:artifact>
+    <art:artifact limsid="2-49108" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49108?state=22358">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>E:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A45" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A45"/>
+    </art:artifact>
+    <art:artifact limsid="2-49109" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49109?state=22359">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>D:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A44" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A44"/>
+    </art:artifact>
+    <art:artifact limsid="2-49110" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49110?state=22360">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>C:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A43" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A43"/>
+    </art:artifact>
+    <art:artifact limsid="2-49111" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49111?state=22361">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>B:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A50" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A50"/>
+    </art:artifact>
+    <art:artifact limsid="2-49112" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49112?state=22362">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>A:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A49" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A49"/>
+    </art:artifact>
+    <art:artifact limsid="2-49113" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49113?state=22363">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>H:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A48" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A48"/>
+    </art:artifact>
+    <art:artifact limsid="2-49114" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49114?state=22364">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>G:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A47" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A47"/>
+    </art:artifact>
+    <art:artifact limsid="2-49115" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49115?state=22365">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>F:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A54" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A54"/>
+    </art:artifact>
+    <art:artifact limsid="2-49116" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49116?state=22366">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>E:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A53" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A53"/>
+    </art:artifact>
+    <art:artifact limsid="2-49117" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49117?state=22367">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>D:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A52" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A52"/>
+    </art:artifact>
+    <art:artifact limsid="2-49118" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49118?state=22368">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>C:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A51" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A51"/>
+    </art:artifact>
+    <art:artifact limsid="2-49119" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49119?state=22369">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A1"/>
+        <field name="Concentration" xmlns="http://genologics.com/ri/userdefined">18.361455</field>
+        <field name="WTSI Molarity" xmlns="http://genologics.com/ri/userdefined">93.703835</field>
+        <field name="WTSI Lib Size" xmlns="http://genologics.com/ri/userdefined">296.99425</field>
+    </art:artifact>
+    <art:artifact limsid="2-49120" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49120?state=22370">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>B:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A2" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A2"/>
+        <field name="Concentration" xmlns="http://genologics.com/ri/userdefined">28.20428</field>
+        <field name="WTSI Molarity" xmlns="http://genologics.com/ri/userdefined">145.8582</field>
+        <field name="WTSI Lib Size" xmlns="http://genologics.com/ri/userdefined">292.60725</field>
+    </art:artifact>
+    <art:artifact limsid="2-49121" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49121?state=22371">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>C:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A3" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A3"/>
+    </art:artifact>
+    <art:artifact limsid="2-49122" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49122?state=22372">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>D:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A4" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A4"/>
+    </art:artifact>
+    <art:artifact limsid="2-49123" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49123?state=22373">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>E:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A5" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A5"/>
+    </art:artifact>
+    <art:artifact limsid="2-49124" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49124?state=22374">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>F:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A6" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A6"/>
+    </art:artifact>
+    <art:artifact limsid="2-49125" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49125?state=22375">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>H:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A8" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A8"/>
+    </art:artifact>
+    <art:artifact limsid="2-49126" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49126?state=22376">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>G:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A7" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A7"/>
+    </art:artifact>
+    <art:artifact limsid="2-49127" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49127?state=22377">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>B:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A10" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A10"/>
+    </art:artifact>
+    <art:artifact limsid="2-49128" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49128?state=22378">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>A:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A9" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A9"/>
+    </art:artifact>
+    <art:artifact limsid="2-49129" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49129?state=22379">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>D:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A12" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A12"/>
+    </art:artifact>
+    <art:artifact limsid="2-49130" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49130?state=22380">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>C:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A11" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A11"/>
+    </art:artifact>
+    <art:artifact limsid="2-49131" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49131?state=22381">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>F:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A14" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A14"/>
+    </art:artifact>
+    <art:artifact limsid="2-49132" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49132?state=22382">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>E:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A13" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A13"/>
+    </art:artifact>
+    <art:artifact limsid="2-49133" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49133?state=22383">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>H:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A16" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A16"/>
+    </art:artifact>
+    <art:artifact limsid="2-49134" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49134?state=22384">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>G:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A15" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A15"/>
+    </art:artifact>
+    <art:artifact limsid="2-49135" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49135?state=22385">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>B:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A18" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A18"/>
+    </art:artifact>
+    <art:artifact limsid="2-49136" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49136?state=22386">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>A:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A17" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A17"/>
+    </art:artifact>
+    <art:artifact limsid="2-49137" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49137?state=22387">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>D:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A20" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A20"/>
+    </art:artifact>
+    <art:artifact limsid="2-49138" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49138?state=22388">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>C:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A19" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A19"/>
+    </art:artifact>
+    <art:artifact limsid="2-49139" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49139?state=22389">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>F:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A22" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A22"/>
+    </art:artifact>
+    <art:artifact limsid="2-49140" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49140?state=22390">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>E:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A21" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A21"/>
+    </art:artifact>
+    <art:artifact limsid="2-49141" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49141?state=22391">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>G:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A95" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A95"/>
+    </art:artifact>
+    <art:artifact limsid="2-49142" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49142?state=22392">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>F:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A94" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A94"/>
+    </art:artifact>
+    <art:artifact limsid="2-49143" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49143?state=22393">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>E:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A93" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A93"/>
+    </art:artifact>
+    <art:artifact limsid="2-49144" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49144?state=22394">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>D:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A92" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A92"/>
+    </art:artifact>
+    <art:artifact limsid="2-49145" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49145?state=22395">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>C:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A91" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A91"/>
+    </art:artifact>
+    <art:artifact limsid="2-49146" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49146?state=22396">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>B:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A90" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A90"/>
+    </art:artifact>
+    <art:artifact limsid="2-49147" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49147?state=22397">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>A:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A89" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A89"/>
+    </art:artifact>
+    <art:artifact limsid="2-49148" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49148?state=22398">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>H:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A88" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A88"/>
+    </art:artifact>
+    <art:artifact limsid="2-49149" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49149?state=22399">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>G:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A87" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A87"/>
+    </art:artifact>
+    <art:artifact limsid="2-49150" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49150?state=22400">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>D:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A68" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A68"/>
+    </art:artifact>
+    <art:artifact limsid="2-49201" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49201?state=22401">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>C:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A67" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A67"/>
+    </art:artifact>
+    <art:artifact limsid="2-49202" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49202?state=22402">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>F:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A70" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A70"/>
+    </art:artifact>
+    <art:artifact limsid="2-49203" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49203?state=22403">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>E:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A69" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A69"/>
+    </art:artifact>
+    <art:artifact limsid="2-49204" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49204?state=22404">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>H:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A64" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A64"/>
+    </art:artifact>
+    <art:artifact limsid="2-49205" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49205?state=22405">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>G:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A63" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A63"/>
+    </art:artifact>
+    <art:artifact limsid="2-49206" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49206?state=22406">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>B:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A66" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A66"/>
+    </art:artifact>
+    <art:artifact limsid="2-49207" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49207?state=22407">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>A:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A65" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A65"/>
+    </art:artifact>
+    <art:artifact limsid="2-49208" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49208?state=22408">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>D:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A60" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A60"/>
+    </art:artifact>
+    <art:artifact limsid="2-49209" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49209?state=22409">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>C:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A59" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A59"/>
+    </art:artifact>
+    <art:artifact limsid="2-49210" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49210?state=22410">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>F:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A62" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A62"/>
+    </art:artifact>
+    <art:artifact limsid="2-49211" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49211?state=22411">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>E:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A61" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A61"/>
+    </art:artifact>
+    <art:artifact limsid="2-49212" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49212?state=22412">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>H:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A56" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A56"/>
+    </art:artifact>
+    <art:artifact limsid="2-49213" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49213?state=22413">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>G:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A55" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A55"/>
+    </art:artifact>
+    <art:artifact limsid="2-49214" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49214?state=22414">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>B:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A58" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A58"/>
+    </art:artifact>
+    <art:artifact limsid="2-49215" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49215?state=22415">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>A:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A57" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A57"/>
+    </art:artifact>
+    <art:artifact limsid="2-49216" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49216?state=22416">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>C:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A83" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A83"/>
+    </art:artifact>
+    <art:artifact limsid="2-49217" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49217?state=22417">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>D:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A84" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A84"/>
+    </art:artifact>
+    <art:artifact limsid="2-49218" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49218?state=22418">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>E:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A85" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A85"/>
+    </art:artifact>
+    <art:artifact limsid="2-49219" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49219?state=22419">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>F:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A86" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A86"/>
+    </art:artifact>
+    <art:artifact limsid="2-49220" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49220?state=22420">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>G:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A79" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A79"/>
+    </art:artifact>
+    <art:artifact limsid="2-49221" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49221?state=22421">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>H:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A80" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A80"/>
+    </art:artifact>
+    <art:artifact limsid="2-49222" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49222?state=22422">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>A:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A81" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A81"/>
+    </art:artifact>
+    <art:artifact limsid="2-49223" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49223?state=22423">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>B:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A82" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A82"/>
+    </art:artifact>
+    <art:artifact limsid="2-49224" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49224?state=22424">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>C:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A75" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A75"/>
+    </art:artifact>
+    <art:artifact limsid="2-49225" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49225?state=22425">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>D:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A76" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A76"/>
+    </art:artifact>
+    <art:artifact limsid="2-49226" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49226?state=22426">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>E:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A77" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A77"/>
+    </art:artifact>
+    <art:artifact limsid="2-49227" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49227?state=22427">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>F:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A78" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A78"/>
+    </art:artifact>
+    <art:artifact limsid="2-49228" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49228?state=22428">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>G:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A71" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A71"/>
+    </art:artifact>
+    <art:artifact limsid="2-49229" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49229?state=22429">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>H:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A72" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A72"/>
+    </art:artifact>
+    <art:artifact limsid="2-49230" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49230?state=22430">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>A:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A73" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A73"/>
+    </art:artifact>
+    <art:artifact limsid="2-49231" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-49231?state=22431">
+        <name>2f30bb94-0b5a-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process limsid="24-18008" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18008"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container limsid="27-1708" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1708"/>
+            <value>B:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample limsid="DEA52A74" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA52A74"/>
+    </art:artifact>
+</art:details>

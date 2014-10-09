@@ -232,16 +232,16 @@ sub _update_plate_name_with_previous_name {
     my $names = $self->grab_values($in_container_map->{'doc'}, $CONTAINER_NAME_PATH);
 
     if ( @{$names} < 1 ) {
-      confess qq{One input container ($in_container_uri) has no name!};
+      croak qq{One input container ($in_container_uri) has no name!};
     }
 
     my @output_containers = @{$in_container_map->{'output_containers'}};
 
     if ( @output_containers < 1 ) {
-      confess qq{There is no output container for this input ($in_container_uri)! The shadow stamping cannot be applied!};
+      croak qq{There is no output container for this input ($in_container_uri)! The shadow stamping cannot be applied!};
     }
     if ( @output_containers > 1 ) {
-      confess qq{There are more than one output container for this input ($in_container_uri)! The shadow stamping cannot be applied!};
+      croak qq{There are more than one output container for this input ($in_container_uri)! The shadow stamping cannot be applied!};
     }
 
     my $output_container_id = $output_containers[0]->{'limsid'};
