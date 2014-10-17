@@ -12,9 +12,10 @@ lib/wtsi_clarity/epp/generic/plate_storer.pm
 lib/wtsi_clarity/epp/generic/stamper.pm
 lib/wtsi_clarity/epp/generic/workflow_assigner.pm
 lib/wtsi_clarity/epp/generic/worksheet_attacher.pm
-lib/wtsi_clarity/epp/ics/plate_tagger.pm
-lib/wtsi_clarity/epp/ics/tag_indexer.pm
-lib/wtsi_clarity/epp/ics/tag_plate_common.pm
+lib/wtsi_clarity/epp/isc/agilent_analyser.pm
+lib/wtsi_clarity/epp/isc/plate_tagger.pm
+lib/wtsi_clarity/epp/isc/tag_indexer.pm
+lib/wtsi_clarity/epp/isc/tag_plate_common.pm
 lib/wtsi_clarity/epp/mapper.pm
 lib/wtsi_clarity/epp/sm/cherrypick_bed_verifier.pm
 lib/wtsi_clarity/epp/sm/cherrypick_volume_updater.pm
@@ -36,8 +37,8 @@ lib/wtsi_clarity/genotyping/fluidigm/assay_set.pm
 lib/wtsi_clarity/genotyping/fluidigm/file_wrapper.pm
 lib/wtsi_clarity/genotyping/fluidigm/result_set.pm
 lib/wtsi_clarity/genotyping/fluidigm.pm
-lib/wtsi_clarity/ics/agilent/file_validator.pm
-lib/wtsi_clarity/ics/agilent/analyser.pm
+lib/wtsi_clarity/isc/agilent/file_validator.pm
+lib/wtsi_clarity/isc/agilent/analyser.pm
 lib/wtsi_clarity/mq/client.pm
 lib/wtsi_clarity/mq/message/epp.pm
 lib/wtsi_clarity/process_checks/bed_verifier.pm

@@ -129,9 +129,9 @@ sub find_elements {
 
 sub update_nodes {
   my ($self, %args) = @_;
-  my $document = $args{'document'} || croak qq{Requires an XML document!};
-  my $xpath_location = $args{'xpath'} || croak qq{Requires an XPath!};
-  my $type           = $args{'type'} || croak qq{Requires a type of xml element to be updated!};
+  my $document       = $args{'document'} || croak qq{Requires an XML document!};
+  my $xpath_location = $args{'xpath'}    || croak qq{Requires an XPath!};
+  my $type           = $args{'type'}     || croak qq{Requires a type of xml element to be updated!};
   my $name           = $args{'udf_name'} || $args{'element_name'}  || croak qq{Requires the name of the xml element to be updated!};
   if ($args{'udf_name'} && $args{'element_name'}) {
     confess qq{Only one type of 'name' can be given at the same time!};
@@ -141,7 +141,7 @@ sub update_nodes {
   }
 
   my $value = q{};
-  if ($args{'value'}) {
+  if (defined $args{'value'}) {
     $value = $args{'value'};
   }
 

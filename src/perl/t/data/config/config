@@ -22,6 +22,7 @@ service_url=http://psd2g.internal.sanger.ac.uk:8000/lims-support
 sm_volume_check=/Users/cs24/projects/clarity/wtsi_clarity/src/perl/t/data/volume_check
 sm_pico_green=/Users/cs24/projects/clarity/wtsi_clarity/src/perl/t/data/sm/attach_dtx_file
 fluidigm_analysis=t/data/genotyping/fluidigm
+isc_cap_lib_qc=t/data/epp/isc/agilent_analyser
 
 [tag_plate]
 gatekeeper_url = http://dev.com/api/1

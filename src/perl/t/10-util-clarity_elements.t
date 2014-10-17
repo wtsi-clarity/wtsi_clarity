@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use Moose::Meta::Class;
-use Test::More tests => 47;
+use Test::More tests => 48;
 use Test::Exception;
 use Cwd;
 use Carp;
@@ -236,6 +236,30 @@ my $fake_class = Moose::Meta::Class->create_anon_class(
                               type         => qq {Text},
                               udf_name     => 'b',
                               value        => 'new_value');
+
+  my @differences = $comparer->compare($testdata_xml, $expected_results);
+  cmp_ok(scalar @differences, '==', 0, 'update_nodes should update properly the given XML document');
+}
+
+# update_nodes()
+{
+
+  my $testdata_dir  = q{/t/data/util/clarity_elements/update_nodes/};
+  my $testdata_file = q{testdata2};
+  my $expected_file = q{testdata3_expected_results};
+
+  my $expected_results = XML::LibXML->load_xml(location => cwd . $testdata_dir . $expected_file) or croak 'File cannot be found at ' . cwd() . $testdata_dir . $expected_file ;
+  my $testdata_xml     = XML::LibXML->load_xml(location => cwd . $testdata_dir . $testdata_file );
+
+
+  my $comparer = XML::SemanticDiff->new();
+
+
+  $fake_class->update_nodes(  document     => $testdata_xml,
+                              xpath        => qq{/root/a},
+                              type         => qq {Text},
+                              udf_name     => 'b',
+                              value        => 0);
 
   my @differences = $comparer->compare($testdata_xml, $expected_results);
   cmp_ok(scalar @differences, '==', 0, 'update_nodes should update properly the given XML document');
