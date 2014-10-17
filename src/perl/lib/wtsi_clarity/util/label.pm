@@ -58,6 +58,7 @@ sub _format_label {
   if ($user && length $user > $USER_NAME_LENGTH) {
     $user = substr $user, 0, $USER_NAME_LENGTH;
   }
+
   if ($type eq 'plate') {
 
     $label = {
@@ -73,14 +74,23 @@ sub _format_label {
         }
     };
 
-  } elsif ($type eq 'tube') { #tube labels have not been tested yet
+  } elsif ($type eq 'tube') {
+
+    my ($prefix, $sanger_barcode_number) = split /-/sxm, $container->{'num'};
+    chop $sanger_barcode_number;
+
     $label = {
-      'template' => 'tube',
+      'template' => 'clarity_tube',
       'tube'     => {
         'ean13' => $container->{'barcode'},
-        'sanger' => $container->{'lims_id'},
+        'sanger_barcode' => {
+          'prefix'  => $prefix,
+          'number'  => $sanger_barcode_number
+        },
         'label_text' => {
-          'role' => $user,
+          'date'            => $date,
+          'pool_number'     => q[], # TODO add pool number later:
+          'parent_barcode'  => $container->{'parent_barcode'}
         },
     }};
   } else {

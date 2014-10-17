@@ -35,6 +35,7 @@ Readonly::Scalar my $CONTAINER_LIMSID_PATH    => q{ /con:container/@limsid };
 Readonly::Scalar my $SUPPLIER_CONTAINER_NAME_PATH =>
   q{ /con:container/udf:field[@name='Supplier Container Name'] };
 Readonly::Scalar my $CONTAINER_NAME_PATH      => q{ /con:container/name };
+Readonly::Scalar my $INPUT_ANALYTES_PATH      => q{./input/@uri};
 ##use critic
 
 Readonly::Scalar my $SIGNATURE_LENGTH         => 5;
@@ -212,12 +213,25 @@ sub _build__container {
       }
       push @{$containers->{$container_url}->{'samples'}}, $sample_lims_id;
     }
+
+    if (!$self->source_plate && !exists $containers->{$container_url}->{'parent_barcode'}) {
+      $containers->{$container_url}->{'parent_barcode'} = $self->_parent_barcode($anode);
+    }
   }
   if (scalar keys %{$containers} == 0) {
     croak q[Failed to get containers for process ] . $self->process_url;
   }
 
   return $containers;
+}
+
+sub _parent_barcode {
+  my ($self, $analyte_node) = @_;
+
+  my $input_analyte_dom = $self->fetch_and_parse($analyte_node->findvalue($INPUT_ANALYTES_PATH));
+  my $input_container_dom = $self->fetch_and_parse($input_analyte_dom->findvalue($CONTAINER_PATH));
+
+  return $input_container_dom->findvalue($CONTAINER_NAME_PATH);
 }
 
 has '_plate_purpose_suffix' => (
