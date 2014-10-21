@@ -12,13 +12,7 @@ sub well_location_index {
     croak 'Well address should be given';
   }
 
-  if (!$nb_rows) {
-    croak 'Number of rows has to be given';
-  }
-
-  if (!$nb_cols) {
-    croak 'Number of columns has to be given';
-  }
+  $self->_asset_parameter_validation($nb_rows, $nb_cols);
 
   my ($letter, $number) = $loc =~ /\A(\w):(\d+)/xms;
   if (!$letter || !$number) {
@@ -38,6 +32,45 @@ sub well_location_index {
   }
 
   return  ($number-1)*$nb_rows + $letter_as_number;
+}
+
+sub position_to_well {
+  my ($self, $pos, $nb_rows, $nb_cols) = @_;
+
+  if (!$pos) {
+    croak 'Position should be given';
+  }
+
+  if ($pos < 1) {
+    croak 'Position should be bigger than zero';
+  }
+
+  $self->_asset_parameter_validation($nb_rows, $nb_cols);
+
+  my $number = int($pos / 8);
+  my $letter_mod = $pos % 8;
+  my $letter;
+
+  if ($letter_mod > 0) {
+    $number++;
+    $letter = chr(64 + $letter_mod);
+  } else {
+    $letter = 'H';
+  }
+
+  return $letter . ':'. $number;
+}
+
+sub _asset_parameter_validation {
+  my ($self, $nb_rows, $nb_cols) = @_;
+
+  if (!$nb_rows) {
+    croak 'Number of rows has to be given';
+  }
+
+  if (!$nb_cols) {
+    croak 'Number of columns has to be given';
+  }
 }
 
 no Moose::Role;
