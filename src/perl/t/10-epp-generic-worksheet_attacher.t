@@ -568,7 +568,7 @@ my $TEST_DATA4 = {
 { # _get_containers_data
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/worksheet_attacher';
   my $step = wtsi_clarity::epp::generic::worksheet_attacher->new(
-                process_url => 'http://clarity-ap:8080/api/v2/processes/24-102407',
+                process_url => 'http://testserver.com:1234/here/processes/24-102407',
                 worksheet_type => 'cherrypicking',
                 worksheet_filename => 'xxxxx_worksheet.pdf',
                 tecan_filename => 'xxxxx_tecan.gwl',
@@ -576,10 +576,10 @@ my $TEST_DATA4 = {
 
   my $data = $step->_get_containers_data();
 
-  my $input_uri     = q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containers/27-23};
+  my $input_uri     = q{http://testserver.com:1234/here/containers/27-23};
   my $input = $data->{'input_container_info'}->{$input_uri}->{'container_details'};
 
-  my $container_uri = q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containers/27-8129};
+  my $container_uri = q{http://testserver.com:1234/here/containers/27-8129};
   my $cont = $data->{'output_container_info'}->{$container_uri}->{'container_details'};
 
   my @expected_out_data = (
@@ -677,7 +677,7 @@ my $TEST_DATA4 = {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/worksheet_attacher';
   # local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
   my $step = wtsi_clarity::epp::generic::worksheet_attacher->new(
-                process_url => 'http://clarity-ap:8080/api/v2/processes/24-102407',
+                process_url => 'http://testserver.com:1234/here/processes/24-102407',
                 worksheet_type => 'cherrypicking',
                 worksheet_filename => 'xxxxx_worksheet.pdf',
                 tecan_filename => 'xxxxx_tecan.gwl',

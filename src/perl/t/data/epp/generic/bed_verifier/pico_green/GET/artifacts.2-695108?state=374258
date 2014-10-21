@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/2-695108?state=374258" limsid="2-695108">
+    <name>2699STDY5567626</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://testserver.com:1234/here/processes/24-103751" limsid="24-103751"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-8303" limsid="27-8303"/>
+        <value>H:10</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/ADM730A160" limsid="ADM730A160"/>
+</art:artifact>

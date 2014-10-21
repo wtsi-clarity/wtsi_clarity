@@ -1,0 +1,30 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" uri="http://testserver.com:1234/here/processes/24-99911" limsid="24-99911">
+    <type uri="http://testserver.com:1234/here/processtypes/515">Cherrypick Submission (SM)</type>
+    <technician uri="http://testserver.com:1234/here/researchers/454">
+        <first-name>Benoit</first-name>
+        <last-name>Mangili</last-name>
+    </technician>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/JON1407A3423PA1?state=336311" uri="http://testserver.com:1234/here/artifacts/JON1407A3423PA1?state=336311" limsid="JON1407A3423PA1" />
+        <output uri="http://testserver.com:1234/here/artifacts/2-665724?state=359724" output-generation-type="PerInput" output-type="Analyte" limsid="2-665724" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/JON1407A3447PA1?state=334686" uri="http://testserver.com:1234/here/artifacts/JON1407A3447PA1?state=334686" limsid="JON1407A3447PA1" />
+        <output uri="http://testserver.com:1234/here/artifacts/2-665723?state=359723" output-generation-type="PerInput" output-type="Analyte" limsid="2-665723" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/JON1407A3431PA1?state=335419" uri="http://testserver.com:1234/here/artifacts/JON1407A3431PA1?state=335419" limsid="JON1407A3431PA1" />
+        <output uri="http://testserver.com:1234/here/artifacts/2-665725?state=359725" output-generation-type="PerInput" output-type="Analyte" limsid="2-665725" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/JON1407A3455PA1?state=333678" uri="http://testserver.com:1234/here/artifacts/JON1407A3455PA1?state=333678" limsid="JON1407A3455PA1" />
+        <output uri="http://testserver.com:1234/here/artifacts/2-665721?state=359721" output-generation-type="PerInput" output-type="Analyte" limsid="2-665721" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/JON1407A3439PA1?state=335412" uri="http://testserver.com:1234/here/artifacts/JON1407A3439PA1?state=335412" limsid="JON1407A3439PA1" />
+        <output uri="http://testserver.com:1234/here/artifacts/2-665722?state=359722" output-generation-type="PerInput" output-type="Analyte" limsid="2-665722" />
+    </input-output-map>
+    <udf:field type="String" name="Plate Purpose">WGS Stock DNA</udf:field>
+    <process-parameter name="Plate Purpose" />
+</prc:process>

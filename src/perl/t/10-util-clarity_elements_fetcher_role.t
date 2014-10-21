@@ -5,7 +5,7 @@ use Cwd;
 use XML::LibXML;
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
-my $base_uri = q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2};
+my $base_uri = q{http://testserver.com:1234/here};
 
 ##################  start of test class ####################
 package test::10_util_clarity_elements_fetcher_role_test_class;

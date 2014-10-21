@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/GIB11A147PA1?state=965" limsid="GIB11A147PA1">
+    <name>eag sample-151</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-27" limsid="27-27"/>
+        <value>E:4</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/GIB11A147" limsid="GIB11A147"/>
+    <artifact-group name="C44 workflow not QC" uri="http://testserver.com:1234/here/artifactgroups/703"/>
+</art:artifact>

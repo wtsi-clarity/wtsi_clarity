@@ -25,7 +25,7 @@ fluidigm_analysis=t/data/genotyping/fluidigm
 isc_cap_lib_qc=t/data/epp/isc/agilent_analyser
 
 [tag_plate]
-gatekeeper_url = http://dev.com/api/1
+gatekeeper_url = http://dev.com/
 user_uuid = 666
 search_path = 555
 api_key = 777

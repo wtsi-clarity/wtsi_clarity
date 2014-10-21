@@ -20,7 +20,7 @@ use_ok('util::xml', 'can use wtsi_clarity::t::util::xml' );
 
   # local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
   my $plate_purpose = wtsi_clarity::epp::generic::plate_purpose_updater->new(
-    process_url => 'http://clarity-ap:8080/api/v2/processes/24-99911');
+    process_url => 'http://testserver.com:1234/here/processes/24-99911');
   # , $FAKE_PURPOSE
   lives_ok { $plate_purpose->fetch_and_update_targets($plate_purpose->process_doc) } 'managed to fetch and updates the containers';
 
@@ -44,7 +44,7 @@ use_ok('util::xml', 'can use wtsi_clarity::t::util::xml' );
   my $PURPOSE = 'Because...';
 
   my $plate_purpose = wtsi_clarity::epp::generic::plate_purpose_updater->new(
-    process_url => 'http://clarity-ap:8080/api/v2/processes/24-99912');
+    process_url => 'http://testserver.com:1234/here/processes/24-99912');
 
   lives_ok { $plate_purpose->fetch_and_update_targets($plate_purpose->process_doc) } 'managed to fetch and updates the containers';
 

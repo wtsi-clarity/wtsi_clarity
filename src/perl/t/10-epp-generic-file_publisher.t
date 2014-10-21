@@ -25,7 +25,7 @@ local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/file_publisher';
   );
 
   my @output_uris = (
-    'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/92-7352?state=3552',
+    'http://testserver.com:1234/here/artifacts/92-7352?state=3552',
   );
 
   is_deeply($pf->_output_uris, \@output_uris, 'fetches the right output uris');
@@ -37,9 +37,9 @@ local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/file_publisher';
   );
 
   my $parser = XML::LibXML->new();
-  my $artifacts_xml = $parser->parse_file('t/data/epp/generic/file_publisher/POST/batch/artifacts');
+  my $artifacts_xml = $parser->parse_file('t/data/epp/generic/file_publisher/POST/batch.artifacts');
 
-  my @expected_results = ('http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/files/92-7352-40-168');
+  my @expected_results = ('http://testserver.com:1234/here/files/92-7352-40-168');
 
   is_deeply($pf->_extract_files($artifacts_xml), \@expected_results, 'fetches the right files uris');
 }
@@ -50,7 +50,7 @@ local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/file_publisher';
   );
 
   my $parser = XML::LibXML->new();
-  my $files_xml = $parser->parse_file('t/data/epp/generic/file_publisher/POST/batch/files');
+  my $files_xml = $parser->parse_file('t/data/epp/generic/file_publisher/POST/batch.files');
 
   $pf->_set_is_published($files_xml);
 

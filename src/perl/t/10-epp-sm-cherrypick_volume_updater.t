@@ -9,7 +9,7 @@ use lib qw ( t );
 use util::xml;
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
-my $base_uri = q{http://clarity-ap.internal.sanger.ac.uk:8080/api/v2};
+my $base_uri = q{http://testserver.com:1234/here};
 
 use_ok('wtsi_clarity::epp::sm::cherrypick_volume_updater', 'can use wtsi_clarity::epp::sm::cherrypick_volume_updater' );
 use_ok('util::xml', 'can use wtsi_clarity::t::util::xml' );

@@ -325,7 +325,6 @@ sub download_file {
 
 sub _create_path {
     my ( $self, $url, $type, $content ) = @_;
-
     my $base_uri = $self->config->clarity_api->{'base_uri'}.q{/};
 
     my $path;
@@ -334,30 +333,40 @@ sub _create_path {
     my $second_element;
 
     my $short_url = $url;
+    my $separator = q{.};
+
     if ($url =~ /$base_uri/xms) {
-        # if we match the clarity-uri, then we know the format
         $short_url =~ s/$base_uri//xms;
-        @components     = split /\//xms, $short_url;
-        $first_element  = shift @components;
-        $second_element = shift @components;
     } else {
-        @components     = split /\//xms, $url;
-        $second_element = pop @components;
-        $first_element  = pop @components;
-        $path = $type;
+        $short_url =~ s/http:\/\/[^\/]+//xms;
+    }
+
+    $short_url =~ s/\/\//\//gxms;
+    ## no critic(MagicNumbers)
+    @components     = split /[\/]/xms, $short_url;
+    $second_element = $components[-1];
+    $first_element  = $components[-2];
+    $path = $type;
+
+    if (scalar @components >=2 && $components[-2] eq 'batch' && $components[-1] eq 'retrieve') {
+        # in case of a batch, we behave slightly differently...
+        # we remove the last element ('retreive') as it is not needed at all...
+        pop @components;
     }
 
     if($content) {
-        $second_element .= _decorate_resource_name($content);
+        $components[-1] .= _decorate_resource_name($content);
     }
 
-    if ($second_element and $first_element) {
-        # matching  BASE_URI/resourcename/query
-        $path = catdir($type, $first_element, $second_element);
-    } elsif ($first_element) {
-        # matching  BASE_URI/query
-        $path = catdir($type, $first_element);
+
+    unshift @components, $type;
+
+    @components = grep { $_ ne q{} } @components;
+    if (scalar @components >2) {
+        my $resource_id = pop @components;
+        $components[-1] .= qq{$separator$resource_id};
     }
+    $path = catdir ( @components );
 
     if ($path) {
         $path = catfile($ENV{$self->cache_dir_var_name} || q{}, $path);
@@ -365,8 +374,9 @@ sub _create_path {
         if (!$content) { $content = q/(No payload)/; }
         croak qq{Wrong URL format for caching.\n    $type\n    $url  (in short : $short_url )\n    with "$content"\n    Is it matching the base url correct ? ($base_uri)\n   }
     }
-
     return $path;
+
+    ## use critic
 }
 
 sub _decorate_resource_name {

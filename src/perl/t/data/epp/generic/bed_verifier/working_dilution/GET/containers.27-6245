@@ -1,0 +1,297 @@
+<?xml version="1.0" standalone="yes"?>
+<con:container xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container" uri="http://testserver.com:1234/here/containers/27-6245" limsid="27-6245">
+    <name>5260276245665</name>
+    <type uri="http://testserver.com:1234/here/containertypes/105" name="ABgene 0800"/>
+    <occupied-wells>96</occupied-wells>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1457PA1" limsid="JON1407A1457PA1">
+        <value>H:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1507PA1" limsid="JON1407A1507PA1">
+        <value>B:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1458PA1" limsid="JON1407A1458PA1">
+        <value>A:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1506PA1" limsid="JON1407A1506PA1">
+        <value>A:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1455PA1" limsid="JON1407A1455PA1">
+        <value>F:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1505PA1" limsid="JON1407A1505PA1">
+        <value>H:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1456PA1" limsid="JON1407A1456PA1">
+        <value>G:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1504PA1" limsid="JON1407A1504PA1">
+        <value>G:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1453PA1" limsid="JON1407A1453PA1">
+        <value>D:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1511PA1" limsid="JON1407A1511PA1">
+        <value>F:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1454PA1" limsid="JON1407A1454PA1">
+        <value>E:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1510PA1" limsid="JON1407A1510PA1">
+        <value>E:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1509PA1" limsid="JON1407A1509PA1">
+        <value>D:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1451PA1" limsid="JON1407A1451PA1">
+        <value>B:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1508PA1" limsid="JON1407A1508PA1">
+        <value>C:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1452PA1" limsid="JON1407A1452PA1">
+        <value>C:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1449PA1" limsid="JON1407A1449PA1">
+        <value>H:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1515PA1" limsid="JON1407A1515PA1">
+        <value>B:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1450PA1" limsid="JON1407A1450PA1">
+        <value>A:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1514PA1" limsid="JON1407A1514PA1">
+        <value>A:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1447PA1" limsid="JON1407A1447PA1">
+        <value>F:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1513PA1" limsid="JON1407A1513PA1">
+        <value>H:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1448PA1" limsid="JON1407A1448PA1">
+        <value>G:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1512PA1" limsid="JON1407A1512PA1">
+        <value>G:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1445PA1" limsid="JON1407A1445PA1">
+        <value>D:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1519PA1" limsid="JON1407A1519PA1">
+        <value>F:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1446PA1" limsid="JON1407A1446PA1">
+        <value>E:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1518PA1" limsid="JON1407A1518PA1">
+        <value>E:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1517PA1" limsid="JON1407A1517PA1">
+        <value>D:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1444PA1" limsid="JON1407A1444PA1">
+        <value>C:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1516PA1" limsid="JON1407A1516PA1">
+        <value>C:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1443PA1" limsid="JON1407A1443PA1">
+        <value>B:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1491PA1" limsid="JON1407A1491PA1">
+        <value>B:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1442PA1" limsid="JON1407A1442PA1">
+        <value>A:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1492PA1" limsid="JON1407A1492PA1">
+        <value>C:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1441PA1" limsid="JON1407A1441PA1">
+        <value>H:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1489PA1" limsid="JON1407A1489PA1">
+        <value>H:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1440PA1" limsid="JON1407A1440PA1">
+        <value>G:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1490PA1" limsid="JON1407A1490PA1">
+        <value>A:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1495PA1" limsid="JON1407A1495PA1">
+        <value>F:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1439PA1" limsid="JON1407A1439PA1">
+        <value>F:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1438PA1" limsid="JON1407A1438PA1">
+        <value>E:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1496PA1" limsid="JON1407A1496PA1">
+        <value>G:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1437PA1" limsid="JON1407A1437PA1">
+        <value>D:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1493PA1" limsid="JON1407A1493PA1">
+        <value>D:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1436PA1" limsid="JON1407A1436PA1">
+        <value>C:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1494PA1" limsid="JON1407A1494PA1">
+        <value>E:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1499PA1" limsid="JON1407A1499PA1">
+        <value>B:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1435PA1" limsid="JON1407A1435PA1">
+        <value>B:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1500PA1" limsid="JON1407A1500PA1">
+        <value>C:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1434PA1" limsid="JON1407A1434PA1">
+        <value>A:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1433PA1" limsid="JON1407A1433PA1">
+        <value>H:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1497PA1" limsid="JON1407A1497PA1">
+        <value>H:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1432PA1" limsid="JON1407A1432PA1">
+        <value>G:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1498PA1" limsid="JON1407A1498PA1">
+        <value>A:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1502PA1" limsid="JON1407A1502PA1">
+        <value>E:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1431PA1" limsid="JON1407A1431PA1">
+        <value>F:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1503PA1" limsid="JON1407A1503PA1">
+        <value>F:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1430PA1" limsid="JON1407A1430PA1">
+        <value>E:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1429PA1" limsid="JON1407A1429PA1">
+        <value>D:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1501PA1" limsid="JON1407A1501PA1">
+        <value>D:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1428PA1" limsid="JON1407A1428PA1">
+        <value>C:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1475PA1" limsid="JON1407A1475PA1">
+        <value>B:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1474PA1" limsid="JON1407A1474PA1">
+        <value>A:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1477PA1" limsid="JON1407A1477PA1">
+        <value>D:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1426PA1" limsid="JON1407A1426PA1">
+        <value>A:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1476PA1" limsid="JON1407A1476PA1">
+        <value>C:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1427PA1" limsid="JON1407A1427PA1">
+        <value>B:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1479PA1" limsid="JON1407A1479PA1">
+        <value>F:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1478PA1" limsid="JON1407A1478PA1">
+        <value>E:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1481PA1" limsid="JON1407A1481PA1">
+        <value>H:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1480PA1" limsid="JON1407A1480PA1">
+        <value>G:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1482PA1" limsid="JON1407A1482PA1">
+        <value>A:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1484PA1" limsid="JON1407A1484PA1">
+        <value>C:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1483PA1" limsid="JON1407A1483PA1">
+        <value>B:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1486PA1" limsid="JON1407A1486PA1">
+        <value>E:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1485PA1" limsid="JON1407A1485PA1">
+        <value>D:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1488PA1" limsid="JON1407A1488PA1">
+        <value>G:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1487PA1" limsid="JON1407A1487PA1">
+        <value>F:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1459PA1" limsid="JON1407A1459PA1">
+        <value>B:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1460PA1" limsid="JON1407A1460PA1">
+        <value>C:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1461PA1" limsid="JON1407A1461PA1">
+        <value>D:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1462PA1" limsid="JON1407A1462PA1">
+        <value>E:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1520PA1" limsid="JON1407A1520PA1">
+        <value>G:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1463PA1" limsid="JON1407A1463PA1">
+        <value>F:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1464PA1" limsid="JON1407A1464PA1">
+        <value>G:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1465PA1" limsid="JON1407A1465PA1">
+        <value>H:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1466PA1" limsid="JON1407A1466PA1">
+        <value>A:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1467PA1" limsid="JON1407A1467PA1">
+        <value>B:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1468PA1" limsid="JON1407A1468PA1">
+        <value>C:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1469PA1" limsid="JON1407A1469PA1">
+        <value>D:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1470PA1" limsid="JON1407A1470PA1">
+        <value>E:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1471PA1" limsid="JON1407A1471PA1">
+        <value>F:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1472PA1" limsid="JON1407A1472PA1">
+        <value>G:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/JON1407A1473PA1" limsid="JON1407A1473PA1">
+        <value>H:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-648004" limsid="2-648004">
+        <value>H:12</value>
+    </placement>
+    <udf:field type="String" name="WTSI Container Purpose Name">Stock Plate</udf:field>
+    <udf:field type="String" name="Supplier Container Name">7</udf:field>
+    <state>Populated</state>
+</con:container>
