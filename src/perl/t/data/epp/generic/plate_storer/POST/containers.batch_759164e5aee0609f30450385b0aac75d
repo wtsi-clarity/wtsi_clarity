@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="yes"?>
+<con:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container">
+    <con:container uri="http://testserver.com:1234/here/containers/27-53" limsid="27-53">
+        <name>5260002753679</name>
+        <type uri="http://testserver.com:1234/here/containertypes/16" name="ABgene 0765"/>
+        <occupied-wells>95</occupied-wells>
+        <placement uri="http://testserver.com:1234/here/artifacts/DEA52A55PA1" limsid="DEA52A55PA1">
+            <value>C:3</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/DEA52A56PA1" limsid="DEA52A56PA1">
+            <value>G:3</value>
+        </placement>
+        <udf:field type="String" name="Supplier Container Name">1</udf:field>
+        <udf:field type="String" name="WTSI Container Purpose Name">Stock Plate</udf:field>
+        <state>Populated</state>
+    </con:container>
+</con:details>

@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/2-27844?state=11944" limsid="2-27844">
+    <name>1470-postpcrXP</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+        <value>F:11</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/TES155A466" limsid="TES155A466"/>
+    <reagent-label name="iPCR tag 86 (CCGACAAC)"/>
+</art:artifact>

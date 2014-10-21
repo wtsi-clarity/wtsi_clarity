@@ -12,7 +12,7 @@ use_ok( 'wtsi_clarity::tag_plate::layout' );
     qr/Attribute \(gatekeeper_info\) is required /,
     'error creating an object without required attributes';
   
-  my $layout = from_json(read_file('t/data/tag_plate/valid/GET/1/19876'));
+  my $layout = from_json(read_file('t/data/tag_plate/valid/GET/19876'));
   my $l;
   lives_ok {$l = wtsi_clarity::tag_plate::layout->new(gatekeeper_info => $layout)}
     'layout object created';

@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<ctp:container-type xmlns:ctp="http://genologics.com/ri/containertype" uri="http://testserver.com:1234/here/containertypes/105" name="ABgene 0800">
+    <is-tube>false</is-tube>
+    <x-dimension>
+        <is-alpha>false</is-alpha>
+        <offset>1</offset>
+        <size>12</size>
+    </x-dimension>
+    <y-dimension>
+        <is-alpha>true</is-alpha>
+        <offset>0</offset>
+        <size>8</size>
+    </y-dimension>
+</ctp:container-type>

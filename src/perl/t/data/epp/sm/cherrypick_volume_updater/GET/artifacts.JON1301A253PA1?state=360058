@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/JON1301A253PA1?state=360058" limsid="JON1301A253PA1">
+    <name>506693ae-f2fc-11e3-b42e-68b59977951e</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-7652" limsid="27-7652"/>
+        <value>C:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/JON1301A253" limsid="JON1301A253"/>
+    <artifact-group name="SM Cherrypick Test" uri="http://testserver.com:1234/here/artifactgroups/502"/>
+</art:artifact>

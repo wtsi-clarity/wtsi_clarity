@@ -1,0 +1,49 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="24-67069" uri="http://testserver.com:1234/here/processes/24-67069" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://testserver.com:1234/here/processtypes/538">Stock Plate Barcode (SM)</type>
+  <technician uri="http://testserver.com:1234/here/researchers/6">
+    <first-name>Doris</first-name>
+    <last-name>Brooks</last-name>
+  </technician>
+  <input-output-map>
+    <input limsid="SCO106A111PA1" post-process-uri="http://testserver.com:1234/here/artifacts/SCO106A111PA1?state=26847" uri="http://testserver.com:1234/here/artifacts/SCO106A111PA1?state=26847"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="SCO106A114PA1" post-process-uri="http://testserver.com:1234/here/artifacts/SCO106A114PA1?state=27357" uri="http://testserver.com:1234/here/artifacts/SCO106A114PA1?state=27357"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="SCO106A113PA1" post-process-uri="http://testserver.com:1234/here/artifacts/SCO106A113PA1?state=27381" uri="http://testserver.com:1234/here/artifacts/SCO106A113PA1?state=27381"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="SCO106A116PA1" post-process-uri="http://testserver.com:1234/here/artifacts/SCO106A116PA1?state=27384" uri="http://testserver.com:1234/here/artifacts/SCO106A116PA1?state=27384"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="SCO106A115PA1" post-process-uri="http://testserver.com:1234/here/artifacts/SCO106A115PA1?state=27363" uri="http://testserver.com:1234/here/artifacts/SCO106A115PA1?state=27363"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="SCO106A118PA1" post-process-uri="http://testserver.com:1234/here/artifacts/SCO106A118PA1?state=26820" uri="http://testserver.com:1234/here/artifacts/SCO106A118PA1?state=26820"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="SCO106A117PA1" post-process-uri="http://testserver.com:1234/here/artifacts/SCO106A117PA1?state=27377" uri="http://testserver.com:1234/here/artifacts/SCO106A117PA1?state=27377"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="SCO106A120PA1" post-process-uri="http://testserver.com:1234/here/artifacts/SCO106A120PA1?state=26833" uri="http://testserver.com:1234/here/artifacts/SCO106A120PA1?state=26833"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="SCO106A196PA1" post-process-uri="http://testserver.com:1234/here/artifacts/SCO106A196PA1?state=26813" uri="http://testserver.com:1234/here/artifacts/SCO106A196PA1?state=26813"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="SCO106A119PA1" post-process-uri="http://testserver.com:1234/here/artifacts/SCO106A119PA1?state=27386" uri="http://testserver.com:1234/here/artifacts/SCO106A119PA1?state=27386"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="SCO106A195PA1" post-process-uri="http://testserver.com:1234/here/artifacts/SCO106A195PA1?state=27362" uri="http://testserver.com:1234/here/artifacts/SCO106A195PA1?state=27362"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="SCO106A122PA1" post-process-uri="http://testserver.com:1234/here/artifacts/SCO106A122PA1?state=27392" uri="http://testserver.com:1234/here/artifacts/SCO106A122PA1?state=27392"/>
+  </input-output-map>
+  <udf:field name="Select Barcode Printer" type="String">d304bc  </udf:field>
+  <udf:field name="Barcode Copies" type="Numeric">2</udf:field>
+  <udf:field name="Process Code" type="String">DN</udf:field>
+  <udf:field name="Plate Purpose" type="String">Stock Plate</udf:field>
+  <process-parameter name="Print Barcode"/>
+</prc:process>

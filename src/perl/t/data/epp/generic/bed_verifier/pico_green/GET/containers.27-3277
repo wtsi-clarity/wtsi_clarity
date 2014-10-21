@@ -1,0 +1,259 @@
+<?xml version="1.0" standalone="yes"?>
+<con:container xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container" uri="http://testserver.com:1234/here/containers/27-3277" limsid="27-3277">
+    <name>DN299294 ILB_STD_INPUT</name>
+    <type uri="http://testserver.com:1234/here/containertypes/1" name="96 Well Plate"/>
+    <occupied-wells>82</occupied-wells>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A82PA1" limsid="ADM730A82PA1">
+        <value>A:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A83PA1" limsid="ADM730A83PA1">
+        <value>B:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A84PA1" limsid="ADM730A84PA1">
+        <value>C:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A85PA1" limsid="ADM730A85PA1">
+        <value>D:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A86PA1" limsid="ADM730A86PA1">
+        <value>E:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A87PA1" limsid="ADM730A87PA1">
+        <value>F:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A88PA1" limsid="ADM730A88PA1">
+        <value>G:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A89PA1" limsid="ADM730A89PA1">
+        <value>H:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A90PA1" limsid="ADM730A90PA1">
+        <value>A:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A91PA1" limsid="ADM730A91PA1">
+        <value>B:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A92PA1" limsid="ADM730A92PA1">
+        <value>C:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A93PA1" limsid="ADM730A93PA1">
+        <value>D:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A94PA1" limsid="ADM730A94PA1">
+        <value>E:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A95PA1" limsid="ADM730A95PA1">
+        <value>F:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A96PA1" limsid="ADM730A96PA1">
+        <value>G:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A97PA1" limsid="ADM730A97PA1">
+        <value>H:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A98PA1" limsid="ADM730A98PA1">
+        <value>A:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A99PA1" limsid="ADM730A99PA1">
+        <value>B:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A100PA1" limsid="ADM730A100PA1">
+        <value>C:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A101PA1" limsid="ADM730A101PA1">
+        <value>D:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A102PA1" limsid="ADM730A102PA1">
+        <value>E:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A103PA1" limsid="ADM730A103PA1">
+        <value>F:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A104PA1" limsid="ADM730A104PA1">
+        <value>G:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A105PA1" limsid="ADM730A105PA1">
+        <value>H:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A106PA1" limsid="ADM730A106PA1">
+        <value>A:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A107PA1" limsid="ADM730A107PA1">
+        <value>B:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A108PA1" limsid="ADM730A108PA1">
+        <value>C:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A109PA1" limsid="ADM730A109PA1">
+        <value>D:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A110PA1" limsid="ADM730A110PA1">
+        <value>E:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A111PA1" limsid="ADM730A111PA1">
+        <value>F:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A112PA1" limsid="ADM730A112PA1">
+        <value>G:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A113PA1" limsid="ADM730A113PA1">
+        <value>H:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A114PA1" limsid="ADM730A114PA1">
+        <value>A:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A115PA1" limsid="ADM730A115PA1">
+        <value>B:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A116PA1" limsid="ADM730A116PA1">
+        <value>C:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A117PA1" limsid="ADM730A117PA1">
+        <value>D:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A118PA1" limsid="ADM730A118PA1">
+        <value>E:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A119PA1" limsid="ADM730A119PA1">
+        <value>F:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A120PA1" limsid="ADM730A120PA1">
+        <value>G:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A121PA1" limsid="ADM730A121PA1">
+        <value>H:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A122PA1" limsid="ADM730A122PA1">
+        <value>A:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A123PA1" limsid="ADM730A123PA1">
+        <value>B:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A124PA1" limsid="ADM730A124PA1">
+        <value>C:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A125PA1" limsid="ADM730A125PA1">
+        <value>D:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A126PA1" limsid="ADM730A126PA1">
+        <value>E:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A127PA1" limsid="ADM730A127PA1">
+        <value>F:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A128PA1" limsid="ADM730A128PA1">
+        <value>G:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A129PA1" limsid="ADM730A129PA1">
+        <value>H:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A130PA1" limsid="ADM730A130PA1">
+        <value>A:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A131PA1" limsid="ADM730A131PA1">
+        <value>B:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A132PA1" limsid="ADM730A132PA1">
+        <value>C:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A133PA1" limsid="ADM730A133PA1">
+        <value>D:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A134PA1" limsid="ADM730A134PA1">
+        <value>E:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A135PA1" limsid="ADM730A135PA1">
+        <value>F:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A136PA1" limsid="ADM730A136PA1">
+        <value>G:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A137PA1" limsid="ADM730A137PA1">
+        <value>H:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A138PA1" limsid="ADM730A138PA1">
+        <value>A:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A139PA1" limsid="ADM730A139PA1">
+        <value>B:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A140PA1" limsid="ADM730A140PA1">
+        <value>C:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A141PA1" limsid="ADM730A141PA1">
+        <value>D:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A142PA1" limsid="ADM730A142PA1">
+        <value>E:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A143PA1" limsid="ADM730A143PA1">
+        <value>F:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A144PA1" limsid="ADM730A144PA1">
+        <value>G:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A145PA1" limsid="ADM730A145PA1">
+        <value>H:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A146PA1" limsid="ADM730A146PA1">
+        <value>A:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A147PA1" limsid="ADM730A147PA1">
+        <value>B:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A148PA1" limsid="ADM730A148PA1">
+        <value>C:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A149PA1" limsid="ADM730A149PA1">
+        <value>D:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A150PA1" limsid="ADM730A150PA1">
+        <value>E:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A151PA1" limsid="ADM730A151PA1">
+        <value>F:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A152PA1" limsid="ADM730A152PA1">
+        <value>G:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A153PA1" limsid="ADM730A153PA1">
+        <value>H:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A154PA1" limsid="ADM730A154PA1">
+        <value>A:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A155PA1" limsid="ADM730A155PA1">
+        <value>B:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM1079A538PA1" limsid="ADM1079A538PA1">
+        <value>C:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A156PA1" limsid="ADM730A156PA1">
+        <value>D:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A157PA1" limsid="ADM730A157PA1">
+        <value>E:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A158PA1" limsid="ADM730A158PA1">
+        <value>F:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A159PA1" limsid="ADM730A159PA1">
+        <value>G:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A160PA1" limsid="ADM730A160PA1">
+        <value>H:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A161PA1" limsid="ADM730A161PA1">
+        <value>A:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/ADM730A162PA1" limsid="ADM730A162PA1">
+        <value>B:11</value>
+    </placement>
+    <udf:field type="String" name="WTSI Barcode Prefix">DN</udf:field>
+    <udf:field type="Numeric" name="WTSI Barcode">299294</udf:field>
+    <udf:field type="Numeric" name="EAN13 Barcode">1220299294761</udf:field>
+    <udf:field type="String" name="WTSI Container Purpose Name">ILB_STD_INPUT</udf:field>
+    <udf:field type="String" name="WTSI Container Name">Cherrypicked 299294</udf:field>
+    <udf:field type="Numeric" name="WTSI Container ID">8156043</udf:field>
+    <state>Populated</state>
+</con:container>

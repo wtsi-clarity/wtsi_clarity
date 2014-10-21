@@ -1,0 +1,297 @@
+<?xml version="1.0" standalone="yes"?>
+<con:container xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container" uri="http://testserver.com:1234/here/containers/27-23" limsid="27-23">
+    <name>eag plate 1</name>
+    <type uri="http://testserver.com:1234/here/containertypes/1" name="96 Well Plate"/>
+    <occupied-wells>95</occupied-wells>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A2PA1" limsid="GIB11A2PA1">
+        <value>A:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A1PA1" limsid="GIB11A1PA1">
+        <value>A:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A5PA1" limsid="GIB11A5PA1">
+        <value>A:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A4PA1" limsid="GIB11A4PA1">
+        <value>A:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A3PA1" limsid="GIB11A3PA1">
+        <value>A:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A7PA1" limsid="GIB11A7PA1">
+        <value>A:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A6PA1" limsid="GIB11A6PA1">
+        <value>A:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A10PA1" limsid="GIB11A10PA1">
+        <value>A:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A9PA1" limsid="GIB11A9PA1">
+        <value>A:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A8PA1" limsid="GIB11A8PA1">
+        <value>A:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A22PA1" limsid="GIB11A22PA1">
+        <value>B:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A23PA1" limsid="GIB11A23PA1">
+        <value>B:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A25PA1" limsid="GIB11A25PA1">
+        <value>C:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A24PA1" limsid="GIB11A24PA1">
+        <value>B:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A26PA1" limsid="GIB11A26PA1">
+        <value>C:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A27PA1" limsid="GIB11A27PA1">
+        <value>C:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A29PA1" limsid="GIB11A29PA1">
+        <value>C:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A28PA1" limsid="GIB11A28PA1">
+        <value>C:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A30PA1" limsid="GIB11A30PA1">
+        <value>C:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A31PA1" limsid="GIB11A31PA1">
+        <value>C:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A11PA1" limsid="GIB11A11PA1">
+        <value>A:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A12PA1" limsid="GIB11A12PA1">
+        <value>A:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A13PA1" limsid="GIB11A13PA1">
+        <value>B:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A14PA1" limsid="GIB11A14PA1">
+        <value>B:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A15PA1" limsid="GIB11A15PA1">
+        <value>B:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A16PA1" limsid="GIB11A16PA1">
+        <value>B:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A17PA1" limsid="GIB11A17PA1">
+        <value>B:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A18PA1" limsid="GIB11A18PA1">
+        <value>B:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A19PA1" limsid="GIB11A19PA1">
+        <value>B:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A20PA1" limsid="GIB11A20PA1">
+        <value>B:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A21PA1" limsid="GIB11A21PA1">
+        <value>B:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A47PA1" limsid="GIB11A47PA1">
+        <value>D:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A46PA1" limsid="GIB11A46PA1">
+        <value>D:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A45PA1" limsid="GIB11A45PA1">
+        <value>D:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A44PA1" limsid="GIB11A44PA1">
+        <value>D:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A43PA1" limsid="GIB11A43PA1">
+        <value>D:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A53PA1" limsid="GIB11A53PA1">
+        <value>E:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A52PA1" limsid="GIB11A52PA1">
+        <value>E:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A51PA1" limsid="GIB11A51PA1">
+        <value>E:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A50PA1" limsid="GIB11A50PA1">
+        <value>E:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A49PA1" limsid="GIB11A49PA1">
+        <value>E:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A48PA1" limsid="GIB11A48PA1">
+        <value>D:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A36PA1" limsid="GIB11A36PA1">
+        <value>C:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A37PA1" limsid="GIB11A37PA1">
+        <value>D:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A35PA1" limsid="GIB11A35PA1">
+        <value>C:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A34PA1" limsid="GIB11A34PA1">
+        <value>C:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A32PA1" limsid="GIB11A32PA1">
+        <value>C:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A33PA1" limsid="GIB11A33PA1">
+        <value>C:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A42PA1" limsid="GIB11A42PA1">
+        <value>D:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A40PA1" limsid="GIB11A40PA1">
+        <value>D:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A41PA1" limsid="GIB11A41PA1">
+        <value>D:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A39PA1" limsid="GIB11A39PA1">
+        <value>D:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A38PA1" limsid="GIB11A38PA1">
+        <value>D:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A67PA1" limsid="GIB11A67PA1">
+        <value>F:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A69PA1" limsid="GIB11A69PA1">
+        <value>F:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A68PA1" limsid="GIB11A68PA1">
+        <value>F:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A65PA1" limsid="GIB11A65PA1">
+        <value>F:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A64PA1" limsid="GIB11A64PA1">
+        <value>F:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A66PA1" limsid="GIB11A66PA1">
+        <value>F:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A73PA1" limsid="GIB11A73PA1">
+        <value>G:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A72PA1" limsid="GIB11A72PA1">
+        <value>F:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A74PA1" limsid="GIB11A74PA1">
+        <value>G:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A70PA1" limsid="GIB11A70PA1">
+        <value>F:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A71PA1" limsid="GIB11A71PA1">
+        <value>F:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A56PA1" limsid="GIB11A56PA1">
+        <value>E:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A57PA1" limsid="GIB11A57PA1">
+        <value>E:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A58PA1" limsid="GIB11A58PA1">
+        <value>E:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A54PA1" limsid="GIB11A54PA1">
+        <value>E:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A55PA1" limsid="GIB11A55PA1">
+        <value>E:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A62PA1" limsid="GIB11A62PA1">
+        <value>F:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A63PA1" limsid="GIB11A63PA1">
+        <value>F:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A59PA1" limsid="GIB11A59PA1">
+        <value>E:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A60PA1" limsid="GIB11A60PA1">
+        <value>E:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A61PA1" limsid="GIB11A61PA1">
+        <value>F:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A92PA1" limsid="GIB11A92PA1">
+        <value>H:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A93PA1" limsid="GIB11A93PA1">
+        <value>H:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A91PA1" limsid="GIB11A91PA1">
+        <value>H:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A95PA1" limsid="GIB11A95PA1">
+        <value>H:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A94PA1" limsid="GIB11A94PA1">
+        <value>H:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A87PA1" limsid="GIB11A87PA1">
+        <value>H:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A86PA1" limsid="GIB11A86PA1">
+        <value>H:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A90PA1" limsid="GIB11A90PA1">
+        <value>H:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A88PA1" limsid="GIB11A88PA1">
+        <value>H:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A89PA1" limsid="GIB11A89PA1">
+        <value>H:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A82PA1" limsid="GIB11A82PA1">
+        <value>G:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A81PA1" limsid="GIB11A81PA1">
+        <value>G:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A80PA1" limsid="GIB11A80PA1">
+        <value>G:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A85PA1" limsid="GIB11A85PA1">
+        <value>H:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A84PA1" limsid="GIB11A84PA1">
+        <value>G:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A83PA1" limsid="GIB11A83PA1">
+        <value>G:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A77PA1" limsid="GIB11A77PA1">
+        <value>G:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A76PA1" limsid="GIB11A76PA1">
+        <value>G:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A75PA1" limsid="GIB11A75PA1">
+        <value>G:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A79PA1" limsid="GIB11A79PA1">
+        <value>G:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/GIB11A78PA1" limsid="GIB11A78PA1">
+        <value>G:6</value>
+    </placement>
+    <udf:field type="String" name="WTSI Container Purpose Name">PLATE_PURPOSE_23</udf:field>
+    <udf:field type="String" name="WTSI Freezer">0000011</udf:field>
+    <udf:field type="String" name="WTSI Shelf">0000012</udf:field>
+    <udf:field type="String" name="WTSI Rack">0000013</udf:field>
+    <udf:field type="String" name="WTSI Tray">0000014</udf:field>
+    <state>Populated</state>
+</con:container>

@@ -428,7 +428,7 @@ wtsi_clarity::epp::generic::stamper
 
   wtsi_clarity::epp:stamp->new(
        process_url => 'http://clarity-ap:8080/processes/3345',
-       step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970',
+       step_url    => 'http://testserver.com:1234/here/steps/24-98970',
   )->run();
 
   1:1 shadow plate scanario, output container type will be copied from the input
@@ -436,7 +436,7 @@ wtsi_clarity::epp::generic::stamper
 
   wtsi_clarity::epp:stamp->new(
        process_url => 'http://clarity-ap:8080/processes/3345',
-       step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970',
+       step_url    => 'http://testserver.com:1234/here/steps/24-98970',
        shadow_plate => 1,
   )->run();
 
@@ -444,7 +444,7 @@ wtsi_clarity::epp::generic::stamper
 
   wtsi_clarity::epp:stamp->new(
        process_url => 'http://clarity-ap:8080/processes/3345',
-       step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970',
+       step_url    => 'http://testserver.com:1234/here/steps/24-98970',
        container_type_name => ['ABgene 0800']
   )->run();
 
@@ -452,7 +452,7 @@ wtsi_clarity::epp::generic::stamper
 
   wtsi_clarity::epp:stamp->new(
        process_url => 'http://clarity-ap:8080/processes/3345',
-       step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970',
+       step_url    => 'http://testserver.com:1234/here/steps/24-98970',
        container_type_name => ['ABgene 0800', 'ABgene 0800']
   )->run();
 
@@ -460,7 +460,7 @@ wtsi_clarity::epp::generic::stamper
 
   wtsi_clarity::epp:stamp->new(
        process_url => 'http://clarity-ap:8080/processes/3345',
-       step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970',
+       step_url    => 'http://testserver.com:1234/here/steps/24-98970',
        container_type_name => ['ABgene 0800', 'ABgene 0765']
   )->run();
 
@@ -468,7 +468,7 @@ wtsi_clarity::epp::generic::stamper
 
   wtsi_clarity::epp::generic::stamper->new(
     process_url => 'http://clarity-ap:8080/processes/3345',
-    step_url    => 'http://clarity-ap:8080/api/v2/steps/24-98970',
+    step_url    => 'http://testserver.com:1234/here/steps/24-98970',
     container_type_name => ['384 Well Plate'],
     copy_on_target => 1
   )->run();

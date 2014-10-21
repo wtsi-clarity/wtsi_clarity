@@ -1,6 +1,6 @@
 <?xml version="1.0" standalone="yes"?>
 <art:artifacts xmlns:art="http://genologics.com/ri/artifact">
-    <artifact limsid="2-4001" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-4001"/>
-    <artifact limsid="2-4002" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-4002"/>
-    <artifact limsid="2-4003" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-4003"/>
+    <artifact limsid="2-4001" uri="http://testserver.com:1234/here/artifacts/2-4001"/>
+    <artifact limsid="2-4002" uri="http://testserver.com:1234/here/artifacts/2-4002"/>
+    <artifact limsid="2-4003" uri="http://testserver.com:1234/here/artifacts/2-4003"/>
 </art:artifacts>

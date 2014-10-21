@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="24-999" uri="http://testserver.com:1234/here/processes/24-999" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://testserver.com:1234/here/processtypes/108">Report</type>
+  <technician uri="http://testserver.com:1234/here/researchers/10">
+    <first-name>Friedrich</first-name>
+    <last-name>Nietzsche</last-name>
+  </technician>
+  <input-output-map>
+    <input limsid="2-3001" post-process-uri="http://testserver.com:1234/here/artifacts/2-3001?state=1205" uri="http://testserver.com:1234/here/artifacts/2-3001?state=1205"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-3002" post-process-uri="http://testserver.com:1234/here/artifacts/2-3002?state=1205" uri="http://testserver.com:1234/here/artifacts/2-3001?state=1205"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-3003" post-process-uri="http://testserver.com:1234/here/artifacts/2-3003?state=1205" uri="http://testserver.com:1234/here/artifacts/2-3001?state=1205"/>
+  </input-output-map>
+  <process-parameter name="Picogreen Analysis"/>
+</prc:process>

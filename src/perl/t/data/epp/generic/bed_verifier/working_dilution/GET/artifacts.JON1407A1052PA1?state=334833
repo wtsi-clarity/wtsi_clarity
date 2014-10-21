@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/JON1407A1052PA1?state=334833" limsid="JON1407A1052PA1">
+    <name>Test 197</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-6241" limsid="27-6241"/>
+        <value>G:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/JON1407A1052" limsid="JON1407A1052"/>
+</art:artifact>
