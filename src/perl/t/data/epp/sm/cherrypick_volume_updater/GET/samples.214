@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:sample
+  xmlns:udf="http://genologics.com/ri/userdefined"
+  xmlns:ri="http://genologics.com/ri"
+  xmlns:file="http://genologics.com/ri/file"
+  xmlns:smp="http://genologics.com/ri/sample"
+  uri="http://testserver.com:1234/here/samples/214"
+  limsid="214">
+
+    <artifact limsid="203" uri="http://testserver.com:1234/here/artifacts/214"/>
+    <udf:field type="Numeric" name="Sample Conc. (ng\/µL) (SM)"     >  20 </udf:field>
+    <udf:field type="Numeric" name="Volume (µL) (SM)"              > 100 </udf:field>
+    <udf:field type="Numeric" name="WTSI Working Volume (µL) (SM)" > 0.5 </udf:field>
+</smp:sample>

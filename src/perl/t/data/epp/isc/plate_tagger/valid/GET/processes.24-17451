@@ -1,0 +1,54 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="24-17451" uri="http://testserver.com:1234/here/processes/24-17451" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://testserver.com:1234/here/processtypes/305">Library PCR set up 20140911</type>
+  <technician uri="http://testserver.com:1234/here/researchers/58">
+    <first-name>Karoly</first-name>
+    <last-name>Erdos</last-name>
+  </technician>
+  <input-output-map>
+    <input limsid="LAB106A17PA1" post-process-uri="http://testserver.com:1234/here/artifacts/LAB106A17PA1?state=10564" uri="http://testserver.com:1234/here/artifacts/LAB106A17PA1?state=10564"/>
+    <output limsid="2-41786" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-41786?state=18336"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A18PA1" post-process-uri="http://testserver.com:1234/here/artifacts/LAB106A18PA1?state=10536" uri="http://testserver.com:1234/here/artifacts/LAB106A18PA1?state=10536"/>
+    <output limsid="2-41787" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-41787?state=18337"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A15PA1" post-process-uri="http://testserver.com:1234/here/artifacts/LAB106A15PA1?state=10546" uri="http://testserver.com:1234/here/artifacts/LAB106A15PA1?state=10546"/>
+    <output limsid="2-41788" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-41788?state=18338"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A16PA1" post-process-uri="http://testserver.com:1234/here/artifacts/LAB106A16PA1?state=10652" uri="http://testserver.com:1234/here/artifacts/LAB106A16PA1?state=10652"/>
+    <output limsid="2-41789" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-41789?state=18339"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A5PA1" post-process-uri="http://testserver.com:1234/here/artifacts/LAB106A5PA1?state=7248" uri="http://testserver.com:1234/here/artifacts/LAB106A5PA1?state=7248"/>
+    <output limsid="2-41782" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-41782?state=18332"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A6PA1" post-process-uri="http://testserver.com:1234/here/artifacts/LAB106A6PA1?state=10544" uri="http://testserver.com:1234/here/artifacts/LAB106A6PA1?state=10544"/>
+    <output limsid="2-41783" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-41783?state=18333"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A19PA1" post-process-uri="http://testserver.com:1234/here/artifacts/LAB106A19PA1?state=10590" uri="http://testserver.com:1234/here/artifacts/LAB106A19PA1?state=10590"/>
+    <output limsid="2-41784" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-41784?state=18334"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A20PA1" post-process-uri="http://testserver.com:1234/here/artifacts/LAB106A20PA1?state=10637" uri="http://testserver.com:1234/here/artifacts/LAB106A20PA1?state=10637"/>
+    <output limsid="2-41785" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-41785?state=18335"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A39PA1" post-process-uri="http://testserver.com:1234/here/artifacts/LAB106A39PA1?state=10609" uri="http://testserver.com:1234/here/artifacts/LAB106A39PA1?state=10609"/>
+    <output limsid="2-41794" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-41794?state=18344"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A40PA1" post-process-uri="http://testserver.com:1234/here/artifacts/LAB106A40PA1?state=7249" uri="http://testserver.com:1234/here/artifacts/LAB106A40PA1?state=7249"/>
+    <output limsid="2-41795" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-41795?state=18345"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A41PA1" post-process-uri="http://testserver.com:1234/here/artifacts/LAB106A41PA1?state=7237" uri="http://testserver.com:1234/here/artifacts/LAB106A41PA1?state=7237"/>
+    <output limsid="2-41796" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-41796?state=18346"/>
+  </input-output-map>
+  <udf:field name="Tag Plate" type="String">1220000002845</udf:field>
+  <process-parameter name="Add Tags"/>
+</prc:process>

@@ -54,6 +54,6 @@ sub _write_config {
 #   # local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
 
 #   my $epp = wtsi_clarity::epp::sm::fluidigm_analyser->new(
-#     process_url => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-16927/'
+#     process_url => 'http://testserver.com:1234/here/processes/24-16927/'
 #   )->run();
 # }

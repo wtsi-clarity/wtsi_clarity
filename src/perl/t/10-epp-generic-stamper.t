@@ -19,7 +19,7 @@ my $base_uri =  'http://testserver.com:1234/here' ;
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/stamper/stamp';
   #local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
   my $s = wtsi_clarity::epp::generic::stamper->new(
-              process_url => 'http://clarity-ap:8080/api/v2/processes/24-98502',
+              process_url => 'http://testserver.com:1234/here/processes/24-98502',
               step_url => 'some');
   lives_ok { $s->_analytes } 'got all info from clarity';
   my @containers = keys %{$s->_analytes};
@@ -29,7 +29,7 @@ my $base_uri =  'http://testserver.com:1234/here' ;
   is ($s->container_type_name->[0], 'ABgene 0800', 'container name retrieved correctly');
   is ($s->_validate_container_type, 0, 'container type validation flag unset');
   is ($s->_container_type->[0],
-     '<type uri="http://clarity-ap.internal.sanger.ac.uk:8080/api/v2/containertypes/105" name="ABgene 0800"/>',
+     '<type uri="http://testserver.com:1234/here/containertypes/105" name="ABgene 0800"/>',
      'container type value');
 
   delete $s->_analytes->{$containers[0]}->{'doc'};
@@ -110,8 +110,8 @@ my $base_uri =  'http://testserver.com:1234/here' ;
   my $dir = tempdir(CLEANUP => 1);
   `cp -R t/data/epp/generic/stamper/stamp_with_control $dir`;
    #remove tube container from test data
-  `rm $dir/stamp_with_control/GET/containers/27-7555`;
-  my $control = "$dir/stamp_with_control/GET/artifacts/151C-801PA1?state=359614";
+  `rm $dir/stamp_with_control/GET/containers.27-7555`;
+  my $control = "$dir/stamp_with_control/GET/artifacts.151C-801PA1?state=359614";
   my $control_xml = read_file $control;
   $control_xml =~ s/27-7555/27-7103/g;  #place control on the input plate
   $control_xml =~ s/1:1/H:12/g;         #in well H:12
@@ -156,7 +156,7 @@ my $base_uri =  'http://testserver.com:1234/here' ;
 {
 
   my $s = wtsi_clarity::epp::generic::stamper->new(
-            process_url => 'http://clarity-ap:8080/api/v2/processes/24-16122',
+            process_url => 'http://testserver.com:1234/here/processes/24-16122',
             step_url => 'some',
             copy_on_target => 0
           );
@@ -183,7 +183,7 @@ my $base_uri =  'http://testserver.com:1234/here' ;
 
   my $expected = { '27-2001' => 'barcode-00001-0002'};
   my $s = wtsi_clarity::epp::generic::stamper->new(
-            process_url => 'http://clarity-ap:8080/api/v2/processes/24-16122',
+            process_url => 'http://testserver.com:1234/here/processes/24-16122',
             step_url => 'some',
             shadow_plate => 1
           );

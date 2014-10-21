@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/2-686898?state=370198" limsid="2-686898">
+    <name>eag sample-152</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-8129" limsid="27-8129"/>
+        <value>C:6</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/GIB11A148" limsid="GIB11A148"/>
+    <udf:field type="Numeric" name="Cherrypick Sample Volume">1.2</udf:field>
+    <udf:field type="Numeric" name="Cherrypick Buffer Volume">8.8</udf:field>
+</art:artifact>

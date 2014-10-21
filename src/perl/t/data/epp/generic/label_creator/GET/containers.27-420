@@ -1,0 +1,295 @@
+<?xml version="1.0" standalone="yes"?>
+<con:container xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container" uri="http://testserver.com:1234/here/containers/27-420" limsid="27-420">
+    <name>1</name>
+    <type uri="http://testserver.com:1234/here/containertypes/15" name="ABgene 0800"/>
+    <occupied-wells>96</occupied-wells>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A73PA1" limsid="LAB106A73PA1">
+        <value>A:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A41PA1" limsid="LAB106A41PA1">
+        <value>A:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A51PA1" limsid="LAB106A51PA1">
+        <value>C:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A16PA1" limsid="LAB106A16PA1">
+        <value>H:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A47PA1" limsid="LAB106A47PA1">
+        <value>G:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A64PA1" limsid="LAB106A64PA1">
+        <value>H:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A59PA1" limsid="LAB106A59PA1">
+        <value>C:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A6PA1" limsid="LAB106A6PA1">
+        <value>F:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A60PA1" limsid="LAB106A60PA1">
+        <value>D:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A37PA1" limsid="LAB106A37PA1">
+        <value>E:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A2PA1" limsid="LAB106A2PA1">
+        <value>B:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A95PA1" limsid="LAB106A95PA1">
+        <value>G:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A90PA1" limsid="LAB106A90PA1">
+        <value>B:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A11PA1" limsid="LAB106A11PA1">
+        <value>C:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A20PA1" limsid="LAB106A20PA1">
+        <value>D:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A29PA1" limsid="LAB106A29PA1">
+        <value>E:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A68PA1" limsid="LAB106A68PA1">
+        <value>D:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A78PA1" limsid="LAB106A78PA1">
+        <value>F:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A24PA1" limsid="LAB106A24PA1">
+        <value>H:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A82PA1" limsid="LAB106A82PA1">
+        <value>B:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A33PA1" limsid="LAB106A33PA1">
+        <value>A:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A86PA1" limsid="LAB106A86PA1">
+        <value>F:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A42PA1" limsid="LAB106A42PA1">
+        <value>B:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A55PA1" limsid="LAB106A55PA1">
+        <value>G:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A85PA1" limsid="LAB106A85PA1">
+        <value>E:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A50PA1" limsid="LAB106A50PA1">
+        <value>B:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A74PA1" limsid="LAB106A74PA1">
+        <value>B:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A46PA1" limsid="LAB106A46PA1">
+        <value>F:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A15PA1" limsid="LAB106A15PA1">
+        <value>G:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A38PA1" limsid="LAB106A38PA1">
+        <value>F:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A58PA1" limsid="LAB106A58PA1">
+        <value>B:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A65PA1" limsid="LAB106A65PA1">
+        <value>A:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A7PA1" limsid="LAB106A7PA1">
+        <value>G:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A3PA1" limsid="LAB106A3PA1">
+        <value>C:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A96PA1" limsid="LAB106A96PA1">
+        <value>H:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A61PA1" limsid="LAB106A61PA1">
+        <value>E:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A10PA1" limsid="LAB106A10PA1">
+        <value>B:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A89PA1" limsid="LAB106A89PA1">
+        <value>A:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A30PA1" limsid="LAB106A30PA1">
+        <value>F:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A69PA1" limsid="LAB106A69PA1">
+        <value>E:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A19PA1" limsid="LAB106A19PA1">
+        <value>C:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A34PA1" limsid="LAB106A34PA1">
+        <value>B:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A77PA1" limsid="LAB106A77PA1">
+        <value>E:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A23PA1" limsid="LAB106A23PA1">
+        <value>G:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A43PA1" limsid="LAB106A43PA1">
+        <value>C:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A54PA1" limsid="LAB106A54PA1">
+        <value>F:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A81PA1" limsid="LAB106A81PA1">
+        <value>A:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A75PA1" limsid="LAB106A75PA1">
+        <value>C:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A18PA1" limsid="LAB106A18PA1">
+        <value>B:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A45PA1" limsid="LAB106A45PA1">
+        <value>E:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A39PA1" limsid="LAB106A39PA1">
+        <value>G:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A49PA1" limsid="LAB106A49PA1">
+        <value>A:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A93PA1" limsid="LAB106A93PA1">
+        <value>E:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A4PA1" limsid="LAB106A4PA1">
+        <value>D:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A62PA1" limsid="LAB106A62PA1">
+        <value>F:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A14PA1" limsid="LAB106A14PA1">
+        <value>F:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A35PA1" limsid="LAB106A35PA1">
+        <value>C:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A8PA1" limsid="LAB106A8PA1">
+        <value>H:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A57PA1" limsid="LAB106A57PA1">
+        <value>A:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A66PA1" limsid="LAB106A66PA1">
+        <value>B:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A71PA1" limsid="LAB106A71PA1">
+        <value>G:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A27PA1" limsid="LAB106A27PA1">
+        <value>C:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A70PA1" limsid="LAB106A70PA1">
+        <value>F:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A80PA1" limsid="LAB106A80PA1">
+        <value>H:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A22PA1" limsid="LAB106A22PA1">
+        <value>F:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A92PA1" limsid="LAB106A92PA1">
+        <value>D:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A53PA1" limsid="LAB106A53PA1">
+        <value>E:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A88PA1" limsid="LAB106A88PA1">
+        <value>H:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A84PA1" limsid="LAB106A84PA1">
+        <value>D:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A31PA1" limsid="LAB106A31PA1">
+        <value>G:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A26PA1" limsid="LAB106A26PA1">
+        <value>B:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A76PA1" limsid="LAB106A76PA1">
+        <value>D:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A5PA1" limsid="LAB106A5PA1">
+        <value>E:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A17PA1" limsid="LAB106A17PA1">
+        <value>A:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A44PA1" limsid="LAB106A44PA1">
+        <value>D:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A40PA1" limsid="LAB106A40PA1">
+        <value>H:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A63PA1" limsid="LAB106A63PA1">
+        <value>G:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A13PA1" limsid="LAB106A13PA1">
+        <value>E:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A9PA1" limsid="LAB106A9PA1">
+        <value>A:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A36PA1" limsid="LAB106A36PA1">
+        <value>D:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A94PA1" limsid="LAB106A94PA1">
+        <value>F:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A48PA1" limsid="LAB106A48PA1">
+        <value>H:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A72PA1" limsid="LAB106A72PA1">
+        <value>H:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A67PA1" limsid="LAB106A67PA1">
+        <value>C:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A56PA1" limsid="LAB106A56PA1">
+        <value>H:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A79PA1" limsid="LAB106A79PA1">
+        <value>G:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A21PA1" limsid="LAB106A21PA1">
+        <value>E:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A28PA1" limsid="LAB106A28PA1">
+        <value>D:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A1PA1" limsid="LAB106A1PA1">
+        <value>A:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A91PA1" limsid="LAB106A91PA1">
+        <value>C:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A12PA1" limsid="LAB106A12PA1">
+        <value>D:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A87PA1" limsid="LAB106A87PA1">
+        <value>G:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A52PA1" limsid="LAB106A52PA1">
+        <value>D:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A83PA1" limsid="LAB106A83PA1">
+        <value>C:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A32PA1" limsid="LAB106A32PA1">
+        <value>H:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/LAB106A25PA1" limsid="LAB106A25PA1">
+        <value>A:4</value>
+    </placement>
+    <state>Populated</state>
+</con:container>

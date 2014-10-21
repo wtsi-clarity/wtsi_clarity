@@ -1,0 +1,377 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" uri="http://testserver.com:1234/here/processes/24-102407" limsid="24-102407">
+    <type uri="http://testserver.com:1234/here/processtypes/516">Cherrypick Worksheet &amp; Barcode(SM)</type>
+    <technician uri="http://testserver.com:1234/here/researchers/454">
+        <first-name>Benoit</first-name>
+        <last-name>Mangili</last-name>
+    </technician>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686874?state=370174" uri="http://testserver.com:1234/here/artifacts/2-686874?state=370174" limsid="2-686874">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686877?state=370177" uri="http://testserver.com:1234/here/artifacts/2-686877?state=370177" limsid="2-686877">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686878?state=370178" uri="http://testserver.com:1234/here/artifacts/2-686878?state=370178" limsid="2-686878">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686875?state=370175" uri="http://testserver.com:1234/here/artifacts/2-686875?state=370175" limsid="2-686875">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686876?state=370176" uri="http://testserver.com:1234/here/artifacts/2-686876?state=370176" limsid="2-686876">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686881?state=370181" uri="http://testserver.com:1234/here/artifacts/2-686881?state=370181" limsid="2-686881">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686882?state=370182" uri="http://testserver.com:1234/here/artifacts/2-686882?state=370182" limsid="2-686882">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686879?state=370179" uri="http://testserver.com:1234/here/artifacts/2-686879?state=370179" limsid="2-686879">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686880?state=370180" uri="http://testserver.com:1234/here/artifacts/2-686880?state=370180" limsid="2-686880">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686885?state=370185" uri="http://testserver.com:1234/here/artifacts/2-686885?state=370185" limsid="2-686885">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686886?state=370186" uri="http://testserver.com:1234/here/artifacts/2-686886?state=370186" limsid="2-686886">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686883?state=370183" uri="http://testserver.com:1234/here/artifacts/2-686883?state=370183" limsid="2-686883">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686884?state=370184" uri="http://testserver.com:1234/here/artifacts/2-686884?state=370184" limsid="2-686884">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686889?state=370189" uri="http://testserver.com:1234/here/artifacts/2-686889?state=370189" limsid="2-686889">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686890?state=370190" uri="http://testserver.com:1234/here/artifacts/2-686890?state=370190" limsid="2-686890">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686887?state=370187" uri="http://testserver.com:1234/here/artifacts/2-686887?state=370187" limsid="2-686887">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686888?state=370188" uri="http://testserver.com:1234/here/artifacts/2-686888?state=370188" limsid="2-686888">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686968?state=370218" uri="http://testserver.com:1234/here/artifacts/2-686968?state=370218" limsid="2-686968">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686967?state=370217" uri="http://testserver.com:1234/here/artifacts/2-686967?state=370217" limsid="2-686967">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686966?state=370216" uri="http://testserver.com:1234/here/artifacts/2-686966?state=370216" limsid="2-686966">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686965?state=370215" uri="http://testserver.com:1234/here/artifacts/2-686965?state=370215" limsid="2-686965">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686972?state=370222" uri="http://testserver.com:1234/here/artifacts/2-686972?state=370222" limsid="2-686972">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686971?state=370221" uri="http://testserver.com:1234/here/artifacts/2-686971?state=370221" limsid="2-686971">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686970?state=370220" uri="http://testserver.com:1234/here/artifacts/2-686970?state=370220" limsid="2-686970">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686969?state=370219" uri="http://testserver.com:1234/here/artifacts/2-686969?state=370219" limsid="2-686969">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686960?state=370210" uri="http://testserver.com:1234/here/artifacts/2-686960?state=370210" limsid="2-686960">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686959?state=370209" uri="http://testserver.com:1234/here/artifacts/2-686959?state=370209" limsid="2-686959">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686958?state=370208" uri="http://testserver.com:1234/here/artifacts/2-686958?state=370208" limsid="2-686958">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686957?state=370207" uri="http://testserver.com:1234/here/artifacts/2-686957?state=370207" limsid="2-686957">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686964?state=370214" uri="http://testserver.com:1234/here/artifacts/2-686964?state=370214" limsid="2-686964">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686963?state=370213" uri="http://testserver.com:1234/here/artifacts/2-686963?state=370213" limsid="2-686963">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686962?state=370212" uri="http://testserver.com:1234/here/artifacts/2-686962?state=370212" limsid="2-686962">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686961?state=370211" uri="http://testserver.com:1234/here/artifacts/2-686961?state=370211" limsid="2-686961">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686951?state=370201" uri="http://testserver.com:1234/here/artifacts/2-686951?state=370201" limsid="2-686951">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686952?state=370202" uri="http://testserver.com:1234/here/artifacts/2-686952?state=370202" limsid="2-686952">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686899?state=370199" uri="http://testserver.com:1234/here/artifacts/2-686899?state=370199" limsid="2-686899">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686900?state=370200" uri="http://testserver.com:1234/here/artifacts/2-686900?state=370200" limsid="2-686900">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686955?state=370205" uri="http://testserver.com:1234/here/artifacts/2-686955?state=370205" limsid="2-686955">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686956?state=370206" uri="http://testserver.com:1234/here/artifacts/2-686956?state=370206" limsid="2-686956">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686953?state=370203" uri="http://testserver.com:1234/here/artifacts/2-686953?state=370203" limsid="2-686953">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686954?state=370204" uri="http://testserver.com:1234/here/artifacts/2-686954?state=370204" limsid="2-686954">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686893?state=370193" uri="http://testserver.com:1234/here/artifacts/2-686893?state=370193" limsid="2-686893">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686894?state=370194" uri="http://testserver.com:1234/here/artifacts/2-686894?state=370194" limsid="2-686894">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686891?state=370191" uri="http://testserver.com:1234/here/artifacts/2-686891?state=370191" limsid="2-686891">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686892?state=370192" uri="http://testserver.com:1234/here/artifacts/2-686892?state=370192" limsid="2-686892">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686897?state=370197" uri="http://testserver.com:1234/here/artifacts/2-686897?state=370197" limsid="2-686897">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686898?state=370198" uri="http://testserver.com:1234/here/artifacts/2-686898?state=370198" limsid="2-686898">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686895?state=370195" uri="http://testserver.com:1234/here/artifacts/2-686895?state=370195" limsid="2-686895">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686896?state=370196" uri="http://testserver.com:1234/here/artifacts/2-686896?state=370196" limsid="2-686896">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686990?state=370240" uri="http://testserver.com:1234/here/artifacts/2-686990?state=370240" limsid="2-686990">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686989?state=370239" uri="http://testserver.com:1234/here/artifacts/2-686989?state=370239" limsid="2-686989">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686992?state=370242" uri="http://testserver.com:1234/here/artifacts/2-686992?state=370242" limsid="2-686992">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686991?state=370241" uri="http://testserver.com:1234/here/artifacts/2-686991?state=370241" limsid="2-686991">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686994?state=370244" uri="http://testserver.com:1234/here/artifacts/2-686994?state=370244" limsid="2-686994">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686993?state=370243" uri="http://testserver.com:1234/here/artifacts/2-686993?state=370243" limsid="2-686993">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686996?state=370246" uri="http://testserver.com:1234/here/artifacts/2-686996?state=370246" limsid="2-686996">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686995?state=370245" uri="http://testserver.com:1234/here/artifacts/2-686995?state=370245" limsid="2-686995">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686981?state=370231" uri="http://testserver.com:1234/here/artifacts/2-686981?state=370231" limsid="2-686981">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686982?state=370232" uri="http://testserver.com:1234/here/artifacts/2-686982?state=370232" limsid="2-686982">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686983?state=370233" uri="http://testserver.com:1234/here/artifacts/2-686983?state=370233" limsid="2-686983">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686984?state=370234" uri="http://testserver.com:1234/here/artifacts/2-686984?state=370234" limsid="2-686984">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686985?state=370235" uri="http://testserver.com:1234/here/artifacts/2-686985?state=370235" limsid="2-686985">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686986?state=370236" uri="http://testserver.com:1234/here/artifacts/2-686986?state=370236" limsid="2-686986">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686987?state=370237" uri="http://testserver.com:1234/here/artifacts/2-686987?state=370237" limsid="2-686987">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686988?state=370238" uri="http://testserver.com:1234/here/artifacts/2-686988?state=370238" limsid="2-686988">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686973?state=370223" uri="http://testserver.com:1234/here/artifacts/2-686973?state=370223" limsid="2-686973">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686974?state=370224" uri="http://testserver.com:1234/here/artifacts/2-686974?state=370224" limsid="2-686974">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686975?state=370225" uri="http://testserver.com:1234/here/artifacts/2-686975?state=370225" limsid="2-686975">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686976?state=370226" uri="http://testserver.com:1234/here/artifacts/2-686976?state=370226" limsid="2-686976">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686977?state=370227" uri="http://testserver.com:1234/here/artifacts/2-686977?state=370227" limsid="2-686977">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686978?state=370228" uri="http://testserver.com:1234/here/artifacts/2-686978?state=370228" limsid="2-686978">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686979?state=370229" uri="http://testserver.com:1234/here/artifacts/2-686979?state=370229" limsid="2-686979">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-686980?state=370230" uri="http://testserver.com:1234/here/artifacts/2-686980?state=370230" limsid="2-686980">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-102406" limsid="24-102406" />
+        </input>
+    </input-output-map>
+    <udf:field type="String" name="Pick by">(1) Concentration &amp; volume</udf:field>
+    <udf:field type="String" name="(1) Required Volume">10</udf:field>
+    <udf:field type="String" name="(1) Required Concentration">12</udf:field>
+    <process-parameter name="Print Barcode" />
+</prc:process>

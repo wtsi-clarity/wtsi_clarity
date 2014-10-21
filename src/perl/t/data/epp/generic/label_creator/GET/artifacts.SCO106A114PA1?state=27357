@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/SCO106A114PA1?state=27357" limsid="SCO106A114PA1">
+    <name>testyyy</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-1204" limsid="27-1204"/>
+        <value>B:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/SCO106A114" limsid="SCO106A114"/>
+    <artifact-group name="API ILLB pooling test" uri="http://testserver.com:1234/here/artifactgroups/152"/>
+    <artifact-group name="API barcode printing test2" uri="http://testserver.com:1234/here/artifactgroups/154"/>
+    <artifact-group name="Sample Management GCLP QC" uri="http://testserver.com:1234/here/artifactgroups/401"/>
+</art:artifact>

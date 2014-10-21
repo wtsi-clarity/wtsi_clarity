@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:sample xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample" uri="http://testserver.com:1234/here/samples/GIB11A11" limsid="GIB11A11">
+    <name>eag sample -11</name>
+    <date-received>2013-11-01</date-received>
+    <project limsid="GIB11" uri="http://testserver.com:1234/here/projects/GIB11"/>
+    <submitter uri="http://testserver.com:1234/here/researchers/5">
+        <first-name>Carol</first-name>
+        <last-name>Scott</last-name>
+    </submitter>
+    <artifact limsid="GIB11A11PA1" uri="http://testserver.com:1234/here/artifacts/GIB11A11PA1?state=891"/>
+    <udf:field type="Boolean" name="Control?">false</udf:field>
+</smp:sample>

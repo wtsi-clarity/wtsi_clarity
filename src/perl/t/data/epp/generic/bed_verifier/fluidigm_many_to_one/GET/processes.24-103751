@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="24-103751" uri="http://testserver.com:1234/here/processes/24-103751" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://testserver.com:1234/here/processtypes/507">Pico Assay Plate (SM)</type>
+  <udf:field name="Bed 1 (Input Plate 1a)" type="String">580020001794</udf:field>
+  <udf:field name="Bed 2 (Input Plate 1b)" type="String">580020002807</udf:field>
+  <udf:field name="Bed 21 (Output Plate 1)" type="String">580020021839</udf:field>
+  <udf:field name="Input Plate 1" type="String">DN299294 ILB_STD_INPUT</udf:field>
+  <udf:field name="Output Plate 1" type="String">5260278302663</udf:field>
+  <udf:field name="Output Plate 2" type="String">5260278303677</udf:field>
+  <udf:field name="Select Barcode Printer" type="String">d304bc</udf:field>
+  <udf:field name="Plate Purpose" type="String">Pico Assay</udf:field>
+  <process-parameter name="Print Barcode"/>
+</prc:process>
