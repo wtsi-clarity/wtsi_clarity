@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="24-103777" uri="http://testserver.com:1234/here/processes/24-103777" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+	<type uri="http://testserver.com:1234/here/processtypes/505">Pico Dilution (SM)</type>
+	<technician uri="http://testserver.com:1234/here/researchers/454">
+		<first-name>Benoit</first-name>
+		<last-name>Mangili</last-name>
+	</technician>
+	<input-output-map>
+		<input limsid="2-00001" post-process-uri="http://testserver.com:1234/here/artifacts/2-00001" uri="http://testserver.com:1234/here/artifacts/2-00001">
+			<parent-process limsid="24-103769" uri="http://testserver.com:1234/here/processes/24-103769"/>
+		</input>
+		<output limsid="2-11111" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-11111"/>
+	</input-output-map>
+	<input-output-map>
+		<input limsid="2-00002" post-process-uri="http://testserver.com:1234/here/artifacts/2-00002" uri="http://testserver.com:1234/here/artifacts/2-00002">
+			<parent-process limsid="24-103769" uri="http://testserver.com:1234/here/processes/24-103769"/>
+		</input>
+		<output limsid="2-11112" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-11112"/>
+	</input-output-map>
+</prc:process>

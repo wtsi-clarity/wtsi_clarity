@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<wkfcnf:workflow xmlns:wkfcnf="http://genologics.com/ri/workflowconfiguration" name="new_workflow" status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/11">
+  <protocols>
+      <protocol uri="http://testserver.com:1234/here/configuration/protocols/1" name="prot 1"/>
+      <protocol uri="http://testserver.com:1234/here/configuration/protocols/2" name="prot 2"/>
+      <protocol uri="http://testserver.com:1234/here/configuration/protocols/3" name="prot 3"/>
+  </protocols>
+  <stages>
+    <stage name="step_name_1" uri="http://testserver.com:1234/here/configuration/workflows/11/stages/001"/>
+    <stage name="step_name_2" uri="http://testserver.com:1234/here/configuration/workflows/11/stages/002"/>
+    <stage name="step_name_2" uri="http://testserver.com:1234/here/configuration/workflows/11/stages/003"/>
+    <stage name="step_name_2" uri="http://testserver.com:1234/here/configuration/workflows/11/stages/004"/>
+    <stage name="step_name_3" uri="http://testserver.com:1234/here/configuration/workflows/11/stages/005"/>
+  </stages>
+</wkfcnf:workflow>

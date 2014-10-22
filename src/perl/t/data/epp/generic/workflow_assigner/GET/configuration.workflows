@@ -1,0 +1,5 @@
+<?xml version="1.0" standalone="yes"?>
+<wkfcnf:workflows xmlns:wkfcnf="http://genologics.com/ri/workflowconfiguration">
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/999" name="new_workflow"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/666" name="wrong_workflow"/>
+</wkfcnf:workflows>
