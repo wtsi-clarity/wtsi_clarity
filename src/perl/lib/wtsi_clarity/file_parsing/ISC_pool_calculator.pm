@@ -196,7 +196,6 @@ has 'original_plate_barcode' => (
   required => 1,
 );
 
-
 1;
 
 __END__

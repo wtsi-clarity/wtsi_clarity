@@ -1423,7 +1423,6 @@ use_ok('wtsi_clarity::file_parsing::ISC_pool_calculator', 'can use ISC_pool_calc
   my ($output, $warnings) = $calc->get_volume_calculations_and_warnings();
 
   is_deeply( $output,  $EXPECTED_DATA,  "get_volume_calculations_and_warnings() should return the correct content.");
-
 }
 
 1;
