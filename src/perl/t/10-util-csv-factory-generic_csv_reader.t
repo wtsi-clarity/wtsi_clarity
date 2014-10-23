@@ -1690,7 +1690,7 @@ use_ok('wtsi_clarity::util::csv::factories::generic_csv_reader', 'can use generi
 
   my $output = $reader->build(
     file_content => $file->content,
-    );
+  );
 
   is_deeply( $output,  $EXPECTED_DATA_1,  "build() should return the correct content.");
 }

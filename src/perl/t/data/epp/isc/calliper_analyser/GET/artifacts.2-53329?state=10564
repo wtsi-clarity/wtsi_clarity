@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/artifacts/2-53329?state=24479" limsid="2-53329">
+    <name>2133_1</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://testserver.com:1234/processes/24-18034" limsid="24-18034"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/containers/27-1847" limsid="27-1847"/>
+        <value>I:9</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/samples/TES155A1082" limsid="TES155A1082"/>
+    <reagent-label name="iPCR tag 53 (GCTCGGTA)"/>
+</art:artifact>

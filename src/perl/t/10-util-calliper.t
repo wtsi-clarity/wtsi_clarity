@@ -12,23 +12,33 @@ use_ok('wtsi_clarity::util::calliper', 'can use calliper');
 
 {
   my $calliper = wtsi_clarity::util::calliper->new();
-  my $expected_result = {
-    '27' => {
-        'A1'=> {
-                  'Sample_Name' => 'A1_xxx',
-                  'Peak_Count' => 1,
-                  'Total_Conc' => 1,
-                  'Molarity_1' => 1,
-                },
-        'B1'=> {
-                  'Sample_Name' => 'B1_xxx',
-                  'Peak_Count' => 1,
-                  'Total_Conc' => 2,
-                  'Molarity_1' => 3,
-                  'Molarity_2' => 5,
-                },
-            },
-      };
+  my $expected_result = [
+          {
+            'Molarity' => '1',
+            'Well_Label' => 'F88',
+            'FORGETME' => 'xxx',
+            'Total_Conc' => '1',
+            'Peak_Count' => '1',
+            'Sample_Name' => 'A1_xxx'
+          },
+          {
+            'Molarity' => '3',
+            'Well_Label' => 'B1',
+            'FORGETME' => 'xxx',
+            'Total_Conc' => '2',
+            'Peak_Count' => '1',
+            'Sample_Name' => 'B1_xxx'
+          },
+          {
+            'Molarity' => '5',
+            'Well_Label' => 'G55',
+            'FORGETME' => 'xxx',
+            'Total_Conc' => '2',
+            'Peak_Count' => '1',
+            'Sample_Name' => 'B1_xxx'
+          }
+        ];
+
   my $some_content = [
           'FORGETME,Well_Label,Sample_Name,Peak_Count,Total_Conc,Molarity',
           'xxx,F88,A1_xxx,1,1,1',
