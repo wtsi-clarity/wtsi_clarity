@@ -1,0 +1,27 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="24-18045" uri="http://testserver.com:1234/processes/24-18045" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://testserver.com:1234/processtypes/208">Post Lib PCR QC Analysis</type>
+  <technician uri="http://testserver.com:1234/researchers/19">
+    <first-name>Christopher</first-name>
+    <last-name>Smith</last-name>
+  </technician>
+  <input-output-map>
+    <input limsid="LAB106A17PA1" post-process-uri="http://testserver:1234/artifacts/LAB106A17PA1?state=10564" uri="http://testserver:1234/artifacts/LAB106A17PA1?state=10564"/>
+    <output limsid="92-53650" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver:1234/artifacts/92-53650?state=24650"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A17PA1" post-process-uri="http://testserver:1234/artifacts/LAB106A17PA1?state=10564" uri="http://testserver:1234/artifacts/LAB106A17PA1?state=10564"/>
+    <output limsid="2-53702" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver:1234/artifacts/2-53702?state=24652"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A1PA1" post-process-uri="http://testserver:1234/artifacts/LAB106A1PA1?state=10595" uri="http://testserver:1234/artifacts/LAB106A1PA1?state=10595"/>
+    <output limsid="92-53650" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver:1234/artifacts/92-53650?state=24650"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A1PA1" post-process-uri="http://testserver:1234/artifacts/LAB106A1PA1?state=10595" uri="http://testserver:1234/artifacts/LAB106A1PA1?state=10595"/>
+    <output limsid="2-53701" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver:1234/artifacts/2-53701?state=24651"/>
+  </input-output-map>
+  <udf:field name="Minimum Volume" type="String">5</udf:field>
+  <udf:field name="Maximum Volume" type="String">50</udf:field>
+  <udf:field name="Maximum Total Volume" type="String">200</udf:field>
+</prc:process>

@@ -13,7 +13,7 @@ use_ok 'wtsi_clarity::epp::isc::calliper_analyser';
   # local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   my $process = wtsi_clarity::epp::isc::calliper_analyser->new(
-    process_url => 'http://claritytest.com:8080/api/v2/processes/24-18045/',
+    process_url => 'http://testserver.com:1234/processes/24-18045/',
     _calliper_file_name => 'outputfile',
   );
 
@@ -27,7 +27,7 @@ use_ok 'wtsi_clarity::epp::isc::calliper_analyser';
   # local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   my $process = wtsi_clarity::epp::isc::calliper_analyser->new(
-    process_url => 'http://claritytest.com:8080/api/v2/processes/24-18045/',
+    process_url => 'http://testserver.com:1234/processes/24-18045/',
     _calliper_file_name => 'outputfile',
   );
 
@@ -42,7 +42,7 @@ use_ok 'wtsi_clarity::epp::isc::calliper_analyser';
   # local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   my $process = wtsi_clarity::epp::isc::calliper_analyser->new(
-    process_url => 'http://clarityurl.com:8080/api/v2/processes/24-18045',
+    process_url => 'http://clarityurl.com:8080/processes/24-18045',
     _calliper_file_name => 'outputfile',
   );
 
@@ -56,7 +56,7 @@ use_ok 'wtsi_clarity::epp::isc::calliper_analyser';
   # local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   my $process = wtsi_clarity::epp::isc::calliper_analyser->new(
-    process_url => 'http://claritytest.com:8080/api/v2/processes/24-18155',
+    process_url => 'http://testserver.com:1234/processes/24-18155',
     _calliper_file_name => 'outputfile',
   );
 
