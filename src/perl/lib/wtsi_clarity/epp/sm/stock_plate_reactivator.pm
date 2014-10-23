@@ -54,7 +54,9 @@ wtsi_clarity::epp::sm::stock_plate_reactivator
 =head1 SYNOPSIS
 
   wtsi_clarity::epp:sm::stock_plate_reactivator->new(
-    process_url => 'http://my.com/processes/3345'
+    process_url => 'http://my.com/processes/3345',
+    from_process => ... ,
+    to_workflow => ...
   )->run();
 
 =head1 DESCRIPTION
