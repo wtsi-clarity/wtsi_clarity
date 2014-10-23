@@ -22,6 +22,7 @@ use_ok 'wtsi_clarity::epp::isc::calliper_analyser';
 
 # Extract input plate barcode
 {
+  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/isc/calliper_analyser/';
   # local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
