@@ -42,7 +42,7 @@ sub _main {
 
   $self->_update_analytes($output_collection);
 
-  $output->saveas(q{./} . $self->_calliper_file_name);
+  $output->saveas(q{./} . $self->calliper_file_name);
 
   return 1;
 }
@@ -146,7 +146,7 @@ wtsi_clarity::epp::isc::calliper_analyser
   wtsi_clarity::epp::isc::calliper_analyser
     ->new(
       process_url        => 'http://clarity_url/processes/1234',
-      _calliper_file_name => 'abcd_file',
+      calliper_file_name => 'abcd_file',
     )
     ->run()
 
