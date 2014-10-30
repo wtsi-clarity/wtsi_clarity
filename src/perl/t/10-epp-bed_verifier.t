@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use Test::Exception;
-use Test::More tests => 20;
+use Test::More tests => 21;
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 
@@ -168,4 +168,34 @@ use_ok('wtsi_clarity::epp::generic::bed_verifier');
   });
 
   is_deeply($process->_bed_container_pairs, \@mappings, "Builds bed container pairs correctly");
+}
+
+{
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/bed_verifier/pico_green/';
+  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
+
+  my $barcode_map = {
+    '1234' => ['5678', '9012']
+  };
+
+  my $process = wtsi_clarity::epp::generic::bed_verifier->new(
+    process_url => $base_uri . '/processes/24-103751b',
+    step_name => 'pico_assay_plate',
+    _barcode_map => $barcode_map,
+  );
+
+  is($process->_verify_plates_positioned_correctly(), 1, 'Should validate plates are in the correct place');
+}
+
+{
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/bed_verifier/pico_green/';
+  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
+
+  my $process = wtsi_clarity::epp::generic::bed_verifier->new(
+    process_url => $base_uri . '/processes/24-103751b',
+    step_name => 'pico_assay_plate',
+  );
+
+  is($process->_convert_to_output('Input Plate 1'), 'Output Plate 1', 'Converts plate names');
+  is($process->_convert_to_output('Input Plate 1a'), 'Output Plate 1', 'Converts plate names, even when there is a letter at the end');
 }
