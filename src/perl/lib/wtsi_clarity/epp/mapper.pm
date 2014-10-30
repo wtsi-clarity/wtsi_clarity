@@ -31,10 +31,10 @@ Readonly::Hash my %ACTION2MODULE => (
     'analyse_fluidigm'               => 'sm::fluidigm_analyser',
     'make_report'                    => 'sm::report_maker',
 
-    'tag_plate'                      => 'ics::plate_tagger',
-    'index_tag'                      => 'ics::tag_indexer',
-    'analyse_agilent'                => 'ics::agilent_analyser',
-    'analyse_calliper'               => 'ics::calliper_analyser',
+    'tag_plate'                      => 'isc::plate_tagger',
+    'index_tag'                      => 'isc::tag_indexer',
+    'analyse_agilent'                => 'isc::agilent_analyser',
+    'analyse_calliper'               => 'isc::calliper_analyser',
 );
 
 has 'action'  => (
