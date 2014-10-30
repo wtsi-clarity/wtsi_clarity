@@ -62,7 +62,7 @@ my $current = cwd;
 
   my $epp = wtsi_clarity::epp::sm::volume_checker->new(
     request     => $r,
-    process_url => 'http://clarity-ap:8080/api/v2/processes/24-17469',
+    process_url => 'http://testserver.com:1234/here/processes/24-17469',
     input       => $in_low_extension,
     output      => $out,
   );
@@ -76,7 +76,7 @@ my $current = cwd;
 
   $epp = wtsi_clarity::epp::sm::volume_checker->new(
     request     => $r,
-    process_url => 'http://clarity-ap:8080/api/v2/processes/24-17469',
+    process_url => 'http://testserver.com:1234/here/processes/24-17469',
     input       => $in_low_extension,
     output      => $out,
   );

@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 17;
+use Test::More tests => 27;
 use Test::Exception;
 use Test::MockObject::Extends;
 use File::Temp qw/ tempdir /;
@@ -44,7 +44,7 @@ sub read_file {
     $data = $r->get($base_uri . q{/processes/24-28177})
            } 'no error retrieving from cache';
 
-  my $xml = read_file('t/data/cached/GET/processes/24-28177');
+  my $xml = read_file('t/data/cached/GET/processes.24-28177');
 
   is ($data, $xml, 'content retrieved correctly');
 }
@@ -58,16 +58,96 @@ sub read_file {
         'type'    => 'GET',
         'content' => undef,
       },
-      expected => '/GET/resource/resource_id',
+      expected => '/GET/resource.resource_id',
     },
     {
       input   => {
         'url'     => $base_uri . '/resource/resource_id',
         'type'    => 'POST',
         'content' => 'payload',
+        },
+      expected => '/POST/resource.resource_id' . wtsi_clarity::util::request::_decorate_resource_name('payload'),
+    },
+    {
+      input   => {
+        'url'     => $base_uri . '/resource/batch/retrieve',
+        'type'    => 'POST',
+        'content' => 'payload',
+        },
+      expected => '/POST/resource.batch' . wtsi_clarity::util::request::_decorate_resource_name('payload'),
+    },
+    {
+      input   => {
+        'url'     => $base_uri . '/extra/long/path/resource/batch/retrieve',
+        'type'    => 'POST',
+        'content' => 'payload',
+        },
+      expected => '/POST/extra/long/path/resource.batch' . wtsi_clarity::util::request::_decorate_resource_name('payload'),
+    },
+    {
+      input => {
+        'url' => $base_uri . '/extra/resource/resource_id',
+        'type'    => 'GET',
+        'content' => undef,
       },
-      expected => '/POST/resource/resource_id' . wtsi_clarity::util::request::_decorate_resource_name('payload'),
-    }
+      expected => '/GET/extra/resource.resource_id',
+    },
+    {
+      input => {
+        'url' => $base_uri . '/extra/configuration/workflows/999',
+        'type'    => 'GET',
+        'content' => undef,
+      },
+      expected => '/GET/extra/configuration/workflows.999',
+    },
+    {
+      input => {
+        'url' => $base_uri . '/artifacts/123456',
+        'type'    => 'GET',
+        'content' => undef,
+      },
+      expected => '/GET/artifacts.123456',
+    },
+    {
+      input => {
+        'url'     => 'http://some.thin.else/extra/configuration/workflows/999',
+        'type'    => 'GET',
+        'content' => undef,
+      },
+      expected => '/GET/extra/configuration/workflows.999',
+    },
+    {
+      input => {
+        'url'     => 'http://some.thin.else/extra/configuration/workflows?somequery',
+        'type'    => 'GET',
+        'content' => undef,
+      },
+      expected => '/GET/extra/configuration.workflows?somequery',
+    },
+    {
+      input => {
+        'url'     => 'http://some.thin.else//extra/configuration//workflows?somequery',
+        'type'    => 'GET',
+        'content' => undef,
+      },
+      expected => '/GET/extra/configuration.workflows?somequery',
+    },
+    {
+      input => {
+        'url'     => 'http://some.thin.else/rsc',
+        'type'    => 'GET',
+        'content' => undef,
+      },
+      expected => '/GET/rsc',
+    },
+    {
+      input => {
+        'url' => $base_uri . '/artifacts?query',
+        'type'    => 'GET',
+        'content' => undef,
+      },
+      expected => '/GET/artifacts?query',
+    },
   ];
 
     use Data::Dumper;
@@ -82,7 +162,7 @@ sub read_file {
     if (!defined $content) {
       $content = q{(no payload)};
     }
-    cmp_ok($path, 'eq', $datum->{'expected'} , qq/_create_path should return the correct cache path (from $url, $type, $content)/);
+    cmp_ok($path, 'eq', $datum->{'expected'} , qq/_create_path should return the correct cache path (from $url, $type, $content) / );
   }
 }
 
@@ -120,7 +200,7 @@ sub read_file {
     my $test_url = $base_uri . '/artifacts/123456';
     my $method_verb = $methods_tested{$method}->{'verb'};
     local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
-    my $file_path = $test_dir . qq{/$method_verb/artifacts/123456};
+    my $file_path = $test_dir . qq{/$method_verb/artifacts.123456};
 
     $r->mock(q{_from_web}, sub {
       my ($self, $type, $uri, $content, $path) = @_;

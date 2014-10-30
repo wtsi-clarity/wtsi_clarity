@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="yes"?>
+<con:container xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container" uri="http://testserver.com:1234/here/containers/27-7563" limsid="27-7563">
+    <name>27-7563</name>
+    <type uri="http://testserver.com:1234/here/containertypes/105" name="ABgene 0800"/>
+    <occupied-wells>1</occupied-wells>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-665726" limsid="2-665726">
+        <value>B:1</value>
+    </placement>
+    <state>Populated</state>
+</con:container>

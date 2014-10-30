@@ -11,7 +11,7 @@ has 'reader_type' => (
   is => 'ro',
   isa => 'Str',
   default => sub {
-    return 'calliper_reader';
+    return 'generic_reader';
   },
 );
 
@@ -19,11 +19,7 @@ has 'headers' => (
   is => 'ro',
   isa => 'ArrayRef',
   default => sub {
-              return [  'Well_Label',
-                        'Sample_Name',
-                        'Peak_Count',
-                        'Total_Conc',
-                        'Molarity' ];
+              return ['Plate Name', 'Well Label', 'Sample Name', 'Peak Count', 'Total Conc. (ng\/ul)', 'Region[200-1400] Molarity (nmol\/l)'];
                   },
 );
 

@@ -17,7 +17,7 @@ use_ok('util::xml', 'can use wtsi_clarity::t::util::xml' );
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/fluidigm_request_volume_updater';
   # local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
   my $step = wtsi_clarity::epp::sm::fluidigm_request_volume_updater->new(
-    process_url => 'http://clarity-ap:8080/api/v2/processes/24-101157');
+    process_url => 'http://testserver.com:1234/here/processes/24-101157');
 
   lives_ok { $step->fetch_and_update_targets($step->process_doc, '123.45') } 'managed to fetch and updates the artifact';
 

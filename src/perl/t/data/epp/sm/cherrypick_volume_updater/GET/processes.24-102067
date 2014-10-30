@@ -1,0 +1,51 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" uri="http://testserver.com:1234/here/processes/24-102066" limsid="24-102066">
+    <type uri="http://testserver.com:1234/here/processtypes/516">Cherrypick Worksheet &amp; Barcode(SM)</type>
+    <technician uri="http://testserver.com:1234/here/researchers/454">
+        <first-name>Benoit</first-name>
+        <last-name>Mangili</last-name>
+    </technician>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/201" uri="http://testserver.com:1234/here/artifacts/201" limsid="201" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/202" uri="http://testserver.com:1234/here/artifacts/202" limsid="202" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/203" uri="http://testserver.com:1234/here/artifacts/203" limsid="203" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/204" uri="http://testserver.com:1234/here/artifacts/203" limsid="204" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/211" uri="http://testserver.com:1234/here/artifacts/211" limsid="211" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/212" uri="http://testserver.com:1234/here/artifacts/212" limsid="212" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/213" uri="http://testserver.com:1234/here/artifacts/213" limsid="213" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/214" uri="http://testserver.com:1234/here/artifacts/214" limsid="214" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/221" uri="http://testserver.com:1234/here/artifacts/221" limsid="221" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/222" uri="http://testserver.com:1234/here/artifacts/222" limsid="222" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/223" uri="http://testserver.com:1234/here/artifacts/223" limsid="223" />
+    </input-output-map>
+    <input-output-map>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/224" uri="http://testserver.com:1234/here/artifacts/224" limsid="224" />
+    </input-output-map>
+    <udf:field type="String" name="Pick by">(2) ng in a Min and Max volume</udf:field>
+    <udf:field type="String" name="(1) Required Volume">10</udf:field>
+    <udf:field type="String" name="(1) Required Concentration">5</udf:field>
+    <udf:field type="String" name="(2) Required ng Amount"> 25   </udf:field>
+    <udf:field type="String" name="(2) Minimum Volume">      0.1 </udf:field>
+    <udf:field type="String" name="(2) Maximum Volume">      1   </udf:field>
+    <udf:field type="String" name="(3) Required Volume">10</udf:field>
+</prc:process>

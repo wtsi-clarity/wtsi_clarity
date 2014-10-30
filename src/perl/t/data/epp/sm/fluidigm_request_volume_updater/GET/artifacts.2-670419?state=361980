@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/2-670419?state=361980" limsid="2-670419">
+    <name>Not_real-314_STA</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://testserver.com:1234/here/processes/24-101157" limsid="24-101157"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-7912" limsid="27-7912"/>
+        <value>C:3</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/JAC2A386" limsid="JAC2A386"/>
+</art:artifact>

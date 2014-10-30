@@ -1,0 +1,6 @@
+<?xml version="1.0" standalone="yes"?>
+<stg:stage index="4" name="step_name_3" uri="http://testserver.com:1234/here/configuration/workflows/11/stages/005" xmlns:stg="http://genologics.com/ri/stage">
+  <workflow uri="http://testserver.com:1234/here/configuration/workflows/999"/>
+  <protocol uri="http://testserver.com:1234/here/configuration/protocols/3"/>
+  <step uri="http://testserver.com:1234/here/configuration/protocols/3/steps/3"/>
+</stg:stage>

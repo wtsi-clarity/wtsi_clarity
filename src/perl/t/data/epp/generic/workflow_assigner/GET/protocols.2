@@ -1,0 +1,90 @@
+<?xml version="1.0" standalone="yes"?>
+<protcnf:protocol index="48" name="prot 2" uri="http://testserver.com:1234/here/configuration/protocols/2" xmlns:protcnf="http://genologics.com/ri/protocolconfiguration" xmlns:protstepcnf="http://genologics.com/ri/stepconfiguration">
+  <steps>
+
+    <step name="step_name_2" protocol-uri="http://testserver.com:1234/here/configuration/protocols/2" uri="http://testserver.com:1234/here/configuration/protocols/2/steps/2">
+      <protocol-step-index>1</protocol-step-index>
+      <process-type uri="http://testserver.com:1234/here/processtypes/356">step_name_2</process-type>
+      <permitted-containers>
+        <container-type>Tube</container-type>
+      </permitted-containers>
+      <permitted-reagent-categories/>
+      <required-reagent-kits/>
+      <permitted-control-types/>
+      <transitions>
+        <transition name="step_name_2" next-step-uri="http://testserver.com:1234/here/configuration/protocols/2/steps/2" sequence="3"/>
+      </transitions>
+      <queue-fields>
+        <queue-field attach-to="Analyte" detail="false" name="Sample Name"/>
+        <queue-field attach-to="Container" detail="false" name="Well"/>
+        <queue-field attach-to="Container" detail="false" name="Container Name"/>
+        <queue-field attach-to="Project" detail="true" name="Project Name"/>
+        <queue-field attach-to="Container" detail="true" name="LIMS ID (Container)"/>
+        <queue-field attach-to="Analyte" detail="false" name="Waiting"/>
+      </queue-fields>
+      <step-fields/>
+      <sample-fields>
+        <sample-field attach-to="Analyte" name="Sample Name"/>
+        <sample-field attach-to="Container" name="Container Name"/>
+        <sample-field attach-to="Container" name="Well"/>
+        <sample-field attach-to="Container" name="LIMS ID (Container)"/>
+        <sample-field attach-to="Project" name="Project Name"/>
+      </sample-fields>
+      <step-properties>
+        <step-property name="qcProtocolStep" value="false"/>
+        <step-property name="qcWithPlacement" value="false"/>
+        <step-property name="measurementWithFile" value="false"/>
+        <step-property name="loadHistoricalMeasurements" value="true"/>
+        <step-property name="highThroughput" value="false"/>
+      </step-properties>
+      <epp-triggers/>
+    </step>
+  </steps>
+
+
+    <step name="step_name_2" protocol-uri="http://testserver.com:1234/here/configuration/protocols/2" uri="http://testserver.com:1234/here/configuration/protocols/2/steps/2">
+      <protocol-step-index>2</protocol-step-index>
+      <process-type uri="http://testserver.com:1234/here/processtypes/356">step_name_2</process-type>
+      <permitted-containers>
+        <container-type>Tube</container-type>
+      </permitted-containers>
+      <permitted-reagent-categories/>
+      <required-reagent-kits/>
+      <permitted-control-types/>
+      <transitions>
+        <transition name="step_name_2" next-step-uri="http://testserver.com:1234/here/configuration/protocols/2/steps/2" sequence="3"/>
+      </transitions>
+      <queue-fields>
+        <queue-field attach-to="Analyte" detail="false" name="Sample Name"/>
+        <queue-field attach-to="Container" detail="false" name="Well"/>
+        <queue-field attach-to="Container" detail="false" name="Container Name"/>
+        <queue-field attach-to="Project" detail="true" name="Project Name"/>
+        <queue-field attach-to="Container" detail="true" name="LIMS ID (Container)"/>
+        <queue-field attach-to="Analyte" detail="false" name="Waiting"/>
+      </queue-fields>
+      <step-fields/>
+      <sample-fields>
+        <sample-field attach-to="Analyte" name="Sample Name"/>
+        <sample-field attach-to="Container" name="Container Name"/>
+        <sample-field attach-to="Container" name="Well"/>
+        <sample-field attach-to="Container" name="LIMS ID (Container)"/>
+        <sample-field attach-to="Project" name="Project Name"/>
+      </sample-fields>
+      <step-properties>
+        <step-property name="qcProtocolStep" value="false"/>
+        <step-property name="qcWithPlacement" value="false"/>
+        <step-property name="measurementWithFile" value="false"/>
+        <step-property name="loadHistoricalMeasurements" value="true"/>
+        <step-property name="highThroughput" value="false"/>
+      </step-properties>
+      <epp-triggers/>
+    </step>
+  </steps>
+
+  </steps>
+  <protocol-properties>
+    <protocol-property name="hidden" value="false"/>
+    <protocol-property name="capacity" value="0"/>
+    <protocol-property name="type" value="other"/>
+  </protocol-properties>
+</protcnf:protocol>

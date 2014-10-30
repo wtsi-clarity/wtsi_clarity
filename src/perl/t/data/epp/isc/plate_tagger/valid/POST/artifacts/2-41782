@@ -1,15 +1,15 @@
 <?xml version="1.0" standalone="yes"?>
-<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-41782?state=18332" limsid="2-41782">
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/2-41782?state=18332" limsid="2-41782">
     <name>5</name>
     <type>Analyte</type>
     <output-type>Analyte</output-type>
-    <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-17451" limsid="24-17451"/>
+    <parent-process uri="http://testserver.com:1234/here/processes/24-17451" limsid="24-17451"/>
     <qc-flag>UNKNOWN</qc-flag>
     <location>
-        <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1052" limsid="27-1052"/>
+        <container uri="http://testserver.com:1234/here/containers/27-1052" limsid="27-1052"/>
         <value>E:1</value>
     </location>
     <working-flag>true</working-flag>
-    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/LAB106A5" limsid="LAB106A5"/>
+    <sample uri="http://testserver.com:1234/here/samples/LAB106A5" limsid="LAB106A5"/>
     <reagent-label name="Human CG565"/>
 </art:artifact>

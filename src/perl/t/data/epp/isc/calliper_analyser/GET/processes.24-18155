@@ -1,0 +1,32 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="24-18155" uri="http://testserver.com:1234/processes/24-18155" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://testserver.com:1234/processtypes/208">Post Lib PCR QC Analysis</type>
+  <technician uri="http://testserver.com:1234/researchers/19">
+    <first-name>Christopher</first-name>
+    <last-name>Smith</last-name>
+  </technician>
+  <input-output-map>
+    <input limsid="2-53329" post-process-uri="http://testserver.com:1234/artifacts/2-53329?state=24479" uri="http://testserver.com:1234/artifacts/2-53329?state=24479">
+      <parent-process limsid="24-18034" uri="http://testserver.com:1234/processes/24-18034"/>
+    </input>
+    <output limsid="2-53944" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/artifacts/2-53944?state=24794"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-53329" post-process-uri="http://testserver.com:1234/artifacts/2-53329?state=24479" uri="http://testserver.com:1234/artifacts/2-53329?state=24479">
+      <parent-process limsid="24-18034" uri="http://testserver.com:1234/processes/24-18034"/>
+    </input>
+    <output limsid="92-54238" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/artifacts/92-54238?state=24938"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-53328" post-process-uri="http://testserver.com:1234/artifacts/2-53328?state=24478" uri="http://testserver.com:1234/artifacts/2-53328?state=24478">
+      <parent-process limsid="24-18034" uri="http://testserver.com:1234/processes/24-18034"/>
+    </input>
+    <output limsid="2-53943" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/artifacts/2-53943?state=24793"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-53328" post-process-uri="http://testserver.com:1234/artifacts/2-53328?state=24478" uri="http://testserver.com:1234/artifacts/2-53328?state=24478">
+      <parent-process limsid="24-18034" uri="http://testserver.com:1234/processes/24-18034"/>
+    </input>
+    <output limsid="92-54238" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/artifacts/92-54238?state=24938"/>
+  </input-output-map>
+</prc:process>

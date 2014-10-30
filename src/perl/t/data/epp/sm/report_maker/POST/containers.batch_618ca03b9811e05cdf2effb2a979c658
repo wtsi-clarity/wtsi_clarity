@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="yes"?>
+<con:details xmlns:con="http://genologics.com/ri/container" xmlns:file="http://genologics.com/ri/file" xmlns:udf="http://genologics.com/ri/userdefined">
+  <con:container xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container" uri="http://testserver.com:1234/here/containers/27-0001" limsid="27-0001">
+      <name>1234567890</name>
+      <type uri="http://testserver.com:1234/here/containertypes/105" name="ABgene 0800"/>
+      <occupied-wells>3</occupied-wells>
+      <placement uri="http://testserver.com:1234/here/artifacts/2-0001" limsid="2-0001">
+          <value>A:1</value>
+      </placement>
+      <placement uri="http://testserver.com:1234/here/artifacts/2-0002" limsid="2-0002">
+          <value>A:2</value>
+      </placement>
+      <placement uri="http://testserver.com:1234/here/artifacts/2-0003" limsid="2-0003">
+          <value>A:3</value>
+      </placement>
+      <udf:field type="String" name="WTSI Container Purpose Name">Stock Plate</udf:field>
+      <udf:field type="String" name="Supplier Container Name">3</udf:field>
+      <state>Populated</state>
+  </con:container>
+
+
+</con:details>

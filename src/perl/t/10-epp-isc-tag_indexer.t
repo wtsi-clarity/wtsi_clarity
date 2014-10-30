@@ -15,9 +15,9 @@ my $test_data_dir = q[t/data/epp/isc/plate_tagger];
 use_ok ('wtsi_clarity::epp::isc::tag_indexer');
 
 my $i = wtsi_clarity::epp::isc::tag_indexer->new(
-    process_url => 'http://clarity.ac.uk:8080/api/v2/processes/24-17451',
+    process_url => 'http://testserver.com:1234/here/processes/24-17451',
 );
-my $prefix = q[http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/];
+my $prefix = q[http://testserver.com:1234/here/artifacts/];
 
 isa_ok( $i, 'wtsi_clarity::epp::isc::tag_indexer');
 
@@ -57,7 +57,7 @@ isa_ok( $i, 'wtsi_clarity::epp::isc::tag_indexer');
   );
 
   my $i = wtsi_clarity::epp::isc::tag_indexer->new(
-    process_url => 'http://clarity.ac.uk:8080/api/v2/processes/24-17451',
+    process_url => 'http://testserver.com:1234/here/processes/24-17451',
   );
 
   $i->_index;

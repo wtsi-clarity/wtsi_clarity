@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact
+  xmlns:udf="http://genologics.com/ri/userdefined"
+  xmlns:file="http://genologics.com/ri/file"
+  xmlns:art="http://genologics.com/ri/artifact"
+  uri="http://testserver.com:1234/here/artifacts/201"
+  limsid="201">
+    <sample uri="http://testserver.com:1234/here/samples/201" limsid="201"/>
+</art:artifact>

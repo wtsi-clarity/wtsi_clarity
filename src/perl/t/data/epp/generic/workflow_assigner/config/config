@@ -1,0 +1,33 @@
+[clarity_api]
+base_uri = http://testserver.com:1234/here
+username = user1
+password = pword1
+
+[clarity_mq]
+username = user2
+password = pword2
+
+[warehouse_mq]
+host = host1
+username = user3
+password = pword3
+
+[uuid_api]
+uri = http://uuid.web.service/
+
+[printing]
+service_url=http://psd2g.internal.sanger.ac.uk:8000/lims-support
+
+[robot_file_dir]
+sm_volume_check=/Users/cs24/projects/clarity/wtsi_clarity/src/perl/t/data/volume_check
+sm_pico_green=/Users/cs24/projects/clarity/wtsi_clarity/src/perl/t/data/sm/attach_dtx_file
+fluidigm_analysis=t/data/genotyping/fluidigm
+isc_cap_lib_qc=t/data/epp/isc/agilent_analyser
+
+[tag_plate]
+gatekeeper_url = http://dev.com/
+user_uuid = 666
+search_path = 555
+api_key = 777
+ss_client_id= 888
+

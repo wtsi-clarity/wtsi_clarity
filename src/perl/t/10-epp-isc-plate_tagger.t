@@ -11,19 +11,19 @@ use_ok ('wtsi_clarity::epp::isc::plate_tagger');
 
 throws_ok {
   wtsi_clarity::epp::isc::plate_tagger->new(
-    process_url => 'http://some.com/processes/151-12090'
+    process_url => 'http://testserver.com:1234/here/processes/151-12090'
 ) } qr /Either "validate" or "exhaust" option should be specified/,
     'error when none of the options defined';
 
 throws_ok {
   wtsi_clarity::epp::isc::plate_tagger->new(
-    process_url => 'http://some.com/processes/151-12090',
+    process_url => 'http://testserver.com:1234/here/processes/151-12090',
     exhaust => 1, validate => 1
 ) } qr /Both "validate" and "exhaust" options cannot be true/,
     'error when both of the options true';
 
 my $epp = wtsi_clarity::epp::isc::plate_tagger->new(
-  process_url => 'http://some.com/processes/151-12090',
+  process_url => 'http://testserver.com:1234/here/processes/151-12090',
   validate    => 1
 );
 isa_ok( $epp, 'wtsi_clarity::epp::isc::plate_tagger');
@@ -31,7 +31,7 @@ is($epp->barcode, 'ABCD1234', 'Gets the tag plate barcode correctly');
 lives_ok { $epp->run } 'runs validation';
 
 $epp = wtsi_clarity::epp::isc::plate_tagger->new(
-  process_url => 'http://some.com/processes/151-12090',
+  process_url => 'http://testserver.com:1234/here/processes/151-12090',
   validate    => 1
 );
 lives_ok { $epp->run } 'runs marking as used';

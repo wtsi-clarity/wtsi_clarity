@@ -1,9 +1,12 @@
 package wtsi_clarity::util::well_mapper;
 
 use Moose::Role;
+use Readonly;
 use Carp;
 
 our $VERSION = '0.0';
+
+Readonly::Scalar my $CHR_A => 64;
 
 sub well_location_index {
   my ($self, $loc, $nb_rows, $nb_cols) = @_;
@@ -12,13 +15,7 @@ sub well_location_index {
     croak 'Well address should be given';
   }
 
-  if (!$nb_rows) {
-    croak 'Number of rows has to be given';
-  }
-
-  if (!$nb_cols) {
-    croak 'Number of columns has to be given';
-  }
+  $self->_asset_parameter_validation($nb_rows, $nb_cols);
 
   my ($letter, $number) = $loc =~ /\A(\w):(\d+)/xms;
   if (!$letter || !$number) {
@@ -38,6 +35,45 @@ sub well_location_index {
   }
 
   return  ($number-1)*$nb_rows + $letter_as_number;
+}
+
+sub position_to_well {
+  my ($self, $pos, $nb_rows, $nb_cols) = @_;
+
+  if (!$pos) {
+    croak 'Position should be given';
+  }
+
+  if ($pos < 1) {
+    croak 'Position should be bigger than zero';
+  }
+
+  $self->_asset_parameter_validation($nb_rows, $nb_cols);
+
+  my $number = int($pos / $nb_rows);
+  my $letter_mod = $pos % $nb_rows;
+  my $letter;
+
+  if ($letter_mod > 0) {
+    $number++;
+    $letter = chr $CHR_A + $letter_mod;
+  } else {
+    $letter = 'H';
+  }
+
+  return $letter . q{:}. $number;
+}
+
+sub _asset_parameter_validation {
+  my ($self, $nb_rows, $nb_cols) = @_;
+
+  if (!$nb_rows) {
+    croak 'Number of rows has to be given';
+  }
+
+  if (!$nb_cols) {
+    croak 'Number of columns has to be given';
+  }
 }
 
 no Moose::Role;
@@ -69,6 +105,16 @@ __END__
   my $index = $self->well_location_index('B:3', $num_rows, $num_columns);
   # alternatively, can be used as a package-level method
   $index = wtsi_clarity::util::well_mapper->well_location_index('B:3', $num_rows, $num_columns);
+
+=head2 position_to_well
+
+  Converts a decimal position like '5' format into a well location with B:3 format (11 -> B:3)
+
+  my $num_rows = 8;
+  my $num_columns = 12;
+  my $index = $self->position_to_well(11, $num_rows, $num_columns);
+  # alternatively, can be used as a package-level method
+  $index = wtsi_clarity::util::well_mapper->well_location_index(11, $num_rows, $num_columns);
   
 =head1 CONFIGURATION AND ENVIRONMENT
 
@@ -79,6 +125,8 @@ __END__
 =item Moose::Role
 
 =item Carp
+
+=item Readonly
 
 =back
 

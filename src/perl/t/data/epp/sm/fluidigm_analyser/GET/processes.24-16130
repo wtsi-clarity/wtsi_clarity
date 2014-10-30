@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="24-16130" uri="http://testserver.com:1234/here/processes/24-16130" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://testserver.com:1234/here/processtypes/64">Fluidigm 96.96 IFC Analysis (SM)</type>
+  <technician uri="http://testserver.com:1234/here/researchers/19">
+    <first-name>Christopher</first-name>
+    <last-name>Smith</last-name>
+  </technician>
+  <input-output-map>
+    <input limsid="SMI102A104PA1" post-process-uri="http://testserver.com:1234/here/artifacts/SMI102A104PA1?state=1233" uri="http://testserver.com:1234/here/artifacts/SMI102A104PA1?state=1233"/>
+    <output limsid="92-38861" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-38861?state=16811"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="SMI102A96PA1" post-process-uri="http://testserver.com:1234/here/artifacts/SMI102A96PA1?state=1181" uri="http://testserver.com:1234/here/artifacts/SMI102A96PA1?state=1181"/>
+    <output limsid="92-38861" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-38861?state=16811"/>
+  </input-output-map>
+</prc:process>

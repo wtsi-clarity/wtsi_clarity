@@ -282,6 +282,18 @@ sub _find_elements_first_result {
   return $isText ? $element->textContent : $element->getValue();
 }
 
+sub build_details {
+  my ($self, $source, $type, $xpath) = @_;
+  my $base_url = $self->config->clarity_api->{'base_uri'};
+  my $ids = $self->grab_values($source, $xpath);
+  my @uris = c->new(@{$ids})
+              ->uniq()
+              ->map( sub {
+                  return qq{$base_url/$type/$_};
+                } )
+              ->each;
+  return $self->request->batch_retrieve($type, \@uris );
+}
 
 
 1;
@@ -384,7 +396,9 @@ find_udf_element_value - takes some XML, an element name and an optional default
  Will return the *textContent* of the clarity element found.
  if no element can be found, it will croak, except if a default value as been provided.
 
-
+=head2
+  build_details - take some XML Document, and download all the resources of a given 'type' matching an xpath;
+  Returns a batch (XML).
 
 =head2 update_text
 

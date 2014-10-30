@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="24-17479" uri="http://testserver.com:1234/here/processes/24-17479" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://testserver.com:1234/here/processtypes/310">Store Plate</type>
+  <technician uri="http://testserver.com:1234/here/researchers/10">
+    <first-name>Benoit</first-name>
+    <last-name>Mangili</last-name>
+  </technician>
+  <input-output-map>
+    <input limsid="DEA52A55PA1" post-process-uri="http://testserver.com:1234/here/artifacts/DEA52A55PA1" uri="http://testserver.com:1234/here/artifacts/DEA52A55PA1"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="DEA52A56PA1" post-process-uri="http://testserver.com:1234/here/artifacts/DEA52A56PA1" uri="http://testserver.com:1234/here/artifacts/DEA52A56PA1"/>
+  </input-output-map>
+  <udf:field name="Freezer Barcode" type="String">1233</udf:field>
+</prc:process>

@@ -133,17 +133,17 @@ has '_mapping_details' => (
 
 sub _build__output_details {
  my $self = shift;
- return $self->_build_details($self->process_doc, 'artifacts', $OUTPUT_IDS_PATH);
+ return $self->build_details($self->process_doc, 'artifacts', $OUTPUT_IDS_PATH);
 }
 
 sub _build__output_container_details {
   my $self = shift;
- return $self->_build_details($self->_output_details, 'containers', $BATCH_CONTAINER_PATH);
+ return $self->build_details($self->_output_details, 'containers', $BATCH_CONTAINER_PATH);
 }
 
 sub _build__sample_details {
   my $self = shift;
- return $self->_build_details($self->_output_details, 'samples', $BATCH_ARTIFACTS_SAMPLE_ID_PATH);
+ return $self->build_details($self->_output_details, 'samples', $BATCH_ARTIFACTS_SAMPLE_ID_PATH);
 }
 
 sub _build__source_barcode {
@@ -387,19 +387,6 @@ sub _update_output_details {
 
 
 # helpers
-
-sub _build_details {
-  my ($self, $source, $type, $xpath) = @_;
-  my $base_url = $self->config->clarity_api->{'base_uri'};
-  my $ids = $self->grab_values($source, $xpath);
-  my @uris = c->new(@{$ids})
-              ->uniq()
-              ->map( sub {
-                  return qq{$base_url/$type/$_};
-                } )
-              ->each;
-  return $self->request->batch_retrieve($type, \@uris );
-}
 
 sub _extract_value {
   my ($node, $xpath, $name, $default) = @_;

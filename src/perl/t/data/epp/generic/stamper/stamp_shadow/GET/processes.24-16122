@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="24-16122" uri="http://testserver.com:1234/here/processes/24-16122" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://testserver.com:1234/here/processtypes/122">Post Lib PCR QC Stamp</type>
+  <input-output-map>
+    <input limsid="2-0001" post-process-uri="http://testserver.com:1234/here/artifacts/2-0001" uri="http://testserver.com:1234/here/artifacts/2-0001">
+      <parent-process limsid="24-12824" uri="http://testserver.com:1234/here/processes/24-12824"/>
+    </input>
+    <output limsid="2-1001" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-1001"/>
+  </input-output-map>
+  <process-parameter name="Stamping"/>
+</prc:process>
