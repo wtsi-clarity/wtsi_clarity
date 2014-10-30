@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use Test::Exception;
-use Test::More tests => 21;
+use Test::More tests => 23;
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 
