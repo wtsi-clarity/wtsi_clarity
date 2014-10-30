@@ -71,7 +71,7 @@ sub _add_molarity_to_analytes {
 
 ### Attributes ###
 
-has '_calliper_file_name' => (
+has 'calliper_file_name' => (
   isa      => 'Str',
   is       => 'ro',
   required => 1,
