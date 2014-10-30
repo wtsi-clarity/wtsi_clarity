@@ -42,7 +42,7 @@ sub _main {
 
   $self->_update_analytes($output_collection);
 
-  $output->saveas(q{./} . $self->calliper_file_name);
+  $self->_text_file->saveas(q{./} . $self->calliper_file_name);
 
   return 1;
 }
