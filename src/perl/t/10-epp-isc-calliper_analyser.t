@@ -66,7 +66,7 @@ use_ok 'wtsi_clarity::epp::isc::calliper_analyser';
     'Plate Name' => 'Caliper1_344745_ISC_1_5_2014-07-01_12-55-09',
     'Region[200-1400] Molarity (nmol/l)' => '0.00741017327953466',
     'Total Conc. (ng/ul)' => '0',
-    'Well Label' => 'D9'
+    'Well Label' => 'D09'
   },
   {
     'Peak Count' => '0',
@@ -74,7 +74,7 @@ use_ok 'wtsi_clarity::epp::isc::calliper_analyser';
     'Plate Name' => 'Caliper1_344745_ISC_1_5_2014-07-01_12-55-09',
     'Region[200-1400] Molarity (nmol/l)' => '0.0417860183721143',
     'Total Conc. (ng/ul)' => '0',
-    'Well Label' => 'I9'
+    'Well Label' => 'I09'
   },
   ));
 
