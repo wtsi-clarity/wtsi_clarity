@@ -354,7 +354,7 @@ sub _stamp_with_copy {
         next;
       }
 
-      my ($destination_well_1, $destination_well_2) = $self->_calculate_destination_wells($self->_analytes->{$input_container}->{$input_analyte}->{'well'});
+      my ($destination_well_1, $destination_well_2) = $self->calculate_destination_wells($self->_analytes->{$input_container}->{$input_analyte}->{'well'});
       my $output_container = @{$self->_analytes->{$input_container}->{'output_containers'}}[0]; # Always just 1 here
 
       my $output_artifact_uris = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'};
@@ -370,7 +370,7 @@ sub _stamp_with_copy {
   return $doc;
 }
 
-sub _calculate_destination_wells {
+sub calculate_destination_wells {
   my ($self, $source_well) = @_;
   my $ord_of_A = ord 'A';
   my $ord_of_H = ord 'H';
@@ -496,6 +496,10 @@ wtsi_clarity::epp::generic::stamper
 =head2 step_url
 
   Clarity step url, required.
+
+=head2 calculate_destination_wells
+
+  Calculates the two destination wells for a 96->384 well plate stamping
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

@@ -36,7 +36,8 @@ Readonly::Hash my %ACTION2MODULE => (
     'analyse_agilent'                => 'isc::agilent_analyser',
     'analyse_calliper'               => 'isc::calliper_analyser',
     'pool_samples'                   => 'isc::analyte_pooler',
-    'place_pools'                    => 'isc::pool_placer',
+	'place_pools'					 => 'isc::pool_placer',
+    'calculate_pools'                => 'isc::pool_calculator',
 );
 
 has 'action'  => (

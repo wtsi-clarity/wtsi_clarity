@@ -95,7 +95,7 @@ wtsi_clarity::util::clarity_process
 =head1 SUBROUTINES/METHODS
 
 =head2 find_parent
-  Requires the name of the parent process being searched for, and the URL of the child process. 
+  Requires the name of the parent process being searched for, and the URL of the child process.
   Keeps recursing up parent processes until it finds the one being searched for
 
 =head2 find_previous_process
