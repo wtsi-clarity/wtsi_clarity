@@ -14,7 +14,7 @@ use_ok 'wtsi_clarity::epp::isc::calliper_analyser';
 
   my $process = wtsi_clarity::epp::isc::calliper_analyser->new(
     process_url => 'http://testserver.com:1234/processes/24-18045/',
-    _calliper_file_name => 'outputfile',
+    calliper_file_name => 'outputfile',
   );
 
   can_ok($process, qw/ run /);
@@ -28,7 +28,7 @@ use_ok 'wtsi_clarity::epp::isc::calliper_analyser';
 
   my $process = wtsi_clarity::epp::isc::calliper_analyser->new(
     process_url => 'http://testserver.com:1234/processes/24-18045/',
-    _calliper_file_name => 'outputfile',
+    calliper_file_name => 'outputfile',
   );
 
   can_ok($process, qw/ _plate_barcode /);
@@ -43,7 +43,7 @@ use_ok 'wtsi_clarity::epp::isc::calliper_analyser';
 
   my $process = wtsi_clarity::epp::isc::calliper_analyser->new(
     process_url => 'http://clarityurl.com:8080/processes/24-18045',
-    _calliper_file_name => 'outputfile',
+    calliper_file_name => 'outputfile',
   );
 
   is($process->_file_path, 't/data/epp/isc/calliper_analyser/12345678.csv', 'Extracts the input plate barcode');
@@ -57,7 +57,7 @@ use_ok 'wtsi_clarity::epp::isc::calliper_analyser';
 
   my $process = wtsi_clarity::epp::isc::calliper_analyser->new(
     process_url => 'http://testserver.com:1234/processes/24-18155',
-    _calliper_file_name => 'outputfile',
+    calliper_file_name => 'outputfile',
   );
 
   $process->_add_molarity_to_analytes(Mojo::Collection->new({
