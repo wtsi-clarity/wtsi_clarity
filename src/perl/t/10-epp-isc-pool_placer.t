@@ -28,14 +28,14 @@ isa_ok( $placer, 'wtsi_clarity::epp::isc::pool_placer');
 }
 
 { # Tests for updating output-placement tag (pool) with location
-  my $out_placement_uri = "http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-76901";
+  my $out_placement_uri = "http://web-claritytest-01.internal.sanger.ac.uk:8080/artifacts/2-76901";
   my $expected_location_value = "A:1";
 
   is($placer->_pool_location($out_placement_uri), $expected_location_value, 'Correct pool location');
 }
 
 { # Tests the expected container uri
-  my $expected_container_uri = q{http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2133};
+  my $expected_container_uri = q{http://web-claritytest-01.internal.sanger.ac.uk:8080/containers/27-2133};
 
   is($placer->_container_uri, $expected_container_uri, 'Gets the correct container uri');
 }
