@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<stp:placements xmlns:stp="http://genologics.com/ri/step" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/steps/122-22172/placements">
+    <step uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/steps/122-22172" rel="steps"/>
+    <configuration uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/protocols/252/steps/462">Pre Capture Lib Pooling</configuration>
+    <selected-containers>
+        <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2133"/>
+    </selected-containers>
+    <output-placements>
+        <output-placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-76902"/>
+        <output-placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-76903"/>
+        <output-placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-76901"/>
+    </output-placements>
+</stp:placements>
