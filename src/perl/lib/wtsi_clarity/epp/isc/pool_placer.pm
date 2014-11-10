@@ -30,19 +30,13 @@ sub _build__placements_doc {
   my $self = shift;
   my $placements_request_uri = join q{/}, ($self->step_url, 'placements');
 
-  my $placements_raw = $self->request->get($placements_request_uri)
-    or croak qq{Could not get the placements. ($placements_request_uri)};
-  my $placements_details = XML::LibXML->load_xml(string => $placements_raw );
-
-  return $placements_details;
+  return $self->fetch_and_parse($placements_request_uri);
 }
 
 sub _pool_location {
   my ($self, $pool_uri) = @_;
 
-  my $pool_raw = $self->request->get($pool_uri)
-    or croak qq{Could not get the pool. ($pool_uri)};
-  my $pool_details = XML::LibXML->load_xml(string => $pool_raw );
+  my $pool_details = $self->fetch_and_parse($pool_uri);
 
   return $pool_details->findnodes($POOL_NAME_PATH)->pop()->string_value;
 }
