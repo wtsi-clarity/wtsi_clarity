@@ -8,6 +8,7 @@ use File::Slurp;
 use English qw( -no_match_vars );
 use JSON;
 use Try::Tiny;
+use List::MoreUtils qw ( any );
 
 use wtsi_clarity::util::config;
 use wtsi_clarity::process_checks::bed_verifier;
@@ -215,6 +216,7 @@ has '_barcode_map' => (
 sub _build__barcode_map {
   my $self = shift;
   my $container_map_barcodes = $self->_fetch_container_map;
+
   my $barcodes_map;
 
   foreach my $input_url (keys %{$container_map_barcodes}) {
@@ -278,9 +280,8 @@ sub _verify {
 
 sub _verify_plates_positioned_correctly {
   my $self = shift;
-  my $barcode_map = $self->_barcode_map();
 
-  foreach my $input_plate (keys %{$barcode_map}) {
+  foreach my $input_plate (keys %{$self->_barcode_map}) {
     my $input_elem = $self->process_doc->findnodes( qq[ prc:process/udf:field[text()='$input_plate']]);
 
     if ($input_elem->size() == 0) {
@@ -288,22 +289,40 @@ sub _verify_plates_positioned_correctly {
     }
 
     my $input_elem_name = $input_elem->pop()->findvalue('@name');
-    # Convert to output
-    $input_elem_name =~ s/Input/Output/gsm;
-    my $output_elem_value = $self->process_doc->findvalue( qq[ prc:process/udf:field[\@name='$input_elem_name']]);
 
-    if ($output_elem_value eq q{}) {
-      croak qq[Could not find the field for plate $input_elem_name\n];
+    my $output_elem_name = $self->_convert_to_output($input_elem_name);
+
+    my @output_elems = $self->process_doc
+      ->findnodes( qq[ prc:process/udf:field[starts-with(\@name, '$output_elem_name')]])
+      ->get_nodelist();
+
+    if (scalar @output_elems == 0) {
+      croak qq[Could not find the field for plate(s) $output_elem_name\n];
     }
 
-    my $output_plate = $barcode_map->{ $input_plate }[0];
+    my $output_plate = $self->_barcode_map->{ $input_plate };
 
-    if ($output_elem_value ne $output_plate) {
-      return 0;
+    foreach my $output_plate_bc (@output_elems) {
+      if (!(any { $_ eq $output_plate_bc->textContent } @{$output_plate})) {
+        return 0;
+      };
     }
   }
 
   return 1;
+}
+
+sub _convert_to_output {
+  my ($self, $input_name) = @_;
+
+  $input_name =~ s/Input/Output/gsm;
+
+  # Pop the letter off if it ends with one
+  if ($input_name =~ /[[:lower:]]$/sxm) {
+    chop $input_name;
+  }
+
+  return $input_name;
 }
 
 sub _punish_user_by_resetting_everything {
