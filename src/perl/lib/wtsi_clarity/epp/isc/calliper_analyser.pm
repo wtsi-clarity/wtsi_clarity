@@ -60,7 +60,11 @@ sub _add_molarity_to_analytes {
 
   foreach my $analyte ($analytes->get_nodelist) {
     my $well = $analyte->findvalue('location/value');
-    $well =~ s/://sxmg;
+
+    my ($letter, $number) = $well =~ /([[:upper:]]):(\d+)/sxm;
+    $number = sprintf '%02d', $number;
+    $well = $letter . $number;
+
     my $result = $output->first(sub { $_->{'Well Label'} eq $well });
     my $udf = $self->create_udf_element($self->_output_analytes, 'Molarity', $result->{'Region[200-1400] Molarity (nmol/l)'});
     $analyte->appendChild($udf);
