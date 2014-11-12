@@ -57,7 +57,7 @@ sub _create_location_element {
   my ($self, $location) = @_;
   my $placement_doc = $self->_placements_doc;
   my $container_uri = $self->_container_uri;
-  my ($limsid) = ($container_uri =~ /(\d+-\d+)/gmsx);
+  my ($limsid) = ($container_uri =~ /(\d+-\d+$)/gmsx);
 
   my $location_element = $placement_doc->createElement('location');
 
