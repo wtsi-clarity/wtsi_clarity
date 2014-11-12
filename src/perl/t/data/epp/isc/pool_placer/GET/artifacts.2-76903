@@ -1,0 +1,25 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/artifacts/2-76903?state=34753" limsid="2-76903">
+    <name>C:3</name>
+    <type>Analyte</type>
+    <output-type>Pool</output-type>
+    <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/processes/122-22172" limsid="122-22172"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <working-flag>true</working-flag>
+    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/samples/LAB106A23" limsid="LAB106A23"/>
+    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/samples/LAB106A24" limsid="LAB106A24"/>
+    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/samples/LAB106A21" limsid="LAB106A21"/>
+    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/samples/LAB106A22" limsid="LAB106A22"/>
+    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/samples/LAB106A19" limsid="LAB106A19"/>
+    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/samples/LAB106A20" limsid="LAB106A20"/>
+    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/samples/LAB106A17" limsid="LAB106A17"/>
+    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/samples/LAB106A18" limsid="LAB106A18"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 24 (TTGACTCT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 23 (TGCATAGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 22 (TGATACGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 21 (TCGAGCGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 19 (TCTGCTGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 20 (TTGGAGGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 17 (TGTACCTT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 18 (TTCTGTGT)"/>
+</art:artifact>
