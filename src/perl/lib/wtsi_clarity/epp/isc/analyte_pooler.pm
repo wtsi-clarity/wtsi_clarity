@@ -141,11 +141,7 @@ sub _build__pools_doc {
   my $self = shift;
   my $pool_request_uri = join q{/}, ($self->step_url, 'pools');
 
-  my $pools_raw = $self->request->get($pool_request_uri)
-    or croak qq{Could not get the pools. ($pool_request_uri)};
-  my $pools_details = XML::LibXML->load_xml(string => $pools_raw );
-
-  return $pools_details;
+  return $self->fetch_and_parse($pool_request_uri);
 }
 
 has '_pools' => (
