@@ -157,7 +157,7 @@ sub _build__pools {
   my $pools = {};
   while ( my ($location, $analyte_uri) = each %{$self->_input_artifacts_location}) {
     foreach my $mapping (@{$mappings}) {
-      if ($mapping->{'src_well'} eq $location) {
+      if ($mapping->{'source_well'} eq $location) {
         $pools->{$mapping->{'dest_well'}} ||= [];
         push @{$pools->{$mapping->{'dest_well'}}}, $analyte_uri;
       }
