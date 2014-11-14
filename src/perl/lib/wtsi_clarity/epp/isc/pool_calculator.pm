@@ -55,21 +55,22 @@ has '_mapping' => (
 
 sub _build__mapping {
   my $self = shift;
-
-  my @mapping = map {
-    my $input_analyte = $self->_analytes->findnodes(sprintf $ARTIFACT_BY_LIMSID, $_->[0])->pop();
-    my $output_analyte = $self->_analytes->findnodes(sprintf $ARTIFACT_BY_LIMSID, $_->[1])->pop();
-
-    {
-      'source_plate' => $input_analyte->findvalue('./location/container/@limsid'),
-      'source_well'  => $input_analyte->findvalue('./location/value'),
-      'dest_plate'   => $output_analyte->findvalue('./location/container/@limsid'),
-      'dest_well'    => $output_analyte->findvalue('./location/value'),
-    };
-
-  } @{$self->_input_output_map};
-
+  my @mapping = map { $self->_build_mapping($_); } @{$self->_input_output_map};
   return \@mapping;
+}
+
+sub _build_mapping {
+  my ($self, $tuple) = @_;
+
+  my $input_analyte = $self->_analytes->findnodes(sprintf $ARTIFACT_BY_LIMSID, $tuple->[0])->pop();
+  my $output_analyte = $self->_analytes->findnodes(sprintf $ARTIFACT_BY_LIMSID, $tuple->[1])->pop();
+
+  return {
+    'source_plate' => $input_analyte->findvalue('./location/container/@limsid'),
+    'source_well'  => $input_analyte->findvalue('./location/value'),
+    'dest_plate'   => $output_analyte->findvalue('./location/container/@limsid'),
+    'dest_well'    => $output_analyte->findvalue('./location/value'),
+  };
 }
 
 has '_input_output_map' => (
@@ -242,7 +243,7 @@ __END__
 =head1 SYNOPSIS
 
   my $pool_calculator = wtsi_clarity::epp::isc::pool_calculator->new(
-    process_doc => $process_doc
+    process_xml => $process_xml
   );
 
   $pool_calculator->get_volume_calculations_and_warnings();
@@ -253,7 +254,7 @@ __END__
 
 =head1 SUBROUTINES/METHODS
 
-=head2 run - runs the process. Returns the warnings and volumes from the pool calculator
+=head2 get_volume_calculations_and_warnings - Returns the warnings and volumes from the pool calculator
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
