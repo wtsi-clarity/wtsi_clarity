@@ -29,7 +29,7 @@ Readonly::Scalar my $PLATE_ROW_NUMBER    => 8;
 Readonly::Scalar my $PLATE_COLUMN_NUMBER => 12;
 ## use critic
 
-override 'run' => sub {
+sub get_volume_calculations_and_warnings {
   my $self = shift;
   my %molarities = ();
   super();
@@ -181,7 +181,6 @@ has '_384_plate_molarities' => (
 sub _build__384_plate_molarities {
   my $self = shift;
   my %well_molarities = ();
-  my $molarities_calculated = 0;
 
   my $output_lims_ids = $self->_forked_plate_process_xml->findnodes($OUTPUT_ANALYTE_URIS)->to_literal_list();
   my $output_analytes = $self->request->batch_retrieve('artifacts', $output_lims_ids);
@@ -196,13 +195,10 @@ sub _build__384_plate_molarities {
       next;
     }
 
-    # Just a little flag to check
-    $molarities_calculated = 1;
-
     $well_molarities{$well} = $molarity;
   }
 
-  if ($molarities_calculated == 0) {
+  if (scalar keys %well_molarities == 0) {
     croak 'Molarities have not yet been obtained for forked plate';
   }
 
@@ -245,14 +241,15 @@ __END__
 
 =head1 SYNOPSIS
 
-wtsi_clarity::epp::isc::pool_calculator->new(
-  process_url => 'http://clarity.com/process'
-)->run();
+  my $pool_calculator = wtsi_clarity::epp::isc::pool_calculator->new(
+    process_doc => $process_doc
+  );
+
+  $pool_calculator->get_volume_calculations_and_warnings();
 
 =head1 DESCRIPTION
 
  Fetches molarities from a forked plate, and calculaties an equi-molar pooling based on them.
- Updates an artifact's BUFFER VOLUME to tell a pooling step the volume to take from a plate
 
 =head1 SUBROUTINES/METHODS
 
@@ -264,7 +261,7 @@ wtsi_clarity::epp::isc::pool_calculator->new(
 
 =over
 
-=item Moose::Role
+=item Moose
 
 =item Readonly
 
