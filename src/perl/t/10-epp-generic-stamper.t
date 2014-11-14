@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 38;
+use Test::More tests => 42;
 use Test::Exception;
 use File::Temp qw/tempdir/;
 use File::Slurp;
@@ -161,19 +161,27 @@ my $base_uri =  'http://testserver.com:1234/here' ;
             copy_on_target => 0
           );
 
-  my ($well1, $well2) = $s->_calculate_destination_wells('A:1');
+  my ($well1, $well2) = $s->calculate_destination_wells('A:1');
   is($well1, 'A:1', 'The first well is A:1');
   is($well2, 'B:1', 'The second well is B:1');
 
-  my ($well3, $well4) = $s->_calculate_destination_wells('B:1');
+  my ($well3, $well4) = $s->calculate_destination_wells('B:1');
   is($well3, 'C:1', 'The first well is C:1');
   is($well4, 'D:1', 'The second well is D:1');
 
-  my ($well5, $well6) = $s->_calculate_destination_wells('A:2');
+  my ($well5, $well6) = $s->calculate_destination_wells('A:2');
   is($well5, 'A:3', 'The first well is A:3');
   is($well6, 'B:3', 'The second well is B:3');
 
-  throws_ok { $s->_calculate_destination_wells('I:1') } qr/Source plate must be a 96 well plate/,
+  my ($well7, $well8) = $s->calculate_destination_wells('E:1');
+  is($well7, 'I:1', 'The first well is I:1');
+  is($well8, 'J:1', 'The second well is J:1');
+
+  my ($well9, $well10) = $s->calculate_destination_wells('H:1');
+  is($well9, 'O:1', 'The first well is O:1');
+  is($well10, 'P:1', 'The second well is P:1');
+
+  throws_ok { $s->calculate_destination_wells('I:1') } qr/Source plate must be a 96 well plate/,
     'Only accepts 96 well plates';
 }
 

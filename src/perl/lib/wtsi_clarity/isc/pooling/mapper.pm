@@ -33,30 +33,19 @@ has 'mapping' => (
 sub _build_mapping {
   my $self = shift;
 
-  return $self->_column_to_well_mapping($self->_container_name);
-}
-
-sub _container_name {
-  my $self = shift;
-
-  my $request_uri = join q{/}, ($self->config->clarity_api->{'base_uri'}, $CONTAINERS_URI_STR, $self->container_id);
-  my $request = wtsi_clarity::util::request->new();
-  my $container_raw = $request->get($request_uri) or croak qq{Could not get the container. ($request_uri)};
-  my $container_dom = XML::LibXML->load_xml(string => $container_raw );
-
-  return $container_dom->findvalue($CONTAINER_NAME_PATH);
+  return $self->_column_to_well_mapping($self->container_id);
 }
 
 sub _column_to_well_mapping {
-  my ($self, $container_name) = @_;
+  my ($self, $container_id) = @_;
   my @mappings;
 
   foreach my $col (1..$NB_COLS_96) {
     foreach my $row ('A'...'H') {
-      my %mapping = ( 'src_container_name'  => $container_name,
-                      'src_well'            => $row. q{:}. $col,
-                      'dest_container_name' => $TEMP_CONTAINER_NAME1,
-                      'dest_well'           => $self->position_to_well($col, $NB_ROWS_96, $NB_COLS_96),
+      my %mapping = ( 'source_plate' => $container_id,
+                      'source_well'  => $row. q{:}. $col,
+                      'dest_plate'   => $TEMP_CONTAINER_NAME1,
+                      'dest_well'    => $self->position_to_well($col, $NB_ROWS_96, $NB_COLS_96),
                     );
       push @mappings, \%mapping;
     }
@@ -88,7 +77,7 @@ wtsi_clarity::isc::pooling::mapper
 
 =head1 SUBROUTINES/METHODS
 
-=head2 mapping - return an array representing the mapping for 
+=head2 mapping - return an array representing the mapping for
 each of the wells of the source plate(s) to the wells of the target plate(s).
 
 =head1 CONFIGURATION AND ENVIRONMENT
