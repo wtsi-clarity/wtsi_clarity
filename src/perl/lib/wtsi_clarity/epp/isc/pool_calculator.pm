@@ -6,6 +6,7 @@ use Readonly;
 use wtsi_clarity::epp::generic::stamper;
 use wtsi_clarity::file_parsing::ISC_pool_calculator;
 use wtsi_clarity::isc::pooling::mapper;
+use List::Util qw/sum/;
 
 extends 'wtsi_clarity::epp';
 with 'wtsi_clarity::util::clarity_process';
@@ -17,6 +18,7 @@ our $VERSION = '0.0';
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $INPUT_OUTPUT_PATH   => q{prc:process/input-output-map};
 Readonly::Scalar my $INPUT_LIMSID        => q{./input/@limsid};
+Readonly::Scalar my $INPUT_ARTIFACT_URIS => q{prc:process/input-output-map/input/@uri};
 Readonly::Scalar my $OUTPUT_LIMSID       => q{./output/@limsid};
 Readonly::Scalar my $FIRST_INPUT_LIMSID  => q(prc:process/input-output-map[1]/input/@limsid);
 Readonly::Scalar my $FIRST_INPUT_URI     => q(prc:process/input-output-map[1]/input/@uri);
@@ -25,6 +27,7 @@ Readonly::Scalar my $OUTPUT_ANALYTE_URIS => q(prc:process/input-output-map/outpu
 Readonly::Scalar my $ALL_ANALYTES        => q(prc:process/input-output-map/output[@output-type="Pool"]/@uri | prc:process/input-output-map/input/@uri);
 Readonly::Scalar my $CONTAINER_LIMSID    => q{/art:artifact/location/container/@limsid};
 Readonly::Scalar my $ARTIFACT_BY_LIMSID  => q{art:details/art:artifact[@limsid="%s"]};
+Readonly::Scalar my $MOLARITY_UDF_PATH   => q{/art:details/art:artifact/udf:field[@name="Molarity"]};
 Readonly::Scalar my $PLATE_ROW_NUMBER    => 8;
 Readonly::Scalar my $PLATE_COLUMN_NUMBER => 12;
 ## use critic
@@ -160,76 +163,62 @@ sub _build__96_plate_molarities {
   my $self = shift;
   my %plate_molarities;
 
-  for (1..($PLATE_ROW_NUMBER * $PLATE_COLUMN_NUMBER)) {
-    my $position = $self->position_to_well($_, $PLATE_ROW_NUMBER, $PLATE_COLUMN_NUMBER);
-    my ($dest_well_1, $dest_well_2) = wtsi_clarity::epp::generic::stamper::calculate_destination_wells($self, $position);
-
-    my $dest_well_1_molarity = $self->_384_plate_molarities->{$dest_well_1} || 0;
-    my $dest_well_2_molarity = $self->_384_plate_molarities->{$dest_well_2} || 0;
-
-    $plate_molarities{$position} = ($dest_well_1_molarity + $dest_well_2_molarity) / 2;
+  foreach my $artifact ($self->_input_analytes->findnodes('/art:details/art:artifact')->get_nodelist) {
+    my $tube_position = $artifact->findvalue('./location/value');
+    my $molarity = $self->_fetch_molarities($artifact);
+    $plate_molarities{$tube_position} = $molarity;
   }
 
   return \%plate_molarities;
 }
 
-has '_384_plate_molarities' => (
-  is  => 'ro',
-  isa => 'HashRef',
-  lazy_build => 1,
-);
-
-sub _build__384_plate_molarities {
+sub _fetch_molarities {
   my $self = shift;
-  my %well_molarities = ();
+  my $artifact_element = shift;
+  my @molarities = ();
 
-  my $output_lims_ids = $self->_forked_plate_process_xml->findnodes($OUTPUT_ANALYTE_URIS)->to_literal_list();
-  my $output_analytes = $self->request->batch_retrieve('artifacts', $output_lims_ids);
+  my $sample_id = $artifact_element->findvalue('./sample/@limsid');
 
-  my @artifact_list = $output_analytes->findnodes('art:details/art:artifact')->get_nodelist();
+  my $artifact_list = $self->request->query_artifacts({
+    sample_id => $sample_id,
+    udf       => 'udf.Molarity.min=0',
+    type      => 'Analyte',
+  });
 
-  foreach my $artifact (@artifact_list) {
-    my $well = $artifact->findvalue('location/value');
-    my $molarity = $artifact->findvalue('udf:field[@name="Molarity"]');
+  my @nodelist = $artifact_list->findnodes('art:artifacts/artifact/@uri')->to_literal_list;
 
-    if ($molarity eq q{}) {
-      next;
-    }
-
-    $well_molarities{$well} = $molarity;
+  if (scalar @nodelist > 2) {
+    croak "Getting molarities of plates that have been through Calliper twice is not yet supported";
   }
 
-  if (scalar keys %well_molarities == 0) {
-    croak 'Molarities have not yet been obtained for forked plate';
+  if (scalar @nodelist == 0) {
+    return 0;
   }
 
-  return \%well_molarities;
+  my $artifacts_with_molarities = $self->request->batch_retrieve('artifacts', \@nodelist);
+
+  foreach my $molarity ($artifacts_with_molarities->findnodes($MOLARITY_UDF_PATH)->get_nodelist) {
+    push @molarities, $molarity->textContent;
+  }
+
+  my $total = sum(@molarities);
+  my $no_of_molarities = scalar @molarities;
+
+  my $average =  $total / $no_of_molarities;
+
+  return $average;
 }
 
-has '_forked_plate_process_xml' => (
+has '_input_analytes' => (
   is => 'ro',
   isa => 'XML::LibXML::Document',
   lazy_build => 1,
 );
 
-sub _build__forked_plate_process_xml {
+sub _build__input_analytes {
   my $self = shift;
-
-  my $first_input_lims_id = $self->process_doc->findvalue($FIRST_INPUT_LIMSID);
-  my $post_lib_process_xml = $self->find_previous_process($first_input_lims_id, 'Post Lib PCR QC Stamp');
-
-  if ($post_lib_process_xml == 0) {
-    croak 'This plate has not been forked through Post Lib PCR QC Stamp';
-  }
-
-  my $first_output_lims_id = $post_lib_process_xml->findvalue($FIRST_OUTPUT_LIMSID);
-  my $get_data_process_xml = $self->find_previous_process($first_output_lims_id, 'Post Lib PCR QC GetData');
-
-  if ($get_data_process_xml == 0) {
-    croak 'The fork of this plate has not yet been through Post Lib PRC QC';
-  }
-
-  return $get_data_process_xml;
+  my $uris = $self->process_doc->findnodes($INPUT_ARTIFACT_URIS)->to_literal_list;
+  return $self->request->batch_retrieve('artifacts', $uris);
 }
 
 1;
