@@ -27,6 +27,7 @@ Readonly::Scalar my $OUTPUT_ANALYTE_URIS => q(prc:process/input-output-map/outpu
 Readonly::Scalar my $ALL_ANALYTES        => q(prc:process/input-output-map/output[@output-type="Pool"]/@uri | prc:process/input-output-map/input/@uri);
 Readonly::Scalar my $CONTAINER_LIMSID    => q{/art:artifact/location/container/@limsid};
 Readonly::Scalar my $ARTIFACT_BY_LIMSID  => q{art:details/art:artifact[@limsid="%s"]};
+Readonly::Scalar my $MOLARITY_UDF_PATH   => q{/art:details/art:artifact/udf:field[@name="Molarity"]};
 Readonly::Scalar my $PLATE_ROW_NUMBER    => 8;
 Readonly::Scalar my $PLATE_COLUMN_NUMBER => 12;
 ## use critic
@@ -198,7 +199,7 @@ sub _fetch_molarities {
 
   my $artifacts_with_molarities = $self->request->batch_retrieve('artifacts', \@nodelist);
 
-  foreach my $molarity ($artifacts_with_molarities->findnodes('/art:details/art:artifact/udf:field[@name="Molarity"]')->get_nodelist) {
+  foreach my $molarity ($artifacts_with_molarities->findnodes($MOLARITY_UDF_PATH)->get_nodelist) {
     push @molarities, $molarity->textContent;
   }
 
