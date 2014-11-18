@@ -49,7 +49,7 @@ use_ok('wtsi_clarity::util::clarity_query');
       'expected' => 'samplelimsid=1234567890',
     },
     { 'input' => {
-        'udf.Concentration.max=0' => 0,
+        'udf' => 'udf.Concentration.max=0',
       },
       'resource' => 'artifacts',
       'expected' => 'udf.Concentration.max=0',

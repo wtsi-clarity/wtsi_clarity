@@ -44,7 +44,6 @@ override 'run' => sub {
   my $self= shift;
   super();
   my $response = $self->_main_method();
-  $self->check_response( $response );
 };
 
 

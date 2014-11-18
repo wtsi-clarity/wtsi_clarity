@@ -1,111 +1,111 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<prc:process limsid="122-22367" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/122-22367" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
-  <type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processtypes/133">Pre Capture Lib Pooling</type>
-  <technician uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/19">
+<prc:process limsid="122-22367" uri="http://testserver.com:1234/api/v2/processes/122-22367" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://testserver.com:1234/api/v2/processtypes/133">Pre Capture Lib Pooling</type>
+  <technician uri="http://testserver.com:1234/api/v2/researchers/19">
     <first-name>Christopher</first-name>
     <last-name>Smith</last-name>
   </technician>
   <input-output-map>
-    <input limsid="2-75704" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75704?state=34154" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75704?state=34154">
-      <parent-process limsid="24-22161" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22161"/>
+    <input limsid="2-75704" post-process-uri="http://testserver.com:1234/api/v2/artifacts/2-75704?state=34154" uri="http://testserver.com:1234/api/v2/artifacts/2-75704?state=34154">
+      <parent-process limsid="24-22161" uri="http://testserver.com:1234/api/v2/processes/24-22161"/>
     </input>
-    <output limsid="2-83064" output-generation-type="PerAllInputs" output-type="Pool" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-83064?state=37914"/>
+    <output limsid="2-83064" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/api/v2/artifacts/2-83064?state=37914"/>
   </input-output-map>
   <input-output-map>
-    <input limsid="2-75717" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75717?state=34167" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75717?state=34167">
-      <parent-process limsid="24-22161" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22161"/>
+    <input limsid="2-75717" post-process-uri="http://testserver.com:1234/api/v2/artifacts/2-75717?state=34167" uri="http://testserver.com:1234/api/v2/artifacts/2-75717?state=34167">
+      <parent-process limsid="24-22161" uri="http://testserver.com:1234/api/v2/processes/24-22161"/>
     </input>
-    <output limsid="2-83053" output-generation-type="PerAllInputs" output-type="Pool" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-83053?state=37903"/>
+    <output limsid="2-83053" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/api/v2/artifacts/2-83053?state=37903"/>
   </input-output-map>
   <input-output-map>
-    <input limsid="2-75718" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75718?state=34168" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75718?state=34168">
-      <parent-process limsid="24-22161" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22161"/>
+    <input limsid="2-75718" post-process-uri="http://testserver.com:1234/api/v2/artifacts/2-75718?state=34168" uri="http://testserver.com:1234/api/v2/artifacts/2-75718?state=34168">
+      <parent-process limsid="24-22161" uri="http://testserver.com:1234/api/v2/processes/24-22161"/>
     </input>
-    <output limsid="2-83053" output-generation-type="PerAllInputs" output-type="Pool" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-83053?state=37903"/>
+    <output limsid="2-83053" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/api/v2/artifacts/2-83053?state=37903"/>
   </input-output-map>
   <input-output-map>
-    <input limsid="2-75710" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75710?state=34160" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75710?state=34160">
-      <parent-process limsid="24-22161" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22161"/>
+    <input limsid="2-75710" post-process-uri="http://testserver.com:1234/api/v2/artifacts/2-75710?state=34160" uri="http://testserver.com:1234/api/v2/artifacts/2-75710?state=34160">
+      <parent-process limsid="24-22161" uri="http://testserver.com:1234/api/v2/processes/24-22161"/>
     </input>
-    <output limsid="2-83054" output-generation-type="PerAllInputs" output-type="Pool" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-83054?state=37904"/>
+    <output limsid="2-83054" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/api/v2/artifacts/2-83054?state=37904"/>
   </input-output-map>
   <input-output-map>
-    <input limsid="2-75709" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75709?state=34159" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75709?state=34159">
-      <parent-process limsid="24-22161" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22161"/>
+    <input limsid="2-75709" post-process-uri="http://testserver.com:1234/api/v2/artifacts/2-75709?state=34159" uri="http://testserver.com:1234/api/v2/artifacts/2-75709?state=34159">
+      <parent-process limsid="24-22161" uri="http://testserver.com:1234/api/v2/processes/24-22161"/>
     </input>
-    <output limsid="2-83054" output-generation-type="PerAllInputs" output-type="Pool" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-83054?state=37904"/>
+    <output limsid="2-83054" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/api/v2/artifacts/2-83054?state=37904"/>
   </input-output-map>
   <input-output-map>
-    <input limsid="2-75712" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75712?state=34162" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75712?state=34162">
-      <parent-process limsid="24-22161" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22161"/>
+    <input limsid="2-75712" post-process-uri="http://testserver.com:1234/api/v2/artifacts/2-75712?state=34162" uri="http://testserver.com:1234/api/v2/artifacts/2-75712?state=34162">
+      <parent-process limsid="24-22161" uri="http://testserver.com:1234/api/v2/processes/24-22161"/>
     </input>
-    <output limsid="2-83055" output-generation-type="PerAllInputs" output-type="Pool" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-83055?state=37905"/>
+    <output limsid="2-83055" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/api/v2/artifacts/2-83055?state=37905"/>
   </input-output-map>
   <input-output-map>
-    <input limsid="2-75711" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75711?state=34161" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75711?state=34161">
-      <parent-process limsid="24-22161" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22161"/>
+    <input limsid="2-75711" post-process-uri="http://testserver.com:1234/api/v2/artifacts/2-75711?state=34161" uri="http://testserver.com:1234/api/v2/artifacts/2-75711?state=34161">
+      <parent-process limsid="24-22161" uri="http://testserver.com:1234/api/v2/processes/24-22161"/>
     </input>
-    <output limsid="2-83055" output-generation-type="PerAllInputs" output-type="Pool" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-83055?state=37905"/>
+    <output limsid="2-83055" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/api/v2/artifacts/2-83055?state=37905"/>
   </input-output-map>
   <input-output-map>
-    <input limsid="2-75714" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75714?state=34164" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75714?state=34164">
-      <parent-process limsid="24-22161" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22161"/>
+    <input limsid="2-75714" post-process-uri="http://testserver.com:1234/api/v2/artifacts/2-75714?state=34164" uri="http://testserver.com:1234/api/v2/artifacts/2-75714?state=34164">
+      <parent-process limsid="24-22161" uri="http://testserver.com:1234/api/v2/processes/24-22161"/>
     </input>
-    <output limsid="2-83056" output-generation-type="PerAllInputs" output-type="Pool" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-83056?state=37906"/>
+    <output limsid="2-83056" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/api/v2/artifacts/2-83056?state=37906"/>
   </input-output-map>
   <input-output-map>
-    <input limsid="2-75713" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75713?state=34163" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75713?state=34163">
-      <parent-process limsid="24-22161" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22161"/>
+    <input limsid="2-75713" post-process-uri="http://testserver.com:1234/api/v2/artifacts/2-75713?state=34163" uri="http://testserver.com:1234/api/v2/artifacts/2-75713?state=34163">
+      <parent-process limsid="24-22161" uri="http://testserver.com:1234/api/v2/processes/24-22161"/>
     </input>
-    <output limsid="2-83056" output-generation-type="PerAllInputs" output-type="Pool" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-83056?state=37906"/>
+    <output limsid="2-83056" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/api/v2/artifacts/2-83056?state=37906"/>
   </input-output-map>
   <input-output-map>
-    <input limsid="2-75716" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75716?state=34166" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75716?state=34166">
-      <parent-process limsid="24-22161" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22161"/>
+    <input limsid="2-75716" post-process-uri="http://testserver.com:1234/api/v2/artifacts/2-75716?state=34166" uri="http://testserver.com:1234/api/v2/artifacts/2-75716?state=34166">
+      <parent-process limsid="24-22161" uri="http://testserver.com:1234/api/v2/processes/24-22161"/>
     </input>
-    <output limsid="2-83057" output-generation-type="PerAllInputs" output-type="Pool" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-83057?state=37907"/>
+    <output limsid="2-83057" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/api/v2/artifacts/2-83057?state=37907"/>
   </input-output-map>
   <input-output-map>
-    <input limsid="2-75715" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75715?state=34165" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75715?state=34165">
-      <parent-process limsid="24-22161" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22161"/>
+    <input limsid="2-75715" post-process-uri="http://testserver.com:1234/api/v2/artifacts/2-75715?state=34165" uri="http://testserver.com:1234/api/v2/artifacts/2-75715?state=34165">
+      <parent-process limsid="24-22161" uri="http://testserver.com:1234/api/v2/processes/24-22161"/>
     </input>
-    <output limsid="2-83057" output-generation-type="PerAllInputs" output-type="Pool" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-83057?state=37907"/>
+    <output limsid="2-83057" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/api/v2/artifacts/2-83057?state=37907"/>
   </input-output-map>
   <input-output-map>
-    <input limsid="2-75705" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75705?state=34155" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75705?state=34155">
-      <parent-process limsid="24-22161" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22161"/>
+    <input limsid="2-75705" post-process-uri="http://testserver.com:1234/api/v2/artifacts/2-75705?state=34155" uri="http://testserver.com:1234/api/v2/artifacts/2-75705?state=34155">
+      <parent-process limsid="24-22161" uri="http://testserver.com:1234/api/v2/processes/24-22161"/>
     </input>
-    <output limsid="2-83058" output-generation-type="PerAllInputs" output-type="Pool" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-83058?state=37908"/>
+    <output limsid="2-83058" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/api/v2/artifacts/2-83058?state=37908"/>
   </input-output-map>
   <input-output-map>
-    <input limsid="2-75706" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75706?state=34156" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75706?state=34156">
-      <parent-process limsid="24-22161" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22161"/>
+    <input limsid="2-75706" post-process-uri="http://testserver.com:1234/api/v2/artifacts/2-75706?state=34156" uri="http://testserver.com:1234/api/v2/artifacts/2-75706?state=34156">
+      <parent-process limsid="24-22161" uri="http://testserver.com:1234/api/v2/processes/24-22161"/>
     </input>
-    <output limsid="2-83059" output-generation-type="PerAllInputs" output-type="Pool" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-83059?state=37909"/>
+    <output limsid="2-83059" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/api/v2/artifacts/2-83059?state=37909"/>
   </input-output-map>
   <input-output-map>
-    <input limsid="2-75707" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75707?state=34157" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75707?state=34157">
-      <parent-process limsid="24-22161" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22161"/>
+    <input limsid="2-75707" post-process-uri="http://testserver.com:1234/api/v2/artifacts/2-75707?state=34157" uri="http://testserver.com:1234/api/v2/artifacts/2-75707?state=34157">
+      <parent-process limsid="24-22161" uri="http://testserver.com:1234/api/v2/processes/24-22161"/>
     </input>
-    <output limsid="2-83060" output-generation-type="PerAllInputs" output-type="Pool" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-83060?state=37910"/>
+    <output limsid="2-83060" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/api/v2/artifacts/2-83060?state=37910"/>
   </input-output-map>
   <input-output-map>
-    <input limsid="2-75708" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75708?state=34158" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75708?state=34158">
-      <parent-process limsid="24-22161" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22161"/>
+    <input limsid="2-75708" post-process-uri="http://testserver.com:1234/api/v2/artifacts/2-75708?state=34158" uri="http://testserver.com:1234/api/v2/artifacts/2-75708?state=34158">
+      <parent-process limsid="24-22161" uri="http://testserver.com:1234/api/v2/processes/24-22161"/>
     </input>
-    <output limsid="2-83061" output-generation-type="PerAllInputs" output-type="Pool" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-83061?state=37911"/>
+    <output limsid="2-83061" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/api/v2/artifacts/2-83061?state=37911"/>
   </input-output-map>
   <input-output-map>
-    <input limsid="2-75702" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75702?state=34152" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75702?state=34152">
-      <parent-process limsid="24-22161" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22161"/>
+    <input limsid="2-75702" post-process-uri="http://testserver.com:1234/api/v2/artifacts/2-75702?state=34152" uri="http://testserver.com:1234/api/v2/artifacts/2-75702?state=34152">
+      <parent-process limsid="24-22161" uri="http://testserver.com:1234/api/v2/processes/24-22161"/>
     </input>
-    <output limsid="2-83062" output-generation-type="PerAllInputs" output-type="Pool" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-83062?state=37912"/>
+    <output limsid="2-83062" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/api/v2/artifacts/2-83062?state=37912"/>
   </input-output-map>
   <input-output-map>
-    <input limsid="2-75703" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75703?state=34153" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-75703?state=34153">
-      <parent-process limsid="24-22161" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22161"/>
+    <input limsid="2-75703" post-process-uri="http://testserver.com:1234/api/v2/artifacts/2-75703?state=34153" uri="http://testserver.com:1234/api/v2/artifacts/2-75703?state=34153">
+      <parent-process limsid="24-22161" uri="http://testserver.com:1234/api/v2/processes/24-22161"/>
     </input>
-    <output limsid="2-83063" output-generation-type="PerAllInputs" output-type="Pool" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-83063?state=37913"/>
+    <output limsid="2-83063" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/api/v2/artifacts/2-83063?state=37913"/>
   </input-output-map>
   <process-parameter name="Pool Placer"/>
 </prc:process>
