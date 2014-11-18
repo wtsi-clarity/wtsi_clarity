@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-88566?state=40666" limsid="2-88566">
+        <name>93_1</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-22452" limsid="24-22452"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2240" limsid="27-2240"/>
+            <value>I:23</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1098" limsid="DEA103A1098"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 93 (GCACTGTC)"/>
+        <udf:field type="Numeric" name="Molarity">0</udf:field>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-88567?state=40667" limsid="2-88567">
+        <name>93_2</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-22452" limsid="24-22452"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2240" limsid="27-2240"/>
+            <value>J:23</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1098" limsid="DEA103A1098"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 93 (GCACTGTC)"/>
+        <udf:field type="Numeric" name="Molarity">0.00635232104067217</udf:field>
+    </art:artifact>
+</art:details>

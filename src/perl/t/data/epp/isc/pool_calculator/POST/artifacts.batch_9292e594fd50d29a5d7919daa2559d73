@@ -1,0 +1,1348 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73528?state=33128" limsid="2-73528">
+        <name>1-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1006" limsid="DEA103A1006"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 1 (ATCACGTT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73529?state=33129" limsid="2-73529">
+        <name>2-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>B:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1007" limsid="DEA103A1007"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 2 (CGATGTTT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73530?state=33130" limsid="2-73530">
+        <name>3-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>C:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1008" limsid="DEA103A1008"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 3 (TTAGGCAT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73531?state=33131" limsid="2-73531">
+        <name>4-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>D:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1009" limsid="DEA103A1009"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 4 (TGACCACT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73532?state=33132" limsid="2-73532">
+        <name>5-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>E:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1010" limsid="DEA103A1010"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 5 (ACAGTGGT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73533?state=33133" limsid="2-73533">
+        <name>6-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>F:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1011" limsid="DEA103A1011"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 6 (GCCAATGT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73534?state=33134" limsid="2-73534">
+        <name>7-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>G:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1012" limsid="DEA103A1012"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 7 (CAGATCTG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73535?state=33135" limsid="2-73535">
+        <name>8-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>H:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1013" limsid="DEA103A1013"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 8 (ACTTGATG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73536?state=33136" limsid="2-73536">
+        <name>9-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>A:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1014" limsid="DEA103A1014"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 9 (GATCAGCG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73537?state=33137" limsid="2-73537">
+        <name>10-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>B:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1015" limsid="DEA103A1015"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 10 (TAGCTTGT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73538?state=33138" limsid="2-73538">
+        <name>11-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>C:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1016" limsid="DEA103A1016"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 11 (GGCTACAG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73539?state=33139" limsid="2-73539">
+        <name>12-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>D:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1017" limsid="DEA103A1017"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 12 (CTTGTACT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73540?state=33140" limsid="2-73540">
+        <name>13-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>E:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1018" limsid="DEA103A1018"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 13 (TGGTTGTT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73541?state=33141" limsid="2-73541">
+        <name>14-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>F:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1019" limsid="DEA103A1019"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 14 (TCTCGGTT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73542?state=33142" limsid="2-73542">
+        <name>15-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>G:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1020" limsid="DEA103A1020"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 15 (TAAGCGTT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73543?state=33143" limsid="2-73543">
+        <name>16-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>H:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1021" limsid="DEA103A1021"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 16 (TCCGTCTT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73544?state=33144" limsid="2-73544">
+        <name>17-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>A:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1022" limsid="DEA103A1022"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 17 (TGTACCTT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73545?state=33145" limsid="2-73545">
+        <name>18-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>B:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1023" limsid="DEA103A1023"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 18 (TTCTGTGT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73546?state=33146" limsid="2-73546">
+        <name>19-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>C:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1024" limsid="DEA103A1024"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 19 (TCTGCTGT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73547?state=33147" limsid="2-73547">
+        <name>20-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>D:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1025" limsid="DEA103A1025"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 20 (TTGGAGGT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73548?state=33148" limsid="2-73548">
+        <name>21-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>E:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1026" limsid="DEA103A1026"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 21 (TCGAGCGT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73549?state=33149" limsid="2-73549">
+        <name>22-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>F:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1027" limsid="DEA103A1027"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 22 (TGATACGT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73550?state=33150" limsid="2-73550">
+        <name>23-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>G:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1028" limsid="DEA103A1028"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 23 (TGCATAGT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73601?state=33151" limsid="2-73601">
+        <name>24-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>H:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1029" limsid="DEA103A1029"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 24 (TTGACTCT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73602?state=33152" limsid="2-73602">
+        <name>25-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>A:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1030" limsid="DEA103A1030"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 25 (TGCGATCT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73603?state=33153" limsid="2-73603">
+        <name>26-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>B:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1031" limsid="DEA103A1031"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 26 (TTCCTGCT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73604?state=33154" limsid="2-73604">
+        <name>27-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>C:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1032" limsid="DEA103A1032"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 27 (TAGTGACT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73605?state=33155" limsid="2-73605">
+        <name>28-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>D:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1033" limsid="DEA103A1033"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 28 (TACAGGAT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73606?state=33156" limsid="2-73606">
+        <name>29-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>E:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1034" limsid="DEA103A1034"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 29 (TCCTCAAT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73607?state=33157" limsid="2-73607">
+        <name>30-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>F:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1035" limsid="DEA103A1035"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 30 (TGTGGTTG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73608?state=33158" limsid="2-73608">
+        <name>31-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>G:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1036" limsid="DEA103A1036"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 31 (TAGTCTTG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73609?state=33159" limsid="2-73609">
+        <name>32-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>H:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1037" limsid="DEA103A1037"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 32 (TTCCATTG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73610?state=33160" limsid="2-73610">
+        <name>33-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>A:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1038" limsid="DEA103A1038"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 33 (TCGAAGTG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73611?state=33161" limsid="2-73611">
+        <name>34-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>B:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1039" limsid="DEA103A1039"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 34 (TAACGCTG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73612?state=33162" limsid="2-73612">
+        <name>35-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>C:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1040" limsid="DEA103A1040"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 35 (TTGGTATG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73613?state=33163" limsid="2-73613">
+        <name>36-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>D:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1041" limsid="DEA103A1041"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 36 (TGAACTGG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73614?state=33164" limsid="2-73614">
+        <name>37-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>E:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1042" limsid="DEA103A1042"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 37 (TACTTCGG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73615?state=33165" limsid="2-73615">
+        <name>38-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>F:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1043" limsid="DEA103A1043"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 38 (TCTCACGG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73616?state=33166" limsid="2-73616">
+        <name>39-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>G:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1044" limsid="DEA103A1044"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 39 (TCAGGAGG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73617?state=33167" limsid="2-73617">
+        <name>40-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>H:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1045" limsid="DEA103A1045"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 40 (TAAGTTCG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73618?state=33168" limsid="2-73618">
+        <name>41-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>A:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1046" limsid="DEA103A1046"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 41 (TCCAGTCG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73619?state=33169" limsid="2-73619">
+        <name>42-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>B:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1047" limsid="DEA103A1047"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 42 (TGTATGCG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73620?state=33170" limsid="2-73620">
+        <name>43-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>C:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1048" limsid="DEA103A1048"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 43 (TCATTGAG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73621?state=33171" limsid="2-73621">
+        <name>44-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>D:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1049" limsid="DEA103A1049"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 44 (TGGCTCAG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73622?state=33172" limsid="2-73622">
+        <name>45-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>E:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1050" limsid="DEA103A1050"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 45 (TATGCCAG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73623?state=33173" limsid="2-73623">
+        <name>46-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>F:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1051" limsid="DEA103A1051"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 46 (TCAGATTC)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73624?state=33174" limsid="2-73624">
+        <name>47-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>G:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1052" limsid="DEA103A1052"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 47 (TACTAGTC)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73625?state=33175" limsid="2-73625">
+        <name>48-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>H:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1053" limsid="DEA103A1053"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 48 (TTCAGCTC)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73626?state=33176" limsid="2-73626">
+        <name>49-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>A:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1054" limsid="DEA103A1054"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 49 (TGTCTATC)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73627?state=33177" limsid="2-73627">
+        <name>50-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>B:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1055" limsid="DEA103A1055"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 50 (TATGTGGC)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73628?state=33178" limsid="2-73628">
+        <name>51-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>C:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1056" limsid="DEA103A1056"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 51 (TTACTCGC)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73629?state=33179" limsid="2-73629">
+        <name>52-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>D:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1057" limsid="DEA103A1057"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 52 (TCGTTAGC)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73630?state=33180" limsid="2-73630">
+        <name>53-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>E:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1058" limsid="DEA103A1058"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 53 (TACCGAGC)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73631?state=33181" limsid="2-73631">
+        <name>54-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>F:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1059" limsid="DEA103A1059"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 54 (TGTTCTCC)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73632?state=33182" limsid="2-73632">
+        <name>55-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>G:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1060" limsid="DEA103A1060"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 55 (TTCGCACC)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73633?state=33183" limsid="2-73633">
+        <name>56-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>H:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1061" limsid="DEA103A1061"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 56 (TTGCGTAC)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73634?state=33184" limsid="2-73634">
+        <name>57-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>A:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1062" limsid="DEA103A1062"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 57 (TCTACGAC)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73635?state=33185" limsid="2-73635">
+        <name>58-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>B:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1063" limsid="DEA103A1063"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 58 (TGACAGAC)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73636?state=33186" limsid="2-73636">
+        <name>59-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>C:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1064" limsid="DEA103A1064"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 59 (TAGAACAC)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73637?state=33187" limsid="2-73637">
+        <name>60-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>D:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1065" limsid="DEA103A1065"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 60 (TCATCCTA)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73638?state=33188" limsid="2-73638">
+        <name>61-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>E:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1066" limsid="DEA103A1066"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 61 (TGCTGATA)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73639?state=33189" limsid="2-73639">
+        <name>62-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>F:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1067" limsid="DEA103A1067"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 62 (TAGACGGA)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73640?state=33190" limsid="2-73640">
+        <name>63-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>G:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1068" limsid="DEA103A1068"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 63 (TGTGAAGA)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73641?state=33191" limsid="2-73641">
+        <name>64-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>H:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1069" limsid="DEA103A1069"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 64 (TCTCTTCA)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73642?state=33192" limsid="2-73642">
+        <name>65-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>A:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1070" limsid="DEA103A1070"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 65 (TTGTTCCA)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73643?state=33193" limsid="2-73643">
+        <name>66-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>B:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1071" limsid="DEA103A1071"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 66 (TGAAGCCA)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73644?state=33194" limsid="2-73644">
+        <name>67-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>C:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1072" limsid="DEA103A1072"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 67 (TACCACCA)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73645?state=33195" limsid="2-73645">
+        <name>68-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>D:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1073" limsid="DEA103A1073"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 68 (TGCGTGAA)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73646?state=33196" limsid="2-73646">
+        <name>69-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>E:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1074" limsid="DEA103A1074"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 69 (GGTGAGTT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73647?state=33197" limsid="2-73647">
+        <name>70-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>F:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1075" limsid="DEA103A1075"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 70 (GATCTCTT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73648?state=33198" limsid="2-73648">
+        <name>71-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>G:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1076" limsid="DEA103A1076"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 71 (GTGTCCTT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73649?state=33199" limsid="2-73649">
+        <name>72-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>H:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1077" limsid="DEA103A1077"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 72 (GACGGATT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73650?state=33200" limsid="2-73650">
+        <name>73-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>A:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1078" limsid="DEA103A1078"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 73 (GCAACATT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73701?state=33201" limsid="2-73701">
+        <name>74-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>B:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1079" limsid="DEA103A1079"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 74 (GGTCGTGT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73702?state=33202" limsid="2-73702">
+        <name>75-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>C:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1080" limsid="DEA103A1080"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 75 (GAATCTGT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73703?state=33203" limsid="2-73703">
+        <name>76-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>D:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1081" limsid="DEA103A1081"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 76 (GTACATCT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73704?state=33204" limsid="2-73704">
+        <name>77-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>E:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1082" limsid="DEA103A1082"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 77 (GAGGTGCT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73705?state=33205" limsid="2-73705">
+        <name>78-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>F:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1083" limsid="DEA103A1083"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 78 (GCATGGCT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73706?state=33206" limsid="2-73706">
+        <name>79-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>G:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1084" limsid="DEA103A1084"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 79 (GTTAGCCT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73707?state=33207" limsid="2-73707">
+        <name>80-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>H:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1085" limsid="DEA103A1085"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 80 (GTCGCTAT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73708?state=33208" limsid="2-73708">
+        <name>81-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>A:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1086" limsid="DEA103A1086"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 81 (GGAATGAT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73709?state=33209" limsid="2-73709">
+        <name>82-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>B:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1087" limsid="DEA103A1087"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 82 (GAGCCAAT)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73710?state=33210" limsid="2-73710">
+        <name>83-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>C:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1088" limsid="DEA103A1088"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 83 (GCTCCTTG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73711?state=33211" limsid="2-73711">
+        <name>84-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>D:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1089" limsid="DEA103A1089"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 84 (GTAAGGTG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73712?state=33212" limsid="2-73712">
+        <name>85-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>E:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1090" limsid="DEA103A1090"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 85 (GAGGATGG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73713?state=33213" limsid="2-73713">
+        <name>86-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>F:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1091" limsid="DEA103A1091"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 86 (GTTGTCGG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73714?state=33214" limsid="2-73714">
+        <name>87-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>G:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1092" limsid="DEA103A1092"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 87 (GGATTAGG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73715?state=33215" limsid="2-73715">
+        <name>88-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>H:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1093" limsid="DEA103A1093"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 88 (GATAGAGG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73716?state=33216" limsid="2-73716">
+        <name>89-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>A:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1094" limsid="DEA103A1094"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 89 (GTGTGTCG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73717?state=33217" limsid="2-73717">
+        <name>90-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>B:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1095" limsid="DEA103A1095"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 90 (GCAATCCG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73718?state=33218" limsid="2-73718">
+        <name>91-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>C:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1096" limsid="DEA103A1096"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 91 (GACCTTAG)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73719?state=33219" limsid="2-73719">
+        <name>92-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>D:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1097" limsid="DEA103A1097"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 92 (GCCTGTTC)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73720?state=33220" limsid="2-73720">
+        <name>93-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>E:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1098" limsid="DEA103A1098"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 93 (GCACTGTC)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73721?state=33221" limsid="2-73721">
+        <name>94-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>F:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1099" limsid="DEA103A1099"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 94 (GCTAACTC)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73722?state=33222" limsid="2-73722">
+        <name>95-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>G:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1100" limsid="DEA103A1100"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 95 (GATTCATC)"/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-73723?state=33223" limsid="2-73723">
+        <name>Stock plate control-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-21968" limsid="24-21968"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2083" limsid="27-2083"/>
+            <value>H:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/3C-252" limsid="3C-252"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 96 (GTCTTGGC)"/>
+        <control-type uri="http://testserver.com:1234/here/controltypes/3"/>
+    </art:artifact>
+</art:details>
