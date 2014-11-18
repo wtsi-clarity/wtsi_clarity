@@ -108,9 +108,10 @@ sub _get_method_name_from_header {
 sub _get_result_from_pool_calculator {
   my $self = shift;
 
-  my $result = my $calc = wtsi_clarity::file_parsing::ISC_pool_calculator->new()
+  return wtsi_clarity::epp::isc::pool_calculator->new(
+      process_url => $self->process_url
+    )
     ->get_volume_calculations_and_warnings();
-  return $result;
 }
 
 ## no critic(Subroutines::ProhibitUnusedPrivateSubroutines)
