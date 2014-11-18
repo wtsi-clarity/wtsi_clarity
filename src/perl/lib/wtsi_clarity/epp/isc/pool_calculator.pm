@@ -179,8 +179,6 @@ sub _fetch_molarities {
 
   my $sample_id = $artifact_element->findvalue('./sample/@limsid');
 
-  use Data::Dumper;
-
   my $artifact_list = $self->request->query_artifacts({
     sample_id => $sample_id,
     udf       => 'udf.Molarity.min=0',
