@@ -54,7 +54,8 @@ has 'internal_csv_output' => (
 sub _build_internal_csv_output {
   my $self = shift;
 
-  my $pool_calculator_result = $self->_get_result_from_pool_calculator;
+  my ($pool_calculator_result, $warnings) = $self->_get_result_from_pool_calculator;
+
   my @plate_names = keys %{$pool_calculator_result};
   my $sample_nr = 1;
   my @rows;
@@ -142,8 +143,6 @@ sub _get_source_stock {
 
 sub _get_source_well {
   my ($self, $dest_well, $analyte_data, $sample_nr) = @_;
-  # print Dumper $analyte_data;
-  # return;
   return $analyte_data->{'source_well'};
 }
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-85565?state=39165" limsid="2-85565">
+        <name>54_1</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22380" limsid="24-22380"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2215" limsid="27-2215"/>
+            <value>K:13</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1154" limsid="DEA103A1154"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 54 (TGTTCTCC)"/>
+        <udf:field type="Numeric" name="Molarity">9.47313619528953</udf:field>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-85566?state=39166" limsid="2-85566">
+        <name>54_2</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22380" limsid="24-22380"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2215" limsid="27-2215"/>
+            <value>L:13</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1154" limsid="DEA103A1154"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 54 (TGTTCTCC)"/>
+        <udf:field type="Numeric" name="Molarity">8.97364936747991</udf:field>
+    </art:artifact>
+</art:details>
