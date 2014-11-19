@@ -24,6 +24,7 @@ sm_pico_green=/Users/cs24/projects/clarity/wtsi_clarity/src/perl/t/data/sm/attac
 fluidigm_analysis=t/data/genotyping/fluidigm
 isc_cap_lib_qc=t/data/epp/isc/agilent_analyser
 post_lib_pcr_qc=t/data/epp/isc/calliper_analyser
+pre_capture_lib_pooling=t/data/epp/isc/pool_beckman
 
 [tag_plate]
 gatekeeper_url = http://dev.com/

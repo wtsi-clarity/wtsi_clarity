@@ -80,12 +80,26 @@ sub _build_internal_csv_output {
   return \@rows;
 }
 
+has '_file_path' => (
+  isa        => 'Str',
+  is         => 'ro',
+  required   => 0,
+  lazy_build => 1,
+);
+
+sub _build__file_path {
+  my $self = shift;
+  my $process_id  = $self->find_elements_first_value($self->process_doc, $PROCESS_ID_PATH);
+  my $path = join q{/}, $self->config->robot_file_dir->{'pre_capture_lib_pooling'}, $process_id;
+  my $ext  = '.csv';
+  return $path . $ext;
+}
+
 override 'run' => sub {
   my $self= shift;
   super();
 
-  my $process_id  = $self->find_elements_first_value($self->process_doc, $PROCESS_ID_PATH);
-  $self->beckman_file->saveas(q{./}.$process_id);
+  $self->_beckman_file->saveas(q{./}.$self->_file_path);
 
   return;
 };
