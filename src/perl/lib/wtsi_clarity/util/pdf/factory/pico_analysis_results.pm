@@ -7,6 +7,8 @@ use DateTime;
 
 use wtsi_clarity::util::pdf::layout::pico_analysis_results;
 
+with 'wtsi_clarity::util::pdf::factory::analysis_results';
+
 Readonly::Scalar our $HEADER_STYLE => q(HEADER_STYLE);
 Readonly::Scalar our $NUMBER_OF_COLUMNS => 12;
 
@@ -20,10 +22,10 @@ has 'plate_table' => (
     my $self = shift;
 
     return {
-      header_row => \&wtsi_clarity::util::pdf::factory::pico_analysis_results::table_header_row,
-      row_first_column => \&wtsi_clarity::util::pdf::factory::pico_analysis_results::table_row_first_column,
-      format_cell => \&wtsi_clarity::util::pdf::factory::pico_analysis_results::format_table_cell,
-      footer_row => \&wtsi_clarity::util::pdf::factory::pico_analysis_results::table_footer_row,
+      header_row => \&table_header_row,
+      row_first_column => \&table_row_first_column,
+      format_cell => \&format_table_cell,
+      footer_row => \&table_footer_row,
     }
   },
 );
@@ -36,10 +38,10 @@ has 'plate_style_table' => (
     my $self = shift;
 
     return {
-      header_row => \&wtsi_clarity::util::pdf::factory::pico_analysis_results::headers_row,
-      row_first_column => \&wtsi_clarity::util::pdf::factory::pico_analysis_results::style_row_first_column,
-      format_cell => \&wtsi_clarity::util::pdf::factory::pico_analysis_results::format_style_table_cell,
-      footer_row => \&wtsi_clarity::util::pdf::factory::pico_analysis_results::headers_row,
+      header_row => \&headers_row,
+      row_first_column => \&style_row_first_column,
+      format_cell => \&format_style_table_cell,
+      footer_row => \&headers_row,
     }
   },
 );
@@ -47,7 +49,7 @@ has 'plate_style_table' => (
 sub build {
   my ($self, $parameters) = @_;
 
-  my ($plate_table, $plate_table_cell_styles) = $self->_format_tables($parameters);
+  my ($plate_table, $plate_table_cell_styles) = $self->format_tables($parameters);
 
   my $pdf_data = {
     'stamp' => 'Created: ' . DateTime->now->strftime('%A %d-%B-%Y at %H:%M:%S'),
@@ -65,56 +67,8 @@ sub build {
   return $pico_pdf_generator->create();
 }
 
-sub _format_tables {
-  my ($self, $plate_table_info) = @_;
-
-  return (
-    $self->_format($self->plate_table, $plate_table_info),
-    $self->_format($self->plate_style_table, $plate_table_info),
-  );
-}
-
-sub _format {
-  my ($self, $table, $table_info) = @_;
-
-  my @formatted_table = ();
-  push @formatted_table, $table->{'header_row'}->();
-
-  foreach my $row_letter ('A'..'H') {
-    my @table_row = ();
-
-    push @table_row, $table->{'row_first_column'}->($row_letter);
-
-    foreach my $column_number (1..$NUMBER_OF_COLUMNS) {
-      my $cell = join q{:}, $row_letter, $column_number;
-
-      if (exists $table_info->{$cell}) {
-        push @table_row, $table->{'format_cell'}->($table_info->{$cell});
-      }
-    }
-
-    push @formatted_table, \@table_row;
-  }
-
-  push @formatted_table, $table->{'footer_row'}->();
-
-  return \@formatted_table;
-}
-
 sub table_header_row {
   return [0..$NUMBER_OF_COLUMNS];
-}
-
-sub table_row_first_column {
-  my $row = shift;
-  return $row;
-}
-
-sub table_footer_row {
-  my @row = ();
-  push @row, q{*};
-  push @row, 1..$NUMBER_OF_COLUMNS;
-  return \@row;
 }
 
 sub format_table_cell {
@@ -123,19 +77,6 @@ sub format_table_cell {
   my $cv = sprintf '%.2f', $cell->{'cv'};
 
   return join "\n", $concentration, $cv, $cell->{'status'};
-}
-
-sub headers_row {
-  return [($HEADER_STYLE) x ($NUMBER_OF_COLUMNS+1)];
-}
-
-sub style_row_first_column {
-  return $HEADER_STYLE;
-}
-
-sub format_style_table_cell {
-  my $cell = shift;
-  return uc $cell->{'status'};
 }
 
 1;
@@ -160,19 +101,9 @@ wtsi_clarity::util::pdf::factory::pico_analysis_results
 
 =head2 build
 
-=head2 format_style_table_cell
-
-=head2 format_table_cell
-
-=head2 headers_row
-
-=head2 style_row_first_column
-
-=head2 table_footer_row
-
 =head2 table_header_row
 
-=head2 table_row_first_column
+=head2 format_table_cell
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
