@@ -17,7 +17,7 @@ Readonly::Scalar my $BATCH_CONTAINER_PATH     => q{/art:details/art:artifact/loc
 Readonly::Scalar my $BATCH_ARTIFACT_PATH      => q{/art:details/art:artifact };
 Readonly::Scalar my $ARTIFACT_URI_PATH        => q{/art:artifact/@uri };
 Readonly::Scalar my $ARTIFACT_LOCATION_PATH   => q{location/value };
-Readonly::Scalar my $CONTAINER_NAME_PATH      => q{/con:details/con:container/name };
+Readonly::Scalar my $CONTAINER_LIMSID_PATH      => q{/con:details/con:container/@limsid };
 ## use critic
 
 has 'step_url' => (
@@ -75,17 +75,17 @@ sub _build__container_uris {
   return $self->_get_values_from_nodelist('getValue', $uri_node_list);
 }
 
-has '_container_names' => (
+has '_container_ids' => (
   isa             => 'ArrayRef',
   is              => 'rw',
   required        => 0,
   lazy_build      => 1,
 );
-sub _build__container_names {
+sub _build__container_ids {
   my $self = shift;
 
   my $containers = $self->request->batch_retrieve('containers', $self->_container_uris);
-  my $container_name_node_list = $containers->findnodes($CONTAINER_NAME_PATH);
+  my $container_name_node_list = $containers->findnodes($CONTAINER_LIMSID_PATH);
 
   return $self->_get_values_from_nodelist('string_value', $container_name_node_list);
 }
@@ -115,7 +115,7 @@ has '_mapping' => (
 sub _build__mapping {
   my $self = shift;
 
-  my $container_names = $self->_container_names;
+  my $container_names = $self->_container_ids;
 
   # for now we just supporting only one input container per pooling
   if (scalar @{$container_names} > 1) {
