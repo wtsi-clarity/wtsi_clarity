@@ -62,14 +62,14 @@ sub _build_query
               my $raw_key = $_;
               my $key  = $map_key->{$raw_key};
               my $operator = q{=};
-              if (!$key && $raw_key =~ m/(udf.*)([=]+)/xms ) {
-                $key = $1;
-                $operator = $2;
-              }
 
-              if (!$key) {
+              if ($criteria->{$raw_key} =~ m/(udf.*)([=]+)/xms ) {
+                $key = q{};
+                $operator = q{};
+              } elsif (!$key) {
                 croak qq{couldn't find a key to build the query! }, Dumper $criteria;
               }
+
               my $crit = $criteria->{$_};
               # make an array of non array value...
               if(ref($crit) ne 'ARRAY'){
