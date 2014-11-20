@@ -12,21 +12,17 @@ extends 'wtsi_clarity::epp';
 with 'wtsi_clarity::util::clarity_process';
 with 'wtsi_clarity::util::well_mapper';
 with 'wtsi_clarity::util::clarity_elements';
+with 'wtsi_clarity::util::roles::clarity_process_io';
 
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $INPUT_OUTPUT_PATH   => q{prc:process/input-output-map};
-Readonly::Scalar my $INPUT_LIMSID        => q{./input/@limsid};
 Readonly::Scalar my $INPUT_ARTIFACT_URIS => q{prc:process/input-output-map/input/@uri};
-Readonly::Scalar my $OUTPUT_LIMSID       => q{./output/@limsid};
 Readonly::Scalar my $FIRST_INPUT_LIMSID  => q(prc:process/input-output-map[1]/input/@limsid);
 Readonly::Scalar my $FIRST_INPUT_URI     => q(prc:process/input-output-map[1]/input/@uri);
 Readonly::Scalar my $FIRST_OUTPUT_LIMSID => q(prc:process/input-output-map[1]/output/@limsid);
 Readonly::Scalar my $OUTPUT_ANALYTE_URIS => q(prc:process/input-output-map/output[@output-type="Analyte"]/@uri);
-Readonly::Scalar my $ALL_ANALYTES        => q(prc:process/input-output-map/output[@output-type="Pool"]/@uri | prc:process/input-output-map/input/@uri);
 Readonly::Scalar my $CONTAINER_LIMSID    => q{/art:artifact/location/container/@limsid};
-Readonly::Scalar my $ARTIFACT_BY_LIMSID  => q{art:details/art:artifact[@limsid="%s"]};
 Readonly::Scalar my $MOLARITY_UDF_PATH   => q{/art:details/art:artifact/udf:field[@name="Molarity"]};
 Readonly::Scalar my $PLATE_ROW_NUMBER    => 8;
 Readonly::Scalar my $PLATE_COLUMN_NUMBER => 12;
@@ -41,7 +37,7 @@ sub get_volume_calculations_and_warnings {
 
   my $pool_calculator = wtsi_clarity::file_parsing::ISC_pool_calculator->new(
     data             => \%molarities,
-    mapping          => $self->_mapping,
+    mapping          => $self->io_map,
     min_volume       => $self->min_volume,
     max_volume       => $self->max_volume,
     max_total_volume => $self->max_total_volume,
@@ -49,61 +45,6 @@ sub get_volume_calculations_and_warnings {
 
   return $pool_calculator->get_volume_calculations_and_warnings();
 };
-
-has '_mapping' => (
-  is => 'ro',
-  isa => 'ArrayRef[HashRef]',
-  lazy_build => 1,
-);
-
-sub _build__mapping {
-  my $self = shift;
-  my @mapping = map { $self->_build_mapping($_); } @{$self->_input_output_map};
-  return \@mapping;
-}
-
-sub _build_mapping {
-  my ($self, $tuple) = @_;
-
-  my $input_analyte = $self->_analytes->findnodes(sprintf $ARTIFACT_BY_LIMSID, $tuple->[0])->pop();
-  my $output_analyte = $self->_analytes->findnodes(sprintf $ARTIFACT_BY_LIMSID, $tuple->[1])->pop();
-
-  return {
-    'source_plate' => $input_analyte->findvalue('./location/container/@limsid'),
-    'source_well'  => $input_analyte->findvalue('./location/value'),
-    'dest_plate'   => $output_analyte->findvalue('./location/container/@limsid'),
-    'dest_well'    => $output_analyte->findvalue('./location/value'),
-  };
-}
-
-has '_input_output_map' => (
-  is => 'ro',
-  isa => 'ArrayRef[ArrayRef]',
-  lazy_build => 1,
-);
-
-sub _build__input_output_map {
-  my $self = shift;
-
-  my @input_output_map = map {
-    [$_->findvalue($INPUT_LIMSID), $_->findvalue($OUTPUT_LIMSID)]
-  } $self->process_doc->findnodes($INPUT_OUTPUT_PATH)->get_nodelist;
-
-  return \@input_output_map;
-}
-
-has '_analytes' => (
-  is => 'ro',
-  isa => 'XML::LibXML::Document',
-  lazy_build => 1,
-);
-
-sub _build__analytes {
-  my $self = shift;
-  my @all_analyte_uris = $self->process_doc->findnodes($ALL_ANALYTES)->get_nodelist;
-  my @uris = map { $_->getValue() } @all_analyte_uris;
-  return $self->request->batch_retrieve('artifacts', \@uris);
-}
 
 ### These three configuration options come from the GUI...
 has 'min_volume' => (

@@ -1,23 +1,15 @@
 {
   "working_dilution":{
-    "009851" : {
-      "mappings": [
-        {
-          "source": [{ "bed": 2, "barcode": 580040002672 }],
-          "destination": [{ "bed": 3, "barcode": 580040003686 }]
-        },
-        {
-          "source": [{ "bed": 5, "barcode": 580040005703 }],
-          "destination": [{ "bed": 6, "barcode": 580040006717 }]
-        },{
-          "source": [{ "bed": 8, "barcode": 580040008735 }],
-          "destination": [{ "bed": 9, "barcode": 580040009749 }]
-        },{
-          "source": [{ "bed": 11, "barcode": 580040011681 }],
-          "destination": [{ "bed": 12, "barcode": 580040012695 }]
-        }
-      ]
-    }
+    "009851": {
+        "Bed 2": 580040002672,
+        "Bed 3": 580040003686,
+        "Bed 5": 580040005703,
+        "Bed 6": 580040006717,
+        "Bed 8": 580040008735,
+        "Bed 9": 580040009749,
+        "Bed 11": 580040011681,
+        "Bed 12": 580040012695
+      }
   },
   "pico_dilution": {
     "009851" : {

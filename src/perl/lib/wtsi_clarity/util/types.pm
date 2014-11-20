@@ -1,6 +1,9 @@
 package wtsi_clarity::util::types;
 
 use Moose::Util::TypeConstraints;
+use XML::LibXML::NodeList;
+use wtsi_clarity::util::clarity_bed;
+use wtsi_clarity::util::clarity_plate;
 
 our $VERSION = '0.0';
 
@@ -15,6 +18,29 @@ subtype 'WtsiClarityExecutable'
 subtype 'WtsiClarityDirectory'
       => as 'Str'
       => where { -d $_ };
+
+subtype 'NodeList'
+      => as 'XML::LibXML::NodeList';
+
+subtype 'WtsiClarityProcessBeds'
+      => as 'ArrayRef[wtsi_clarity::util::clarity_bed]';
+
+coerce 'WtsiClarityProcessBeds',
+      from 'NodeList',
+      via {
+        my @beds = map { wtsi_clarity::util::clarity_bed->new(bed_elem => $_) } $_->get_nodelist;
+        return \@beds;
+      };
+
+subtype 'WtsiClarityPlates'
+      => as 'ArrayRef[wtsi_clarity::util::clarity_plate]';
+
+coerce 'WtsiClarityPlates',
+      from 'NodeList',
+      via {
+        my @plates = map { wtsi_clarity::util::clarity_plate->new(plate_elem => $_) } $_->get_nodelist;
+        return \@plates;
+      };
 
 no Moose::Util::TypeConstraints;
 

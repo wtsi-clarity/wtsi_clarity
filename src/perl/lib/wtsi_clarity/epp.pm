@@ -3,8 +3,15 @@ package wtsi_clarity::epp;
 use Moose;
 use Carp;
 use XML::LibXML;
+use Readonly;
 
 use wtsi_clarity::util::request;
+use wtsi_clarity::util::types;
+
+## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+Readonly::Scalar my $BED_PATH => q{/prc:process/udf:field[starts-with(@name, "Bed") and contains(@name, "Plate")]};
+Readonly::Scalar my $PLATE_PATH => q{/prc:process/udf:field[starts-with(@name, "Input Plate") or starts-with(@name, "Output Plate")]};
+## use critic
 
 with qw/MooseX::Getopt wtsi_clarity::util::configurable/;
 
@@ -42,6 +49,37 @@ has 'process_doc'  => (
 sub _build_process_doc {
   my ($self) = @_;
   return $self->fetch_and_parse($self->process_url);
+}
+
+has 'beds' => (
+  is => 'ro',
+  isa => 'WtsiClarityProcessBeds',
+  lazy_build => 1,
+  coerce => 1,
+  traits => [ 'NoGetopt' ],
+);
+
+sub _build_beds {
+  my $self = shift;
+  return $self->_find_on_doc($BED_PATH);
+}
+
+has 'plates' => (
+  is => 'ro',
+  isa => 'WtsiClarityPlates',
+  lazy_build => 1,
+  coerce => 1,
+  traits => [ 'NoGetopt' ],
+);
+
+sub _build_plates {
+  my $self = shift;
+  return $self->_find_on_doc($PLATE_PATH);
+}
+
+sub _find_on_doc {
+  my ($self, $xpath) = @_;
+  return $self->process_doc->findnodes($xpath);
 }
 
 sub run {
