@@ -17,7 +17,7 @@ Readonly::Scalar my $BATCH_CONTAINER_PATH     => q{/art:details/art:artifact/loc
 Readonly::Scalar my $BATCH_ARTIFACT_PATH      => q{/art:details/art:artifact };
 Readonly::Scalar my $ARTIFACT_URI_PATH        => q{/art:artifact/@uri };
 Readonly::Scalar my $ARTIFACT_LOCATION_PATH   => q{location/value };
-Readonly::Scalar my $CONTAINER_NAME_PATH      => q{/con:details/con:container/name };
+Readonly::Scalar my $CONTAINER_LIMSID_PATH      => q{/con:details/con:container/@limsid };
 ## use critic
 
 has 'step_url' => (
@@ -85,7 +85,7 @@ sub _build__container_ids {
   my $self = shift;
 
   my $containers = $self->request->batch_retrieve('containers', $self->_container_uris);
-  my $container_name_node_list = $containers->findnodes($CONTAINER_NAME_PATH);
+  my $container_name_node_list = $containers->findnodes($CONTAINER_LIMSID_PATH);
 
   return $self->_get_values_from_nodelist('string_value', $container_name_node_list);
 }
