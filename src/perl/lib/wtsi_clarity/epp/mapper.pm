@@ -37,6 +37,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'analyse_calliper'               => 'isc::calliper_analyser',
     'pool_samples'                   => 'isc::analyte_pooler',
     'place_pools'                    => 'isc::pool_placer',
+    'make_beckman_file'              => 'isc::pool_beckman_creator',
 );
 
 has 'action'  => (

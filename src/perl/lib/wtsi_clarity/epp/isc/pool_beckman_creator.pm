@@ -7,6 +7,8 @@ use Mojo::Collection 'c';
 use wtsi_clarity::util::textfile;
 use wtsi_clarity::util::beckman;
 
+use wtsi_clarity::epp::isc::pool_calculator;
+
 our $VERSION = '0.0';
 
 extends 'wtsi_clarity::epp';
@@ -21,6 +23,12 @@ Readonly::Scalar my $DEFAULT_SOURCE_STOCK       => q(DN365894);
 Readonly::Scalar my $DEFAULT_DEST_EAN13         => q(1234567890124);
 Readonly::Scalar my $DEFAULT_DEST_BARCODE       => q(DN369421);
 ## use critic
+
+has 'beckman_file_name' => (
+  isa      => 'Str',
+  is       => 'ro',
+  required => 1,
+);
 
 has '_beckman' => (
   is => 'ro',
@@ -56,12 +64,13 @@ sub _build_internal_csv_output {
 
   my ($pool_calculator_result, $warnings) = $self->_get_result_from_pool_calculator;
 
+  carp $self->_display_warnings($warnings) if $warnings;
+
   my @plate_names = keys %{$pool_calculator_result};
   my $sample_nr = 1;
   my @rows;
 
   foreach my $plate_name (@plate_names) {
-    my @dest_wells = keys $pool_calculator_result->{$plate_name};
     while ( my ($dest_well, $analytes) = each $pool_calculator_result->{$plate_name}) {
       foreach my $analyte_data (@{$analytes}) {
         my @row_content = c->new(@{$self->_beckman->headers})
@@ -80,26 +89,11 @@ sub _build_internal_csv_output {
   return \@rows;
 }
 
-has '_file_path' => (
-  isa        => 'Str',
-  is         => 'ro',
-  required   => 0,
-  lazy_build => 1,
-);
-
-sub _build__file_path {
-  my $self = shift;
-  my $process_id  = $self->find_elements_first_value($self->process_doc, $PROCESS_ID_PATH);
-  my $path = join q{/}, $self->config->robot_file_dir->{'pre_capture_lib_pooling'}, $process_id;
-  my $ext  = '.csv';
-  return $path . $ext;
-}
-
 override 'run' => sub {
   my $self= shift;
   super();
 
-  $self->_beckman_file->saveas(q{./}.$self->_file_path);
+  $self->_beckman_file->saveas(q{./} . $self->beckman_file_name . q{.csv});
 
   return;
 };
@@ -185,6 +179,30 @@ sub _get_not_implemented_yet {
   return qq{*} ; #qq{Not implemented yet};
 }
 ## use critic
+
+sub _display_warnings {
+  my ($self, $warnings) = @_;
+
+  my @plate_names = keys %{$warnings};
+  my $full_warning_msg;
+  my $plate_warning_msg;
+
+  foreach my $plate_name (@plate_names) {
+    $plate_warning_msg = q{};
+    while ( my ($dest_well, $warning_msgs) = each $warnings->{$plate_name}) {
+      my $dest_well_warning_msgs = join qq{\n}, @{$warning_msgs};
+      if ($dest_well_warning_msgs) {
+        $plate_warning_msg .= $dest_well . q{ : } . $dest_well_warning_msgs . qq{\n};
+      }
+    }
+    if ($plate_warning_msg) {
+      $plate_warning_msg = q{Plate } . $plate_name . qq{:\n} . $plate_warning_msg;
+      $full_warning_msg .= $plate_warning_msg;
+    }
+  }
+
+  return $full_warning_msg;
+}
 
 1;
 

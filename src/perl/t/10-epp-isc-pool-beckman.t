@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 4;
+use Test::More tests => 3;
 use Test::Exception;
 use Test::MockObject::Extends;
 use Test::Warn;
@@ -47,7 +47,8 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
       };
   my $mocked_beckman_creator = Test::MockObject::Extends->new( 
         wtsi_clarity::epp::isc::pool_beckman_creator->new(
-          process_url => $base_uri . '/processes/122-22459')
+          process_url => $base_uri . '/processes/122-22459',
+          beckman_file_name => 'output_file_for_beckman.csv')
       );
 
   $mocked_beckman_creator->mock(q(_get_result_from_pool_calculator), sub{
@@ -61,14 +62,10 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 {
   my $beckman_creator = wtsi_clarity::epp::isc::pool_beckman_creator->new(
-          process_url => $base_uri . '/processes/122-22459');
+          process_url => $base_uri . '/processes/122-22459',
+          beckman_file_name => 'output_file_for_beckman.csv');
   can_ok($beckman_creator, qw/ run /);
 }
 
-{
-  my $beckman_creator = wtsi_clarity::epp::isc::pool_beckman_creator->new(
-          process_url => $base_uri . '/processes/122-22459');
-  is($beckman_creator->_file_path, 't/data/epp/isc/pool_beckman/122-22459.csv', 'Creates the correct file name.');
-}
 
 1;
