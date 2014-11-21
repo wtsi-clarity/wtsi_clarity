@@ -97,7 +97,10 @@ wtsi_clarity::epp::generic::bed_verifier
 
 =head1 SYNOPSIS
 
-  wtsi_clarity::epp:generic::bed_verifier->new(process_url => 'http://my.com/processes/3345')->run();
+  wtsi_clarity::epp:generic::bed_verifier->new(
+    process_url => 'http://my.com/processes/3345',
+    step_name   => 'working_dilution',
+  )->run();
 
 =head1 DESCRIPTION
 
@@ -117,11 +120,23 @@ wtsi_clarity::epp::generic::bed_verifier
 
 =item Carp
 
+=item Readonly
+
 =item File::Spec::Functions
+
+=item File::Slurp
+
+=item English qw( -no_match_vars )
 
 =item JSON
 
 =item Try::Tiny
+
+=item wtsi_clarity::util::config
+
+=item wtsi_clarity::process_checks::bed_verifier
+
+=item wtsi_clarity::util::roles::clarity_process_io
 
 =back
 

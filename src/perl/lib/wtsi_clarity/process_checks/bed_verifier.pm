@@ -141,30 +141,15 @@ wtsi_clarity::process_checks::bed_verifier
   $c->verify($process_name, $robot_id, $mappings);
 
 =head1 DESCRIPTION
-  Provides the method verify to determine whether beds have been scanned into
+  Provides the verify method to determine whether beds have been scanned into
   the correct place on a machine.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 verify($process_name, $robot_id, $mappings)
+=head2 verify($process)
 
-  Returns a bool dependent on plates being correctly placed in beds
-
-  $process_name - name of the process. Used as a lookup key in the config
-
-  $robot_id - ID of the robot being used for the process. Must match id for process in the config
-
-  $mappings - An array of mapping hashes. Each mapping contains a source and destination, which
-    also contain lists of hashes.
-
-    e.g.
-
-      my @source = ({ bed => 2, barcode => 58373626272 });
-      my @destination = ({ bed => 3, barcode => 580040003686 });
-      my @mappings = ({
-        source => \@source,
-        destination => \@destination
-      });
+  Pass in an EPP process and it will verify the robot id, the barcodes of the beds are correct,
+  and the plates in a process are in the correct bed positions.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
@@ -175,6 +160,8 @@ wtsi_clarity::process_checks::bed_verifier
 =item Moose
 
 =item Carp
+
+=item Readonly
 
 =back
 
