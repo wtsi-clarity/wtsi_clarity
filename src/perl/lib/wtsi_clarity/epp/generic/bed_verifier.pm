@@ -50,7 +50,7 @@ override 'run' => sub {
 
 sub _punish_user_by_resetting_everything {
   my $self = shift;
-  my $everything = $self->process_doc->findnodes($EVERYTHING);
+  my $everything = $self->findnodes($EVERYTHING);
 
   map { $self->update_text($_, q{}); } $everything->get_nodelist();
 

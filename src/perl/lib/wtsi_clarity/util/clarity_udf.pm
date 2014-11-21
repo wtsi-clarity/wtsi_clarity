@@ -1,36 +1,26 @@
-package wtsi_clarity::util::clarity_bed;
+package wtsi_clarity::util::clarity_udf;
 
 use Moose;
 use Carp;
-use wtsi_clarity::util::string qw/trim/;
-extends 'wtsi_clarity::util::clarity_udf';
 
 our $VERSION = '0.0';
 
-has 'barcode' => (
+has 'element' => (
   is => 'ro',
-  isa => 'Str',
-  lazy => 1,
-  builder => 'get_value',
+  isa => 'XML::LibXML::Element',
+  required => 1,
 );
 
-has 'bed_name' => (
-  is => 'ro',
-  isa => 'Str',
-  lazy_build => 1,
-);
-
-sub _build_bed_name {
+sub get_value {
   my $self = shift;
-  my $bed_name;
+  return $self->element->textContent;
+};
 
-  if($self->get_name() =~ /(Bed .+)[(].*[)]/sxm) {
-    $bed_name = trim $1;
-    return $bed_name;
-  } else {
-    croak 'Could not extract bed name from ' . $self->get_name();
-  }
-}
+sub get_name {
+  my $self = shift;
+  ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+  return $self->element->findvalue('@name');
+};
 
 1;
 
@@ -38,26 +28,24 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::util::clarity_bed
+wtsi_clarity::util::clarity_udf
 
 =head1 SYNOPSIS
 
-  use wtsi_clarity::util::clarity_bed;
+  package wtsi_clarity::util::clarity_bed;
+  extends 'wtsi_clarity::util::clarity_udf';
 
-  my $bed = wtsi_clarity::util::clarity_bed->new(bed_elem => $xml_elem);
+  my $bed = wtsi_clarity::util::clarity_bed->new(element => $xml_elem);
 
 =head1 DESCRIPTION
 
-  Essentaily a wrapper around a bed XML::LibXML::Element set on a process document. Provides
-  useful methods for barcode and bed name.
+  An abstract parent class for Clarity UDF elements
 
 =head1 SUBROUTINES/METHODS
 
-=head2 barcode Returns the barcode of the bed (i.e. the textContent)
+=head2 get_value Returns the textContent of the element
 
-=head2 bed_name
-  Returns the bed name. For example, if the element_name is "Bed 1 (Input Plate 1)",
-  it will return "Bed 1"
+=head2 get_name Returns the name of the element
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
@@ -68,10 +56,6 @@ wtsi_clarity::util::clarity_bed
 =item Moose;
 
 =item Carp;
-
-=item Readonly;
-
-=item wtsi_clarity::util::string
 
 =back
 

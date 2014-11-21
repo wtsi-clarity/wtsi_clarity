@@ -28,7 +28,7 @@ subtype 'WtsiClarityProcessBeds'
 coerce 'WtsiClarityProcessBeds',
       from 'NodeList',
       via {
-        my @beds = map { wtsi_clarity::util::clarity_bed->new(bed_elem => $_) } $_->get_nodelist;
+        my @beds = map { wtsi_clarity::util::clarity_bed->new(element => $_) } $_->get_nodelist;
         return \@beds;
       };
 
@@ -38,7 +38,7 @@ subtype 'WtsiClarityPlates'
 coerce 'WtsiClarityPlates',
       from 'NodeList',
       via {
-        my @plates = map { wtsi_clarity::util::clarity_plate->new(plate_elem => $_) } $_->get_nodelist;
+        my @plates = map { wtsi_clarity::util::clarity_plate->new(element => $_) } $_->get_nodelist;
         return \@plates;
       };
 

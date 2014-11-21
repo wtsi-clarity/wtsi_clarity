@@ -44,6 +44,7 @@ has 'process_doc'  => (
   required        => 0,
   traits          => [ 'NoGetopt' ],
   lazy_build      => 1,
+  handles         => {'findnodes' => 'findnodes'},
 );
 
 sub _build_process_doc {
@@ -61,7 +62,7 @@ has 'beds' => (
 
 sub _build_beds {
   my $self = shift;
-  return $self->_find_on_doc($BED_PATH);
+  return $self->findnodes($BED_PATH);
 }
 
 has 'plates' => (
@@ -74,12 +75,7 @@ has 'plates' => (
 
 sub _build_plates {
   my $self = shift;
-  return $self->_find_on_doc($PLATE_PATH);
-}
-
-sub _find_on_doc {
-  my ($self, $xpath) = @_;
-  return $self->process_doc->findnodes($xpath);
+  return $self->findnodes($PLATE_PATH);
 }
 
 sub run {

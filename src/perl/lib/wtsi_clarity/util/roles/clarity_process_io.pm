@@ -134,7 +134,7 @@ has '_analytes' => (
 
 sub _build__analytes {
   my $self = shift;
-  my @all_analyte_uris = $self->process_doc->findnodes($ALL_ANALYTES)->to_literal_list;
+  my @all_analyte_uris = $self->findnodes($ALL_ANALYTES)->to_literal_list;
   return $self->request->batch_retrieve('artifacts', \@all_analyte_uris);
 }
 

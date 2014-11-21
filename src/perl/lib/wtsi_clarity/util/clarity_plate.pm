@@ -4,37 +4,28 @@ use Moose;
 use Carp;
 use Readonly;
 use wtsi_clarity::util::string qw/trim/;
+extends 'wtsi_clarity::util::clarity_udf';
 
 our $VERSION = '0.0';
 
 Readonly::Scalar my $NOT_FOUND => -1;
 
-has 'plate_elem' => (
+has 'barcode' => (
   is => 'ro',
-  isa => 'XML::LibXML::Element',
-  required => 1,
+  isa => 'Str',
+  lazy => 1,
+  builder => 'get_value',
 );
 
-has ['barcode', 'element_name'] => (
+has 'plate_name' => (
   is => 'ro',
   isa => 'Str',
   lazy_build => 1,
 );
 
-sub _build_barcode {
+sub _build_plate_name {
   my $self = shift;
-  return $self->plate_elem->textContent;
-};
-
-sub _build_element_name {
-  my $self = shift;
-  ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-  return $self->plate_elem->findvalue('@name');
-};
-
-sub name {
-  my $self = shift;
-  my $name = $self->element_name;
+  my $name = $self->get_name();
 
   if ($name =~ /[[:lower:]]$/sxm) {
     chop $name;
@@ -45,12 +36,12 @@ sub name {
 
 sub is_input {
   my $self = shift;
-  return (index($self->element_name, 'Input') != $NOT_FOUND);
+  return (index($self->plate_name, 'Input') != $NOT_FOUND);
 }
 
 sub is_output {
   my $self = shift;
-  return (index($self->element_name, 'Output') != $NOT_FOUND);
+  return (index($self->plate_name, 'Output') != $NOT_FOUND);
 }
 
 1;
@@ -65,7 +56,7 @@ wtsi_clarity::util::clarity_plate
 
   use wtsi_clarity::util::clarity_plate;
 
-  my $plate = wtsi_clarity::util::clarity_plate->new(plate_elem => $xml_elem);
+  my $plate = wtsi_clarity::util::clarity_plate->new(element => $xml_elem);
 
 =head1 DESCRIPTION
 
@@ -76,9 +67,7 @@ wtsi_clarity::util::clarity_plate
 
 =head2 barcode The textContent of the element should be the barcode
 
-=head2 element_name The element_name is the value of the name parameter on the element
-
-=head2 name The name of the plate (removes letter off the end of it if present)
+=head2 plate_name The name of the plate (removes letter off the end of it if present)
 
 =head2 is_input Returns true if plate is an input plate (i.e. it's name contains "Input")
 

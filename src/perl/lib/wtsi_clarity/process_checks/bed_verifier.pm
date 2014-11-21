@@ -94,7 +94,7 @@ sub _plate_mapping {
   foreach my $plate (@{$process->plates}) {
     next if $plate->is_output;
 
-    my $plate_name = $plate->name;
+    my $plate_name = $plate->plate_name;
     $plate_name =~ s/Input/Output/gsm;
 
     my $output_plates = $self->_find_output_plate($process, $plate_name);
@@ -109,7 +109,7 @@ sub _plate_mapping {
 
 sub _find_output_plate {
   my ($self, $process, $plate_name) = @_;
-  my @output_plates = grep { $_->name eq $plate_name } @{$process->plates};
+  my @output_plates = grep { $_->plate_name eq $plate_name } @{$process->plates};
   return \@output_plates;
 }
 
