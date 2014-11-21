@@ -17,11 +17,11 @@ with 'wtsi_clarity::util::clarity_elements';
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $PROCESS_ID_PATH            => q(/prc:process/@limsid);
 Readonly::Scalar my $DEFAULT_PLATE_NAME_PREFIX  => q(PCRXP);
-Readonly::Scalar my $DEFAULT_SOURCE_EAN13       => q(1234567890123);
-Readonly::Scalar my $DEFAULT_SOURCE_BARCODE     => q(DN367818);
-Readonly::Scalar my $DEFAULT_SOURCE_STOCK       => q(DN365894);
-Readonly::Scalar my $DEFAULT_DEST_EAN13         => q(1234567890124);
-Readonly::Scalar my $DEFAULT_DEST_BARCODE       => q(DN369421);
+Readonly::Scalar my $DEFAULT_SOURCE_EAN13       => q(Not used);
+Readonly::Scalar my $DEFAULT_SOURCE_BARCODE     => q(Not used);
+Readonly::Scalar my $DEFAULT_SOURCE_STOCK       => q(Not used);
+Readonly::Scalar my $DEFAULT_DEST_EAN13         => q(Not used);
+Readonly::Scalar my $DEFAULT_DEST_BARCODE       => q(Not used);
 ## use critic
 
 has 'beckman_file_name' => (

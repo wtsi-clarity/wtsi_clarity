@@ -22,8 +22,8 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 {
   my $expected_result = [
           'Sample, Name, Source EAN13, Source Barcode, Source Stock, Source Well, Destination EAN13, Destination Barcode, Destination Well, Source Volume',
-          '1, PCRXP1, 1234567890123, DN367818, DN365894, A2, 1234567890124, DN369421, B1, 24.94',
-          '2, PCRXP1, 1234567890123, DN367818, DN365894, A1, 1234567890124, DN369421, A1, 38.9'
+          '1, PCRXP1, Not used, Not used, Not used, A2, Not used, Not used, B1, 24.94',
+          '2, PCRXP1, Not used, Not used, Not used, A1, Not used, Not used, A1, 38.9'
         ];
   my $pooling_calculator_result = {
     'PCRXP1' => {
