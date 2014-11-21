@@ -10,13 +10,13 @@ my $epp = Moose::Meta::Class->create_anon_class(
   roles => ['wtsi_clarity::util::roles::clarity_process_io']
 );
 
-# local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/util/roles/clarity_process_io/';
 local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
 {
   my $process = $epp->new_object(
-    process_url => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-18168',
+    process_url => 'http://testserver.com:1234/here/processes/24-18168',
   );
 
   my $mapping = [
@@ -563,7 +563,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
 {
   my $process = $epp->new_object(
-    process_url => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22472',
+    process_url => 'http://testserver.com:1234/here/processes/24-22472',
   );
 
   my $plate_io_map = [
