@@ -115,15 +115,15 @@ has '_mapping' => (
 sub _build__mapping {
   my $self = shift;
 
-  my $container_names = $self->_container_ids;
+  my $container_ids = $self->_container_ids;
 
   # for now we just supporting only one input container per pooling
-  if (scalar @{$container_names} > 1) {
+  if (scalar @{$container_ids} > 1) {
     croak("Only 1 input container is supported.");
   }
 
   my $mapper = wtsi_clarity::isc::pooling::mapper->new(
-    container_id => $container_names->[0],
+    container_id => $container_ids->[0],
   );
 
   my $mapping = $mapper->mapping;

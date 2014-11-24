@@ -20,7 +20,7 @@ has 'headers' => (
   isa => 'ArrayRef',
   default => sub {
               return [  'Sample',
-                        'Bed',
+                        'Name',
                         'Source EAN13',
                         'Source Barcode',
                         'Source Stock',
