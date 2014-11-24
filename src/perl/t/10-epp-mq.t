@@ -11,7 +11,9 @@ use_ok('wtsi_clarity::epp::generic::messenger');
   my $m;
   lives_ok {$m = wtsi_clarity::epp::generic::messenger->new(
        process_url => 'http://some.com/process/XM4567',
-       step_url    => 'http://some.com/step/AS456')}
+       step_url    => 'http://some.com/step/AS456',
+       purpose     => 'sample',)
+       }
     'object created with step_url and process_url sttributes';
   isa_ok( $m, 'wtsi_clarity::epp::generic::messenger');
   ok(!$m->step_start, 'step_start defaults to false');
@@ -23,6 +25,7 @@ use_ok('wtsi_clarity::epp::generic::messenger');
   my $m =  wtsi_clarity::epp::generic::messenger->new(
        process_url => 'http://some.com/process/XM4567',
        step_url    => 'http://some.com/step/AS456',
+       purpose     => 'sample',
        _date       => $date,
   );
   my $message;

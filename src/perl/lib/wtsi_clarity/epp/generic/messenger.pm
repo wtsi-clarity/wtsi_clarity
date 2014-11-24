@@ -16,6 +16,12 @@ has 'step_url' => (
   required   => 1,
 );
 
+has 'purpose' => (
+  isa => 'Str',
+  is  => 'ro',
+  required => 1,
+);
+
 has 'step_start' => (
   isa        => 'Bool',
   is         => 'ro',
