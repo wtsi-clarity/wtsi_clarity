@@ -25,6 +25,8 @@ coerce 'WtsiClarityTimestamp',
        from 'WtsiClarityDateTime',
        via { $_->strftime('%a %b %d %Y %T') };
 
+enum 'WtsiClarityPurpose', [qw( sample )];
+
 has 'process_url' => (
   isa        => 'Str',
   is         => 'ro',
@@ -48,6 +50,12 @@ has 'timestamp' => (
   is         => 'ro',
   required   => 1,
   coerce     => 1,
+);
+
+has 'purpose' => (
+  isa      => 'WtsiClarityPurpose',
+  is       => 'ro',
+  required => 1,
 );
 
 1;

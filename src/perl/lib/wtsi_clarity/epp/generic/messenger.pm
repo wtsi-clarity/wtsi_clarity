@@ -49,6 +49,7 @@ sub _build__message {
     step_url    => $self->step_url,
     timestamp   => $self->_date,
     step_start  => $self->step_start,
+    purpose     => $self->purpose,
   );
 }
 
