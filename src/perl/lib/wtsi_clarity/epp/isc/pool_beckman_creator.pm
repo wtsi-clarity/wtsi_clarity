@@ -12,7 +12,11 @@ use wtsi_clarity::epp::isc::pool_calculator;
 our $VERSION = '0.0';
 
 extends 'wtsi_clarity::epp';
-with 'wtsi_clarity::util::clarity_elements';
+
+with qw/
+        wtsi_clarity::util::clarity_elements
+        wtsi_clarity::util::csv::report_common
+       /;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $PROCESS_ID_PATH            => q(/prc:process/@limsid);
@@ -49,7 +53,6 @@ has '_beckman_file' => (
 );
 sub _build__beckman_file {
   my $self = shift;
-  my $files = [];
   return $self->_beckman->get_file($self->internal_csv_output);
 }
 
@@ -75,7 +78,7 @@ sub _build_internal_csv_output {
       foreach my $analyte_data (@{$analytes}) {
         my @row_content = c->new(@{$self->_beckman->headers})
                           ->reduce( sub {
-                            my $method = $self->_get_method_from_header($b);
+                            my $method = $self->get_method_from_header($b);
                             my $value = $self->$method($dest_well, $analyte_data, $sample_nr);
                             $a->{$b} = $value;
                             $a;
@@ -93,26 +96,10 @@ override 'run' => sub {
   my $self= shift;
   super();
 
-  $self->_beckman_file->saveas(q{./} . $self->beckman_file_name . q{.csv});
+  $self->_beckman_file->saveas(q{./} . $self->beckman_file_name);
 
   return;
 };
-
-sub _get_method_from_header {
-  my ($self,$header) = @_;
-  my $name = _get_method_name_from_header($header);
-  if ($self->can($name)) {
-    return $name;
-  }
-  return q{_get_not_implemented_yet};
-}
-
-sub _get_method_name_from_header {
-  my ($header) = @_;
-  $header =~ s/^\s+|\s+$//gxms; # trim
-  $header =~ s/\s/_/gxms;       # replace space with underscore
-  return q{_get_} . lc $header; # lower case
-}
 
 sub _get_result_from_pool_calculator {
   my $self = shift;
