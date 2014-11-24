@@ -50,7 +50,7 @@ use_ok('wtsi_clarity::epp::generic::messenger');
     _date       => $date,
   );
 
-  dies_ok { $m->_message } 'Dies when purpose is not one belonging to WTSIClarityPurpose';
+  dies_ok { $m->_message } 'Dies when purpose is not one belonging to WTSIClarityMqPurpose';
 }
 
 1;
