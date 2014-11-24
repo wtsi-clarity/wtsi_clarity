@@ -13,13 +13,9 @@
     <input limsid="ADM730A161PA1" post-process-uri="http://testserver.com:1234/here/artifacts/ADM730A161PA1?state=147351" uri="http://testserver.com:1234/here/artifacts/ADM730A161PA1?state=147351"/>
     <output limsid="2-695110" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-695110?state=374260"/>
   </input-output-map>
-  <udf:field name="Robot ID" type="String">010468</udf:field>
-  <udf:field name="Bed 6 (Input Plate 1)" type="String">580030006666</udf:field>
-  <udf:field name="Bed 7 (Output Plate 1a)" type="String">580030007670</udf:field>
-  <udf:field name="Bed 8 (Output Plate 1b)" type="String">580030008684</udf:field>
-  <udf:field name="Input Plate 1" type="String">1234</udf:field>
-  <udf:field name="Output Plate 1a" type="String">5678</udf:field>
-  <udf:field name="Output Plate 1b" type="String">9101</udf:field>
+  <udf:field name="Input Plate 1a" type="String">1234</udf:field>
+  <udf:field name="Input Plate 1b" type="String">5678</udf:field>
+  <udf:field name="Output Plate 1" type="String">9999</udf:field>
   <udf:field name="Select Barcode Printer" type="String">d304bc</udf:field>
   <udf:field name="Plate Purpose" type="String">Pico Assay</udf:field>
   <process-parameter name="Print Barcode"/>
