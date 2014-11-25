@@ -111,7 +111,7 @@ wtsi_clarity::genotyping::fluidigm::result_set
 
 =head1 AUTHOR
 
-Chris Smith E<lt>cs24@sanger.ac.ukE<gt>
+Iain Bancarz E<lt>ib5@sanger.ac.ukE<gt>
 
 =head1 LICENSE AND COPYRIGHT
 
