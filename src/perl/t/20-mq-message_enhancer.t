@@ -13,5 +13,5 @@ use_ok('wtsi_clarity::mq::message_enhancer');
   );
 
   isa_ok($me, 'wtsi_clarity::mq::message_enhancer');
-  can_ok($me, qw/ process_url step_url request publish /);
+  can_ok($me, qw/ process_url step_url publish /);
 }
