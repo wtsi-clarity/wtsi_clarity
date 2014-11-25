@@ -13,18 +13,39 @@ has 'mapper' => (
   default   => sub { return wtsi_clarity::mq::mapper->new() },
 );
 
-sub thaw {
+sub process_message {
   my ($self, $json_string) = @_;
+  my $message = $self->_thaw($json_string);
+  my $package_name = $self->_find_enhancer_by_purpose($message->purpose);
 
+  $self->_require_enhancer($package_name);
+
+  $self->_run_package($package_name, $message);
+
+  return 1;
+}
+
+sub _run_package {
+  my ($self, $package_name, $message) = @_;
+
+  return $package_name->new(
+            process_url => $message->process_url,
+            step_url    => $message->step_url,
+            timestamp   => $message->timestamp,
+          )->run();
+}
+
+sub _thaw {
+  my ($self, $json_string) = @_;
   return wtsi_clarity::mq::message->thaw($json_string);
 }
 
-sub find_enhancer_by_purpose {
+sub _find_enhancer_by_purpose {
   my ($self, $purpose) = @_;
   return $self->mapper->package_name($purpose);
 }
 
-sub require_enhancer {
+sub _require_enhancer {
   my ($self, $enhancer_name) = @_;
   my $loaded = eval "require $enhancer_name";
   if (!$loaded) {
