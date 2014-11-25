@@ -777,21 +777,22 @@
         <input limsid="JON1407A1138PA1" post-process-uri="http://testserver.com:1234/here/artifacts/JON1407A1138PA1?state=334909" uri="http://testserver.com:1234/here/artifacts/JON1407A1138PA1?state=334909"/>
         <output limsid="2-688686" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-688686?state=371156"/>
     </input-output-map>
-    <udf:field type="String" name="Bed 2 (Input Plate 1)">1</udf:field>
-    <udf:field type="String" name="Bed 3 (Output Plate 1)">3</udf:field>
-    <udf:field type="String" name="Bed 5 (Input Plate 2)">6</udf:field>
-    <udf:field type="String" name="Bed 6 (Output Plate 2)">8</udf:field>
-    <udf:field type="String" name="Bed 8 (Input Plate 3)">1</udf:field>
-    <udf:field type="String" name="Bed 9 (Output Plate 3)">3</udf:field>
-    <udf:field type="String" name="Bed 11 (Input Plate 4)">5</udf:field>
-    <udf:field type="String" name="Bed 12 (Output Plate 4)">7</udf:field>
-    <udf:field type="String" name="Input Plate 1">2</udf:field>
-    <udf:field type="String" name="Input Plate 2">7</udf:field>
-    <udf:field type="String" name="Input Plate 3">2</udf:field>
-    <udf:field type="String" name="Input Plate 4">6</udf:field>
-    <udf:field type="String" name="Output Plate 1">4</udf:field>
-    <udf:field type="String" name="Output Plate 2">9</udf:field>
-    <udf:field type="String" name="Output Plate 3">4</udf:field>
+    <udf:field name="Robot ID" type="String">009851</udf:field>
+    <udf:field type="String" name="Bed 2 (Input Plate 1)">580040002672</udf:field>
+    <udf:field type="String" name="Bed 3 (Output Plate 1)">580040003686</udf:field>
+    <udf:field type="String" name="Bed 5 (Input Plate 2)">580040005703</udf:field>
+    <udf:field type="String" name="Bed 6 (Output Plate 2)">580040006717</udf:field>
+    <udf:field type="String" name="Bed 8 (Input Plate 3)">580040008735</udf:field>
+    <udf:field type="String" name="Bed 9 (Output Plate 3)">580040009749</udf:field>
+    <udf:field type="String" name="Bed 11 (Input Plate 4)">580040011681</udf:field>
+    <udf:field type="String" name="Bed 12 (Output Plate 4)">580040012695</udf:field>
+    <udf:field type="String" name="Input Plate 1">1</udf:field>
+    <udf:field type="String" name="Input Plate 2">2</udf:field>
+    <udf:field type="String" name="Input Plate 3">3</udf:field>
+    <udf:field type="String" name="Input Plate 4">4</udf:field>
+    <udf:field type="String" name="Output Plate 1">5</udf:field>
+    <udf:field type="String" name="Output Plate 2">6</udf:field>
+    <udf:field type="String" name="Output Plate 3">7</udf:field>
     <udf:field type="String" name="Output Plate 4">8</udf:field>
     <udf:field name="Select Barcode Printer" type="String">g214bc</udf:field>
     <udf:field name="Plate Purpose" type="String">Working Dilution</udf:field>

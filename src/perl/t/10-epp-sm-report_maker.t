@@ -138,20 +138,20 @@ my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::sm::report_maker->new
   is_deeply($res, $expected, qq{_build__all_udf_values should return the correct ids.} );
 }
 
-{ # _get_nethod_name_from_header
+{ # _get_method_name_from_header
   my $testdata = {
     'Status'        => '_get_status',
     'word1 word2'   => '_get_word1_word2',
     ' Word3 word4 ' => '_get_word3_word4',
     };
   while (my ($test, $expected) = each %{$testdata} ) {
-    my $res = wtsi_clarity::epp::sm::report_maker::_get_nethod_name_from_header($test);
+    my $res = wtsi_clarity::util::csv::report_common::_get_method_name_from_header($test);
 
-    cmp_ok($res, 'eq', $expected, qq{_get_nethod_name_from_header should return the correct name.} );
+    cmp_ok($res, 'eq', $expected, qq{_get_method_name_from_header should return the correct name.} );
   }
 }
 
-{ # _get_method_from_header  (batch_199de3d8a642c1d94e8556286a50e52f)
+{ # get_method_from_header  (batch_199de3d8a642c1d94e8556286a50e52f)
   my $testdata = {
     'Status' => '_get_status',
     'hello' => '_get_not_implemented_yet',
@@ -160,9 +160,9 @@ my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::sm::report_maker->new
     process_url => $base_uri . '/processes/24-999'
   );
   while (my ($test, $expected) = each %{$testdata} ) {
-    my $res = $m->_get_method_from_header($test);
+    my $res = $m->get_method_from_header($test);
 
-    is_deeply($res, $expected, qq{_get_method_from_header should return the correct name.} );
+    is_deeply($res, $expected, qq{get_method_from_header should return the correct name.} );
   }
 }
 
