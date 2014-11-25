@@ -6,6 +6,8 @@ use Carp;
 use wtsi_clarity::mq::message;
 use wtsi_clarity::mq::mapper;
 
+our $VERSION = '0.0';
+
 has 'mapper' => (
   is        => 'ro',
   isa       => 'wtsi_clarity::mq::mapper',
@@ -73,7 +75,7 @@ wtsi_clarity::mq::message_handler
 
 =head1 SUBROUTINES/METHODS
 
-=head2 handle_message
+=head2 process_message
 
   Takes in JSON string. Converts to mq::message, and dispatches to relevant message enhancer.
 

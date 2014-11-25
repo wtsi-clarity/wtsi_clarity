@@ -43,9 +43,9 @@ wtsi_clarity::mq::message_enhancer
 
 =head1 SUBROUTINES/METHODS
 
-=head2 package_name
+=head2 publish
 
-  Takes in message purpose string. Returns the package name of the concrete message enhancer class.
+  Takes in the message string and publish it onto the unified warehouse message bus.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

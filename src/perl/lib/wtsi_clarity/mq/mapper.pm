@@ -4,6 +4,8 @@ use Moose;
 use Carp;
 use Readonly;
 
+our $VERSION = '0.0';
+
 Readonly::Scalar my $BASE_MQ_PACKAGE_NAME => q{wtsi_clarity::mq::};
 Readonly::Hash my %PURPOSE_TO_ENHANCER_TYPE => (
   'sample'    => 'me::sample_enhancer',
