@@ -1,8 +1,9 @@
 use strict;
 use warnings;
 
-use Test::More tests => 10;
+use Test::More tests => 9;
 use Test::MockObject::Extends;
+use Test::Exception;
 
 use_ok('wtsi_clarity::mq::message_handler');
 
@@ -25,7 +26,7 @@ use_ok('wtsi_clarity::mq::message_handler');
 
 {
   my $message_enhancers = {
-    'sample'  => 'me:sample_enhancer',
+    'sample'  => 'me::sample_enhancer',
   };
 
   my $mocked_mapper = Test::MockObject::Extends->new( wtsi_clarity::mq::mapper->new);
@@ -38,10 +39,9 @@ use_ok('wtsi_clarity::mq::message_handler');
 
   my $enhancer = $mq_consumer->find_enhancer_by_purpose('sample');
 
-  is($enhancer, 'wtsi_clarity::mq::me:sample_enhancer', 'Gets the correct message enhancer');
-  is($mq_consumer->require_enhancer($enhancer), 1, 'Successfully loaded the enhancer module');
+  is($enhancer, 'wtsi_clarity::mq::me::sample_enhancer', 'Gets the correct message enhancer');
 
-  thows_ok { $mq_consumer->require_enhancer('aa:bb:cc')}
+  throws_ok { $mq_consumer->require_enhancer('aa:bb:cc')}
     qr/The required package: aa:bb:cc does not exist/,
     'Throws an error when the required enhancer does not exist.';
 }

@@ -1,6 +1,8 @@
 package wtsi_clarity::mq::message_handler;
 
 use Moose;
+use Carp;
+
 use wtsi_clarity::mq::message;
 use wtsi_clarity::mq::mapper;
 
@@ -20,6 +22,15 @@ sub thaw {
 sub find_enhancer_by_purpose {
   my ($self, $purpose) = @_;
   return $self->mapper->package_name($purpose);
+}
+
+sub require_enhancer {
+  my ($self, $enhancer_name) = @_;
+  my $loaded = eval "require $enhancer_name";
+  if (!$loaded) {
+    croak "The required package: $enhancer_name does not exist"
+  }
+  return 1;
 }
 
 1;
