@@ -1,6 +1,13 @@
 package wtsi_clarity::mq::message_handler;
 
 use Moose;
+use wtsi_clarity::mq::message;
+
+sub thaw {
+  my ($self, $json_string) = @_;
+
+  return wtsi_clarity::mq::message->thaw($json_string);
+}
 
 1;
 
