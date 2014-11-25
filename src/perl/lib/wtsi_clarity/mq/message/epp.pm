@@ -39,12 +39,6 @@ has 'step_url' => (
   required   => 1,
 );
 
-has 'step_start' => (
-  isa        => 'Bool',
-  is         => 'ro',
-  required   => 1,
-);
-
 has 'timestamp' => (
   isa        => 'WtsiClarityTimestamp',
   is         => 'ro',

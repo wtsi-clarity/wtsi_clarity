@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use DateTime;
-use Test::More tests => 13;
+use Test::More tests => 12;
 use Test::Exception;
 
 use_ok('wtsi_clarity::mq::message::epp');
@@ -16,7 +16,6 @@ use_ok('wtsi_clarity::epp::generic::messenger');
        }
     'object created with step_url and process_url sttributes';
   isa_ok( $m, 'wtsi_clarity::epp::generic::messenger');
-  ok(!$m->step_start, 'step_start defaults to false');
   is(ref $m->_date, 'DateTime', 'default datetime object created');
 }
 
