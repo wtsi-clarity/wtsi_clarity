@@ -58,6 +58,8 @@ wtsi_clarity::mq::mapper
 
 =item Readonly
 
+=item Carp
+
 =back
 
 =head1 AUTHOR

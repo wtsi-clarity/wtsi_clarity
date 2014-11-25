@@ -87,6 +87,12 @@ wtsi_clarity::mq::message_handler
 
 =item Moose
 
+=item Carp
+
+=item wtsi_clarity::mq::message
+
+=item wtsi_clarity::mq::mapper
+
 =back
 
 =head1 AUTHOR

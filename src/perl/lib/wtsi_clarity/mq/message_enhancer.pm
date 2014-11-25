@@ -2,9 +2,13 @@ package wtsi_clarity::mq::message_enhancer;
 
 use Moose;
 
-extends 'wtsi_clarity::epp';
-
 our $VERSION = '0.0';
+
+has 'process_url' => (
+  isa        => 'Str',
+  is         => 'ro',
+  required   => 1,
+);
 
 has 'step_url' => (
   isa        => 'Str',
@@ -35,7 +39,7 @@ wtsi_clarity::mq::message_enhancer
 =head1 SYNOPSIS
 
   my $message_enhancer = wtsi_clarity::mq::message_enhancer->new();
-  $message_enhancer->package_name('sample');
+  $message_enhancer->publish('message');
 
 =head1 DESCRIPTION
 
@@ -54,8 +58,6 @@ wtsi_clarity::mq::message_enhancer
 =over
 
 =item Moose
-
-=item Readonly
 
 =back
 
