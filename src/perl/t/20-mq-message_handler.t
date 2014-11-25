@@ -29,11 +29,14 @@ use_ok('wtsi_clarity::mq::message_handler');
   };
 
   my $mocked_mapper = Test::MockObject::Extends->new( Moose::Object->new);
-  $mocked_mapper->mock(q{package_name}, sub { return q{wtsi_clarity::mq::} . $message_enhancers->{'sample'}});
-  
+  $mocked_mapper->mock(q{package_name}, sub {
+    my ($self, $purpose) = @_;
+    return q{wtsi_clarity::mq::} . $message_enhancers->{$purpose}}
+  );
+
   my $mq_consumer = wtsi_clarity::mq::message_handler->new(mapper => $mocked_mapper);
 
-  is($mq_consumer->find_enhancer_by_purpose('sample'), 'wtsi_clarity::mq::me:sample_enhancer', 
+  is($mq_consumer->find_enhancer_by_purpose('sample'), 'wtsi_clarity::mq::me:sample_enhancer',
       'Gets the correct message enhancer');
 }
 

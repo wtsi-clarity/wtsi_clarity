@@ -3,10 +3,21 @@ package wtsi_clarity::mq::message_handler;
 use Moose;
 use wtsi_clarity::mq::message;
 
+has 'mapper' => (
+  is       => 'ro',
+  isa      => 'Any',
+  required => 0,
+);
+
 sub thaw {
   my ($self, $json_string) = @_;
 
   return wtsi_clarity::mq::message->thaw($json_string);
+}
+
+sub find_enhancer_by_purpose {
+  my ($self, $purpose) = @_;
+  return $self->mapper->package_name($purpose);
 }
 
 1;
