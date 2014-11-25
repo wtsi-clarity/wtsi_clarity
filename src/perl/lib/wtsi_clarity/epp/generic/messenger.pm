@@ -4,7 +4,7 @@ use Moose;
 use DateTime;
 
 use wtsi_clarity::mq::client;
-use wtsi_clarity::mq::message::epp;
+use wtsi_clarity::mq::message;
 
 extends 'wtsi_clarity::epp';
 
@@ -30,14 +30,14 @@ has '_date' => (
 );
 
 has '_message' => (
-  isa        => 'wtsi_clarity::mq::message::epp',
+  isa        => 'wtsi_clarity::mq::message',
   is         => 'ro',
   required   => 0,
   lazy_build => 1,
 );
 sub _build__message {
   my $self = shift;
-  return wtsi_clarity::mq::message::epp->new(
+  return wtsi_clarity::mq::message->new(
     process_url => $self->process_url,
     step_url    => $self->step_url,
     timestamp   => $self->_date,
@@ -65,7 +65,7 @@ wtsi_clarity::epp::generic::messenger
 =head1 DESCRIPTION
 
   An epp callback for sending a message (a serialized
-  wtsi_clarity::mq::message::epp object) to Rabbit MQ.
+  wtsi_clarity::mq::message object) to Rabbit MQ.
 
 =head1 SUBROUTINES/METHODS
 

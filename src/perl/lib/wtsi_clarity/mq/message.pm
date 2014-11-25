@@ -1,4 +1,4 @@
-package wtsi_clarity::mq::message::epp;
+package wtsi_clarity::mq::message;
 
 use Moose;
 use namespace::autoclean;
@@ -58,11 +58,11 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::mq::message::epp
+wtsi_clarity::mq::message
 
 =head1 SYNOPSIS
 
-  my $m = wtsi_clarity::mq::message::epp->new(
+  my $m = wtsi_clarity::mq::message->new(
       process_url => 'some',
       step_url    => 'other',
       step_start  => 1,
@@ -70,7 +70,7 @@ wtsi_clarity::mq::message::epp
   );
   print $m->timestamp; # prints a formatted string
 
-  $m = wtsi_clarity::mq::message::epp->new(
+  $m = wtsi_clarity::mq::message->new(
       process_url => 'some',
       step_url    => 'other',
       step_start  => 1,
