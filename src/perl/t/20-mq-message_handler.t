@@ -1,7 +1,8 @@
 use strict;
 use warnings;
 
-use Test::More tests => 7;
+use Test::More tests => 8;
+use Test::MockObject::Extends;
 
 use_ok('wtsi_clarity::mq::message_handler');
 
@@ -20,6 +21,20 @@ use_ok('wtsi_clarity::mq::message_handler');
   is($message->step_url, 'http://clarity.com:1234/step', 'Sets the step_url');
   is($message->timestamp, '2014-11-25 12:06:27', 'Sets the timestamp');
   is($message->purpose, 'sample', 'Sets the purpose');
+}
+
+{
+  my $message_enhancers = {
+    'sample'  => 'me:sample_enhancer',
+  };
+
+  my $mocked_mapper = Test::MockObject::Extends->new( Moose::Object->new);
+  $mocked_mapper->mock(q{package_name}, sub { return q{wtsi_clarity::mq::} . $message_enhancers->{'sample'}});
+  
+  my $mq_consumer = wtsi_clarity::mq::message_handler->new(mapper => $mocked_mapper);
+
+  is($mq_consumer->find_enhancer_by_purpose('sample'), 'wtsi_clarity::mq::me:sample_enhancer', 
+      'Gets the correct message enhancer');
 }
 
 1;
