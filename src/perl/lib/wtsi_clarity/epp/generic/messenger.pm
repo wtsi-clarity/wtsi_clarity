@@ -16,11 +16,10 @@ has 'step_url' => (
   required   => 1,
 );
 
-has 'step_start' => (
-  isa        => 'Bool',
-  is         => 'ro',
-  required   => 0,
-  default    => 0,
+has 'purpose' => (
+  isa => 'Str',
+  is  => 'ro',
+  required => 1,
 );
 
 has '_date' => (
@@ -42,7 +41,7 @@ sub _build__message {
     process_url => $self->process_url,
     step_url    => $self->step_url,
     timestamp   => $self->_date,
-    step_start  => $self->step_start,
+    purpose     => $self->purpose,
   );
 }
 
