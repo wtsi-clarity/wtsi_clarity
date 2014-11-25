@@ -28,7 +28,7 @@ use_ok('wtsi_clarity::mq::message_handler');
     'sample'  => 'me:sample_enhancer',
   };
 
-  my $mocked_mapper = Test::MockObject::Extends->new( Moose::Object->new);
+  my $mocked_mapper = Test::MockObject::Extends->new( wtsi_clarity::mq::mapper->new);
   $mocked_mapper->mock(q{package_name}, sub {
     my ($self, $purpose) = @_;
     return q{wtsi_clarity::mq::} . $message_enhancers->{$purpose}}

@@ -2,11 +2,13 @@ package wtsi_clarity::mq::message_handler;
 
 use Moose;
 use wtsi_clarity::mq::message;
+use wtsi_clarity::mq::mapper;
 
 has 'mapper' => (
-  is       => 'ro',
-  isa      => 'Any',
-  required => 0,
+  is        => 'ro',
+  isa       => 'wtsi_clarity::mq::mapper',
+  required  => 0,
+  default   => sub { return wtsi_clarity::mq::mapper->new() },
 );
 
 sub thaw {
