@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="24-22682" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-22682" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processtypes/139">Sample Receipt (SM)</type>
+  <technician uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/58">
+    <first-name>Belane</first-name>
+    <last-name>Bela</last-name>
+  </technician>
+  <input-output-map>
+    <input limsid="SYY154A3PA1" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/SYY154A3PA1?state=1509" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/SYY154A3PA1?state=1509"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="SYY154A2PA1" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/SYY154A2PA1?state=1463" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/SYY154A2PA1?state=1463"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="SYY154A1PA1" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/SYY154A1PA1?state=1510" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/SYY154A1PA1?state=1510"/>
+  </input-output-map>
+  <udf:field name="H12 Is Empty" type="Boolean">true</udf:field>
+  <udf:field name="Seal Is Intact" type="Boolean">true</udf:field>
+  <udf:field name="Barcode Is Correctly Located" type="Boolean">true</udf:field>
+</prc:process>
