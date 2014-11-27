@@ -1,28 +1,15 @@
-package wtsi_clarity::mq::message_enhancer;
+package wtsi_clarity::mq::dao::sample_dao;
 
-use Moose::Role;
-use XML::LibXML;
-
-use wtsi_clarity::util::request;
-
-with qw/MooseX::Getopt wtsi_clarity::util::roles::clarity_process_base/;
+use Moose;
+use Readonly;
 
 our $VERSION = '0.0';
 
-has 'step_url' => (
+has 'lims_id' => (
   isa        => 'Str',
   is         => 'ro',
   required   => 1,
 );
-
-has 'timestamp' => (
-  isa        => 'Str',
-  is         => 'ro',
-  required   => 1,
-);
-
-
-requires qw/ prepare_messages /;
 
 1;
 
@@ -30,22 +17,23 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::mq::message_enhancer
+wtsi_clarity::mq::dao::sample_dao
 
 =head1 SYNOPSIS
 
-  my $message_enhancer = wtsi_clarity::mq::message_enhancer->new();
-  $message_enhancer->publish('message');
+  my $sample_dao = wtsi_clarity::mq::dao::sample_dao->new(lims_id => "1234");
+  $sample_dao->to_message();
 
 =head1 DESCRIPTION
 
- Base class of the message producers, which are publishing messages to the unified warehouse queue.
+ A data object representing a sample.
+ Its data coming from the sample artifact (XML file).
 
 =head1 SUBROUTINES/METHODS
 
-=head2 publish
+=head2 to_message
 
-  Takes in the message string and publish it onto the unified warehouse message bus.
+  Convert the sample data to a message format which will be published onto a RabbitMQ message bus.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
@@ -53,7 +41,7 @@ wtsi_clarity::mq::message_enhancer
 
 =over
 
-=item Moose::Role
+=item Moose
 
 =back
 

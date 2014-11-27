@@ -22,19 +22,19 @@ sub process_message {
 
   $self->_require_enhancer($package_name);
 
-  $self->_run_package($package_name, $message);
+  $self->_prepare_messages($package_name, $message);
 
   return 1;
 }
 
-sub _run_package {
+sub _prepare_messages {
   my ($self, $package_name, $message) = @_;
 
   return $package_name->new(
             process_url => $message->process_url,
             step_url    => $message->step_url,
             timestamp   => $message->timestamp,
-          )->run();
+          )->prepare_messages();
 }
 
 sub _thaw {
@@ -67,7 +67,7 @@ wtsi_clarity::mq::message_handler
 =head1 SYNOPSIS
 
   my $message_handler = wtsi_clarity::mq::message_handler->new();
-  $message_handler->handle_message($json_string);
+  $message_handler->process_message($json_string);
 
 =head1 DESCRIPTION
 
