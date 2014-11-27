@@ -16,7 +16,6 @@ my $base_uri = $config->clarity_api->{'base_uri'};
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/mq/me/sample_enhancer';
 local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
-
 {
   my $me = wtsi_clarity::mq::me::sample_enhancer->new(
     process_url => 'http://testserver.com:1234/processes/999',

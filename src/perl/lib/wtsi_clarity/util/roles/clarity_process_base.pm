@@ -3,7 +3,7 @@ package wtsi_clarity::util::roles::clarity_process_base;
 use Moose::Role;
 use Readonly;
 
-with 'MooseX::Getopt';
+with qw/MooseX::Getopt wtsi_clarity::util::roles::clarity_request/;
 
 our $VERSION = '0.0';
 
@@ -31,21 +31,6 @@ sub _build_process_doc {
   return $self->fetch_and_parse($self->process_url);
 }
 
-has 'request' => (
-  isa => 'wtsi_clarity::util::request',
-  is  => 'ro',
-  traits => [ 'NoGetopt' ],
-  default => sub { return wtsi_clarity::util::request->new(); },
-);
-
-has 'xml_parser'  => (
-  isa             => 'XML::LibXML',
-  is              => 'ro',
-  required        => 0,
-  traits          => [ 'NoGetopt' ],
-  default         => sub { return XML::LibXML->new(); },
-);
-
 has '_input_artifacts' => (
   isa             => 'XML::LibXML::Document',
   is              => 'rw',
@@ -59,11 +44,6 @@ sub _build__input_artifacts {
   my $input_uris = $self->_get_values_from_nodelist('getValue', $input_node_list);
 
   return $self->request->batch_retrieve('artifacts', $input_uris);
-}
-
-sub fetch_and_parse {
-  my ($self, $url) = @_;
-  return $self->xml_parser->parse_string($self->request->get($url));
 }
 
 sub _uniq_array {

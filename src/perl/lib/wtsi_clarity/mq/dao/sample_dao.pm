@@ -2,6 +2,15 @@ package wtsi_clarity::mq::dao::sample_dao;
 
 use Moose;
 use Readonly;
+use XML::LibXML;
+use MooseX::Storage;
+use wtsi_clarity::util::artifact_reader;
+
+Readonly::Scalar my $SAMPLE_UUID_PATH => q{/smp:sample/name};
+
+with Storage( 'traits' => ['OnlyWhenBuilt'],
+              'format' => 'JSON',
+              'io' => 'File' );
 
 our $VERSION = '0.0';
 
@@ -10,6 +19,41 @@ has 'lims_id' => (
   is         => 'ro',
   required   => 1,
 );
+
+has '_artifact_xml' => (
+  isa             => 'XML::LibXML::Document',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build__artifact_xml {
+  my $self = shift;
+
+  my $artifact_reader = wtsi_clarity::util::artifact_reader->new(
+    resource_type => 'sample',
+    lims_id       => $self->lims_id);
+  return $artifact_reader->get_xml;
+}
+
+has 'uuid' => (
+  isa             => 'Str',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build_uuid {
+  my $self = shift;
+
+  my $sample_limsid = $self->_artifact_xml->findvalue($SAMPLE_UUID_PATH);
+
+  return $sample_limsid;
+}
+
+sub to_message {
+  my $self = shift;
+
+  return $self->freeze();
+}
 
 1;
 
