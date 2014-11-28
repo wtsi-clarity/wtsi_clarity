@@ -13,6 +13,13 @@ our $VERSION = '0.0';
 Readonly::Scalar my $PORT            => 5672;
 Readonly::Scalar my $TIMEOUT         => 2;
 
+has 'message_bus_type'  => (
+  isa             => 'Str',
+  is              => 'ro',
+  required        => 0,
+  default         => 'clarity_mq',
+);
+
 has 'host'      => (
   isa             => 'Str',
   is              => 'ro',
@@ -56,7 +63,8 @@ has '_mq_config'      => (
 );
 sub _build__mq_config {
   my $self = shift;
-  return $self->config->clarity_mq;
+  my $mb_type = $self->message_bus_type;
+  return $self->config->$mb_type;
 }
 
 sub send_message {
