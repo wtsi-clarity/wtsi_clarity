@@ -5,6 +5,7 @@ use Carp;
 
 use wtsi_clarity::mq::message;
 use wtsi_clarity::mq::mapper;
+use wtsi_clarity::mq::client;
 
 our $VERSION = '0.0';
 
@@ -15,6 +16,15 @@ has 'mapper' => (
   default   => sub { return wtsi_clarity::mq::mapper->new() },
 );
 
+has '_wh_client' => (
+  isa         => 'wtsi_clarity::mq::client',
+  is          => 'ro',
+  required    => 0,
+  default     => sub {
+    return wtsi_clarity::mq::client->new(message_bus_type => 'warehouse_mq');
+  },
+);
+
 sub process_message {
   my ($self, $json_string) = @_;
   my $message = $self->_thaw($json_string);
@@ -22,9 +32,17 @@ sub process_message {
 
   $self->_require_enhancer($package_name);
 
-  $self->_prepare_messages($package_name, $message);
+  foreach my $message (@{$self->_prepare_messages($package_name, $message)}) {
+    $self->_send_message($message);
+  }
 
   return 1;
+}
+
+sub _send_message {
+  my ($self, $message) = @_;
+  $self->_wh_client->send_message($message);
+  return;
 }
 
 sub _prepare_messages {
