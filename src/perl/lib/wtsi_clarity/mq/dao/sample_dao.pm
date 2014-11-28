@@ -7,6 +7,7 @@ use MooseX::Storage;
 use MooseX::Aliases;
 use wtsi_clarity::util::artifact_reader;
 
+## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $SAMPLE_UUID_AND_NAME_PATH                => q{/smp:sample/name};
 Readonly::Scalar my $SAMPLE_REFERENCE_GENOME_PATH             => q{/smp:sample/udf:field[@name='Reference Genome']};
 Readonly::Scalar my $SAMPLE_WTSI_ORGANISM_PATH                => q{/smp:sample/udf:field[@name='WTSI Organism']};
@@ -16,6 +17,7 @@ Readonly::Scalar my $SAMPLE_WTSI_SUPPLIER_GENDER_PATH         => q{/smp:sample/u
 Readonly::Scalar my $SAMPLE_IS_CONTROL_PATH                   => q{/smp:sample/udf:field[@name='Control?']};
 Readonly::Scalar my $SAMPLE_WTSI_SUPPLIER_PATH                => q{/smp:sample/udf:field[@name='WTSI Supplier']};
 Readonly::Scalar my $SAMPLE_WTSI_DONOR_ID_PATH                => q{/smp:sample/udf:field[@name='WTSI Donor ID']};
+## use critic
 
 Readonly::Array  my @SAMPLE_ATTRIBUTES                        => qw/  _uuid
                                                                       _name
