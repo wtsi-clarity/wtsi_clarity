@@ -4,9 +4,32 @@ use Moose;
 use Readonly;
 use XML::LibXML;
 use MooseX::Storage;
+use MooseX::Aliases;
 use wtsi_clarity::util::artifact_reader;
 
-Readonly::Scalar my $SAMPLE_UUID_PATH => q{/smp:sample/name};
+Readonly::Scalar my $SAMPLE_UUID_AND_NAME_PATH                => q{/smp:sample/name};
+Readonly::Scalar my $SAMPLE_REFERENCE_GENOME_PATH             => q{/smp:sample/udf:field[@name='Reference Genome']};
+Readonly::Scalar my $SAMPLE_WTSI_ORGANISM_PATH                => q{/smp:sample/udf:field[@name='WTSI Organism']};
+Readonly::Scalar my $SAMPLE_WTSI_SUPPLIER_SAMPLE_NAME_SM_PATH => q{/smp:sample/udf:field[@name='WTSI Supplier Sample Name (SM)']};
+Readonly::Scalar my $SAMPLE_WTSI_TAXON_ID_PATH                => q{/smp:sample/udf:field[@name='WTSI Taxon ID']};
+Readonly::Scalar my $SAMPLE_WTSI_SUPPLIER_GENDER_PATH         => q{/smp:sample/udf:field[@name='WTSI Supplier Gender - (SM)']};
+Readonly::Scalar my $SAMPLE_IS_CONTROL_PATH                   => q{/smp:sample/udf:field[@name='Control?']};
+Readonly::Scalar my $SAMPLE_WTSI_SUPPLIER_PATH                => q{/smp:sample/udf:field[@name='WTSI Supplier']};
+Readonly::Scalar my $SAMPLE_WTSI_DONOR_ID_PATH                => q{/smp:sample/udf:field[@name='WTSI Donor ID']};
+
+Readonly::Array  my @SAMPLE_ATTRIBUTES                        => qw/  _uuid
+                                                                      _name
+                                                                      _reference_genome
+                                                                      _organism
+                                                                      _common_name
+                                                                      _taxon_id
+                                                                      _gender
+                                                                      _control
+                                                                      _supplier_name
+                                                                      _public_name
+                                                                      _donor_id
+                                                                  /;
+
 
 with Storage( 'traits' => ['OnlyWhenBuilt'],
               'format' => 'JSON',
@@ -15,16 +38,19 @@ with Storage( 'traits' => ['OnlyWhenBuilt'],
 our $VERSION = '0.0';
 
 has 'lims_id' => (
-  isa        => 'Str',
-  is         => 'ro',
-  required   => 1,
+  isa         => 'Str',
+  is          => 'ro',
+  required    => 1,
+  alias       => '_id',
 );
 
 has '_artifact_xml' => (
+  traits          => [ 'DoNotSerialize' ],
   isa             => 'XML::LibXML::Document',
   is              => 'rw',
   required        => 0,
   lazy_build      => 1,
+  handles         => {'findvalue' => 'findvalue'},
 );
 sub _build__artifact_xml {
   my $self = shift;
@@ -35,23 +61,94 @@ sub _build__artifact_xml {
   return $artifact_reader->get_xml;
 }
 
-has 'uuid' => (
-  isa             => 'Str',
-  is              => 'rw',
-  required        => 0,
-  lazy_build      => 1,
-);
-sub _build_uuid {
+foreach my $sample_attribute ( @SAMPLE_ATTRIBUTES ) {
+  has $sample_attribute => (
+    isa             => 'Str',
+    is              => 'rw',
+    required        => 0,
+    lazy_build      => 1,
+  );
+}
+
+sub _build__uuid {
+  my $self = shift;
+  return $self->findvalue($SAMPLE_UUID_AND_NAME_PATH);
+}
+
+sub _build__name {
   my $self = shift;
 
-  my $sample_limsid = $self->_artifact_xml->findvalue($SAMPLE_UUID_PATH);
+  return $self->findvalue($SAMPLE_UUID_AND_NAME_PATH);
+}
 
-  return $sample_limsid;
+sub _build__reference_genome {
+  my $self = shift;
+
+  return $self->findvalue($SAMPLE_REFERENCE_GENOME_PATH);
+}
+
+sub _build__organism {
+  my $self = shift;
+
+  return $self->findvalue($SAMPLE_WTSI_ORGANISM_PATH);
+}
+
+sub _build__common_name {
+  my $self = shift;
+
+  return $self->findvalue($SAMPLE_WTSI_SUPPLIER_SAMPLE_NAME_SM_PATH);
+}
+
+sub _build__taxon_id {
+  my $self = shift;
+
+  return $self->findvalue($SAMPLE_WTSI_TAXON_ID_PATH);
+}
+
+sub _build__gender {
+  my $self = shift;
+
+  return $self->findvalue($SAMPLE_WTSI_SUPPLIER_GENDER_PATH);
+}
+
+sub _build__control {
+  my $self = shift;
+
+  return $self->findvalue($SAMPLE_IS_CONTROL_PATH);
+}
+
+sub _build__supplier_name {
+  my $self = shift;
+
+  return $self->findvalue($SAMPLE_WTSI_SUPPLIER_PATH);
+}
+
+sub _build__public_name {
+  my $self = shift;
+
+  return $self->findvalue($SAMPLE_WTSI_SUPPLIER_SAMPLE_NAME_SM_PATH);
+}
+
+sub _build__donor_id {
+  my $self = shift;
+
+  return $self->findvalue($SAMPLE_WTSI_DONOR_ID_PATH);
+}
+
+sub _init {
+  my $self = shift;
+
+  foreach my $sample_attribute ( @SAMPLE_ATTRIBUTES ) {
+    $self->$sample_attribute;
+  }
+
+  return;
 }
 
 sub to_message {
   my $self = shift;
 
+  $self->_init;
   return $self->freeze();
 }
 
