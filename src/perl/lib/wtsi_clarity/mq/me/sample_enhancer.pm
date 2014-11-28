@@ -2,13 +2,15 @@ package wtsi_clarity::mq::me::sample_enhancer;
 
 use Moose;
 use Readonly;
+use wtsi_clarity::mq::dao::sample_dao;
 
 with 'wtsi_clarity::mq::message_enhancer';
 
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $SAMPLE_LIMS_ID_PATH      => q{/art:details/art:artifact/sample/@limsid};
+Readonly::Scalar my $SAMPLE_LIMS_ID_PATH  => q{/art:details/art:artifact/sample/@limsid};
+Readonly::Scalar my $CLARITY_GCLP_ID      => q{CLARITY-GCLP};
 ## use critic
 
 sub prepare_messages {
@@ -17,12 +19,28 @@ sub prepare_messages {
   my @messages = ();
 
   foreach my $sample_limsid (@{$self->_lims_ids}) {
-    my $sample_dao = wtsi_clarity::mq::dao::sample_dao->new(lims_id => $sample_limsid);
-    my $sample_msg = $sample_dao->to_message;
+    my $sample_msg = $self->_format_message($self->_get_sample_message($sample_limsid));
     push @messages, $sample_msg;
   }
 
   return \@messages;
+}
+
+sub _get_sample_message {
+  my ($self, $sample_limsid) = @_;
+
+  my $sample_dao = wtsi_clarity::mq::dao::sample_dao->new(lims_id => $sample_limsid);
+  return $sample_dao->to_message;
+}
+
+sub _format_message {
+  my ($self, $msg) = @_;
+
+  my $formatted_msg = {};
+  $formatted_msg->{'sample'} = $msg;
+  $formatted_msg->{'lims'} = $CLARITY_GCLP_ID;
+
+  return $formatted_msg;
 }
 
 has '_lims_ids' => (

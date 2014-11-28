@@ -1,7 +1,7 @@
 use warnings;
 use strict;
 
-use Test::More tests => 8;
+use Test::More tests => 10;
 use Test::Exception;
 use Test::MockObject::Extends;
 
@@ -64,12 +64,18 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
     timestamp   => '2014-11-25 12:06:27',
   ) ) ;
 
-  $me->mock(q{prepare_messages}, sub { 
-    return ["sample_message1", "sample_message2", "sample_message3"]; 
+  $me->mock(q{_get_sample_message}, sub {
+    my %test_msg = ( 'key1' => 'value1', 'key2' => 'value2');
+
+    return \%test_msg;
   });
 
   my $messages = $me->prepare_messages;
+
   is(scalar @{$messages}, 3, 'correct number of sample messages');
+  is(scalar keys %{@{$messages}[0]}, 2, 'Got back the right number of keys');
+  my @expected_keys = ('lims', 'sample');
+  is(scalar keys %{@{$messages}[0]}, @expected_keys, 'Got back the correct keys');
 }
 
 1;
