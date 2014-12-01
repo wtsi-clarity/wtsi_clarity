@@ -28,7 +28,7 @@ has 'host'      => (
 );
 sub _build_host {
   my $self = shift;
-  return $self->config->clarity_mq->{'host'} || 'localhost';
+  return $self->_mq_config->{'host'} || 'localhost';
 }
 
 has 'port'      => (
@@ -42,7 +42,7 @@ sub _build_port {
   return $self->_mq_config->{'port'} || $PORT;
 }
 
-foreach my $attr ( qw/password username vhost exchange routing_key/) {
+foreach my $attr ( qw/env password username vhost exchange routing_key/) {
 
   has $attr => (isa => 'Str', is => 'ro', required => 0, lazy_build => 1,);
     my $build_method = '_build_' . $attr;
@@ -68,7 +68,7 @@ sub _build__mq_config {
 }
 
 sub send_message {
-  my ($self, $message) = @_;
+  my ($self, $message, $purpose) = @_;
 
   my $cv = AnyEvent->condvar;
   # The $connection variable should be here to ensure correct object descruction.
@@ -86,7 +86,7 @@ sub send_message {
       $ar->open_channel(
         on_success => sub {
           my $channel = shift;
-          $channel->publish('body'=>$message, 'exchange'=>$self->exchange, 'routing_key'=>$self->routing_key,);
+          $channel->publish('body'=>$message, 'exchange'=>$self->exchange, 'routing_key'=>$self->_assemble_routing_key($purpose),);
           $cv->send("Message '$message' sent");
         },
         on_failure => $cv,
@@ -110,6 +110,20 @@ sub send_message {
   );
   warn $cv->recv, "\n";
   return;
+}
+
+sub _assemble_routing_key {
+  my ($self, $purpose) = @_;
+
+  my $routing_key;
+
+  if ($self->message_bus_type eq 'warehouse_mq') {
+    $routing_key = $self->_mq_config->{'env'}. q{.} . $self->_mq_config->{'routing_key'} . q{.} . $purpose;
+  } else {
+    $routing_key = $self->routing_key;
+  }
+
+  return $routing_key;
 }
 
 1;

@@ -32,16 +32,16 @@ sub process_message {
 
   $self->_require_enhancer($package_name);
 
-  foreach my $message (@{$self->_prepare_messages($package_name, $message)}) {
-    $self->_send_message($message);
+  foreach my $message_to_wh (@{$self->_prepare_messages($package_name, $message)}) {
+    $self->_send_message($message_to_wh, $message->purpose);
   }
 
   return 1;
 }
 
 sub _send_message {
-  my ($self, $message) = @_;
-  $self->_wh_client->send_message($message);
+  my ($self, $message, $purpose) = @_;
+  $self->_wh_client->send_message($message, $purpose);
   return;
 }
 
