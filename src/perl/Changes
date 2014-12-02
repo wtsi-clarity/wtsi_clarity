@@ -1,5 +1,14 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.55
+  - Refactored Bed Verification
+  - Added robot file generation in Pre Capture Lib Pooling step for Beckman NX8 robot
+  - Add purpose to a message sent to the message queue
+
+Release 0.54
+  - Modified ISC Pool Calculator: changes how it finds molarity
+  - Fix sample pooler: getting the container's lims id instead of its name
+
 Release 0.53
   - Added sample pooler
   - Added pool placer

@@ -220,7 +220,7 @@ wtsi_clarity::genotyping::fluidigm::file_wrapper
 
 =head1 AUTHOR
 
-Chris Smith E<lt>cs24@sanger.ac.ukE<gt>
+Keith James E<lt>kdj@sanger.ac.ukE<gt>
 
 =head1 LICENSE AND COPYRIGHT
 

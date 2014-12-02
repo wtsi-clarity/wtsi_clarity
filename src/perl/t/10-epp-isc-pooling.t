@@ -40,12 +40,12 @@ isa_ok( $pooler, 'wtsi_clarity::epp::isc::analyte_pooler');
 }
 
 { # Test for getting back the correct container names
-  my @expected_container_names = [ q{27-1890} ];
+  my @expected_container_ids = [ q{27-1890} ];
 
-  my @container_names = $pooler->_container_names;
+  my @container_ids = $pooler->_container_ids;
 
-  is(scalar @container_names, 1, 'correct number of container names');
-  is_deeply(@container_names, @expected_container_names, 'Got back the correct container names');
+  is(scalar @container_ids, 1, 'correct number of container names');
+  is_deeply(@container_ids, @expected_container_ids, 'Got back the correct container names');
 }
 
 { # Test for getting back the correct mapping

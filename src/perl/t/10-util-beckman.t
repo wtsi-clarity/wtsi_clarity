@@ -15,7 +15,7 @@ use_ok('wtsi_clarity::util::beckman', 'can use beckman');
   my $some_content =[
                       {
                         'Sample' => '1',
-                        'Bed'=> '2',
+                        'Name'=> '2',
                         'Source EAN13' => '4',
                         'Source Barcode' => 'g',
                         'Source Stock' => '5',
@@ -27,7 +27,7 @@ use_ok('wtsi_clarity::util::beckman', 'can use beckman');
                       },
                       {
                         'Sample'              => '2',
-                        'Bed'                 => '3',
+                        'Name'                 => '3',
                         'Source EAN13'        => '4',
                         'Source Barcode'      => 'h',
                         'Source Stock'        => '5',
@@ -39,7 +39,7 @@ use_ok('wtsi_clarity::util::beckman', 'can use beckman');
                       },
                     ];
   my $expected_result = [
-          'Sample, Bed, Source EAN13, Source Barcode, Source Stock, Source Well, Destination EAN13, Destination Barcode, Destination Well, Source Volume',
+          'Sample, Name, Source EAN13, Source Barcode, Source Stock, Source Well, Destination EAN13, Destination Barcode, Destination Well, Source Volume',
           '1, 2, 4, g, 5, 6, 7, 8, 9, 10',
           '2, 3, 4, h, 5, 6, 7, 8, 9, 10'
         ];

@@ -2,9 +2,15 @@ package wtsi_clarity::process_checks::bed_verifier;
 
 use Moose;
 use Carp;
+use Readonly;
 
 our $VERSION = '0.0';
 
+## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+Readonly::Scalar my $ROBOT_BARCODE_PATH => q[ /prc:process/udf:field[@name="Robot ID"] ];
+## use critic
+
+# Required
 has 'config' => (
   isa        => 'HashRef',
   is         => 'ro',
@@ -12,86 +18,112 @@ has 'config' => (
 );
 
 sub verify {
-  my ($self, $process_name, $robot_id, $mappings) = @_;
+  my ($self, $process) = @_;
 
-  if (!exists ($self->config->{$process_name})) {
-    croak qq/bed verification config can not be found for process $process_name/;
+  $self->_verify_step_config($process);
+  $self->_verify_robot_config($process);
+  $self->_verify_bed_barcodes($process);
+
+  $self->_verify_plate_mapping($process, $self->_plate_mapping($process));
+
+  return 1;
+}
+
+has '_step_config' => (
+  is => 'ro',
+  isa => 'HashRef',
+  lazy => 1,
+  default => sub { {} },
+  writer => '_set__step_config',
+);
+
+sub _verify_step_config {
+  my ($self, $process) = @_;
+
+  if (!exists ($self->config->{ $process->step_name })) {
+    croak qq/Bed verification config can not be found for process / . $process->step_name;
+  } else {
+    return $self->_set__step_config($self->config->{ $process->step_name });
+  }
+}
+
+has '_robot_config' => (
+  is => 'ro',
+  isa => 'HashRef',
+  lazy => 1,
+  default => sub { {} },
+  writer => '_set__robot_config',
+);
+
+sub _verify_robot_config {
+  my ($self, $process) = @_;
+
+  my $robot_bc = $process->process_doc->findvalue($ROBOT_BARCODE_PATH);
+
+  if ($robot_bc eq q{}) {
+    croak qq[Robot barcode must be set for bed verification\n];
   }
 
-  if (!exists $self->config->{$process_name}->{$robot_id}) {
-    croak qq/robot id incorrect for process $process_name/;
+  if (!exists $self->_step_config->{$robot_bc}) {
+    croak qq[Robot $robot_bc has not been configured for step ] . $process->step_name;
   }
 
-  my $process_config = $self->_extract_process_config($process_name, $robot_id);
+  return $self->_set__robot_config($self->_step_config->{$robot_bc});
+}
 
-  foreach my $input_mapping (@{$mappings}) {
+sub _verify_bed_barcodes {
+  my ($self, $process) = @_;
 
-    my $source = $input_mapping->{source};
-    my $config_mapping = $self->_find_mapping_by_bed($process_config, $source->[0]->{bed});
+  foreach my $bed (@{$process->beds}) {
+    if (!exists $self->_robot_config->{$bed->bed_name}) {
+      croak $bed->bed_name . ' can not be found in config for specified robot';
+    }
 
-    return 0 if $self->_verify_mapping($input_mapping, $config_mapping) == 0;
+    if ($self->_robot_config->{$bed->bed_name} ne $bed->barcode) {
+      croak $bed->bed_name . ' barcode (' . $bed->barcode . ') differs from config bed barcode (' . $self->_robot_config->{$bed->bed_name} . ')';
+    }
   }
 
   return 1;
 }
 
-sub _extract_process_config {
-  my ($self, $process_name, $robot_id) = @_;
-  return $self->config->{$process_name}->{$robot_id};
-}
+sub _plate_mapping {
+  my ($self, $process) = @_;
+  my @plate_mapping = ();
 
-sub _verify_mapping {
-  my ($self, $input_mapping, $config_mapping) = @_;
+  foreach my $plate (@{$process->plates}) {
+    next if $plate->is_output;
 
-  my $sources = $input_mapping->{source};
-  my $config_sources = $config_mapping->{source};
-  my $destination = $input_mapping->{destination};
-  my $config_destination = $config_mapping->{destination};
+    my $plate_name = $plate->plate_name;
+    $plate_name =~ s/Input/Output/gsm;
 
-  return ($self->_verify_beds($sources, $config_sources) && $self->_verify_beds($destination, $config_destination));
-}
+    my $output_plates = $self->_find_output_plate($process, $plate_name);
 
-sub _verify_beds {
-  my ($self, $input, $config) = @_;
-  foreach my $bed (@{$input}) {
-    my $matching_config_bed = $self->_find_matching_config_bed($bed, $config);
-
-    if (!$matching_config_bed) {
-      return 0;
+    foreach my $output_plate (@{$output_plates}) {
+      push @plate_mapping, { source_plate => $plate->barcode, dest_plate => $output_plate->barcode };
     }
+  }
 
-    if ($bed->{barcode} != $matching_config_bed->{barcode}) {
-      croak qq/ Barcode for source bed $bed->{bed} is different to config /;
+  return \@plate_mapping;
+}
+
+sub _find_output_plate {
+  my ($self, $process, $plate_name) = @_;
+  my @output_plates = grep { $_->plate_name eq $plate_name } @{$process->plates};
+  return \@output_plates;
+}
+
+sub _verify_plate_mapping {
+  my ($self, $process, $plate_mapping) = @_;
+
+  foreach my $plate_io (@{$process->plate_io_map_barcodes}) {
+    my $matches = grep { ($_->{'source_plate'} == $plate_io->{'source_plate'} && $_->{'dest_plate'} == $plate_io->{'dest_plate'}) } @{$plate_mapping};
+    if ($matches != 1) {
+      croak "Expected source plate " . $plate_io->{'source_plate'} . " to be paired with destination plate " . $plate_io->{'dest_plate'};
     }
   }
 
   return 1;
-}
-
-sub _find_matching_config_bed {
-  my ($self, $bed, $config) = @_;
-
-  foreach my $config_bed (@{$config}) {
-    if ($config_bed->{bed} == $bed->{bed}) {
-      return $config_bed;
-    }
-  }
-
-  return;
-}
-
-sub _find_mapping_by_bed {
-  my ($self, $process, $bed) = @_;
-
-  foreach my $mapping (@{ $process->{mappings} }) {
-    foreach my $source (@{ $mapping->{source} }) {
-      if ($source->{bed} == $bed) {
-        return $mapping;
-      }
-    }
-  }
-  # Hopefully would not get to here...
-  croak qq/ Bed $bed is not source bed for process /;
 }
 
 1;
@@ -109,30 +141,15 @@ wtsi_clarity::process_checks::bed_verifier
   $c->verify($process_name, $robot_id, $mappings);
 
 =head1 DESCRIPTION
-  Provides the method verify to determine whether beds have been scanned into
+  Provides the verify method to determine whether beds have been scanned into
   the correct place on a machine.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 verify($process_name, $robot_id, $mappings)
+=head2 verify($process)
 
-  Returns a bool dependent on plates being correctly placed in beds
-
-  $process_name - name of the process. Used as a lookup key in the config
-
-  $robot_id - ID of the robot being used for the process. Must match id for process in the config
-
-  $mappings - An array of mapping hashes. Each mapping contains a source and destination, which
-    also contain lists of hashes.
-
-    e.g.
-
-      my @source = ({ bed => 2, barcode => 58373626272 });
-      my @destination = ({ bed => 3, barcode => 580040003686 });
-      my @mappings = ({
-        source => \@source,
-        destination => \@destination
-      });
+  Pass in an EPP process and it will verify the robot id, the barcodes of the beds are correct,
+  and the plates in a process are in the correct bed positions.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
@@ -143,6 +160,8 @@ wtsi_clarity::process_checks::bed_verifier
 =item Moose
 
 =item Carp
+
+=item Readonly
 
 =back
 
