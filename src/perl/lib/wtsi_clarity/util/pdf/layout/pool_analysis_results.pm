@@ -3,7 +3,8 @@ package wtsi_clarity::util::pdf::layout::pool_analysis_results;
 use Moose;
 use Readonly;
 
-Readonly::Scalar my $buffer_table_y_position => 700;
+Readonly::Scalar my $SOURCE_TABLE_HEIGHT      => 700;
+Readonly::Scalar my $BUFFER_TABLE_Y_POSITION => 700;
 
 extends 'wtsi_clarity::util::pdf::pdf_generator';
 
@@ -23,7 +24,9 @@ sub create {
     wtsi_clarity::util::pdf::pdf_generator::add_title_to_page($page, $font_bold, $page_data->{'title'});
     wtsi_clarity::util::pdf::pdf_generator::add_timestamp($page, $font, $self->pdf_data->{'stamp'});
 
-    wtsi_clarity::util::pdf::pdf_generator::add_buffer_block_to_page($self->pdf, $page, $font_bold, $page_data->{'plate_table'}, $page_data->{'plate_table_title'}, $page_data->{'plate_table_cell_styles'}, $buffer_table_y_position);
+    wtsi_clarity::util::pdf::pdf_generator::add_io_block_to_page($self->pdf, $page, $font_bold, $page_data->{'input_table'}, $page_data->{'input_table_title'}, $SOURCE_TABLE_HEIGHT);
+
+    wtsi_clarity::util::pdf::pdf_generator::add_buffer_block_to_page($self->pdf, $page, $font_bold, $page_data->{'plate_table'}, $page_data->{'plate_table_title'}, $page_data->{'plate_table_cell_styles'}, $BUFFER_TABLE_Y_POSITION);
   }
 
   return $self->pdf;
