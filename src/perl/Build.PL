@@ -41,7 +41,11 @@ my $class = Module::Build->subclass(code => <<'EOF');
 
     $self->SUPER::ACTION_installdeps;
 
-    `cpanm -n https://github.com/wtsi-npg/perl-rabbit-wrap/archive/0.2.0.tar.gz`;
+    print "Fetching WTSI::DNAP::Utilities...\n";
+    `cpanm https://github.com/wtsi-npg/perl-dnap-utilities/releases/download/0.4.1/WTSI-DNAP-Utilities-0.4.1.tar.gz`;
+
+    print "Fetching WTSI::DNAP::RabbitMQ...\n";
+    `cpanm -n https://github.com/wtsi-npg/perl-rabbit-wrap/releases/download/0.2.0/WTSI-DNAP-RabbitMQ-0.2.0.tar.gz`;
 
     return;
   }
@@ -79,8 +83,10 @@ my $builder = $class->new(
           'requires'    => {
                 'AnyEvent'                        => 0,
                 'AnyEvent::RabbitMQ'              => 0,
+                'App::cpanminus'                  => 0,
                 'Carp'                            => 0,
                 'Config::Auto'                    => 0,
+                'Data::Dump'                      => 0,
                 'DateTime'                        => 0,
                 'Digest::MD5'                     => 0,
                 'English'                         => 0,
@@ -99,6 +105,7 @@ my $builder = $class->new(
                 'HTTP::Request'                   => 0,
                 'lib'                             => 0,
                 'List::Compare'                   => 0,
+                'Log::Log4perl'                   => 0,
                 'LWP::UserAgent'                  => 0,
                 'Mojo::Collection'                => 0,
                 'Moose'                           => 0,
@@ -122,7 +129,6 @@ my $builder = $class->new(
                 'XML::SemanticDiff'               => 0,
                 'URI::Escape'                     => 0,
                 'POSIX'                           => 0,
-                'App::cpanminus'                  => 0,
           },
 
           'dist'         => { COMPRESS => 'gzip', SUFFIX => 'gz', },
