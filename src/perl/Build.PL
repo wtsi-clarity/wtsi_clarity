@@ -35,6 +35,16 @@ my $class = Module::Build->subclass(code => <<'EOF');
     }
     return;
   }
+
+  sub ACTION_installdeps {
+    my $self = shift;
+
+    $self->SUPER::ACTION_installdeps;
+
+    `cpanm -n https://github.com/wtsi-npg/perl-rabbit-wrap/archive/0.2.0.tar.gz`;
+
+    return;
+  }
 EOF
 
 my $builder = $class->new(
@@ -112,6 +122,7 @@ my $builder = $class->new(
                 'XML::SemanticDiff'               => 0,
                 'URI::Escape'                     => 0,
                 'POSIX'                           => 0,
+                'App::cpanminus'                  => 0,
           },
 
           'dist'         => { COMPRESS => 'gzip', SUFFIX => 'gz', },
