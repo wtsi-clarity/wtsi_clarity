@@ -4,8 +4,12 @@ username = user1
 password = pword1
 
 [clarity_mq]
-username = user2
-password = pword2
+host = localhost
+username = guest
+password = guest
+vhost = /
+queue = step_info_epp_test
+port = 5672
 
 [warehouse_mq]
 host = host1

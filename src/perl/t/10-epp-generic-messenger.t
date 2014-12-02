@@ -10,8 +10,8 @@ use_ok('wtsi_clarity::mq::client');
   isa_ok( $r, 'wtsi_clarity::mq::client');
   is( $r->port, 5672, 'default port');
   is( $r->host, 'localhost', 'localhost');
-  is( $r->username, 'user2', 'username from config file');
-  is( $r->password, 'pword2', 'password from config file');
+  is( $r->username, 'guest', 'username from config file');
+  is( $r->password, 'guest', 'password from config file');
 }
 
 1;

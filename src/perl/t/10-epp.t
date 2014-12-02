@@ -9,7 +9,7 @@ use_ok('wtsi_clarity::epp');
 
   local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
   is(ref $epp->config, 'wtsi_clarity::util::config', 'config accessor built');
-  is($epp->config->clarity_mq->{'username'}, 'user2', 'conf option correctly retrieved');
+  is($epp->config->clarity_mq->{'username'}, 'guest', 'conf option correctly retrieved');
 }
 
 1;
