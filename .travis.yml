@@ -1,6 +1,8 @@
 language: perl
 perl:
   - "5.16"
+services:
+  - rabbitmq
 before_install:
   - export TRAVIS_BUILD_DIR="$TRAVIS_BUILD_DIR/src/perl/"
   - cd $TRAVIS_BUILD_DIR
