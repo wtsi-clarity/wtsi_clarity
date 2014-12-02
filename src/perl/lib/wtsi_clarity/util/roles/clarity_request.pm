@@ -1,26 +1,30 @@
-package wtsi_clarity::mq::message_enhancer;
+package wtsi_clarity::util::roles::clarity_request;
 
 use Moose::Role;
 use XML::LibXML;
-
-with qw/wtsi_clarity::util::roles::clarity_process_base/;
+use wtsi_clarity::util::request;
 
 our $VERSION = '0.0';
 
-has 'step_url' => (
-  isa        => 'Str',
-  is         => 'ro',
-  required   => 1,
+has 'request' => (
+  isa => 'wtsi_clarity::util::request',
+  is  => 'ro',
+  traits => [ 'NoGetopt' ],
+  default => sub { return wtsi_clarity::util::request->new(); },
 );
 
-has 'timestamp' => (
-  isa        => 'Str',
-  is         => 'ro',
-  required   => 1,
+has 'xml_parser'  => (
+  isa             => 'XML::LibXML',
+  is              => 'ro',
+  required        => 0,
+  traits          => [ 'NoGetopt' ],
+  default         => sub { return XML::LibXML->new(); },
 );
 
-
-requires qw/ prepare_messages /;
+sub fetch_and_parse {
+  my ($self, $url) = @_;
+  return $self->xml_parser->parse_string($self->request->get($url));
+}
 
 1;
 
@@ -28,22 +32,22 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::mq::message_enhancer
+wtsi_clarity::util::roles::clarity_request
 
 =head1 SYNOPSIS
 
-  my $message_enhancer = wtsi_clarity::mq::message_enhancer->new();
-  $message_enhancer->publish('message');
+  with 'wtsi_clarity::util::roles::clarity_request';
+  $self->fetch_and_parse('http://test.com/test/234');
 
 =head1 DESCRIPTION
 
- Base class of the message producers, which are publishing messages to the unified warehouse queue.
+  Role that related to a HTTP request.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 publish
+=head2 fetch_and_parse - given url, fetches XML document and returns its XML dom representation
 
-  Takes in the message string and publish it onto the unified warehouse message bus.
+  my $dom = $self->fetch_and_parse($url);
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
@@ -52,6 +56,8 @@ wtsi_clarity::mq::message_enhancer
 =over
 
 =item Moose::Role
+
+=item wtsi_clarity::util::request;
 
 =back
 

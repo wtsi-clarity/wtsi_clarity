@@ -4,6 +4,16 @@ use Test::More tests => 17;
 
 use_ok('wtsi_clarity::mq::client');
 
+<<<<<<< HEAD
+{
+  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+  my $r = wtsi_clarity::mq::client->new();
+  isa_ok( $r, 'wtsi_clarity::mq::client');
+  is( $r->port, 5672, 'default port');
+  is( $r->host, 'localhost', 'localhost');
+  is( $r->username, 'guest', 'username from config file');
+  is( $r->password, 'guest', 'password from config file');
+=======
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 
 { # Tests for clarity mq client settings
@@ -11,8 +21,8 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
   isa_ok( $client, 'wtsi_clarity::mq::client');
   is( $client->port, 5672, 'default port');
   is( $client->host, 'localhost', 'localhost');
-  is( $client->username, 'guest', 'username from config file');
-  is( $client->password, 'guest', 'password from config file');
+  is( $client->username, 'user2', 'username from config file');
+  is( $client->password, 'pword2', 'password from config file');
 }
 
 { # Tests for warehouse mq client settings
@@ -40,6 +50,7 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
   my $purpose = 'sample';
   my $expected_routing_key_wh = $config->warehouse_mq->{'env'} . q{.} . $config->warehouse_mq->{'routing_key'} . q{.} . $purpose;
   is($client_wh->_assemble_routing_key($purpose), $expected_routing_key_wh, 'Got back the correct routing key for warehouse mq.');
+>>>>>>> fcaf4a37a896309de047662be7ad4347dcbdcd85
 }
 
 1;

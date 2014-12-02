@@ -5,6 +5,7 @@ use Carp;
 
 use wtsi_clarity::mq::message;
 use wtsi_clarity::mq::mapper;
+use wtsi_clarity::mq::client;
 
 our $VERSION = '0.0';
 
@@ -15,6 +16,15 @@ has 'mapper' => (
   default   => sub { return wtsi_clarity::mq::mapper->new() },
 );
 
+has '_wh_client' => (
+  isa         => 'wtsi_clarity::mq::client',
+  is          => 'ro',
+  required    => 0,
+  default     => sub {
+    return wtsi_clarity::mq::client->new(message_bus_type => 'warehouse_mq');
+  },
+);
+
 sub process_message {
   my ($self, $json_string) = @_;
   my $message = $self->_thaw($json_string);
@@ -22,19 +32,27 @@ sub process_message {
 
   $self->_require_enhancer($package_name);
 
-  $self->_run_package($package_name, $message);
+  foreach my $message_to_wh (@{$self->_prepare_messages($package_name, $message)}) {
+    $self->_send_message($message_to_wh, $message->purpose);
+  }
 
   return 1;
 }
 
-sub _run_package {
+sub _send_message {
+  my ($self, $message, $purpose) = @_;
+  $self->_wh_client->send_message($message, $purpose);
+  return;
+}
+
+sub _prepare_messages {
   my ($self, $package_name, $message) = @_;
 
   return $package_name->new(
             process_url => $message->process_url,
             step_url    => $message->step_url,
             timestamp   => $message->timestamp,
-          )->run();
+          )->prepare_messages();
 }
 
 sub _thaw {
@@ -67,7 +85,7 @@ wtsi_clarity::mq::message_handler
 =head1 SYNOPSIS
 
   my $message_handler = wtsi_clarity::mq::message_handler->new();
-  $message_handler->handle_message($json_string);
+  $message_handler->process_message($json_string);
 
 =head1 DESCRIPTION
 

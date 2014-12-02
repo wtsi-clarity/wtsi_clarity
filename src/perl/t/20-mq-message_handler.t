@@ -49,9 +49,11 @@ use_ok('wtsi_clarity::mq::message_handler');
 {
   my $mock_mq_handler = Test::MockObject::Extends->new( wtsi_clarity::mq::message_handler->new() );
 
-  $mock_mq_handler->mock(q{_run_package}, sub { return 1; });
+  $mock_mq_handler->mock(q{_prepare_messages}, sub { return [1]; });
 
   $mock_mq_handler->mock(q{_require_enhancer}, sub { return 1; });
+
+  $mock_mq_handler->mock(q{_send_message}, sub { return 1; });
 
   my $json_string = '{"__CLASS__":"wtsi_clarity::mq::message::epp-0.33","process_url":"http://clarity.com:1234","step_url":"http://clarity.com:1234/step","timestamp":"2014-11-25 12:06:27","purpose":"sample"}';
   lives_ok { $mock_mq_handler->process_message($json_string)} 'Message processing was successful';
