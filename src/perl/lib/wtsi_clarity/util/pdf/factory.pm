@@ -5,7 +5,7 @@ use Carp;
 use Readonly;
 
 use wtsi_clarity::util::pdf::factory::pico_analysis_results;
-# use wtsi_clarity::util::pdf::factory::pool_results;
+use wtsi_clarity::util::pdf::factory::pool_analysis_results;
 # TODO use wtsi_clarity::util::pdf_generator::factory::worksheet;
 
 our $VERSION = '0.0';
@@ -16,8 +16,8 @@ sub createPDF {
 
   if ($pdf_type eq 'pico_analysis_results') {
     $pdf_factory = wtsi_clarity::util::pdf::factory::pico_analysis_results->new();
-  # } elsif ($pdf_type eq 'pool_results') {
-  #   $pdf_factory = wtsi_clarity::util::pdf::factory::pool_results->new();
+  } elsif ($pdf_type eq 'pool_analysis_results') {
+    $pdf_factory = wtsi_clarity::util::pdf::factory::pool_analysis_results->new();
   # TODO
   # } elsif ($pdf_type eq 'worksheet') {
   # $pdf_factory = wtsi_clarity::util::pdf_generator::factory::worksheet->new();

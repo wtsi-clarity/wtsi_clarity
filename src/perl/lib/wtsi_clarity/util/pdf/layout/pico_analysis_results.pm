@@ -15,15 +15,17 @@ sub create {
   my $font_bold = $self->pdf->corefont('Helvetica-Bold');
   my $font = $self->pdf->corefont('Helvetica');
 
+  my $pdf_generator = wtsi_clarity::util::pdf::pdf_generator->new();
+
   # for each output container, we produce a new page...
   foreach my $page_data (@{$self->pdf_data->{'pages'}}) {
     my $page = $self->pdf->page();
     $page->mediabox('A4');
 
-    wtsi_clarity::util::pdf::pdf_generator::add_title_to_page($page, $font_bold, $page_data->{'title'});
-    wtsi_clarity::util::pdf::pdf_generator::add_timestamp($page, $font, $self->pdf_data->{'stamp'});
+    $pdf_generator->add_title_to_page($page, $font_bold, $page_data->{'title'});
+    $pdf_generator->add_timestamp($page, $font, $self->pdf_data->{'stamp'});
 
-    wtsi_clarity::util::pdf::pdf_generator::add_buffer_block_to_page($self->pdf, $page, $font_bold, $page_data->{'plate_table'}, $page_data->{'plate_table_title'}, $page_data->{'plate_table_cell_styles'}, $buffer_table_y_position);
+    $pdf_generator->add_buffer_block_to_page($self->pdf, $page, $font_bold, $page_data->{'plate_table'}, $page_data->{'plate_table_title'}, $page_data->{'plate_table_cell_styles'}, $buffer_table_y_position);
   }
 
   return $self->pdf;

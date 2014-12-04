@@ -5,12 +5,12 @@ use Carp;
 use Readonly;
 use DateTime;
 
-use wtsi_clarity::util::pdf::layout::pico_analysis_results;
-
 Readonly::Scalar our $HEADER_STYLE => q(HEADER_STYLE);
-Readonly::Scalar our $NUMBER_OF_COLUMNS => 12;
+Readonly::Scalar my $NUMBER_OF_COLUMNS => 12;
 
 our $VERSION = '0.0';
+
+requires qw/table_header_row table_footer_row format_table_cell format_style_table_cell build/;
 
 sub format_tables {
   my ($self, $plate_table_info) = @_;
@@ -48,20 +48,9 @@ sub _format {
   return \@formatted_table;
 }
 
-sub table_header_row {
-  return [0..$NUMBER_OF_COLUMNS];
-}
-
 sub table_row_first_column {
   my $row = shift;
   return $row;
-}
-
-sub table_footer_row {
-  my @row = ();
-  push @row, q{*};
-  push @row, 1..$NUMBER_OF_COLUMNS;
-  return \@row;
 }
 
 sub headers_row {
@@ -70,11 +59,6 @@ sub headers_row {
 
 sub style_row_first_column {
   return $HEADER_STYLE;
-}
-
-sub format_style_table_cell {
-  my $cell = shift;
-  return uc $cell->{'status'};
 }
 
 1;
@@ -99,17 +83,11 @@ wtsi_clarity::util::pdf::factory::analysis_results
 
 =head2 format_tables
 
+=head2 table_row_first_column
+
 =head2 headers_row
 
 =head2 style_row_first_column
-
-=head2 table_footer_row
-
-=head2 table_header_row
-
-=head2 table_row_first_column
-
-=head2 format_style_table_cell
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
