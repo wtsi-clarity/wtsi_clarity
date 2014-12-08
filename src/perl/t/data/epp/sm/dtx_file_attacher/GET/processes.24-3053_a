@@ -575,6 +575,6 @@
     </input>
     <output limsid="92-7894" output-generation-type="PerAllInputs" output-type="SharedResultFile" uri="http://testserver.com:1234/here/artifacts/92-7894?state=3844"/>
   </input-output-map>
-  <udf:field name="Standard Barcode" type="Numeric">1234</udf:field>
+  <udf:field name="Standard File Barcode" type="String">1234</udf:field>
   <udf:field name="DTX ID" type="String">010464</udf:field>
 </prc:process>
