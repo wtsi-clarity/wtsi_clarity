@@ -130,6 +130,7 @@ wtsi_clarity::genotyping::fluidigm::assay
 
 =head1 AUTHOR
 
+Keith James E<lt>kdj@sanger.ac.ukE<gt>
 Chris Smith E<lt>cs24@sanger.ac.ukE<gt>
 
 =head1 LICENSE AND COPYRIGHT
