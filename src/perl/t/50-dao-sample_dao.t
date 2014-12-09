@@ -33,8 +33,8 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 {
   my $lims_id = 'SYY154A1';
   my $sample_dao = wtsi_clarity::dao::sample_dao->new( lims_id => $lims_id);
-  is($sample_dao->uuid, q{111}, 'Returns the correct uuid of the sample');
   is($sample_dao->id, q{SYY154A1}, 'Returns the correct id of the sample');
+  is($sample_dao->uuid, q{111}, 'Returns the correct uuid of the sample');
   is($sample_dao->name, q{111}, 'Returns the correct name of the sample');
   is($sample_dao->reference_genome, q{Test Reference Genome}, 'Returns the correct reference genome of the sample');
   is($sample_dao->organism, q{Homo Sapiens}, 'Returns the correct organism of the sample');

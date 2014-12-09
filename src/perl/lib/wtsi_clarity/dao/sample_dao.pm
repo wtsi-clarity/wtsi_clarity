@@ -19,123 +19,30 @@ Readonly::Scalar my $SAMPLE_PROJECT_LIMSID_PATH               => q{/smp:sample/p
 Readonly::Scalar my $SAMPLE_WTSI_BAIT_LIBRARY_NAME_PATH       => q{/smp:sample/udf:field[@name='WTSI Bait Library Name']};
 ## use critic
 
-Readonly::Array  my @SAMPLE_ATTRIBUTES                        => qw/  uuid
-                                                                      name
-                                                                      reference_genome
-                                                                      organism
-                                                                      common_name
-                                                                      taxon_id
-                                                                      gender
-                                                                      control
-                                                                      supplier_name
-                                                                      public_name
-                                                                      donor_id
-                                                                      project_limsid
-                                                                      bait_library_name
-                                                                  /;
+Readonly::Hash  my %ATTRIBUTES  => {  'uuid' => $SAMPLE_UUID_AND_NAME_PATH,
+                                      'name' => $SAMPLE_UUID_AND_NAME_PATH,
+                                      'reference_genome' => $SAMPLE_REFERENCE_GENOME_PATH,
+                                      'organism' => $SAMPLE_WTSI_ORGANISM_PATH,
+                                      'common_name' => $SAMPLE_WTSI_SUPPLIER_SAMPLE_NAME_SM_PATH,
+                                      'taxon_id' => $SAMPLE_WTSI_TAXON_ID_PATH,
+                                      'gender' => $SAMPLE_WTSI_SUPPLIER_GENDER_PATH,
+                                      'control' => $SAMPLE_IS_CONTROL_PATH,
+                                      'supplier_name' => $SAMPLE_WTSI_SUPPLIER_PATH,
+                                      'public_name' => $SAMPLE_WTSI_SUPPLIER_SAMPLE_NAME_SM_PATH,
+                                      'donor_id' => $SAMPLE_WTSI_DONOR_ID_PATH,
+                                      'project_limsid' => $SAMPLE_PROJECT_LIMSID_PATH,
+                                      'bait_library_name' => $SAMPLE_WTSI_BAIT_LIBRARY_NAME_PATH
+                                    };
 
 our $VERSION = '0.0';
 
-has 'resource_type' => (
-  isa         => 'Str',
-  is          => 'ro',
-  required    => 0,
+has '+resource_type' => (
   default     => 'samples',
 );
 
-foreach my $sample_attribute ( @SAMPLE_ATTRIBUTES ) {
-  has $sample_attribute => (
-    isa             => 'Str',
-    is              => 'rw',
-    required        => 0,
-    lazy_build      => 1,
-  );
-}
-
-sub _build_uuid {
-  my $self = shift;
-  return $self->findvalue($SAMPLE_UUID_AND_NAME_PATH);
-}
-
-sub _build_name {
-  my $self = shift;
-
-  return $self->findvalue($SAMPLE_UUID_AND_NAME_PATH);
-}
-
-sub _build_reference_genome {
-  my $self = shift;
-
-  return $self->findvalue($SAMPLE_REFERENCE_GENOME_PATH);
-}
-
-sub _build_organism {
-  my $self = shift;
-
-  return $self->findvalue($SAMPLE_WTSI_ORGANISM_PATH);
-}
-
-sub _build_common_name {
- my $self = shift;
-  return $self->findvalue($SAMPLE_WTSI_SUPPLIER_SAMPLE_NAME_SM_PATH);
-}
-
-sub _build_taxon_id {
- my $self = shift;
-  return $self->findvalue($SAMPLE_WTSI_TAXON_ID_PATH);
-}
-
-sub _build_gender {
-  my $self = shift;
-
-  return $self->findvalue($SAMPLE_WTSI_SUPPLIER_GENDER_PATH);
-}
-
-sub _build_control {
-  my $self = shift;
-
-  return $self->findvalue($SAMPLE_IS_CONTROL_PATH);
-}
-
-sub _build_supplier_name {
-  my $self = shift;
-
-  return $self->findvalue($SAMPLE_WTSI_SUPPLIER_PATH);
-}
-
-sub _build_public_name {
-  my $self = shift;
-
-  return $self->findvalue($SAMPLE_WTSI_SUPPLIER_SAMPLE_NAME_SM_PATH);
-}
-
-sub _build_donor_id {
-  my $self = shift;
-
-  return $self->findvalue($SAMPLE_WTSI_DONOR_ID_PATH);
-}
-
-sub _build_project_limsid {
-  my $self = shift;
-
-  return $self->findvalue($SAMPLE_PROJECT_LIMSID_PATH);
-}
-
-sub _build_bait_library_name {
-  my $self = shift;
-
-  return $self->findvalue($SAMPLE_WTSI_BAIT_LIBRARY_NAME_PATH);
-}
-
-sub init {
-  my $self = shift;
-
-  foreach my $sample_attribute ( @SAMPLE_ATTRIBUTES ) {
-    $self->$sample_attribute;
-  }
-
-  return;
-}
+has '+attributes' => (
+  default     => sub { return \%ATTRIBUTES; },
+);
 
 1;
 
@@ -155,9 +62,6 @@ wtsi_clarity::dao::sample_dao
 
 =head1 SUBROUTINES/METHODS
 
-=head2 init
-  Initialize the data object with its data.
-
 =head1 CONFIGURATION AND ENVIRONMENT
 
 =head1 DEPENDENCIES
@@ -165,6 +69,8 @@ wtsi_clarity::dao::sample_dao
 =over
 
 =item Moose
+
+=item Readonly
 
 =back
 

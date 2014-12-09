@@ -9,42 +9,18 @@ with 'wtsi_clarity::dao::base_dao';
 
 Readonly::Scalar my $STUDY_NAME_PATH                => q{/prj:project/name};
 
-Readonly::Array  my @STUDY_ATTRIBUTES                        => qw/ name
-                                                                  /;
+Readonly::Hash  my %ATTRIBUTES       =>  { name => $STUDY_NAME_PATH,
+                                          };
 
 our $VERSION = '0.0';
 
-has 'resource_type' => (
-  isa         => 'Str',
-  is          => 'ro',
-  required    => 0,
+has '+resource_type' => (
   default     => 'projects',
 );
 
-foreach my $study_attribute ( @STUDY_ATTRIBUTES ) {
-  has $study_attribute => (
-    isa             => 'Str',
-    is              => 'rw',
-    required        => 0,
-    lazy_build      => 1,
-  );
-}
-
-sub _build_name {
-  my $self = shift;
-
-  return $self->findvalue($STUDY_NAME_PATH);
-}
-
-sub init {
-  my $self = shift;
-
-  foreach my $study_attribute ( @STUDY_ATTRIBUTES ) {
-    $self->$study_attribute;
-  }
-
-  return;
-}
+has '+attributes' => (
+  default     => sub { return \%ATTRIBUTES; },
+);
 
 1;
 
@@ -64,9 +40,6 @@ wtsi_clarity::dao::study_dao
 
 =head1 SUBROUTINES/METHODS
 
-=head2 init
-  Initialize the data object with its data.
-
 =head1 CONFIGURATION AND ENVIRONMENT
 
 =head1 DEPENDENCIES
@@ -74,6 +47,8 @@ wtsi_clarity::dao::study_dao
 =over
 
 =item Moose
+
+=item Readonly
 
 =back
 
