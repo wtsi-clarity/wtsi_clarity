@@ -3,8 +3,6 @@ package wtsi_clarity::dao::study_dao;
 use Moose;
 use Readonly;
 
-use wtsi_clarity::util::artifact_reader;
-
 with 'wtsi_clarity::dao::base_dao';
 
 Readonly::Scalar my $STUDY_NAME_PATH                => q{/prj:project/name};

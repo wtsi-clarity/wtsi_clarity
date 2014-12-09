@@ -1,4 +1,4 @@
-package wtsi_clarity::util::artifact_reader;
+package wtsi_clarity::util::xml_resource_reader;
 
 use Moose;
 use XML::LibXML;
@@ -48,29 +48,46 @@ sub _build_get_xml {
 __END__
 
 =head1 NAME
-wtsi_clarity::util::artifact_reader
+
+wtsi_clarity::util::xml_resource_reader
+
 =head1 SYNOPSIS
+
   my $lims_id = '1234';
   my $resource_type = 'sample';
-  my $artifact_reader = wtsi_clarity::util::artifact_reader->new(
+  my $xml_resource_reader = wtsi_clarity::util::xml_resource_reader->new(
     resource_type => $resource_type,
     lims_id       => $lims_id)
-  $artifact_reader->get_xml();
+  $xml_resource_reader->get_xml();
+
 =head1 DESCRIPTION
+
  Reading the specific required resource and returns it as an XML document.
  Required parameters are the resource type and its lims id.
+
 =head1 SUBROUTINES/METHODS
+
 =head2 get_xml
   Returns the required artifact XML.
+
 =head1 CONFIGURATION AND ENVIRONMENT
+
 =head1 DEPENDENCIES
+
 =over
+
 =item Moose
+
 =item XML::LibXML
+
 =back
+
 =head1 AUTHOR
+
 Karoly Erdos E<lt>ke4@sanger.ac.ukE<gt>
+
 =head1 LICENSE AND COPYRIGHT
+
 Copyright (C) 2014 GRL
 This file is part of wtsi_clarity project.
 wtsi_clarity is free software: you can redistribute it and/or modify
@@ -83,4 +100,5 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 =cut

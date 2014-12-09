@@ -5,7 +5,7 @@ use MooseX::Storage;
 use MooseX::Aliases;
 use XML::LibXML;
 
-use wtsi_clarity::util::artifact_reader;
+use wtsi_clarity::util::xml_resource_reader;
 
 with Storage( 'traits' => ['OnlyWhenBuilt'],
               'format' => 'JSON',
@@ -37,10 +37,10 @@ has '_artifact_xml' => (
 sub _build__artifact_xml {
   my $self = shift;
 
-  my $artifact_reader = wtsi_clarity::util::artifact_reader->new(
+  my $xml_resource_reader = wtsi_clarity::util::xml_resource_reader->new(
     resource_type => $self->resource_type,
     lims_id       => $self->lims_id);
-  return $artifact_reader->get_xml;
+  return $xml_resource_reader->get_xml;
 }
 
 has 'attributes' => (
@@ -123,7 +123,13 @@ wtsi_clarity::dao::base_dao
 
 =over
 
-=item Moose
+=item Moose::Role
+
+=item MooseX::Storage;
+
+=item MooseX::Aliases
+
+=item wtsi_clarity::util::xml_resource_reader
 
 =back
 
