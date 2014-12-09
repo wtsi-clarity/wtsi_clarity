@@ -12,7 +12,7 @@ my $epp = Moose::Meta::Class->create_anon_class(
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/util/roles/clarity_process_io/';
-local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
+local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 {
   my $process = $epp->new_object(
