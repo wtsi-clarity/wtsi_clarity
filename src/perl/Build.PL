@@ -98,6 +98,7 @@ my $builder = $class->new(
                 'MooseX::Getopt::Meta::Attribute::Trait::NoGetopt' => 0,
                 'MooseX::Storage'                 => 0,
                 'MooseX::StrictConstructor'       => 0,
+                'MooseX::Aliases'                 => 0,
                 'namespace::autoclean'            => 0,
                 'PDF::API2'                       => 0,
                 'PDF::Table'                      => 0,
