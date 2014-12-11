@@ -50,6 +50,7 @@ my $builder = $class->new(
           },
 
           'build_requires' => {
+                'Devel::Cover'                    => 0,
                 'Module::Build'                   => 0,
                 'ExtUtils::CBuilder'              => 0,
                 'Test::Compile'                   => 0,
