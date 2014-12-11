@@ -72,6 +72,8 @@ wtsi_clarity::dao::sample_dao
 
 =item Readonly
 
+=item wtsi_clarity::dao::base_dao
+
 =back
 
 =head1 AUTHOR

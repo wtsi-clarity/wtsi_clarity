@@ -106,6 +106,16 @@ wtsi_clarity::epp::isc::pool_analyser
 
 =item Readonly
 
+=item wtsi_clarity::util::pdf::factory;
+
+=item wtsi_clarity::dao::sample_dao;
+
+=item wtsi_clarity::dao::study_dao;
+
+=item wtsi_clarity::util::roles::clarity_process_io
+
+=item wtsi_clarity::epp
+
 =back
 
 =head1 AUTHOR
