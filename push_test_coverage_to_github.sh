@@ -1,8 +1,9 @@
 #!/bin/bash
 
-if [ "$TRAVIS_PULL_REQUEST" = false ] ; then
-    exit 0
-fi
+# if [ "$TRAVIS_PULL_REQUEST" = false ] ; then
+#   echo 'Not a Pull Request. No need to '
+#   exit 0
+# fi
 
 git clone --branch=gh-pages git://github.com/wtsi-clarity/wtsi_clarity.git /var/tmp/wtsi_clarity
 cp -r ./src/perl/cover_db /var/tmp/wtsi_clarity/results/$TRAVIS_COMMIT
