@@ -3,7 +3,7 @@ package wtsi_clarity::util::xml_resource_reader;
 use Moose;
 use XML::LibXML;
 
-with qw/wtsi_clarity::util::configurable MooseX::Getopt wtsi_clarity::util::roles::clarity_request/;
+with qw/wtsi_clarity::util::configurable wtsi_clarity::util::roles::clarity_request/;
 
 our $VERSION = '0.0';
 
@@ -34,7 +34,6 @@ has 'get_xml' => (
   isa             => 'XML::LibXML::Document',
   is              => 'ro',
   required        => 0,
-  traits          => [ 'NoGetopt' ],
   lazy_build      => 1,
 );
 sub _build_get_xml {
