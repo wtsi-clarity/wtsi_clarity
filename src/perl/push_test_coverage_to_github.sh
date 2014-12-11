@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ev
+
 cd $TRAVIS_BUILD_DIR
 
 # if [ "$TRAVIS_PULL_REQUEST" = false ] ; then
