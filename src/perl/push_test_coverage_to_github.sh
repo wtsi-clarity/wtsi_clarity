@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd $TRAVIS_BUILD_DIR
+
 # if [ "$TRAVIS_PULL_REQUEST" = false ] ; then
 #   echo 'Not a Pull Request. No need to '
 #   exit 0
