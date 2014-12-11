@@ -6,6 +6,10 @@ use wtsi_clarity::util::request;
 
 our $VERSION = '0.0';
 
+# we use this role in our epp script too, which is used as an external script,
+# so, that's why we need to use the MooseX::Getopt role in this role
+with qw/MooseX::Getopt/;
+
 has 'request' => (
   isa => 'wtsi_clarity::util::request',
   is  => 'ro',
@@ -57,7 +61,11 @@ wtsi_clarity::util::roles::clarity_request
 
 =item Moose::Role
 
-=item wtsi_clarity::util::request;
+=item wtsi_clarity::util::request
+
+=item XML::LibXML
+
+=item MooseX::Getopt
 
 =back
 
@@ -70,7 +78,6 @@ Karoly Erdos E<lt>ke4@sanger.ac.ukE<gt>
 Copyright (C) 2014 GRL
 
 This file is part of wtsi_clarity project.
-
 wtsi_clarity is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or

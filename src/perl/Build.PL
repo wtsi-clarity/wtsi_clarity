@@ -116,6 +116,7 @@ my $builder = $class->new(
                 'MooseX::Storage'                 => 0,
                 'MooseX::Aliases'                 => 0,
                 'MooseX::StrictConstructor'       => 0,
+                'MooseX::Aliases'                 => 0,
                 'namespace::autoclean'            => 0,
                 'PDF::API2'                       => 0,
                 'PDF::Table'                      => 0,
