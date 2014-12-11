@@ -10,7 +10,7 @@ cd $TRAVIS_BUILD_DIR
 # fi
 
 git clone --branch=gh-pages git://github.com/wtsi-clarity/wtsi_clarity.git /var/tmp/wtsi_clarity
-cp -r ./src/perl/cover_db /var/tmp/wtsi_clarity/results/$TRAVIS_COMMIT
+cp -r ./cover_db /var/tmp/wtsi_clarity/results/$TRAVIS_COMMIT
 
 cd /var/tmp/wtsi_clarity
 
