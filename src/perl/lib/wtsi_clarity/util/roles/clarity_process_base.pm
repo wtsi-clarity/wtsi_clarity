@@ -50,16 +50,18 @@ sub _uniq_array {
   my ($self, @array) = @_;
 
   my %seen;
-  return grep { !$seen{$_}++ } @array;
+  my @uniq_array =  grep { !$seen{$_}++ } @array;
+
+  return \@uniq_array;
 }
 
 sub _get_values_from_nodelist {
   my ($self, $function, $nodelist) = @_;
-  my @values = $self->_uniq_array(
+  my $values = $self->_uniq_array(
     map { $_->$function } $nodelist->get_nodelist()
   );
 
-  return \@values;
+  return $values;
 }
 
 1;
