@@ -5,13 +5,13 @@ env:
   global:
     - secure: "n/Gtam/+Qnrz7qMEzu1IBJbkB4YYCZWy4mMK/THQhBr+KM8suveqRe6UNjHIks7hroFkn39SOHFitb8vhLTirFrrG/GhUZVjGpUyAjt5r63yjm4hElkvJTULjFssyWdUL9M1Itx4/w2F953ovBa4Nqw6iIajB1ehnO6xkbABzrA="
 before_install:
-  - chmod 755 ./push_test_coverage_to_github.sh
   - export TRAVIS_BUILD_DIR="$TRAVIS_BUILD_DIR/src/perl/"
   - cd $TRAVIS_BUILD_DIR
+  - chmod 755 ./push_test_coverage_to_github.sh
 install:
   - perl Build.PL
   - yes | perl Build installdeps
-after_install:
+after_success:
   - ./push_test_coverage_to_github.sh
 
 script: "cd $TRAVIS_BUILD_DIR && perl Build && perl Build testcover"
