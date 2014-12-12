@@ -2,15 +2,15 @@
 
 set -ev
 
-cd $TRAVIS_BUILD_DIR
-
 if [ "$TRAVIS_PULL_REQUEST" = false ] ; then
   echo 'Not a Pull Request. No need to upload test coverage artifacts.'
   exit 0
 fi
 
+$TRAVIS_BUILD_DIR/src/perl/Build testcover
+
 git clone --branch=gh-pages git://github.com/wtsi-clarity/wtsi_clarity.git /var/tmp/wtsi_clarity
-cp -r ./cover_db /var/tmp/wtsi_clarity/results/$TRAVIS_COMMIT
+cp -r $TRAVIS_BUILD_DIR/src/perl/cover_db /var/tmp/wtsi_clarity/results/$TRAVIS_COMMIT
 
 cd /var/tmp/wtsi_clarity
 
@@ -20,7 +20,7 @@ touch index_new
 GH_REPO="@github.com/wtsi-clarity/wtsi_clarity.git"
 FULL_REPO="https://$GH_TOKEN$GH_REPO"
 
-DATE=$(date +%Y-%m-%d:%H:%M:%S)
+DATE=$(date +%Y-%m-%d %H:%M:%S)
 BASE='https://github.com/wtsi-clarity/wtsi_clarity'
 
 PULL_REQUEST_LINE="<p>Pull Request <a href='$BASE/pull/$TRAVIS_PULL_REQUEST'>$TRAVIS_PULL_REQUEST</a></p>"
