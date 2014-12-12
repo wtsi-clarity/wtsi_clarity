@@ -23,7 +23,7 @@ FULL_REPO="https://$GH_TOKEN$GH_REPO"
 DATE=$(date +%Y-%m-%d:%H:%M:%S)
 BASE='https://github.com/wtsi-clarity/wtsi_clarity'
 
-PULL_REQUEST_LINE="<p><a href='$BASE/pulls/$TRAVIS_PULL_REQUEST'>Pull Request $TRAVIS_PULL_REQUEST</a></p>"
+PULL_REQUEST_LINE="<p>Pull Request <a href='$BASE/pull/$TRAVIS_PULL_REQUEST'>$TRAVIS_PULL_REQUEST</a></p>"
 COMMIT_LINE="<p>Commit <a href='$BASE/commit/$TRAVIS_COMMIT'>$TRAVIS_COMMIT</a> - $DATE - <a href='results/$TRAVIS_COMMIT/coverage.html'>Results</a></p>"
 
 echo $PULL_REQUEST_LINE >> index_new
