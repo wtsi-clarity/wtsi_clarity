@@ -5,6 +5,7 @@ env:
   global:
     - secure: "n/Gtam/+Qnrz7qMEzu1IBJbkB4YYCZWy4mMK/THQhBr+KM8suveqRe6UNjHIks7hroFkn39SOHFitb8vhLTirFrrG/GhUZVjGpUyAjt5r63yjm4hElkvJTULjFssyWdUL9M1Itx4/w2F953ovBa4Nqw6iIajB1ehnO6xkbABzrA="
 before_install:
+  - cpanm Devel::Cover
   - cd $TRAVIS_BUILD_DIR
   - chmod 755 ./scripts/push_test_coverage_to_github.sh
   - cd $TRAVIS_BUILD_DIR/src/perl/
