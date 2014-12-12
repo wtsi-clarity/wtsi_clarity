@@ -35,6 +35,9 @@ cat index_new index_tmp.html > index.html
 rm /var/tmp/wtsi_clarity/index_new
 rm /var/tmp/wtsi_clarity/index_tmp.html
 
+git config user.name "wtsi_clarity-travis"
+git config user.email "travis"
+
 git add .
 git commit -m "deployed coverage for commit $TRAVIS_COMMIT"
 
