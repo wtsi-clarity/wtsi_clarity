@@ -42,7 +42,7 @@ my $daemon = Daemon::Control->new(
         }
       };
     } else {
-      $process_message = $message_handler->process_message;
+      $process_message = sub { $message_handler->process_message(@_); };
     }
 
     my $cv = AnyEvent->condvar;
