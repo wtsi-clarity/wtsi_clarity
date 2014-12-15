@@ -1,13 +1,18 @@
 language: perl
 perl:
   - "5.16"
-services:
-  - rabbitmq
+env:
+  global:
+    - secure: "n/Gtam/+Qnrz7qMEzu1IBJbkB4YYCZWy4mMK/THQhBr+KM8suveqRe6UNjHIks7hroFkn39SOHFitb8vhLTirFrrG/GhUZVjGpUyAjt5r63yjm4hElkvJTULjFssyWdUL9M1Itx4/w2F953ovBa4Nqw6iIajB1ehnO6xkbABzrA="
 before_install:
-  - export TRAVIS_BUILD_DIR="$TRAVIS_BUILD_DIR/src/perl/"
+  - cpanm Devel::Cover
   - cd $TRAVIS_BUILD_DIR
+  - chmod 755 ./scripts/push_test_coverage_to_github.sh
+  - cd $TRAVIS_BUILD_DIR/src/perl/
 install:
   - perl Build.PL
   - yes | perl Build installdeps
+after_success:
+  - $TRAVIS_BUILD_DIR/scripts/push_test_coverage_to_github.sh
 
-script: "cd $TRAVIS_BUILD_DIR && perl Build && perl Build test"
+script: "cd $TRAVIS_BUILD_DIR/src/perl && perl Build && perl Build test"
