@@ -42,12 +42,14 @@ my $TEST_DATA = {
 };
 
 { # _get_nb_row
-  my $nb_row = wtsi_clarity::util::pdf::pdf_generator::get_nb_row($TEST_DATA->{'pages'}->[0]->{'plate_table'});
+  my $pdf_generator = wtsi_clarity::util::pdf::pdf_generator->new();
+  my $nb_row = $pdf_generator->get_nb_row($TEST_DATA->{'pages'}->[0]->{'plate_table'});
   cmp_ok($nb_row, 'eq', 10, "_get_nb_row(...) should have the right nb of col.");
 }
 
 { # _get_nb_col
-  my $nb_col = wtsi_clarity::util::pdf::pdf_generator::get_nb_col($TEST_DATA->{'pages'}->[0]->{'plate_table'});
+  my $pdf_generator = wtsi_clarity::util::pdf::pdf_generator->new();
+  my $nb_col = $pdf_generator->get_nb_col($TEST_DATA->{'pages'}->[0]->{'plate_table'});
   cmp_ok($nb_col, 'eq', 14, "_get_nb_col(...) should have the right nb of col.");
 }
 

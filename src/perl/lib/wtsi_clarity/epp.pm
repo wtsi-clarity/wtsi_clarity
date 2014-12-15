@@ -13,7 +13,7 @@ Readonly::Scalar my $BED_PATH => q{/prc:process/udf:field[starts-with(@name, "Be
 Readonly::Scalar my $PLATE_PATH => q{/prc:process/udf:field[starts-with(@name, "Input Plate") or starts-with(@name, "Output Plate")]};
 ## use critic
 
-with qw/MooseX::Getopt wtsi_clarity::util::configurable/;
+with qw/MooseX::Getopt wtsi_clarity::util::configurable wtsi_clarity::util::roles::clarity_request/;
 
 our $VERSION = '0.0';
 
@@ -21,21 +21,6 @@ has 'process_url'  => (
   isa             => 'Str',
   is              => 'ro',
   required        => 1,
-);
-
-has 'xml_parser'  => (
-  isa             => 'XML::LibXML',
-  is              => 'ro',
-  required        => 0,
-  traits          => [ 'NoGetopt' ],
-  default         => sub { return XML::LibXML->new(); },
-);
-
-has 'request' => (
-  isa => 'wtsi_clarity::util::request',
-  is  => 'ro',
-  traits => [ 'NoGetopt' ],
-  default => sub { return wtsi_clarity::util::request->new(); },
 );
 
 has 'process_doc'  => (
@@ -82,11 +67,6 @@ sub run {
   my $self = shift;
   $self->epp_log('Run method is called for ' . $self->toString());
   return;
-}
-
-sub fetch_and_parse {
-  my ($self, $url) = @_;
-  return $self->xml_parser->parse_string($self->request->get($url));
 }
 
 sub epp_log {

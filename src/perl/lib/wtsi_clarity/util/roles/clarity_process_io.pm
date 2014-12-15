@@ -93,6 +93,7 @@ sub _build_mapping {
   return {
     'source_plate' => $input_analyte->findvalue('./location/container/@limsid'),
     'source_well'  => $input_analyte->findvalue('./location/value'),
+    'source_well_sample_limsid' => $input_analyte->findvalue('./sample/@limsid'),
     'dest_plate'   => $output_analyte->findvalue('./location/container/@limsid'),
     'dest_well'    => $output_analyte->findvalue('./location/value'),
   };
