@@ -3,8 +3,8 @@ package wtsi_clarity::file_parsing::dtx_concentration_calculator;
 use Moose;
 use Readonly;
 
-Readonly::Scalar my $CV_LIMIT => 10.0;
-
+Readonly::Scalar my $CV_LIMIT        => 10.0;
+Readonly::Scalar my $DILUTION_FACTOR => 50.0;
 
 our $VERSION = '0.0';
 
@@ -61,6 +61,8 @@ sub _build_cvs {
     my $x1 = ($self->plateA_fluorescence->{$well} - $average_fluorescence) ** 2;
     my $x2 = ($self->plateB_fluorescence->{$well} - $average_fluorescence) ** 2;
 
+    # Coefficient of variance = standard deviation / mean... but that's not what this is doing!!
+    # Still to find out what user wants
     $results->{$well} = sqrt($x1 + $x2) * 100 / $average_fluorescence;
   }
   return $results;
@@ -83,7 +85,9 @@ sub get_analysis_results {
                           'status' => 'unknown',
                         };
     my $average_fluorescence = ($self->plateA_fluorescence->{$well} + $self->plateB_fluorescence->{$well}) * 0.5;
-    $results->{$well}->{'concentration'} = ($average_fluorescence - $fit_data->{'intercept'}) / $fit_data->{'slope'};
+
+    # We want the concentration of the original stock plate (or at least a rough estimate) so we scale the result up
+    $results->{$well}->{'concentration'} = (($average_fluorescence - $fit_data->{'intercept'}) / $fit_data->{'slope'}) * $DILUTION_FACTOR;
     $results->{$well}->{'cv'}            = $self->cvs->{$well};
     $results->{$well}->{'status'}        = _get_status($self->cvs->{$well});
     $results->{$well}->{'plateA_fluorescence'} = $self->plateA_fluorescence->{$well};
@@ -142,7 +146,7 @@ sub _get_std_deviation {
   for (9..12) {
     $acc += ($data->{'standard'}->{"$row:$_"} - $average)**2;
   }
-  return sqrt ( $acc / 3.0 ) ;
+  return sqrt ( $acc / 4.0 ) ;
 }
 
 sub _get_standard_intermediate_coefficients {
