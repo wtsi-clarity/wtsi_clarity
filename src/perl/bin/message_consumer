@@ -17,6 +17,9 @@ use Daemon::Control;
 my $message_handler = wtsi_clarity::mq::message_handler->new();
 my $config = wtsi_clarity::util::config->new();
 
+my $delay_exchange_name = $config->clarity_mq->{'delay_exchange'};
+my $dead_letter_exchange_name = $config->clarity_mq->{'dead_letter_exchange'};
+
 my $daemon = Daemon::Control->new(
   name => 'Clarity Message Consumer',
   pid_file => $config->dir_path . '/pid',
@@ -47,7 +50,7 @@ my $daemon = Daemon::Control->new(
 
     my $cv = AnyEvent->condvar;
 
-    my $channel_name = 'channel' . $PID;
+    my @message_ttls = split /,/smx, $config->clarity_mq->{'message_ttls'};
 
     my @credentials = (host  => $config->clarity_mq->{'host'},
                         port  => $config->clarity_mq->{'port'},
@@ -56,25 +59,40 @@ my $daemon = Daemon::Control->new(
                         pass  => $config->clarity_mq->{'password'},);
 
     my $channel;
+    my $channel_name = 'channel' . $PID;
+    my $client;
 
-    my $client = WTSI::DNAP::RabbitMQ::Client->new(
+    $client = WTSI::DNAP::RabbitMQ::Client->new(
       acking_enabled => 0,
       consume_handler => sub {
         my ($args) = @_;
 
         try {
-          my $body = $args->{'body'};
-          $process_message->($body->{'payload'});
-          $channel->channel($channel_name)->ack();
+          $message_handler->process_message($args->{'body'}->{'payload'});
         } catch {
           print {*STDERR} $_ . "\n";
 
-          # Ensure gets send to DLX
-          $channel->channel($channel_name)->reject(
-            requeue => 0,
-            delivery_tag => $args->{'deliver'}->{'method_frame'}->{'delivery_tag'},
-          );
-        };
+          my $headers = $args->{'header'}->{'headers'};
+          my $headers_to_publish = {};
+          my $nb_delayed = 0;
+
+          if ($headers->{'nb_delayed'}) {
+            $nb_delayed = $headers->{'nb_delayed'};
+          }
+
+          if ($nb_delayed < scalar @message_ttls) {
+            $headers_to_publish =  {
+                          'expiration' => $message_ttls[$nb_delayed],
+                          'headers' => {'nb_delayed' => ++$nb_delayed}
+                        };
+            _republish($client, $delay_exchange_name, $channel_name, $args, $headers_to_publish);
+          } else {
+            # Ensure gets send to DLX
+            _republish($client, $dead_letter_exchange_name, $channel_name, $args, $headers_to_publish);
+          }
+        } finally {
+          $channel->channel($channel_name)->ack();
+        }
       },
       error_handler => sub {
         print {*STDERR} @_ . "\n";
@@ -88,6 +106,21 @@ my $daemon = Daemon::Control->new(
     $cv->recv;
   }
 );
+
+sub _republish {
+  my ($client, $exchange_name, $channel_name, $args, $headers) = @_;
+
+  $client->publish(
+    channel     => $channel_name,
+    exchange    => $exchange_name,
+    routing_key => $args->{'deliver'}->{'method_frame'}->{'routing_key'},
+    headers     => $headers,
+    body        => $args->{'body'}->{'payload'},
+    mandatory   => 1
+  );
+
+  return;
+}
 
 $daemon->program_args(\@ARGV);
 

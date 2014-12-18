@@ -4,13 +4,16 @@ username = user1
 password = pword1
 
 [clarity_mq]
-host = localhost
-username = guest
-password = guest
-vhost = /
-queue = step_info_epp_test
-port = 5672
+host=localhost
+username=guest
+password=guest
+vhost=/
+queue=step_info_epp_test
+port=5672
 routing_key=test_routing_key
+message_ttls=15000,30000,60000,300000,1800000,3600000
+delay_exchange=clarity.delay_exchange
+dead_letter_exchange=clarity.deadletter_exchange
 
 [warehouse_mq]
 env=devel
