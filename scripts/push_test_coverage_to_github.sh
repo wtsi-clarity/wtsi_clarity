@@ -20,7 +20,7 @@ touch index_new
 GH_REPO="@github.com/wtsi-clarity/wtsi_clarity.git"
 FULL_REPO="https://$GH_TOKEN$GH_REPO"
 
-DATE=$(date +%Y-%m-%d %H:%M:%S)
+DATE=$(date +%Y-%m-%d\ %H:%M:%S)
 BASE='https://github.com/wtsi-clarity/wtsi_clarity'
 
 PULL_REQUEST_LINE="<p>Pull Request <a href='$BASE/pull/$TRAVIS_PULL_REQUEST'>$TRAVIS_PULL_REQUEST</a></p>"

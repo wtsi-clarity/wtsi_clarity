@@ -63,6 +63,7 @@ override 'run' => sub {
   $pdf->saveas(q{./} . $self->analysis_file);
 
   $self->_update_output_artifacts($results);
+
   # Pushes the updated version of the output artifacts onto the server
   my $response = $self->request->batch_update('artifacts', $self->_output_artifact_details);
 
@@ -189,19 +190,12 @@ sub _update_output_artifacts {
         my $artifact    = $_;
         my $artifact_id = $artifact->findvalue( q{@limsid} );
         my $loc         = $self->_input_to_output_map->{$artifact_id}->{'location'};
-        _add_element_to_entity($artifact,'Concentration', $data->{$loc}->{'concentration'});
+        my $udf = $self->create_udf_element($self->process_doc, 'Concentration', $data->{$loc}->{'concentration'});
+        $artifact->appendChild($udf);
        } ) ;
   ## use critic
   return $self->_output_artifact_details;
 }
-
-sub _add_element_to_entity {
-  my ($sample, $udf_name, $udf_value) = @_;
-  my $node = $sample->ownerDocument()->createElement($udf_name);
-  $node->appendTextNode($udf_value);
-  $sample->addChild($node);
-  return $node;
-};
 
 has '_input_uris' => (
   isa        => 'ArrayRef',
