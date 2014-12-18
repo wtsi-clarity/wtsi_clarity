@@ -5,6 +5,9 @@ use Readonly;
 
 with 'wtsi_clarity::dao::base_dao';
 
+# In the ATTRIBUTES hash: an element's key is the attribute name
+# and the element's value is the XPATH to get the attribute's value
+
 Readonly::Hash  my %ATTRIBUTES => { first_name  => q{/res:researcher/first-name},
                                     last_name   => q{/res:researcher/last-name},
                                     login       => q{/res:researcher/credentials/username},

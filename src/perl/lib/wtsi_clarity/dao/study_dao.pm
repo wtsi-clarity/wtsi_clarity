@@ -13,6 +13,9 @@ Readonly::Scalar my $STUDY_USER_URI_PATH      => q{/prj:project/researcher/@uri}
 # Note 'manager' is the closest role we could use. It might change in the future!
 Readonly::Scalar my $STUDY_USER_MANAGER_ROLE  => q{manager};
 
+# In the ATTRIBUTES hash: an element's key is the attribute name
+# and the element's value is the XPATH to get the attribute's value
+
 Readonly::Hash  my %ATTRIBUTES => { name                        => q{/prj:project/name},
                                     reference_genome            => q{/prj:project/udf:field[@name='WTSI Study reference genome']},
                                     state                       => q{/prj:project/udf:field[@name='WTSI Project State']},
