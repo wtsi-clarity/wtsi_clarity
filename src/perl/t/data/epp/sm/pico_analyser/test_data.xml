@@ -12,7 +12,7 @@
         </location>
         <working-flag>true</working-flag>
         <sample uri="http://testserver.com:1234/here/samples/DEA10001" limsid="DEA10001"/>
-        <Concentration>3.62517026662824</Concentration>
+        <field xmlns="http://genologics.com/ri/userdefined" name="Concentration">3.62517026662824</field>
     </art:artifact>
     <art:artifact uri="http://testserver.com:1234/here/artifacts/2-100002" limsid="2-100002">
         <name>102_1</name>
@@ -26,7 +26,7 @@
         </location>
         <working-flag>true</working-flag>
         <sample uri="http://testserver.com:1234/here/samples/DEA10002" limsid="DEA10002"/>
-        <Concentration>5.67197315826223</Concentration>
+        <field xmlns="http://genologics.com/ri/userdefined" name="Concentration">5.67197315826223</field>
     </art:artifact>
     <art:artifact uri="http://testserver.com:1234/here/artifacts/2-100003" limsid="2-100003">
         <name>102_1</name>
@@ -40,7 +40,7 @@
         </location>
         <working-flag>true</working-flag>
         <sample uri="http://testserver.com:1234/here/samples/DEA10003" limsid="DEA10003"/>
-        <Concentration>11.3927891277249</Concentration>
+        <field xmlns="http://genologics.com/ri/userdefined" name="Concentration">11.3927891277249</field>
     </art:artifact>
     <art:artifact uri="http://testserver.com:1234/here/artifacts/2-100004" limsid="2-100004">
         <name>102_1</name>
@@ -54,7 +54,7 @@
         </location>
         <working-flag>true</working-flag>
         <sample uri="http://testserver.com:1234/here/samples/DEA10004" limsid="DEA10004"/>
-        <Concentration>7.4614370908395</Concentration>
+        <field xmlns="http://genologics.com/ri/userdefined" name="Concentration">7.4614370908395</field>
     </art:artifact>
     <art:artifact uri="http://testserver.com:1234/here/artifacts/2-100005" limsid="2-100005">
         <name>102_1</name>
@@ -68,6 +68,6 @@
         </location>
         <working-flag>true</working-flag>
         <sample uri="http://testserver.com:1234/here/samples/DEA10005" limsid="DEA10005"/>
-        <Concentration>8.31794537400462</Concentration>
+        <field xmlns="http://genologics.com/ri/userdefined" name="Concentration">8.31794537400462</field>
     </art:artifact>
 </art:details>
