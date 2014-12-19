@@ -1,5 +1,9 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.58
+  - Fix for pico analysis result generation
+  - Fix for pico analysis DTX parser
+
 Release 0.57
   - Added automatic coverage test generation for pull requests
   - Added worksheet generation for Pre Capture Lib Pooling step
