@@ -45,7 +45,7 @@ my $class = Module::Build->subclass(code => <<'EOF');
     `cpanm https://github.com/wtsi-npg/perl-dnap-utilities/releases/download/0.4.1/WTSI-DNAP-Utilities-0.4.1.tar.gz`;
 
     print "Fetching WTSI::DNAP::RabbitMQ...\n";
-    `cpanm -n https://github.com/wtsi-npg/perl-rabbit-wrap/releases/download/0.2.0/WTSI-DNAP-RabbitMQ-0.2.0.tar.gz`;
+    `cpanm -n https://github.com/wtsi-npg/perl-rabbit-wrap/releases/download/0.3.0/WTSI-DNAP-RabbitMQ-0.3.0.tar.gz`;
 
     return;
   }

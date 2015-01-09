@@ -68,7 +68,7 @@ my $daemon = Daemon::Control->new(
         my ($args) = @_;
 
         try {
-          $message_handler->process_message($args->{'body'}->{'payload'});
+          $process_message->($args->{'body'}->{'payload'});
         } catch {
           print {*STDERR} $_ . "\n";
 

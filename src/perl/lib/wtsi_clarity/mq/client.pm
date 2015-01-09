@@ -3,8 +3,8 @@ package wtsi_clarity::mq::client;
 use Moose;
 use Readonly;
 use Carp;
-#use AnyEvent;
-use AnyEvent::RabbitMQ;
+use JSON;
+use WTSI::DNAP::RabbitMQ::Client;
 
 with 'wtsi_clarity::util::configurable';
 
@@ -70,45 +70,35 @@ sub _build__mq_config {
 sub send_message {
   my ($self, $message, $purpose) = @_;
 
-  my $cv = AnyEvent->condvar;
-  # The $connection variable should be here to ensure correct object descruction.
-  my $connection = AnyEvent::RabbitMQ->new->load_xml_spec()->connect(
-    host       => $self->host,
-    port       => $self->port,
-    user       => $self->username,
-    pass       => $self->password,
-    vhost      => $self->vhost,
-    timeout    => $TIMEOUT,
-    tls        => 0, # Or 1 if you'd like SSL
-    on_success =>
-    sub {
-      my $ar = shift;
-      $ar->open_channel(
-        on_success => sub {
-          my $channel = shift;
-          $channel->publish('body'=>$message, 'exchange'=>$self->exchange, 'routing_key'=>$self->_assemble_routing_key($purpose),);
-          $cv->send("Message '$message' sent");
-        },
-        on_failure => $cv,
-        on_close   => sub {
-          my $method_frame = shift->method_frame;
-          croak $method_frame->reply_code, $method_frame->reply_text;
-        }
-      );
+  my @credentials = ( host  => $self->host,
+                      port  => $self->port,
+                      vhost => $self->vhost,
+                      user  => $self->username,
+                      pass  => $self->password,);
+                      # cond  => $cv);
+
+  ##no critic(Variables::ProhibitPunctuationVars)
+  my $channel_name = 'client_channel'. $$;
+  ## use critic
+  my $client;
+
+  $client = WTSI::DNAP::RabbitMQ::Client->new(
+    blocking_enabled => 0,
+    connect_handler => sub {
+      $client->open_channel(name => $channel_name);
     },
-    on_failure => $cv,
-    on_read_failure => sub { croak @_ },
-    on_close   => sub {
-      my $why = shift;
-      if (ref $why) {
-        my $method_frame = $why->method_frame;
-        croak $method_frame->reply_code, q[: ], $method_frame->reply_text;
-      } else {
-        croak $why;
-      }
-    },
+    open_channel_handler => sub {
+      $client->publish( channel     => $channel_name,
+                        exchange    => $self->exchange,
+                        routing_key => $self->_assemble_routing_key($purpose),
+                        body        => to_json($message),
+                        mandatory   => 1);
+      $client->disconnect;
+    }
   );
-  warn $cv->recv, "\n";
+
+  $client->connect(@credentials);
+
   return;
 }
 
