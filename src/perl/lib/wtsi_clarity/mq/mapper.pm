@@ -9,6 +9,8 @@ our $VERSION = '0.0';
 Readonly::Scalar my $BASE_MQ_PACKAGE_NAME => q{wtsi_clarity::mq::};
 Readonly::Hash my %PURPOSE_TO_ENHANCER_TYPE => (
   'sample'    => 'me::sample_enhancer',
+  'study'     => 'me::study_enhancer',
+  'user'      => 'me::study_user_enhancer',
 );
 
 sub package_name {
