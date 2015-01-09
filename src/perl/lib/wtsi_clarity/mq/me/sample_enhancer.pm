@@ -2,7 +2,7 @@ package wtsi_clarity::mq::me::sample_enhancer;
 
 use Moose;
 use Readonly;
-use wtsi_clarity::mq::dao::sample_dao;
+use wtsi_clarity::dao::sample_dao;
 
 with 'wtsi_clarity::mq::message_enhancer';
 
@@ -29,7 +29,7 @@ sub prepare_messages {
 sub _get_sample_message {
   my ($self, $sample_limsid) = @_;
 
-  my $sample_dao = wtsi_clarity::mq::dao::sample_dao->new(lims_id => $sample_limsid);
+  my $sample_dao = wtsi_clarity::dao::sample_dao->new(lims_id => $sample_limsid);
   return $sample_dao->to_message;
 }
 
