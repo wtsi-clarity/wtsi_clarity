@@ -2,10 +2,15 @@ package wtsi_clarity::mq::message_enhancer;
 
 use Moose::Role;
 use XML::LibXML;
+use Readonly;
 
-with qw/wtsi_clarity::util::roles::clarity_process_base/;
+with qw/wtsi_clarity::util::roles::clarity_process_base wtsi_clarity::util::configurable/;
 
 our $VERSION = '0.0';
+
+## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+Readonly::Scalar my $SAMPLE_LIMS_ID_PATH  => q{/art:details/art:artifact/sample/@limsid};
+## use critic
 
 has 'step_url' => (
   isa        => 'Str',
@@ -19,8 +24,52 @@ has 'timestamp' => (
   required   => 1,
 );
 
+has '_lims_ids' => (
+  isa             => 'ArrayRef',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
 
-requires qw/ prepare_messages /;
+requires qw/ type _build__lims_ids/;
+
+sub prepare_messages {
+  my $self = shift;
+
+  my @messages = ();
+
+  foreach my $model_limsid (@{$self->_lims_ids}) {
+    my $model_msg = $self->_format_message($self->_get_model_message($model_limsid));
+    push @messages, $model_msg;
+  }
+
+  return \@messages;
+}
+
+sub _get_model_message {
+  my ($self, $model_limsid) = @_;
+
+  my $dao_type = q[wtsi_clarity::dao::] . $self->type . q[_dao];
+
+  my $model_dao = $dao_type->new(lims_id => $model_limsid);
+  return $model_dao->to_message;
+}
+
+sub _format_message {
+  my ($self, $msg) = @_;
+
+  my $formatted_msg = {};
+  $formatted_msg->{$self->type} = $msg;
+  $formatted_msg->{'lims'} = $self->config->clarity_mq->{'id_lims'};
+
+  return $formatted_msg;
+}
+
+sub sample_limsid_node_list {
+  my $self = shift;
+
+  return $self->_input_artifacts->findnodes($SAMPLE_LIMS_ID_PATH);
+}
 
 1;
 
@@ -41,9 +90,13 @@ wtsi_clarity::mq::message_enhancer
 
 =head1 SUBROUTINES/METHODS
 
-=head2 publish
+=head2 prepare_messages
 
-  Takes in the message string and publish it onto the unified warehouse message bus.
+  Using the model's module populating a model related message with the model's data.
+
+=head2 sample_limsid_node_list
+
+  Getting the sample nodes list from the input artifacts.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

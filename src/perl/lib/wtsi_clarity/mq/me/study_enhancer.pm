@@ -1,7 +1,6 @@
 package wtsi_clarity::mq::me::study_enhancer;
 
 use Moose;
-use Readonly;
 use wtsi_clarity::dao::sample_dao;
 use wtsi_clarity::dao::study_dao;
 
@@ -9,52 +8,17 @@ with 'wtsi_clarity::mq::message_enhancer';
 
 our $VERSION = '0.0';
 
-## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $SAMPLE_LIMS_ID_PATH  => q{/art:details/art:artifact/sample/@limsid};
-Readonly::Scalar my $CLARITY_GCLP_ID      => q{CLARITY-GCLP};
-## use critic
-
-sub prepare_messages {
+sub type {
   my $self = shift;
 
-  my @messages = ();
-
-  foreach my $study_limsid (@{$self->_lims_ids}) {
-    my $study_msg = $self->_format_message($self->_get_study_message($study_limsid));
-    push @messages, $study_msg;
-  }
-
-  return \@messages;
+  return 'study';
 }
 
-sub _get_study_message {
-  my ($self, $study_limsid) = @_;
-
-  my $study_dao = wtsi_clarity::dao::study_dao->new(lims_id => $study_limsid);
-  return $study_dao->to_message;
-}
-
-sub _format_message {
-  my ($self, $msg) = @_;
-
-  my $formatted_msg = {};
-  $formatted_msg->{'study'} = $msg;
-  $formatted_msg->{'lims'} = $CLARITY_GCLP_ID;
-
-  return $formatted_msg;
-}
-
-has '_lims_ids' => (
-  isa             => 'ArrayRef',
-  is              => 'rw',
-  required        => 0,
-  lazy_build      => 1,
-);
 sub _build__lims_ids {
   my $self = shift;
 
   my $study_lims_ids = ();
-  my $sample_limsid_node_list = $self->_input_artifacts->findnodes($SAMPLE_LIMS_ID_PATH);
+  my $sample_limsid_node_list = $self->sample_limsid_node_list;
   my $sample_limsids = $self->_get_values_from_nodelist('getValue', $sample_limsid_node_list);
   foreach my $sample_limsid (@{$sample_limsids}) {
     my $sample_dao = wtsi_clarity::dao::sample_dao->new(lims_id => $sample_limsid);
@@ -83,9 +47,9 @@ wtsi_clarity::mq::me::study_enhancer
 
 =head1 SUBROUTINES/METHODS
 
-=head2 prepare_messages
+=head2 type
 
-  Using the `Sample` module populating a study related message with the study data.
+  Returns the type of the model.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

@@ -14,7 +14,7 @@ my $config = wtsi_clarity::util::config->new();
 my $base_uri = $config->clarity_api->{'base_uri'};
 
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/mq/me/study_enhancer';
-local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
+local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 {
   my $me = wtsi_clarity::mq::me::study_enhancer->new(
