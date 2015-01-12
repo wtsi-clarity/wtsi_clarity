@@ -9,6 +9,8 @@ use wtsi_clarity::isc::pooling::mapper;
 
 extends 'wtsi_clarity::epp';
 
+with 'wtsi_clarity::util::roles::clarity_process_base';
+
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
@@ -25,21 +27,6 @@ has 'step_url' => (
   is         => 'ro',
   required   => 1,
 );
-
-has '_input_artifacts' => (
-  isa             => 'XML::LibXML::Document',
-  is              => 'rw',
-  required        => 0,
-  lazy_build      => 1,
-);
-sub _build__input_artifacts {
-  my $self = shift;
-
-  my $input_node_list = $self->process_doc->findnodes($INPUT_URIS_PATH);
-  my $input_uris = $self->_get_values_from_nodelist('getValue', $input_node_list);
-
-  return $self->request->batch_retrieve('artifacts', $input_uris);
-}
 
 has '_input_artifacts_location' => (
   isa             => 'HashRef',
@@ -88,24 +75,6 @@ sub _build__container_ids {
   my $container_name_node_list = $containers->findnodes($CONTAINER_LIMSID_PATH);
 
   return $self->_get_values_from_nodelist('string_value', $container_name_node_list);
-}
-
-sub _uniq_array {
-  my ($self, @array) = @_;
-
-  my %seen;
-  my @uniq_array =  grep { !$seen{$_}++ } @array;
-
-  return \@uniq_array;
-}
-
-sub _get_values_from_nodelist {
-  my ($self, $function, $nodelist) = @_;
-  my $values = $self->_uniq_array(
-    map { $_->$function } $nodelist->get_nodelist()
-  );
-
-  return $values;
 }
 
 has '_mapping' => (

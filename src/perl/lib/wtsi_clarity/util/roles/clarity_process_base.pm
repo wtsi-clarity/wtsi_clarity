@@ -2,6 +2,7 @@ package wtsi_clarity::util::roles::clarity_process_base;
 
 use Moose::Role;
 use Readonly;
+use List::MoreUtils qw/uniq/;
 
 with qw/MooseX::Getopt wtsi_clarity::util::roles::clarity_request/;
 
@@ -46,22 +47,11 @@ sub _build__input_artifacts {
   return $self->request->batch_retrieve('artifacts', $input_uris);
 }
 
-sub _uniq_array {
-  my ($self, @array) = @_;
-
-  my %seen;
-  my @uniq_array =  grep { !$seen{$_}++ } @array;
-
-  return \@uniq_array;
-}
-
 sub _get_values_from_nodelist {
   my ($self, $function, $nodelist) = @_;
-  my $values = $self->_uniq_array(
-    map { $_->$function } $nodelist->get_nodelist()
-  );
+  my @values = uniq( map { $_->$function } $nodelist->get_nodelist());
 
-  return $values;
+  return \@values;
 }
 
 1;
@@ -95,7 +85,9 @@ wtsi_clarity::util::roles::clarity_process_base
 
 =item Moose::Role
 
-=item Readonly;
+=item Readonly
+
+=item List::MoreUtils
 
 =back
 
