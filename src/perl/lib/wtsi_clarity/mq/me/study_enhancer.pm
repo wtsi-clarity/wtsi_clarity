@@ -68,6 +68,8 @@ wtsi_clarity::mq::me::study_enhancer
 
 =item List::MoreUtils
 
+=item wtsi_clarity::mq::message_enhancer
+
 =back
 
 =head1 AUTHOR

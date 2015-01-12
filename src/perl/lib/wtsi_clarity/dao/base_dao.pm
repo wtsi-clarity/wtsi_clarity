@@ -133,7 +133,11 @@ wtsi_clarity::dao::base_dao
 
 =item MooseX::Aliases
 
+=item XML::LibXML
+
 =item wtsi_clarity::util::xml_resource_reader
+
+=item Storage
 
 =back
 

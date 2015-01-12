@@ -16,6 +16,7 @@ delay_exchange=clarity.delay_exchange
 dead_letter_exchange=clarity.deadletter_exchange
 
 [warehouse_mq]
+id_lims=TEST_ID
 env=devel
 port=1234
 host=host1

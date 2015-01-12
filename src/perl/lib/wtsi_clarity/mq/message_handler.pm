@@ -111,6 +111,8 @@ wtsi_clarity::mq::message_handler
 
 =item wtsi_clarity::mq::mapper
 
+=item wtsi_clarity::mq::client
+
 =back
 
 =head1 AUTHOR

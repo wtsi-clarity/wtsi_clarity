@@ -133,7 +133,7 @@ wtsi_clarity::mq::client
 
 =head2 send_message
 
-  $client->send_message("Some message");
+  $client->send_message("Some message", "purpose");
 
 =head2 host
 
@@ -166,9 +166,9 @@ wtsi_clarity::mq::client
 
 =item Carp
 
-=item AnyEvent
+=item JSON
 
-=item AnyEvent::RabbitMQ
+=item WTSI::DNAP::RabbitMQ::Client
 
 =back
 

@@ -82,11 +82,12 @@ wtsi_clarity::mq::message_enhancer
 =head1 SYNOPSIS
 
   my $message_enhancer = wtsi_clarity::mq::message_enhancer->new();
-  $message_enhancer->publish('message');
+  $message_enhancer->prepare_messages;
 
 =head1 DESCRIPTION
 
- Base class of the message producers, which are publishing messages to the unified warehouse queue.
+ Base class of the message producers, which are preparing messages
+ for publishing them to the unified warehouse queue.
 
 =head1 SUBROUTINES/METHODS
 
@@ -105,6 +106,14 @@ wtsi_clarity::mq::message_enhancer
 =over
 
 =item Moose::Role
+
+=item XML::LibXML
+
+=item Readonly
+
+=item wtsi_clarity::util::roles::clarity_process_base
+
+=item wtsi_clarity::util::configurable
 
 =back
 

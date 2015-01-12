@@ -52,6 +52,10 @@ wtsi_clarity::mq::me::sample_enhancer
 
 =item Moose
 
+=item wtsi_clarity::dao::sample_dao
+
+=item wtsi_clarity::mq::message_enhancer
+
 =back
 
 =head1 AUTHOR
