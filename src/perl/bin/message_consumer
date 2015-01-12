@@ -24,7 +24,7 @@ my $daemon = Daemon::Control->new(
   name => 'Clarity Message Consumer',
   pid_file => $config->dir_path . '/pid',
   stderr_file => $config->dir_path . '/message_consumer.err',
-  stdout_file => $config->dir_path . '/message_consumer.out',
+  stdout_file => $config->dir_path . '/message_consumer.log',
   program => sub {
     ##no critic (InputOutput::RequireCheckedSyscalls)
     my ($dc, $type, $test) = @_;
