@@ -20,7 +20,7 @@ sub _build__lims_ids {
 
   my @study_lims_ids = ();
   my $sample_limsid_node_list = $self->sample_limsid_node_list;
-  my $sample_limsids = $self->_get_values_from_nodelist('getValue', $sample_limsid_node_list);
+  my $sample_limsids = $self->get_values_from_nodelist('getValue', $sample_limsid_node_list);
   foreach my $sample_limsid (@{$sample_limsids}) {
     my $sample_dao = wtsi_clarity::dao::sample_dao->new(lims_id => $sample_limsid);
     push @study_lims_ids, $sample_dao->project_limsid;

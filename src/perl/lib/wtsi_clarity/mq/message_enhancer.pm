@@ -68,7 +68,7 @@ sub _format_message {
 sub sample_limsid_node_list {
   my $self = shift;
 
-  return $self->_input_artifacts->findnodes($SAMPLE_LIMS_ID_PATH);
+  return $self->input_artifacts->findnodes($SAMPLE_LIMS_ID_PATH);
 }
 
 1;

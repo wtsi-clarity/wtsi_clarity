@@ -34,9 +34,9 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
     timestamp   => '2014-11-25 12:06:27',
   );
 
-  lives_ok {$me->_input_artifacts} 'got input artifacts';
+  lives_ok {$me->input_artifacts} 'got input artifacts';
 
-  my $input_artifacts = $me->_input_artifacts;
+  my $input_artifacts = $me->input_artifacts;
   my @nodes = $input_artifacts->findnodes(q{ /art:details/art:artifact });
 
   is(scalar @nodes, 3, 'correct number of input_artifacts');

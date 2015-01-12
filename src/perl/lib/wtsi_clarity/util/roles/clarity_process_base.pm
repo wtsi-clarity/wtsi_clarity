@@ -32,22 +32,22 @@ sub _build_process_doc {
   return $self->fetch_and_parse($self->process_url);
 }
 
-has '_input_artifacts' => (
+has 'input_artifacts' => (
   isa             => 'XML::LibXML::Document',
   is              => 'rw',
   required        => 0,
   lazy_build      => 1,
 );
-sub _build__input_artifacts {
+sub _build_input_artifacts {
   my $self = shift;
 
   my $input_node_list = $self->findnodes($INPUT_ARTIFACT_URIS_PATH);
-  my $input_uris = $self->_get_values_from_nodelist('getValue', $input_node_list);
+  my $input_uris = $self->get_values_from_nodelist('getValue', $input_node_list);
 
   return $self->request->batch_retrieve('artifacts', $input_uris);
 }
 
-sub _get_values_from_nodelist {
+sub get_values_from_nodelist {
   my ($self, $function, $nodelist) = @_;
   my @values = uniq( map { $_->$function } $nodelist->get_nodelist());
 
@@ -73,9 +73,9 @@ wtsi_clarity::util::roles::clarity_process_base
 
 =head1 SUBROUTINES/METHODS
 
-=head2 fetch_and_parse - given url, fetches XML document and returns its XML dom representation
+=head2 get_values_from_nodelist
 
-  my $dom = $self->fetch_and_parse($url);
+Returns the values from an XML node list. It returns either the values of an attribute or the values of the tags.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
