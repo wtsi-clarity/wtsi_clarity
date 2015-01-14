@@ -9,10 +9,11 @@ use wtsi_clarity::isc::pooling::mapper;
 
 extends 'wtsi_clarity::epp';
 
+with 'wtsi_clarity::util::roles::clarity_process_base';
+
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $INPUT_URIS_PATH          => q{/prc:process/input-output-map/input/@uri};
 Readonly::Scalar my $BATCH_CONTAINER_PATH     => q{/art:details/art:artifact/location/container/@uri };
 Readonly::Scalar my $BATCH_ARTIFACT_PATH      => q{/art:details/art:artifact };
 Readonly::Scalar my $ARTIFACT_URI_PATH        => q{/art:artifact/@uri };
@@ -26,21 +27,6 @@ has 'step_url' => (
   required   => 1,
 );
 
-has '_input_artifacts' => (
-  isa             => 'XML::LibXML::Document',
-  is              => 'rw',
-  required        => 0,
-  lazy_build      => 1,
-);
-sub _build__input_artifacts {
-  my $self = shift;
-
-  my $input_node_list = $self->process_doc->findnodes($INPUT_URIS_PATH);
-  my $input_uris = $self->_get_values_from_nodelist('getValue', $input_node_list);
-
-  return $self->request->batch_retrieve('artifacts', $input_uris);
-}
-
 has '_input_artifacts_location' => (
   isa             => 'HashRef',
   is              => 'rw',
@@ -51,7 +37,7 @@ sub _build__input_artifacts_location {
   my $self = shift;
 
   my %artifacts_location;
-  my @artifact_node_list = $self->_input_artifacts->findnodes($BATCH_ARTIFACT_PATH)->get_nodelist();
+  my @artifact_node_list = $self->input_artifacts->findnodes($BATCH_ARTIFACT_PATH)->get_nodelist();
 
   foreach my $artifact_node (@artifact_node_list) {
     my $analyte_uri = $artifact_node->getAttribute('uri');
@@ -70,9 +56,9 @@ has '_container_uris' => (
 sub _build__container_uris {
   my $self = shift;
 
-  my $uri_node_list = $self->_input_artifacts->findnodes($BATCH_CONTAINER_PATH);
+  my $uri_node_list = $self->input_artifacts->findnodes($BATCH_CONTAINER_PATH);
 
-  return $self->_get_values_from_nodelist('getValue', $uri_node_list);
+  return $self->get_values_from_nodelist('getValue', $uri_node_list);
 }
 
 has '_container_ids' => (
@@ -87,23 +73,7 @@ sub _build__container_ids {
   my $containers = $self->request->batch_retrieve('containers', $self->_container_uris);
   my $container_name_node_list = $containers->findnodes($CONTAINER_LIMSID_PATH);
 
-  return $self->_get_values_from_nodelist('string_value', $container_name_node_list);
-}
-
-sub _uniq_array {
-  my ($self, @array) = @_;
-
-  my %seen;
-  return grep { !$seen{$_}++ } @array;
-}
-
-sub _get_values_from_nodelist {
-  my ($self, $function, $nodelist) = @_;
-  my @values = $self->_uniq_array(
-    map { $_->$function } $nodelist->get_nodelist()
-  );
-
-  return \@values;
+  return $self->get_values_from_nodelist('string_value', $container_name_node_list);
 }
 
 has '_mapping' => (

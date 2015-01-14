@@ -1,0 +1,127 @@
+#! /usr/bin/env perl
+
+use strict;
+use warnings;
+use FindBin qw($Bin);
+use lib ( -d "$Bin/../lib/perl5" ? "$Bin/../lib/perl5" : "$Bin/../lib" );
+use Try::Tiny;
+use English qw(-no_match_vars);
+use Carp;
+use WTSI::DNAP::RabbitMQ::Client;
+use wtsi_clarity::mq::message_handler;
+use wtsi_clarity::util::config;
+
+use AnyEvent;
+use Daemon::Control;
+
+my $message_handler = wtsi_clarity::mq::message_handler->new();
+my $config = wtsi_clarity::util::config->new();
+
+my $delay_exchange_name = $config->clarity_mq->{'delay_exchange'};
+my $dead_letter_exchange_name = $config->clarity_mq->{'dead_letter_exchange'};
+
+my $daemon = Daemon::Control->new(
+  name => 'Clarity Message Consumer',
+  pid_file => $config->dir_path . '/pid',
+  stderr_file => $config->dir_path . '/message_consumer.err',
+  stdout_file => $config->dir_path . '/message_consumer.log',
+  program => sub {
+    ##no critic (InputOutput::RequireCheckedSyscalls)
+    my ($dc, $type, $test) = @_;
+
+    my $process_message;
+
+    print {*STDOUT} "Starting...\n";
+
+    if (defined $test && $test eq '--test') {
+      print {*STDOUT} "In test mode\n";
+      $process_message = sub {
+        my $payload = shift;
+
+        if ($payload eq 'croak') {
+          croak 'croak';
+        } else {
+          print {*STDOUT} $payload . "\n";
+        }
+      };
+    } else {
+      $process_message = sub { $message_handler->process_message(@_); };
+    }
+
+    my $cv = AnyEvent->condvar;
+
+    my @message_ttls = split /,/smx, $config->clarity_mq->{'message_ttls'};
+
+    my @credentials = (host  => $config->clarity_mq->{'host'},
+                        port  => $config->clarity_mq->{'port'},
+                        vhost => $config->clarity_mq->{'vhost'},
+                        user  => $config->clarity_mq->{'username'},
+                        pass  => $config->clarity_mq->{'password'},);
+
+    my $channel;
+    my $channel_name = 'channel' . $PID;
+    my $client;
+
+    $client = WTSI::DNAP::RabbitMQ::Client->new(
+      acking_enabled => 0,
+      consume_handler => sub {
+        my ($args) = @_;
+
+        try {
+          $process_message->($args->{'body'}->{'payload'});
+        } catch {
+          print {*STDERR} $_ . "\n";
+
+          my $headers = $args->{'header'}->{'headers'};
+          my $headers_to_publish = {};
+          my $nb_delayed = 0;
+
+          if ($headers->{'nb_delayed'}) {
+            $nb_delayed = $headers->{'nb_delayed'};
+          }
+
+          if ($nb_delayed < scalar @message_ttls) {
+            $headers_to_publish =  {
+                          'expiration' => $message_ttls[$nb_delayed],
+                          'headers' => {'nb_delayed' => ++$nb_delayed}
+                        };
+            _republish($client, $delay_exchange_name, $channel_name, $args, $headers_to_publish);
+          } else {
+            # Ensure gets send to DLX
+            _republish($client, $dead_letter_exchange_name, $channel_name, $args, $headers_to_publish);
+          }
+        } finally {
+          $channel->channel($channel_name)->ack();
+        }
+      },
+      error_handler => sub {
+        print {*STDERR} @_ . "\n";
+      }
+    );
+
+    $client->connect(@credentials);
+    $channel = $client->open_channel(name => $channel_name);
+    $client->consume(channel => $channel_name, queue => $config->clarity_mq->{'queue'});
+
+    $cv->recv;
+  }
+);
+
+sub _republish {
+  my ($client, $exchange_name, $channel_name, $args, $headers) = @_;
+
+  $client->publish(
+    channel     => $channel_name,
+    exchange    => $exchange_name,
+    routing_key => $args->{'deliver'}->{'method_frame'}->{'routing_key'},
+    headers     => $headers,
+    body        => $args->{'body'}->{'payload'},
+    mandatory   => 1
+  );
+
+  return;
+}
+
+$daemon->program_args(\@ARGV);
+
+exit $daemon->run;

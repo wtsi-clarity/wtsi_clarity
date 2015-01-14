@@ -4,13 +4,27 @@ username = user1
 password = pword1
 
 [clarity_mq]
-username = user2
-password = pword2
+host=localhost
+username=guest
+password=guest
+vhost=/
+queue=step_info_epp_test
+port=5672
+routing_key=test_routing_key
+message_ttls=15000,30000,60000,300000,1800000,3600000
+delay_exchange=clarity.delay_exchange
+dead_letter_exchange=clarity.deadletter_exchange
 
 [warehouse_mq]
-host = host1
-username = user3
-password = pword3
+id_lims=TEST_ID
+env=devel
+port=1234
+host=host1
+vhost=vhost1
+username=user3
+password=pword3
+routing_key=clarity
+exchange=warehouse_exch
 
 [uuid_api]
 uri = http://uuid.web.service/

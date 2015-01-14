@@ -1,0 +1,42 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/SYY154A2PA1?state=1463" limsid="SYY154A2PA1">
+        <name>2</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-207" limsid="27-207"/>
+            <value>B:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/SYY154A2" limsid="SYY154A2"/>
+        <artifact-group name="GCLP Sequencing QC" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifactgroups/51"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/SYY154A3PA1?state=1509" limsid="SYY154A3PA1">
+        <name>3</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-207" limsid="27-207"/>
+            <value>C:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/SYY154A3" limsid="SYY154A3"/>
+        <artifact-group name="GCLP Sequencing QC" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifactgroups/51"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/SYY154A1PA1?state=1510" limsid="SYY154A1PA1">
+        <name>1</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-207" limsid="27-207"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/SYY154A1" limsid="SYY154A1"/>
+        <artifact-group name="GCLP Sequencing QC" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifactgroups/51"/>
+    </art:artifact>
+</art:details>

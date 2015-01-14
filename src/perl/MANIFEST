@@ -42,7 +42,7 @@ lib/wtsi_clarity/genotyping/fluidigm.pm
 lib/wtsi_clarity/isc/agilent/file_validator.pm
 lib/wtsi_clarity/isc/agilent/analyser.pm
 lib/wtsi_clarity/mq/client.pm
-lib/wtsi_clarity/mq/message/epp.pm
+lib/wtsi_clarity/mq/message.pm
 lib/wtsi_clarity/process_checks/bed_verifier.pm
 lib/wtsi_clarity/tag_plate/layout.pm
 lib/wtsi_clarity/tag_plate/service.pm

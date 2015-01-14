@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="yes"?>
+<res:researcher uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/21" xmlns:res="http://genologics.com/ri/researcher" xmlns:ri="http://genologics.com/ri" xmlns:udf="http://genologics.com/ri/userdefined">
+  <first-name>John</first-name>
+  <last-name>Smith</last-name>
+  <email>js123@test.com</email>
+  <lab uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/labs/1"/>
+  <credentials>
+    <username>js123</username>
+  </credentials>
+</res:researcher>
