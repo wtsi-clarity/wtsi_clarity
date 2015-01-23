@@ -426,15 +426,23 @@ wtsi_clarity::epp::generic::stamper
   1:1 and N:N scanarios, output container type will be copied from the input
   containers:
 
-  wtsi_clarity::epp:stamp->new(
+  wtsi_clarity::epp:generic::stamper->new(
        process_url => 'http://clarity-ap:8080/processes/3345',
        step_url    => 'http://testserver.com:1234/here/steps/24-98970',
+  )->run();
+
+  N:1-N scenario, output container analytes will be grouped by input container
+
+  wtsi_clarity::epp::generic::stamper->new(
+    process_url => 'http://clarity-ap:8080/processes/1234',
+    step_url    => 'http://clarity-ap:8080/steps/5678',
+    group       => 1,
   )->run();
 
   1:1 shadow plate scanario, output container type will be copied from the input
   containers, which will have the same barcode (name):
 
-  wtsi_clarity::epp:stamp->new(
+  wtsi_clarity::epp:generic::stamper->new(
        process_url => 'http://clarity-ap:8080/processes/3345',
        step_url    => 'http://testserver.com:1234/here/steps/24-98970',
        shadow_plate => 1,
@@ -442,7 +450,7 @@ wtsi_clarity::epp::generic::stamper
 
   1:1 and N:N scanarios with explicit output container type name:
 
-  wtsi_clarity::epp:stamp->new(
+  wtsi_clarity::epp:generic::stamper->new(
        process_url => 'http://clarity-ap:8080/processes/3345',
        step_url    => 'http://testserver.com:1234/here/steps/24-98970',
        container_type_name => ['ABgene 0800']
@@ -450,7 +458,7 @@ wtsi_clarity::epp::generic::stamper
 
   1:2 scenario, the same output container type names:
 
-  wtsi_clarity::epp:stamp->new(
+  wtsi_clarity::epp:generic::stamper->new(
        process_url => 'http://clarity-ap:8080/processes/3345',
        step_url    => 'http://testserver.com:1234/here/steps/24-98970',
        container_type_name => ['ABgene 0800', 'ABgene 0800']
@@ -458,7 +466,7 @@ wtsi_clarity::epp::generic::stamper
 
   1:2 scenario, different output container type names:
 
-  wtsi_clarity::epp:stamp->new(
+  wtsi_clarity::epp:generic::stamper->new(
        process_url => 'http://clarity-ap:8080/processes/3345',
        step_url    => 'http://testserver.com:1234/here/steps/24-98970',
        container_type_name => ['ABgene 0800', 'ABgene 0765']
