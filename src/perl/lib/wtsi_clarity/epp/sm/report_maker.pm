@@ -70,7 +70,7 @@ has 'internal_csv_output' => (
 override 'run' => sub {
   my $self= shift;
   super();
-  _main_method();
+  $self->_main_method();
   return;
 };
 
