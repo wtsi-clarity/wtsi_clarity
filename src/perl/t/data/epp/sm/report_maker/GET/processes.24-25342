@@ -1,0 +1,45 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="24-25342" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-25342" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processtypes/124">QC Report (SM)</type>
+  <technician uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/58">
+    <first-name>Karoly</first-name>
+    <last-name>Erdos</last-name>
+  </technician>
+  <input-output-map>
+    <input limsid="2-133067" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-133067?state=63121" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-133067?state=63121">
+      <parent-process limsid="24-24518" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-24518"/>
+    </input>
+    <output limsid="92-144197" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/92-144197?state=68701"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-133065" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-133065?state=63119" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-133065?state=63119">
+      <parent-process limsid="24-24518" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-24518"/>
+    </input>
+    <output limsid="92-144197" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/92-144197?state=68701"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-133063" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-133063?state=63117" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-133063?state=63117">
+      <parent-process limsid="24-24518" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-24518"/>
+    </input>
+    <output limsid="92-144197" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/92-144197?state=68701"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-133061" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-133061?state=63115" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-133061?state=63115">
+      <parent-process limsid="24-24518" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-24518"/>
+    </input>
+    <output limsid="92-144197" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/92-144197?state=68701"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-133059" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-133059?state=63113" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-133059?state=63113">
+      <parent-process limsid="24-24518" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-24518"/>
+    </input>
+    <output limsid="92-144197" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/92-144197?state=68701"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-133057" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-133057?state=63111" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-133057?state=63111">
+      <parent-process limsid="24-24518" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-24518"/>
+    </input>
+    <output limsid="92-144197" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/92-144197?state=68701"/>
+  </input-output-map>
+  <process-parameter name="Make QC Report"/>
+</prc:process>
