@@ -1,0 +1,1156 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/3C-405PA1?state=52695" limsid="3C-405PA1">
+        <name>Stock plate control</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2594" limsid="27-2594"/>
+            <value>1:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/3C-405" limsid="3C-405"/>
+        <control-type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/controltypes/3"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1291PA1?state=52599" limsid="DEA103A1291PA1">
+        <name>1</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1291" limsid="DEA103A1291"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1292PA1?state=52600" limsid="DEA103A1292PA1">
+        <name>2</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>B:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1292" limsid="DEA103A1292"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1293PA1?state=52601" limsid="DEA103A1293PA1">
+        <name>3</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>C:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1293" limsid="DEA103A1293"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1294PA1?state=52602" limsid="DEA103A1294PA1">
+        <name>4</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>D:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1294" limsid="DEA103A1294"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1295PA1?state=52603" limsid="DEA103A1295PA1">
+        <name>5</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>E:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1295" limsid="DEA103A1295"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1296PA1?state=52604" limsid="DEA103A1296PA1">
+        <name>6</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>F:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1296" limsid="DEA103A1296"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1297PA1?state=52605" limsid="DEA103A1297PA1">
+        <name>7</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>G:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1297" limsid="DEA103A1297"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1298PA1?state=52606" limsid="DEA103A1298PA1">
+        <name>8</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>H:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1298" limsid="DEA103A1298"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1299PA1?state=52607" limsid="DEA103A1299PA1">
+        <name>9</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>A:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1299" limsid="DEA103A1299"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1300PA1?state=52608" limsid="DEA103A1300PA1">
+        <name>10</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>B:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1300" limsid="DEA103A1300"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1301PA1?state=52609" limsid="DEA103A1301PA1">
+        <name>11</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>C:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1301" limsid="DEA103A1301"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1302PA1?state=52610" limsid="DEA103A1302PA1">
+        <name>12</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>D:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1302" limsid="DEA103A1302"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1303PA1?state=52611" limsid="DEA103A1303PA1">
+        <name>13</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>E:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1303" limsid="DEA103A1303"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1304PA1?state=52612" limsid="DEA103A1304PA1">
+        <name>14</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>F:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1304" limsid="DEA103A1304"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1305PA1?state=52613" limsid="DEA103A1305PA1">
+        <name>15</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>G:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1305" limsid="DEA103A1305"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1306PA1?state=52614" limsid="DEA103A1306PA1">
+        <name>16</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>H:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1306" limsid="DEA103A1306"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1307PA1?state=52615" limsid="DEA103A1307PA1">
+        <name>17</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>A:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1307" limsid="DEA103A1307"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1308PA1?state=52616" limsid="DEA103A1308PA1">
+        <name>18</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>B:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1308" limsid="DEA103A1308"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1309PA1?state=52617" limsid="DEA103A1309PA1">
+        <name>19</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>C:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1309" limsid="DEA103A1309"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1310PA1?state=52618" limsid="DEA103A1310PA1">
+        <name>20</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>D:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1310" limsid="DEA103A1310"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1311PA1?state=52619" limsid="DEA103A1311PA1">
+        <name>21</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>E:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1311" limsid="DEA103A1311"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1312PA1?state=52620" limsid="DEA103A1312PA1">
+        <name>22</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>F:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1312" limsid="DEA103A1312"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1313PA1?state=52621" limsid="DEA103A1313PA1">
+        <name>23</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>G:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1313" limsid="DEA103A1313"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1314PA1?state=52622" limsid="DEA103A1314PA1">
+        <name>24</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>H:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1314" limsid="DEA103A1314"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1315PA1?state=52623" limsid="DEA103A1315PA1">
+        <name>25</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>A:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1315" limsid="DEA103A1315"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1316PA1?state=52624" limsid="DEA103A1316PA1">
+        <name>26</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>B:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1316" limsid="DEA103A1316"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1317PA1?state=52625" limsid="DEA103A1317PA1">
+        <name>27</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>C:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1317" limsid="DEA103A1317"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1318PA1?state=52626" limsid="DEA103A1318PA1">
+        <name>28</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>D:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1318" limsid="DEA103A1318"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1319PA1?state=52627" limsid="DEA103A1319PA1">
+        <name>29</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>E:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1319" limsid="DEA103A1319"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1320PA1?state=52628" limsid="DEA103A1320PA1">
+        <name>30</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>F:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1320" limsid="DEA103A1320"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1321PA1?state=52629" limsid="DEA103A1321PA1">
+        <name>31</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>G:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1321" limsid="DEA103A1321"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1322PA1?state=52630" limsid="DEA103A1322PA1">
+        <name>32</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>H:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1322" limsid="DEA103A1322"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1323PA1?state=52631" limsid="DEA103A1323PA1">
+        <name>33</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>A:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1323" limsid="DEA103A1323"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1324PA1?state=52632" limsid="DEA103A1324PA1">
+        <name>34</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>B:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1324" limsid="DEA103A1324"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1325PA1?state=52633" limsid="DEA103A1325PA1">
+        <name>35</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>C:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1325" limsid="DEA103A1325"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1326PA1?state=52634" limsid="DEA103A1326PA1">
+        <name>36</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>D:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1326" limsid="DEA103A1326"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1327PA1?state=52635" limsid="DEA103A1327PA1">
+        <name>37</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>E:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1327" limsid="DEA103A1327"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1328PA1?state=52636" limsid="DEA103A1328PA1">
+        <name>38</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>F:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1328" limsid="DEA103A1328"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1329PA1?state=52637" limsid="DEA103A1329PA1">
+        <name>39</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>G:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1329" limsid="DEA103A1329"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1330PA1?state=52638" limsid="DEA103A1330PA1">
+        <name>40</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>H:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1330" limsid="DEA103A1330"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1331PA1?state=52639" limsid="DEA103A1331PA1">
+        <name>41</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>A:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1331" limsid="DEA103A1331"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1332PA1?state=52640" limsid="DEA103A1332PA1">
+        <name>42</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>B:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1332" limsid="DEA103A1332"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1333PA1?state=52641" limsid="DEA103A1333PA1">
+        <name>43</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>C:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1333" limsid="DEA103A1333"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1334PA1?state=52642" limsid="DEA103A1334PA1">
+        <name>44</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>D:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1334" limsid="DEA103A1334"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1335PA1?state=52643" limsid="DEA103A1335PA1">
+        <name>45</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>E:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1335" limsid="DEA103A1335"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1336PA1?state=52644" limsid="DEA103A1336PA1">
+        <name>46</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>F:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1336" limsid="DEA103A1336"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1337PA1?state=52645" limsid="DEA103A1337PA1">
+        <name>47</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>G:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1337" limsid="DEA103A1337"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1338PA1?state=52646" limsid="DEA103A1338PA1">
+        <name>48</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>H:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1338" limsid="DEA103A1338"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1339PA1?state=52647" limsid="DEA103A1339PA1">
+        <name>49</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>A:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1339" limsid="DEA103A1339"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1340PA1?state=52648" limsid="DEA103A1340PA1">
+        <name>50</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>B:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1340" limsid="DEA103A1340"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1341PA1?state=52649" limsid="DEA103A1341PA1">
+        <name>51</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>C:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1341" limsid="DEA103A1341"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1342PA1?state=52650" limsid="DEA103A1342PA1">
+        <name>52</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>D:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1342" limsid="DEA103A1342"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1343PA1?state=52651" limsid="DEA103A1343PA1">
+        <name>53</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>E:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1343" limsid="DEA103A1343"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1344PA1?state=52652" limsid="DEA103A1344PA1">
+        <name>54</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>F:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1344" limsid="DEA103A1344"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1345PA1?state=52653" limsid="DEA103A1345PA1">
+        <name>55</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>G:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1345" limsid="DEA103A1345"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1346PA1?state=52654" limsid="DEA103A1346PA1">
+        <name>56</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>H:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1346" limsid="DEA103A1346"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1347PA1?state=52655" limsid="DEA103A1347PA1">
+        <name>57</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>A:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1347" limsid="DEA103A1347"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1348PA1?state=52656" limsid="DEA103A1348PA1">
+        <name>58</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>B:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1348" limsid="DEA103A1348"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1349PA1?state=52657" limsid="DEA103A1349PA1">
+        <name>59</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>C:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1349" limsid="DEA103A1349"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1350PA1?state=52658" limsid="DEA103A1350PA1">
+        <name>60</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>D:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1350" limsid="DEA103A1350"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1351PA1?state=52659" limsid="DEA103A1351PA1">
+        <name>61</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>E:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1351" limsid="DEA103A1351"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1352PA1?state=52660" limsid="DEA103A1352PA1">
+        <name>62</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>F:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1352" limsid="DEA103A1352"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1353PA1?state=52661" limsid="DEA103A1353PA1">
+        <name>63</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>G:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1353" limsid="DEA103A1353"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1354PA1?state=52662" limsid="DEA103A1354PA1">
+        <name>64</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>H:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1354" limsid="DEA103A1354"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1355PA1?state=52663" limsid="DEA103A1355PA1">
+        <name>65</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>A:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1355" limsid="DEA103A1355"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1356PA1?state=52664" limsid="DEA103A1356PA1">
+        <name>66</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>B:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1356" limsid="DEA103A1356"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1357PA1?state=52665" limsid="DEA103A1357PA1">
+        <name>67</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>C:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1357" limsid="DEA103A1357"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1358PA1?state=52666" limsid="DEA103A1358PA1">
+        <name>68</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>D:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1358" limsid="DEA103A1358"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1359PA1?state=52667" limsid="DEA103A1359PA1">
+        <name>69</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>E:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1359" limsid="DEA103A1359"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1360PA1?state=52668" limsid="DEA103A1360PA1">
+        <name>70</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>F:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1360" limsid="DEA103A1360"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1361PA1?state=52669" limsid="DEA103A1361PA1">
+        <name>71</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>G:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1361" limsid="DEA103A1361"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1362PA1?state=52670" limsid="DEA103A1362PA1">
+        <name>72</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>H:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1362" limsid="DEA103A1362"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1363PA1?state=52671" limsid="DEA103A1363PA1">
+        <name>73</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>A:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1363" limsid="DEA103A1363"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1364PA1?state=52672" limsid="DEA103A1364PA1">
+        <name>74</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>B:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1364" limsid="DEA103A1364"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1365PA1?state=52673" limsid="DEA103A1365PA1">
+        <name>75</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>C:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1365" limsid="DEA103A1365"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1366PA1?state=52674" limsid="DEA103A1366PA1">
+        <name>76</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>D:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1366" limsid="DEA103A1366"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1367PA1?state=52675" limsid="DEA103A1367PA1">
+        <name>77</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>E:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1367" limsid="DEA103A1367"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1368PA1?state=52676" limsid="DEA103A1368PA1">
+        <name>78</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>F:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1368" limsid="DEA103A1368"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1369PA1?state=52677" limsid="DEA103A1369PA1">
+        <name>79</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>G:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1369" limsid="DEA103A1369"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1370PA1?state=52678" limsid="DEA103A1370PA1">
+        <name>80</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>H:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1370" limsid="DEA103A1370"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1371PA1?state=52679" limsid="DEA103A1371PA1">
+        <name>81</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>A:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1371" limsid="DEA103A1371"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1372PA1?state=52680" limsid="DEA103A1372PA1">
+        <name>82</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>B:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1372" limsid="DEA103A1372"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1373PA1?state=52681" limsid="DEA103A1373PA1">
+        <name>83</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>C:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1373" limsid="DEA103A1373"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1374PA1?state=52682" limsid="DEA103A1374PA1">
+        <name>84</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>D:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1374" limsid="DEA103A1374"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1375PA1?state=52683" limsid="DEA103A1375PA1">
+        <name>85</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>E:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1375" limsid="DEA103A1375"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1376PA1?state=52684" limsid="DEA103A1376PA1">
+        <name>86</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>F:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1376" limsid="DEA103A1376"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1377PA1?state=52685" limsid="DEA103A1377PA1">
+        <name>87</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>G:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1377" limsid="DEA103A1377"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1378PA1?state=52686" limsid="DEA103A1378PA1">
+        <name>88</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>H:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1378" limsid="DEA103A1378"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1379PA1?state=52687" limsid="DEA103A1379PA1">
+        <name>89</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>A:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1379" limsid="DEA103A1379"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1380PA1?state=52688" limsid="DEA103A1380PA1">
+        <name>90</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>B:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1380" limsid="DEA103A1380"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1381PA1?state=52689" limsid="DEA103A1381PA1">
+        <name>91</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>C:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1381" limsid="DEA103A1381"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1382PA1?state=52690" limsid="DEA103A1382PA1">
+        <name>92</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>D:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1382" limsid="DEA103A1382"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1383PA1?state=52691" limsid="DEA103A1383PA1">
+        <name>93</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>E:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1383" limsid="DEA103A1383"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1384PA1?state=52692" limsid="DEA103A1384PA1">
+        <name>94</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>F:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1384" limsid="DEA103A1384"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1385PA1?state=52693" limsid="DEA103A1385PA1">
+        <name>95</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-2593" limsid="27-2593"/>
+            <value>G:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1385" limsid="DEA103A1385"/>
+    </art:artifact>
+</art:details>
