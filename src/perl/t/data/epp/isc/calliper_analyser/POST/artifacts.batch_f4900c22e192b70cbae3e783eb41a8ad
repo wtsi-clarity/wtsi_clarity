@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-147268?state=70222" limsid="2-147268">
+        <name>32a7d8a6-5935-11e4-b42e-68b59977951e_Lib PCR XP QC_1</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-25612" limsid="24-25612"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3574" limsid="27-3574"/>
+            <value>A:15</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/AAR301A57" limsid="AAR301A57"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 57 (TCTACGAC)"/>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-147269?state=70223" limsid="2-147269">
+        <name>32a7d8a6-5935-11e4-b42e-68b59977951e_Lib PCR XP QC_2</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-25612" limsid="24-25612"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3574" limsid="27-3574"/>
+            <value>B:15</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/AAR301A57" limsid="AAR301A57"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 57 (TCTACGAC)"/>
+    </art:artifact>
+</art:details>
