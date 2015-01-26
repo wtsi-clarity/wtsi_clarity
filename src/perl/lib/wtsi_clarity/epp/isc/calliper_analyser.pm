@@ -66,7 +66,17 @@ sub _add_molarity_to_analytes {
     $well = $letter . $number;
 
     my $result = $output->first(sub { $_->{'Well Label'} eq $well });
-    my $udf = $self->create_udf_element($self->_output_analytes, 'Molarity', $result->{'Region[200-1400] Molarity (nmol/l)'});
+
+    my $molarity_key;
+    foreach my $key (keys %{$result}) {
+      if ($key =~ /Molarity/ismx) {
+        $molarity_key = $key;
+        last;
+      }
+    }
+
+    croak "No Molarity related column presents in the template file: " . $self->_file_path if (!defined $molarity_key);
+    my $udf = $self->create_udf_element($self->_output_analytes, 'Molarity', $result->{$molarity_key});
     $analyte->appendChild($udf);
   }
 
