@@ -41,6 +41,10 @@ override 'run' => sub {
     croak qq{One cannot use the shadow plate stamping with the copy_on_target option!};
   }
 
+  if ($self->group && $self->copy_on_target) {
+    croak q{One can not use the group stamping with the copy_on_target option!};
+  }
+
   ##no critic ValuesAndExpressions::ProhibitMagicNumbers
   if ($self->group && $self->input_artifacts->findnodes('/art:details/art:artifact')->size() > 96) {
     croak q{Can not do a group stamp for more than 96 inputs!};
