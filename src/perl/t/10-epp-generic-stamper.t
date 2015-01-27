@@ -252,8 +252,6 @@ my $base_uri =  'http://testserver.com:1234/here' ;
     _analytes => $analytes,
   );
 
-  use Data::Dumper;
-
   my $doc = $s->_create_placements_doc;
 
   $doc = $s->_group_inputs_by_container_stamp($doc);
