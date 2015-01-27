@@ -1,5 +1,10 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.60
+  - Added message bus consumer and publisher to the warehouse packages
+  - Fixing QC report maker (#228)
+  - Fixing 'Post LIB PCR QC GetData' step to add the molarity values to analytes (#235)
+
 Release 0.59
   - Updated version of PDF::Table
   - Updated version of XML::LibXML
