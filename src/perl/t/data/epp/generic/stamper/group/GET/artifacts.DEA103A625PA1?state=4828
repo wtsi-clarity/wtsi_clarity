@@ -1,14 +1,14 @@
 <?xml version="1.0" standalone="yes"?>
-<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A625PA1?state=4828" limsid="DEA103A625PA1">
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/DEA103A625PA1?state=4828" limsid="DEA103A625PA1">
     <name>1</name>
     <type>Analyte</type>
     <output-type>Analyte</output-type>
     <qc-flag>UNKNOWN</qc-flag>
     <location>
-        <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-374" limsid="27-374"/>
+        <container uri="http://testserver.com:1234/here/containers/27-374" limsid="27-374"/>
         <value>A:1</value>
     </location>
     <working-flag>true</working-flag>
-    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A625" limsid="DEA103A625"/>
-    <artifact-group name="GCLP Fluidigm 96.96" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifactgroups/101"/>
+    <sample uri="http://testserver.com:1234/here/samples/DEA103A625" limsid="DEA103A625"/>
+    <artifact-group name="GCLP Fluidigm 96.96" uri="http://testserver.com:1234/here/artifactgroups/101"/>
 </art:artifact>

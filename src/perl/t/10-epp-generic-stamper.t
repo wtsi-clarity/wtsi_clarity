@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 43;
+use Test::More tests => 51;
 use Test::Exception;
 use File::Temp qw/tempdir/;
 use File::Slurp;
@@ -218,13 +218,52 @@ my $base_uri =  'http://testserver.com:1234/here' ;
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/stamper/group';
 
+  my $analytes = {
+    'input_container_1' => {
+      'output_containers' => [
+        { uri => 'Con 1', limsid => 1, }
+      ],
+      'analyte1' => { well => 'A:1', target_analyte_uri => ['target01'] }
+    },
+    'input_container_2' => {
+      'output_containers' => [
+        { uri => 'Con 1', limsid => 1, }
+      ],
+      'analyte3' => { well => 'D:1', target_analyte_uri => ['target03'] },
+      'analyte4' => { well => 'E:1', target_analyte_uri => ['target04'] },
+      'analyte5' => { well => 'F:1', target_analyte_uri => ['target05'] },
+      'analyte6' => { well => 'G:1', target_analyte_uri => ['target06'] },
+    },
+    'input_container_3' => {
+      'output_containers' => [
+        { uri => 'Con 1', limsid => 1, }
+      ],
+      'analyte7' => { well => 'G:1', target_analyte_uri => ['target07'] },
+      'analyte8' => { well => 'E:4', target_analyte_uri => ['target08'] },
+      'analyte9' => { well => 'G:3', target_analyte_uri => ['target09'] },
+      'analyte10' => { well => 'C:5', target_analyte_uri => ['target10'] },
+    }
+  };
+
   my $s = wtsi_clarity::epp::generic::stamper->new(
-    process_url => 'http://testserver:12345/here/processes/24-25701',
-    step_url => 'http://testserver:12345/here/steps/24-25350',
+    process_url => 'http://testserver.com:1234/here/processes/24-25701',
+    step_url => 'http://testserver.com:1234/here/steps/24-25350',
     group => 1,
+    _analytes => $analytes,
   );
 
-  isa_ok($s, 'wtsi_clarity::epp::generic::stamper');
+  use Data::Dumper;
+
+  my $doc = $s->_create_placements_doc;
+
+  $doc = $s->_group_inputs_by_container_stamp($doc);
+
+  my @wells = ('A:1', 'B:1', 'C:1', 'D:1', 'E:1', 'F:1', 'G:1', 'H:1', 'A:2');
+
+  foreach my $placement ($doc->findnodes('/stp:placements/output-placements/output-placement')->get_nodelist()) {
+    is($placement->findvalue('./location/value'), shift @wells, 'Puts in correct well');
+  }
+
 }
 
 1;
