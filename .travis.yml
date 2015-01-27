@@ -1,6 +1,6 @@
 language: perl
 perl:
-  - "5.16"
+  - "5.14.2"
 env:
   global:
     - secure: "n/Gtam/+Qnrz7qMEzu1IBJbkB4YYCZWy4mMK/THQhBr+KM8suveqRe6UNjHIks7hroFkn39SOHFitb8vhLTirFrrG/GhUZVjGpUyAjt5r63yjm4hElkvJTULjFssyWdUL9M1Itx4/w2F953ovBa4Nqw6iIajB1ehnO6xkbABzrA="
