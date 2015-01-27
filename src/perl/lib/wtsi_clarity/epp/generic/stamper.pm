@@ -618,6 +618,16 @@ wtsi_clarity::epp::generic::stamper
 
 =item XML::LibXML
 
+=item Mojo::Collection 'c'
+
+=item Try::Tiny
+
+=item wtsi_clarity::epp
+
+=item wtsi_clarity::util::clarity_elements
+
+=item wtsi_clarity::util::roles::clarity_process_base
+
 =back
 
 =head1 AUTHOR
