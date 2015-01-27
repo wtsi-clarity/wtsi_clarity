@@ -11,6 +11,7 @@ use Try::Tiny;
 
 extends 'wtsi_clarity::epp';
 with 'wtsi_clarity::util::clarity_elements';
+with 'wtsi_clarity::util::roles::clarity_process_base';
 
 ##no critic ValuesAndExpressions::RequireInterpolationOfMetachars
 Readonly::Scalar my $IO_MAP_PATH              => q{ /prc:process/input-output-map[output[@output-type='Analyte']]};
@@ -31,6 +32,52 @@ has 'step_url' => (
   required   => 1,
 );
 
+override 'run' => sub {
+  my $self = shift;
+  super(); #call parent's run method
+  $self->epp_log('Step url is ' . $self->step_url);
+
+  if ($self->shadow_plate && $self->copy_on_target ) {
+    croak qq{One cannot use the shadow plate stamping with the copy_on_target option!};
+  }
+
+  ##no critic ValuesAndExpressions::ProhibitMagicNumbers
+  if ($self->group && $self->input_artifacts->findnodes('/art:details/art:artifact')->size() > 96) {
+    croak q{Can not do a group stamp for more than 96 inputs!};
+  }
+  ##use critic
+
+  $self->_create_containers();
+  my $doc = $self->_create_placements_doc;
+
+  if ($self->copy_on_target) {
+    # in terms of wells, one well (e.g. A1) will be transfered to several wells (hence the 'copy') on the output plates
+    $doc = $self->_stamp_with_copy($doc);
+  } elsif ($self->group) {
+    $doc = $self->_group_inputs_by_container_stamp($doc);
+  } else {
+    # in terms of wells, one well (e.g. A1) will be transfered to only one well on the output plate
+    $doc = $self->_direct_stamp($doc);
+  }
+
+  $self->request->post($self->step_url . '/placements', $doc->toString);
+
+  if ($self->shadow_plate) {
+    $self->_transfer_plate_name();
+  }
+
+  return;
+};
+
+##
+
+has 'group' => (
+  isa      => 'Bool',
+  is       => 'ro',
+  required => 0,
+  default  => 0,
+);
+
 has 'copy_on_target' => (
   isa      => 'Bool',
   is       => 'ro',
@@ -44,14 +91,6 @@ has 'container_type_name' => (
   required   => 0,
   lazy_build => 1,
 );
-
-has 'shadow_plate' => (
-  isa      => 'Bool',
-  is       => 'ro',
-  required => 0,
-  default  => 0,
-);
-
 sub _build_container_type_name {
   my $self = shift;
   my @container_urls = keys %{$self->_analytes};
@@ -59,6 +98,13 @@ sub _build_container_type_name {
   $self->_set_validate_container_type(0);
   return [$doc->findvalue($CONTAINER_TYPE_NAME_PATH)];
 }
+
+has 'shadow_plate' => (
+  isa      => 'Bool',
+  is       => 'ro',
+  required => 0,
+  default  => 0,
+);
 
 has '_validate_container_type' => (
   isa        => 'Bool',
@@ -159,35 +205,6 @@ sub _build__analytes {
   return $containers;
 }
 
-override 'run' => sub {
-  my $self = shift;
-  super(); #call parent's run method
-  $self->epp_log('Step url is ' . $self->step_url);
-
-  if ($self->shadow_plate && $self->copy_on_target ) {
-    croak qq{One cannot use the shadow plate stamping with the copy_on_target option!};
-  }
-
-  $self->_create_containers();
-  my $doc = $self->_create_placements_doc;
-
-  if ($self->copy_on_target) {
-    # in terms of wells, one well (e.g. A1) will be transfered to several wells (hence the 'copy') on the output plates
-    $doc = $self->_stamp_with_copy($doc);
-  } else {
-    # in terms of wells, one well (e.g. A1) will be transfered to only one well on the output plate
-    $doc = $self->_direct_stamp($doc);
-  }
-
-  $self->request->post($self->step_url . '/placements', $doc->toString);
-
-  if ($self->shadow_plate) {
-    $self->_tranfer_plate_name();
-  }
-
-  return;
-};
-
 has '_output_container_details' => (
   isa => 'XML::LibXML::Document',
   is  => 'ro',
@@ -218,7 +235,7 @@ sub _build__output_container_details {
   return $self->request->batch_retrieve('containers', \@container_uris );
 };
 
-sub _tranfer_plate_name {
+sub _transfer_plate_name {
   my $self = shift;
   $self ->_update_plate_name_with_previous_name();
 
@@ -258,31 +275,56 @@ sub _update_plate_name_with_previous_name {
 sub _create_containers {
   my $self = shift;
 
-  my $xml_header = '<?xml version="1.0" encoding="UTF-8"?>';
-  $xml_header   .= '<con:container xmlns:con="http://genologics.com/ri/container">';
-  my $xml_footer = '</con:container>';
-
   if ((scalar @{$self->container_type_name} > 1) &&
       (scalar keys %{$self->_analytes} > 1)) {
     croak 'Multiple container type names are not compatible with multiple input containers';
   }
 
+  # If grouping we only need one output container...
+  if ($self->group) {
+    my $container_doc = $self->_create_container($self->_container_type->[0]);
+
+    foreach my $input_container ( keys %{$self->_analytes} ) {
+      push@{$self->_analytes->{$input_container}->{'output_containers'}}, $self->_build_container_info($container_doc);
+    }
+
+    return;
+  }
+
   foreach my $input_container ( keys %{$self->_analytes}) {
     foreach my $output_container_type_xml (@{$self->_container_type}) {
-      my $xml = $xml_header;
-      $xml   .= $output_container_type_xml;
-      $xml   .= $xml_footer;
-      my $url = $self->config->clarity_api->{'base_uri'} . '/containers';
-      my $container_doc = XML::LibXML->load_xml(string => $self->request->post($url, $xml));
-      ##no critic (RequireInterpolationOfMetachars)
-      my $h = { 'limsid' => $container_doc->findvalue(q{ /con:container/@limsid }),
-                'uri'    => $container_doc->findvalue(q{ /con:container/@uri    }),
-                'doc'    => $container_doc,                                         };
-      ##use critic
-      push @{$self->_analytes->{$input_container}->{'output_containers'}}, $h;
+
+      my $container_doc = $self->_create_container($output_container_type_xml);
+      push @{$self->_analytes->{$input_container}->{'output_containers'}}, $self->_build_container_info($container_doc);
     }
   }
   return;
+}
+
+sub _build_container_info {
+  my ($self, $container_doc) = @_;
+
+  ##no critic (RequireInterpolationOfMetachars)
+  return { 'limsid' => $container_doc->findvalue(q{ /con:container/@limsid }),
+           'uri'    => $container_doc->findvalue(q{ /con:container/@uri    }),
+           'doc'    => $container_doc,                                     };
+}
+
+sub _create_container {
+  my ($self, $output_container_type_xml) = @_;
+
+  my $xml_header = '<?xml version="1.0" encoding="UTF-8"?>';
+  $xml_header   .= '<con:container xmlns:con="http://genologics.com/ri/container">';
+  my $xml_footer = '</con:container>';
+
+  my $xml = $xml_header;
+  $xml   .= $output_container_type_xml;
+  $xml   .= $xml_footer;
+
+  my $url = $self->config->clarity_api->{'base_uri'} . '/containers';
+  my $container_doc = XML::LibXML->load_xml(string => $self->request->post($url, $xml));
+
+  return $container_doc;
 }
 
 sub _create_placements_doc {
@@ -292,9 +334,19 @@ sub _create_placements_doc {
   $pXML   .= '<stp:placements xmlns:stp="http://genologics.com/ri/step" uri="' . $self->process_url . '/placements">';
   $pXML   .= '<step uri="' . $self->step_url . '"/>';
   $pXML   .= '<selected-containers>';
+
+  my %containers = ();
+
   foreach my $input_container ( keys %{$self->_analytes}) {
     foreach my $output_container (@{$self->_analytes->{$input_container}->{'output_containers'}}) {
       my $container_url = $output_container->{'uri'} ;
+
+      if (exists $containers{$container_url}) {
+        next;
+      }
+
+      $containers{$container_url} = 1;
+
       $pXML .= '<container uri="' . $container_url . '"/>';
     }
   }
@@ -363,6 +415,41 @@ sub _stamp_with_copy {
       $placements[0]->addChild($placement);
 
       $placement = $self->_create_placement($doc, $output_artifact_uris->[1], $output_container, $destination_well_2);
+      $placements[0]->addChild($placement);
+    }
+  }
+
+  return $doc;
+}
+
+sub _group_inputs_by_container_stamp {
+  my ($self, $doc) = @_;
+  my @wells = (); # Ordered list of wells
+
+  ##no critic ValuesAndExpressions::ProhibitMagicNumbers
+  for (1..12) {
+    foreach my $column ('A'..'H') {
+      push @wells, $column . ':' . $_;
+    }
+  }
+  ##use critic
+
+  my @placements = $doc->findnodes(q{ /stp:placements/output-placements });
+
+  if (!@placements) {
+    croak 'Placements element not found';
+  }
+
+  foreach my $input_container (keys %{$self->_analytes}) {
+    foreach my $input_analyte ( keys %{$self->_analytes->{$input_container} } ) {
+      if ( $input_analyte eq 'output_containers' || $input_analyte eq 'doc' ) {
+        next;
+      }
+
+      my $output_container = @{$self->_analytes->{$input_container}->{'output_containers'}}[0];
+      my $output_artifact_uri = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'}[0];
+      my $placement = $self->_create_placement($doc, $output_artifact_uri, $output_container, shift @wells);
+
       $placements[0]->addChild($placement);
     }
   }

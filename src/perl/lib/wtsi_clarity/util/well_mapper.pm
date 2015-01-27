@@ -115,7 +115,7 @@ __END__
   my $index = $self->position_to_well(11, $num_rows, $num_columns);
   # alternatively, can be used as a package-level method
   $index = wtsi_clarity::util::well_mapper->well_location_index(11, $num_rows, $num_columns);
-  
+
 =head1 CONFIGURATION AND ENVIRONMENT
 
 =head1 DEPENDENCIES

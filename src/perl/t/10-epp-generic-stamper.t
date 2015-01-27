@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 42;
+use Test::More tests => 43;
 use Test::Exception;
 use File::Temp qw/tempdir/;
 use File::Slurp;
@@ -212,6 +212,19 @@ my $base_uri =  'http://testserver.com:1234/here' ;
     }, {});
 
   is_deeply($details, $expected, qq{_update_plate_name_with_previous_name should update the _output_container_details with the correct name.});
+}
+
+# Group artifacts on output plate by input plate
+{
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/stamper/group';
+
+  my $s = wtsi_clarity::epp::generic::stamper->new(
+    process_url => 'http://testserver:12345/here/processes/24-25701',
+    step_url => 'http://testserver:12345/here/steps/24-25350',
+    group => 1,
+  );
+
+  isa_ok($s, 'wtsi_clarity::epp::generic::stamper');
 }
 
 1;
