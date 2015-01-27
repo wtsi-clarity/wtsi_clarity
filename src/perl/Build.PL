@@ -35,6 +35,20 @@ my $class = Module::Build->subclass(code => <<'EOF');
     }
     return;
   }
+
+  sub ACTION_installdeps {
+    my $self = shift;
+
+    $self->SUPER::ACTION_installdeps;
+
+    print "Fetching WTSI::DNAP::Utilities...\n";
+    `cpanm https://github.com/wtsi-npg/perl-dnap-utilities/releases/download/0.4.1/WTSI-DNAP-Utilities-0.4.1.tar.gz`;
+
+    print "Fetching WTSI::DNAP::RabbitMQ...\n";
+    `cpanm -n https://github.com/wtsi-npg/perl-rabbit-wrap/releases/download/0.3.0/WTSI-DNAP-RabbitMQ-0.3.0.tar.gz`;
+
+    return;
+  }
 EOF
 
 my $builder = $class->new(
@@ -69,8 +83,10 @@ my $builder = $class->new(
           'requires'    => {
                 'AnyEvent'                        => 0,
                 'AnyEvent::RabbitMQ'              => 0,
+                'App::cpanminus'                  => 0,
                 'Carp'                            => 0,
                 'Config::Auto'                    => 0,
+                'Daemon::Control'                 => 0,
                 'DateTime'                        => 0,
                 'Digest::MD5'                     => 0,
                 'English'                         => 0,
@@ -89,6 +105,7 @@ my $builder = $class->new(
                 'HTTP::Request'                   => 0,
                 'lib'                             => 0,
                 'List::Compare'                   => 0,
+                'Log::Log4perl'                   => 0,
                 'LWP::UserAgent'                  => 0,
                 'Mojo::Collection'                => 0,
                 'Moose'                           => 0,
@@ -97,6 +114,7 @@ my $builder = $class->new(
                 'MooseX::Getopt'                  => 0,
                 'MooseX::Getopt::Meta::Attribute::Trait::NoGetopt' => 0,
                 'MooseX::Storage'                 => 0,
+                'MooseX::Aliases'                 => 0,
                 'MooseX::StrictConstructor'       => 0,
                 'MooseX::Aliases'                 => 0,
                 'namespace::autoclean'            => 0,

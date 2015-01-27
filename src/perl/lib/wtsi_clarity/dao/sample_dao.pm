@@ -5,34 +5,25 @@ use Readonly;
 
 with 'wtsi_clarity::dao::base_dao';
 
-## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $SAMPLE_UUID_AND_NAME_PATH                => q{/smp:sample/name};
-Readonly::Scalar my $SAMPLE_REFERENCE_GENOME_PATH             => q{/smp:sample/udf:field[@name='Reference Genome']};
-Readonly::Scalar my $SAMPLE_WTSI_ORGANISM_PATH                => q{/smp:sample/udf:field[@name='WTSI Organism']};
-Readonly::Scalar my $SAMPLE_WTSI_SUPPLIER_SAMPLE_NAME_SM_PATH => q{/smp:sample/udf:field[@name='WTSI Supplier Sample Name (SM)']};
-Readonly::Scalar my $SAMPLE_WTSI_TAXON_ID_PATH                => q{/smp:sample/udf:field[@name='WTSI Taxon ID']};
-Readonly::Scalar my $SAMPLE_WTSI_SUPPLIER_GENDER_PATH         => q{/smp:sample/udf:field[@name='WTSI Supplier Gender - (SM)']};
-Readonly::Scalar my $SAMPLE_IS_CONTROL_PATH                   => q{/smp:sample/udf:field[@name='Control?']};
-Readonly::Scalar my $SAMPLE_WTSI_SUPPLIER_PATH                => q{/smp:sample/udf:field[@name='WTSI Supplier']};
-Readonly::Scalar my $SAMPLE_WTSI_DONOR_ID_PATH                => q{/smp:sample/udf:field[@name='WTSI Donor ID']};
-Readonly::Scalar my $SAMPLE_PROJECT_LIMSID_PATH               => q{/smp:sample/project/@limsid};
-Readonly::Scalar my $SAMPLE_WTSI_BAIT_LIBRARY_NAME_PATH       => q{/smp:sample/udf:field[@name='WTSI Bait Library Name']};
-## use critic
+# In the ATTRIBUTES hash: an element's key is the attribute name
+# and the element's value is the XPATH to get the attribute's value
 
-Readonly::Hash  my %ATTRIBUTES  => {  'uuid' => $SAMPLE_UUID_AND_NAME_PATH,
-                                      'name' => $SAMPLE_UUID_AND_NAME_PATH,
-                                      'reference_genome' => $SAMPLE_REFERENCE_GENOME_PATH,
-                                      'organism' => $SAMPLE_WTSI_ORGANISM_PATH,
-                                      'common_name' => $SAMPLE_WTSI_SUPPLIER_SAMPLE_NAME_SM_PATH,
-                                      'taxon_id' => $SAMPLE_WTSI_TAXON_ID_PATH,
-                                      'gender' => $SAMPLE_WTSI_SUPPLIER_GENDER_PATH,
-                                      'control' => $SAMPLE_IS_CONTROL_PATH,
-                                      'supplier_name' => $SAMPLE_WTSI_SUPPLIER_PATH,
-                                      'public_name' => $SAMPLE_WTSI_SUPPLIER_SAMPLE_NAME_SM_PATH,
-                                      'donor_id' => $SAMPLE_WTSI_DONOR_ID_PATH,
-                                      'project_limsid' => $SAMPLE_PROJECT_LIMSID_PATH,
-                                      'bait_library_name' => $SAMPLE_WTSI_BAIT_LIBRARY_NAME_PATH
+## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+Readonly::Hash  my %ATTRIBUTES  => {  'uuid' => q{/smp:sample/name},
+                                      'name' => q{/smp:sample/name},
+                                      'reference_genome' => q{/smp:sample/udf:field[@name='Reference Genome']},
+                                      'organism' => q{/smp:sample/udf:field[@name='WTSI Organism']},
+                                      'common_name' => q{/smp:sample/udf:field[@name='WTSI Supplier Sample Name (SM)']},
+                                      'taxon_id' => q{/smp:sample/udf:field[@name='WTSI Taxon ID']},
+                                      'gender' => q{/smp:sample/udf:field[@name='WTSI Supplier Gender - (SM)']},
+                                      'control' => q{/smp:sample/udf:field[@name='Control?']},
+                                      'supplier_name' => q{/smp:sample/udf:field[@name='WTSI Supplier']},
+                                      'public_name' => q{/smp:sample/udf:field[@name='WTSI Supplier Sample Name (SM)']},
+                                      'donor_id' => q{/smp:sample/udf:field[@name='WTSI Donor ID']},
+                                      'project_limsid' => q{/smp:sample/project/@limsid},
+                                      'bait_library_name' => q{/smp:sample/udf:field[@name='WTSI Bait Library Name']}
                                     };
+## use critic
 
 our $VERSION = '0.0';
 

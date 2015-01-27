@@ -14,6 +14,7 @@ with Storage( 'traits' => ['OnlyWhenBuilt'],
 our $VERSION = '0.0';
 
 has 'resource_type' => (
+  traits      => [ 'DoNotSerialize' ],
   isa         => 'Str',
   is          => 'ro',
   required    => 0,
@@ -32,7 +33,9 @@ has '_artifact_xml' => (
   is              => 'rw',
   required        => 0,
   lazy_build      => 1,
-  handles         => {'findvalue' => 'findvalue'},
+  handles         =>  { 'findvalue' => 'findvalue',
+                        'findnodes' => 'findnodes'
+                      },
 );
 sub _build__artifact_xml {
   my $self = shift;
@@ -44,6 +47,7 @@ sub _build__artifact_xml {
 }
 
 has 'attributes' => (
+  traits      => [ 'DoNotSerialize' ],
   isa        => 'HashRef',
   is         => 'ro',
   required   => 0,
@@ -129,7 +133,11 @@ wtsi_clarity::dao::base_dao
 
 =item MooseX::Aliases
 
+=item XML::LibXML
+
 =item wtsi_clarity::util::xml_resource_reader
+
+=item Storage
 
 =back
 

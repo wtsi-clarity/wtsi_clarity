@@ -25,7 +25,7 @@ Readonly::Scalar my $INPUT_ARTIFACTS_IDS_PATH               => q(/prc:process/in
 Readonly::Scalar my $ART_DETAIL_SAMPLE_IDS_PATH             => q{/art:details/art:artifact/sample/@limsid};
 Readonly::Scalar my $SMP_DETAIL_ARTIFACTS_IDS_PATH          => q{/smp:details/smp:sample/artifact/@limsid};
 Readonly::Scalar my $ARTEFACTS_ARTEFACT_CONTAINTER_IDS_PATH => q{/art:details/art:artifact/location/container/@limsid};
-Readonly::Scalar my $ARTEFACTS_ARTEFACT_IDS_PATH            => q{/art:artifacts/artifact/@limsid};
+Readonly::Scalar my $ARTEFACTS_ARTEFACT_URIS_PATH            => q{/art:artifacts/artifact/@uri};
 Readonly::Scalar my $THOUSANDTH                             => 0.001;
 Readonly::Scalar my $DILUTION_COMPENSATION_FACTOR           => 50;
 
@@ -70,17 +70,16 @@ has 'internal_csv_output' => (
 override 'run' => sub {
   my $self= shift;
   super();
-  _main_method();
+  $self->_main_method();
   return;
 };
 
 sub _main_method{
   my ($self) = @_;
-  my $data = $self->internal_csv_output();
 
   my $missing_data = $self->_get_first_missing_necessary_data();
   if ($missing_data && !$self->produce_report_anyway) {
-    confess qq{Impossible to produce the report: "$missing_data" could not be found on the genealogy of some samples. Have you run all the necessary steps on the samples? };
+    croak qq{Impossible to produce the report: "$missing_data" could not be found on the genealogy of some samples. Have you run all the necessary steps on the samples? };
   }
 
   my $process_id  = $self->find_elements_first_value($self->process_doc, $PROCESS_ID_PATH);
@@ -379,7 +378,7 @@ sub _build__all_udf_values {
   return $data;
 }
 
-sub _get_artifact_ids_with_udf {
+sub _get_artifact_uris_from_udf {
   my ($self, $step, $udf_name) = @_;
 
   my $res_arts_doc = $self->request->query_artifacts({
@@ -389,15 +388,14 @@ sub _get_artifact_ids_with_udf {
     sample_id => $self->_sample_ids(),
     });
 
-  return $self->grab_values($res_arts_doc, $ARTEFACTS_ARTEFACT_IDS_PATH);
+  return $self->grab_values($res_arts_doc, $ARTEFACTS_ARTEFACT_URIS_PATH);
 };
 
 sub _get_udf_values {
-  # NB: This method assumes that there is only one id corresponding to one udf
-  # i.e. that the sample has only been run once through the step producing this udf.
-  my ($self, $step, $udf_name, $sample_id) = @_;
-  my $artifacts_ids = $self->_get_artifact_ids_with_udf($step, $udf_name, $sample_id);
-  my $artifacts = $self->request->batch_retrieve('artifacts', $artifacts_ids);
+  my ($self, $step, $udf_name) = @_;
+
+  my $artifacts_uris = $self->_get_artifact_uris_from_udf($step, $udf_name);
+  my $artifacts = $self->request->batch_retrieve('artifacts', $artifacts_uris);
   my @nodes;
   try {
     @nodes = $artifacts->findnodes(q{/art:details/art:artifact})->get_nodelist();
@@ -410,15 +408,29 @@ sub _get_udf_values {
   my $res = c->new(@nodes)
               ->reduce( sub {
                 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-                my $found_sample_id      = $b->findvalue( q{./sample/@limsid}                 );
-                my $udf_value            = $b->findvalue( qq{./udf:field[\@name="$udf_name"]} );
-                ## use critic
-                if (defined $a->{$found_sample_id} && defined $a->{$found_sample_id}->{$udf_name}) {
-                  confess qq{The sample $found_sample_id possesses more than one value associated with "$udf_name". It is not currently possible to deal with it.};
-                }
+                my $artifact_limsid     = $b->findvalue( q{@limsid});
+                ($artifact_limsid ) = $artifact_limsid =~ /(\d+)$/smxg;
+                my $found_sample_id     = $b->findvalue( q{./sample/@limsid}                 );
+                my $udf_value           = $b->findvalue( qq{./udf:field[\@name="$udf_name"]} );
+                # use critic
+                if (defined $a->{$found_sample_id} && defined $a->{$found_sample_id}->{$udf_name} ) {
+                  # if the sample has been run more than once through the step producing this udf,
+                  # then we will use the latest value
+                  if ($a->{$found_sample_id}->{'art_lims_id'} < $artifact_limsid ) {
+                    $a->{ $found_sample_id }->{$udf_name} = $udf_value;
+                  }
+                } else {
 
-                $a->{ $found_sample_id } = { $udf_name => $udf_value };
+                  $a->{ $found_sample_id } = { $udf_name => $udf_value };
+                  $a->{$found_sample_id}->{'art_lims_id'} = $artifact_limsid;
+                }
                 $a; } , {});
+
+  # removing the temporary helper 'art_lims_id' entry from the hash
+  while (my ($sample_id, $params) = each %{$res} ) {
+    delete $params->{'art_lims_id'};
+  }
+
   return $res;
 }
 
@@ -446,7 +458,7 @@ sub _build__original_artifact_details {
   my $base_url = $self->config->clarity_api->{'base_uri'};
 
   my @uris =  c->new(@{$self->_original_artifact_ids})
-              ->map( sub { return $base_url . '/samples/' . $_; } )
+              ->map( sub { return $base_url . '/artifacts/' . $_; } )
               ->each();
 
   return $self->request->batch_retrieve('artifacts', \@uris );
