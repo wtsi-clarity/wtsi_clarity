@@ -1,5 +1,8 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.61
+  - Added the possibility to stamp from more than 1 plate to a output plate (group stamping)
+
 Release 0.60
   - Added message bus consumer and publisher to the warehouse packages
   - Fixing QC report maker (#228)
