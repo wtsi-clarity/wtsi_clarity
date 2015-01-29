@@ -533,6 +533,15 @@ wtsi_clarity::epp::generic::stamper
        step_url    => 'http://testserver.com:1234/here/steps/24-98970',
   )->run();
 
+  1:1 and N:N scanarios, output container type will be copied from the input
+  containers. Will also copy over controls:
+
+  wtsi_clarity::epp:generic::stamper->new(
+       process_url   => 'http://clarity-ap:8080/processes/3345',
+       step_url      => 'http://testserver.com:1234/here/steps/24-98970',
+       with_controls => 1,
+  )->run();
+
   N:1-N scenario, output container analytes will be grouped by input container
 
   wtsi_clarity::epp::generic::stamper->new(
