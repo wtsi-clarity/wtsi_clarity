@@ -75,6 +75,13 @@ override 'run' => sub {
 
 ##
 
+has 'with_controls' => (
+  isa      => 'Bool',
+  is       => 'ro',
+  required => 0,
+  default  => 0,
+);
+
 has 'group' => (
   isa      => 'Bool',
   is       => 'ro',
@@ -173,25 +180,29 @@ sub _build__analytes {
     ##use critic
     my $analyte_dom   = $self->fetch_and_parse($url);
     my $container_url = $analyte_dom->findvalue($CONTAINER_PATH);
+
     if (!$container_url) {
       croak qq[Container not defined for $url];
     }
 
+    my @control_flag = $analyte_dom->findnodes($CONTROL_PATH);
+
+    # By default we do not want to stamp controls (unless it's a shadow plate)
+    if (@control_flag && !$self->with_controls && !$self->shadow_plate) {
+      next;
+    }
+
     if (!exists $containers->{$container_url}) {
       my $container_doc = $self->fetch_and_parse($container_url);
-      my $container_type_name = $container_doc->findvalue($CONTAINER_TYPE_NAME_PATH);
-      my @control_flag = $analyte_dom->findnodes($CONTROL_PATH);
-      # Skip controls that come from a tube - we do not want to create separate
-      # containers for them
-      if (@control_flag && $container_type_name =~ /tube/ixms) {
-        next;
-      }
       $containers->{$container_url}->{'doc'} = $container_doc;
     }
+
     my $well = $analyte_dom->findvalue($WELL_PATH);
+
     if (!$well) {
       croak 'Well not defined';
     }
+
     $containers->{$container_url}->{$url}->{'well'} = $well;
     ##no critic (RequireInterpolationOfMetachars)
     my $uri = $anode->findvalue(q{./output/@uri}); # ideally, we have to check that this output is

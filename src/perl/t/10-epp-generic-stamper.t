@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 51;
+use Test::More tests => 54;
 use Test::Exception;
 use File::Temp qw/tempdir/;
 use File::Slurp;
@@ -122,12 +122,38 @@ my $base_uri =  'http://testserver.com:1234/here' ;
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = "$dir/stamp_with_control";
   my $s = wtsi_clarity::epp::generic::stamper->new(
               process_url => $base_uri . '/processes/24-99904',
-              step_url => 'some');
+              step_url => 'some',
+              with_controls => 1);
   lives_ok { $s->_analytes } 'got all info from clarity';
   my @containers = keys %{$s->_analytes};
   is (scalar @containers, 1, 'one input container');
   is (scalar(map { $_ =~ /\Ahttp/ } keys %{$s->_analytes->{$containers[0]}}), 5,
-    'control will be stamped');
+    'control will be stamped when with_controls flag is true');
+}
+
+{
+  my $dir = tempdir(CLEANUP => 1);
+  `cp -R t/data/epp/generic/stamper/stamp_with_control $dir`;
+   #remove tube container from test data
+  `rm $dir/stamp_with_control/GET/containers.27-7555`;
+  my $control = "$dir/stamp_with_control/GET/artifacts.151C-801PA1?state=359614";
+  my $control_xml = read_file $control;
+  $control_xml =~ s/27-7555/27-7103/g;  #place control on the input plate
+  $control_xml =~ s/1:1/H:12/g;         #in well H:12
+  open my $fh, '>', $control or die "cannot open filehandle to write to $control";
+  print $fh $control_xml or die "cannot write to $control";
+  close $fh;
+
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = "$dir/stamp_with_control";
+  my $s = wtsi_clarity::epp::generic::stamper->new(
+              process_url => $base_uri . '/processes/24-99904',
+              step_url => 'some',
+              shadow_plate => 1);
+  lives_ok { $s->_analytes } 'got all info from clarity';
+  my @containers = keys %{$s->_analytes};
+  is (scalar @containers, 1, 'one input container');
+  is (scalar(map { $_ =~ /\Ahttp/ } keys %{$s->_analytes->{$containers[0]}}), 5,
+    'control will be stamped when it is a shadow plate');
 }
 
 {
