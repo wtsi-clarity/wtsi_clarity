@@ -1,5 +1,9 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.62
+  - Added an option with/without controls to the stamping script
+  - Fixed QC Report generation: returns an empty string in case of non-existing UDF fields.
+
 Release 0.61
   - Added the possibility to stamp from more than 1 plate to a output plate (group stamping)
 

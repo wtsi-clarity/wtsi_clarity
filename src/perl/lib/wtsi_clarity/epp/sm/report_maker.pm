@@ -67,6 +67,12 @@ has 'internal_csv_output' => (
   lazy_build => 1,
 );
 
+has 'qc_report_file_name' => (
+  isa      => 'Str',
+  is       => 'ro',
+  required => 1,
+);
+
 override 'run' => sub {
   my $self= shift;
   super();
@@ -82,8 +88,8 @@ sub _main_method{
     croak qq{Impossible to produce the report: "$missing_data" could not be found on the genealogy of some samples. Have you run all the necessary steps on the samples? };
   }
 
-  my $process_id  = $self->find_elements_first_value($self->process_doc, $PROCESS_ID_PATH);
-  $self->report_file->saveas(q{./}.$process_id);
+  $self->report_file->saveas(q{./} . $self->qc_report_file_name);
+
   return;
 }
 
@@ -159,7 +165,12 @@ sub _get_supplier_gender {
 sub _get_concentration {
   my ($self, $sample_id) = @_;
 
-  return $self->_get_value_from_data($UDF_CONCENTRATION, $sample_id) * $DILUTION_COMPENSATION_FACTOR;
+  my $concentration = $self->_get_value_from_data($UDF_CONCENTRATION, $sample_id);
+  if ($concentration ne q{}) {
+    return $concentration *= $DILUTION_COMPENSATION_FACTOR;
+  }
+
+  return $concentration;
 }
 
 sub _get_measured_volume {
@@ -169,7 +180,15 @@ sub _get_measured_volume {
 
 sub _get_total_micrograms {
   my ($self, $sample_id) = @_;
-  return $self->_get_concentration($sample_id) * $self->_get_measured_volume($sample_id) * $THOUSANDTH ;
+  my $total_micrograms = q{};
+
+  my $concentration = $self->_get_concentration($sample_id);
+  my $measured_volume = $self->_get_measured_volume($sample_id);
+  if ($concentration ne q{} && $measured_volume ne q{}) {
+    return $total_micrograms = $concentration * $measured_volume * $THOUSANDTH;
+  }
+
+  return $total_micrograms;
 }
 
 sub _get_fluidigm_count {
@@ -216,17 +235,18 @@ sub _get_not_implemented_yet {
 
 sub _extract_from_sample_directly {
   my ($self, $xpath) = @_;
-  return $self->find_elements_first_value($self->_sample_details, $xpath, qq{[Value not present]});
+  return $self->find_elements_first_value($self->_sample_details, $xpath, qq{});
 }
 
 sub _get_value_from_data {
   my ($self, $udf_name, $sample_id) = @_;
   my $data = $self->_all_udf_values->{$sample_id};
+
   if (!defined $data) {
     return qq{[Sample id not present ($sample_id)]} ;
   }
   if (!defined $data->{$udf_name} || !$data->{$udf_name}) {
-    return qq{[UDF not present ($udf_name)]} ;
+    return q{};
   }
   return $data->{$udf_name} ;
 }
@@ -507,7 +527,7 @@ sub _build__original_container_map {
             ->reduce( sub {
                   my $container_id = $b;
                   $a->{$container_id} = $self->find_elements_first_value($self->_build__original_container_details,
-                                            qq{/con:details/con:container[\@limsid='$container_id']/name/text()}, qq{[Value not present]});
+                                            qq{/con:details/con:container[\@limsid='$container_id']/name/text()}, qq{});
                   $a;
                 }, {});
 };
@@ -525,9 +545,9 @@ sub _build__location_of_samples {
             ->reduce( sub {
                   my $sample_id = $b;
                   my $container_id = $self->find_elements_first_value($self->_original_artifact_details,
-                                            qq{/art:details/art:artifact/sample[\@limsid='$sample_id']/../location/container/\@limsid}, qq{[Value not present]});
+                                            qq{/art:details/art:artifact/sample[\@limsid='$sample_id']/../location/container/\@limsid}, qq{});
                   $a->{$sample_id}->{'plate'} = $self->_original_container_map->{$container_id};
-                  $a->{$sample_id}->{'well'} = $self->find_elements_first_value($self->_original_artifact_details, qq{/art:details/art:artifact/sample[\@limsid='$sample_id']/../location/value/text()}, qq{[Value not present]});
+                  $a->{$sample_id}->{'well'} = $self->find_elements_first_value($self->_original_artifact_details, qq{/art:details/art:artifact/sample[\@limsid='$sample_id']/../location/value/text()}, qq{});
                   $a;
                 }, {});
 }
@@ -580,6 +600,12 @@ wtsi_clarity::epp::sm::report_maker
 =item wtsi_clarity::util::textfile
 
 =item wtsi_clarity::util::report
+
+=item wtsi_clarity::epp
+
+=item wtsi_clarity::util::clarity_elements
+
+=item wtsi_clarity::util::csv::report_common
 
 =back
 
