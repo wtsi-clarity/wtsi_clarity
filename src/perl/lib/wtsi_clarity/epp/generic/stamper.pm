@@ -75,6 +75,15 @@ override 'run' => sub {
 
 ##
 
+has 'controls' => (
+  isa       => 'Bool',
+  is        => 'rw',
+  required  => 0,
+  default   => 0,
+  predicate => 'has_controls',
+  writer    => 'set_controls',
+);
+
 has 'group' => (
   isa      => 'Bool',
   is       => 'ro',
@@ -108,7 +117,19 @@ has 'shadow_plate' => (
   is       => 'ro',
   required => 0,
   default  => 0,
+  trigger  => \&_set_controls,
 );
+
+# If it's a shadow_plate, we always want to stamp controls too,
+# so we set controls to 1
+sub _set_controls {
+  my $self = shift;
+  my $shadow_plate = shift;
+
+  if ($shadow_plate == 1) {
+    $self->set_controls(1);
+  }
+}
 
 has '_validate_container_type' => (
   isa        => 'Bool',
@@ -173,25 +194,29 @@ sub _build__analytes {
     ##use critic
     my $analyte_dom   = $self->fetch_and_parse($url);
     my $container_url = $analyte_dom->findvalue($CONTAINER_PATH);
+
     if (!$container_url) {
       croak qq[Container not defined for $url];
     }
 
+    my @control_flag = $analyte_dom->findnodes($CONTROL_PATH);
+
+    # By default we do not want to stamp controls
+    if (@control_flag && !$self->controls) {
+      next;
+    }
+
     if (!exists $containers->{$container_url}) {
       my $container_doc = $self->fetch_and_parse($container_url);
-      my $container_type_name = $container_doc->findvalue($CONTAINER_TYPE_NAME_PATH);
-      my @control_flag = $analyte_dom->findnodes($CONTROL_PATH);
-      # Skip controls that come from a tube - we do not want to create separate
-      # containers for them
-      if (@control_flag && $container_type_name =~ /tube/ixms) {
-        next;
-      }
       $containers->{$container_url}->{'doc'} = $container_doc;
     }
+
     my $well = $analyte_dom->findvalue($WELL_PATH);
+
     if (!$well) {
       croak 'Well not defined';
     }
+
     $containers->{$container_url}->{$url}->{'well'} = $well;
     ##no critic (RequireInterpolationOfMetachars)
     my $uri = $anode->findvalue(q{./output/@uri}); # ideally, we have to check that this output is
@@ -520,6 +545,15 @@ wtsi_clarity::epp::generic::stamper
   wtsi_clarity::epp:generic::stamper->new(
        process_url => 'http://clarity-ap:8080/processes/3345',
        step_url    => 'http://testserver.com:1234/here/steps/24-98970',
+  )->run();
+
+  1:1 and N:N scanarios, output container type will be copied from the input
+  containers. Will also copy over controls:
+
+  wtsi_clarity::epp:generic::stamper->new(
+       process_url   => 'http://clarity-ap:8080/processes/3345',
+       step_url      => 'http://testserver.com:1234/here/steps/24-98970',
+       controls => 1,
   )->run();
 
   N:1-N scenario, output container analytes will be grouped by input container
