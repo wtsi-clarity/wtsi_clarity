@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 13;
+use Test::More tests => 15;
 use Test::Exception;
 use Test::Deep;
 use Test::MockObject::Extends;
@@ -17,10 +17,11 @@ use_ok('wtsi_clarity::epp::sm::report_maker');
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/report_maker';
 local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
-
 { # _get_artifact_uris_from_udf
   my $m = wtsi_clarity::epp::sm::report_maker->new(
-    process_url => $base_uri . '/processes/24-25342'
+    process_url => $base_uri . '/processes/24-25342',
+    produce_report_anyway => 1,
+    qc_report_file_name => '24-25342'
   );
 
   my $res = $m->_get_artifact_uris_from_udf('Volume Check (SM)', qq{Volume});
@@ -37,7 +38,9 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 { # _get_udf_values
   my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::sm::report_maker->new(
-    process_url => $base_uri . '/processes/24-25342'
+    process_url => $base_uri . '/processes/24-25342',
+    produce_report_anyway => 1,
+    qc_report_file_name => '24-25342'
   ) );
   $m->mock(q(_required_sources), sub{
       return {
@@ -78,7 +81,9 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 { # _get_udf_values
   my $m = wtsi_clarity::epp::sm::report_maker->new(
-    process_url => $base_uri . '/processes/24-25342'
+    process_url => $base_uri . '/processes/24-25342',
+    produce_report_anyway => 1,
+    qc_report_file_name => '24-25342'
   );
 
   my $res = $m->_get_udf_values('Picogreen Analysis (SM)', qq{Concentration});
@@ -107,7 +112,9 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 { # _build__all_udf_values
   my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::sm::report_maker->new(
-    process_url => $base_uri . '/processes/24-25342'
+    process_url => $base_uri . '/processes/24-25342',
+    produce_report_anyway => 1,
+    qc_report_file_name => '24-25342'
   ) );
   $m->mock(q(_required_sources), sub{
       return {
@@ -171,7 +178,9 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
     'hello' => '_get_not_implemented_yet',
     };
   my $m = wtsi_clarity::epp::sm::report_maker->new(
-    process_url => $base_uri . '/processes/24-25342'
+    process_url => $base_uri . '/processes/24-25342',
+    produce_report_anyway => 1,
+    qc_report_file_name => '24-25342'
   );
   while (my ($test, $expected) = each %{$testdata} ) {
     my $res = $m->get_method_from_header($test);
@@ -182,7 +191,9 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 { # _get_first_missing_necessary_data
   my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::sm::report_maker->new(
-    process_url => $base_uri . '/processes/24-25342'
+    process_url => $base_uri . '/processes/24-25342',
+    produce_report_anyway => 1,
+    qc_report_file_name => '24-25342'
   ) );
   $m->mock(q(_required_sources), sub{
       return {
@@ -202,7 +213,9 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 { # _get_first_missing_necessary_data
   my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::sm::report_maker->new(
-    process_url => $base_uri . '/processes/24-25342'
+    process_url => $base_uri . '/processes/24-25342',
+    produce_report_anyway => 1,
+    qc_report_file_name => '24-25342'
   ) );
   $m->mock(q(_required_sources), sub{
       return {
@@ -226,7 +239,8 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 { # _build__all_udf_values
   my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::sm::report_maker->new(
-    process_url => $base_uri . '/processes/24-25342'
+    process_url => $base_uri . '/processes/24-25342',
+    qc_report_file_name => '24-25342'
   ) );
   $m->mock(q(_required_sources), sub{
       return {
@@ -248,6 +262,27 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
    { $m->_main_method() }
    qr{Impossible to produce the report: "Impossible Value" could not be found on the genealogy of some samples. Have you run all the necessary steps on the samples?},
    q{_main_method should croak if not all the data are present.} ;
+}
+
+{
+  my $m = wtsi_clarity::epp::sm::report_maker->new(
+    process_url => $base_uri . '/processes/24-26114',
+    produce_report_anyway => 1,
+    qc_report_file_name => '24-26114'
+  );
+  # print Dumper $m->_get_value_from_data(qq{WTSI Fluidigm Call Rate (SM)}, 'DEA103A2087');
+  my $expected_volume = '16.1914';
+  is($m->_get_value_from_data(qq{Volume}, 'DEA103A2127'), $expected_volume, qq{_get_value_from_data should return the correct values.});
+}
+
+{
+  my $m = wtsi_clarity::epp::sm::report_maker->new(
+    process_url => $base_uri . '/processes/24-26114',
+    produce_report_anyway => 1,
+    qc_report_file_name => '24-26114'
+  );
+  my $expected_call_rate = '';
+  is($m->_get_value_from_data(qq{WTSI Fluidigm Call Rate (SM)}, 'DEA103A2127'), $expected_call_rate, qq{_get_value_from_data should return empty string for a missing value.});
 }
 
 1;
