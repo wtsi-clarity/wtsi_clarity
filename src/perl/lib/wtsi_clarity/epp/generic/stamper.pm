@@ -75,11 +75,13 @@ override 'run' => sub {
 
 ##
 
-has 'with_controls' => (
-  isa      => 'Bool',
-  is       => 'ro',
-  required => 0,
-  default  => 0,
+has 'controls' => (
+  isa       => 'Bool',
+  is        => 'rw',
+  required  => 0,
+  default   => 0,
+  predicate => 'has_controls',
+  writer    => 'set_controls',
 );
 
 has 'group' => (
@@ -115,7 +117,19 @@ has 'shadow_plate' => (
   is       => 'ro',
   required => 0,
   default  => 0,
+  trigger  => \&_set_controls,
 );
+
+# If it's a shadow_plate, we always want to stamp controls too,
+# so we set controls to 1
+sub _set_controls {
+  my $self = shift;
+  my $shadow_plate = shift;
+
+  if ($shadow_plate == 1) {
+    $self->set_controls(1);
+  }
+}
 
 has '_validate_container_type' => (
   isa        => 'Bool',
@@ -187,8 +201,8 @@ sub _build__analytes {
 
     my @control_flag = $analyte_dom->findnodes($CONTROL_PATH);
 
-    # By default we do not want to stamp controls (unless it's a shadow plate)
-    if (@control_flag && !$self->with_controls && !$self->shadow_plate) {
+    # By default we do not want to stamp controls
+    if (@control_flag && !$self->controls) {
       next;
     }
 
@@ -539,7 +553,7 @@ wtsi_clarity::epp::generic::stamper
   wtsi_clarity::epp:generic::stamper->new(
        process_url   => 'http://clarity-ap:8080/processes/3345',
        step_url      => 'http://testserver.com:1234/here/steps/24-98970',
-       with_controls => 1,
+       controls => 1,
   )->run();
 
   N:1-N scenario, output container analytes will be grouped by input container

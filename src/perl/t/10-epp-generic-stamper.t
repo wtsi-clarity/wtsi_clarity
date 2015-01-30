@@ -123,12 +123,12 @@ my $base_uri =  'http://testserver.com:1234/here' ;
   my $s = wtsi_clarity::epp::generic::stamper->new(
               process_url => $base_uri . '/processes/24-99904',
               step_url => 'some',
-              with_controls => 1);
+              controls => 1);
   lives_ok { $s->_analytes } 'got all info from clarity';
   my @containers = keys %{$s->_analytes};
   is (scalar @containers, 1, 'one input container');
   is (scalar(map { $_ =~ /\Ahttp/ } keys %{$s->_analytes->{$containers[0]}}), 5,
-    'control will be stamped when with_controls flag is true');
+    'control will be stamped when controls flag is true');
 }
 
 {
