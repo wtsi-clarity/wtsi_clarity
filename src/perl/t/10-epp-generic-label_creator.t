@@ -1,10 +1,12 @@
 use strict;
 use warnings;
-use Test::More tests => 36;
+use Test::More tests => 38;
 use Test::Exception;
 use DateTime;
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/label_creator';
+local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 use wtsi_clarity::util::config;
 my $config = wtsi_clarity::util::config->new();
@@ -22,9 +24,6 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
 }
 
 {
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/label_creator';
-  #local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
-  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
   my $l = wtsi_clarity::epp::generic::label_creator->new(
     process_url => $base_uri . '/processes/24-67069');
 
@@ -40,7 +39,6 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
 }
 
 {
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/label_creator';
   my $l = wtsi_clarity::epp::generic::label_creator->new(
     process_url => $base_uri . '/processes/24-67069_custom');
 
@@ -51,8 +49,6 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
 }
 
 {
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/label_creator';
-  #local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
   my $l = wtsi_clarity::epp::generic::label_creator->new(
      process_url => $base_uri . '/processes/24-67069',
      source_plate => 1,
@@ -118,9 +114,6 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
 }
 
 {
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/label_creator';
-  #local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
-  
   my $dt = DateTime->new(
         year       => 2014,
         month      => 5,
@@ -202,6 +195,17 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
      _date => $dt,
   );
   is($l->_barcode_prefix, 'IC', 'barcode prefix from the process');
+}
+
+{ # label creation after pooling
+  my $l = wtsi_clarity::epp::generic::label_creator->new(
+     process_url => $base_uri . '/processes/122-26306',
+  );
+
+  my $containers = $l->_container;
+  lives_ok {$l->_container} 'got containers';
+  my @urls = keys %{$l->_container};
+  is (scalar @urls, 1, 'correct number of containers');
 }
 
 1;
