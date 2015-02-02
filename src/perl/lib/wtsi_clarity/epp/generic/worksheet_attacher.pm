@@ -60,7 +60,7 @@ override 'run' => sub {
   my $stamp = _get_stamp($containers_data, $self->request->user);
 
   # pdf generation
-  my $pdf_data = _get_pdf_data($containers_data, $stamp, $type_data);
+  my $pdf_data = $self->_get_pdf_data($containers_data, $stamp, $type_data);
   my $pdf_generator = wtsi_clarity::util::pdf::layout::worksheet->new( 'pdf_data' => $pdf_data );
   my $worksheet_file = $pdf_generator->create() or croak q{Impossible to create the pdf version of the worksheet!};
 
@@ -69,7 +69,7 @@ override 'run' => sub {
   # tecan file generation
   # temp way to only create the worksheet
   if ($self->tecan_filename) {
-    _create_tecan_file($containers_data, $stamp, $self->tecan_filename);
+    $self->_create_tecan_file($containers_data, $stamp, $self->tecan_filename);
   }
 
   return 1;
@@ -142,9 +142,9 @@ sub _get_stamp {
 ################# tecan file #################
 
 sub _create_tecan_file {
-  my ($containers_data, $stamp, $full_filename) = @_;
+  my ($self, $containers_data, $stamp, $full_filename) = @_;
 
-  my $file_content = _get_TECAN_file_content($containers_data, $stamp);
+  my $file_content = $self->_get_TECAN_file_content($containers_data, $stamp);
 
   open my $fh, '>', $full_filename
     or croak qq{Could not create/open file '$full_filename'.};
@@ -158,7 +158,7 @@ sub _create_tecan_file {
 }
 
 sub _get_TECAN_file_content {
-  my ($containers_data, $stamp) = @_;
+  my ($self, $containers_data, $stamp) = @_;
 
   my @content_output = ();
   my @buffer_output = ();
@@ -172,10 +172,11 @@ sub _get_TECAN_file_content {
   # creating main content
 
   foreach my $uri (sort keys %{$containers_data->{'output_container_info'}} ) {
-    my ($samples, $buffers) = _get_TECAN_file_content_per_URI($containers_data, $uri);
+    my ($samples, $buffers) = $self->_get_TECAN_file_content_per_URI($containers_data, $uri);
     push @content_output, @{$samples};
     push @buffer_output, @{$buffers};
   }
+
   push @content_output, @buffer_output;
 
   # creating the comments in the end of the file
@@ -184,7 +185,7 @@ sub _get_TECAN_file_content {
   my $n = 1;
   foreach my $input (sort keys %{$containers_data->{'input_container_info'}} ) {
     my $barcode = $containers_data->{'input_container_info'}->{$input}->{'barcode'};
-    push @content_output, qq{C; SRC$n = $barcode} ;
+    push @content_output, qq{C; SRC$n = $barcode};
     $n++;
   }
   push @content_output, 'C;' ;
@@ -198,8 +199,18 @@ sub _get_TECAN_file_content {
   return \@content_output;
 }
 
+sub _get_well_position {
+  my ($self, $well_position, $nb_rows, $nb_columns) = @_;
+  return wtsi_clarity::util::well_mapper->well_location_index($well_position, $nb_rows, $nb_columns);
+}
+
+sub _is_integer {
+  my $x = shift;
+  return ($x =~ /^-?\d+\z/sxm) ? 1 : 0;
+}
+
 sub _get_TECAN_file_content_per_URI {
-  my ($data, $uri) = @_;
+  my ($self, $data, $uri) = @_;
   my @sample_output = ();
   my @buffer_output = ();
   my $output_container = $data->{'output_container_info'}->{$uri};
@@ -209,8 +220,19 @@ sub _get_TECAN_file_content_per_URI {
   foreach my $out_loc (sort keys %{$output_container->{'container_details'}} ) {
     my $in_details  = $output_container->{'container_details'}->{$out_loc};
     if ( scalar keys %{$in_details}  ) {
-      my $out_loc_dec = wtsi_clarity::util::well_mapper->well_location_index($out_loc, $nb_row, $nb_col);
-      my $inp_loc_dec = wtsi_clarity::util::well_mapper->well_location_index($in_details->{'input_location'}, $nb_row, $nb_col);
+      my $out_loc_dec = $self->_get_well_position($out_loc, $nb_row, $nb_col);
+
+
+      if (!_is_integer($out_loc_dec)) {
+        croak "Output location is not an integer: " . $out_loc_dec;
+      }
+
+      my $inp_loc_dec = $self->_get_well_position($in_details->{'input_location'}, $nb_row, $nb_col);
+
+      if (!_is_integer($inp_loc_dec)) {
+        croak "Input location is not an integer: " . $inp_loc_dec;
+      }
+
       my $sample_volume = $in_details->{'sample_volume'};
       my $buffer_volume = $in_details->{'buffer_volume'};
       my $input_uri = $in_details->{'input_uri'};
@@ -224,14 +246,26 @@ sub _get_TECAN_file_content_per_URI {
       my $input_buffer_string  = qq{A;BUFF;;96-TROUGH;$inp_loc_dec;;$buffer_volume};
       my $output_buffer_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$buffer_volume};
 
-      push @sample_output, $input_sample_string;
-      push @sample_output, $output_sample_string;
-      push @sample_output, $w_string;
-      push @buffer_output, $input_buffer_string;
-      push @buffer_output, $output_buffer_string;
-      push @buffer_output, $w_string;
+      push @sample_output, {
+        output_location => $out_loc_dec,
+        output          => join "\n", $input_sample_string, $output_sample_string, $w_string,
+      };
+
+      push @buffer_output, {
+        output_location => $out_loc_dec,
+        output => join "\n", $input_buffer_string, $output_buffer_string, $w_string,
+      };
     }
   }
+
+  @sample_output = map { $_->{'output'} } sort {
+    $a->{'output_location'} <=> $b->{'output_location'}
+  } @sample_output;
+
+  @buffer_output = map { $_->{'output'} } sort {
+    $a->{'output_location'} <=> $b->{'output_location'}
+  } @buffer_output;
+
   return (\@sample_output, \@buffer_output);
 }
 
