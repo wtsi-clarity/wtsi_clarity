@@ -206,7 +206,7 @@ sub _get_well_position {
 
 sub _is_integer {
   my $x = shift;
-  return ($x =~ /^-?\d+\z/) ? 1 : 0;
+  return ($x =~ /^-?\d+\z/sxm) ? 1 : 0;
 }
 
 sub _get_TECAN_file_content_per_URI {
