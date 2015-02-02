@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 203;
+use Test::More tests => 159;
 use Test::Exception;
 use DateTime;
 use XML::LibXML;
@@ -375,66 +375,30 @@ my $TEST_DATA4 = {
 
 { # _get_TECAN_file_content_per_URI
   my @expected_samples = (
-    qq{A;00000027;;type27;27;;1.2},
-    qq{D;1234567890123456;;type1;1;;1.2},
-    qq{W;},
-    qq{A;00000023;;type23;41;;1.2},
-    qq{D;1234567890123456;;type1;9;;1.2},
-    qq{W;},
-    qq{A;00000027;;type27;57;;1.2},
-    qq{D;1234567890123456;;type1;17;;1.2},
-    qq{W;},
-    qq{A;00000025;;type25;60;;1.2},
-    qq{D;1234567890123456;;type1;25;;1.2},
-    qq{W;},
-    qq{A;00000027;;type27;17;;1.2},
-    qq{D;1234567890123456;;type1;2;;1.2},
-    qq{W;},
-    qq{A;00000023;;type23;34;;1.2},
-    qq{D;1234567890123456;;type1;10;;1.2},
-    qq{W;},
-    qq{A;00000023;;type23;35;;1.2},
-    qq{D;1234567890123456;;type1;18;;1.2},
-    qq{W;},
-    qq{A;00000023;;type23;37;;1.2},
-    qq{D;1234567890123456;;type1;26;;1.2},
-    qq{W;},
-    qq{A;00000023;;type23;45;;1.2},
-    qq{D;1234567890123456;;type1;34;;1.2},
-    qq{W;},
+    qq{A;00000027;;type27;27;;1.2\nD;1234567890123456;;type1;1;;1.2\nW;},
+    qq{A;00000027;;type27;17;;1.2\nD;1234567890123456;;type1;2;;1.2\nW;},
+    qq{A;00000023;;type23;41;;1.2\nD;1234567890123456;;type1;9;;1.2\nW;},
+    qq{A;00000023;;type23;34;;1.2\nD;1234567890123456;;type1;10;;1.2\nW;},
+    qq{A;00000027;;type27;57;;1.2\nD;1234567890123456;;type1;17;;1.2\nW;},
+    qq{A;00000023;;type23;35;;1.2\nD;1234567890123456;;type1;18;;1.2\nW;},
+    qq{A;00000025;;type25;60;;1.2\nD;1234567890123456;;type1;25;;1.2\nW;},
+    qq{A;00000023;;type23;37;;1.2\nD;1234567890123456;;type1;26;;1.2\nW;},
+    qq{A;00000023;;type23;45;;1.2\nD;1234567890123456;;type1;34;;1.2\nW;},
   );
   my @expected_buffers = (
-    qq{A;BUFF;;96-TROUGH;27;;8.8},
-    qq{D;1234567890123456;;type1;1;;8.8},
-    qq{W;},
-    qq{A;BUFF;;96-TROUGH;41;;8.8},
-    qq{D;1234567890123456;;type1;9;;8.8},
-    qq{W;},
-    qq{A;BUFF;;96-TROUGH;57;;8.8},
-    qq{D;1234567890123456;;type1;17;;8.8},
-    qq{W;},
-    qq{A;BUFF;;96-TROUGH;60;;8.8},
-    qq{D;1234567890123456;;type1;25;;8.8},
-    qq{W;},
-    qq{A;BUFF;;96-TROUGH;17;;8.8},
-    qq{D;1234567890123456;;type1;2;;8.8},
-    qq{W;},
-    qq{A;BUFF;;96-TROUGH;34;;8.8},
-    qq{D;1234567890123456;;type1;10;;8.8},
-    qq{W;},
-    qq{A;BUFF;;96-TROUGH;35;;8.8},
-    qq{D;1234567890123456;;type1;18;;8.8},
-    qq{W;},
-    qq{A;BUFF;;96-TROUGH;37;;8.8},
-    qq{D;1234567890123456;;type1;26;;8.8},
-    qq{W;},
-    qq{A;BUFF;;96-TROUGH;45;;8.8},
-    qq{D;1234567890123456;;type1;34;;8.8},
-    qq{W;},
+    qq{A;BUFF;;96-TROUGH;27;;8.8\nD;1234567890123456;;type1;1;;8.8\nW;},
+    qq{A;BUFF;;96-TROUGH;17;;8.8\nD;1234567890123456;;type1;2;;8.8\nW;},
+    qq{A;BUFF;;96-TROUGH;41;;8.8\nD;1234567890123456;;type1;9;;8.8\nW;},
+    qq{A;BUFF;;96-TROUGH;34;;8.8\nD;1234567890123456;;type1;10;;8.8\nW;},
+    qq{A;BUFF;;96-TROUGH;57;;8.8\nD;1234567890123456;;type1;17;;8.8\nW;},
+    qq{A;BUFF;;96-TROUGH;35;;8.8\nD;1234567890123456;;type1;18;;8.8\nW;},
+    qq{A;BUFF;;96-TROUGH;60;;8.8\nD;1234567890123456;;type1;25;;8.8\nW;},
+    qq{A;BUFF;;96-TROUGH;37;;8.8\nD;1234567890123456;;type1;26;;8.8\nW;},
+    qq{A;BUFF;;96-TROUGH;45;;8.8\nD;1234567890123456;;type1;34;;8.8\nW;},
   );
   my ($samples, $buffers) = wtsi_clarity::epp::generic::worksheet_attacher::_get_TECAN_file_content_per_URI($TEST_DATA3, 'container_uri' );
-  cmp_ok(scalar @$samples, '==', 9*3, "_get_TECAN_file_content_per_URI should return the correct size nb of samples.");
-  cmp_ok(scalar @$buffers, '==', 9*3 , "_get_TECAN_file_content_per_URI should return the correct size nb of buffers.");
+  cmp_ok(scalar @$samples, '==', 9, "_get_TECAN_file_content_per_URI should return the correct size nb of samples.");
+  cmp_ok(scalar @$buffers, '==', 9 , "_get_TECAN_file_content_per_URI should return the correct size nb of buffers.");
 
   foreach my $expected (@expected_samples) {
     my $val = shift @$samples;
@@ -452,19 +416,11 @@ my $TEST_DATA4 = {
     qq{C;},
     qq{C; benoit},
     qq{C;},
-    qq{A;00000027;;type27;27;;1.2},
-    qq{D;12345678900001;;type1;1;;1.2},
-    qq{W;},
-    qq{A;00000029;;type29;10;;1.0},
-    qq{D;12345678900002;;type1;1;;1.0},
-    qq{W;},
+    qq{A;00000027;;type27;27;;1.2\nD;12345678900001;;type1;1;;1.2\nW;},
+    qq{A;00000029;;type29;10;;1.0\nD;12345678900002;;type1;1;;1.0\nW;},
 
-    qq{A;BUFF;;96-TROUGH;27;;8.8},
-    qq{D;12345678900001;;type1;1;;8.8},
-    qq{W;},
-    qq{A;BUFF;;96-TROUGH;10;;7.8},
-    qq{D;12345678900002;;type1;1;;7.8},
-    qq{W;},
+    qq{A;BUFF;;96-TROUGH;27;;8.8\nD;12345678900001;;type1;1;;8.8\nW;},
+    qq{A;BUFF;;96-TROUGH;10;;7.8\nD;12345678900002;;type1;1;;7.8\nW;},
 
     qq{C;},
     qq{C; SRC1 = 00000027},
@@ -476,7 +432,7 @@ my $TEST_DATA4 = {
 
   );
   my $table = wtsi_clarity::epp::generic::worksheet_attacher::_get_TECAN_file_content($TEST_DATA4, 'benoit');
-  cmp_ok(scalar @$table, '==', 3 + 3*4 + 2*2 + 3 , "_get_TECAN_file_content should return an array of the correct size (nb of rows).");
+  cmp_ok(scalar @$table, '==', 3 + 4 + 2*2 + 3 , "_get_TECAN_file_content should return an array of the correct size (nb of rows).");
 
   foreach my $expected (@expected_data) {
     my $val = shift @$table;

@@ -176,6 +176,7 @@ sub _get_TECAN_file_content {
     push @content_output, @{$samples};
     push @buffer_output, @{$buffers};
   }
+
   push @content_output, @buffer_output;
 
   # creating the comments in the end of the file
@@ -184,7 +185,7 @@ sub _get_TECAN_file_content {
   my $n = 1;
   foreach my $input (sort keys %{$containers_data->{'input_container_info'}} ) {
     my $barcode = $containers_data->{'input_container_info'}->{$input}->{'barcode'};
-    push @content_output, qq{C; SRC$n = $barcode} ;
+    push @content_output, qq{C; SRC$n = $barcode};
     $n++;
   }
   push @content_output, 'C;' ;
@@ -224,14 +225,26 @@ sub _get_TECAN_file_content_per_URI {
       my $input_buffer_string  = qq{A;BUFF;;96-TROUGH;$inp_loc_dec;;$buffer_volume};
       my $output_buffer_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$buffer_volume};
 
-      push @sample_output, $input_sample_string;
-      push @sample_output, $output_sample_string;
-      push @sample_output, $w_string;
-      push @buffer_output, $input_buffer_string;
-      push @buffer_output, $output_buffer_string;
-      push @buffer_output, $w_string;
+      push @sample_output, {
+        output_location => $out_loc_dec,
+        output          => join "\n", $input_sample_string, $output_sample_string, $w_string,
+      };
+
+      push @buffer_output, {
+        output_location => $out_loc_dec,
+        output => join "\n", $input_buffer_string, $output_buffer_string, $w_string,
+      };
     }
   }
+
+  @sample_output = map { $_->{'output'} } sort {
+    $a->{'output_location'} <=> $b->{'output_location'}
+  } @sample_output;
+
+  @buffer_output = map { $_->{'output'} } sort {
+    $a->{'output_location'} <=> $b->{'output_location'}
+  } @buffer_output;
+
   return (\@sample_output, \@buffer_output);
 }
 
