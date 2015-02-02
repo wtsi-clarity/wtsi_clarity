@@ -1,7 +1,8 @@
 use strict;
 use warnings;
-use Test::More tests => 159;
+use Test::More tests => 166;
 use Test::Exception;
+use Test::MockObject::Extends;
 use DateTime;
 use XML::LibXML;
 use Carp;
@@ -396,7 +397,16 @@ my $TEST_DATA4 = {
     qq{A;BUFF;;96-TROUGH;37;;8.8\nD;1234567890123456;;type1;26;;8.8\nW;},
     qq{A;BUFF;;96-TROUGH;45;;8.8\nD;1234567890123456;;type1;34;;8.8\nW;},
   );
-  my ($samples, $buffers) = wtsi_clarity::epp::generic::worksheet_attacher::_get_TECAN_file_content_per_URI($TEST_DATA3, 'container_uri' );
+
+
+  my $worksheet_attacher = wtsi_clarity::epp::generic::worksheet_attacher->new(
+    process_url => 'http://testserver.com:1234/here/processes/24-102407',
+    worksheet_type => 'cherrypicking',
+    worksheet_filename => 'xxxxx_worksheet.pdf',
+    tecan_filename => 'xxxxx_tecan.gwl',
+  );
+
+  my ($samples, $buffers) = $worksheet_attacher->_get_TECAN_file_content_per_URI($TEST_DATA3, 'container_uri' );
   cmp_ok(scalar @$samples, '==', 9, "_get_TECAN_file_content_per_URI should return the correct size nb of samples.");
   cmp_ok(scalar @$buffers, '==', 9 , "_get_TECAN_file_content_per_URI should return the correct size nb of buffers.");
 
@@ -431,7 +441,16 @@ my $TEST_DATA4 = {
     qq{C;},
 
   );
-  my $table = wtsi_clarity::epp::generic::worksheet_attacher::_get_TECAN_file_content($TEST_DATA4, 'benoit');
+
+
+  my $worksheet_attacher = wtsi_clarity::epp::generic::worksheet_attacher->new(
+    process_url => 'http://testserver.com:1234/here/processes/24-102407',
+    worksheet_type => 'cherrypicking',
+    worksheet_filename => 'xxxxx_worksheet.pdf',
+    tecan_filename => 'xxxxx_tecan.gwl',
+  );
+
+  my $table = $worksheet_attacher->_get_TECAN_file_content($TEST_DATA4, 'benoit');
   cmp_ok(scalar @$table, '==', 3 + 4 + 2*2 + 3 , "_get_TECAN_file_content should return an array of the correct size (nb of rows).");
 
   foreach my $expected (@expected_data) {
@@ -833,6 +852,55 @@ my $TEST_DATA4 = {
 
   is_deeply( $page1->{'plate_table'}, $exp_page1->{'plate_table'}, "plate_table from _get_pdf_data() should be correct.");
   is_deeply( $page1->{'plate_table_cell_styles'}, $exp_page1->{'plate_table_cell_styles'}, "plate_table_cell_styles from _get_pdf_data() should be correct.");
+}
+
+{
+  is(wtsi_clarity::epp::generic::worksheet_attacher::_is_integer(1), 1, 'Correct verifies 1 is an integer');
+  is(wtsi_clarity::epp::generic::worksheet_attacher::_is_integer(1000), 1, 'Correct verifies 1000 is an integer');
+  is(wtsi_clarity::epp::generic::worksheet_attacher::_is_integer('A:1'), 0, 'Correct verifies A:1 is not an integer');
+  is(wtsi_clarity::epp::generic::worksheet_attacher::_is_integer(8.3), 0, 'Correct verifies 8.3 is not an integer');
+  is(wtsi_clarity::epp::generic::worksheet_attacher::_is_integer([1,2,3]), 0, 'Correct verifies an array ref is not an integer');
+}
+
+{
+  my $worksheet_attacher = Test::MockObject::Extends->new( wtsi_clarity::epp::generic::worksheet_attacher->new(
+    process_url => 'http://testserver.com:1234/here/processes/24-102407',
+    worksheet_type => 'cherrypicking',
+    worksheet_filename => 'xxxxx_worksheet.pdf',
+    tecan_filename => 'xxxxx_tecan.gwl',
+  ));
+
+  $worksheet_attacher->mock(q{_get_well_position}, sub {
+    return 1.5;
+  });
+
+  throws_ok { $worksheet_attacher->_get_TECAN_file_content_per_URI($TEST_DATA3, 'container_uri'); }
+    qr/Output location is not an integer: 1.5/,
+    "Throws an error when well mapper does return an integer";
+}
+
+{
+
+  my $worksheet_attacher = Test::MockObject::Extends->new( wtsi_clarity::epp::generic::worksheet_attacher->new(
+    process_url => 'http://testserver.com:1234/here/processes/24-102407',
+    worksheet_type => 'cherrypicking',
+    worksheet_filename => 'xxxxx_worksheet.pdf',
+    tecan_filename => 'xxxxx_tecan.gwl',
+  ));
+
+  my $i = 0;
+  $worksheet_attacher->mock(q{_get_well_position}, sub {
+    if ($i == 0) {
+      $i++;
+      return 1;
+    } else {
+      return 4.5;
+    }
+  });
+
+  throws_ok { $worksheet_attacher->_get_TECAN_file_content_per_URI($TEST_DATA3, 'container_uri'); }
+    qr/Input location is not an integer: 4.5/,
+    "Throws an error when well mapper does return an integer";
 }
 
 1;
