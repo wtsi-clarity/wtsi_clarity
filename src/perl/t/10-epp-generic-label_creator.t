@@ -201,10 +201,9 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
   my $l = wtsi_clarity::epp::generic::label_creator->new(
      process_url => $base_uri . '/processes/122-26306',
   );
-
-  my $containers = $l->_container;
-  lives_ok {$l->_container} 'got containers';
-  my @urls = keys %{$l->_container};
+  my $containers;
+  lives_ok {$containers = $l->_container;} 'got containers';
+  my @urls = keys %{$containers};
   is (scalar @urls, 1, 'correct number of containers');
 }
 
