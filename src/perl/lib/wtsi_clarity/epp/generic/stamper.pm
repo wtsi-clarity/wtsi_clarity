@@ -129,6 +129,8 @@ sub _set_controls {
   if ($shadow_plate == 1) {
     $self->set_controls(1);
   }
+
+  return;
 }
 
 has '_validate_container_type' => (

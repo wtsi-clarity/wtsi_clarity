@@ -24,7 +24,7 @@ Readonly::Scalar my $PLATE_PURPOSE_PATH       => q{ /prc:process/udf:field[@name
 Readonly::Scalar my $CONTAINER_PURPOSE_PATH   => q{ /con:container/udf:field[@name='WTSI Container Purpose Name'] };
 
 Readonly::Scalar my $IO_MAP_PATH              => q{ /prc:process/input-output-map};
-Readonly::Scalar my $IO_MAP_PATH_ANALYTE_OUTPUT => $IO_MAP_PATH . q{[output[@output-type='Analyte']] };
+Readonly::Scalar my $IO_MAP_PATH_ANALYTE_OUTPUT => $IO_MAP_PATH . q{[output[@output-type='Analyte' or @output-type='Pool']] };
 Readonly::Scalar my $CONTAINER_PATH           => q{ /art:artifact/location/container/@uri };
 Readonly::Scalar my $SAMPLE_PATH              => q{ /art:artifact/sample/@limsid };
 Readonly::Scalar my $CONTROL_PATH             => q{ /art:artifact/control-type };
@@ -461,13 +461,21 @@ wtsi_clarity::epp::generic::label_creator
 
 =item namespace::autoclean
 
-=item English
-
 =item Readonly
 
-=item JSON
-
 =item DateTime
+
+=item wtsi_clarity::util::barcode
+
+=item wtsi_clarity::util::signature
+
+=item wtsi_clarity::epp
+
+=item wtsi_clarity::util::clarity_elements
+
+=item wtsi_clarity::util::print
+
+=item wtsi_clarity::util::label
 
 =back
 
