@@ -64,7 +64,7 @@ my $base_uri =  'http://testserver.com:1234/here' ;
               step_url => 'some');
   lives_ok { $s->_analytes } 'got all info from clarity (no container type name)';
   my @containers = keys %{$s->_analytes};
-  is (scalar @containers, 1, 'one input container, control tube is skipped');
+  is (scalar @containers, 2, 'one input container, control tube is included');
 }
 
 {
@@ -73,7 +73,8 @@ my $base_uri =  'http://testserver.com:1234/here' ;
   my $s = wtsi_clarity::epp::generic::stamper->new(
               process_url => $base_uri . '/processes/24-99904',
               step_url => 'some',
-              container_type_name => ['ABgene 0800']);
+              container_type_name => ['ABgene 0800'],
+              controls => 0);
   lives_ok { $s->_analytes } q{got all info from clarity ('ABgene 0800')};
   my @containers = keys %{$s->_analytes};
   is (scalar @containers, 1, 'one input container, control tube is skipped');
@@ -88,7 +89,8 @@ my $base_uri =  'http://testserver.com:1234/here' ;
   my $s = wtsi_clarity::epp::generic::stamper->new(
               process_url => $base_uri . '/processes/24-99904',
               step_url => 'some',
-              container_type_name => ['ABgene 0765', 'ABgene 0800']);
+              container_type_name => ['ABgene 0765', 'ABgene 0800'],
+              controls => 0);
 
   lives_ok { $s->_analytes } q{got all info from clarity ('ABgene 0765', 'ABgene 0800')};
   my @containers = keys %{$s->_analytes};
