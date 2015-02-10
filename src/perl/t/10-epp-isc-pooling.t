@@ -22,9 +22,9 @@ my $pooler = wtsi_clarity::epp::isc::analyte_pooler->new(
 isa_ok( $pooler, 'wtsi_clarity::epp::isc::analyte_pooler');
 
 { # Test for getting the input artifacts (analytes)
-  lives_ok {$pooler->input_artifacts} 'got input artifacts';
+  lives_ok {$pooler->process_doc->input_artifacts} 'got input artifacts';
 
-  my $input_artifacts = $pooler->input_artifacts;
+  my $input_artifacts = $pooler->process_doc->input_artifacts;
   my @nodes = $input_artifacts->findnodes(q{ /art:details/art:artifact });
 
   is(scalar @nodes, 2, 'correct number of input_artifacts');

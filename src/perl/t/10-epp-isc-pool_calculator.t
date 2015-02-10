@@ -44,7 +44,7 @@ use_ok('wtsi_clarity::epp::isc::pool_calculator');
      ["2-75703", "2-83063"],
   ];
 
-  is_deeply ($pool_calculator->_input_output_map, $input_output_map, "Generates the input-output list of tuples correctly");
+  is_deeply ($pool_calculator->process_doc->_input_output_map, $input_output_map, "Generates the input-output list of tuples correctly");
 }
 
 {
