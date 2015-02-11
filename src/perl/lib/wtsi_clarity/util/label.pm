@@ -62,14 +62,14 @@ sub _format_label {
   if ($type eq 'plate') {
 
     $label = {
-        'template'  => 'plate',
+        'template'  => 'clarity_plate',
         'plate' => {
           'ean13' => $container->{'barcode'},
-          'sanger' => join(q[ ], $date, $user),
           'label_text' => {
-            'role'  => $container->{'purpose'},
-            'text5' => $container->{'num'},
-            'text6' => $container->{'signature'}
+            'date_user' => join(q[ ], $date, $user),
+            'purpose'  => $container->{'purpose'},
+            'num' => $container->{'num'},
+            'signature' => $container->{'signature'}
           }
         }
     };
