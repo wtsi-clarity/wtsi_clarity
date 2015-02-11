@@ -12,7 +12,7 @@ Readonly::Scalar my $ALL_ANALYTES        => q(prc:process/input-output-map/outpu
 Readonly::Scalar my $ARTIFACT_BY_LIMSID  => q{art:details/art:artifact[@limsid="%s"]};
 Readonly::Scalar my $CONTAINER_BY_LIMSID => q{con:details/con:container[@limsid="%s"]};
 Readonly::Scalar my $INPUT_LIMSID        => q{./input/@limsid};
-Readonly::Scalar my $OUTPUT_LIMSID       => q{./output/@limsid};
+Readonly::Scalar my $OUTPUT_LIMSID       => q{./output[@output-type!="ResultFile"]/@limsid};
 Readonly::Scalar my $ALL_CONTAINERS      => q{art:details/art:artifact/location/container/@uri};
 ## use critic
 
@@ -25,6 +25,7 @@ has 'io_map' => (
 sub _build_io_map {
   my $self = shift;
   my @mapping = map { $self->_build_mapping($_); } @{$self->_input_output_map};
+
   return \@mapping;
 }
 
@@ -54,7 +55,9 @@ sub _build_plate_io_map {
 
 sub _build_plate_io_map_barcodes {
   my $self = shift;
+
   my @plate_io_map_barocodes = map { $self->_get_plate_barcode($_) } @{$self->plate_io_map};
+
   return \@plate_io_map_barocodes;
 }
 
@@ -108,9 +111,12 @@ has '_input_output_map' => (
 sub _build__input_output_map {
   my $self = shift;
 
-  my @input_output_map = map {
-    [$_->findvalue($INPUT_LIMSID), $_->findvalue($OUTPUT_LIMSID)]
-  } $self->process_doc->findnodes($INPUT_OUTPUT_PATH)->get_nodelist;
+  my @input_output_map =
+    map {
+      [$_->findvalue($INPUT_LIMSID), $_->findvalue($OUTPUT_LIMSID)]
+    } grep {
+      $_->findvalue($OUTPUT_LIMSID)
+    } $self->process_doc->findnodes($INPUT_OUTPUT_PATH)->get_nodelist;
 
   return \@input_output_map;
 }
