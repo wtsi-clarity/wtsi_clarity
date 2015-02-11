@@ -1,5 +1,10 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.64
+  - Fixed the io mapping in bed verification
+  - Change in stamping: shadow stamp now acknowledges controls i.e. it won't automatically
+just stamp a control.
+
 Release 0.63
   - Tecan robot files are sorted by destination well
   - Fix to print a label when output type is pool
