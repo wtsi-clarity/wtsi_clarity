@@ -1,0 +1,35 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="122-26306" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/122-26306" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processtypes/133">Pre Capture Lib Pooling</type>
+  <technician uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/58">
+    <first-name>Karoly</first-name>
+    <last-name>Erdos</last-name>
+  </technician>
+  <input-output-map>
+    <input limsid="SMI102A1PA1" post-process-uri="http://testserver.com:1234/here/artifacts/SMI102A1PA1?state=832" uri="http://testserver.com:1234/here/artifacts/SMI102A1PA1?state=832"/>
+    <output limsid="2-168294" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/here/artifacts/2-168294?state=80970"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="SMI102A2PA1" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/SMI102A2PA1?state=812" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/SMI102A2PA1?state=812"/>
+    <output limsid="92-168293" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-168293?state=80969"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="SMI102A1PA1" post-process-uri="http://testserver.com:1234/here/artifacts/SMI102A1PA1?state=832" uri="http://testserver.com:1234/here/artifacts/SMI102A1PA1?state=832"/>
+    <output limsid="92-168293" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-168293?state=80969"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="SMI102A2PA1" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/SMI102A2PA1?state=812" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/SMI102A2PA1?state=812"/>
+    <output limsid="2-168295" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/here/artifacts/2-168295?state=80971"/>
+  </input-output-map>
+  <udf:field name="Workstation: Name" type="String">Beckman NX8_01</udf:field>
+  <udf:field name="Program Used" type="String">Pre Capture SAT Scripting_2</udf:field>
+  <udf:field name="Barcode Copies" type="Numeric">2</udf:field>
+  <udf:field name="Select Barcode Printer" type="String">d304bc</udf:field>
+  <udf:field name="Plate Purpose" type="String">ReArray</udf:field>
+  <udf:field name="Robot ID" type="String">1</udf:field>
+  <udf:field name="Barcode Prefix" type="String">IC</udf:field>
+  <udf:field name="Minimum Volume" type="String">5</udf:field>
+  <udf:field name="Maximum Volume" type="String">50</udf:field>
+  <udf:field name="Maximum Total Volume" type="String">200</udf:field>
+  <process-parameter name="1 - Print Barcode"/>
+</prc:process>

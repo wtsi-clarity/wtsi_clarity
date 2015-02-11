@@ -79,7 +79,7 @@ has 'controls' => (
   isa       => 'Bool',
   is        => 'rw',
   required  => 0,
-  default   => 0,
+  default   => 1,
   predicate => 'has_controls',
   writer    => 'set_controls',
 );
@@ -120,15 +120,17 @@ has 'shadow_plate' => (
   trigger  => \&_set_controls,
 );
 
-# If it's a shadow_plate, we always want to stamp controls too,
+# If it's a shadow_plate and controls haven't been set, we always want to stamp controls too,
 # so we set controls to 1
 sub _set_controls {
   my $self = shift;
   my $shadow_plate = shift;
 
-  if ($shadow_plate == 1) {
+  if (!$self->has_controls && $shadow_plate == 1) {
     $self->set_controls(1);
   }
+
+  return;
 }
 
 has '_validate_container_type' => (
