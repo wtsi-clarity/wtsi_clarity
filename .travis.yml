@@ -7,8 +7,8 @@ env:
 before_install:
   - cpanm Devel::Cover
 #  - cd $TRAVIS_BUILD_DIR
-#  - cd $TRAVIS_BUILD_DIR/src/perl/
 #  - chmod 755 ./scripts/push_test_coverage_to_github.sh
+  - cd $TRAVIS_BUILD_DIR/src/perl/
 install:
   - perl Build.PL
   - yes | perl Build installdeps
