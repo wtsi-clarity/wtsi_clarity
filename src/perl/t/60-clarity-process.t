@@ -26,7 +26,7 @@ use_ok 'wtsi_clarity::clarity::process';
   );
 
   isa_ok($process, 'wtsi_clarity::clarity::process', 'Builds the object correctly');
-  can_ok($process, qw/find_parent find_previous_process/);
+  can_ok($process, qw/find_parent find_by_artifactlimsid_and_name/);
 }
 
 {

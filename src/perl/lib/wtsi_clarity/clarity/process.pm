@@ -4,6 +4,7 @@ use Moose;
 use Readonly;
 use Carp;
 use List::MoreUtils qw/uniq/;
+use wtsi_clarity::util::types;
 
 our $VERSION = '0.0';
 
@@ -23,7 +24,7 @@ Readonly::Scalar my $ALL_CONTAINERS      => q{art:details/art:artifact/location/
 
 has '_parent' => (
   is => 'ro',
-  isa => 'Object',
+  isa => 'HasRequestAndConfig',
   required => 1,
   init_arg => 'parent',
 );
@@ -120,10 +121,10 @@ sub _find_parent {
   return \@found_processes;
 }
 
-sub find_previous_process {
+sub find_by_artifactlimsid_and_name {
   my ($self, $artifact_limsid, $process_name) = @_;
 
-  my $uri = $self->config->clarity_api->{'base_uri'} . '/processes/?inputartifactlimsid=' . $artifact_limsid;
+  my $uri = $self->_config->clarity_api->{'base_uri'} . '/processes/?inputartifactlimsid=' . $artifact_limsid;
   my $process_list_xml = $self->_parent->fetch_and_parse($uri);
 
   my @processes = $process_list_xml->findnodes($PROCESS_URI_PATH)->get_nodelist();
@@ -293,7 +294,7 @@ wtsi_clarity::clarity::process
   Requires the name of the parent process being searched for, and the URL of the child process.
   Keeps recursing up parent processes until it finds the one being searched for
 
-=head2 find_previous_process
+=head2 find_by_artifactlimsid_and_name
   Takes a artifact limsid and a process name. Tries to find the specifed process xml in that artifact's
   history (using the ?inputartifactlimsid URL parameter)
 
@@ -331,6 +332,8 @@ wtsi_clarity::clarity::process
 =item Carp
 
 =item List::MoreUtils
+
+=item use wtsi_clarity::util::types
 
 =back
 

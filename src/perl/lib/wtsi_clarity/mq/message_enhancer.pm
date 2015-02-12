@@ -26,7 +26,6 @@ has 'process'  => (
   required        => 0,
   traits          => [ 'NoGetopt' ],
   lazy_build      => 1,
-  handles         => {'findnodes' => 'findnodes'},
 );
 
 sub _build_process {

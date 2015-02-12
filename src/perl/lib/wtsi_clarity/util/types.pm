@@ -42,6 +42,8 @@ coerce 'WtsiClarityPlates',
         return \@plates;
       };
 
+duck_type 'HasRequestAndConfig', [qw/request config/];
+
 no Moose::Util::TypeConstraints;
 
 1;

@@ -257,7 +257,7 @@ sub _get_dtx_files {
 
   foreach (0..1) {
     my $artifact_limsid = $artifact_limsids[$_];
-    my $process_xml = $self->process_doc->find_previous_process($artifact_limsid, $PROCESS_NAME);
+    my $process_xml = $self->process_doc->find_by_artifactlimsid_and_name($artifact_limsid, $PROCESS_NAME);
     my ($dtx, $standard) = $self->_get_files($process_xml);
 
     my $key_name = 'dtx' . ($_ + 1);
