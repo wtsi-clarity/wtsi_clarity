@@ -3,14 +3,36 @@ package wtsi_clarity::mq::message_enhancer;
 use Moose::Role;
 use XML::LibXML;
 use Readonly;
+use List::MoreUtils qw/uniq/;
+use wtsi_clarity::clarity::process;
 
-with qw/wtsi_clarity::util::roles::clarity_process_base wtsi_clarity::util::configurable/;
+with qw/MooseX::Getopt wtsi_clarity::util::roles::clarity_request wtsi_clarity::util::configurable/;
 
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $SAMPLE_LIMS_ID_PATH  => q{/art:details/art:artifact/sample/@limsid};
 ## use critic
+
+has 'process_url' => (
+  isa        => 'Str',
+  is         => 'ro',
+  required   => 1,
+);
+
+has 'process'  => (
+  isa             => 'wtsi_clarity::clarity::process',
+  is              => 'ro',
+  required        => 0,
+  traits          => [ 'NoGetopt' ],
+  lazy_build      => 1,
+);
+
+sub _build_process {
+  my ($self) = @_;
+  my $xml = $self->fetch_and_parse($self->process_url);
+  return wtsi_clarity::clarity::process->new(xml => $xml, parent => $self);
+}
 
 has 'step_url' => (
   isa        => 'Str',
@@ -68,7 +90,14 @@ sub _format_message {
 sub sample_limsid_node_list {
   my $self = shift;
 
-  return $self->input_artifacts->findnodes($SAMPLE_LIMS_ID_PATH);
+  return $self->process->input_artifacts->findnodes($SAMPLE_LIMS_ID_PATH);
+}
+
+sub get_values_from_nodelist {
+  my ($self, $function, $nodelist) = @_;
+  my @values = uniq( map { $_->$function } $nodelist->get_nodelist());
+
+  return \@values;
 }
 
 1;
@@ -98,6 +127,10 @@ wtsi_clarity::mq::message_enhancer
 =head2 sample_limsid_node_list
 
   Getting the sample nodes list from the input artifacts.
+
+=head2 get_values_from_nodelist
+
+  Returns the values from an XML node list. It returns either the values of an attribute or the values of the tags.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

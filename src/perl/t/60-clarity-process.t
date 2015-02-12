@@ -1,23 +1,48 @@
 use strict;
 use warnings;
-use Test::More tests => 5;
-use Moose::Meta::Class;
+use XML::LibXML;
 
-use_ok('wtsi_clarity::util::roles::clarity_process_io');
+use Test::More tests => 7;
+use Test::MockObject::Extends;
 
-my $epp = Moose::Meta::Class->create_anon_class(
-  superclasses => ['wtsi_clarity::epp'],
-  roles => ['wtsi_clarity::util::roles::clarity_process_io']
-);
+use wtsi_clarity::epp;
 
-local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
-local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/util/roles/clarity_process_io/';
-local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
+use_ok 'wtsi_clarity::clarity::process';
+
 
 {
-  my $process = $epp->new_object(
-    process_url => 'http://testserver.com:1234/here/processes/24-18168',
+  my $test_dir = 't/data/clarity/process/';
+  my $xml = XML::LibXML->load_xml(location => $test_dir . 'process1.xml');
+
+  my $epp = Test::MockObject::Extends->new(
+    wtsi_clarity::epp->new(
+      process_url => 'does not matter'
+    )
   );
+
+  my $process = wtsi_clarity::clarity::process->new(
+    xml => $xml,
+    parent => $epp,
+  );
+
+  isa_ok($process, 'wtsi_clarity::clarity::process', 'Builds the object correctly');
+  can_ok($process, qw/find_parent find_by_artifactlimsid_and_name/);
+}
+
+{
+
+  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/util/roles/clarity_process_io/';
+
+  my $epp = Test::MockObject::Extends->new(
+    wtsi_clarity::epp->new(
+      process_url => 'does not matter'
+    )
+  );
+
+  my $xml = XML::LibXML->load_xml(location => $ENV{'WTSICLARITY_WEBCACHE_DIR'} . 'GET/processes.24-18168');
+
+  my $process = wtsi_clarity::clarity::process->new(xml => $xml, parent => $epp);
 
   my $mapping = [
             {
@@ -650,9 +675,18 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 }
 
 {
-  my $process = $epp->new_object(
-    process_url => 'http://testserver.com:1234/here/processes/24-22472',
+  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/util/roles/clarity_process_io/';
+
+  my $epp = Test::MockObject::Extends->new(
+    wtsi_clarity::epp->new(
+      process_url => 'http://testserver.com:1234/here/processes/24-22472'
+    )
   );
+
+  my $xml = XML::LibXML->load_xml(location => $ENV{'WTSICLARITY_WEBCACHE_DIR'} . 'GET/processes.24-22472');
+
+  my $process = wtsi_clarity::clarity::process->new(xml => $xml, parent => $epp);
 
   my $plate_io_map = [
     {
@@ -680,3 +714,5 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
   is_deeply($process->plate_io_map_barcodes, $plate_io_map_barcodes, 'Creates the plate io map with barcodes correctly');
 }
+
+1;

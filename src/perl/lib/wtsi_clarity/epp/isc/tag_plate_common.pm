@@ -18,7 +18,7 @@ has 'barcode' => (
 );
 sub _build_barcode {
   my $self = shift;
-  my $tag_plate_barcode = $self->find_udf_element($self->process_doc, $TAG_PLATE_BARCODE_UDF_NAME);
+  my $tag_plate_barcode = $self->find_udf_element($self->process_doc->xml, $TAG_PLATE_BARCODE_UDF_NAME);
   if (!$tag_plate_barcode) {
     croak "'$TAG_PLATE_BARCODE_UDF_NAME' udf process field is missing";
   }
