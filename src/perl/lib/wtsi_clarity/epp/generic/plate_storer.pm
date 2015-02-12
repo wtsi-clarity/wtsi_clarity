@@ -91,7 +91,7 @@ sub _build__rack_barcode {
 
 sub _get_process_udf {
   my ($self, $name, $xpath) = @_;
-  my $v = $self->grab_values($self->process_doc, $xpath);
+  my $v = $self->grab_values($self->process_doc->xml, $xpath);
   if (@{$v} > 1) {
     confess qq{Too many values for the $name!};
   }
@@ -110,7 +110,7 @@ has '_input_artifacts_ids' => (
 
 sub _build__input_artifacts_ids {
   my ($self) = @_;
-  return $self->grab_values($self->process_doc, $INPUT_ARTIFACTS_IDS_PATH);
+  return $self->grab_values($self->process_doc->xml, $INPUT_ARTIFACTS_IDS_PATH);
 }
 
 has '_input_artifacts_details' => (

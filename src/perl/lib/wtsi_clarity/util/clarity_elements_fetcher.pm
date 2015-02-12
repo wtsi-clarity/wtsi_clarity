@@ -13,7 +13,7 @@ override 'run' => sub {
   my $self= shift;
   super();
 
-  $self->fetch_and_update_targets($self->process_doc);
+  $self->fetch_and_update_targets($self->process_doc->xml);
 
   $self->put_changes();
 

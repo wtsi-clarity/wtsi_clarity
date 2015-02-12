@@ -184,7 +184,7 @@ has '_input_uris' => (
 
 sub _build__input_uris {
  my $self = shift;
- return $self->grab_values($self->process_doc, $INPUT_PATH);
+ return $self->grab_values($self->process_doc->xml, $INPUT_PATH);
 }
 
 has '_workflow_base_uri' => (

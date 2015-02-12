@@ -18,13 +18,13 @@ has 'config' => (
 );
 
 sub verify {
-  my ($self, $process) = @_;
+  my ($self, $epp) = @_;
 
-  $self->_verify_step_config($process);
-  $self->_verify_robot_config($process);
-  $self->_verify_bed_barcodes($process);
+  $self->_verify_step_config($epp);
+  $self->_verify_robot_config($epp);
+  $self->_verify_bed_barcodes($epp);
 
-  $self->_verify_plate_mapping($process, $self->_plate_mapping($process));
+  $self->_verify_plate_mapping($epp, $self->_plate_mapping($epp));
 
   return 1;
 }
@@ -38,12 +38,12 @@ has '_step_config' => (
 );
 
 sub _verify_step_config {
-  my ($self, $process) = @_;
+  my ($self, $epp) = @_;
 
-  if (!exists ($self->config->{ $process->step_name })) {
-    croak qq/Bed verification config can not be found for process / . $process->step_name;
+  if (!exists ($self->config->{ $epp->step_name })) {
+    croak qq/Bed verification config can not be found for process / . $epp->step_name;
   } else {
-    return $self->_set__step_config($self->config->{ $process->step_name });
+    return $self->_set__step_config($self->config->{ $epp->step_name });
   }
 }
 
@@ -56,25 +56,25 @@ has '_robot_config' => (
 );
 
 sub _verify_robot_config {
-  my ($self, $process) = @_;
+  my ($self, $epp) = @_;
 
-  my $robot_bc = $process->process_doc->findvalue($ROBOT_BARCODE_PATH);
+  my $robot_bc = $epp->process_doc->findvalue($ROBOT_BARCODE_PATH);
 
   if ($robot_bc eq q{}) {
     croak qq[Robot barcode must be set for bed verification\n];
   }
 
   if (!exists $self->_step_config->{$robot_bc}) {
-    croak qq[Robot $robot_bc has not been configured for step ] . $process->step_name;
+    croak qq[Robot $robot_bc has not been configured for step ] . $epp->step_name;
   }
 
   return $self->_set__robot_config($self->_step_config->{$robot_bc});
 }
 
 sub _verify_bed_barcodes {
-  my ($self, $process) = @_;
+  my ($self, $epp) = @_;
 
-  foreach my $bed (@{$process->beds}) {
+  foreach my $bed (@{$epp->beds}) {
     if (!exists $self->_robot_config->{$bed->bed_name}) {
       croak $bed->bed_name . ' can not be found in config for specified robot';
     }
@@ -88,16 +88,16 @@ sub _verify_bed_barcodes {
 }
 
 sub _plate_mapping {
-  my ($self, $process) = @_;
+  my ($self, $epp) = @_;
   my @plate_mapping = ();
 
-  foreach my $plate (@{$process->plates}) {
+  foreach my $plate (@{$epp->plates}) {
     next if $plate->is_output;
 
     my $plate_name = $plate->plate_name;
     $plate_name =~ s/Input/Output/gsm;
 
-    my $output_plates = $self->_find_output_plate($process, $plate_name);
+    my $output_plates = $self->_find_output_plate($epp, $plate_name);
 
     foreach my $output_plate (@{$output_plates}) {
       push @plate_mapping, { source_plate => $plate->barcode, dest_plate => $output_plate->barcode };
@@ -108,15 +108,15 @@ sub _plate_mapping {
 }
 
 sub _find_output_plate {
-  my ($self, $process, $plate_name) = @_;
-  my @output_plates = grep { $_->plate_name eq $plate_name } @{$process->plates};
+  my ($self, $epp, $plate_name) = @_;
+  my @output_plates = grep { $_->plate_name eq $plate_name } @{$epp->plates};
   return \@output_plates;
 }
 
 sub _verify_plate_mapping {
-  my ($self, $process, $plate_mapping) = @_;
+  my ($self, $epp, $plate_mapping) = @_;
 
-  foreach my $plate_io (@{$process->plate_io_map_barcodes}) {
+  foreach my $plate_io (@{$epp->process_doc->plate_io_map_barcodes}) {
     my $matches = grep { ($_->{'source_plate'} == $plate_io->{'source_plate'} && $_->{'dest_plate'} == $plate_io->{'dest_plate'}) } @{$plate_mapping};
     if ($matches != 1) {
       croak "Expected source plate " . $plate_io->{'source_plate'} . " to be paired with destination plate " . $plate_io->{'dest_plate'};
@@ -146,7 +146,7 @@ wtsi_clarity::process_checks::bed_verifier
 
 =head1 SUBROUTINES/METHODS
 
-=head2 verify($process)
+=head2 verify($epp)
 
   Pass in an EPP process and it will verify the robot id, the barcodes of the beds are correct,
   and the plates in a process are in the correct bed positions.

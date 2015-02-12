@@ -167,7 +167,7 @@ has '_barcode_prefix' => (
 sub _build__barcode_prefix {
   my $self = shift;
   return $self->find_udf_element_textContent(
-    $self->process_doc, $BARCODE_PREFIX_UDF_NAME, $DEFAULT_BARCODE_PREFIX);
+    $self->process_doc->xml, $BARCODE_PREFIX_UDF_NAME, $DEFAULT_BARCODE_PREFIX);
 }
 
 has '_container' => (
@@ -414,9 +414,9 @@ __END__
 wtsi_clarity::epp::generic::label_creator
 
 =head1 SYNOPSIS
-  
+
   wtsi_clarity::epp:generic::label_creator->new(process_url => 'http://my.com/processes/3345')->run();
-  
+
 =head1 DESCRIPTION
 
   Creates a barcode and sets it for the containers (if required), formats the label  and prints it.
