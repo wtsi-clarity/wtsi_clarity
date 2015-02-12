@@ -9,15 +9,15 @@ our $VERSION = '0.0';
 
 subtype 'WtsiClarityReadableFile'
       => as 'Str'
-      => where { -r $_ };
+      => where { -r };
 
 subtype 'WtsiClarityExecutable'
       => as 'Str'
-      => where { -x $_ };
+      => where { -x };
 
 subtype 'WtsiClarityDirectory'
       => as 'Str'
-      => where { -d $_ };
+      => where { -d };
 
 subtype 'NodeList'
       => as 'XML::LibXML::NodeList';
