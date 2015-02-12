@@ -59,7 +59,7 @@ has '_output_artifacts' => (
 sub _build__output_artifacts {
   my $self = shift;
 
-  my $ids = $self->grab_values($self->process_doc, $OUTPUT_ARTIFACTS_URI_PATH);
+  my $ids = $self->grab_values($self->process_doc->xml, $OUTPUT_ARTIFACTS_URI_PATH);
   my @uris = map { join q{/}, $self->config->clarity_api->{'base_uri'}, 'artifacts', $_ } @{$ids};
 
   return $self->request->batch_retrieve('artifacts', \@uris);
