@@ -328,6 +328,8 @@ wtsi_clarity::clarity::process
 
 =item Readonly
 
+=item Carp
+
 =item List::MoreUtils
 
 =back
