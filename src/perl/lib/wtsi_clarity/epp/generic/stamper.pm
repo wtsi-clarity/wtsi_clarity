@@ -11,7 +11,6 @@ use Try::Tiny;
 
 extends 'wtsi_clarity::epp';
 with 'wtsi_clarity::util::clarity_elements';
-with 'wtsi_clarity::util::roles::clarity_process_base';
 
 ##no critic ValuesAndExpressions::RequireInterpolationOfMetachars
 Readonly::Scalar my $IO_MAP_PATH              => q{ /prc:process/input-output-map[output[@output-type='Analyte']]};
@@ -46,7 +45,7 @@ override 'run' => sub {
   }
 
   ##no critic ValuesAndExpressions::ProhibitMagicNumbers
-  if ($self->group && $self->input_artifacts->findnodes('/art:details/art:artifact')->size() > 96) {
+  if ($self->group && $self->process_doc->input_artifacts->findnodes('/art:details/art:artifact')->size() > 96) {
     croak q{Can not do a group stamp for more than 96 inputs!};
   }
   ##use critic
@@ -247,7 +246,7 @@ sub _build__output_container_details {
   my $self = shift;
   my $base_url = $self->config->clarity_api->{'base_uri'};
 
-  my $output_ids = $self->grab_values($self->process_doc, $OUTPUT_IDS_PATH);
+  my $output_ids = $self->grab_values($self->process_doc->xml, $OUTPUT_IDS_PATH);
   my @output_uris = c ->new(@{$output_ids})
                       ->uniq()
                       ->map( sub {

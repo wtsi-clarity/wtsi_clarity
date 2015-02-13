@@ -4,12 +4,11 @@ use Moose;
 use Carp;
 use Readonly;
 use XML::LibXML::NodeList;
+use List::MoreUtils qw/uniq/;
 
 use wtsi_clarity::isc::pooling::mapper;
 
 extends 'wtsi_clarity::epp';
-
-with 'wtsi_clarity::util::roles::clarity_process_base';
 
 our $VERSION = '0.0';
 
@@ -37,7 +36,7 @@ sub _build__input_artifacts_location {
   my $self = shift;
 
   my %artifacts_location;
-  my @artifact_node_list = $self->input_artifacts->findnodes($BATCH_ARTIFACT_PATH)->get_nodelist();
+  my @artifact_node_list = $self->process_doc->input_artifacts->findnodes($BATCH_ARTIFACT_PATH)->get_nodelist();
 
   foreach my $artifact_node (@artifact_node_list) {
     my $analyte_uri = $artifact_node->getAttribute('uri');
@@ -56,9 +55,10 @@ has '_container_uris' => (
 sub _build__container_uris {
   my $self = shift;
 
-  my $uri_node_list = $self->input_artifacts->findnodes($BATCH_CONTAINER_PATH);
+  my $uri_node_list = $self->process_doc->input_artifacts->findnodes($BATCH_CONTAINER_PATH);
+  my @container_uris = uniq(map { $_->getValue } $uri_node_list->get_nodelist);
 
-  return $self->get_values_from_nodelist('getValue', $uri_node_list);
+  return \@container_uris;
 }
 
 has '_container_ids' => (
@@ -72,8 +72,9 @@ sub _build__container_ids {
 
   my $containers = $self->request->batch_retrieve('containers', $self->_container_uris);
   my $container_name_node_list = $containers->findnodes($CONTAINER_LIMSID_PATH);
+  my @container_ids = uniq(map { $_->string_value } $container_name_node_list->get_nodelist);
 
-  return $self->get_values_from_nodelist('string_value', $container_name_node_list);
+  return \@container_ids;
 }
 
 has '_mapping' => (

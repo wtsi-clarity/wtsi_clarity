@@ -40,7 +40,7 @@ has '_date' => (
 override 'run' => sub {
   my $self= shift;
   super();
-  $self->_fetch_and_update_samples($self->process_doc);
+  $self->_fetch_and_update_samples($self->process_doc->xml);
   return;
 };
 
