@@ -17,6 +17,7 @@ Readonly::Scalar our $CONTAINER_TYPE_URI       => q{/con:container/type/@uri};
 Readonly::Scalar our $CONTAINER_X_SIZE         => q{/ctp:container-type/x-dimension/size};
 Readonly::Scalar our $CONTAINER_Y_SIZE         => q{/ctp:container-type/y-dimension/size};
 Readonly::Scalar our $STA_PROCESS_NAME         => q{Fluidigm STA Plate Creation (SM)};
+Readonly::Scalar our $NO_TEMPLATE_CONTROL      => q{NTC};
 
 has 'filename' => (
   is       => 'ro',
@@ -108,11 +109,14 @@ sub _build__samples {
       if ($artifact_list->size == 0) {
         $sample{'sample_name'} = '[ Empty ]';
 
+        # H12 is always 'NTC', cause that's what the Fluidigm software wants
         if ($sample{'well_location'} eq 'H12') {
-          $sample{'sample_type'} = 'NTC';
+          $sample{'sample_type'} = $NO_TEMPLATE_CONTROL;
         }
       } elsif ($artifact_list->size == 1) {
         $sample{'sample_name'} = $artifact_list->pop->findvalue($SAMPLE_LIMSID);
+      } else {
+        croak "STA Plate has " . $artifact_list->size . " wells at " . $clarity_well;
       }
 
       push @samples, \%sample;
