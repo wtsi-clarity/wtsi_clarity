@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 15;
+use Test::More tests => 16;
 use Test::Exception;
 use Test::Deep;
 use Test::MockObject::Extends;
@@ -283,6 +283,159 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
   );
   my $expected_call_rate = '';
   is($m->_get_value_from_data(qq{WTSI Fluidigm Call Rate (SM)}, 'DEA103A2127'), $expected_call_rate, qq{_get_value_from_data should return empty string for a missing value.});
+}
+
+{ # _build_internal_csv_output
+  my $m = Test::MockObject::Extends->new( wtsi_clarity::epp::sm::report_maker->new(
+    process_url => $base_uri . '/processes/24-25342',
+    produce_report_anyway => 1,
+    qc_report_file_name => '24-25342'
+  ) );
+  $m->mock(q(_required_sources), sub{
+      return {
+        q{concentration} => {
+          src_process => q{Picogreen Analysis (SM)},
+          src_udf_name=> q{Concentration},
+        },
+        q{cherry_volume} => {
+          src_process => q{Volume Check (SM)},
+          src_udf_name=> q{Volume},
+        },
+      };
+    });
+
+  my @expected = [
+          {
+            'Supplier Volume' => '',
+            'Well' => 'C:5',
+            'Status' => '',
+            'Genotyping Status' => '',
+            'Supplier Gender' => 'Male',
+            'Total micrograms' => '32.3851260843654',
+            'Genotyping Barcode' => '',
+            'Sanger Sample Name' => '35',
+            'Genotyping Chip' => '',
+            'Genotyping Well Cohort' => '',
+            'Fluidigm Count' => '',
+            'Plate' => '',
+            'Supplier Sample Name' => '',
+            'Genotyping Infinium Barcode' => '',
+            'Concentration' => '1172.52872328884',
+            'Supplier' => '',
+            'Measured Volume' => '27.6199',
+            'Fluidigm Gender' => '',
+            'Study' => ''
+          },
+          {
+            'Supplier Volume' => '',
+            'Well' => 'D:5',
+            'Status' => '',
+            'Genotyping Status' => '',
+            'Supplier Gender' => 'Female',
+            'Total micrograms' => '11.8768236366029',
+            'Genotyping Barcode' => '',
+            'Sanger Sample Name' => '36',
+            'Genotyping Chip' => '',
+            'Genotyping Well Cohort' => '',
+            'Fluidigm Count' => '',
+            'Plate' => '',
+            'Supplier Sample Name' => '',
+            'Genotyping Infinium Barcode' => '',
+            'Concentration' => '390.574496576721',
+            'Supplier' => '',
+            'Measured Volume' => '30.4086',
+            'Fluidigm Gender' => '',
+            'Study' => ''
+          },
+          {
+            'Supplier Volume' => '',
+            'Well' => 'E:5',
+            'Status' => '',
+            'Genotyping Status' => '',
+            'Supplier Gender' => 'Male',
+            'Total micrograms' => '0.454045524447568',
+            'Genotyping Barcode' => '',
+            'Sanger Sample Name' => '37',
+            'Genotyping Chip' => '',
+            'Genotyping Well Cohort' => '',
+            'Fluidigm Count' => '',
+            'Plate' => '',
+            'Supplier Sample Name' => '',
+            'Genotyping Infinium Barcode' => '',
+            'Concentration' => '8.37181754305463',
+            'Supplier' => '',
+            'Measured Volume' => '54.235',
+            'Fluidigm Gender' => '',
+            'Study' => ''
+          },
+          {
+            'Supplier Volume' => '',
+            'Well' => 'F:5',
+            'Status' => '',
+            'Genotyping Status' => '',
+            'Supplier Gender' => 'Female',
+            'Total micrograms' => '1.3786054177451',
+            'Genotyping Barcode' => '',
+            'Sanger Sample Name' => '38',
+            'Genotyping Chip' => '',
+            'Genotyping Well Cohort' => '',
+            'Fluidigm Count' => '',
+            'Plate' => '',
+            'Supplier Sample Name' => '',
+            'Genotyping Infinium Barcode' => '',
+            'Concentration' => '112.868147805859',
+            'Supplier' => '',
+            'Measured Volume' => '12.2143',
+            'Fluidigm Gender' => '',
+            'Study' => ''
+          },
+          {
+            'Supplier Volume' => '',
+            'Well' => 'G:5',
+            'Status' => '',
+            'Genotyping Status' => '',
+            'Supplier Gender' => 'Male',
+            'Total micrograms' => '1.16444109794268',
+            'Genotyping Barcode' => '',
+            'Sanger Sample Name' => '39',
+            'Genotyping Chip' => '',
+            'Genotyping Well Cohort' => '',
+            'Fluidigm Count' => '',
+            'Plate' => '',
+            'Supplier Sample Name' => '',
+            'Genotyping Infinium Barcode' => '',
+            'Concentration' => '38.49532042298',
+            'Supplier' => '',
+            'Measured Volume' => '30.2489',
+            'Fluidigm Gender' => '',
+            'Study' => ''
+          },
+          {
+            'Supplier Volume' => '',
+            'Well' => 'H:5',
+            'Status' => '',
+            'Genotyping Status' => '',
+            'Supplier Gender' => 'Female',
+            'Total micrograms' => '1.17291245227408',
+            'Genotyping Barcode' => '',
+            'Sanger Sample Name' => '40',
+            'Genotyping Chip' => '',
+            'Genotyping Well Cohort' => '',
+            'Fluidigm Count' => '',
+            'Plate' => '',
+            'Supplier Sample Name' => '',
+            'Genotyping Infinium Barcode' => '',
+            'Concentration' => '113.658712767363',
+            'Supplier' => '',
+            'Measured Volume' => '10.3196',
+            'Fluidigm Gender' => '',
+            'Study' => ''
+          }
+        ];
+
+  my $res = $m->_build_internal_csv_output();
+
+  is_deeply($res, @expected, qq{_build_internal_csv_output should return the correct values.} );
 }
 
 1;
