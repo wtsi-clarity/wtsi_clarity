@@ -29,6 +29,8 @@ Readonly::Hash my %ACTION2MODULE => (
     'attach_dtx_file'                => 'sm::dtx_file_attacher',
     'analyse_pico'                   => 'sm::pico_analyser',
     'analyse_fluidigm'               => 'sm::fluidigm_analyser',
+    'create_fluidigm_file'           => 'sm::fluidigm_analysis_file_creator',
+
     'make_report'                    => 'sm::report_maker',
 
     'tag_plate'                      => 'isc::plate_tagger',

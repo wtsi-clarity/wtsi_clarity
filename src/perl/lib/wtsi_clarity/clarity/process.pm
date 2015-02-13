@@ -108,7 +108,7 @@ sub _find_parent {
     my $parent_uris = $current_process->findnodes($PARENT_PROCESS_PATH);
 
     if ($parent_uris->size() > 0) {
-      my @uniq_uris = map { $_->getValue() } $parent_uris->get_nodelist();
+      my @uniq_uris = uniq(map { $_->getValue() } $parent_uris->get_nodelist());
 
       foreach my $uri (@uniq_uris) {
         $self->_find_parent($needle_process_name, $uri, $found_processes);
