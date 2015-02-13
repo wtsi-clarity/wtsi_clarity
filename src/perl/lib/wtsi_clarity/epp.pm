@@ -7,6 +7,7 @@ use Readonly;
 
 use wtsi_clarity::util::request;
 use wtsi_clarity::util::types;
+use wtsi_clarity::clarity::process;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $BED_PATH => q{/prc:process/udf:field[starts-with(@name, "Bed") and contains(@name, "Plate")]};
@@ -24,7 +25,7 @@ has 'process_url'  => (
 );
 
 has 'process_doc'  => (
-  isa             => 'XML::LibXML::Document',
+  isa             => 'wtsi_clarity::clarity::process',
   is              => 'ro',
   required        => 0,
   traits          => [ 'NoGetopt' ],
@@ -34,7 +35,8 @@ has 'process_doc'  => (
 
 sub _build_process_doc {
   my ($self) = @_;
-  return $self->fetch_and_parse($self->process_url);
+  my $xml = $self->fetch_and_parse($self->process_url);
+  return wtsi_clarity::clarity::process->new(xml => $xml, parent => $self);
 }
 
 has 'beds' => (

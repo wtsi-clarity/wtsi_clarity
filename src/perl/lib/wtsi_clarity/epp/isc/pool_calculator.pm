@@ -9,10 +9,8 @@ use wtsi_clarity::isc::pooling::mapper;
 use List::Util qw/sum/;
 
 extends 'wtsi_clarity::epp';
-with 'wtsi_clarity::util::clarity_process';
 with 'wtsi_clarity::util::well_mapper';
 with 'wtsi_clarity::util::clarity_elements';
-with 'wtsi_clarity::util::roles::clarity_process_io';
 
 our $VERSION = '0.0';
 
@@ -37,7 +35,7 @@ sub get_volume_calculations_and_warnings {
 
   my $pool_calculator = wtsi_clarity::file_parsing::ISC_pool_calculator->new(
     data             => \%molarities,
-    mapping          => $self->io_map,
+    mapping          => $self->process_doc->io_map,
     min_volume       => $self->min_volume,
     max_volume       => $self->max_volume,
     max_total_volume => $self->max_total_volume,
@@ -55,7 +53,7 @@ has 'min_volume' => (
 
 sub _build_min_volume {
   my $self = shift;
-  return $self->find_udf_element($self->process_doc, 'Minimum Volume')->textContent;
+  return $self->find_udf_element($self->process_doc->xml, 'Minimum Volume')->textContent;
 }
 
 has 'max_volume' => (
@@ -66,7 +64,7 @@ has 'max_volume' => (
 
 sub _build_max_volume {
   my $self = shift;
-  return $self->find_udf_element($self->process_doc, 'Maximum Volume')->textContent;
+  return $self->find_udf_element($self->process_doc->xml, 'Maximum Volume')->textContent;
 }
 
 has 'max_total_volume' => (
@@ -77,7 +75,7 @@ has 'max_total_volume' => (
 
 sub _build_max_total_volume {
   my $self = shift;
-  return $self->find_udf_element($self->process_doc, 'Maximum Total Volume')->textContent;
+  return $self->find_udf_element($self->process_doc->xml, 'Maximum Total Volume')->textContent;
 }
 ###
 

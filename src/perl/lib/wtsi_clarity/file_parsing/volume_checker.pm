@@ -43,7 +43,7 @@ sub _parse_file {
 
   while (<$volume_check_file>) {
     chomp;
-    my ($rack_id, $tube_location, $volume) = split $self->delimiter, $_;
+    my ($rack_id, $tube_location, $volume) = split $self->delimiter;
 
     $tube_location = $self->_format_tube_location($tube_location);
 
@@ -83,7 +83,7 @@ The delimiter for a line of the file. Defaults to ","
 
 =head2 parse
 
-Opens a parses the Volume Check file. Returns a hash containing 
+Opens a parses the Volume Check file. Returns a hash containing
 well locations as keys and volumes as values.
 
 =head1 CONFIGURATION AND ENVIRONMENT

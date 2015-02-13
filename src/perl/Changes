@@ -1,5 +1,12 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.65
+  - Fixes #261 - Bed verification with pools
+  - Fixed Travis build failures
+  - Refactored some duplication with processes
+  - Added Fluidigm analysis CSV generation EPP
+  - Fixed labels missing signature
+
 Release 0.64
   - Fixed the io mapping in bed verification
   - Change in stamping: shadow stamp now acknowledges controls i.e. it won't automatically

@@ -43,7 +43,7 @@ has '_standard_barcode' => (
 sub _build__standard_barcode {
   my $self = shift;
 
-  my $standard_barcode = $self->find_udf_element($self->process_doc, 'Standard File Barcode');
+  my $standard_barcode = $self->find_udf_element($self->process_doc->xml, 'Standard File Barcode');
 
   croak 'Standard barcode has not been set' if (!defined $standard_barcode);
 

@@ -9,15 +9,15 @@ our $VERSION = '0.0';
 
 subtype 'WtsiClarityReadableFile'
       => as 'Str'
-      => where { -r $_ };
+      => where { -r };
 
 subtype 'WtsiClarityExecutable'
       => as 'Str'
-      => where { -x $_ };
+      => where { -x };
 
 subtype 'WtsiClarityDirectory'
       => as 'Str'
-      => where { -d $_ };
+      => where { -d };
 
 subtype 'NodeList'
       => as 'XML::LibXML::NodeList';
@@ -41,6 +41,8 @@ coerce 'WtsiClarityPlates',
         my @plates = map { wtsi_clarity::util::clarity_plate->new(element => $_) } $_->get_nodelist;
         return \@plates;
       };
+
+duck_type 'HasRequestAndConfig', [qw/request config/];
 
 no Moose::Util::TypeConstraints;
 
