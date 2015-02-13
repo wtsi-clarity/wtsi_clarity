@@ -3,13 +3,15 @@ use warnings;
 
 use Test::More tests => 9;
 
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/fluidigm_analysis_file_creator';
+local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
+
 use_ok('wtsi_clarity::epp::sm::fluidigm_analysis_file_creator');
 
 {
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/fluidigm_analysis_file_creator';
-
   my $file_creator = wtsi_clarity::epp::sm::fluidigm_analysis_file_creator->new(
-    process_url => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26663',
+    process_url => 'http://testserver.com:1234/here/processes/24-26663',
     filename    => '123456789.csv',
   );
 
@@ -18,10 +20,8 @@ use_ok('wtsi_clarity::epp::sm::fluidigm_analysis_file_creator');
 }
 
 {
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/fluidigm_analysis_file_creator';
-
   my $file_creator = wtsi_clarity::epp::sm::fluidigm_analysis_file_creator->new(
-    process_url => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26663',
+    process_url => 'http://testserver.com:1234/here/processes/24-26663',
     filename    => '123456789.csv',
   );
 
@@ -30,10 +30,8 @@ use_ok('wtsi_clarity::epp::sm::fluidigm_analysis_file_creator');
 }
 
 {
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/fluidigm_analysis_file_creator';
-
   my $file_creator = wtsi_clarity::epp::sm::fluidigm_analysis_file_creator->new(
-    process_url => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26663',
+    process_url => 'http://testserver.com:1234/here/processes/24-26663',
     filename    => '123456789.csv',
   );
 
@@ -42,10 +40,8 @@ use_ok('wtsi_clarity::epp::sm::fluidigm_analysis_file_creator');
 }
 
 {
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/fluidigm_analysis_file_creator';
-
   my $file_creator = wtsi_clarity::epp::sm::fluidigm_analysis_file_creator->new(
-    process_url => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26663',
+    process_url => 'http://testserver.com:1234/here/processes/24-26663',
     filename    => '123456789.csv',
   );
 
@@ -58,10 +54,8 @@ use_ok('wtsi_clarity::epp::sm::fluidigm_analysis_file_creator');
 }
 
 {
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/fluidigm_analysis_file_creator';
-
   my $file_creator = wtsi_clarity::epp::sm::fluidigm_analysis_file_creator->new(
-    process_url => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26663',
+    process_url => 'http://testserver.com:1234/here/processes/24-26663',
     filename    => '123456789.csv',
   );
 
