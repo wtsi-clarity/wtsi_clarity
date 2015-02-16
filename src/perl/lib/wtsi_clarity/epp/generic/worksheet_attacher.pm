@@ -60,7 +60,7 @@ override 'run' => sub {
   my $stamp = _get_stamp($containers_data, $self->request->user);
 
   # pdf generation
-  my $pdf_data = $self->_get_pdf_data($containers_data, $stamp, $type_data);
+  my $pdf_data = _get_pdf_data($containers_data, $stamp, $type_data);
   my $pdf_generator = wtsi_clarity::util::pdf::layout::worksheet->new( 'pdf_data' => $pdf_data );
   my $worksheet_file = $pdf_generator->create() or croak q{Impossible to create the pdf version of the worksheet!};
 
