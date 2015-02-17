@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 16;
+use Test::More tests => 20;
 use Test::Exception;
 
 use_ok 'wtsi_clarity::genotyping::fluidigm_analysis';
@@ -44,6 +44,30 @@ use_ok 'wtsi_clarity::genotyping::fluidigm_analysis';
   is($file2->file_format, 'BioMark Sample Format V1.0', 'Sets the file format to BioMark Sample Format when not present');
   is($file2->description, 'Plate1', 'Sets the description to the same as the sample_plate when missing');
   is($file2->plate_type, 'SBS96', 'Plate type defaults to SBS96');
+}
+
+{
+  my $samples = [
+    {
+      well_location        => 'A01',
+      sample_name          => 'sample01',
+      sample_concentration => '2.333',
+      sample_type          => 'NTC',
+    }
+  ];
+
+  my $file = wtsi_clarity::genotyping::fluidigm_analysis->new(
+    file_format  => 'BioMark Something',
+    sample_plate => 'DN12312313Q',
+    barcode      => 'FL123',
+    description  => 'Description',
+    plate_type   => 'My Plate Type',
+    samples      => $samples,
+  );
+
+  isa_ok($file, 'wtsi_clarity::genotyping::fluidigm_analysis', 'Creates the object correctly');
+
+  is($file->barcode, 'FL123', 'Sets the barcode');
 }
 
 # Test samples are valid
@@ -120,12 +144,12 @@ use_ok 'wtsi_clarity::genotyping::fluidigm_analysis';
   my $samples = [];
 
   my $expected_metadata = [
-    'File Format, BioMark Sample Format V1.0, , ',
-    'Sample Plate, DN12312313Q, , ',
-    'Barcode ID, 123456789, , ',
-    'Description, DN12312313Q, , ',
-    'Plate Type, SBS96, , ',
-    ' , , , ',
+    'File Format,BioMark Sample Format V1.0,,',
+    'Sample Plate,DN12312313Q,,',
+    'Barcode ID,123456789,,',
+    'Description,DN12312313Q,,',
+    'Plate Type,SBS96,,',
+    ',,,',
   ];
 
   my $file = wtsi_clarity::genotyping::fluidigm_analysis->new(
@@ -153,15 +177,51 @@ use_ok 'wtsi_clarity::genotyping::fluidigm_analysis';
   ];
 
   my $expected_content = [
-    'File Format, BioMark Sample Format V1.0, , ',
-    'Sample Plate, DN12312313Q, , ',
-    'Barcode ID, 123456789, , ',
-    'Description, DN12312313Q, , ',
-    'Plate Type, SBS96, , ',
-    ' , , , ',
-    'Well Location, Sample Name, Sample Concentration, Sample Type',
-    'A01, sample01, 2.333, NTC',
-    'B01, sample02, , Unknown'
+    'File Format,BioMark Sample Format V1.0,,',
+    'Sample Plate,DN12312313Q,,',
+    'Barcode ID,123456789,,',
+    'Description,DN12312313Q,,',
+    'Plate Type,SBS96,,',
+    ',,,',
+    'Well Location,Sample Name,Sample Concentration,Sample Type',
+    'A01,sample01,2.333,NTC',
+    'B01,sample02,,Unknown'
+  ];
+
+  my $file = wtsi_clarity::genotyping::fluidigm_analysis->new(
+    sample_plate => 'DN12312313Q',
+    barcode      => 123456789,
+    samples      => $samples,
+  );
+
+  isa_ok($file->_textfile, 'wtsi_clarity::util::textfile', 'Creates a text file');
+  is_deeply($file->content, $expected_content, 'Creates the text file correctly');
+}
+
+# Test text file is created properly with empty concentration
+{
+  my $samples = [
+    {
+      well_location        => 'A01',
+      sample_name          => 'sample01',
+      sample_type          => 'NTC',
+    },
+    {
+      well_location => 'B01',
+      sample_name   => 'sample02',
+    }
+  ];
+
+  my $expected_content = [
+    'File Format,BioMark Sample Format V1.0,,',
+    'Sample Plate,DN12312313Q,,',
+    'Barcode ID,123456789,,',
+    'Description,DN12312313Q,,',
+    'Plate Type,SBS96,,',
+    ',,,',
+    'Well Location,Sample Name,Sample Concentration,Sample Type',
+    'A01,sample01,,NTC',
+    'B01,sample02,,Unknown'
   ];
 
   my $file = wtsi_clarity::genotyping::fluidigm_analysis->new(
