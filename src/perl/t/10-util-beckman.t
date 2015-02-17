@@ -39,9 +39,9 @@ use_ok('wtsi_clarity::util::beckman', 'can use beckman');
                       },
                     ];
   my $expected_result = [
-          'Sample, Name, Source EAN13, Source Barcode, Source Stock, Source Well, Destination EAN13, Destination Barcode, Destination Well, Source Volume',
-          '1, 2, 4, g, 5, 6, 7, 8, 9, 10',
-          '2, 3, 4, h, 5, 6, 7, 8, 9, 10'
+          'Sample,Name,Source EAN13,Source Barcode,Source Stock,Source Well,Destination EAN13,Destination Barcode,Destination Well,Source Volume',
+          '1,2,4,g,5,6,7,8,9,10',
+          '2,3,4,h,5,6,7,8,9,10'
         ];
   my $file = $beckman->get_file($some_content);
   is_deeply($file->content, $expected_result, 'get_file returns a file object with the correct content');

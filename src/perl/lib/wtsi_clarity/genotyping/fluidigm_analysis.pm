@@ -114,12 +114,12 @@ has '_file_metadata' => (
 sub _build__file_metadata {
   my $self = shift;
   return [
-    'File Format, '  . $self->file_format  . ', , ',
-    'Sample Plate, ' . $self->sample_plate . ', , ',
-    'Barcode ID, '   . $self->barcode      . ', , ',
-    'Description, '  . $self->description  . ', , ',
-    'Plate Type, '   . $self->plate_type   . ', , ',
-    ' , , , ',
+    'File Format,'  . $self->file_format  . q{,,},
+    'Sample Plate,' . $self->sample_plate . q{,,},
+    'Barcode ID,'   . $self->barcode      . q{,,},
+    'Description,'  . $self->description  . q{,,},
+    'Plate Type,'   . $self->plate_type   . q{,,},
+    q{,,,},
   ];
 }
 
