@@ -27,9 +27,9 @@ use_ok('wtsi_clarity::util::csv::factories::generic_csv_writer', 'can use csv::f
                       },
                     ];
   my $expected_result = [
-          'a, b, c',
-          '1, 2, 4',
-          '1, 4, 2',
+          'a,b,c',
+          '1,2,4',
+          '1,4,2',
         ];
   my $file = $csv_writer->build(headers=>$headers, data=> $some_content);
   is_deeply($file->content, $expected_result, 'build returns a file object with the correct content');
