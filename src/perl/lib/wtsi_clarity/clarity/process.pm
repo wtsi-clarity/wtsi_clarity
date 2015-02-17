@@ -1,12 +1,18 @@
-package wtsi_clarity::util::roles::clarity_process_io;
+package wtsi_clarity::clarity::process;
 
-use Moose::Role;
-use Carp;
+use Moose;
 use Readonly;
+use Carp;
+use List::MoreUtils qw/uniq/;
+use wtsi_clarity::util::types;
 
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+Readonly::Scalar my $PARENT_PROCESS_PATH => q( /prc:process/input-output-map/input/parent-process/@uri );
+Readonly::Scalar my $PROCESS_TYPE => q( /prc:process/type );
+Readonly::Scalar my $PROCESS_URI_PATH => q(/prc:processes/process/@uri);
+Readonly::Scalar my $INPUT_ARTIFACT_URIS_PATH => q{/prc:process/input-output-map/input/@uri};
 Readonly::Scalar my $INPUT_OUTPUT_PATH   => q{prc:process/input-output-map};
 Readonly::Scalar my $ALL_ANALYTES        => q(prc:process/input-output-map/output[@output-type!="ResultFile"]/@uri | prc:process/input-output-map/input/@uri);
 Readonly::Scalar my $ARTIFACT_BY_LIMSID  => q{art:details/art:artifact[@limsid="%s"]};
@@ -15,6 +21,126 @@ Readonly::Scalar my $INPUT_LIMSID        => q{./input/@limsid};
 Readonly::Scalar my $OUTPUT_LIMSID       => q{./output[@output-type!="ResultFile"]/@limsid};
 Readonly::Scalar my $ALL_CONTAINERS      => q{art:details/art:artifact/location/container/@uri};
 ## use critic
+
+has '_parent' => (
+  is => 'ro',
+  isa => 'HasRequestAndConfig',
+  required => 1,
+  init_arg => 'parent',
+);
+
+has '_config' => (
+  is => 'ro',
+  isa => 'wtsi_clarity::util::config',
+  required => 0,
+  init_arg => undef,
+  lazy_build => 1,
+);
+sub _build__config {
+  my $self = shift;
+  return $self->_parent->config;
+}
+
+has '_request' => (
+  is => 'ro',
+  isa => 'wtsi_clarity::util::request',
+  required => 0,
+  init_arg => undef,
+  lazy_build => 1,
+);
+sub _build__request {
+  my $self = shift;
+  return $self->_parent->request;
+}
+
+has 'xml' => (
+  is => 'rw',
+  isa => 'XML::LibXML::Document',
+  required => 1,
+  init_arg => 'xml',
+  handles => {
+    find               => 'find',
+    findvalue          => 'findvalue',
+    findnodes          => 'findnodes',
+    toString           => 'toString',
+    getDocumentElement => 'getDocumentElement',
+    createElementNS    => 'createElementNS',
+  },
+);
+
+has 'input_artifacts' => (
+  isa             => 'XML::LibXML::Document',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build_input_artifacts {
+  my $self = shift;
+
+  my $input_node_list = $self->findnodes($INPUT_ARTIFACT_URIS_PATH);
+  my @input_uris = uniq(map { $_->getValue } $input_node_list->get_nodelist);
+
+  return $self->_request->batch_retrieve('artifacts', \@input_uris);
+}
+
+sub find_parent {
+  my ($self, $needle_process_name, $child_process_url) = @_;
+
+  my $parent_processes = $self->_find_parent($needle_process_name, $child_process_url);
+
+  return $parent_processes;
+}
+
+sub _find_parent {
+  my ($self, $needle_process_name, $process_url, $found_processes) = @_;
+
+  if (!defined $found_processes) {
+    $found_processes = {};
+  }
+
+  my $current_process = $self->_parent->fetch_and_parse($process_url);
+
+  my $current_process_name = $current_process->findvalue($PROCESS_TYPE);
+
+  if ($current_process_name eq $needle_process_name) {
+    $found_processes->{$process_url} = q{};
+  } else {
+    my $parent_uris = $current_process->findnodes($PARENT_PROCESS_PATH);
+
+    if ($parent_uris->size() > 0) {
+      my @uniq_uris = uniq(map { $_->getValue() } $parent_uris->get_nodelist());
+
+      foreach my $uri (@uniq_uris) {
+        $self->_find_parent($needle_process_name, $uri, $found_processes);
+      }
+    }
+  }
+
+  my @found_processes = keys %{$found_processes};
+
+  return \@found_processes;
+}
+
+sub find_by_artifactlimsid_and_name {
+  my ($self, $artifact_limsid, $process_name) = @_;
+
+  my $uri = $self->_config->clarity_api->{'base_uri'} . '/processes/?inputartifactlimsid=' . $artifact_limsid;
+  my $process_list_xml = $self->_parent->fetch_and_parse($uri);
+
+  my @processes = $process_list_xml->findnodes($PROCESS_URI_PATH)->get_nodelist();
+
+  foreach my $process_uri (@processes) {
+    my $process_xml = $self->_parent->fetch_and_parse($process_uri->getValue());
+
+    my $process_type = $process_xml->findvalue($PROCESS_TYPE);
+
+    if ($process_type eq $process_name) {
+      return $process_xml;
+    }
+  }
+
+  return 0;
+}
 
 has 'io_map' => (
   is => 'ro',
@@ -116,7 +242,7 @@ sub _build__input_output_map {
       [$_->findvalue($INPUT_LIMSID), $_->findvalue($OUTPUT_LIMSID)]
     } grep {
       $_->findvalue($OUTPUT_LIMSID)
-    } $self->process_doc->findnodes($INPUT_OUTPUT_PATH)->get_nodelist;
+    } $self->xml->findnodes($INPUT_OUTPUT_PATH)->get_nodelist;
 
   return \@input_output_map;
 }
@@ -130,7 +256,7 @@ has '_containers' => (
 sub _build__containers {
   my $self = shift;
   my @all_container_uris = $self->_analytes->findnodes($ALL_CONTAINERS)->to_literal_list;
-  return $self->request->batch_retrieve('containers', \@all_container_uris);
+  return $self->_request->batch_retrieve('containers', \@all_container_uris);
 }
 
 has '_analytes' => (
@@ -142,7 +268,7 @@ has '_analytes' => (
 sub _build__analytes {
   my $self = shift;
   my @all_analyte_uris = $self->findnodes($ALL_ANALYTES)->to_literal_list;
-  return $self->request->batch_retrieve('artifacts', \@all_analyte_uris);
+  return $self->_request->batch_retrieve('artifacts', \@all_analyte_uris);
 }
 
 1;
@@ -151,19 +277,26 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::util::roles::clarity_process_io
+wtsi_clarity::clarity::process
 
 =head1 SYNOPSIS
 
-  with 'wtsi_clarity::util::roles::clarity_process_io';
-
-  $self->io_map();
+  use wtsi_clarity::clarity::process;
+  wtsi_clarity::clarity::process->new(parent => $self, xml => $xml_doc);
 
 =head1 DESCRIPTION
 
-  Role that describes the inputs and outputs of a Clarity process in a simple.
+  Class to wrap a process XML from Clarity with some convinient attributes and methods
 
 =head1 SUBROUTINES/METHODS
+
+=head2 find_parent
+  Requires the name of the parent process being searched for, and the URL of the child process.
+  Keeps recursing up parent processes until it finds the one being searched for
+
+=head2 find_by_artifactlimsid_and_name
+  Takes a artifact limsid and a process name. Tries to find the specifed process xml in that artifact's
+  history (using the ?inputartifactlimsid URL parameter)
 
 =head2 io_map
   Returns an array of hashes which describe the inputs/outputs of a process
@@ -192,11 +325,15 @@ wtsi_clarity::util::roles::clarity_process_io
 
 =over
 
-=item Moose::Role;
+=item Moose::Role
 
-=item Carp;
+=item Readonly
 
-=item Readonly;
+=item Carp
+
+=item List::MoreUtils
+
+=item use wtsi_clarity::util::types
 
 =back
 
@@ -206,7 +343,7 @@ Chris Smith E<lt>cs24@sanger.ac.ukE<gt>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (C) 2014 GRL by Marina Gourtovaia
+Copyright (C) 2015 GRL
 
 This file is part of wtsi_clarity project.
 

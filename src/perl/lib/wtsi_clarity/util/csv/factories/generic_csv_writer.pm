@@ -16,11 +16,11 @@ sub build {
 
   my $text_data = [];
   my $c_headers = Mojo::Collection->new(@{$headers});
-  my $s_headers = $c_headers->join(', ');
+  my $s_headers = $c_headers->join(q{,});
   push @{$text_data},"$s_headers"; # quote are needed to stringify
 
   foreach my $datum (@{$csv_data}){
-    my $c_datum = $c_headers->map(sub { $datum->{$_} })->join(', ');
+    my $c_datum = $c_headers->map(sub { $datum->{$_} })->join(q{,});
     push @{$text_data},"$c_datum"; # quote are needed to stringify
   }
 

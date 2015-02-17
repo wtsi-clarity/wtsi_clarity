@@ -94,15 +94,15 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
                                                 },
                                'labels' => [
                                              {
-                                               'template' => 'plate',
+                                               'template' => 'clarity_plate',
                                                'plate' => {
                                                             'ean13' => '5260271204834',
                                                             'label_text' => {
-                                                                              'text5' => 'SM-271204S',
-                                                                              'role' => 'Stock Plate',
-                                                                              'text6' => 'QKJMF',
-                                                                            },
-                                                            'sanger' => '21-May-2014 '
+                                                                              'date_user' => '21-May-2014 ',
+                                                                              'purpose'   => 'Stock Plate',
+                                                                              'num'       => 'SM-271204S',
+                                                                              'signature' => 'QKJMF'
+                                                                            }
                                                           }
                                              },
                                            ]
@@ -148,27 +148,27 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
                                                 },
                                'labels' => [
                                              {
-                                               'template' => 'plate',
+                                               'template' => 'clarity_plate',
                                                'plate' => {
                                                             'ean13' => '5260276710705',
                                                             'label_text' => {
-                                                                              'text5' => 'SM-276710F',
-                                                                              'role'  => 'Pico Assay A',
-                                                                              'text6' => 'HP2MX'
-                                                                            },
-                                                            'sanger' => '21-May-2014 D. Jones'
+                                                                              'date_user' => '21-May-2014 D. Jones',
+                                                                              'purpose'   => 'Pico Assay A',
+                                                                              'num'       => 'SM-276710F',
+                                                                              'signature' => 'HP2MX'
+                                                                            }
                                                           }
                                              },
                                              {
-                                               'template' => 'plate',
+                                               'template' => 'clarity_plate',
                                                'plate' => {
                                                             'ean13' => '5260276711719',
                                                             'label_text' => {
-                                                                              'text5' => 'SM-276711G',
-                                                                              'role'  => 'Pico Assay',
-                                                                              'text6' => 'HP2MX'
-                                                                            },
-                                                            'sanger' => '21-May-2014 D. Jones'
+                                                                              'date_user' => '21-May-2014 D. Jones',
+                                                                              'purpose'   => 'Pico Assay',
+                                                                              'num'       => 'SM-276711G',
+                                                                              'signature' => 'HP2MX'
+                                                                            }
                                                           }
                                              }
                                            ]
@@ -186,7 +186,7 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
   lives_ok {$l->_set_container_data} 'container data set';
 
   # increment_purpose flag is false
-  $label->{'label_printer'}->{'labels'}->[0]->{'plate'}->{'label_text'}->{'role'} = 'Pico Assay';
+  $label->{'label_printer'}->{'labels'}->[0]->{'plate'}->{'label_text'}->{'purpose'} = 'Pico Assay';
   is_deeply($l->_generate_labels(), $label, 'purpose is not incremented in the label');
 
   is($l->_barcode_prefix, 'SM', 'default barcode prefix');

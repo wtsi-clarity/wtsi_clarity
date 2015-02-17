@@ -11,10 +11,8 @@ our $VERSION = '0.0';
 
 extends 'wtsi_clarity::epp';
 
-with 'wtsi_clarity::util::roles::clarity_process_io';
-
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $PROCESS_ID_PATH                        => q(/prc:process/@limsid);
+Readonly::Scalar my $PROCESS_ID_PATH => q(/prc:process/@limsid);
 ## use critic
 
 has 'analysis_file' => (
@@ -45,8 +43,8 @@ sub _input_table_data {
 
   my $input_table_data = ();
 
-  $input_table_data->{'Plate limsid'} = $self->plate_io_map->[0]->{'source_plate'};
-  $input_table_data->{'Plate barcode'} = $self->plate_io_map_barcodes->[0]->{'source_plate'};
+  $input_table_data->{'Plate limsid'} = $self->process_doc->plate_io_map->[0]->{'source_plate'};
+  $input_table_data->{'Plate barcode'} = $self->process_doc->plate_io_map_barcodes->[0]->{'source_plate'};
 
   return $input_table_data;
 }
@@ -56,7 +54,7 @@ sub _plate_table_data {
 
   my $plate_table_data = ();
 
-  foreach my $io_element (@{$self->io_map}) {
+  foreach my $io_element (@{$self->process_doc->io_map}) {
     my $sample_dao = wtsi_clarity::dao::sample_dao->new( lims_id => $io_element->{'source_well_sample_limsid'});
     my $study_dao = wtsi_clarity::dao::study_dao->new( lims_id => $sample_dao->project_limsid);
 

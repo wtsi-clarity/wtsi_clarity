@@ -42,10 +42,10 @@ my $class = Module::Build->subclass(code => <<'EOF');
     $self->SUPER::ACTION_installdeps;
 
     print "Fetching WTSI::DNAP::Utilities...\n";
-    `cpanm https://github.com/wtsi-npg/perl-dnap-utilities/releases/download/0.4.1/WTSI-DNAP-Utilities-0.4.1.tar.gz`;
+    `cpanm -n --no-lwp https://github.com/wtsi-npg/perl-dnap-utilities/releases/download/0.4.1/WTSI-DNAP-Utilities-0.4.1.tar.gz`;
 
     print "Fetching WTSI::DNAP::RabbitMQ...\n";
-    `cpanm -n https://github.com/wtsi-npg/perl-rabbit-wrap/releases/download/0.3.0/WTSI-DNAP-RabbitMQ-0.3.0.tar.gz`;
+    `cpanm -n --no-lwp https://github.com/wtsi-npg/perl-rabbit-wrap/releases/download/0.3.0/WTSI-DNAP-RabbitMQ-0.3.0.tar.gz`;
 
     return;
   }
@@ -130,6 +130,9 @@ my $builder = $class->new(
                 'XML::SemanticDiff'               => 0,
                 'URI::Escape'                     => 0,
                 'POSIX'                           => 0,
+                'WTSI::DNAP::Utilities'           => '>= 0.4.1',
+                'WTSI::DNAP::RabbitMQ'            => '>= 0.3.0',
+
           },
 
           'dist'         => { COMPRESS => 'gzip', SUFFIX => 'gz', },

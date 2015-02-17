@@ -27,6 +27,8 @@ sub create {
     $csv_factory = wtsi_clarity::util::csv::factories::generic_csv_reader->new();
   } elsif ( $csv_type eq 'calliper_reader') {
     $csv_factory = wtsi_clarity::util::csv::factories::calliper_csv_reader->new();
+  } elsif ( $csv_type eq 'fluidigm_writer') {
+    $csv_factory = wtsi_clarity::util::csv::factories::generic_csv_writer->new();
   } else {
     croak "CSV file of type $csv_type cannot be created";
   }

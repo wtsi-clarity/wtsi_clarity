@@ -12,8 +12,6 @@ use Try::Tiny;
 use wtsi_clarity::util::config;
 use wtsi_clarity::process_checks::bed_verifier;
 
-with 'wtsi_clarity::util::roles::clarity_process_io';
-
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)

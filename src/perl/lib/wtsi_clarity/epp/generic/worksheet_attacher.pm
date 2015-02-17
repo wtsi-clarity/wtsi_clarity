@@ -485,12 +485,12 @@ sub _get_containers_data {
   my $oi_map = $self->_get_oi_map($previous_processes);
 
   my $all_data = {};
-  my $process_id  = $self->find_elements_first_value($self->process_doc, $PROCESS_ID_PATH);
+  my $process_id  = $self->find_elements_first_value($self->process_doc->xml, $PROCESS_ID_PATH);
   $process_id =~ s/\-//xms;
   $all_data->{ q{process_id} } = $process_id;
 
-  $all_data->{ q{user_first_name} } = $self->find_elements_first_value($self->process_doc, $TECHNICIAN_FIRSTNAME_PATH);
-  $all_data->{ q{user_last_name}  } = $self->find_elements_first_value($self->process_doc, $TECHNICIAN_LASTNAME_PATH);
+  $all_data->{ q{user_first_name} } = $self->find_elements_first_value($self->process_doc->xml, $TECHNICIAN_FIRSTNAME_PATH);
+  $all_data->{ q{user_last_name}  } = $self->find_elements_first_value($self->process_doc->xml, $TECHNICIAN_LASTNAME_PATH);
 
   while (my ($uri, $out_artifact) = each %{$artifacts_tmp} ) {
     if ($uri =~ /(.*)[?].*/xms){
