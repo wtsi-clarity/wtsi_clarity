@@ -23,7 +23,7 @@ has 'sample_plate' => (
 
 has 'barcode' => (
   is       => 'ro',
-  isa      => 'Int',
+  isa      => 'Int|Str',
   required => 1,
 );
 
