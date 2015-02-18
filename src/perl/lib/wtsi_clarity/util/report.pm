@@ -45,6 +45,7 @@ has 'headers' => (
                 "Genotyping Infinium Barcode",
                 "Genotyping Barcode",
                 "Genotyping Well Cohort",
+                "Proceed"
                 # "Country of Origin",
                 # "Geographical Region",
                 # "Ethnicity",
