@@ -1,0 +1,38 @@
+<?xml version="1.0" standalone="yes"?>
+<con:container xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4520" limsid="27-4520">
+    <name>Plate 1</name>
+    <type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containertypes/12" name="Fluidigm 96.96 IFC"/>
+    <occupied-wells>10</occupied-wells>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-194727" limsid="2-194727">
+        <value>A:2</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-194730" limsid="2-194730">
+        <value>K:1</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-194724" limsid="2-194724">
+        <value>O:1</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-194729" limsid="2-194729">
+        <value>M:1</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-194733" limsid="2-194733">
+        <value>I:1</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-194731" limsid="2-194731">
+        <value>C:2</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-194725" limsid="2-194725">
+        <value>C:1</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-194732" limsid="2-194732">
+        <value>A:1</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-194726" limsid="2-194726">
+        <value>E:1</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-194728" limsid="2-194728">
+        <value>G:1</value>
+    </placement>
+    <udf:field type="String" name="WTSI Container Purpose Name">96.96 IFC</udf:field>
+    <state>Populated</state>
+</con:container>
