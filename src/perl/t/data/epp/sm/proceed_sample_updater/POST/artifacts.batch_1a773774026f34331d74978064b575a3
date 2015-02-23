@@ -1,0 +1,98 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-112502?state=52794" limsid="2-112502">
+        <name>1</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-23258" limsid="24-23258"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2598" limsid="27-2598"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1291" limsid="DEA103A1291"/>
+        <udf:field type="Numeric" name="Volume">11.5704</udf:field>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Working Dilution (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/255"/>
+            <workflow-stage status="COMPLETE" name="Cherrypick (SM)" uri="http://testserver.com:1234/here/configuration/workflows/23/stages/653"/>
+            <workflow-stage status="COMPLETE" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/23/stages/654"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-112510?state=52802" limsid="2-112510">
+        <name>9</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-23258" limsid="24-23258"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2598" limsid="27-2598"/>
+            <value>A:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1299" limsid="DEA103A1299"/>
+        <udf:field type="Numeric" name="Volume">25.6726</udf:field>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Working Dilution (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/255"/>
+            <workflow-stage status="COMPLETE" name="Cherrypick (SM)" uri="http://testserver.com:1234/here/configuration/workflows/23/stages/653"/>
+            <workflow-stage status="COMPLETE" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/23/stages/654"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-112526?state=52818" limsid="2-112526">
+        <name>25</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-23258" limsid="24-23258"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-2598" limsid="27-2598"/>
+            <value>A:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1315" limsid="DEA103A1315"/>
+        <udf:field type="Numeric" name="Volume">18.8477</udf:field>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Working Dilution (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/255"/>
+            <workflow-stage status="COMPLETE" name="Cherrypick (SM)" uri="http://testserver.com:1234/here/configuration/workflows/23/stages/653"/>
+            <workflow-stage status="COMPLETE" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/23/stages/654"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-133488?state=63342" limsid="2-133488">
+        <name>9</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-24818" limsid="24-24818"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-3397" limsid="27-3397"/>
+            <value>A:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1774" limsid="DEA103A1774"/>
+        <udf:field type="Numeric" name="Volume">25.6726</udf:field>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Working Dilution (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/255"/>
+            <workflow-stage status="COMPLETE" name="Cherrypick (SM)" uri="http://testserver.com:1234/here/configuration/workflows/23/stages/653"/>
+            <workflow-stage status="COMPLETE" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/23/stages/654"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-133496?state=63350" limsid="2-133496">
+        <name>17</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-24818" limsid="24-24818"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-3397" limsid="27-3397"/>
+            <value>A:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A1782" limsid="DEA103A1782"/>
+        <udf:field type="Numeric" name="Volume">14.844</udf:field>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Working Dilution (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/255"/>
+            <workflow-stage status="COMPLETE" name="Cherrypick (SM)" uri="http://testserver.com:1234/here/configuration/workflows/23/stages/653"/>
+            <workflow-stage status="COMPLETE" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/23/stages/654"/>
+        </workflow-stages>
+    </art:artifact>
+</art:details>
