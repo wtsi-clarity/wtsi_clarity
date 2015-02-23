@@ -30,6 +30,14 @@ has 'step_name' => (
   required   => 1,
 );
 
+# Optional parameters
+has 'outputs' => (
+  isa      => 'Bool',
+  is       => 'ro',
+  required => 0,
+  default  => 1
+);
+
 # Main method
 override 'run' => sub {
   my $self = shift;
