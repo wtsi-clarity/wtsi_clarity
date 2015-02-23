@@ -8,6 +8,7 @@ use Test::Exception;
 use XML::LibXML;
 
 use_ok('wtsi_clarity::dao::flgen_plate_dao');
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 
 {
   my $lims_id = '27-3314';

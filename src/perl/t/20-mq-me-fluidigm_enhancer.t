@@ -7,6 +7,8 @@ use Test::MockObject::Extends;
 
 use_ok('wtsi_clarity::mq::me::fluidigm_enhancer');
 
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+
 {
   my $fe = wtsi_clarity::mq::me::fluidigm_enhancer->new(
     process_url => 'http://testserver.com:1234/processes/999',
@@ -23,8 +25,8 @@ use_ok('wtsi_clarity::mq::me::fluidigm_enhancer');
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
   my $fe = wtsi_clarity::mq::me::fluidigm_enhancer->new(
-    process_url => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-27282',
-    step_url    => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/steps/24-27282',
+    process_url => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/processes/24-27282',
+    step_url    => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/steps/24-27282',
     timestamp   => '2014-11-25 12:06:27',
   );
 

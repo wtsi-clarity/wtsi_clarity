@@ -8,6 +8,8 @@ use XML::LibXML;
 
 use_ok('wtsi_clarity::dao::containertypes_dao');
 
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+
 {
   my $lims_id = '12';
   my $containertypes_dao = wtsi_clarity::dao::containertypes_dao->new(lims_id => $lims_id);
