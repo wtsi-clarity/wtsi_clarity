@@ -55,12 +55,12 @@ override 'run' => sub {
 
   if ($self->copy_on_target) {
     # in terms of wells, one well (e.g. A1) will be transfered to several wells (hence the 'copy') on the output plates
-    $doc = $self->_stamp_with_copy($doc);
+    $doc = $self->_stamping($doc, \&_stamp_with_copy, \&_direct_well_calculation);
   } elsif ($self->group) {
-    $doc = $self->_group_inputs_by_container_stamp($doc);
+    $doc = $self->_stamping($doc, \&_group_inputs_by_container_stamp);
   } else {
     # in terms of wells, one well (e.g. A1) will be transfered to only one well on the output plate
-    $doc = $self->_direct_stamp($doc);
+    $doc = $self->_stamping($doc, \&_direct_stamp, \&_direct_well_calculation);
   }
 
   $self->request->post($self->step_url . '/placements', $doc->toString);
@@ -386,83 +386,20 @@ sub _create_placements_doc {
   return XML::LibXML->load_xml(string => $pXML);
 }
 
-sub _direct_stamp {
-  my ($self, $doc) = @_;
+sub _stamping {
+  my ($self, $doc, $stamping_callback, $well_callback) = @_;
 
-  my @placements = $doc->findnodes(q{ /stp:placements/output-placements });
-  if (!@placements) {
-    croak 'Placements element not found';
-  }
-
-  foreach my $input_container ( keys %{$self->_analytes}) {
-
-    foreach my $input_analyte ( keys %{$self->_analytes->{$input_container} } ) {
-      if ( $input_analyte eq 'output_containers' || $input_analyte eq 'doc' ) {
-        next;
-      }
-
-      my $well = $self->_analytes->{$input_container}->{$input_analyte}->{'well'};
-
-      my $container_index = 0;
-      foreach my $output_container ( @{$self->_analytes->{$input_container}->{'output_containers'}} ) {
-        my $uri = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'}->[$container_index];
-        if (!$uri) {
-          croak qq[No target analyte uri for container index $container_index];
-        }
-
-        my $placement = $self->_create_placement($doc, $uri, $output_container, $well);
-        $placements[0]->addChild($placement);
-
-        $container_index++;
-      }
-    }
-  }
-
-  return $doc;
-}
-
-sub _stamp_with_copy {
-  my ($self, $doc) = @_;
-
-  my @placements = $doc->findnodes(q{ /stp:placements/output-placements });
-  if (!@placements) {
-    croak 'Placements element not found';
-  }
-
-  foreach my $input_container ( keys %{$self->_analytes}) {
-
-    foreach my $input_analyte ( keys %{$self->_analytes->{$input_container} } ) {
-      if ( $input_analyte eq 'output_containers' || $input_analyte eq 'doc' ) {
-        next;
-      }
-
-      my ($destination_well_1, $destination_well_2) = $self->calculate_destination_wells($self->_analytes->{$input_container}->{$input_analyte}->{'well'});
-      my $output_container = @{$self->_analytes->{$input_container}->{'output_containers'}}[0]; # Always just 1 here
-
-      my $output_artifact_uris = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'};
-
-      my $placement = $self->_create_placement($doc, $output_artifact_uris->[0], $output_container, $destination_well_1);
-      $placements[0]->addChild($placement);
-
-      $placement = $self->_create_placement($doc, $output_artifact_uris->[1], $output_container, $destination_well_2);
-      $placements[0]->addChild($placement);
-    }
-  }
-
-  return $doc;
-}
-
-sub _group_inputs_by_container_stamp {
-  my ($self, $doc) = @_;
   my @wells = (); # Ordered list of wells
-
-  ##no critic ValuesAndExpressions::ProhibitMagicNumbers
-  for (1..12) {
-    foreach my $column ('A'..'H') {
-      push @wells, $column . ':' . $_;
+  my $well;
+  if (!defined($well_callback)) {
+    ##no critic ValuesAndExpressions::ProhibitMagicNumbers
+    for (1..12) {
+      foreach my $column ('A'..'H') {
+        push @wells, $column . ':' . $_;
+      }
     }
+    ##use critic
   }
-  ##use critic
 
   my @placements = $doc->findnodes(q{ /stp:placements/output-placements });
 
@@ -475,14 +412,68 @@ sub _group_inputs_by_container_stamp {
       if ( $input_analyte eq 'output_containers' || $input_analyte eq 'doc' ) {
         next;
       }
-
-      my $output_container = @{$self->_analytes->{$input_container}->{'output_containers'}}[0];
-      my $output_artifact_uri = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'}[0];
-      my $placement = $self->_create_placement($doc, $output_artifact_uri, $output_container, shift @wells);
-
-      $placements[0]->addChild($placement);
+      if (defined($well_callback)) {
+        $well = $well_callback->($self, $input_container, $input_analyte);
+      } else {
+        $well = shift @wells;
+      }
+      $stamping_callback->($self, $doc, $input_container, $input_analyte, $well, @placements);
     }
   }
+
+  return $doc;
+}
+
+sub _direct_well_calculation {
+  my ($self, $input_container, $input_analyte) = @_;
+
+  return $self->_analytes->{$input_container}->{$input_analyte}->{'well'};
+}
+
+sub _direct_stamp {
+  my ($self, $doc, $input_container, $input_analyte, $well, @placements) = @_;
+
+  my $container_index = 0;
+  foreach my $output_container ( @{$self->_analytes->{$input_container}->{'output_containers'}} ) {
+    my $uri = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'}->[$container_index];
+    if (!$uri) {
+      croak qq[No target analyte uri for container index $container_index];
+    }
+
+    my $placement = $self->_create_placement($doc, $uri, $output_container, $well);
+    $placements[0]->addChild($placement);
+
+    $container_index++;
+  }
+
+  return $doc;
+}
+
+sub _stamp_with_copy {
+  my ($self, $doc, $input_container, $input_analyte, $well, @placements) = @_;
+
+  my ($destination_well_1, $destination_well_2) = $self->calculate_destination_wells($well);
+  my $output_container = @{$self->_analytes->{$input_container}->{'output_containers'}}[0]; # Always just 1 here
+
+  my $output_artifact_uris = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'};
+
+  my $placement = $self->_create_placement($doc, $output_artifact_uris->[0], $output_container, $destination_well_1);
+  $placements[0]->addChild($placement);
+
+  $placement = $self->_create_placement($doc, $output_artifact_uris->[1], $output_container, $destination_well_2);
+  $placements[0]->addChild($placement);
+
+  return $doc;
+}
+
+sub _group_inputs_by_container_stamp {
+  my ($self, $doc, $input_container, $input_analyte, $well, @placements) = @_;
+
+  my $output_container = @{$self->_analytes->{$input_container}->{'output_containers'}}[0];
+  my $output_artifact_uri = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'}[0];
+  my $placement = $self->_create_placement($doc, $output_artifact_uri, $output_container, $well);
+
+  $placements[0]->addChild($placement);
 
   return $doc;
 }
