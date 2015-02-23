@@ -35,7 +35,7 @@ has 'outputs' => (
   isa      => 'Bool',
   is       => 'ro',
   required => 0,
-  default  => 1
+  default  => 1,
 );
 
 # Main method
@@ -106,6 +106,7 @@ wtsi_clarity::epp::generic::bed_verifier
   wtsi_clarity::epp:generic::bed_verifier->new(
     process_url => 'http://my.com/processes/3345',
     step_name   => 'working_dilution',
+    outputs     => 0                   # Will not check output beds
   )->run();
 
 =head1 DESCRIPTION
