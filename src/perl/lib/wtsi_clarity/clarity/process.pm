@@ -3,7 +3,9 @@ package wtsi_clarity::clarity::process;
 use Moose;
 use Readonly;
 use Carp;
+use List::Util qw/reduce/;
 use List::MoreUtils qw/uniq/;
+use URI::Escape;
 use wtsi_clarity::util::types;
 
 our $VERSION = '0.0';
@@ -11,7 +13,7 @@ our $VERSION = '0.0';
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $PARENT_PROCESS_PATH => q( /prc:process/input-output-map/input/parent-process/@uri );
 Readonly::Scalar my $PROCESS_TYPE => q( /prc:process/type );
-Readonly::Scalar my $PROCESS_URI_PATH => q(/prc:processes/process/@uri);
+Readonly::Scalar my $PROCESS_LIMSID_PATH => q(/prc:processes/process/@limsid);
 Readonly::Scalar my $INPUT_ARTIFACT_URIS_PATH => q{/prc:process/input-output-map/input/@uri};
 Readonly::Scalar my $INPUT_OUTPUT_PATH   => q{prc:process/input-output-map};
 Readonly::Scalar my $ALL_ANALYTES        => q(prc:process/input-output-map/output[@output-type!="ResultFile"]/@uri | prc:process/input-output-map/input/@uri);
@@ -124,22 +126,33 @@ sub _find_parent {
 sub find_by_artifactlimsid_and_name {
   my ($self, $artifact_limsid, $process_name) = @_;
 
-  my $uri = $self->_config->clarity_api->{'base_uri'} . '/processes/?inputartifactlimsid=' . $artifact_limsid;
+  my $parameters = 'inputartifactlimsid=' . $artifact_limsid . '&type=' . uri_escape($process_name);
+  my $uri = $self->_config->clarity_api->{'base_uri'} . '/processes?' . $parameters;
   my $process_list_xml = $self->_parent->fetch_and_parse($uri);
 
-  my @processes = $process_list_xml->findnodes($PROCESS_URI_PATH)->get_nodelist();
+  my @processes = $process_list_xml->findnodes($PROCESS_LIMSID_PATH)->to_literal_list();
 
-  foreach my $process_uri (@processes) {
-    my $process_xml = $self->_parent->fetch_and_parse($process_uri->getValue());
-
-    my $process_type = $process_xml->findvalue($PROCESS_TYPE);
-
-    if ($process_type eq $process_name) {
-      return $process_xml;
-    }
+  if (scalar @processes == 0) {
+    return 0;
   }
 
-  return 0;
+  my $process_limsid = $self->_find_highest_limsid(\@processes);
+  my $process_uri = $self->_config->clarity_api->{'base_uri'} . '/processes/' . $process_limsid;
+
+  return $self->_parent->fetch_and_parse($process_uri);
+}
+
+sub _find_highest_limsid {
+  my ($self, $limsids) = @_;
+
+  my $highest_limsid = reduce {
+    my ($prefix_a, $id_a) = split /-/sxm, $a;
+    my ($prefix_b, $id_b) = split /-/sxm, $b;
+
+    $id_a > $id_b ? $a : $b;
+  } @{$limsids};
+
+  return $highest_limsid;
 }
 
 has 'io_map' => (
@@ -295,8 +308,9 @@ wtsi_clarity::clarity::process
   Keeps recursing up parent processes until it finds the one being searched for
 
 =head2 find_by_artifactlimsid_and_name
-  Takes a artifact limsid and a process name. Tries to find the specifed process xml in that artifact's
-  history (using the ?inputartifactlimsid URL parameter)
+  Takes an artifact limsid and a process name. Tries to find the specifed process xml in that artifact's
+  history (using the ?inputartifactlimsid URL parameter). If there are multiple processes, the latest one
+  will be returned i.e. the one with the highest limsid. Returns 0 if no processes are found.
 
 =head2 io_map
   Returns an array of hashes which describe the inputs/outputs of a process
@@ -331,7 +345,11 @@ wtsi_clarity::clarity::process
 
 =item Carp
 
+=item List::Util
+
 =item List::MoreUtils
+
+=item URI::Escape
 
 =item use wtsi_clarity::util::types
 
