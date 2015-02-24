@@ -1,5 +1,10 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.67
+  - New message enhancer for Fluidigm
+  - When searching for previous processes, will now find latest one
+  - New bed verification option for when there are only inputs
+
 Release 0.66
   - Make Fluidigm Analysis file generator a little more robost (barcode can also be a String)
   - Fix QC report's concentration result
