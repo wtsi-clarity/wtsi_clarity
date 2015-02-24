@@ -94,13 +94,26 @@ sub _plate_mapping {
   foreach my $plate (@{$epp->plates}) {
     next if $plate->is_output;
 
+    my %mapping = ();
+    my $output_plates;
     my $plate_name = $plate->plate_name;
+
     $plate_name =~ s/Input/Output/gsm;
 
-    my $output_plates = $self->_find_output_plate($epp, $plate_name);
+    if ($epp->outputs) {
+      $output_plates = $self->_find_output_plate($epp, $plate_name);
 
-    foreach my $output_plate (@{$output_plates}) {
-      push @plate_mapping, { source_plate => $plate->barcode, dest_plate => $output_plate->barcode };
+      foreach my $output_plate (@{$output_plates}) {
+
+        $mapping{'source_plate'} = $plate->barcode;
+        $mapping{'dest_plate'}   = $output_plate->barcode;
+
+        push @plate_mapping, \%mapping;
+      }
+    } else {
+      $mapping{'source_plate'} = $plate->barcode;
+
+      push @plate_mapping, \%mapping;
     }
   }
 
@@ -117,13 +130,35 @@ sub _verify_plate_mapping {
   my ($self, $epp, $plate_mapping) = @_;
 
   foreach my $plate_io (@{$epp->process_doc->plate_io_map_barcodes}) {
-    my $matches = grep { ($_->{'source_plate'} == $plate_io->{'source_plate'} && $_->{'dest_plate'} == $plate_io->{'dest_plate'}) } @{$plate_mapping};
-    if ($matches != 1) {
-      croak "Expected source plate " . $plate_io->{'source_plate'} . " to be paired with destination plate " . $plate_io->{'dest_plate'};
+
+    my $matches = grep { $self->_has_match($epp, $_, $plate_io) } @{$plate_mapping};
+
+    if ($matches == 0) {
+      if ($epp->outputs) {
+        croak "Expected source plate " . $plate_io->{'source_plate'} . " to be paired with destination plate " . $plate_io->{'dest_plate'};
+      } else {
+        croak "Could not find source plate " . $plate_io->{'source_plate'};
+      }
     }
   }
 
   return 1;
+}
+
+sub _has_match {
+  my ($self, $epp, $plate_mapping, $plate_io) = @_;
+
+  if ($plate_mapping->{'source_plate'} == $plate_io->{'source_plate'}) {
+    if (!$epp->outputs) {
+      return 1;
+    }
+
+    if ($plate_mapping->{'dest_plate'} == $plate_io->{'dest_plate'}) {
+      return 1;
+    }
+  }
+
+  return 0;
 }
 
 1;

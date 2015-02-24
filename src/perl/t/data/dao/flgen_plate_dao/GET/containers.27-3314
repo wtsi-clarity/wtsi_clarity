@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<con:container xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3314" limsid="27-3314">
+    <name>8754679423576</name>
+    <type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containertypes/12" name="Fluidigm 96.96 IFC"/>
+    <occupied-wells>96</occupied-wells>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-121338" limsid="2-121338">
+        <value>A:1</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-121415" limsid="2-121415">
+        <value>B:1</value>
+    </placement>
+    <udf:field type="String" name="WTSI Container Purpose Name">96.96 IFC</udf:field>
+    <state>Populated</state>
+</con:container>

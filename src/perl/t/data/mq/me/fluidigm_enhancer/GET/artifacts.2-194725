@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-194725?state=94333" limsid="2-194725">
+    <name>Worksheet</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-27275" limsid="24-27275"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4520" limsid="27-4520"/>
+        <value>C:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A2238" limsid="DEA103A2238"/>
+    <workflow-stages>
+        <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+        <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+        <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+        <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+    </workflow-stages>
+</art:artifact>
