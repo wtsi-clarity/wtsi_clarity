@@ -13,6 +13,8 @@ Readonly::Scalar my $STUDY_USER_URI_PATH      => q{/prj:project/researcher/@uri}
 # Note 'manager' is the closest role we could use. It might change in the future!
 Readonly::Scalar my $STUDY_USER_MANAGER_ROLE  => q{manager};
 
+Readonly::Scalar my $COST_CODE_PATH           => q{/prj:project/udf:field[@name='WTSI Project Cost Code']};
+
 # In the ATTRIBUTES hash: an element's key is the attribute name
 # and the element's value is the XPATH to get the attribute's value
 
@@ -59,13 +61,9 @@ sub _build_study_user_ids {
   my $study_user_uri_nodes = $self->findnodes($STUDY_USER_URI_PATH);
   my @study_user_uris = map { $_->getValue(); } $study_user_uri_nodes->get_nodelist();
 
-  my $study_userids = ();
-  foreach my $study_user_uri (@study_user_uris) {
-    my ($study_userid) = $study_user_uri =~ /researchers\/(\d+)/smx;
-    push @{$study_userids}, $study_userid;
-  }
+  my @study_userids = map { /researchers\/(\d+)/smx } @study_user_uris;
 
-  return $study_userids;
+  return \@study_userids;
 }
 
 has 'manager' => (
@@ -76,21 +74,35 @@ has 'manager' => (
 );
 sub _build_manager {
   my $self = shift;
-  my $users = ();
+  my @users = map { $self->get_user_message($_) } @{$self->study_user_ids};
+  return to_json(\@users);
+}
 
-  foreach my $study_user_id (@{$self->study_user_ids}) {
-    my $study_user_dao = wtsi_clarity::dao::study_user_dao->new( lims_id => $study_user_id);
-    if ($study_user_dao) {
-      my $study_user_data = ();
-      $study_user_data->{'login'} = $study_user_dao->login;
-      $study_user_data->{'email'} = $study_user_dao->email;
-      $study_user_data->{'name'} = $study_user_dao->name;
+has 'cost_code' => (
+  isa => 'Str',
+  is => 'ro',
+  traits => [ 'DoNotSerialize' ],
+  lazy_build => 1,
+);
+sub _build_cost_code {
+  my $self = shift;
+  return $self->findvalue($COST_CODE_PATH);
+}
 
-      push @{$users}, $study_user_data;
-    }
+sub get_user_message {
+  my ($self, $lims_id) = @_;
+  my $study_user = $self->_get_study_user($lims_id);
+
+  return {
+    login => $study_user->login,
+    email => $study_user->email,
+    name => $study_user->name
   }
+}
 
-  return to_json($users);
+sub _get_study_user {
+  my ($self, $lims_id) = @_;
+  return wtsi_clarity::dao::study_user_dao->new(lims_id => $lims_id);
 }
 
 around 'init' => sub {
