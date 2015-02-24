@@ -74,7 +74,7 @@ has 'manager' => (
 );
 sub _build_manager {
   my $self = shift;
-  my @users = map { $self->get_message($_) } @{$self->study_user_ids};
+  my @users = map { $self->get_user_message($_) } @{$self->study_user_ids};
   return to_json(\@users);
 }
 
@@ -89,7 +89,7 @@ sub _build_cost_code {
   return $self->findvalue($COST_CODE_PATH);
 }
 
-sub get_message {
+sub get_user_message {
   my ($self, $lims_id) = @_;
   my $study_user = $self->_get_study_user($lims_id);
 
