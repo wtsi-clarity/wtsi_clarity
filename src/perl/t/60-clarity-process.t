@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use XML::LibXML;
 
-use Test::More tests => 7;
+use Test::More tests => 13;
 use Test::MockObject::Extends;
 
 use wtsi_clarity::epp;
@@ -713,6 +713,56 @@ use_ok 'wtsi_clarity::clarity::process';
   ];
 
   is_deeply($process->plate_io_map_barcodes, $plate_io_map_barcodes, 'Creates the plate io map with barcodes correctly');
+}
+
+# find_by_artifactlimsid_and_name
+{
+  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/clarity/process';
+
+  my $test_dir = 't/data/clarity/process/';
+
+  my $xml = XML::LibXML->load_xml(location => $test_dir . 'process1.xml');
+
+  my $epp = Test::MockObject::Extends->new(
+    wtsi_clarity::epp->new(
+      process_url => 'does not matter'
+    )
+  );
+
+  my $process = wtsi_clarity::clarity::process->new(xml => $xml, parent => $epp);
+
+  my $process_xml = $process->find_by_artifactlimsid_and_name('2-185639', 'Pico DTX (SM)');
+
+  isa_ok($process_xml, 'XML::LibXML::Document', 'Fetches the process XML correctly for input artifact 2-185639');
+  is($process_xml->findvalue('prc:process/type'), 'Pico DTX (SM)', 'The process is of the correct type');
+  is($process_xml->findvalue('prc:process/@limsid'), '24-26697', 'Fetches the process with the higher limsid');
+
+  is($process->find_by_artifactlimsid_and_name('123', 'Nothing'), 0, 'Returns 0 when no processes are found');
+}
+
+# _find_highest_limsid
+{
+  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/clarity/process';
+
+  my $test_dir = 't/data/clarity/process/';
+
+  my $xml = XML::LibXML->load_xml(location => $test_dir . 'process1.xml');
+
+  my $epp = Test::MockObject::Extends->new(
+    wtsi_clarity::epp->new(
+      process_url => 'does not matter'
+    )
+  );
+
+  my $process = wtsi_clarity::clarity::process->new(xml => $xml, parent => $epp);
+
+  my $limsids = ['24-1', '24-2', '24-3', '24-4'];
+  is($process->_find_highest_limsid($limsids), '24-4', 'Finds the highest limsids');
+
+  my $limsids2 = ['24-26692', '24-26697'];
+  is($process->_find_highest_limsid($limsids2), '24-26697', 'Finds the highest limsids');
 }
 
 1;
