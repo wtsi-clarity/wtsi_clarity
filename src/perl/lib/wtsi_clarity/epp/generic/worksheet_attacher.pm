@@ -92,12 +92,12 @@ has 'worksheet_type' => (
   isa => 'Str',
   is => 'ro',
   required => 1,
-  trigger => \&_set_worksheet_type,
+  trigger => \&_set_action_title,
 );
 
-has 'action_title'              => ( isa => 'Str', is => 'rw', );
+has 'action_title' => ( isa => 'Str', is => 'rw', );
 
-sub _set_worksheet_type {
+sub _set_action_title {
   my ($self, $type, $old_type) = @_;
 
   if ($type =~ /fluidigm/xms )
