@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 38;
+use Test::More tests => 39;
 use Test::Exception;
 use DateTime;
 
@@ -60,7 +60,7 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
         minute     => 04,
         second     => 23,
     ),
-  ); 
+  );
   lives_ok {$l->_container} 'got containers';
   my @containers = keys %{$l->_container};
   is (scalar @containers, 1, 'correct number of containers');
@@ -127,7 +127,7 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
      process_url => $base_uri . '/processes/24-97619',
      increment_purpose => 1,
      _date => $dt,
-  ); 
+  );
   lives_ok {$l->_container} 'got containers';
   my @urls = keys %{$l->_container};
   is (scalar @urls, 2, 'correct number of containers');
@@ -205,6 +205,22 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
   lives_ok {$containers = $l->_container;} 'got containers';
   my @urls = keys %{$containers};
   is (scalar @urls, 1, 'correct number of containers');
+}
+
+# signature for when there's only controls e.g. Pico: Run Standard and Control Plate
+{
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/label_creator/no_samples';
+
+  my $label_creator = wtsi_clarity::epp::generic::label_creator->new(
+     process_url => $base_uri . '/processes/24-28536',
+     source_plate => 1,
+  );
+
+  $label_creator->_set_container_data();
+
+  my $container = $label_creator->_container->{'http://testserver.com:1234/here/containers/27-4580'};
+
+  is($container->{'signature'}, q{}, 'Signature is blank when there are no samples');
 }
 
 1;
