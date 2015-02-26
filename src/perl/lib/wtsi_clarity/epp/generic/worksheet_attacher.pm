@@ -243,18 +243,20 @@ sub _get_TECAN_file_content_per_URI {
       my $output_sample_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$sample_volume};
       my $w_string = q{W;};
 
-      my $input_buffer_string  = qq{A;BUFF;;96-TROUGH;$inp_loc_dec;;$buffer_volume};
-      my $output_buffer_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$buffer_volume};
-
       push @sample_output, {
         output_location => $out_loc_dec,
         output          => join "\n", $input_sample_string, $output_sample_string, $w_string,
       };
 
-      push @buffer_output, {
-        output_location => $out_loc_dec,
-        output => join "\n", $input_buffer_string, $output_buffer_string, $w_string,
-      };
+      if ($buffer_volume != 0) {
+        my $input_buffer_string  = qq{A;BUFF;;96-TROUGH;$inp_loc_dec;;$buffer_volume};
+        my $output_buffer_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$buffer_volume};
+
+        push @buffer_output, {
+          output_location => $out_loc_dec,
+          output => join "\n", $input_buffer_string, $output_buffer_string, $w_string,
+        };
+      }
     }
   }
 
