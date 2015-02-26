@@ -108,11 +108,7 @@ sub _build__samples {
 
       if ($artifact_list->size == 0) {
         $sample{'sample_name'} = '[ Empty ]';
-
-        # H12 is always 'NTC', cause that's what the Fluidigm software wants
-        if ($sample{'well_location'} eq 'H12') {
-          $sample{'sample_type'} = $NO_TEMPLATE_CONTROL;
-        }
+        $sample{'sample_type'} = $NO_TEMPLATE_CONTROL; # Empty wells are always 'NTC'
       } elsif ($artifact_list->size == 1) {
         $sample{'sample_name'} = $artifact_list->pop->findvalue($SAMPLE_LIMSID);
       } else {
