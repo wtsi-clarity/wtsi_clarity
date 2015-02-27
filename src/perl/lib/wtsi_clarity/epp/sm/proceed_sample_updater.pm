@@ -3,11 +3,7 @@ package wtsi_clarity::epp::sm::proceed_sample_updater;
 use Moose;
 use Carp;
 use Readonly;
-
-use Data::Dumper;
-
-use wtsi_clarity::util::textfile;
-use wtsi_clarity::util::csv::factories::generic_csv_reader;
+use List::MoreUtils qw/uniq/;
 
 extends 'wtsi_clarity::epp';
 
@@ -24,32 +20,18 @@ Readonly::Scalar my $SAMPLE_URIS_PATH => q(/art:details/art:artifact/sample/@uri
 Readonly::Scalar my $SAMPLE_NODE_PATH => q(/smp:details/smp:sample);
 Readonly::Scalar my $UDF_WTSI_PROCEED_TO_SEQUENCING_NAME => q(WTSI Proceed To Sequencing?);
 Readonly::Scalar my $PROCEED_TO_SEQUENCING_VALUE => q(Yes);
-
-has 'qc_file_name' => (
-  is => 'ro',
-  isa => 'Str',
-  required => 1,
-);
-
-has '_file_path' => (
-  isa        => 'Str',
-  is         => 'ro',
-  required   => 0,
-  lazy_build => 1,
-);
-
-sub _build__file_path {
-  my $self = shift;
-  my $path = join q{/}, $self->config->robot_file_dir->{'proceed'}, $self->qc_file_name;
-  my $ext  = '.csv';
-  return $path . $ext;
-}
+Readonly::Scalar my $PLATE_NAMES_FROM_PROCESS => q{/con:details/con:container/name/text()};
 
 override 'run' => sub {
   my $self= shift;
   super();
 
   my $wells_to_proceed = $self->_plate_and_wells_to_proceed();
+
+  if (!$self->_check_valid_plated_has_been_loaded) {
+    croak q{Not valid plate has been loaded to this step};
+  }
+
   my $placement_uris = $self->_placements_to_mark_proceed($wells_to_proceed);
   my $sample_uris = $self->_sample_uris_to_mark_proceed($placement_uris);
   $self->_update_samples_to_proceed($sample_uris);
@@ -110,6 +92,29 @@ sub _placements_to_mark_proceed {
   return $placements_uris;
 }
 
+sub _check_valid_plated_has_been_loaded {
+  my $self = shift;
+
+  my $valid = 0;
+  my @plates_from_qc = keys $self->_plate_and_wells_to_proceed();
+
+  my $plate_nodes_from_process =
+    $self->_plate_and_wells_from_process()->findnodes($PLATE_NAMES_FROM_PROCESS);
+  my @plates_from_process = uniq( map { $_->getValue() } @{$plate_nodes_from_process});
+
+  if (@plates_from_qc ~~ @plates_from_process) {
+    $valid = 1;
+  }
+
+  return $valid;
+}
+
+sub _plate_and_wells_from_process {
+  my $self = shift;
+
+  return $self->process_doc->containers;
+}
+
 sub _plate_and_wells_to_proceed {
   my $self = shift;
 
@@ -127,19 +132,23 @@ sub _plate_and_wells_to_proceed {
 sub _read_qc_file {
   my $self = shift;
 
-  my $file = wtsi_clarity::util::textfile->new();
-  $file->read_content($self->_file_path);
+  my $result_file_uri = $self->process_doc->get_result_file_location;
 
-  my $reader = wtsi_clarity::util::csv::factories::generic_csv_reader->new();
+  if (! defined $result_file_uri) {
+    croak q{The QC report has not been uploaded!};
+  }
 
-  my $content = $reader->build(
-    file_content => $file->content,
-  );
+  my ($server, $remote_directory, $filename) = $result_file_uri =~ /sftp:\/\/([^\/]+)\/(.*)\/([^\/]+[.].+)/smx;
+  my $file = $self->_download_qc_file($server, $remote_directory, $filename);
 
-  return $content;
+  return $file;
 }
 
+sub _download_qc_file {
+  my ($self, $server, $remote_directory, $filename) = @_;
 
+  return $self->request->download_file($server, $remote_directory, $filename);
+}
 
 1;
 
@@ -155,11 +164,8 @@ wtsi_clarity::epp::sm::proceed_sample_updater
 
 =head1 DESCRIPTION
 
-  Cherry pick a plate from the QC report list (coming back from from customer)
-  to task work to sequencing (Cherry pick to Shear step).
   Parse the 'Proceed' column of the provided QC report and update the sample's related UDF field,
-  which are marked to proceed, them stamping those samples to a new plate
-  and put the original one to a freezer.
+  which are marked to proceed.
 
 =head1 SUBROUTINES/METHODS
 
@@ -174,11 +180,7 @@ wtsi_clarity::epp::sm::proceed_sample_updater
 
 =item Carp
 
-=item JSON
-
 =item Readonly
-
-=item wtsi_clarity::util::request
 
 =back
 

@@ -11,19 +11,21 @@
         <artifact limsid="DEA103A1291PA1" uri="http://testserver.com:1234/here/artifacts/DEA103A1291PA1?state=52599"/>
         <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
         <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Proceed To Sequencing?">Yes</udf:field>
         <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
     </smp:sample>
-    <smp:sample uri="http://testserver.com:1234/here/samples/DEA103A1299" limsid="DEA103A1299">
-        <name>9</name>
+    <smp:sample uri="http://testserver.com:1234/here/samples/DEA103A1307" limsid="DEA103A1307">
+        <name>17</name>
         <date-received>2014-12-12</date-received>
         <project limsid="DEA103" uri="http://testserver.com:1234/here/projects/DEA103"/>
         <submitter uri="http://testserver.com:1234/here/researchers/8">
             <first-name>Lucy</first-name>
             <last-name>Hildyard</last-name>
         </submitter>
-        <artifact limsid="DEA103A1299PA1" uri="http://testserver.com:1234/here/artifacts/DEA103A1299PA1?state=52607"/>
+        <artifact limsid="DEA103A1307PA1" uri="http://testserver.com:1234/here/artifacts/DEA103A1307PA1?state=52615"/>
         <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
         <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Proceed To Sequencing?">Yes</udf:field>
         <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
     </smp:sample>
     <smp:sample uri="http://testserver.com:1234/here/samples/DEA103A1315" limsid="DEA103A1315">
@@ -37,6 +39,21 @@
         <artifact limsid="DEA103A1315PA1" uri="http://testserver.com:1234/here/artifacts/DEA103A1315PA1?state=52623"/>
         <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
         <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Proceed To Sequencing?">Yes</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/DEA103A1766" limsid="DEA103A1766">
+        <name>1</name>
+        <date-received>2015-01-16</date-received>
+        <project limsid="DEA103" uri="http://testserver.com:1234/here/projects/DEA103"/>
+        <submitter uri="http://testserver.com:1234/here/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A1766PA1" uri="http://testserver.com:1234/here/artifacts/DEA103A1766PA1?state=63236"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Proceed To Sequencing?">Yes</udf:field>
         <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
     </smp:sample>
     <smp:sample uri="http://testserver.com:1234/here/samples/DEA103A1774" limsid="DEA103A1774">
@@ -50,19 +67,7 @@
         <artifact limsid="DEA103A1774PA1" uri="http://testserver.com:1234/here/artifacts/DEA103A1774PA1?state=63244"/>
         <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
         <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
-        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
-    </smp:sample>
-    <smp:sample uri="http://testserver.com:1234/here/samples/DEA103A1782" limsid="DEA103A1782">
-        <name>17</name>
-        <date-received>2015-01-16</date-received>
-        <project limsid="DEA103" uri="http://testserver.com:1234/here/projects/DEA103"/>
-        <submitter uri="http://testserver.com:1234/here/researchers/8">
-            <first-name>Lucy</first-name>
-            <last-name>Hildyard</last-name>
-        </submitter>
-        <artifact limsid="DEA103A1782PA1" uri="http://testserver.com:1234/here/artifacts/DEA103A1782PA1?state=63252"/>
-        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
-        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Proceed To Sequencing?">Yes</udf:field>
         <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
     </smp:sample>
 </smp:details>

@@ -10,6 +10,6 @@
     <artifact limsid="DEA103A1315PA1" uri="http://testserver.com:1234/here/artifacts/DEA103A1315PA1?state=52623"/>
     <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
     <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
-    <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
     <udf:field type="String" name="WTSI Proceed To Sequencing?">Yes</udf:field>
+    <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
 </smp:sample>

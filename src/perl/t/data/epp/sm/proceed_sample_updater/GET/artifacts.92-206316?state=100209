@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/92-206316?state=100209" limsid="92-206316">
+    <name>QCreport.csv</name>
+    <type>ResultFile</type>
+    <output-type>ResultFile</output-type>
+    <parent-process uri="http://testserver.com:1234/here/processes/24-28533" limsid="24-28533"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <sample uri="http://testserver.com:1234/here/samples/DEA103A1291" limsid="DEA103A1291"/>
+    <sample uri="http://testserver.com:1234/here/samples/DEA103A1299" limsid="DEA103A1299"/>
+    <sample uri="http://testserver.com:1234/here/samples/DEA103A1307" limsid="DEA103A1307"/>
+    <sample uri="http://testserver.com:1234/here/samples/DEA103A1315" limsid="DEA103A1315"/>
+    <sample uri="http://testserver.com:1234/here/samples/DEA103A1766" limsid="DEA103A1766"/>
+    <sample uri="http://testserver.com:1234/here/samples/DEA103A1774" limsid="DEA103A1774"/>
+    <sample uri="http://testserver.com:1234/here/samples/DEA103A1782" limsid="DEA103A1782"/>
+    <file:file limsid="40-1415" uri="http://testserver.com:1234/here/files/40-1415"/>
+    <workflow-stages/>
+</art:artifact>
