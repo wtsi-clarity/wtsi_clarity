@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/2-190517?state=92189" limsid="2-190517">
+    <name>90_STA</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://testserver.com:1234/here/processes/24-26962" limsid="24-26962"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-4345" limsid="27-4345"/>
+        <value>A:2</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/DEA103A2218" limsid="DEA103A2218"/>
+    <udf:field type="Numeric" name="Cherrypick Sample Volume">1.25</udf:field>
+    <workflow-stages>
+        <workflow-stage status="IN_PROGRESS" name="Fluidigm Worksheet &amp; Barcode (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/323"/>
+    </workflow-stages>
+</art:artifact>
