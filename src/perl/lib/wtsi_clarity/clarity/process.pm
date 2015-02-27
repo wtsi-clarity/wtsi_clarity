@@ -193,8 +193,8 @@ sub _build_plate_io_map_barcodes {
 sub _get_plate_barcode {
   my ($self, $plate_io_map) = @_;
 
-  my $source_plate = $self->_containers->findnodes(sprintf $CONTAINER_BY_LIMSID, $plate_io_map->{'source_plate'})->pop();
-  my $dest_plate =   $self->_containers->findnodes(sprintf $CONTAINER_BY_LIMSID, $plate_io_map->{'dest_plate'})->pop();
+  my $source_plate = $self->containers->findnodes(sprintf $CONTAINER_BY_LIMSID, $plate_io_map->{'source_plate'})->pop();
+  my $dest_plate =   $self->containers->findnodes(sprintf $CONTAINER_BY_LIMSID, $plate_io_map->{'dest_plate'})->pop();
 
   return {
     'source_plate' => $source_plate->findvalue('./name'),
@@ -250,13 +250,13 @@ sub _build__input_output_map {
   return \@input_output_map;
 }
 
-has '_containers' => (
+has 'containers' => (
   is => 'ro',
   isa => 'XML::LibXML::Document',
   lazy_build => 1,
 );
 
-sub _build__containers {
+sub _build_containers {
   my $self = shift;
   my @all_container_uris = $self->_analytes->findnodes($ALL_CONTAINERS)->to_literal_list;
   return $self->_request->batch_retrieve('containers', \@all_container_uris);
@@ -336,6 +336,9 @@ wtsi_clarity::clarity::process
       {source_plate => 1234567891012, dest_plate => 9876543212345},
       {source_plate => 1234567891012, dest_plate => 2649374928273}
     ]
+
+=head2 containers
+  Returns the process related containers XML artifact.
 
 =head2 get_result_file_location
   Returns the location of the result file.
