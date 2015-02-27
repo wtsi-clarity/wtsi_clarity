@@ -430,14 +430,17 @@ use_ok('wtsi_clarity::epp::sm::fluidigm_analysis_file_creator');
           },
           {
             'sample_name' => '[ Empty ]',
+            'sample_type' => 'NTC',
             'well_location' => 'E12'
           },
           {
             'sample_name' => '[ Empty ]',
+            'sample_type' => 'NTC',
             'well_location' => 'F12'
           },
           {
             'sample_name' => '[ Empty ]',
+            'sample_type' => 'NTC',
             'well_location' => 'G12'
           },
           {
