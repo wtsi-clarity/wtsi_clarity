@@ -325,13 +325,17 @@ sub _set_container_data {
 
     $self->_copy_barcode2container($doc, $barcode);
 
-    $container->{'signature'} =
-      wtsi_clarity::util::signature->new(sig_length => $SIGNATURE_LENGTH)->encode(sort @{$container->{'samples'}});
+    $container->{'signature'} = ($container->{'samples'}) ? $self->_get_signature($container->{'samples'}) : q{};
 
     $count++;
   }
 
   return;
+}
+
+sub _get_signature {
+  my ($self, $samples) = @_;
+  return wtsi_clarity::util::signature->new(sig_length => $SIGNATURE_LENGTH)->encode(sort @{$samples});
 }
 
 sub _update_container {
