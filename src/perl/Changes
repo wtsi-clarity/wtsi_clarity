@@ -1,5 +1,12 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.68
+  - Fixed label creation for control plates
+  - Fluidigm analysis workfile should show NTC for empty wells
+  - Fixed Fluidigm tecan with no buffers
+  - Fluidigm message purpose has been added
+  - Fix worksheet attacher calling with incorrect arguments
+
 Release 0.67
   - New message enhancer for Fluidigm
   - When searching for previous processes, will now find latest one
