@@ -182,6 +182,8 @@ wtsi_clarity::epp::sm::proceed_sample_updater
 
 =item Readonly
 
+=item List::MoreUtils
+
 =back
 
 =head1 AUTHOR
