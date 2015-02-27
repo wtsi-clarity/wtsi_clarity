@@ -1,0 +1,41 @@
+<?xml version="1.0" standalone="yes"?>
+<con:container xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container" uri="http://testserver.com:1234/here/containers/27-4330" limsid="27-4330">
+    <name>5260274330776</name>
+    <type uri="http://testserver.com:1234/here/containertypes/15" name="ABgene 0800"/>
+    <occupied-wells>11</occupied-wells>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-188427" limsid="2-188427">
+        <value>A:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-188429" limsid="2-188429">
+        <value>H:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-188422" limsid="2-188422">
+        <value>D:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-188428" limsid="2-188428">
+        <value>B:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-188425" limsid="2-188425">
+        <value>G:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-188419" limsid="2-188419">
+        <value>A:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-188424" limsid="2-188424">
+        <value>F:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-188426" limsid="2-188426">
+        <value>H:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-188421" limsid="2-188421">
+        <value>C:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-188423" limsid="2-188423">
+        <value>E:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-188420" limsid="2-188420">
+        <value>B:1</value>
+    </placement>
+    <udf:field type="String" name="WTSI Container Purpose Name">Working Dilution</udf:field>
+    <state>Populated</state>
+</con:container>

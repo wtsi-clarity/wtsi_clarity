@@ -11,6 +11,7 @@ Readonly::Hash my %PURPOSE_TO_ENHANCER_TYPE => (
   'sample'    => 'me::sample_enhancer',
   'study'     => 'me::study_enhancer',
   'user'      => 'me::study_user_enhancer',
+  'fluidigm'  => 'me::fluidigm_enhancer',
 );
 
 sub package_name {

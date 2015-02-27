@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use Test::Exception;
-use Test::More tests => 5;
+use Test::More tests => 6;
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 
@@ -22,6 +22,8 @@ use_ok('wtsi_clarity::epp::generic::bed_verifier');
   );
 
   can_ok($process, qw/ run /);
+
+  is($process->outputs, 1, 'Outputs defaults to true');
 }
 
 {

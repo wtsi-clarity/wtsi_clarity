@@ -60,7 +60,7 @@ override 'run' => sub {
   my $stamp = _get_stamp($containers_data, $self->request->user);
 
   # pdf generation
-  my $pdf_data = $self->_get_pdf_data($containers_data, $stamp, $type_data);
+  my $pdf_data = _get_pdf_data($containers_data, $stamp, $type_data);
   my $pdf_generator = wtsi_clarity::util::pdf::layout::worksheet->new( 'pdf_data' => $pdf_data );
   my $worksheet_file = $pdf_generator->create() or croak q{Impossible to create the pdf version of the worksheet!};
 
@@ -92,12 +92,12 @@ has 'worksheet_type' => (
   isa => 'Str',
   is => 'ro',
   required => 1,
-  trigger => \&_set_worksheet_type,
+  trigger => \&_set_action_title,
 );
 
-has 'action_title'              => ( isa => 'Str', is => 'rw', );
+has 'action_title' => ( isa => 'Str', is => 'rw', );
 
-sub _set_worksheet_type {
+sub _set_action_title {
   my ($self, $type, $old_type) = @_;
 
   if ($type =~ /fluidigm/xms )
@@ -243,18 +243,20 @@ sub _get_TECAN_file_content_per_URI {
       my $output_sample_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$sample_volume};
       my $w_string = q{W;};
 
-      my $input_buffer_string  = qq{A;BUFF;;96-TROUGH;$inp_loc_dec;;$buffer_volume};
-      my $output_buffer_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$buffer_volume};
-
       push @sample_output, {
         output_location => $out_loc_dec,
         output          => join "\n", $input_sample_string, $output_sample_string, $w_string,
       };
 
-      push @buffer_output, {
-        output_location => $out_loc_dec,
-        output => join "\n", $input_buffer_string, $output_buffer_string, $w_string,
-      };
+      if ($buffer_volume != 0) {
+        my $input_buffer_string  = qq{A;BUFF;;96-TROUGH;$inp_loc_dec;;$buffer_volume};
+        my $output_buffer_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$buffer_volume};
+
+        push @buffer_output, {
+          output_location => $out_loc_dec,
+          output => join "\n", $input_buffer_string, $output_buffer_string, $w_string,
+        };
+      }
     }
   }
 
