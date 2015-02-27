@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<ctp:container-type xmlns:ctp="http://genologics.com/ri/containertype" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containertypes/12" name="Fluidigm 96.96 IFC">
+    <is-tube>false</is-tube>
+    <x-dimension>
+        <is-alpha>false</is-alpha>
+        <offset>1</offset>
+        <size>6</size>
+    </x-dimension>
+    <y-dimension>
+        <is-alpha>true</is-alpha>
+        <offset>0</offset>
+        <size>16</size>
+    </y-dimension>
+</ctp:container-type>

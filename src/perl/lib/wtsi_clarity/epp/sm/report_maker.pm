@@ -27,7 +27,6 @@ Readonly::Scalar my $SMP_DETAIL_ARTIFACTS_IDS_PATH          => q{/smp:details/sm
 Readonly::Scalar my $ARTEFACTS_ARTEFACT_CONTAINTER_IDS_PATH => q{/art:details/art:artifact/location/container/@limsid};
 Readonly::Scalar my $ARTEFACTS_ARTEFACT_URIS_PATH            => q{/art:artifacts/artifact/@uri};
 Readonly::Scalar my $THOUSANDTH                             => 0.001;
-Readonly::Scalar my $DILUTION_COMPENSATION_FACTOR           => 50;
 
 Readonly::Scalar my $UDF_VOLUME         => qq{Volume};
 Readonly::Scalar my $UDF_CONCENTRATION  => qq{Concentration};
@@ -165,12 +164,7 @@ sub _get_supplier_gender {
 sub _get_concentration {
   my ($self, $sample_id) = @_;
 
-  my $concentration = $self->_get_value_from_data($UDF_CONCENTRATION, $sample_id);
-  if ($concentration ne q{}) {
-    return $concentration *= $DILUTION_COMPENSATION_FACTOR;
-  }
-
-  return $concentration;
+  return $self->_get_value_from_data($UDF_CONCENTRATION, $sample_id);
 }
 
 sub _get_measured_volume {
