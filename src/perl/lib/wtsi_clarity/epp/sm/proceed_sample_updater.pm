@@ -28,7 +28,7 @@ override 'run' => sub {
 
   my $wells_to_proceed = $self->_plate_and_wells_to_proceed();
 
-  if (!$self->_check_valid_plated_has_been_loaded) {
+  if (!$self->_check_valid_plate_has_been_loaded) {
     croak q{Not valid plate has been loaded to this step};
   }
 
@@ -92,7 +92,7 @@ sub _placements_to_mark_proceed {
   return $placements_uris;
 }
 
-sub _check_valid_plated_has_been_loaded {
+sub _check_valid_plate_has_been_loaded {
   my $self = shift;
 
   my $valid = 0;
@@ -160,7 +160,9 @@ wtsi_clarity::epp::sm::proceed_sample_updater
 
 =head1 SYNOPSIS
 
-  my $gk = wtsi_clarity::epp::sm::proceed_sample_updater->new(process_url => '');
+  my $gk = wtsi_clarity::epp::sm::proceed_sample_updater->new(
+    process_url => 'http://clarity.com/processes/1234'
+  );
 
 =head1 DESCRIPTION
 

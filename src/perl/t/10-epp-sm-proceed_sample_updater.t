@@ -171,7 +171,7 @@ use_ok('wtsi_clarity::epp::sm::proceed_sample_updater', 'can use wtsi_clarity::e
   my @plates_from_process = uniq( map { $_ } @{$plate_nodes_from_process});
 
   is_deeply(\@plates_from_qc, \@plates_from_process, "Returns the correct plates to proceed.");
-  is($epp->_check_valid_plated_has_been_loaded, 1, "Valid plates has been loaded to the process.");
+  is($epp->_check_valid_plate_has_been_loaded, 1, "Valid plates has been loaded to the process.");
 }
 
 { #Check with invalid plates
@@ -184,7 +184,7 @@ use_ok('wtsi_clarity::epp::sm::proceed_sample_updater', 'can use wtsi_clarity::e
   my $method_ref = _mock_download_qc_file($mock_wrong_qc_report_path);
   $epp->mock(q(_download_qc_file), sub { return $method_ref;});
 
-  is($epp->_check_valid_plated_has_been_loaded, 0, "Not valid plates has been loaded to the process.");
+  is($epp->_check_valid_plate_has_been_loaded, 0, "Not valid plates has been loaded to the process.");
 }
 
 1;

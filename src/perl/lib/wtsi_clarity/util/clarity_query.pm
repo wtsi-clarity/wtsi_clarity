@@ -87,7 +87,10 @@ wtsi_clarity::util::clarity_query
 =head1 SYNOPSIS
 
   with 'wtsi_clarity::util::clarity_query';
-  my $response = $self->request->clarity_query->query_resources( {sample_id => 'ABC12345' } );
+  my $response = $self->request->clarity_query->query_resources(
+    q{artifacts},
+    {sample_id => 'ABC12345' }
+  );
 
 =head1 DESCRIPTION
 
