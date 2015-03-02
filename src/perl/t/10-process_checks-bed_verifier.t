@@ -3,7 +3,7 @@ use warnings;
 use JSON;
 use utf8;
 use Moose::Meta::Class;
-use Test::More tests => 24;
+use Test::More tests => 21;
 use Test::Exception;
 use Test::MockObject;
 
@@ -173,30 +173,11 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
 
 }
 
-# no_outputs
-{
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/bed_verifier/no_outputs/';
-
-  my $process = $epp->new_object(
-    step_name => 'working_dilution',
-    process_url => $base_url . 'processes/24-103751',
-    outputs => 0,
-  );
-
-  my $plate_mapping = [
-    {source_plate => 1234},
-  ];
-
-  is_deeply($bed_verifier->_plate_mapping($process), $plate_mapping, 'Builds the plate_mapping correctly when --nooutputs is set');
-}
-
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/bed_verifier/working_dilution/';;
 
   my $process = Test::MockObject->new();
   my $process_doc = Test::MockObject->new();
-
-  $process->set_true('outputs');
 
   $process_doc->mock(q{plate_io_map_barcodes}, sub {
     return [{source_plate => 1234, dest_plate => 5678}];
@@ -217,17 +198,15 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/bed_verifier/working_dilution/';
 
   my $process = Test::MockObject->new();
-  my $process_doc = Test::MockObject->new();
+    my $process_doc = Test::MockObject->new();
 
-  $process->set_true('outputs');
+    $process_doc->mock(q{plate_io_map_barcodes}, sub {
+      return [{source_plate => 1234, dest_plate => 5678}];
+    });
 
-  $process_doc->mock(q{plate_io_map_barcodes}, sub {
-    return [{source_plate => 1234, dest_plate => 5678}];
-  });
-
-  $process->mock(q{process_doc}, sub {
-    return $process_doc;
-  });
+    $process->mock(q{process_doc}, sub {
+      return $process_doc;
+    });
 
   my $plate_map = [
     {source_plate => 1234, dest_plate => 1234}
@@ -243,8 +222,6 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
 
   my $process = Test::MockObject->new();
   my $process_doc = Test::MockObject->new();
-
-  $process->set_true('outputs');
 
   $process_doc->mock(q{plate_io_map_barcodes}, sub {
     return [
@@ -270,8 +247,6 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
 
   my $process = Test::MockObject->new();
   my $process_doc = Test::MockObject->new();
-
-  $process->set_true('outputs');
 
   $process_doc->mock(q{plate_io_map_barcodes}, sub {
     return [
@@ -300,8 +275,6 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
   my $process = Test::MockObject->new();
   my $process_doc = Test::MockObject->new();
 
-  $process->set_true('outputs');
-
   $process_doc->mock(q{plate_io_map_barcodes}, sub {
     return [
       {source_plate => 1111, dest_plate => 3333},
@@ -327,8 +300,6 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
   my $process = Test::MockObject->new();
   my $process_doc = Test::MockObject->new();
 
-  $process->set_true('outputs');
-
   $process_doc->mock(q{plate_io_map_barcodes}, sub {
     return [
       {source_plate => 1111, dest_plate => 3333},
@@ -348,60 +319,6 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
   throws_ok { $bed_verifier->_verify_plate_mapping($process, $plate_map) }
     qr/Expected source plate 2222 to be paired with destination plate 3333/,
     'Throws when incorrect plates in beds 2 inputs => 1 output';
-}
-
-{
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/bed_verifier/working_dilution/';
-
-  my $process = Test::MockObject->new();
-  $process->set_false('outputs');
-  my $process_doc = Test::MockObject->new();
-
-  $process_doc->mock(q{plate_io_map_barcodes}, sub {
-    return [
-      {source_plate => 1111, dest_plate => 3333},
-      {source_plate => 2222, dest_plate => 3333}
-    ];
-  });
-
-  $process->mock(q{process_doc}, sub {
-    return $process_doc;
-  });
-
-  my $plate_map = [
-    {source_plate => 1111},
-    {source_plate => 2222}
-  ];
-
-  is($bed_verifier->_verify_plate_mapping($process, $plate_map), 1, 'Verifies plates are correct when outputs set to 0');
-}
-
-{
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/bed_verifier/working_dilution/';
-
-  my $process = Test::MockObject->new();
-  $process->set_false('outputs');
-  my $process_doc = Test::MockObject->new();
-
-  $process_doc->mock(q{plate_io_map_barcodes}, sub {
-    return [
-      {source_plate => 1111},
-      {source_plate => 2222}
-    ];
-  });
-
-  $process->mock(q{process_doc}, sub {
-    return $process_doc;
-  });
-
-  my $plate_map = [
-    {source_plate => 1111},
-    {source_plate => 3333}
-  ];
-
-  throws_ok { $bed_verifier->_verify_plate_mapping($process, $plate_map) }
-    qr/Could not find source plate 2222/,
-    'Throws when outputs is set 0 and it can not find a matching source plate';
 }
 
 1;
