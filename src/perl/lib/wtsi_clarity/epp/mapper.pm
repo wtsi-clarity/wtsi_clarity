@@ -30,6 +30,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'analyse_pico'                   => 'sm::pico_analyser',
     'analyse_fluidigm'               => 'sm::fluidigm_analyser',
     'create_fluidigm_file'           => 'sm::fluidigm_analysis_file_creator',
+    'update_sample_to_proceed'       => 'sm::proceed_sample_updater',
 
     'make_report'                    => 'sm::report_maker',
 

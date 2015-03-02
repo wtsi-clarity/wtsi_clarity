@@ -395,12 +395,15 @@ sub _build__all_udf_values {
 sub _get_artifact_uris_from_udf {
   my ($self, $step, $udf_name) = @_;
 
-  my $res_arts_doc = $self->request->query_artifacts({
-    udf       => qq{udf.$udf_name.min=0},
-    type      => qq{Analyte},
-    step      => $step,
-    sample_id => $self->_sample_ids(),
-    });
+  my $res_arts_doc = $self->request->query_resources(
+        q{artifacts},
+        {
+          udf       => qq{udf.$udf_name.min=0},
+          type      => qq{Analyte},
+          step      => $step,
+          sample_id => $self->_sample_ids(),
+        }
+  );
 
   return $self->grab_values($res_arts_doc, $ARTEFACTS_ARTEFACT_URIS_PATH);
 };

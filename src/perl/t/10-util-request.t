@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 27;
+use Test::More tests => 29;
 use Test::Exception;
 use Test::MockObject::Extends;
 use File::Temp qw/ tempdir /;
@@ -244,6 +244,36 @@ sub read_file {
   my $response_str = $expected_message;
 
   is($r->_error_message($response_str), $expected_message, qq{Gets the correct message from the response});
+}
+
+{
+  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/util/request';
+  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
+  my $test_data = [
+    { 'input' => {
+        'sample_id' => 'DEA103A1325',
+        'step' => 'Working Dilution (SM)',
+        'type' => 'Analyte'
+      },
+      'resource' => 'artifacts',
+      'expected' => 'samplelimsid=DEA103A1325&process-type=Working%20Dilution%20(SM)&type=Analyte',
+    },
+    { 'input' => {
+        'name' => '5260272593678',
+      },
+      'resource' => 'containers',
+      'expected' => 'name=5260272593678',
+    },
+  ];
+
+  my $r = wtsi_clarity::util::request->new();
+
+  foreach my $data (@{$test_data}) {
+    my $query_results = $r->query_resources($data->{'resource'}, $data->{'input'});
+
+    isa_ok($query_results, 'XML::LibXML::Document');
+  }
 }
 
 1;

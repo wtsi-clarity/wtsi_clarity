@@ -22,6 +22,9 @@ Readonly::Scalar my $CONTAINER_BY_LIMSID => q{con:details/con:container[@limsid=
 Readonly::Scalar my $INPUT_LIMSID        => q{./input/@limsid};
 Readonly::Scalar my $OUTPUT_LIMSID       => q{./output[@output-type!="ResultFile"]/@limsid};
 Readonly::Scalar my $ALL_CONTAINERS      => q{art:details/art:artifact/location/container/@uri};
+Readonly::Scalar my $RESULT_FILE_URI     => q{(prc:process/input-output-map/output[@output-type="ResultFile"]/@uri)[1]};
+Readonly::Scalar my $FILE_URL_PATH       => q(/art:artifact/file:file/@uri);
+Readonly::Scalar our $FILE_CONTENT_LOCATION => q(/file:file/content-location);
 ## use critic
 
 has '_parent' => (
@@ -203,8 +206,8 @@ sub _build_plate_io_map_barcodes {
 sub _get_plate_barcode {
   my ($self, $plate_io_map) = @_;
 
-  my $source_plate = $self->_containers->findnodes(sprintf $CONTAINER_BY_LIMSID, $plate_io_map->{'source_plate'})->pop();
-  my $dest_plate =   $self->_containers->findnodes(sprintf $CONTAINER_BY_LIMSID, $plate_io_map->{'dest_plate'})->pop();
+  my $source_plate = $self->containers->findnodes(sprintf $CONTAINER_BY_LIMSID, $plate_io_map->{'source_plate'})->pop();
+  my $dest_plate =   $self->containers->findnodes(sprintf $CONTAINER_BY_LIMSID, $plate_io_map->{'dest_plate'})->pop();
 
   return {
     'source_plate' => $source_plate->findvalue('./name'),
@@ -260,13 +263,13 @@ sub _build__input_output_map {
   return \@input_output_map;
 }
 
-has '_containers' => (
+has 'containers' => (
   is => 'ro',
   isa => 'XML::LibXML::Document',
   lazy_build => 1,
 );
 
-sub _build__containers {
+sub _build_containers {
   my $self = shift;
   my @all_container_uris = $self->_analytes->findnodes($ALL_CONTAINERS)->to_literal_list;
   return $self->_request->batch_retrieve('containers', \@all_container_uris);
@@ -282,6 +285,21 @@ sub _build__analytes {
   my $self = shift;
   my @all_analyte_uris = $self->findnodes($ALL_ANALYTES)->to_literal_list;
   return $self->_request->batch_retrieve('artifacts', \@all_analyte_uris);
+}
+
+sub get_result_file_location {
+  my $self = shift;
+
+  my $result_file_xml = $self->_parent->fetch_and_parse($self->xml->findvalue($RESULT_FILE_URI));
+  my $file_path = $result_file_xml->findvalue($FILE_URL_PATH);
+
+  if (! defined $file_path) {
+    croak q{The result file could not been found!};
+  }
+
+  my $uploaded_file_xml = $self->_parent->fetch_and_parse($file_path);
+
+  return $uploaded_file_xml->findvalue($FILE_CONTENT_LOCATION);
 }
 
 1;
@@ -332,6 +350,12 @@ wtsi_clarity::clarity::process
       {source_plate => 1234567891012, dest_plate => 9876543212345},
       {source_plate => 1234567891012, dest_plate => 2649374928273}
     ]
+
+=head2 containers
+  Returns the process related containers XML artifact.
+
+=head2 get_result_file_location
+  Returns the location of the result file.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
