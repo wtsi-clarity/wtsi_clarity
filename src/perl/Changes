@@ -1,5 +1,9 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.69
+  - Reverted "Bed verification only inputs" fix
+  - Update samples from proceedlist (QC report with Proceed column)
+
 Release 0.68
   - Fixed label creation for control plates
   - Fluidigm analysis workfile should show NTC for empty wells
