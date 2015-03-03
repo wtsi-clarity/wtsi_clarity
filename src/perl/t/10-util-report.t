@@ -33,6 +33,7 @@ use_ok('wtsi_clarity::util::report');
                 "Genotyping Infinium Barcode",  => 'a',
                 "Genotyping Barcode",  => 'a',
                 "Genotyping Well Cohort",  => 'a',
+                "Proceed",  => 'a',
                       },
                       {
                 "Status",  => 'b',
@@ -54,12 +55,13 @@ use_ok('wtsi_clarity::util::report');
                 "Genotyping Infinium Barcode",  => 'b',
                 "Genotyping Barcode",  => 'b',
                 "Genotyping Well Cohort",  => 'b',
+                "Proceed",  => 'b',
                       },
                     ];
   my $expected_result = [
-                "Status,Study,Supplier,Sanger Sample Name,Supplier Sample Name,Plate,Well,Supplier Volume,Supplier Gender,Concentration,Measured Volume,Total micrograms,Fluidigm Count,Fluidigm Gender,Genotyping Status,Genotyping Chip,Genotyping Infinium Barcode,Genotyping Barcode,Genotyping Well Cohort",
-                'a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a',
-                'b,b,b,b,b,b,b,b,b,b,b,b,b,b,b,b,b,b,b'
+                "Status,Study,Supplier,Sanger Sample Name,Supplier Sample Name,Plate,Well,Supplier Volume,Supplier Gender,Concentration,Measured Volume,Total micrograms,Fluidigm Count,Fluidigm Gender,Genotyping Status,Genotyping Chip,Genotyping Infinium Barcode,Genotyping Barcode,Genotyping Well Cohort,Proceed",
+                'a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a',
+                'b,b,b,b,b,b,b,b,b,b,b,b,b,b,b,b,b,b,b,b'
         ];
   my $file = $w->get_file($some_content);
   is_deeply($file->content, $expected_result, 'get_file returns a file object with the correct content');

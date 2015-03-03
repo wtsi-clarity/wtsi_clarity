@@ -324,7 +324,8 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
             'Supplier' => '',
             'Measured Volume' => '27.6199',
             'Fluidigm Gender' => '',
-            'Study' => ''
+            'Study' => '',
+            'Proceed' => '*'
           },
           {
             'Supplier Volume' => '',
@@ -345,7 +346,8 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
             'Supplier' => '',
             'Measured Volume' => '30.4086',
             'Fluidigm Gender' => '',
-            'Study' => ''
+            'Study' => '',
+            'Proceed' => '*'
           },
           {
             'Supplier Volume' => '',
@@ -366,7 +368,8 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
             'Supplier' => '',
             'Measured Volume' => '54.235',
             'Fluidigm Gender' => '',
-            'Study' => ''
+            'Study' => '',
+            'Proceed' => '*'
           },
           {
             'Supplier Volume' => '',
@@ -387,7 +390,8 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
             'Supplier' => '',
             'Measured Volume' => '12.2143',
             'Fluidigm Gender' => '',
-            'Study' => ''
+            'Study' => '',
+            'Proceed' => '*'
           },
           {
             'Supplier Volume' => '',
@@ -408,7 +412,8 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
             'Supplier' => '',
             'Measured Volume' => '30.2489',
             'Fluidigm Gender' => '',
-            'Study' => ''
+            'Study' => '',
+            'Proceed' => '*'
           },
           {
             'Supplier Volume' => '',
@@ -429,7 +434,8 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
             'Supplier' => '',
             'Measured Volume' => '10.3196',
             'Fluidigm Gender' => '',
-            'Study' => ''
+            'Study' => '',
+            'Proceed' => '*'
           }
         ];
 

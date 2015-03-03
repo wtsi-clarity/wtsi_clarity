@@ -57,8 +57,9 @@ use_ok('wtsi_clarity::util::clarity_query');
   ];
 
   foreach my $data (@{$test_data}) {
-    my $results = wtsi_clarity::util::clarity_query::_build_query($data->{'resource'}, $data->{'input'});
+    my $results = wtsi_clarity::util::clarity_query::_build_query($data->{'input'});
     cmp_ok($results, 'eq', $data->{'expected'}, '_build_query should return the correct value.');
   }
 }
+
 1;
