@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use XML::LibXML;
 
-use Test::More tests => 13;
+use Test::More tests => 14;
 use Test::MockObject::Extends;
 
 use wtsi_clarity::epp;
@@ -713,6 +713,25 @@ use_ok 'wtsi_clarity::clarity::process';
   ];
 
   is_deeply($process->plate_io_map_barcodes, $plate_io_map_barcodes, 'Creates the plate io map with barcodes correctly');
+}
+
+{
+  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/clarity/process/';
+  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
+
+  my $epp = Test::MockObject::Extends->new(
+    wtsi_clarity::epp->new(
+      process_url => 'http://testserver.com:1234/here/processes/24-27770'
+    )
+  );
+
+  my $xml = XML::LibXML->load_xml(location => $ENV{'WTSICLARITY_WEBCACHE_DIR'} . 'GET/processes.24-27770');
+
+  my $process = wtsi_clarity::clarity::process->new(xml => $xml, parent => $epp);
+
+  my $expected_result_file_location = "sftp://clarity.co/path/2015/02/24-27770/92-199558-40-1414.csv";
+  is($process->get_result_file_location, $expected_result_file_location, 'Gets the correct location of a result file.');
 }
 
 # find_by_artifactlimsid_and_name

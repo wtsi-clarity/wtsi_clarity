@@ -53,8 +53,10 @@ my $base_uri =  'http://testserver.com:1234/here' ;
   $s->_analytes->{$container_urls[0]}->{'output_container'}->{'uri'} = $curi;
 
   my $doc;
+  my $stamping_method_ref = \&wtsi_clarity::epp::generic::stamper::_direct_stamp;
+  my $well_calc_ref = \&wtsi_clarity::epp::generic::stamper::_direct_well_calculation;
   lives_ok { $doc = $s->_create_placements_doc } 'placement doc created';
-  lives_ok { $s->_direct_stamp($doc) } 'individual placements created';
+  lives_ok { $s->_stamping($doc, $stamping_method_ref, $well_calc_ref) } 'individual placements created';
 }
 
 {
@@ -177,8 +179,11 @@ my $base_uri =  'http://testserver.com:1234/here' ;
 
   my $doc;
   my $output_placements;
+  my $stamping_method_ref = \&wtsi_clarity::epp::generic::stamper::_stamp_with_copy;
+  my $well_calc_ref = \&wtsi_clarity::epp::generic::stamper::_direct_well_calculation;
+
   lives_ok { $doc = $s->_create_placements_doc } 'Can create placements doc';
-  lives_ok { $output_placements = $s->_stamp_with_copy($doc) } 'Can create placements';
+  lives_ok { $output_placements = $s->_stamping($doc, $stamping_method_ref, $well_calc_ref) } 'Can create placements';
 }
 
 {
@@ -226,7 +231,9 @@ my $base_uri =  'http://testserver.com:1234/here' ;
 
   $s->_create_containers();
   my $doc = $s->_create_placements_doc;
-  $doc = $s->_direct_stamp($doc);
+  my $stamping_method_ref = \&wtsi_clarity::epp::generic::stamper::_direct_stamp;
+  my $well_calc_ref = \&wtsi_clarity::epp::generic::stamper::_direct_well_calculation;
+  $doc = $s->_stamping($doc, $stamping_method_ref, $well_calc_ref);
 
   $s->_update_plate_name_with_previous_name();
   my $res = $s->_output_container_details;
@@ -282,7 +289,8 @@ my $base_uri =  'http://testserver.com:1234/here' ;
 
   my $doc = $s->_create_placements_doc;
 
-  $doc = $s->_group_inputs_by_container_stamp($doc);
+  my $stamping_method_ref = \&wtsi_clarity::epp::generic::stamper::_group_inputs_by_container_stamp;
+  $doc = $s->_stamping($doc, $stamping_method_ref);
 
   my @wells = ('A:1', 'B:1', 'C:1', 'D:1', 'E:1', 'F:1', 'G:1', 'H:1', 'A:2');
 

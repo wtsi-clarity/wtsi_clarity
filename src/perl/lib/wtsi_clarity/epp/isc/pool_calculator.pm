@@ -118,11 +118,14 @@ sub _fetch_molarities {
 
   my $sample_id = $artifact_element->findvalue('./sample/@limsid');
 
-  my $artifact_list = $self->request->query_artifacts({
-    sample_id => $sample_id,
-    udf       => 'udf.Molarity.min=0',
-    type      => 'Analyte',
-  });
+  my $artifact_list = $self->request->query_resources(
+        q{artifacts},
+        {
+          sample_id => $sample_id,
+          udf       => 'udf.Molarity.min=0',
+          type      => 'Analyte',
+        }
+  );
 
   my @nodelist = $artifact_list->findnodes('art:artifacts/artifact/@uri')->to_literal_list;
 
