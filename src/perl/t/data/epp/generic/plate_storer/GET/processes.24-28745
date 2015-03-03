@@ -1,0 +1,54 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="24-28745" uri="http://testserver.com:1234/here/processes/24-28745" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://testserver.com:1234/here/processtypes/41">Cherrypick Worksheet &amp; Barcode(SM)</type>
+  <date-run>2015-03-02</date-run>
+  <technician uri="http://testserver.com:1234/here/researchers/58">
+    <first-name>Karoly</first-name>
+    <last-name>Erdos</last-name>
+  </technician>
+  <input-output-map>
+    <input limsid="2-206319" post-process-uri="http://testserver.com:1234/here/artifacts/2-206319?state=100212" uri="http://testserver.com:1234/here/artifacts/2-206319?state=100212">
+      <parent-process limsid="24-28533" uri="http://testserver.com:1234/here/processes/24-28533"/>
+    </input>
+    <output limsid="92-213748" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-213748?state=104003"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-206319" post-process-uri="http://testserver.com:1234/here/artifacts/2-206319?state=100212" uri="http://testserver.com:1234/here/artifacts/2-206319?state=100212">
+      <parent-process limsid="24-28533" uri="http://testserver.com:1234/here/processes/24-28533"/>
+    </input>
+    <output limsid="92-213749" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-213749?state=104004"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-206319" post-process-uri="http://testserver.com:1234/here/artifacts/2-206319?state=100212" uri="http://testserver.com:1234/here/artifacts/2-206319?state=100212">
+      <parent-process limsid="24-28533" uri="http://testserver.com:1234/here/processes/24-28533"/>
+    </input>
+    <output limsid="2-213750" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-213750?state=104005"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-206322" post-process-uri="http://testserver.com:1234/here/artifacts/2-206322?state=100215" uri="http://testserver.com:1234/here/artifacts/2-206322?state=100215">
+      <parent-process limsid="24-28533" uri="http://testserver.com:1234/here/processes/24-28533"/>
+    </input>
+    <output limsid="92-213748" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-213748?state=104003"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-206322" post-process-uri="http://testserver.com:1234/here/artifacts/2-206322?state=100215" uri="http://testserver.com:1234/here/artifacts/2-206322?state=100215">
+      <parent-process limsid="24-28533" uri="http://testserver.com:1234/here/processes/24-28533"/>
+    </input>
+    <output limsid="92-213749" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-213749?state=104004"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-206322" post-process-uri="http://testserver.com:1234/here/artifacts/2-206322?state=100215" uri="http://testserver.com:1234/here/artifacts/2-206322?state=100215">
+      <parent-process limsid="24-28533" uri="http://testserver.com:1234/here/processes/24-28533"/>
+    </input>
+    <output limsid="2-213801" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-213801?state=104006"/>
+  </input-output-map>
+  <udf:field name="Pick by" type="String">(3) Volume</udf:field>
+  <udf:field name="(1) Required Volume" type="String">1</udf:field>
+  <udf:field name="(1) Required Concentration" type="String">1</udf:field>
+  <udf:field name="(2) Required ng Amount" type="String">1</udf:field>
+  <udf:field name="(2) Minimum Volume" type="String">1</udf:field>
+  <udf:field name="(2) Maximum Volume" type="String">1</udf:field>
+  <udf:field name="(3) Required Volume" type="String">1</udf:field>
+  <udf:field name="Barcode Printer" type="String">g214bc</udf:field>
+  <process-parameter name="Update Cherrypick Volumes"/>
+</prc:process>

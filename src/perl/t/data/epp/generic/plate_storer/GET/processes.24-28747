@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="24-28747" uri="http://testserver.com:1234/here/processes/24-28747" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://testserver.com:1234/here/processtypes/37">Cherrypick (SM)</type>
+  <technician uri="http://testserver.com:1234/here/researchers/58">
+    <first-name>Karoly</first-name>
+    <last-name>Erdos</last-name>
+  </technician>
+  <input-output-map>
+    <input limsid="2-213801" post-process-uri="http://testserver.com:1234/here/artifacts/2-213801?state=104006" uri="http://testserver.com:1234/here/artifacts/2-213801?state=104006">
+      <parent-process limsid="24-28745" uri="http://testserver.com:1234/here/processes/24-28745"/>
+    </input>
+    <output limsid="92-214143" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-214143?state=104198"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-213750" post-process-uri="http://testserver.com:1234/here/artifacts/2-213750?state=104005" uri="http://testserver.com:1234/here/artifacts/2-213750?state=104005">
+      <parent-process limsid="24-28745" uri="http://testserver.com:1234/here/processes/24-28745"/>
+    </input>
+    <output limsid="92-214143" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-214143?state=104198"/>
+  </input-output-map>
+</prc:process>
