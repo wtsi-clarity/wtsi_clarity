@@ -1,5 +1,11 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.71
+  - Refactored Fluidigm Analysis EPP and added extra tests:
+    Updated is_call method in Fluidigm/Assay. Fixes #206
+    Added is_valid method to Fluidigm/Assay
+    Added sample_name method to Fluidigm/Assay_Set
+
 Release 0.70
   - Update samples from proceedlist (QC report with Proceed column)
   
