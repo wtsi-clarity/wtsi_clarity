@@ -11,11 +11,12 @@ with qw/ wtsi_clarity::util::clarity_elements wtsi_clarity::util::well_mapper /;
 Readonly::Scalar my $FIRST_ANALYTE_PATH => q{ /prc:process/input-output-map[1]/input/@uri };
 Readonly::Scalar my $CONTAINER_PATH => q{ /art:artifact/location/container/@uri };
 Readonly::Scalar my $CONTAINER_NAME => q{ /con:container/name };
-Readonly::Scalar my $OUTPUT_ARTIFACTS_URI_PATH => q{ /prc:process/input-output-map/output/@limsid };
-Readonly::Scalar my $BATCH_ARTIFACT_PATH => q{ /art:details/art:artifact };
+Readonly::Scalar my $OUTPUT_ARTIFACTS_URI_PATH => q{ /prc:process/input-output-map/output[@output-type!="ResultFile"]/@limsid };
+Readonly::Scalar my $BATCH_ARTIFACT_PATH => q{ /art:details/art:artifact[sample/@limsid="%s"] };
 Readonly::Scalar my $LOCATION_PATH => q{ location/value };
 Readonly::Scalar my $CALL_RATE => q{WTSI Fluidigm Call Rate (SM)};
 Readonly::Scalar my $GENDER => q{WTSI Fluidigm Gender (SM)};
+Readonly::Scalar my $EMPTY => q{[ Empty ]};
 ## use critic
 
 extends 'wtsi_clarity::epp';
@@ -69,41 +70,52 @@ override 'run' => sub {
   my $self = shift;
   super();
 
-  # Parse the file
   my %sample_assay_set = wtsi_clarity::genotyping::fluidigm
                           ->new(directory => $self->_filepath)
                           ->parse();
 
-  # Loop through sample assay set updating artifacts
-  foreach my $artifact ($self->_output_artifacts->findnodes($BATCH_ARTIFACT_PATH)->get_nodelist()) {
-    # get location of the artifact
-    my $location = $artifact->findvalue($LOCATION_PATH);
+  $self->_update_output_artifacts(\%sample_assay_set);
 
-    # convert location to well position
-    my $well_location = 'S';
-
-    ## no critic (ValuesAndExpressions::ProhibitMagicNumbers)
-    $well_location .= sprintf '%02d', $self->well_location_index($location, 8, 12);
-    ## use critic
-
-    # find that sample in sample_assay_set, next if it wasn't done for some reason...
-    next if (!exists $sample_assay_set{$well_location});
-
-    my $sample_assay = $sample_assay_set{$well_location};
-
-    # update artifact with gender and call rate
-    my $call_rate_node = $self->create_udf_element($self->_output_artifacts, $CALL_RATE, $sample_assay->call_rate);
-    my $gender_node = $self->create_udf_element($self->_output_artifacts, $GENDER, $sample_assay->gender);
-
-    $artifact->appendChild($call_rate_node);
-    $artifact->appendChild($gender_node);
-  }
-
-  # update artifacts
   $self->request->batch_update('artifacts', $self->_output_artifacts);
 
   return;
 };
+
+sub _update_output_artifacts {
+  my ($self, $sample_assay_set) = @_;
+
+  while ( my ($well, $assay_set) = each %{$sample_assay_set} ) {
+    next if ($assay_set->sample_name eq $EMPTY);
+    my $artifact = $self->_find_artifact_by_sample_name($assay_set->sample_name);
+    $self->_update_artifact($artifact, $assay_set);
+  }
+
+  return;
+}
+
+sub _update_artifact {
+  my ($self, $artifact, $assay_set) = @_;
+
+  my $call_rate_node = $self->create_udf_element($self->_output_artifacts, $CALL_RATE, $assay_set->call_rate);
+  my $gender_node = $self->create_udf_element($self->_output_artifacts, $GENDER, $assay_set->gender);
+
+  $artifact->appendChild($call_rate_node);
+  $artifact->appendChild($gender_node);
+
+  return $artifact;
+}
+
+sub _find_artifact_by_sample_name {
+  my ($self, $sample_name) = @_;
+
+  my $artifact_list = $self->_output_artifacts->findnodes(sprintf $BATCH_ARTIFACT_PATH, $sample_name);
+
+  if ($artifact_list->size() != 1) {
+    croak 'Found ' . $artifact_list->size() . ' artifacts for sample ' . $sample_name;
+  }
+
+  return $artifact_list->pop();
+}
 
 1;
 
