@@ -1,5 +1,9 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.72
+ - Allow storage of plates from previous steps
+ - Fix for file download in proceed_sample_updater
+
 Release 0.71
   - Refactored Fluidigm Analysis EPP and added extra tests:
     Updated is_call method in Fluidigm/Assay. Fixes #206
