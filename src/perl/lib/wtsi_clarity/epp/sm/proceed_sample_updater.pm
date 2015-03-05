@@ -139,15 +139,31 @@ sub _read_qc_file {
   }
 
   my ($server, $remote_directory, $filename) = $result_file_uri =~ /sftp:\/\/([^\/]+)\/(.*)\/([^\/]+[.].+)/smx;
-  my $file = $self->_download_qc_file($server, $remote_directory, $filename);
+  my $tmpdir = File::Temp->newdir();
+  my $local_filename = $tmpdir->dirname() . $filename;
+
+  my $remote_file = qq(/$remote_directory/$filename);
+
+  my $file = $self->_download_qc_file($server, $remote_file, $local_filename);
 
   return $file;
 }
 
 sub _download_qc_file {
-  my ($self, $server, $remote_directory, $filename) = @_;
+  my ($self, $server, $remote_file, $local_filename) = @_;
 
-  return $self->request->download_file($server, $remote_directory, $filename);
+  $self->request->download_file($server, $remote_file, $local_filename);
+
+  my $qc_file = wtsi_clarity::util::textfile->new();
+  $qc_file->read_content($local_filename);
+
+  my $reader = wtsi_clarity::util::csv::factories::generic_csv_reader->new();
+
+  my $content = $reader->build(
+    file_content => $qc_file->content,
+  );
+
+  return $content;
 }
 
 1;
