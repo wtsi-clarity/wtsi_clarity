@@ -20,7 +20,6 @@ Readonly::Scalar my $TRAY_XPATH                 => q{/prc:process/udf:field[@nam
 Readonly::Scalar my $RACK_XPATH                 => q{/prc:process/udf:field[@name="Rack"]/text()};
 ## use critic
 
-
 our $VERSION = '0.0';
 
 override 'run' => sub {
@@ -36,6 +35,13 @@ sub _main_method {
   $self->request->batch_update('containers', $self->_input_container_details);
   return;
 }
+
+has 'from_step_name' => (
+  isa => 'Str',
+  is  => 'ro',
+  required => 0,
+  default => 'current',
+);
 
 has '_freezer_barcode' => (
   isa => 'Str',
@@ -101,6 +107,37 @@ sub _get_process_udf {
   return @{$v}[0];
 }
 
+sub _get_parent_process_xml {
+  my ($self) = @_;
+
+  my $parent = $self->process_doc->find_parent($self->from_step_name, $self->process_url);
+
+  if (! @{$parent}) {
+    croak q{Could not found the required process.};
+  }
+
+  return $self->fetch_and_parse($parent->[0]);
+}
+
+has 'process_doc_xml' => (
+  isa => 'XML::LibXML::Document',
+  is  => 'ro',
+  required => 0,
+  lazy_build => 1,
+);
+sub _build_process_doc_xml {
+  my ($self) = @_;
+  my $xml;
+
+  if ($self->from_step_name ne 'current') {
+    $xml = $self->_get_parent_process_xml;
+  } else {
+    $xml = $self->process_doc->xml;
+  }
+
+  return $xml;
+}
+
 has '_input_artifacts_ids' => (
   isa => 'ArrayRef',
   is  => 'ro',
@@ -110,7 +147,7 @@ has '_input_artifacts_ids' => (
 
 sub _build__input_artifacts_ids {
   my ($self) = @_;
-  return $self->grab_values($self->process_doc->xml, $INPUT_ARTIFACTS_IDS_PATH);
+  return $self->grab_values($self->process_doc_xml, $INPUT_ARTIFACTS_IDS_PATH);
 }
 
 has '_input_artifacts_details' => (
