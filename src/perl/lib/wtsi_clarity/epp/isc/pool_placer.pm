@@ -14,6 +14,21 @@ Readonly::Scalar my $OUTPUT_PLACEMENT_PATH  => q{/stp:placements/output-placemen
 Readonly::Scalar my $CONTAINER_PATH         => q{/stp:placements/selected-containers/container/@uri};
 ## use critic
 
+Readonly::Hash my %POOL_NAMES_BY_TARGET_WELL => {
+  'A:1' => 'A1:H1',
+  'B:1' => 'A2:H2',
+  'C:1' => 'A3:H3',
+  'D:1' => 'A4:H4',
+  'E:1' => 'A5:H5',
+  'F:1' => 'A6:H6',
+  'G:1' => 'A7:H7',
+  'H:1' => 'A8:H8',
+  'A:2' => 'A9:H9',
+  'B:2' => 'A10:H10',
+  'C:2' => 'A11:H11',
+  'D:2' => 'A12:H12'
+};
+
 has 'step_url' => (
   isa        => 'Str',
   is         => 'ro',
@@ -38,7 +53,13 @@ sub _pool_location {
 
   my $pool_details = $self->fetch_and_parse($pool_uri);
 
-  return $pool_details->findnodes($POOL_NAME_PATH)->pop()->string_value;
+  my $pool_name = $pool_details->findnodes($POOL_NAME_PATH)->pop()->string_value;
+
+  my ($range_start, $range_end) = $pool_name =~ /([[:upper:]]\d+):([[:upper:]]\d+)/gsmx;
+  my $range = "$range_start:$range_end";
+  my @pool_location = grep { $POOL_NAMES_BY_TARGET_WELL{$_} eq $range } keys %POOL_NAMES_BY_TARGET_WELL;
+
+  return $pool_location[0];
 }
 
 has '_container_uri' => (

@@ -20,6 +20,31 @@ Readonly::Scalar my $ARTIFACT_LOCATION_PATH   => q{location/value };
 Readonly::Scalar my $CONTAINER_LIMSID_PATH      => q{/con:details/con:container/@limsid };
 ## use critic
 
+Readonly::Hash my %POOL_NAMES_BY_TARGET_WELL => {
+  'A:1' => 'A1:H1',
+  'B:1' => 'A2:H2',
+  'C:1' => 'A3:H3',
+  'D:1' => 'A4:H4',
+  'E:1' => 'A5:H5',
+  'F:1' => 'A6:H6',
+  'G:1' => 'A7:H7',
+  'H:1' => 'A8:H8',
+  'A:2' => 'A9:H9',
+  'B:2' => 'A10:H10',
+  'C:2' => 'A11:H11',
+  'D:2' => 'A12:H12'
+};
+
+sub _get_pool_name {
+  my ($self, $destination_well_name) = @_;
+
+  my $pool_name = $POOL_NAMES_BY_TARGET_WELL{$destination_well_name};
+
+  croak qq{Pool name ($destination_well_name) is not defined for this destination well} if (! defined $pool_name);
+
+  return $pool_name;
+}
+
 has 'step_url' => (
   isa        => 'Str',
   is         => 'ro',
@@ -129,8 +154,9 @@ sub _build__pools {
   while ( my ($location, $analyte_uri) = each %{$self->_input_artifacts_location}) {
     foreach my $mapping (@{$mappings}) {
       if ($mapping->{'source_well'} eq $location) {
-        $pools->{$mapping->{'dest_well'}} ||= [];
-        push @{$pools->{$mapping->{'dest_well'}}}, $analyte_uri;
+        my $pool_name = join q{ }, $self->process_doc->get_container_name_by_limsid($mapping->{'source_plate'}), $self->_get_pool_name($mapping->{'dest_well'});
+        $pools->{$pool_name} ||= [];
+        push @{$pools->{$pool_name}}, $analyte_uri;
       }
     }
   }
