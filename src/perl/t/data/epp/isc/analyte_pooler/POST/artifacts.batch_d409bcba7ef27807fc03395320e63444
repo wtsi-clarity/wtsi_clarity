@@ -1,0 +1,1713 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183866?state=88828" limsid="2-183866">
+        <name>1-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1" limsid="DEA103A1"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 1 (ATCACGTT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183867?state=88829" limsid="2-183867">
+        <name>2-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>B:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A2" limsid="DEA103A2"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 2 (CGATGTTT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183868?state=88830" limsid="2-183868">
+        <name>3-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>C:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A3" limsid="DEA103A3"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 3 (TTAGGCAT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183869?state=88831" limsid="2-183869">
+        <name>4-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>D:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A4" limsid="DEA103A4"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 4 (TGACCACT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183870?state=88832" limsid="2-183870">
+        <name>5-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>E:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A5" limsid="DEA103A5"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 5 (ACAGTGGT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183871?state=88833" limsid="2-183871">
+        <name>6-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>F:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A6" limsid="DEA103A6"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 6 (GCCAATGT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183872?state=88834" limsid="2-183872">
+        <name>7-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>G:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A7" limsid="DEA103A7"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 7 (CAGATCTG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183873?state=88835" limsid="2-183873">
+        <name>8-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>H:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A8" limsid="DEA103A8"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 8 (ACTTGATG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183874?state=88836" limsid="2-183874">
+        <name>9-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>A:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A9" limsid="DEA103A9"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 9 (GATCAGCG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183875?state=88837" limsid="2-183875">
+        <name>10-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>B:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A10" limsid="DEA103A10"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 10 (TAGCTTGT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183876?state=88838" limsid="2-183876">
+        <name>11-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>C:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A11" limsid="DEA103A11"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 11 (GGCTACAG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183877?state=88839" limsid="2-183877">
+        <name>12-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>D:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A12" limsid="DEA103A12"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 12 (CTTGTACT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183878?state=88840" limsid="2-183878">
+        <name>13-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>E:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A13" limsid="DEA103A13"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 13 (TGGTTGTT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183879?state=88841" limsid="2-183879">
+        <name>14-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>F:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A14" limsid="DEA103A14"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 14 (TCTCGGTT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183880?state=88842" limsid="2-183880">
+        <name>15-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>G:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A15" limsid="DEA103A15"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 15 (TAAGCGTT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183881?state=88843" limsid="2-183881">
+        <name>16-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>H:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A16" limsid="DEA103A16"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 16 (TCCGTCTT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183882?state=88844" limsid="2-183882">
+        <name>17-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>A:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A17" limsid="DEA103A17"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 17 (TGTACCTT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183883?state=88845" limsid="2-183883">
+        <name>18-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>B:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A18" limsid="DEA103A18"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 18 (TTCTGTGT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183884?state=88846" limsid="2-183884">
+        <name>19-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>C:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A19" limsid="DEA103A19"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 19 (TCTGCTGT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183885?state=88847" limsid="2-183885">
+        <name>20-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>D:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A20" limsid="DEA103A20"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 20 (TTGGAGGT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183886?state=88848" limsid="2-183886">
+        <name>21-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>E:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A21" limsid="DEA103A21"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 21 (TCGAGCGT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183887?state=88849" limsid="2-183887">
+        <name>22-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>F:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A22" limsid="DEA103A22"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 22 (TGATACGT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183888?state=88850" limsid="2-183888">
+        <name>23-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>G:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A23" limsid="DEA103A23"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 23 (TGCATAGT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183889?state=88851" limsid="2-183889">
+        <name>24-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>H:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A24" limsid="DEA103A24"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 24 (TTGACTCT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183890?state=88852" limsid="2-183890">
+        <name>25-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>A:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A25" limsid="DEA103A25"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 25 (TGCGATCT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183891?state=88853" limsid="2-183891">
+        <name>26-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>B:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A26" limsid="DEA103A26"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 26 (TTCCTGCT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183892?state=88854" limsid="2-183892">
+        <name>27-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>C:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A27" limsid="DEA103A27"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 27 (TAGTGACT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183893?state=88855" limsid="2-183893">
+        <name>28-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>D:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A28" limsid="DEA103A28"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 28 (TACAGGAT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183894?state=88856" limsid="2-183894">
+        <name>29-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>E:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A29" limsid="DEA103A29"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 29 (TCCTCAAT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183895?state=88857" limsid="2-183895">
+        <name>30-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>F:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A30" limsid="DEA103A30"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 30 (TGTGGTTG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183896?state=88858" limsid="2-183896">
+        <name>31-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>G:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A31" limsid="DEA103A31"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 31 (TAGTCTTG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183897?state=88859" limsid="2-183897">
+        <name>32-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>H:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A32" limsid="DEA103A32"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 32 (TTCCATTG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183898?state=88860" limsid="2-183898">
+        <name>33-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>A:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A33" limsid="DEA103A33"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 33 (TCGAAGTG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183899?state=88861" limsid="2-183899">
+        <name>34-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>B:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A34" limsid="DEA103A34"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 34 (TAACGCTG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183900?state=88862" limsid="2-183900">
+        <name>35-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>C:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A35" limsid="DEA103A35"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 35 (TTGGTATG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183951?state=88863" limsid="2-183951">
+        <name>36-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>D:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A36" limsid="DEA103A36"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 36 (TGAACTGG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183952?state=88864" limsid="2-183952">
+        <name>37-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>E:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A37" limsid="DEA103A37"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 37 (TACTTCGG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183953?state=88865" limsid="2-183953">
+        <name>38-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>F:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A38" limsid="DEA103A38"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 38 (TCTCACGG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183954?state=88866" limsid="2-183954">
+        <name>39-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>G:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A39" limsid="DEA103A39"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 39 (TCAGGAGG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183955?state=88867" limsid="2-183955">
+        <name>40-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>H:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A40" limsid="DEA103A40"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 40 (TAAGTTCG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183956?state=88868" limsid="2-183956">
+        <name>41-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>A:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A41" limsid="DEA103A41"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 41 (TCCAGTCG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183957?state=88869" limsid="2-183957">
+        <name>42-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>B:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A42" limsid="DEA103A42"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 42 (TGTATGCG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183958?state=88870" limsid="2-183958">
+        <name>43-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>C:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A43" limsid="DEA103A43"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 43 (TCATTGAG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183959?state=88871" limsid="2-183959">
+        <name>44-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>D:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A44" limsid="DEA103A44"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 44 (TGGCTCAG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183960?state=88872" limsid="2-183960">
+        <name>45-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>E:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A45" limsid="DEA103A45"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 45 (TATGCCAG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183961?state=88873" limsid="2-183961">
+        <name>46-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>F:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A46" limsid="DEA103A46"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 46 (TCAGATTC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183962?state=88874" limsid="2-183962">
+        <name>47-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>G:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A47" limsid="DEA103A47"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 47 (TACTAGTC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183963?state=88875" limsid="2-183963">
+        <name>48-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>H:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A48" limsid="DEA103A48"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 48 (TTCAGCTC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183964?state=88876" limsid="2-183964">
+        <name>49-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>A:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A49" limsid="DEA103A49"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 49 (TGTCTATC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183965?state=88877" limsid="2-183965">
+        <name>50-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>B:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A50" limsid="DEA103A50"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 50 (TATGTGGC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183966?state=88878" limsid="2-183966">
+        <name>51-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>C:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A51" limsid="DEA103A51"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 51 (TTACTCGC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183967?state=88879" limsid="2-183967">
+        <name>52-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>D:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A52" limsid="DEA103A52"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 52 (TCGTTAGC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183968?state=88880" limsid="2-183968">
+        <name>53-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>E:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A53" limsid="DEA103A53"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 53 (TACCGAGC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183969?state=88881" limsid="2-183969">
+        <name>54-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>F:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A54" limsid="DEA103A54"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 54 (TGTTCTCC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183970?state=88882" limsid="2-183970">
+        <name>55-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>G:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A55" limsid="DEA103A55"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 55 (TTCGCACC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183971?state=88883" limsid="2-183971">
+        <name>56-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>H:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A56" limsid="DEA103A56"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 56 (TTGCGTAC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183972?state=88884" limsid="2-183972">
+        <name>57-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>A:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A57" limsid="DEA103A57"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 57 (TCTACGAC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183973?state=88885" limsid="2-183973">
+        <name>58-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>B:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A58" limsid="DEA103A58"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 58 (TGACAGAC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183974?state=88886" limsid="2-183974">
+        <name>59-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>C:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A59" limsid="DEA103A59"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 59 (TAGAACAC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183975?state=88887" limsid="2-183975">
+        <name>60-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>D:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A60" limsid="DEA103A60"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 60 (TCATCCTA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183976?state=88888" limsid="2-183976">
+        <name>61-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>E:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A61" limsid="DEA103A61"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 61 (TGCTGATA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183977?state=88889" limsid="2-183977">
+        <name>62-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>F:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A62" limsid="DEA103A62"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 62 (TAGACGGA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183978?state=88890" limsid="2-183978">
+        <name>63-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>G:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A63" limsid="DEA103A63"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 63 (TGTGAAGA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183979?state=88891" limsid="2-183979">
+        <name>64-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>H:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A64" limsid="DEA103A64"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 64 (TCTCTTCA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183980?state=88892" limsid="2-183980">
+        <name>65-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>A:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A65" limsid="DEA103A65"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 65 (TTGTTCCA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183981?state=88893" limsid="2-183981">
+        <name>66-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>B:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A66" limsid="DEA103A66"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 66 (TGAAGCCA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183982?state=88894" limsid="2-183982">
+        <name>67-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>C:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A67" limsid="DEA103A67"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 67 (TACCACCA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183983?state=88895" limsid="2-183983">
+        <name>68-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>D:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A68" limsid="DEA103A68"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 68 (TGCGTGAA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183984?state=88896" limsid="2-183984">
+        <name>69-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>E:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A69" limsid="DEA103A69"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 69 (GGTGAGTT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183985?state=88897" limsid="2-183985">
+        <name>70-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>F:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A70" limsid="DEA103A70"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 70 (GATCTCTT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183986?state=88898" limsid="2-183986">
+        <name>71-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>G:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A71" limsid="DEA103A71"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 71 (GTGTCCTT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183987?state=88899" limsid="2-183987">
+        <name>72-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>H:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A72" limsid="DEA103A72"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 72 (GACGGATT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183988?state=88900" limsid="2-183988">
+        <name>73-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>A:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A73" limsid="DEA103A73"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 73 (GCAACATT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183989?state=88901" limsid="2-183989">
+        <name>74-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>B:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A74" limsid="DEA103A74"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 74 (GGTCGTGT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183990?state=88902" limsid="2-183990">
+        <name>75-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>C:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A75" limsid="DEA103A75"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 75 (GAATCTGT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183991?state=88903" limsid="2-183991">
+        <name>76-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>D:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A76" limsid="DEA103A76"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 76 (GTACATCT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183992?state=88904" limsid="2-183992">
+        <name>77-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>E:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A77" limsid="DEA103A77"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 77 (GAGGTGCT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183993?state=88905" limsid="2-183993">
+        <name>78-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>F:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A78" limsid="DEA103A78"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 78 (GCATGGCT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183994?state=88906" limsid="2-183994">
+        <name>79-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>G:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A79" limsid="DEA103A79"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 79 (GTTAGCCT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183995?state=88907" limsid="2-183995">
+        <name>80-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>H:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A80" limsid="DEA103A80"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 80 (GTCGCTAT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183996?state=88908" limsid="2-183996">
+        <name>81-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>A:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A81" limsid="DEA103A81"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 81 (GGAATGAT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183997?state=88909" limsid="2-183997">
+        <name>82-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>B:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A82" limsid="DEA103A82"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 82 (GAGCCAAT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183998?state=88910" limsid="2-183998">
+        <name>83-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>C:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A83" limsid="DEA103A83"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 83 (GCTCCTTG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183999?state=88911" limsid="2-183999">
+        <name>84-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>D:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A84" limsid="DEA103A84"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 84 (GTAAGGTG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184000?state=88912" limsid="2-184000">
+        <name>85-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>E:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A85" limsid="DEA103A85"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 85 (GAGGATGG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184051?state=88913" limsid="2-184051">
+        <name>86-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>F:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A86" limsid="DEA103A86"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 86 (GTTGTCGG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184052?state=88914" limsid="2-184052">
+        <name>87-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>G:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A87" limsid="DEA103A87"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 87 (GGATTAGG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184053?state=88915" limsid="2-184053">
+        <name>88-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>H:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A88" limsid="DEA103A88"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 88 (GATAGAGG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184054?state=88916" limsid="2-184054">
+        <name>89-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>A:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A89" limsid="DEA103A89"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 89 (GTGTGTCG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184055?state=88917" limsid="2-184055">
+        <name>90-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>B:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A90" limsid="DEA103A90"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 90 (GCAATCCG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184056?state=88918" limsid="2-184056">
+        <name>91-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>C:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A91" limsid="DEA103A91"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 91 (GACCTTAG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184057?state=88919" limsid="2-184057">
+        <name>92-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>D:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A92" limsid="DEA103A92"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 92 (GCCTGTTC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184058?state=88920" limsid="2-184058">
+        <name>93-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>E:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A93" limsid="DEA103A93"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 93 (GCACTGTC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184059?state=88921" limsid="2-184059">
+        <name>94-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>F:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A94" limsid="DEA103A94"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 94 (GCTAACTC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184060?state=88922" limsid="2-184060">
+        <name>95-Lib PCR XP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584" limsid="24-26584"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4212" limsid="27-4212"/>
+            <value>G:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A95" limsid="DEA103A95"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 95 (GATTCATC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/370"/>
+            <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/373"/>
+        </workflow-stages>
+    </art:artifact>
+</art:details>

@@ -6,6 +6,8 @@ use Readonly;
 
 extends 'wtsi_clarity::epp';
 
+with 'wtsi_clarity::epp::isc::pooling_common';
+
 our $VERSION = '0.0';
 
 Readonly::Scalar my $POOL_NAME_PATH         => q{/art:artifact/name};
@@ -38,7 +40,13 @@ sub _pool_location {
 
   my $pool_details = $self->fetch_and_parse($pool_uri);
 
-  return $pool_details->findnodes($POOL_NAME_PATH)->pop()->string_value;
+  my $pool_name = $pool_details->findnodes($POOL_NAME_PATH)->pop()->string_value;
+
+  my ($range_start, $range_end) = $pool_name =~ /([[:upper:]]\d+):([[:upper:]]\d+)/gsmx;
+  my $range = "$range_start:$range_end";
+  # my @pool_location = grep { $POOL_NAMES_BY_TARGET_WELL{$_} eq $range } keys %POOL_NAMES_BY_TARGET_WELL;
+
+  return $self->pool_location_by_pool_range($range);
 }
 
 has '_container_uri' => (
