@@ -2,8 +2,9 @@ use strict;
 use warnings;
 use XML::LibXML;
 
-use Test::More tests => 14;
+use Test::More tests => 16;
 use Test::MockObject::Extends;
+use Test::Exception;
 
 use wtsi_clarity::epp;
 
@@ -782,6 +783,31 @@ use_ok 'wtsi_clarity::clarity::process';
 
   my $limsids2 = ['24-26692', '24-26697'];
   is($process->_find_highest_limsid($limsids2), '24-26697', 'Finds the highest limsids');
+}
+
+{
+  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/clarity/process';
+  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
+
+  my $test_dir = 't/data/clarity/process/';
+
+  my $xml = XML::LibXML->load_xml(location => $test_dir . 'process1.xml');
+
+  my $epp = Test::MockObject::Extends->new(
+    wtsi_clarity::epp->new(
+      process_url => 'does not matter'
+    )
+  );
+
+  my $process = wtsi_clarity::clarity::process->new(xml => $xml, parent => $epp);
+
+  my $expected_container_name = '2460274212833';
+
+  is($process->get_container_name_by_limsid('27-4212'), $expected_container_name, 'Returns the expected container name');
+  throws_ok { $process->get_container_name_by_limsid('not-exists')}
+    qr/Could not find the name of container with the given limsid: not-exists/,
+    'error when the name of the container could not be found';
 }
 
 1;

@@ -10,6 +10,8 @@ use wtsi_clarity::isc::pooling::mapper;
 
 extends 'wtsi_clarity::epp';
 
+with 'wtsi_clarity::epp::isc::pooling_common';
+
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
@@ -129,8 +131,9 @@ sub _build__pools {
   while ( my ($location, $analyte_uri) = each %{$self->_input_artifacts_location}) {
     foreach my $mapping (@{$mappings}) {
       if ($mapping->{'source_well'} eq $location) {
-        $pools->{$mapping->{'dest_well'}} ||= [];
-        push @{$pools->{$mapping->{'dest_well'}}}, $analyte_uri;
+        my $pool_name = join q{ }, $self->process_doc->get_container_name_by_limsid($mapping->{'source_plate'}), $self->get_pool_name($mapping->{'dest_well'});
+        $pools->{$pool_name} ||= [];
+        push @{$pools->{$pool_name}}, $analyte_uri;
       }
     }
   }

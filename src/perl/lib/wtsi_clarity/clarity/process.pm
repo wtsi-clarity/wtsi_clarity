@@ -25,6 +25,7 @@ Readonly::Scalar my $ALL_CONTAINERS      => q{art:details/art:artifact/location/
 Readonly::Scalar my $RESULT_FILE_URI     => q{(prc:process/input-output-map/output[@output-type="ResultFile"]/@uri)[1]};
 Readonly::Scalar my $FILE_URL_PATH       => q(/art:artifact/file:file/@uri);
 Readonly::Scalar our $FILE_CONTENT_LOCATION => q(/file:file/content-location);
+Readonly::Scalar my $CONTAINER_NAME_LOCATION => q(/con:container/name);
 ## use critic
 
 has '_parent' => (
@@ -302,6 +303,18 @@ sub get_result_file_location {
   return $uploaded_file_xml->findvalue($FILE_CONTENT_LOCATION);
 }
 
+sub get_container_name_by_limsid {
+  my ($self, $limsid) = @_;
+
+  my $uri = $self->_config->clarity_api->{'base_uri'} . '/containers/' . $limsid;
+  my $container_xml = $self->_parent->fetch_and_parse($uri);
+  my $container_name = $container_xml->findvalue($CONTAINER_NAME_LOCATION);
+
+  croak qq{Could not find the name of container with the given limsid: $limsid} if (!defined $container_name || $container_name eq q{});
+
+  return $container_name;
+}
+
 1;
 
 __END__
@@ -356,6 +369,10 @@ wtsi_clarity::clarity::process
 
 =head2 get_result_file_location
   Returns the location of the result file.
+
+=head2 get_container_name_by_limsid
+
+  Returns the name of the container by its limsid.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
