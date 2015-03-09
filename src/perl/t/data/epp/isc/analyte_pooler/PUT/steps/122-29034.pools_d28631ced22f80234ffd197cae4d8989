@@ -1,0 +1,246 @@
+<?xml version="1.0" standalone="yes"?>
+<stp:pools xmlns:stp="http://genologics.com/ri/step" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/steps/122-29034/pools">
+    <step uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/steps/122-29034" rel="steps"/>
+    <configuration uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/protocols/102/steps/260">Pre Capture Lib Pooling</configuration>
+    <pooled-inputs>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217172" name="A6:H6 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183956"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183957"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183958"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183959"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183960"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183961"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183962"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183963"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217173" name="A4:H4 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183890"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183891"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183892"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183893"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183894"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183895"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183896"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183897"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217174" name="A1:H1 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183866"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183867"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183868"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183869"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183870"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183871"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183872"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183873"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217175" name="A12:H12 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184054"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184055"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184056"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184057"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184058"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184059"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184060"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217176" name="A10:H10 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183988"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183989"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183990"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183991"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183992"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183993"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183994"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183995"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217177" name="A2:H2 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183874"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183875"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183876"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183877"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183878"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183879"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183880"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183881"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217178" name="A5:H5 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183898"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183899"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183900"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183951"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183952"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183953"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183954"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183955"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217179" name="A3:H3 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183882"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183883"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183884"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183885"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183886"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183887"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183888"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183889"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217180" name="A7:H7 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183964"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183965"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183966"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183967"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183968"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183969"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183970"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183971"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217181" name="A11:H11 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183996"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183997"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183998"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183999"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184000"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184051"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184052"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184053"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217182" name="A8:H8 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183972"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183973"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183974"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183975"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183976"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183977"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183978"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183979"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217183" name="A9:H9 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183980"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183981"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183982"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183983"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183984"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183985"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183986"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183987"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217184" name="A6:H6 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183956"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183957"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183958"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183959"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183960"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183961"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183962"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183963"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217185" name="A4:H4 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183890"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183891"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183892"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183893"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183894"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183895"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183896"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183897"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217186" name="A1:H1 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183866"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183867"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183868"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183869"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183870"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183871"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183872"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183873"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217187" name="A12:H12 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184054"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184055"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184056"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184057"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184058"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184059"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184060"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217188" name="A10:H10 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183988"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183989"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183990"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183991"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183992"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183993"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183994"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183995"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217189" name="A2:H2 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183874"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183875"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183876"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183877"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183878"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183879"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183880"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183881"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217190" name="A5:H5 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183898"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183899"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183900"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183951"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183952"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183953"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183954"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183955"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217191" name="A3:H3 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183882"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183883"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183884"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183885"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183886"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183887"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183888"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183889"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217192" name="A7:H7 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183964"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183965"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183966"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183967"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183968"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183969"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183970"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183971"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217193" name="A11:H11 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183996"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183997"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183998"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183999"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184000"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184051"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184052"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-184053"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217194" name="A8:H8 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183972"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183973"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183974"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183975"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183976"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183977"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183978"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183979"/>
+        </pool>
+        <pool output-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-217195" name="A9:H9 27-4212">
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183980"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183981"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183982"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183983"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183984"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183985"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183986"/>
+            <input uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183987"/>
+        </pool>
+    </pooled-inputs>
+    <available-inputs/>
+</stp:pools>
