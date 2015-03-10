@@ -33,9 +33,9 @@ Readonly::Scalar my $UDF_CONCENTRATION  => qq{Concentration};
 Readonly::Scalar my $PRC_VOLUME         => qq{Volume Check (SM)};
 Readonly::Scalar my $PRC_CONCENTRATION  => qq{Picogreen Analysis (SM)};
 Readonly::Scalar my $CALL_RATE          => qq{WTSI Fluidigm Call Rate (SM)};
-Readonly::Scalar my $PRC_CALL_RATE      => qq{Fluidigm Analysis};
+Readonly::Scalar my $PRC_CALL_RATE      => qq{Fluidigm 96.96 IFC Analysis (SM)};
 Readonly::Scalar my $FLUIDIGM_GENDER    => qq{WTSI Fluidigm Gender (SM)};
-Readonly::Scalar my $PRC_FLUIDIGM_GENDER=> qq{Fluidigm Analysis};
+Readonly::Scalar my $PRC_FLUIDIGM_GENDER=> qq{Fluidigm 96.96 IFC Analysis (SM)};
 
 ## use critic
 
