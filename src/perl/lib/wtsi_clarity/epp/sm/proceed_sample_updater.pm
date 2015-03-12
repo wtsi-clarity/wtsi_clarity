@@ -4,6 +4,8 @@ use Moose;
 use Carp;
 use Readonly;
 use List::MoreUtils qw/uniq/;
+use wtsi_clarity::util::textfile;
+use wtsi_clarity::util::csv::factories::generic_csv_reader;
 
 extends 'wtsi_clarity::epp';
 
@@ -96,11 +98,11 @@ sub _check_valid_plate_has_been_loaded {
   my $self = shift;
 
   my $valid = 0;
-  my @plates_from_qc = keys $self->_plate_and_wells_to_proceed();
+  my @plates_from_qc = sort keys $self->_plate_and_wells_to_proceed();
 
   my $plate_nodes_from_process =
     $self->_plate_and_wells_from_process()->findnodes($PLATE_NAMES_FROM_PROCESS);
-  my @plates_from_process = uniq( map { $_->getValue() } @{$plate_nodes_from_process});
+  my @plates_from_process = uniq( sort map { $_->getValue() } @{$plate_nodes_from_process});
 
   if (@plates_from_qc ~~ @plates_from_process) {
     $valid = 1;
