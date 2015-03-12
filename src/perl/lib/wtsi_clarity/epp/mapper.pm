@@ -15,6 +15,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'verify_bed'                     => 'generic::bed_verifier',
     'attach_worksheet'               => 'generic::worksheet_attacher',
     'assign_to_workflow'             => 'generic::workflow_assigner',
+    'assign_to_next_step'            => 'generic::step_assigner_by_field',
     'publish_file'                   => 'generic::file_publisher',
     'stamp'                          => 'generic::stamper',
     'queue_message'                  => 'generic::messenger',
