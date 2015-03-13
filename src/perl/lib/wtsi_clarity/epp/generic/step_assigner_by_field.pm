@@ -13,7 +13,7 @@ Readonly::Scalar my $CONFIGURATION_URI_PATH     => q( /stp:actions/configuration
 Readonly::Scalar my $TRANSITION_URI_PATH        => q( /protstepcnf:step/transitions/transition );
 Readonly::Scalar my $NEXT_ACTION_PATH           => q(/stp:actions/next-actions/next-action);
 Readonly::Scalar my $SAMPLE_URI_PATH            => q{/art:artifact/sample/@uri};
-Readonly::Scalar my $PROCEED_TO_SEQUENCING_PATH => q{/smp:sample/udf:field[@name="WTSI Proceed To Sequencing?"]};
+Readonly::Scalar my $FIELD_NAME_PATH            => q{/smp:sample/udf:field[@name="%s"]};
 ## use critic
 
 Readonly::Array my @PROCEED_VALUES => qw{Y YES};
@@ -115,7 +115,7 @@ sub _set_next_actions {
   foreach my $next_action_node (@next_action_nodes) {
     my $artifact_xml = $self->_get_artifact_by_uri($next_action_node->getAttribute(q{artifact-uri}));
     my $sample_xml = $self->_get_sample_by_uri($artifact_xml->findvalue($SAMPLE_URI_PATH));
-    my $is_proceed_to_sequencing = $sample_xml->findvalue($PROCEED_TO_SEQUENCING_PATH);
+    my $is_proceed_to_sequencing = $sample_xml->findvalue(sprintf $FIELD_NAME_PATH, $self->field_name);
 
     if (uc($is_proceed_to_sequencing) ~~ @PROCEED_VALUES) {
       $next_action_node->setAttribute('action', $NEXT_STEP_ACTION);
