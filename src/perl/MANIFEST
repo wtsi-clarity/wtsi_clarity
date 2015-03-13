@@ -10,6 +10,7 @@ lib/wtsi_clarity/epp/generic/messenger.pm
 lib/wtsi_clarity/epp/generic/plate_purpose_updater.pm
 lib/wtsi_clarity/epp/generic/plate_storer.pm
 lib/wtsi_clarity/epp/generic/stamper.pm
+lib/wtsi_clarity/epp/generic/step_assigner_by_field.pm
 lib/wtsi_clarity/epp/generic/workflow_assigner.pm
 lib/wtsi_clarity/epp/generic/worksheet_attacher.pm
 lib/wtsi_clarity/epp/isc/agilent_analyser.pm

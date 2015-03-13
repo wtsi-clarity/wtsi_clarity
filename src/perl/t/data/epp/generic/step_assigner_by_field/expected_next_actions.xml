@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<stp:actions xmlns:stp="http://genologics.com/ri/step" uri="http://testserver.com:1234/here/steps/24-28533/actions">
+    <step uri="http://testserver.com:1234/here/steps/24-28533" rel="steps"/>
+    <configuration uri="http://testserver.com:1234/here/configuration/protocols/9/steps/36">Cherrypick Submission (SM)</configuration>
+    <next-actions>
+        <next-action action="remove" artifact-uri="http://testserver.com:1234/here/artifacts/2-206317"/>
+        <next-action step-uri="http://testserver.com:1234/here/configuration/protocols/9/steps/37" action="nextstep" artifact-uri="http://testserver.com:1234/here/artifacts/2-206318"/>
+        <next-action step-uri="http://testserver.com:1234/here/configuration/protocols/9/steps/37" action="nextstep" artifact-uri="http://testserver.com:1234/here/artifacts/2-206319"/>
+        <next-action step-uri="http://testserver.com:1234/here/configuration/protocols/9/steps/37" action="nextstep" artifact-uri="http://testserver.com:1234/here/artifacts/2-206320"/>
+        <next-action step-uri="http://testserver.com:1234/here/configuration/protocols/9/steps/37" action="nextstep" artifact-uri="http://testserver.com:1234/here/artifacts/2-206321"/>
+        <next-action step-uri="http://testserver.com:1234/here/configuration/protocols/9/steps/37" action="nextstep" artifact-uri="http://testserver.com:1234/here/artifacts/2-206322"/>
+        <next-action step-uri="http://testserver.com:1234/here/configuration/protocols/9/steps/37" action="nextstep" artifact-uri="http://testserver.com:1234/here/artifacts/2-206323"/>
+    </next-actions>
+</stp:actions>
