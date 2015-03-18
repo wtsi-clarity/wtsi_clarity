@@ -1,5 +1,7 @@
 CHANGES for wtsi_clarity Perl project
-
+Release 0.76
+ - Added stamper action for cherry-picking
+ 
 Release 0.75
  - Added step_assigner_by_field action
  - fixed sample updater: added missing modules and fix array comparing
