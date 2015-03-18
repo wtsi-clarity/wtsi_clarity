@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<stp:step xmlns:stp="http://genologics.com/ri/step" current-state="Placement" limsid="24-29592" uri="http://testserver.com:1234/here/steps/24-29592">
+    <configuration uri="http://testserver.com:1234/here/configuration/protocols/9/steps/37">Cherrypick Worksheet &amp; Barcode(SM)</configuration>
+    <actions uri="http://testserver.com:1234/here/steps/24-29592/actions"/>
+    <placements uri="http://testserver.com:1234/here/steps/24-29592/placements"/>
+    <details uri="http://testserver.com:1234/here/steps/24-29592/details"/>
+    <available-programs>
+        <available-program name="Attach Worksheet" uri="http://testserver.com:1234/here/steps/24-29592/trigger/90"/>
+        <available-program name="Print Barcode" uri="http://testserver.com:1234/here/steps/24-29592/trigger/88"/>
+        <available-program name="Stamping from proceed list" uri="http://testserver.com:1234/here/steps/24-29592/trigger/756"/>
+        <available-program name="Update Cherrypick Volumes" uri="http://testserver.com:1234/here/steps/24-29592/trigger/89"/>
+    </available-programs>
+</stp:step>

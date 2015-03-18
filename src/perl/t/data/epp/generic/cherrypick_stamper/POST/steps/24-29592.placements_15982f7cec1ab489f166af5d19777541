@@ -1,0 +1,490 @@
+<?xml version="1.0" standalone="yes"?>
+<stp:placements xmlns:stp="http://genologics.com/ri/step" uri="http://testserver.com:1234/here/steps/24-29592/placements">
+    <step uri="http://testserver.com:1234/here/steps/24-29592" rel="steps"/>
+    <configuration uri="http://testserver.com:1234/here/configuration/protocols/9/steps/37">Cherrypick Worksheet &amp; Barcode(SM)</configuration>
+    <selected-containers>
+        <container uri="http://testserver.com:1234/here/containers/27-5504"/>
+    </selected-containers>
+    <output-placements>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230961">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>E:1</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230962">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>F:1</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230963">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>G:1</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230964">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>H:1</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230965">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>A:1</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230966">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>B:1</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230967">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>C:1</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230968">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>D:1</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230969">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>F:2</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230970">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>E:2</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230971">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>H:2</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230972">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>G:2</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230973">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>B:2</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230974">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>A:2</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230975">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>D:2</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230976">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>C:2</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230977">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>F:3</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230978">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>E:3</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230979">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>H:3</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230980">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>G:3</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230981">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>B:3</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230982">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>A:3</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230983">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>D:3</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230984">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>C:3</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230985">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>D:5</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230986">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>C:5</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230987">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>B:5</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230988">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>A:5</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230989">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>H:5</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230990">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>G:5</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230991">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>F:5</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230992">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>E:5</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230993">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>D:4</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230994">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>C:4</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230995">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>B:4</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230996">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>A:4</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230997">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>H:4</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230998">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>G:4</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-230999">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>F:4</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231000">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>E:4</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231001">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>C:7</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231002">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>D:7</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231003">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>A:7</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231004">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>B:7</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231005">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>G:7</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231006">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>H:7</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231007">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>E:7</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231008">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>F:7</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231009">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>C:6</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231010">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>D:6</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231011">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>A:6</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231012">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>B:6</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231013">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>G:6</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231014">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>H:6</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231015">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>E:6</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231016">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>F:6</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231017">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>B:9</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231018">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>A:9</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231019">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>D:9</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231020">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>C:9</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231021">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>F:9</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231022">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>E:9</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231023">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>H:9</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231024">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>G:9</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231025">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>B:8</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231026">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>A:8</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231027">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>D:8</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231028">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>C:8</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231029">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>F:8</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231030">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>E:8</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231031">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>H:8</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231032">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>G:8</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231033">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>A:10</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231034">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>B:10</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231035">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>C:10</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231036">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>D:10</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231037">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>E:10</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231038">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>F:10</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231039">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>G:10</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-231040">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-5504" limsid="27-5504"/>
+                <value>H:10</value>
+            </location>
+        </output-placement>
+    </output-placements>
+</stp:placements>
