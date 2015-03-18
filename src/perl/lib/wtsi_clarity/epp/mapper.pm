@@ -18,6 +18,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'assign_to_next_step'            => 'generic::step_assigner_by_field',
     'publish_file'                   => 'generic::file_publisher',
     'stamp'                          => 'generic::stamper',
+    'cherrypick_stamp'               => 'generic::cherrypick_stamper',
     'queue_message'                  => 'generic::messenger',
     'store_plate'                    => 'generic::plate_storer',
 
