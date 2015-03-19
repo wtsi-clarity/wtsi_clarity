@@ -19,7 +19,7 @@ sub build {
   my $output = [];
 
   foreach my $line (@{$file_content}) {
-    chomp $line;
+    _cleanup_key($line);
     $csv_parser->parse($line);
     my @values = $csv_parser->fields();
     my %hash;
