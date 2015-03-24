@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 16;
+use Test::More tests => 17;
 use Test::Exception;
 use Test::Deep;
 use Test::MockObject::Extends;
@@ -25,7 +25,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
   );
 
   my $res = $m->_get_artifact_uris_from_udf('Volume Check (SM)', qq{Volume});
-  my $expected = [ 
+  my $expected = [
     'http://testserver.com:1234/here/artifacts/2-112536',
     'http://testserver.com:1234/here/artifacts/2-112537',
     'http://testserver.com:1234/here/artifacts/2-112538',
@@ -442,6 +442,24 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
   my $res = $m->_build_internal_csv_output();
 
   is_deeply($res, @expected, qq{_build_internal_csv_output should return the correct values.} );
+}
+
+# Update sample concentrations by limsid
+{
+  my $sample_file_path = $ENV{'WTSICLARITY_WEBCACHE_DIR'} . '/POST/samples.batch_45da142638aed19c403dcd3c650c3edc';
+  my $sample_details   = XML::LibXML->load_xml( location => $sample_file_path );
+
+  my $m = wtsi_clarity::epp::sm::report_maker->new(
+    process_url         => $base_uri . '/processes/24-25342',
+    qc_report_file_name => '24-25342',
+    _sample_details     => $sample_details,
+  );
+
+  $m->_update_sample_concentration('DEA103A1325', 20);
+
+  my $sample_concentration = $m->_sample_details->findvalue('/smp:details/smp:sample[@limsid="DEA103A1325"]/udf:field[@name="Sample Conc. (ng\/µL) (SM)"]');
+
+  is($sample_concentration, 20, 'Updates a sample concentration within a sample batch');
 }
 
 1;
