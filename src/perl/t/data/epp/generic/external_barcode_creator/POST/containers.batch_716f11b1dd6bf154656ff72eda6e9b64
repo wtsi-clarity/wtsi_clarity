@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<con:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container">
+    <con:container uri="http://testserver.com:1234/here/containers/27-5496" limsid="27-5496">
+        <name>27-5496</name>
+        <type uri="http://testserver.com:1234/here/containertypes/104" name="FluidX 0.75ml"/>
+        <occupied-wells>0</occupied-wells>
+        <state>Empty</state>
+    </con:container>
+    <con:container uri="http://testserver.com:1234/here/containers/27-5497" limsid="27-5497">
+        <name>27-5497</name>
+        <type uri="http://testserver.com:1234/here/containertypes/4" name="96 Well Plate"/>
+        <occupied-wells>0</occupied-wells>
+        <state>Empty</state>
+    </con:container>
+</con:details>

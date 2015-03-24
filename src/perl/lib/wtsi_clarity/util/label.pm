@@ -8,6 +8,28 @@ use DateTime;
 our $VERSION = '0.0';
 
 Readonly::Scalar my $USER_NAME_LENGTH => 12;
+Readonly::Scalar our $PLATE_96_WELL_CONTAINER_NAME  => q{96 Well Plate};
+Readonly::Scalar our $ABGENE_800_CONTAINER_NAME     => q{ABgene 0800};
+Readonly::Scalar our $ABGENE_765_CONTAINER_NAME     => q{ABgene 0765};
+Readonly::Scalar our $FLUIDX_075_CONTAINER_NAME     => q{FluidX 0.75ml};
+Readonly::Scalar our $TUBE_CONTAINER_NAME           => q{Tube};
+
+Readonly::Scalar our $PLATE_LABEL_TYPE              => q{plate};
+Readonly::Scalar our $TUBE_LABEL_TYPE               => q{tube};
+
+Readonly::Hash   our %LABEL_TYPES                   => {
+  $PLATE_96_WELL_CONTAINER_NAME => $PLATE_LABEL_TYPE,
+  $FLUIDX_075_CONTAINER_NAME    => $PLATE_LABEL_TYPE,
+  $ABGENE_800_CONTAINER_NAME    => $PLATE_LABEL_TYPE,
+  $ABGENE_765_CONTAINER_NAME    => $PLATE_LABEL_TYPE,
+  $TUBE_CONTAINER_NAME          => $TUBE_LABEL_TYPE
+};
+
+sub label_type_by_container_name {
+  my ($self, $container_name) = @_;
+
+  return $LABEL_TYPES{$container_name};
+}
 
 has '_date' => (
   isa        => 'DateTime',
@@ -127,6 +149,10 @@ wtsi_clarity::util::label
 =head1 SUBROUTINES/METHODS
 
 =head2 generateLabels
+
+=head2 label_type_by_container_name
+
+  Returns the type of the label by container name.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
