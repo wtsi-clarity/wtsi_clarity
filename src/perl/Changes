@@ -1,5 +1,9 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.78
+ - The QC Report will update samples with their calculated concentration.
+ - Volume checker updates the working volume on samples, too.
+
 Release 0.77
  - Fixed the CSV file reader: clean up the white spaces from each lines
  

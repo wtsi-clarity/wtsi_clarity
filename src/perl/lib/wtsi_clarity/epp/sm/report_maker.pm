@@ -23,9 +23,10 @@ with qw/
 Readonly::Scalar my $PROCESS_ID_PATH                        => q(/prc:process/@limsid);
 Readonly::Scalar my $INPUT_ARTIFACTS_IDS_PATH               => q(/prc:process/input-output-map/input/@limsid);
 Readonly::Scalar my $ART_DETAIL_SAMPLE_IDS_PATH             => q{/art:details/art:artifact/sample/@limsid};
+Readonly::Scalar my $SAMPLE_PATH                            => q{smp:details/smp:sample[@limsid="%s"]};
 Readonly::Scalar my $SMP_DETAIL_ARTIFACTS_IDS_PATH          => q{/smp:details/smp:sample/artifact/@limsid};
 Readonly::Scalar my $ARTEFACTS_ARTEFACT_CONTAINTER_IDS_PATH => q{/art:details/art:artifact/location/container/@limsid};
-Readonly::Scalar my $ARTEFACTS_ARTEFACT_URIS_PATH            => q{/art:artifacts/artifact/@uri};
+Readonly::Scalar my $ARTEFACTS_ARTEFACT_URIS_PATH           => q{/art:artifacts/artifact/@uri};
 Readonly::Scalar my $THOUSANDTH                             => 0.001;
 
 Readonly::Scalar my $UDF_VOLUME         => qq{Volume};
@@ -36,6 +37,8 @@ Readonly::Scalar my $CALL_RATE          => qq{WTSI Fluidigm Call Rate (SM)};
 Readonly::Scalar my $PRC_CALL_RATE      => qq{Fluidigm 96.96 IFC Analysis (SM)};
 Readonly::Scalar my $FLUIDIGM_GENDER    => qq{WTSI Fluidigm Gender (SM)};
 Readonly::Scalar my $PRC_FLUIDIGM_GENDER=> qq{Fluidigm 96.96 IFC Analysis (SM)};
+
+Readonly::Scalar my $CONCENTRATION_UDF_NAME => q{Sample Conc. (ng\/µL) (SM)};
 
 ## use critic
 
@@ -88,6 +91,8 @@ sub _main_method{
   }
 
   $self->report_file->saveas(q{./} . $self->qc_report_file_name);
+
+  $self->request->batch_update('samples', $self->_sample_details);
 
   return;
 }
@@ -179,8 +184,11 @@ sub _get_total_micrograms {
   my $concentration = $self->_get_concentration($sample_id);
   my $measured_volume = $self->_get_measured_volume($sample_id);
   if ($concentration ne q{} && $measured_volume ne q{}) {
-    return $total_micrograms = $concentration * $measured_volume * $THOUSANDTH;
+    $total_micrograms = $concentration * $measured_volume * $THOUSANDTH;
   }
+
+  # We set this on the sample now so it can be used later in Cherrypicking ("Cherrypick Worksheet & Barcode" to be specific)
+  $self->_update_sample_concentration($sample_id, $total_micrograms);
 
   return $total_micrograms;
 }
@@ -294,7 +302,7 @@ sub _build__sample_ids {
 
 has '_sample_details' => (
   isa => 'XML::LibXML::Document',
-  is  => 'ro',
+  is  => 'rw',
   required => 0,
   lazy_build => 1,
 );
@@ -311,6 +319,23 @@ sub _build__sample_details {
 
   return $self->request->batch_retrieve('samples', \@uris );
 };
+
+sub _update_sample_concentration {
+  my ($self, $sample_limsid, $concentration) = @_;
+
+  my $sample_list = $self->_sample_details->findnodes(sprintf $SAMPLE_PATH, $sample_limsid);
+
+  if ($sample_list->size() != 1) {
+    croak sprintf 'Found %i samples for sample %s', $sample_list->size(), $sample_limsid;
+  }
+
+  my $sample_xml        = $sample_list->pop();
+  my $concentration_udf = $self->create_udf_element($self->_sample_details, $CONCENTRATION_UDF_NAME, $concentration);
+
+  $sample_xml->appendChild($concentration_udf);
+
+  return;
+}
 
 has '_required_sources' => (
   isa => 'HashRef',

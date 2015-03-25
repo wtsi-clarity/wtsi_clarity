@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact limsid="2-44548" uri="http://testserver.com:1234/here/artifacts/2-44548?state=19798" xmlns:art="http://genologics.com/ri/artifact" xmlns:file="http://genologics.com/ri/file" xmlns:udf="http://genologics.com/ri/userdefined">
+    <name>105</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process limsid="24-17469" uri="http://testserver.com:1234/here/processes/24-17469"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container limsid="27-1075" uri="http://testserver.com:1234/here/containers/27-1075"/>
+        <value>H:12</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample limsid="LAB106A105" uri="http://testserver.com:1234/here/samples/LAB106A105"/>
+    <field name="Volume" xmlns="http://genologics.com/ri/userdefined">123</field>
+</art:artifact>
