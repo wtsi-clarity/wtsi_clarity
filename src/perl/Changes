@@ -1,5 +1,10 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.79
+ - Input analytes were being selected to be updated in the cherrypick volume updater.
+   Updated the xpath so it selects the output ones instead.
+ - Added new action: generate barcodes to external collaborator
+
 Release 0.78
  - The QC Report will update samples with their calculated concentration.
  - Volume checker updates the working volume on samples, too.
