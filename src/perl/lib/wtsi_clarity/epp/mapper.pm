@@ -11,6 +11,7 @@ our $VERSION = '0.0';
 
 Readonly::Hash my %ACTION2MODULE => (
     'create_label'                   => 'generic::label_creator',
+    'print_barcodes'                 => 'generic::external_barcode_creator',
     'update_plate_purpose'           => 'generic::plate_purpose_updater',
     'verify_bed'                     => 'generic::bed_verifier',
     'attach_worksheet'               => 'generic::worksheet_attacher',
