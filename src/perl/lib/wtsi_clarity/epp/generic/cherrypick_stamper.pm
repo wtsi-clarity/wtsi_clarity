@@ -6,7 +6,7 @@ use Carp;
 use XML::LibXML;
 
 extends 'wtsi_clarity::epp';
-with 'wtsi_clarity::epp::generic::stamper_common';
+with qw{wtsi_clarity::epp::generic::roles::stamper_common wtsi_clarity::epp::generic::roles::container_common};
 
 ##no critic ValuesAndExpressions::RequireInterpolationOfMetachars
 Readonly::Scalar my $IO_MAP_PATH              => q{ /prc:process/input-output-map[output[@output-type='Analyte']]};

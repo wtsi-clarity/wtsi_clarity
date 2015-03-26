@@ -6,12 +6,13 @@ use Readonly;
 use DateTime;
 use namespace::autoclean;
 
-use wtsi_clarity::util::barcode qw/calculateBarcode/;
 use wtsi_clarity::util::signature;
+
 extends 'wtsi_clarity::epp';
-with 'wtsi_clarity::util::clarity_elements';
-with 'wtsi_clarity::util::print';
-with 'wtsi_clarity::util::label';
+with qw{wtsi_clarity::util::clarity_elements
+  wtsi_clarity::util::print
+  wtsi_clarity::util::label
+  wtsi_clarity::epp::generic::roles::barcode_common};
 
 our $VERSION = '0.0';
 
@@ -28,8 +29,6 @@ Readonly::Scalar my $IO_MAP_PATH_ANALYTE_OUTPUT => $IO_MAP_PATH . q{[output[@out
 Readonly::Scalar my $CONTAINER_PATH           => q{ /art:artifact/location/container/@uri };
 Readonly::Scalar my $SAMPLE_PATH              => q{ /art:artifact/sample/@limsid };
 Readonly::Scalar my $CONTROL_PATH             => q{ /art:artifact/control-type };
-Readonly::Scalar my $DEFAULT_BARCODE_PREFIX   => q{SM};
-Readonly::Scalar my $BARCODE_PREFIX_UDF_NAME  => q{Barcode Prefix};
 
 Readonly::Scalar my $CONTAINER_LIMSID_PATH    => q{ /con:container/@limsid };
 Readonly::Scalar my $SUPPLIER_CONTAINER_NAME_PATH =>
@@ -158,18 +157,6 @@ sub _build__plate_purpose {
   return;
 }
 
-has '_barcode_prefix' => (
-  isa        => 'Str',
-  is         => 'ro',
-  required   => 0,
-  lazy_build => 1,
-);
-sub _build__barcode_prefix {
-  my $self = shift;
-  return $self->find_udf_element_textContent(
-    $self->process_doc->xml, $BARCODE_PREFIX_UDF_NAME, $DEFAULT_BARCODE_PREFIX);
-}
-
 has '_container' => (
   isa        => 'HashRef',
   is         => 'ro',
@@ -241,15 +228,6 @@ has '_plate_purpose_suffix' => (
   default    => sub { my @a = ('A'..'Z'); return \@a; },
 );
 
-sub _generate_barcode {
-  my ($self, $container_id) = @_;
-  if (!$container_id) {
-    croak 'Container id is not given';
-  }
-  $container_id =~ s/-//smxg;
-  return calculateBarcode($self->_barcode_prefix, $container_id);
-}
-
 override 'run' => sub {
   my $self = shift;
   super(); #call parent's run method
@@ -281,7 +259,7 @@ sub _generate_temp_container {
   my $self = shift;
 
   my $random_number = $self->_generate_random_number();
-  my ($barcode, $num) = $self->_generate_barcode($random_number);
+  my ($barcode, $num) = $self->generate_barcode($random_number);
 
   return {
     'tmp' => {
@@ -319,7 +297,7 @@ sub _set_container_data {
                  q[] : $self->_plate_purpose_suffix->[$count];
     $container->{'purpose'} = $self->_copy_purpose($doc, $suffix);
 
-    my ($barcode, $num) = $self->_generate_barcode($lims_id);
+    my ($barcode, $num) = $self->generate_barcode($lims_id);
     $container->{'barcode'} = $barcode;
     $container->{'num'} = $num;
 

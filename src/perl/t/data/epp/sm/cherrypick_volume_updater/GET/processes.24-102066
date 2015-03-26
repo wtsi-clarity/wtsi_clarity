@@ -6,19 +6,19 @@
         <last-name>Mangili</last-name>
     </technician>
     <input-output-map>
-        <input post-process-uri="http://testserver.com:1234/here/artifacts/JON1301A255PA1?state=360078" uri="http://testserver.com:1234/here/artifacts/JON1301A255PA1?state=360078" limsid="JON1301A255PA1" />
+        <output output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/JON1301A255PA1?state=360078" limsid="JON1301A255PA1" />
     </input-output-map>
     <input-output-map>
-        <input post-process-uri="http://testserver.com:1234/here/artifacts/JON1301A251PA1?state=360076" uri="http://testserver.com:1234/here/artifacts/JON1301A251PA1?state=360076" limsid="JON1301A251PA1" />
+        <output output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/JON1301A251PA1?state=360076" limsid="JON1301A251PA1" />
     </input-output-map>
     <input-output-map>
-        <input post-process-uri="http://testserver.com:1234/here/artifacts/JON1301A252PA1?state=360082" uri="http://testserver.com:1234/here/artifacts/JON1301A252PA1?state=360082" limsid="JON1301A252PA1" />
+        <output output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/JON1301A252PA1?state=360082" limsid="JON1301A252PA1" />
     </input-output-map>
     <input-output-map>
-        <input post-process-uri="http://testserver.com:1234/here/artifacts/JON1301A253PA1?state=360058" uri="http://testserver.com:1234/here/artifacts/JON1301A253PA1?state=360058" limsid="JON1301A253PA1" />
+        <output output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/JON1301A253PA1?state=360058" limsid="JON1301A253PA1" />
     </input-output-map>
     <input-output-map>
-        <input post-process-uri="http://testserver.com:1234/here/artifacts/JON1301A254PA1?state=360086" uri="http://testserver.com:1234/here/artifacts/JON1301A254PA1?state=360086" limsid="JON1301A254PA1" />
+        <output output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/JON1301A254PA1?state=360086" limsid="JON1301A254PA1" />
     </input-output-map>
     <udf:field type="String" name="Pick by">(1) Concentration &amp; volume</udf:field>
     <udf:field type="String" name="(1) Required Volume">10</udf:field>

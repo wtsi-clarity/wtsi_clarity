@@ -9,6 +9,10 @@ use Mojo::Collection 'c';
 
 our $VERSION = '0.0';
 
+##no critic ValuesAndExpressions::RequireInterpolationOfMetachars
+Readonly::Scalar my $INPUT_PARAMETER_PATH => q{ /prc:process/udf:field[contains(@name, '%s')] };
+##use critic
+
 sub _set_clarity_element {
   my ($self, $xml, $name, $value, $override) = @_;
   return $self->_set_any_element($xml, $name, $value, $override, 0);
@@ -90,6 +94,30 @@ sub add_clarity_element {
 sub update_clarity_element {
   my ($self, $xml, $name, $value) = @_;
   return $self->_set_clarity_element($xml, $name, $value, 1);
+}
+
+sub find_input_parameter {
+  my ($self, $xml, $name, $mandatory) = @_;
+
+  my $xpath = sprintf $INPUT_PARAMETER_PATH, $name;
+  my @nodes = $xml->findnodes($xpath);
+  if (!@nodes) {
+    if ($mandatory) {
+      croak qq{$name udf field should be defined for the process};
+    } else {
+      return;
+    }
+  }
+  if (scalar @nodes > 1) {
+    croak qq{Multiple $name udf fields are defined for the process};
+  }
+
+  my $udf_value = $self->trim_value($nodes[0]->textContent);
+  if (!$udf_value) {
+    croak qq{$name should be defined};
+  }
+
+  return $udf_value;
 }
 
 sub find_udf_element {
@@ -399,6 +427,10 @@ find_udf_element_value - takes some XML, an element name and an optional default
 =head2
   build_details - take some XML Document, and download all the resources of a given 'type' matching an xpath;
   Returns a batch (XML).
+
+=head2 find_input_parameter
+
+  Returns the value of an input parameter with the given name.
 
 =head2 update_text
 

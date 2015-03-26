@@ -1,4 +1,4 @@
-package wtsi_clarity::epp::generic::stamper_common;
+package wtsi_clarity::epp::generic::roles::stamper_common;
 
 use Moose::Role;
 use Readonly;
@@ -7,18 +7,10 @@ use XML::LibXML;
 
 Readonly::Scalar my $PLACEMENT_URI_PATH               => q{placements};
 Readonly::Scalar my $OUTPUT_PLACEMENTS_PATH           => q{/stp:placements/output-placements/output-placement};
-Readonly::Scalar my $CONTAINERTYPES_URI_PATH          => q{containertypes};
-Readonly::Scalar my $XML_HEADER_STR                   => q{<?xml version="1.0" encoding="UTF-8"?>};
-Readonly::Scalar my $CONTAINER_HEADER_START_STR       => q{<con:container xmlns:con="http://genologics.com/ri/container">};
-Readonly::Scalar my $CONTAINER_HEADER_END_STR         => q{</con:container>};
 Readonly::Scalar my $PLATE_96_WELL_NUMBER_OF_COLUMNS  => 12;
 
 ##no critic ValuesAndExpressions::RequireInterpolationOfMetachars
-Readonly::Scalar my $CONTAINER_TYPE_URI_PATH  => q{/ctp:container-types/container-type/@uri[1]};
-Readonly::Scalar my $CONTAINER_NAME_URI_PATH  => q{/ctp:container-types/container-type/@name[1]};
 Readonly::Scalar my $BASE_CONTAINER_URI_PATH  => q{/stp:placements/selected-containers/container/@uri[1]};
-Readonly::Scalar my $CONTAINER_URI_PATH       => q{/con:container/@uri};
-Readonly::Scalar my $CONTAINER_LIMSID_PATH    => q{/con:container/@limsid};
 ##use critic
 
 our $VERSION = '0.0';
@@ -33,18 +25,6 @@ sub _build__placement_url {
   my ($self) = @_;
 
   return join q{/}, $self->step_url, $PLACEMENT_URI_PATH;
-}
-
-has '_container_type_url' => (
-  isa        => 'Str',
-  is         => 'ro',
-  required   => 0,
-  lazy_build => 1,
-);
-sub _build__container_type_url {
-  my ($self) = @_;
-
-  return join q{/}, $self->config->clarity_api->{'base_uri'}, $CONTAINERTYPES_URI_PATH;
 }
 
 has '_base_placement_doc' => (
@@ -80,59 +60,6 @@ sub get_basic_container_data {
     'limsid'  => $limsid,
     'uri'     => $uri
   }
-}
-
-sub get_container_data {
-  my ($self, $container_xml) = @_;
-
-  my $uri = $container_xml->findvalue($CONTAINER_URI_PATH);
-  my $limsid = $container_xml->findvalue($CONTAINER_LIMSID_PATH);
-
-  return {
-    'limsid'  => $limsid,
-    'uri'     => $uri
-  }
-}
-
-sub create_new_container {
-  my ($self, $output_container_type_name) = @_;
-
-  my $xml_header = $XML_HEADER_STR;
-  $xml_header   .= $CONTAINER_HEADER_START_STR;
-  my $xml_footer = $CONTAINER_HEADER_END_STR;
-
-  my $xml = $xml_header;
-
-  my $container_type_data = $self->_get_new_container_type_data_by_name($output_container_type_name);
-  my $output_container_type_xml_str = "<type uri='$container_type_data->{'uri'}' name='$container_type_data->{'name'}' />";
-
-  $xml   .= $output_container_type_xml_str;
-  $xml   .= $xml_footer;
-
-  my $url = $self->config->clarity_api->{'base_uri'} . '/containers';
-  my $container_doc = XML::LibXML->load_xml(string => $self->request->post($url, $xml));
-
-  return $container_doc;
-}
-
-sub _get_new_container_type_data_by_name {
-  my ($self, $container_type_name) = @_;
-
-  my $url = join q{?}, $self->_container_type_url, qq{name=$container_type_name};
-
-  my $container_type_xml_raw = $self->request->get($url);
-  my $parser = XML::LibXML->new();
-
-  my $container_type_xml = $parser->load_xml(string => $container_type_xml_raw );
-
-  if (length $container_type_xml->findvalue($CONTAINER_TYPE_URI_PATH) == 0) {
-    croak qq{Container type can not be found by this name: $container_type_name};
-  }
-  my $container_type_data = ();
-  $container_type_data->{'uri'}  = $container_type_xml->findvalue($CONTAINER_TYPE_URI_PATH);
-  $container_type_data->{'name'} = $container_type_xml->findvalue($CONTAINER_NAME_URI_PATH);
-
-  return $container_type_data;
 }
 
 sub add_container_to_placement {
@@ -201,11 +128,11 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::epp::generic::stamper_common
+wtsi_clarity::epp::generic::roles::stamper_common
 
 =head1 SYNOPSIS
 
-  with 'wtsi_clarity::epp:generic::stamper_common';
+  with 'wtsi_clarity::epp::generic::roles::stamper_common';
 
 =head1 DESCRIPTION
 
@@ -216,15 +143,6 @@ wtsi_clarity::epp::generic::stamper_common
 =head2 get_basic_container_data
 
   Returns the `limsid` and `uri` of the base container in a hash structure.
-
-=head2 get_container_data
-
-  Returns the `limsid` and `uri` of the given container in a hash structure.
-
-=head2 create_new_container
-
-  Creates a new container in the system with the given type
-  and returns the XML document of the new container.
 
 =head2 add_container_to_placement
 

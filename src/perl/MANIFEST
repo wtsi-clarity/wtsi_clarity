@@ -4,6 +4,7 @@ README
 Build.PL
 bin/epp
 lib/wtsi_clarity/epp/generic/bed_verifier.pm
+lib/wtsi_clarity/epp/generic/external_barcode_creator.pm
 lib/wtsi_clarity/epp/generic/file_publisher.pm
 lib/wtsi_clarity/epp/generic/label_creator.pm
 lib/wtsi_clarity/epp/generic/messenger.pm
