@@ -21,17 +21,13 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
 {
   my $barcode_creator = wtsi_clarity::epp::generic::external_barcode_creator->new(
     process_url           => 'some',
-    number_of_containers  => 12,
-    printer_name          => 'printer_name'
   );
   isa_ok($barcode_creator, 'wtsi_clarity::epp::generic::external_barcode_creator');
 }
 
 { # creates a number of containers
   my $barcode_creator = wtsi_clarity::epp::generic::external_barcode_creator->new(
-    process_url           => 'some',
-    number_of_containers  => 2,
-    printer_name          => 'printer_name'
+    process_url           => $base_uri . '/processes/24-29592',
   );
 
   my @expected_container_limsids = ('27-5496', '27-5496'); # because caching we get back the same limsids
@@ -44,8 +40,6 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
   # container purpose and signature
   my $barcode_creator = wtsi_clarity::epp::generic::external_barcode_creator->new(
     process_url           => $base_uri . '/processes/24-29592',
-    number_of_containers  => 1,
-    printer_name          => 'printer_name',
     _new_containers       => ['27-5496', '27-5497'],
   );
 
@@ -73,8 +67,6 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
 { # batch retrieve containers XML documents
   my $barcode_creator = wtsi_clarity::epp::generic::external_barcode_creator->new(
     process_url           => $base_uri . '/processes/24-29592',
-    number_of_containers  => 2,
-    printer_name          => 'printer_name'
   );
 
   my @container_uris = (
@@ -100,8 +92,6 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
 { # Updates the name of the containers with their barcodes.
   my $barcode_creator = wtsi_clarity::epp::generic::external_barcode_creator->new(
     process_url           => $base_uri . '/processes/24-29592',
-    number_of_containers  => 2,
-    printer_name          => 'printer_name',
     _new_containers       => ['27-5496', '27-5497'],
   );
 
@@ -128,8 +118,6 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
 { # Gets the parameters for label printing
   my $barcode_creator = wtsi_clarity::epp::generic::external_barcode_creator->new(
     process_url           => $base_uri . '/processes/24-29592',
-    number_of_containers  => 2,
-    printer_name          => 'printer_name',
     _new_containers       => ['27-5496', '27-5497'],
   );
 
@@ -151,7 +139,7 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
   my $expected_label_parameters = { 
     'number'        => '1',
     'type'          => 'plate',
-    'user'          => '',
+    'user'          => 'Karel',
     'containers'    => $expected_containers_data,
     'source_plate'  => 1
   };
@@ -166,8 +154,6 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
   my $barcode_creator = Test::MockObject::Extends->new(
     wtsi_clarity::epp::generic::external_barcode_creator->new(
       process_url           => $base_uri . '/processes/24-29592',
-      number_of_containers  => 2,
-      printer_name          => 'printer_name',
       _new_containers       => ['27-5496', '27-5497'],
     )
   );
@@ -186,11 +172,11 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
     'label_printer' => {
       'footer_text' => {
         'footer_text2' => 'Tue Mar 24 11:28:11 2015',
-        'footer_text1' => 'footer by '
+        'footer_text1' => 'footer by Karel'
       },
       'header_text' => {
         'header_text2' => 'Tue Mar 24 11:28:11 2015',
-        'header_text1' => 'header by '
+        'header_text1' => 'header by Karel'
       },
       'labels' => [
         {
