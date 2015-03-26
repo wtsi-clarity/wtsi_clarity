@@ -6,7 +6,7 @@ use XML::LibXML;
 use Readonly;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $OUTPUT_PATH          => q(/prc:process/input-output-map/input/@post-process-uri);
+Readonly::Scalar my $OUTPUT_PATH          => q(/prc:process/input-output-map/output[@output-type!="ResultFile"]/@uri);
 Readonly::Scalar my $SAMPLE_PATH          => q(/art:artifact/sample/@uri);
 Readonly::Scalar my $ARTIFACT_PATH        => q{/smp:sample/artifact/@uri};
 Readonly::Scalar my $SAMPLE_VOLUME_NAME   => q(Cherrypick Sample Volume);

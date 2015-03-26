@@ -87,7 +87,7 @@ sub put_changes {
   my ($self) = @_;
   foreach my $targetURI (keys %{$self->_targets})
   {
-    $self->request->put($targetURI, $self->_targets->{$targetURI})
+    $self->request->put($targetURI, $self->_targets->{$targetURI});
   }
   return;
 }
