@@ -4,6 +4,7 @@ use Moose::Role;
 use Readonly;
 use Carp;
 use XML::LibXML;
+use List::Util qw/reduce first/;
 
 Readonly::Scalar my $PLACEMENT_URI_PATH               => q{placements};
 Readonly::Scalar my $OUTPUT_PLACEMENTS_PATH           => q{/stp:placements/output-placements/output-placement};
@@ -11,6 +12,12 @@ Readonly::Scalar my $PLATE_96_WELL_NUMBER_OF_COLUMNS  => 12;
 
 ##no critic ValuesAndExpressions::RequireInterpolationOfMetachars
 Readonly::Scalar my $BASE_CONTAINER_URI_PATH  => q{/stp:placements/selected-containers/container/@uri[1]};
+Readonly::Scalar my $IO_MAP_PATH              => q{ /prc:process/input-output-map[output[@output-type='Analyte']]};
+Readonly::Scalar my $ARTIFACT_BY_LIMSID       => q{art:details/art:artifact[@limsid="%s"]};
+Readonly::Scalar my $INPUT_URI                => q{./input/@uri};
+Readonly::Scalar my $INPUT_LIMSID             => q{./input/@limsid};
+Readonly::Scalar my $LOCATION_VALUE           => q{./location/value};
+Readonly::Scalar my $CONTAINER_LIMS_ID        => q{./location/container/@limsid};
 ##use critic
 
 our $VERSION = '0.0';
@@ -118,6 +125,85 @@ sub post_placement_doc {
   $self->request->post($self->_placement_url, $placement_xml->toString);
 
   return;
+}
+
+# Transforms an io_node XML::Element into a useful data representation
+sub _augment_input {
+  my ($self, $input_analytes, $io_node) = @_;
+
+  my $id                = $io_node->findvalue($INPUT_LIMSID);
+
+  my $full_input        = $input_analytes->findnodes(sprintf $ARTIFACT_BY_LIMSID, $id)->pop();
+  my $location          = $full_input->findvalue($LOCATION_VALUE);
+  my $container_lims_id = $full_input->findvalue($CONTAINER_LIMS_ID);
+
+  return {
+    io_node           => $io_node,
+    location          => $location,
+    container_lims_id => $container_lims_id,
+  }
+}
+
+sub _group_by_container {
+  my ($self, $memo, $io) = @_;
+
+  my $container = $io->{'container_lims_id'};
+
+  if (!exists $memo->{$container}) {
+    $memo->{$container} = [];
+  }
+
+  push $memo->{$container}, $io;
+
+  return $memo;
+}
+
+# Finds the index of two well locations in a pre-initialized
+# array of well values, and returns the result of a comparison between the 2
+# values. Will be used as part of a sort.
+sub _sort_analyte {
+  my ($self, $sort_by, $analyte_a, $analyte_b) = @_;
+
+  my @sort_by = @{$sort_by};
+
+  my $location_index_a = first { $sort_by[$_] eq $analyte_a->{'location'} } 0..$#sort_by;
+  my $location_index_b = first { $sort_by[$_] eq $analyte_b->{'location'} } 0..$#sort_by;
+
+  return $location_index_a <=> $location_index_b;
+}
+
+=head2 _sort_analytes
+
+  Description: Takes an array of io nodes, groups them by container id, and sorts by location
+               within those containers
+
+  Arg [1]:    XML::LibXML::NodeList $io_nodes - Array of input-output-map nodes
+  Example:    $self->_sort_analytes($io_nodes)
+  ReturnType: XML::LibXML::NodeList
+
+=cut
+sub sorted_io {
+  my ($self, $process_doc, $sort_by) = @_;
+
+  my @io_nodes = $process_doc->findnodes($IO_MAP_PATH);
+
+  if (!@io_nodes) {
+    croak 'No analytes registered';
+  }
+
+  my @input_analyte_uris = map { $_->findvalue($INPUT_URI) } @io_nodes;
+  my $input_analytes = $self->request->batch_retrieve('artifacts', \@input_analyte_uris);
+
+  my @analytes = map { $self->_augment_input($input_analytes, $_) } @io_nodes;
+
+  # Group by container
+  my @analytes_by_container = values reduce { $self->_group_by_container($a, $b) } {}, @analytes;
+
+  # Sort analytes within container then just return the io_node... Perl is so pretty...
+  my @sorted_io = map { $_->{'io_node'} } map {
+    sort { $self->_sort_analyte($sort_by, $a, $b) } @{$_} } @analytes_by_container;
+
+  return XML::LibXML::NodeList->new(@sorted_io);
 }
 
 no Moose::Role;

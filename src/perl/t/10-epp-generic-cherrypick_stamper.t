@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 20;
+use Test::More tests => 23;
 use Test::Exception;
 use Cwd;
 use Carp;
@@ -162,11 +162,27 @@ use_ok('wtsi_clarity::epp::generic::cherrypick_stamper');
 
   my @expected = qw/DEA103A625PA1 DEA103A626PA1 DEA103A627PA1 DEA103A530PA1 DEA103A531PA1 DEA103A532PA1/;
 
-  my $sorted_analytes = $stamper->_sorted_io($stamper->process_doc, $stamper->init_96_well_location_values);
+  my $sorted_analytes = $stamper->sorted_io($stamper->process_doc, $stamper->init_96_well_location_values);
 
   foreach my $io ($sorted_analytes->get_nodelist()) {
     is($io->findvalue('./input/@limsid'), shift @expected, 'Inputs are in the correct order');
   }
+}
+
+{
+  my $stamper = wtsi_clarity::epp::generic::cherrypick_stamper->new(
+    process_url => 'whateva',
+    step_url    => 'whateva',
+  );
+
+  my $analyte_a = { location => 'A:1' };
+  my $analyte_b = { location => 'B:1' };
+
+  my $sort_by   = ['A:1', 'B:1', 'C:1', 'D:1', 'E:1', 'F:1', 'G:1', 'H:1'];
+
+  is($stamper->_sort_analyte($sort_by, $analyte_a, $analyte_b), -1, 'Sorts correctly');
+  is($stamper->_sort_analyte($sort_by, $analyte_b, $analyte_a), 1, 'Sorts correctly');
+  is($stamper->_sort_analyte($sort_by, $analyte_a, $analyte_a), 0, 'Sorts correctly');
 }
 
 1;
