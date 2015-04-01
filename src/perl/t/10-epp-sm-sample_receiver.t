@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 21;
+use Test::More tests => 18;
 use Test::Warn;
 use Test::Exception;
 use Test::MockObject::Extends;
@@ -41,20 +41,18 @@ use_ok('wtsi_clarity::epp::sm::sample_receiver');
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_receiver';
   local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
 
-  my $ss_request_mock = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
-
-  $ss_request_mock->mock(q(get), sub{
-    my ($self, $url) = @_;
-    return encode_json { 'uuid' => 12345 };
-  });
-
   my $date = '28-May-2013';
 
-  my $s = wtsi_clarity::epp::sm::sample_receiver->new(
-     process_url => q[http://testserver.com:1234/here/processes/JAC2A6000],
-     _ss_request => $ss_request_mock,
-     _date => $date
+  my $s = Test::MockObject::Extends->new( wtsi_clarity::epp::sm::sample_receiver->new(
+       process_url => q[http://testserver.com:1234/here/processes/JAC2A6000],
+       _date => $date
+      )
   );
+
+  $s->mock(q(_get_uuid), sub{
+    my ($self) = @_;
+    return '12345';
+  });
 
   my $sample_doc = $s->fetch_and_parse(q[http://testserver.com:1234/here/samples/JON1301A293]);
   $s->_update_sample($sample_doc);
@@ -70,76 +68,22 @@ use_ok('wtsi_clarity::epp::sm::sample_receiver');
   is ($nodes[0]->textContent, $date, 'should set date-received');
 }
 
-# uuid_request
-{
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_receiver';
-  local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
-
-  my $s = wtsi_clarity::epp::sm::sample_receiver->new(
-     process_url => q[http://testserver.com:1234/here/processes/JAC2A6000],
-  );
-
-  isa_ok($s->_ss_request, "wtsi_clarity::util::request");
-}
-
 # get_uuid
 {
   local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_receiver';
 
-  my $ss_request_mock = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
-
-  $ss_request_mock->mock(q(get), sub{
-    my ($self, $url) = @_;
-    return encode_json { 'uuid' => 12345 };
-  });
-
-  my $s = wtsi_clarity::epp::sm::sample_receiver->new(
-     process_url => q[http://testserver.com:1234/here/processes/JAC2A6000],
-     _ss_request => $ss_request_mock,
+  my $s = Test::MockObject::Extends->new( wtsi_clarity::epp::sm::sample_receiver->new(
+       process_url => q[http://testserver.com:1234/here/processes/JAC2A6000],
+      )
   );
+
+  $s->mock(q(_get_uuid), sub{
+    my ($self) = @_;
+    return '12345';
+  });
 
   is($s->_get_uuid(), 12345, 'Successfully retrieves a uuid');
-}
-
-# get_uuid - croak if empty response
-{
-  local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_receiver';
-
-  my $ss_request_mock = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
-
-  $ss_request_mock->mock(q(get), sub{
-    my ($self, $url) = @_;
-    return undef;
-  });
-
-  my $s = wtsi_clarity::epp::sm::sample_receiver->new(
-     process_url => q[http://testserver.com:1234/here/processes/JAC2A6000],
-     _ss_request => $ss_request_mock,
-  );
-
-  throws_ok { $s->_get_uuid() } qr/Empty response/, "Throws error if response is empty";
-}
-
-# get_uuid - croak no uuid
-{
-  local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_receiver';
-
-  my $ss_request_mock = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
-
-  $ss_request_mock->mock(q(get), sub{
-    my ($self, $url) = @_;
-    return encode_json { 'not_uuid' => 12345 };
-  });
-
-  my $s = wtsi_clarity::epp::sm::sample_receiver->new(
-     process_url => q[http://testserver.com:1234/here/processes/JAC2A6000],
-     _ss_request => $ss_request_mock,
-  );
-
-  throws_ok { $s->_get_uuid() } qr/Could not get uuid/, "Throws error if uuid does not exist";
 }
 
 # donor id gets set to sample uuid if originally empty
@@ -147,19 +91,18 @@ use_ok('wtsi_clarity::epp::sm::sample_receiver');
   local $ENV{'WTSI_CLARITY_HOME'} = 't/data/config';
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/sample_receiver';
 
-  my $ss_request_mock = Test::MockObject::Extends->new( q(wtsi_clarity::util::request) );
   my $date = '28-May-2013';
 
-  $ss_request_mock->mock(q(get), sub{
-    my ($self, $url) = @_;
-    return encode_json { 'uuid' => 12345 };
-  });
-
-  my $s = wtsi_clarity::epp::sm::sample_receiver->new(
-     process_url => q[http://testserver.com:1234/here/processes/JAC2A6000],
-     _ss_request => $ss_request_mock,
-     _date       => $date,
+  my $s = Test::MockObject::Extends->new( wtsi_clarity::epp::sm::sample_receiver->new(
+       process_url => q[http://testserver.com:1234/here/processes/JAC2A6000],
+       _date       => $date,
+      )
   );
+
+  $s->mock(q(_get_uuid), sub{
+    my ($self) = @_;
+    return '12345';
+  });
 
   my $sample_doc = $s->fetch_and_parse(q[http://testserver.com:1234/here/samples/JON1407A937]);
   my $sample_doc_b = $s->fetch_and_parse(q[http://testserver.com:1234/here/samples/JON1407A937_b]);
