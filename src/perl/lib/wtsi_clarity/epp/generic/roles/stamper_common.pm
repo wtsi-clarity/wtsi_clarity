@@ -172,16 +172,6 @@ sub _sort_analyte {
   return $location_index_a <=> $location_index_b;
 }
 
-=head2 _sort_analytes
-
-  Description: Takes an array of io nodes, groups them by container id, and sorts by location
-               within those containers
-
-  Arg [1]:    XML::LibXML::NodeList $io_nodes - Array of input-output-map nodes
-  Example:    $self->_sort_analytes($io_nodes)
-  ReturnType: XML::LibXML::NodeList
-
-=cut
 sub sorted_io {
   my ($self, $process_doc, $sort_by) = @_;
 
@@ -245,6 +235,11 @@ wtsi_clarity::epp::generic::roles::stamper_common
 =head2 post_placement_doc
 
   Sends the placement XML document as a HTTP POST request.
+  
+=head2 sorted_io
+
+  Takes an array of io nodes, groups them by container id, and sorts by location
+  within those containers
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
