@@ -1,0 +1,1283 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178794?state=86302" limsid="2-178794">
+        <name>1</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1861" limsid="DEA103A1861"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178795?state=86303" limsid="2-178795">
+        <name>2</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>B:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1862" limsid="DEA103A1862"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178796?state=86304" limsid="2-178796">
+        <name>3</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>C:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1863" limsid="DEA103A1863"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178797?state=86305" limsid="2-178797">
+        <name>4</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>D:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1864" limsid="DEA103A1864"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178798?state=86306" limsid="2-178798">
+        <name>5</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>E:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1865" limsid="DEA103A1865"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178799?state=86307" limsid="2-178799">
+        <name>6</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>F:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1866" limsid="DEA103A1866"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178800?state=86308" limsid="2-178800">
+        <name>7</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>G:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1867" limsid="DEA103A1867"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178851?state=86309" limsid="2-178851">
+        <name>8</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>H:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1868" limsid="DEA103A1868"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178852?state=86310" limsid="2-178852">
+        <name>9</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>A:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1869" limsid="DEA103A1869"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178853?state=86311" limsid="2-178853">
+        <name>10</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>B:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1870" limsid="DEA103A1870"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178854?state=86312" limsid="2-178854">
+        <name>1</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>C:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1871" limsid="DEA103A1871"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178855?state=86313" limsid="2-178855">
+        <name>2</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>D:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1872" limsid="DEA103A1872"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178856?state=86314" limsid="2-178856">
+        <name>3</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>E:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1873" limsid="DEA103A1873"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178857?state=86315" limsid="2-178857">
+        <name>4</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>F:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1874" limsid="DEA103A1874"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178858?state=86316" limsid="2-178858">
+        <name>5</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>G:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1875" limsid="DEA103A1875"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178859?state=86317" limsid="2-178859">
+        <name>6</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>H:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1876" limsid="DEA103A1876"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178860?state=86318" limsid="2-178860">
+        <name>7</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>A:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1877" limsid="DEA103A1877"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178861?state=86319" limsid="2-178861">
+        <name>8</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>B:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1878" limsid="DEA103A1878"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178862?state=86320" limsid="2-178862">
+        <name>9</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>C:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1879" limsid="DEA103A1879"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178863?state=86321" limsid="2-178863">
+        <name>10</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>D:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1880" limsid="DEA103A1880"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178864?state=86322" limsid="2-178864">
+        <name>11</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>E:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1881" limsid="DEA103A1881"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178865?state=86323" limsid="2-178865">
+        <name>12</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>F:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1882" limsid="DEA103A1882"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178866?state=86324" limsid="2-178866">
+        <name>13</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>G:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1883" limsid="DEA103A1883"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178867?state=86325" limsid="2-178867">
+        <name>14</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>H:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1884" limsid="DEA103A1884"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178868?state=86326" limsid="2-178868">
+        <name>15</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>A:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1885" limsid="DEA103A1885"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178869?state=86327" limsid="2-178869">
+        <name>16</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>B:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1886" limsid="DEA103A1886"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178870?state=86328" limsid="2-178870">
+        <name>17</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>C:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1887" limsid="DEA103A1887"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178871?state=86329" limsid="2-178871">
+        <name>18</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>D:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1888" limsid="DEA103A1888"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178872?state=86330" limsid="2-178872">
+        <name>19</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>E:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1889" limsid="DEA103A1889"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178873?state=86331" limsid="2-178873">
+        <name>20</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>F:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1890" limsid="DEA103A1890"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178874?state=86332" limsid="2-178874">
+        <name>21</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>G:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1891" limsid="DEA103A1891"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178875?state=86333" limsid="2-178875">
+        <name>22</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>H:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1892" limsid="DEA103A1892"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178876?state=86334" limsid="2-178876">
+        <name>23</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>A:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1893" limsid="DEA103A1893"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178877?state=86335" limsid="2-178877">
+        <name>24</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>B:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1894" limsid="DEA103A1894"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178878?state=86336" limsid="2-178878">
+        <name>1</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>C:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1895" limsid="DEA103A1895"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178879?state=86337" limsid="2-178879">
+        <name>2</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>D:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1896" limsid="DEA103A1896"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178880?state=86338" limsid="2-178880">
+        <name>3</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>E:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1897" limsid="DEA103A1897"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178881?state=86339" limsid="2-178881">
+        <name>4</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>F:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1898" limsid="DEA103A1898"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178882?state=86340" limsid="2-178882">
+        <name>5</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>G:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1899" limsid="DEA103A1899"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178883?state=86341" limsid="2-178883">
+        <name>6</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>H:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1900" limsid="DEA103A1900"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178884?state=86342" limsid="2-178884">
+        <name>7</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>A:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1901" limsid="DEA103A1901"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178885?state=86343" limsid="2-178885">
+        <name>8</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>B:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1902" limsid="DEA103A1902"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178886?state=86344" limsid="2-178886">
+        <name>9</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>C:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1903" limsid="DEA103A1903"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178887?state=86345" limsid="2-178887">
+        <name>10</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>D:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1904" limsid="DEA103A1904"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178888?state=86346" limsid="2-178888">
+        <name>11</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>E:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1905" limsid="DEA103A1905"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178889?state=86347" limsid="2-178889">
+        <name>12</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>F:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1906" limsid="DEA103A1906"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178890?state=86348" limsid="2-178890">
+        <name>13</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>G:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1907" limsid="DEA103A1907"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178891?state=86349" limsid="2-178891">
+        <name>14</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>H:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1908" limsid="DEA103A1908"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178892?state=86350" limsid="2-178892">
+        <name>15</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>A:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1909" limsid="DEA103A1909"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178893?state=86351" limsid="2-178893">
+        <name>16</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>B:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1910" limsid="DEA103A1910"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178894?state=86352" limsid="2-178894">
+        <name>17</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>C:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1911" limsid="DEA103A1911"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178895?state=86353" limsid="2-178895">
+        <name>18</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>D:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1912" limsid="DEA103A1912"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178896?state=86354" limsid="2-178896">
+        <name>19</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>E:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1913" limsid="DEA103A1913"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178897?state=86355" limsid="2-178897">
+        <name>20</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>F:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1914" limsid="DEA103A1914"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178898?state=86356" limsid="2-178898">
+        <name>21</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>G:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1915" limsid="DEA103A1915"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178899?state=86357" limsid="2-178899">
+        <name>22</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>H:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1916" limsid="DEA103A1916"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178900?state=86358" limsid="2-178900">
+        <name>23</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>A:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1917" limsid="DEA103A1917"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178951?state=86359" limsid="2-178951">
+        <name>24</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>B:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1918" limsid="DEA103A1918"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178952?state=86360" limsid="2-178952">
+        <name>25</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>C:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1919" limsid="DEA103A1919"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178953?state=86361" limsid="2-178953">
+        <name>26</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>D:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1920" limsid="DEA103A1920"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178954?state=86362" limsid="2-178954">
+        <name>27</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>E:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1921" limsid="DEA103A1921"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178955?state=86363" limsid="2-178955">
+        <name>28</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>F:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1922" limsid="DEA103A1922"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178956?state=86364" limsid="2-178956">
+        <name>29</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>G:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1923" limsid="DEA103A1923"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178957?state=86365" limsid="2-178957">
+        <name>30</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>H:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1924" limsid="DEA103A1924"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178958?state=86366" limsid="2-178958">
+        <name>31</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>A:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1925" limsid="DEA103A1925"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178959?state=86367" limsid="2-178959">
+        <name>32</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>B:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1926" limsid="DEA103A1926"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178960?state=86368" limsid="2-178960">
+        <name>33</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>C:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1927" limsid="DEA103A1927"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178961?state=86369" limsid="2-178961">
+        <name>34</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>D:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1928" limsid="DEA103A1928"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178962?state=86370" limsid="2-178962">
+        <name>35</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>E:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1929" limsid="DEA103A1929"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178963?state=86371" limsid="2-178963">
+        <name>36</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>F:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1930" limsid="DEA103A1930"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178964?state=86372" limsid="2-178964">
+        <name>37</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>G:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1931" limsid="DEA103A1931"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178965?state=86373" limsid="2-178965">
+        <name>38</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>H:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1932" limsid="DEA103A1932"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178966?state=86374" limsid="2-178966">
+        <name>39</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>A:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1933" limsid="DEA103A1933"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178967?state=86375" limsid="2-178967">
+        <name>40</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>B:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1934" limsid="DEA103A1934"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178968?state=86376" limsid="2-178968">
+        <name>41</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>C:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1935" limsid="DEA103A1935"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178969?state=86377" limsid="2-178969">
+        <name>42</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>D:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1936" limsid="DEA103A1936"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178970?state=86378" limsid="2-178970">
+        <name>43</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>E:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1937" limsid="DEA103A1937"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-178971?state=86379" limsid="2-178971">
+        <name>44</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26465" limsid="24-26465"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4133" limsid="27-4133"/>
+            <value>F:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1938" limsid="DEA103A1938"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-206320?state=100213" limsid="2-206320">
+        <name>25</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-28533" limsid="24-28533"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4737" limsid="27-4737"/>
+            <value>A:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1315" limsid="DEA103A1315"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-206323?state=100216" limsid="2-206323">
+        <name>17</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-28533" limsid="24-28533"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4738" limsid="27-4738"/>
+            <value>A:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1782" limsid="DEA103A1782"/>
+        <workflow-stages>
+            <workflow-stage status="QUEUED" name="Cherrypick Worksheet &amp; Barcode(SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/23/stages/652"/>
+        </workflow-stages>
+    </art:artifact>
+</art:details>
