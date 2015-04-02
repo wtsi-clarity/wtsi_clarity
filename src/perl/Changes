@@ -1,5 +1,9 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.81
+ - Tecan file sample order: can order the mapping between inputs and outputs
+ - Added a new UUID generator module
+
 Release 0.80
  - Fixed: added print barcodes action to the action mapper
 

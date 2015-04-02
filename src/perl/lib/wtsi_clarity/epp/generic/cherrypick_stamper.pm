@@ -9,7 +9,6 @@ extends 'wtsi_clarity::epp';
 with qw{wtsi_clarity::epp::generic::roles::stamper_common wtsi_clarity::epp::generic::roles::container_common};
 
 ##no critic ValuesAndExpressions::RequireInterpolationOfMetachars
-Readonly::Scalar my $IO_MAP_PATH              => q{ /prc:process/input-output-map[output[@output-type='Analyte']]};
 Readonly::Scalar my $OUTPUT_ANALYTE_URI_PATH  => q{./output/@uri};
 ##use critic
 
@@ -32,24 +31,22 @@ override 'run' => sub {
   return;
 };
 
-
 sub build_placement_xml {
   my ($self) = @_;
 
-  my @analyte_nodes = $self->process_doc->findnodes($IO_MAP_PATH);
-  if (!@analyte_nodes) {
-    croak 'No analytes registered';
-  }
+  my @location_values = @{$self->init_96_well_location_values};
+
+  my $sorted_analytes = $self->sorted_io($self->process_doc, \@location_values);
 
   my $placement_xml = $self->_base_placement_doc;
   my $container_data = $self->get_basic_container_data;
-  my @location_values = @{$self->init_96_well_location_values};
 
   my $output_placements_element =
     $placement_xml->getElementsByTagName('output-placements')->pop();
 
-  foreach my $analyte_node (@analyte_nodes) {
+  foreach my $analyte_node (@{$sorted_analytes}) {
     my $placement_uri = $analyte_node->findvalue($OUTPUT_ANALYTE_URI_PATH);
+
     ($placement_uri) = $placement_uri =~ /\A([^?]*)/smx; #drop part of the uri starting with ? (state)
 
     # if location values has run out, then we filled in the current container

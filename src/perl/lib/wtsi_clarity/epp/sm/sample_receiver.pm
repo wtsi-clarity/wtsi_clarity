@@ -4,7 +4,7 @@ use Moose;
 use Carp;
 use Readonly;
 use DateTime;
-use JSON qw / decode_json /;
+use wtsi_clarity::util::uuid_generator qw/new_uuid/;
 
 use wtsi_clarity::util::request;
 extends 'wtsi_clarity::epp';
@@ -20,15 +20,6 @@ Readonly::Scalar our $SUPPLIER_NAME_PATH => q( /smp:sample/udf:field[@name=') . 
 Readonly::Scalar my  $DATE_RECEIVED_PATH => q( /smp:sample/date-received );
 Readonly::Scalar my  $WTSI_DONOR_ID => q(WTSI Donor ID);
 ## use critic
-
-has '_ss_request' => (
-  isa => 'wtsi_clarity::util::request',
-  is  => 'ro',
-  required => 0,
-  default => sub {
-    return wtsi_clarity::util::request->new('content_type' => 'application/json');
-  },
-);
 
 has '_date' => (
   isa        => 'Str',
@@ -112,20 +103,7 @@ sub _update_sample {
 sub _get_uuid {
   my $self = shift;
 
-  my $url = $self->config->uuid_api->{'uri'};
-  my $response = $self->_ss_request->get($url);
-
-  if (!$response) {
-    croak qq[Empty response from $url];
-  }
-
-  my $response_json = decode_json $response;
-
-  if (!$response_json->{'uuid'}) {
-    croak qq[Could not get uuid from $url];
-  }
-
-  return $response_json->{'uuid'};
+  return new_uuid();
 }
 
 1;
