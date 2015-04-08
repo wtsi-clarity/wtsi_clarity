@@ -46,7 +46,7 @@ The location of the cache is stored in an environment variable
 Readonly::Scalar our $DEFAULT_VAR_NAME => q[WTSICLARITY_WEBCACHE_DIR];
 Readonly::Scalar our $SAVE2CACHE_VAR_NAME => q[SAVE2WTSICLARITY_WEBCACHE];
 
-Readonly::Scalar our $LWP_TIMEOUT => 60;
+Readonly::Scalar our $LWP_TIMEOUT => 300;
 Readonly::Scalar our $DEFAULT_METHOD => q[GET];
 Readonly::Scalar our $DEFAULT_CONTENT_TYPE => q[application/xml];
 
