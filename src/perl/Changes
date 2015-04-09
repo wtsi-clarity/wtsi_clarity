@@ -1,5 +1,8 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.82
+ - Increased the timeout value for our request module for querying Clarity REST API
+
 Release 0.81
  - Tecan file sample order: can order the mapping between inputs and outputs
  - Added a new UUID generator module
