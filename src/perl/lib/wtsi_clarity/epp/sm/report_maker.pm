@@ -168,8 +168,12 @@ sub _get_supplier_gender {
 
 sub _get_concentration {
   my ($self, $sample_id) = @_;
+  my $concentration = $self->_get_value_from_data($UDF_CONCENTRATION, $sample_id);
 
-  return $self->_get_value_from_data($UDF_CONCENTRATION, $sample_id);
+  # We set this on the sample now so it can be used later in Cherrypicking ("Cherrypick Worksheet & Barcode" to be specific)
+  $self->_update_sample_concentration($sample_id, $concentration);
+
+  return $concentration;
 }
 
 sub _get_measured_volume {
@@ -186,9 +190,6 @@ sub _get_total_micrograms {
   if ($concentration ne q{} && $measured_volume ne q{}) {
     $total_micrograms = $concentration * $measured_volume * $THOUSANDTH;
   }
-
-  # We set this on the sample now so it can be used later in Cherrypicking ("Cherrypick Worksheet & Barcode" to be specific)
-  $self->_update_sample_concentration($sample_id, $total_micrograms);
 
   return $total_micrograms;
 }
