@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-211215?state=102720" limsid="2-211215">
+    <name>3343_Lib PCR</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-28704" limsid="24-28704"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4870" limsid="27-4870"/>
+        <value>G:7</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/TES156A435" limsid="TES156A435"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 55 (TTCGCACC)"/>
+    <workflow-stages>
+        <workflow-stage status="COMPLETE" name="Library PCR" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/368"/>
+        <workflow-stage status="COMPLETE" name="Lib PCR Purification" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/53/stages/369"/>
+    </workflow-stages>
+</art:artifact>

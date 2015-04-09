@@ -1,0 +1,30 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-246011?state=121945" limsid="2-246011">
+    <name>Pool #7</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-30038" limsid="24-30038"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-5829" limsid="27-5829"/>
+        <value>2:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/TES156A433" limsid="TES156A433"/>
+    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/TES156A434" limsid="TES156A434"/>
+    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/TES156A435" limsid="TES156A435"/>
+    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/TES156A436" limsid="TES156A436"/>
+    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/TES156A429" limsid="TES156A429"/>
+    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/TES156A430" limsid="TES156A430"/>
+    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/TES156A431" limsid="TES156A431"/>
+    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/TES156A432" limsid="TES156A432"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 55 (TTCGCACC)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 56 (TTGCGTAC)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 53 (TACCGAGC)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 54 (TGTTCTCC)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 51 (TTACTCGC)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 52 (TCGTTAGC)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 49 (TGTCTATC)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 50 (TATGTGGC)"/>
+    <workflow-stages/>
+</art:artifact>
