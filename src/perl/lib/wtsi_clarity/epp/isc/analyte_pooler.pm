@@ -19,8 +19,14 @@ Readonly::Scalar my $BATCH_CONTAINER_PATH     => q{/art:details/art:artifact/loc
 Readonly::Scalar my $BATCH_ARTIFACT_PATH      => q{/art:details/art:artifact };
 Readonly::Scalar my $ARTIFACT_URI_PATH        => q{/art:artifact/@uri };
 Readonly::Scalar my $ARTIFACT_LOCATION_PATH   => q{location/value };
-Readonly::Scalar my $CONTAINER_LIMSID_PATH      => q{/con:details/con:container/@limsid };
+Readonly::Scalar my $CONTAINER_LIMSID_PATH    => q{/con:details/con:container/@limsid };
 ## use critic
+
+Readonly::Scalar my $PLEX_8                   => q{8};
+Readonly::Hash   my %PLEXING_METHODS          => {
+  '8'   => 'wtsi_clarity::epp::isc::pooling_by_8_plex',
+  '16'  => 'wtsi_clarity::epp::isc::pooling_by_16_plex',
+};
 
 has 'step_url' => (
   isa        => 'Str',
@@ -117,6 +123,27 @@ sub _build__pools_doc {
   return $self->fetch_and_parse($pool_request_uri);
 }
 
+has '_bait_info' => (
+  isa             => 'Str',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build__bait_info {
+  return $PLEX_8;
+}
+
+has '_pooling_strategy' => (
+  isa             => 'wtsi_clarity::epp::isc::pooling_strategy',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build__pooling_strategy {
+  my $self = shift;
+  return $PLEXING_METHODS{$self->_bait_info}->new();
+}
+
 has '_pools' => (
   isa             => 'HashRef',
   is              => 'rw',
@@ -131,7 +158,7 @@ sub _build__pools {
   while ( my ($location, $analyte_uri) = each %{$self->_input_artifacts_location}) {
     foreach my $mapping (@{$mappings}) {
       if ($mapping->{'source_well'} eq $location) {
-        my $pool_name = join q{ }, $self->process_doc->get_container_name_by_limsid($mapping->{'source_plate'}), $self->get_pool_name($mapping->{'dest_well'});
+        my $pool_name = join q{ }, $self->process_doc->get_container_name_by_limsid($mapping->{'source_plate'}), $self->get_pool_name_by_plexing($mapping->{'dest_well'}, $self->_pooling_strategy);
         $pools->{$pool_name} ||= [];
         push @{$pools->{$pool_name}}, $analyte_uri;
       }

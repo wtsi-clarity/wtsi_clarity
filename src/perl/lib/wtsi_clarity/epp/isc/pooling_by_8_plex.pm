@@ -1,18 +1,31 @@
-package wtsi_clarity::epp::isc::pooling_common;
+package wtsi_clarity::epp::isc::pooling_by_8_plex;
 
-use Moose::Role;
+use Moose;
 use Carp;
 use Readonly;
 
 our $VERSION = '0.0';
 
-sub get_pool_name_by_plexing {
-  my ($self, $destination_well_name, $plexing_strategy) = @_;
+with 'wtsi_clarity::epp::isc::pooling_strategy';
 
-  return join q{ }, $plexing_strategy->get_pool_name($destination_well_name), qq{($destination_well_name)};
-}
+Readonly::Hash my %POOL_NAMES_BY_TARGET_WELL => {
+  'A:1' => 'A1:H1',
+  'B:1' => 'A2:H2',
+  'C:1' => 'A3:H3',
+  'D:1' => 'A4:H4',
+  'E:1' => 'A5:H5',
+  'F:1' => 'A6:H6',
+  'G:1' => 'A7:H7',
+  'H:1' => 'A8:H8',
+  'A:2' => 'A9:H9',
+  'B:2' => 'A10:H10',
+  'C:2' => 'A11:H11',
+  'D:2' => 'A12:H12'
+};
 
-no Moose::Role;
+has '+pool_names_by_target_well' => (
+  default => sub { return \%POOL_NAMES_BY_TARGET_WELL; }
+);
 
 1;
 
@@ -20,19 +33,15 @@ __END__
 
 =head1 NAME
 
- wtsi_clarity::epp::isc::pooling_common
+ wtsi_clarity::epp::isc::pooling_by_8_plex
 
 =head1 SYNOPSIS
 
 =head1 DESCRIPTION
 
- Common methods for epp modules dealing with tag plates and indexing.
+ Pooling startegy for 8 plex pooling.
 
 =head1 SUBROUTINES/METHODS
-
-=head2 get_pool_name_by_plexing
-
-  Returns the pooling range by the destination well and the plexing strategy.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

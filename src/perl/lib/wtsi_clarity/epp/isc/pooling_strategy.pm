@@ -1,18 +1,28 @@
-package wtsi_clarity::epp::isc::pooling_common;
+package wtsi_clarity::epp::isc::pooling_strategy;
 
 use Moose::Role;
-use Carp;
 use Readonly;
+use Carp;
 
 our $VERSION = '0.0';
 
-sub get_pool_name_by_plexing {
-  my ($self, $destination_well_name, $plexing_strategy) = @_;
+Readonly::Hash my %POOL_NAMES_BY_TARGET_WELL => {};
 
-  return join q{ }, $plexing_strategy->get_pool_name($destination_well_name), qq{($destination_well_name)};
+has 'pool_names_by_target_well' => (
+  isa        => 'HashRef',
+  is         => 'ro',
+  required   => 0,
+);
+
+sub get_pool_name {
+  my ($self, $destination_well_name) = @_;
+
+  my $pool_name = $self->pool_names_by_target_well->{$destination_well_name};
+
+  croak qq{Pool name ($destination_well_name) is not defined for this destination well} if (! defined $pool_name);
+
+  return $pool_name;
 }
-
-no Moose::Role;
 
 1;
 
@@ -20,19 +30,19 @@ __END__
 
 =head1 NAME
 
- wtsi_clarity::epp::isc::pooling_common
+ wtsi_clarity::epp::isc::pooling_strategy
 
 =head1 SYNOPSIS
 
 =head1 DESCRIPTION
 
- Common methods for epp modules dealing with tag plates and indexing.
+ Interface for pooling strategies.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 get_pool_name_by_plexing
+=head2 get_pool_name
 
-  Returns the pooling range by the destination well and the plexing strategy.
+  Returns the pooling range by the destination well.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
@@ -42,9 +52,9 @@ __END__
 
 =item Moose::Role
 
-=item Readonly
-
 =item Carp
+
+=item Readonly
 
 =back
 

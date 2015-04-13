@@ -10,7 +10,7 @@ my $config = wtsi_clarity::util::config->new();
 my $base_uri = $config->clarity_api->{'base_uri'};
 
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/isc/pool_placer';
-# local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
+local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 use_ok('wtsi_clarity::epp::isc::pool_placer', 'can use ISC pool placer');
 

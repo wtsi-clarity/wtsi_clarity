@@ -42,11 +42,9 @@ sub _pool_location {
 
   my $pool_name = $pool_details->findnodes($POOL_NAME_PATH)->pop()->string_value;
 
-  my ($range_start, $range_end) = $pool_name =~ /([[:upper:]]\d+):([[:upper:]]\d+)/gsmx;
-  my $range = "$range_start:$range_end";
-  # my @pool_location = grep { $POOL_NAMES_BY_TARGET_WELL{$_} eq $range } keys %POOL_NAMES_BY_TARGET_WELL;
+  my ($location) = $pool_name =~ /([[:upper:]]:\d+)/gsmx;
 
-  return $self->pool_location_by_pool_range($range);
+  return $location;
 }
 
 has '_container_uri' => (
