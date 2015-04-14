@@ -5,6 +5,7 @@ use Carp;
 use Readonly;
 use XML::LibXML::NodeList;
 use List::MoreUtils qw/uniq/;
+use Moose::Util::TypeConstraints;
 
 use wtsi_clarity::isc::pooling::mapper;
 
@@ -19,6 +20,7 @@ Readonly::Scalar my $BATCH_CONTAINER_PATH     => q{/art:details/art:artifact/loc
 Readonly::Scalar my $BATCH_ARTIFACT_PATH      => q{/art:details/art:artifact };
 Readonly::Scalar my $ARTIFACT_URI_PATH        => q{/art:artifact/@uri };
 Readonly::Scalar my $ARTIFACT_LOCATION_PATH   => q{location/value };
+Readonly::Scalar my $ARTIFACT_CONTAINER_PATH  => q{location/container/@limsid };
 Readonly::Scalar my $CONTAINER_LIMSID_PATH    => q{/con:details/con:container/@limsid };
 ## use critic
 
@@ -44,12 +46,15 @@ sub _build__input_artifacts_location {
   my $self = shift;
 
   my %artifacts_location;
+
   my @artifact_node_list = $self->process_doc->input_artifacts->findnodes($BATCH_ARTIFACT_PATH)->get_nodelist();
 
   foreach my $artifact_node (@artifact_node_list) {
     my $analyte_uri = $artifact_node->getAttribute('uri');
     my $analyte_location = $artifact_node->findnodes($ARTIFACT_LOCATION_PATH)->pop()->string_value;
-    $artifacts_location{$analyte_location} = $analyte_uri;
+    my $analyte_container = $artifact_node->findnodes($ARTIFACT_CONTAINER_PATH)->pop()->getValue;
+    $artifacts_location{$analyte_container} ||= {};
+    $artifacts_location{$analyte_container}{$analyte_location} = $analyte_uri;
   }
   return \%artifacts_location;
 }
@@ -86,7 +91,7 @@ sub _build__container_ids {
 }
 
 has '_mapping' => (
-  isa             => 'ArrayRef',
+  isa             => 'HashRef',
   is              => 'rw',
   required        => 0,
   lazy_build      => 1,
@@ -96,18 +101,11 @@ sub _build__mapping {
 
   my $container_ids = $self->_container_ids;
 
-  # for now we just supporting only one input container per pooling
-  if (scalar @{$container_ids} > 1) {
-    croak("Only 1 input container is supported.");
-  }
-
   my $mapper = wtsi_clarity::isc::pooling::mapper->new(
-    container_id => $container_ids->[0],
+    container_ids => $container_ids,
   );
 
-  my $mapping = $mapper->mapping;
-
-  return $mapping;
+  return $mapper->mapping;
 }
 
 has '_pools_doc' => (
@@ -133,15 +131,28 @@ sub _build__bait_info {
   return $PLEX_8;
 }
 
+duck_type 'WtsiClarityPoolingStrategy', [qw/get_pool_name/];
+
 has '_pooling_strategy' => (
-  isa             => 'wtsi_clarity::epp::isc::pooling_strategy',
+  isa             => 'WtsiClarityPoolingStrategy',
   is              => 'rw',
   required        => 0,
   lazy_build      => 1,
 );
 sub _build__pooling_strategy {
   my $self = shift;
-  return $PLEXING_METHODS{$self->_bait_info}->new();
+
+  my $plexing_method = $PLEXING_METHODS{$self->_bait_info};
+  if (!defined $plexing_method) {
+    croak qq{The plexing method for bait: ($self->_bait_info) you would like to use is not defined.};
+  }
+
+  my $loaded = eval "require $plexing_method";
+  if (!$loaded) {
+    croak qq{Failed to require $plexing_method};
+  }
+
+  return $plexing_method->new();
 }
 
 has '_pools' => (
@@ -155,13 +166,16 @@ sub _build__pools {
 
   my $mappings = $self->_mapping;
   my $pools = {};
-  while ( my ($location, $analyte_uri) = each %{$self->_input_artifacts_location}) {
-    foreach my $mapping (@{$mappings}) {
-      if ($mapping->{'source_well'} eq $location) {
-        my $pool_name = join q{ }, $self->process_doc->get_container_name_by_limsid($mapping->{'source_plate'}), $self->get_pool_name_by_plexing($mapping->{'dest_well'}, $self->_pooling_strategy);
-        $pools->{$pool_name} ||= [];
-        push @{$pools->{$pool_name}}, $analyte_uri;
-      }
+  while ( my ($container_limsid, $locations_and_analyte_uris) = each %{$self->_input_artifacts_location}) {
+    my $container_mapping = $mappings->{$container_limsid};
+     while ( my ($location, $analyte_uri) = each %{$locations_and_analyte_uris}) {
+      my $mapping = $container_mapping->{$location};
+      my $pool_name = join q{ },
+        $self->process_doc->get_container_name_by_limsid($container_limsid),
+        $self->get_pool_name_by_plexing($mapping->{'dest_well'}, $self->_pooling_strategy);
+
+      $pools->{$pool_name} ||= [];
+      push @{$pools->{$pool_name}}, $analyte_uri;
     }
   }
 

@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 21;
+use Test::More tests => 23;
 use Test::Exception;
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
@@ -71,108 +71,114 @@ use_ok('wtsi_clarity::epp::isc::analyte_pooler', 'can use ISC Analyte Pooler');
   step_url => $base_uri . '/steps/122-21977',
   );
   
-  my @expected_mapping = [
-    { 'source_plate' => '27-1890', 'source_well' =>  'A:1', 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'B:1', 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'C:1', 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'D:1', 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'E:1', 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'F:1', 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'G:1', 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'H:1', 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'A:2', 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'B:2', 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'C:2', 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'D:2', 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'E:2', 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'F:2', 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'G:2', 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'H:2', 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'A:3', 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'B:3', 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'C:3', 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'D:3', 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'E:3', 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'F:3', 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'G:3', 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'H:3', 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'A:4', 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'B:4', 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'C:4', 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'D:4', 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'E:4', 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'F:4', 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'G:4', 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'H:4', 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'A:5', 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'B:5', 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'C:5', 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'D:5', 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'E:5', 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'F:5', 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'G:5', 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'H:5', 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'A:6', 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'B:6', 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'C:6', 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'D:6', 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'E:6', 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'F:6', 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'G:6', 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'H:6', 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'A:7', 'dest_plate' => 'temp_1', 'dest_well' =>  'G:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'B:7', 'dest_plate' => 'temp_1', 'dest_well' =>  'G:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'C:7', 'dest_plate' => 'temp_1', 'dest_well' =>  'G:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'D:7', 'dest_plate' => 'temp_1', 'dest_well' =>  'G:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'E:7', 'dest_plate' => 'temp_1', 'dest_well' =>  'G:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'F:7', 'dest_plate' => 'temp_1', 'dest_well' =>  'G:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'G:7', 'dest_plate' => 'temp_1', 'dest_well' =>  'G:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'H:7', 'dest_plate' => 'temp_1', 'dest_well' =>  'G:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'A:8', 'dest_plate' => 'temp_1', 'dest_well' =>  'H:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'B:8', 'dest_plate' => 'temp_1', 'dest_well' =>  'H:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'C:8', 'dest_plate' => 'temp_1', 'dest_well' =>  'H:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'D:8', 'dest_plate' => 'temp_1', 'dest_well' =>  'H:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'E:8', 'dest_plate' => 'temp_1', 'dest_well' =>  'H:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'F:8', 'dest_plate' => 'temp_1', 'dest_well' =>  'H:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'G:8', 'dest_plate' => 'temp_1', 'dest_well' =>  'H:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'H:8', 'dest_plate' => 'temp_1', 'dest_well' =>  'H:1' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'A:9', 'dest_plate' => 'temp_1', 'dest_well' =>  'A:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'B:9', 'dest_plate' => 'temp_1', 'dest_well' =>  'A:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'C:9', 'dest_plate' => 'temp_1', 'dest_well' =>  'A:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'D:9', 'dest_plate' => 'temp_1', 'dest_well' =>  'A:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'E:9', 'dest_plate' => 'temp_1', 'dest_well' =>  'A:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'F:9', 'dest_plate' => 'temp_1', 'dest_well' =>  'A:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'G:9', 'dest_plate' => 'temp_1', 'dest_well' =>  'A:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'H:9', 'dest_plate' => 'temp_1', 'dest_well' =>  'A:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'A:10', 'dest_plate' => 'temp_1', 'dest_well' =>  'B:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'B:10', 'dest_plate' => 'temp_1', 'dest_well' =>  'B:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'C:10', 'dest_plate' => 'temp_1', 'dest_well' =>  'B:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'D:10', 'dest_plate' => 'temp_1', 'dest_well' =>  'B:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'E:10', 'dest_plate' => 'temp_1', 'dest_well' =>  'B:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'F:10', 'dest_plate' => 'temp_1', 'dest_well' =>  'B:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'G:10', 'dest_plate' => 'temp_1', 'dest_well' =>  'B:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'H:10', 'dest_plate' => 'temp_1', 'dest_well' =>  'B:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'A:11', 'dest_plate' => 'temp_1', 'dest_well' =>  'C:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'B:11', 'dest_plate' => 'temp_1', 'dest_well' =>  'C:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'C:11', 'dest_plate' => 'temp_1', 'dest_well' =>  'C:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'D:11', 'dest_plate' => 'temp_1', 'dest_well' =>  'C:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'E:11', 'dest_plate' => 'temp_1', 'dest_well' =>  'C:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'F:11', 'dest_plate' => 'temp_1', 'dest_well' =>  'C:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'G:11', 'dest_plate' => 'temp_1', 'dest_well' =>  'C:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'H:11', 'dest_plate' => 'temp_1', 'dest_well' =>  'C:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'A:12', 'dest_plate' => 'temp_1', 'dest_well' =>  'D:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'B:12', 'dest_plate' => 'temp_1', 'dest_well' =>  'D:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'C:12', 'dest_plate' => 'temp_1', 'dest_well' =>  'D:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'D:12', 'dest_plate' => 'temp_1', 'dest_well' =>  'D:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'E:12', 'dest_plate' => 'temp_1', 'dest_well' =>  'D:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'F:12', 'dest_plate' => 'temp_1', 'dest_well' =>  'D:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'G:12', 'dest_plate' => 'temp_1', 'dest_well' =>  'D:2' },
-    { 'source_plate' => '27-1890', 'source_well' =>  'H:12', 'dest_plate' => 'temp_1', 'dest_well' =>  'D:2' },
-  ];
+  my $expected_mapping = { 
+    '27-1890' => {
+      'A:1' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+      'B:1' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+      'C:1' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+      'D:1' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+      'E:1' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+      'F:1' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+      'G:1' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+      'H:1' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+      'A:2' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+      'B:2' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+      'C:2' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+      'D:2' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+      'E:2' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+      'F:2' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+      'G:2' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+      'H:2' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+      'A:3' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+      'B:3' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+      'C:3' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+      'D:3' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+      'E:3' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+      'F:3' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+      'G:3' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+      'H:3' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+      'A:4' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+      'B:4' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+      'C:4' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+      'D:4' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+      'E:4' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+      'F:4' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+      'G:4' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+      'H:4' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+      'A:5' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+      'B:5' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+      'C:5' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+      'D:5' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+      'E:5' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+      'F:5' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+      'G:5' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+      'H:5' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+      'A:6' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+      'B:6' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+      'C:6' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+      'D:6' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+      'E:6' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+      'F:6' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+      'G:6' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+      'H:6' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+      'A:7' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'G:1' },
+      'B:7' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'G:1' },
+      'C:7' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'G:1' },
+      'D:7' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'G:1' },
+      'E:7' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'G:1' },
+      'F:7' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'G:1' },
+      'G:7' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'G:1' },
+      'H:7' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'G:1' },
+      'A:8' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'H:1' },
+      'B:8' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'H:1' },
+      'C:8' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'H:1' },
+      'D:8' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'H:1' },
+      'E:8' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'H:1' },
+      'F:8' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'H:1' },
+      'G:8' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'H:1' },
+      'H:8' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'H:1' },
+      'A:9' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:2' },
+      'B:9' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:2' },
+      'C:9' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:2' },
+      'D:9' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:2' },
+      'E:9' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:2' },
+      'F:9' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:2' },
+      'G:9' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:2' },
+      'H:9' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:2' },
+      'A:10' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:2' },
+      'B:10' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:2' },
+      'C:10' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:2' },
+      'D:10' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:2' },
+      'E:10' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:2' },
+      'F:10' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:2' },
+      'G:10' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:2' },
+      'H:10' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:2' },
+      'A:11' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:2' },
+      'B:11' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:2' },
+      'C:11' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:2' },
+      'D:11' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:2' },
+      'E:11' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:2' },
+      'F:11' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:2' },
+      'G:11' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:2' },
+      'H:11' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:2' },
+      'A:12' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:2' },
+      'B:12' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:2' },
+      'C:12' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:2' },
+      'D:12' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:2' },
+      'E:12' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:2' },
+      'F:12' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:2' },
+      'G:12' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:2' },
+      'H:12' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:2' },
+    }
+  };
   my $mapping = $pooler->_mapping;
 
-  is(scalar @{$mapping}, 96, 'correct number of mapping elements');
-  is_deeply($mapping, @expected_mapping, 'Got back the correct mapping');
+  is(scalar keys %{$mapping}, 1, 'correct number of container elements');
+
+  while (my ($container_limsid, $mapping_elements) = each %{$mapping}) {
+    is(scalar keys %{$mapping_elements}, 96, 'correct number of mapping elements');
+  }
+  is_deeply($mapping, $expected_mapping, 'Got back the correct mapping');
 }
 
 { # Tests for getting the well location of the input artifacts
@@ -183,13 +189,20 @@ use_ok('wtsi_clarity::epp::isc::analyte_pooler', 'can use ISC Analyte Pooler');
   
   my $expected_input_artifacts_location =
     {
-      "A:1" => "http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-55027?state=25327",
-      "A:3" => "http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-55028?state=25328",
+      "27-1890" => {
+        "A:1" => "http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-55027?state=25327",
+        "A:3" => "http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-55028?state=25328",
+      }
     };
+
   my $input_artifacts_location = $pooler->_input_artifacts_location;
-  my @expected_keys = keys %{$input_artifacts_location};
-  my $expected_size = @expected_keys;
-  is($expected_size, 2, 'Correct number of input artifacts');
+
+  my @expected_containers_keys = ('27-1890');
+
+  my @containers_keys = keys %{$input_artifacts_location};
+  my $container_size = @containers_keys;
+  is_deeply(@containers_keys, @expected_containers_keys, 'Returns the correct container limsid');
+  is(1, $container_size, 'Correct number of input artifacts');
   is_deeply($input_artifacts_location, $expected_input_artifacts_location, 'Got back the correct hash of artifact locations');
 }
 
@@ -205,7 +218,6 @@ use_ok('wtsi_clarity::epp::isc::analyte_pooler', 'can use ISC Analyte Pooler');
   my $expected_d1_well_pool_name_by_8_plex = 'A4:H4 (D:1)';
 
   my $plexing_by_8 = wtsi_clarity::epp::isc::pooling_by_8_plex->new();
-  # my $pool_name_code_ref = sub { return $plexing_by_8->get_pool_name };
 
   is($pooler->get_pool_name_by_plexing('A:1', $plexing_by_8), $expected_a1_well_pool_name_by_8_plex, 'Returns the expected pool name with 8 plex.');
   is($pooler->get_pool_name_by_plexing('D:1', $plexing_by_8), $expected_d1_well_pool_name_by_8_plex, 'Returns the expected pool name with 8 plex.');
@@ -244,6 +256,7 @@ use_ok('wtsi_clarity::epp::isc::analyte_pooler', 'can use ISC Analyte Pooler');
                ]
     };
   my $actual_pool_hash = $pooler->_pools;
+
   my @expected_keys = keys %{$actual_pool_hash};
   my $expected_size = @expected_keys;
   is($expected_size, 2, 'Correct number of pools');
