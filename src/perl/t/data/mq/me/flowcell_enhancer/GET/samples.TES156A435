@@ -1,12 +1,12 @@
 <?xml version="1.0" standalone="yes"?>
-<smp:sample xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/TES156A435" limsid="TES156A435">
+<smp:sample xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample" uri="http://testserver.com:1234/samples/TES156A435" limsid="TES156A435">
     <name>3343</name>
-    <project limsid="TES156" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/TES156"/>
-    <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/17">
+    <project limsid="TES156" uri="http://testserver.com:1234/projects/TES156"/>
+    <submitter uri="http://testserver.com:1234/researchers/17">
         <first-name>AD</first-name>
         <last-name>Test</last-name>
     </submitter>
-    <artifact limsid="TES156A435PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/TES156A435PA1?state=12391"/>
+    <artifact limsid="TES156A435PA1" uri="http://testserver.com:1234/artifacts/TES156A435PA1?state=12391"/>
     <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
     <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
     <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>

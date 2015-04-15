@@ -1,5 +1,5 @@
 <?xml version="1.0" standalone="yes"?>
-<prj:project xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:prj="http://genologics.com/ri/project" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/SMI102" limsid="SMI102">
+<prj:project xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:prj="http://genologics.com/ri/project" uri="http://testserver.com:1234/projects/SMI102" limsid="SMI102">
     <name>Project Chris</name>
     <open-date>2014-07-13</open-date>
     <udf:field type="String" name="WTSI ECAP Tracking Number">123</udf:field>
@@ -15,7 +15,7 @@
     <udf:field type="Boolean" name="WTSI Contaminated with Human DNA that needs removal?">false</udf:field>
     <udf:field type="Boolean" name="WTSI Does the study require the removal of X-chromosome and autosome sequence?">false</udf:field>
     <udf:field type="Boolean" name="WTSI Does the study require the removal of Y-chromosome and autosome sequence?">false</udf:field>
-    <file:file limsid="SMI102-40-152" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/files/SMI102-40-152"/>
-    <file:file limsid="SMI102-40-151" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/files/SMI102-40-151"/>
-    <file:file limsid="SMI102-40-158" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/files/SMI102-40-158"/>
+    <file:file limsid="SMI102-40-152" uri="http://testserver.com:1234/files/SMI102-40-152"/>
+    <file:file limsid="SMI102-40-151" uri="http://testserver.com:1234/files/SMI102-40-151"/>
+    <file:file limsid="SMI102-40-158" uri="http://testserver.com:1234/files/SMI102-40-158"/>
 </prj:project>

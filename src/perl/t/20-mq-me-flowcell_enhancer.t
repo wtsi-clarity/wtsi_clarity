@@ -6,13 +6,14 @@ use Test::Exception;
 
 use_ok('wtsi_clarity::mq::me::flowcell_enhancer');
 
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/mq/me/flowcell_enhancer';
-  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
 
   my $me = wtsi_clarity::mq::me::flowcell_enhancer->new(
-    process_url => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-30038',
-    step_url    => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/steps/24-30038',
+    process_url => 'http://testserver.com:1234/processes/24-30038',
+    step_url    => 'http://testserver.com:1234/steps/24-30038',
     timestamp   => '123456789',
   );
 
@@ -25,8 +26,8 @@ use_ok('wtsi_clarity::mq::me::flowcell_enhancer');
 
 {
   my $me = wtsi_clarity::mq::me::flowcell_enhancer->new(
-    process_url => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-30038',
-    step_url    => 'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/steps/24-30038',
+    process_url => 'http://testserver.com:1234/processes/24-30038',
+    step_url    => 'http://testserver.com:1234/steps/24-30038',
     timestamp   => '123456789',
   );
 
