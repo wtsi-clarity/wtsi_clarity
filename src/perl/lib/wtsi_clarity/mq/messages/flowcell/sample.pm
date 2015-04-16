@@ -80,8 +80,6 @@ wtsi_clarity::mq::messages::flowcell::sample
 
 =item MooseX::Storage;
 
-=item wtsi_clarity::util::types;
-
 =back
 
 =head1 AUTHOR
