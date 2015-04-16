@@ -38,7 +38,6 @@ wtsi_clarity::mq::messages::flowcell::control
     tag_index                  => 3,
     entity_type                => 'library_indexed_spike',
     tag_sequence               => 'ATAG',
-    tag_set_id_lims            => '2',
     entity_id_lims             => '12345',
     tag_set_name               => 'Sanger_168tags - 10 mer tags',
   );
