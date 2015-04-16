@@ -1,4 +1,4 @@
-package wtsi_clarity::epp::isc::pool_placer;
+package wtsi_clarity::epp::isc::pooling::pool_placer;
 
 use Moose;
 use Carp;
@@ -6,7 +6,7 @@ use Readonly;
 
 extends 'wtsi_clarity::epp';
 
-with 'wtsi_clarity::epp::isc::pooling_common';
+with 'wtsi_clarity::epp::isc::pooling::pooling_common';
 
 our $VERSION = '0.0';
 
@@ -120,11 +120,11 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::epp::isc::pool_placer
+wtsi_clarity::epp::isc::pooling::pool_placer
 
 =head1 SYNOPSIS
 
-  my $placementer = wtsi_clarity::epp::isc::pool_placer->new(
+  my $placementer = wtsi_clarity::epp::isc::pooling::pool_placer->new(
     process_url => $base_uri . '/processes/122-21977',
     step_url => $base_uri . '/steps/122-21977',
   );

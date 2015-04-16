@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="122-29034" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/122-29034" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processtypes/133">Pre Capture Lib Pooling</type>
+  <technician uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/58">
+    <first-name>Karoly</first-name>
+    <last-name>Erdos</last-name>
+  </technician>
+  <input-output-map>
+    <input limsid="2-183884" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183884?state=88846" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183884?state=88846">
+      <parent-process limsid="24-26584" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584"/>
+    </input>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-183887" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183887?state=88849" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183887?state=88849">
+      <parent-process limsid="24-26584" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584"/>
+    </input>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-183888" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183888?state=88850" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-183888?state=88850">
+      <parent-process limsid="24-26584" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26584"/>
+    </input>
+  </input-output-map>
+  <udf:field name="Workstation: Name" type="String">Beckman NX8_01</udf:field>
+  <udf:field name="Program Used" type="String">Pre Capture SAT Scripting_2</udf:field>
+  <udf:field name="Barcode Copies" type="Numeric">2</udf:field>
+  <udf:field name="Select Barcode Printer" type="String">dnapbc2</udf:field>
+  <udf:field name="Plate Purpose" type="String">ReArray</udf:field>
+  <udf:field name="Barcode Prefix" type="String">IC</udf:field>
+  <udf:field name="Minimum Volume" type="String">5</udf:field>
+  <udf:field name="Maximum Volume" type="String">50</udf:field>
+  <udf:field name="Maximum Total Volume" type="String">200</udf:field>
+  <process-parameter name="12 - Analyte Pooler"/>
+</prc:process>

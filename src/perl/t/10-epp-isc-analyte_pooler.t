@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 23;
+use Test::More tests => 29;
 use Test::Exception;
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
@@ -12,19 +12,19 @@ my $base_uri = $config->clarity_api->{'base_uri'};
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/isc/analyte_pooler';
 local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
-use_ok('wtsi_clarity::epp::isc::analyte_pooler', 'can use ISC Analyte Pooler');
+use_ok('wtsi_clarity::epp::isc::pooling::analyte_pooler', 'can use ISC Analyte Pooler');
 
 {
-  my $pooler = wtsi_clarity::epp::isc::analyte_pooler->new(
+  my $pooler = wtsi_clarity::epp::isc::pooling::analyte_pooler->new(
   process_url => $base_uri . '/processes/122-21977',
   step_url => $base_uri . '/steps/122-21977',
   );
 
-  isa_ok( $pooler, 'wtsi_clarity::epp::isc::analyte_pooler');
+  isa_ok( $pooler, 'wtsi_clarity::epp::isc::pooling::analyte_pooler');
 }
 
 { # Test for getting the input artifacts (analytes)
-  my $pooler = wtsi_clarity::epp::isc::analyte_pooler->new(
+  my $pooler = wtsi_clarity::epp::isc::pooling::analyte_pooler->new(
   process_url => $base_uri . '/processes/122-21977',
   step_url => $base_uri . '/steps/122-21977',
   );
@@ -38,7 +38,7 @@ use_ok('wtsi_clarity::epp::isc::analyte_pooler', 'can use ISC Analyte Pooler');
 }
 
 { # Test for getting the input artifacts container(s) (analytes) uris
-  my $pooler = wtsi_clarity::epp::isc::analyte_pooler->new(
+  my $pooler = wtsi_clarity::epp::isc::pooling::analyte_pooler->new(
   process_url => $base_uri . '/processes/122-21977',
   step_url => $base_uri . '/steps/122-21977',
   );
@@ -52,7 +52,7 @@ use_ok('wtsi_clarity::epp::isc::analyte_pooler', 'can use ISC Analyte Pooler');
 }
 
 { # Test for getting back the correct container names
-  my $pooler = wtsi_clarity::epp::isc::analyte_pooler->new(
+  my $pooler = wtsi_clarity::epp::isc::pooling::analyte_pooler->new(
   process_url => $base_uri . '/processes/122-21977',
   step_url => $base_uri . '/steps/122-21977',
   );
@@ -66,7 +66,7 @@ use_ok('wtsi_clarity::epp::isc::analyte_pooler', 'can use ISC Analyte Pooler');
 }
 
 { # Test for getting back the correct mapping
-  my $pooler = wtsi_clarity::epp::isc::analyte_pooler->new(
+  my $pooler = wtsi_clarity::epp::isc::pooling::analyte_pooler->new(
   process_url => $base_uri . '/processes/122-21977',
   step_url => $base_uri . '/steps/122-21977',
   );
@@ -182,7 +182,7 @@ use_ok('wtsi_clarity::epp::isc::analyte_pooler', 'can use ISC Analyte Pooler');
 }
 
 { # Tests for getting the well location of the input artifacts
-  my $pooler = wtsi_clarity::epp::isc::analyte_pooler->new(
+  my $pooler = wtsi_clarity::epp::isc::pooling::analyte_pooler->new(
   process_url => $base_uri . '/processes/122-21977',
   step_url => $base_uri . '/steps/122-21977',
   );
@@ -207,9 +207,9 @@ use_ok('wtsi_clarity::epp::isc::analyte_pooler', 'can use ISC Analyte Pooler');
 }
 
 { # tests getting the pool name by destination well with 8 plex
-  use wtsi_clarity::epp::isc::pooling_by_8_plex;
+  use wtsi_clarity::epp::isc::pooling::pooling_by_8_plex;
 
-  my $pooler = wtsi_clarity::epp::isc::analyte_pooler->new(
+  my $pooler = wtsi_clarity::epp::isc::pooling::analyte_pooler->new(
   process_url => $base_uri . '/processes/122-21977',
   step_url => $base_uri . '/steps/122-21977',
   );
@@ -217,16 +217,16 @@ use_ok('wtsi_clarity::epp::isc::analyte_pooler', 'can use ISC Analyte Pooler');
   my $expected_a1_well_pool_name_by_8_plex = 'A1:H1 (A:1)';
   my $expected_d1_well_pool_name_by_8_plex = 'A4:H4 (D:1)';
 
-  my $plexing_by_8 = wtsi_clarity::epp::isc::pooling_by_8_plex->new();
+  my $plexing_by_8 = wtsi_clarity::epp::isc::pooling::pooling_by_8_plex->new();
 
   is($pooler->get_pool_name_by_plexing('A:1', $plexing_by_8), $expected_a1_well_pool_name_by_8_plex, 'Returns the expected pool name with 8 plex.');
   is($pooler->get_pool_name_by_plexing('D:1', $plexing_by_8), $expected_d1_well_pool_name_by_8_plex, 'Returns the expected pool name with 8 plex.');
 }
 
 { # tests getting the pool name by destination well with 16 plex
-  use wtsi_clarity::epp::isc::pooling_by_16_plex;
+  use wtsi_clarity::epp::isc::pooling::pooling_by_16_plex;
 
-  my $pooler = wtsi_clarity::epp::isc::analyte_pooler->new(
+  my $pooler = wtsi_clarity::epp::isc::pooling::analyte_pooler->new(
     process_url => $base_uri . '/processes/122-21977',
     step_url    => $base_uri . '/steps/122-21977',
     _bait_info  => '16'
@@ -234,28 +234,30 @@ use_ok('wtsi_clarity::epp::isc::analyte_pooler', 'can use ISC Analyte Pooler');
 
   my $expected_a1_well_pool_name_by_16_plex = 'A1:H2 (A:1)';
   my $expected_d1_well_pool_name_by_16_plex = 'A7:H8 (D:1)';
-  my $plexing_by_16 = wtsi_clarity::epp::isc::pooling_by_16_plex->new();
+  my $plexing_by_16 = wtsi_clarity::epp::isc::pooling::pooling_by_16_plex->new();
 
   is($pooler->get_pool_name_by_plexing('A:1', $plexing_by_16), $expected_a1_well_pool_name_by_16_plex, 'Returns the expected pool name with 16 plex.');
   is($pooler->get_pool_name_by_plexing('D:1', $plexing_by_16), $expected_d1_well_pool_name_by_16_plex, 'Returns the expected pool name with 16 plex.');
 }
 
 { # Test for getting back the expected pool hash
-  my $pooler = wtsi_clarity::epp::isc::analyte_pooler->new(
+  my $pooler = wtsi_clarity::epp::isc::pooling::analyte_pooler->new(
   process_url => $base_uri . '/processes/122-21977',
   step_url => $base_uri . '/steps/122-21977',
   );
   
  my $expected_pools_hash =
     {
-      '1234567890123 A3:H3 (C:1)' => [
+      '1234567890123 A5:H6 (C:1)' => [
                  'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-55028?state=25328'
                ],
-      '1234567890123 A1:H1 (A:1)' => [
+      '1234567890123 A1:H2 (A:1)' => [
                  'http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-55027?state=25327'
                ]
     };
   my $actual_pool_hash = $pooler->_pools;
+
+  # print Dumper $pooler->_pools;
 
   my @expected_keys = keys %{$actual_pool_hash};
   my $expected_size = @expected_keys;
@@ -264,7 +266,7 @@ use_ok('wtsi_clarity::epp::isc::analyte_pooler', 'can use ISC Analyte Pooler');
 }
 
 { # Tests for creating the pooled inputs
-  my $pooler = wtsi_clarity::epp::isc::analyte_pooler->new(
+  my $pooler = wtsi_clarity::epp::isc::pooling::analyte_pooler->new(
   process_url => $base_uri . '/processes/122-21977',
   step_url => $base_uri . '/steps/122-21977',
   );
@@ -274,11 +276,67 @@ use_ok('wtsi_clarity::epp::isc::analyte_pooler', 'can use ISC Analyte Pooler');
 }
 
 { # Tests for updating the current step with the created pools
-  my $pooler = wtsi_clarity::epp::isc::analyte_pooler->new(
+  my $pooler = wtsi_clarity::epp::isc::pooling::analyte_pooler->new(
+    process_url => $base_uri . '/processes/122-30490',
+    step_url => $base_uri . '/steps/122-30490',
+  );
+  lives_ok {$pooler->update_step_with_pools} "Get a correct response for updating for the step's pools";
+}
+
+{ # Test for getting the samples details
+  my $pooler = wtsi_clarity::epp::isc::pooling::analyte_pooler->new(
+    process_url => $base_uri . '/processes/122-30490',
+    step_url => $base_uri . '/steps/122-30490',
+  );
+
+  lives_and ( sub {is ref($pooler->_samples), 'XML::LibXML::Document'}, "Got a correct response with sample details");
+}
+
+{ # Test for getting the bait information from the samples
+  my $pooler = wtsi_clarity::epp::isc::pooling::analyte_pooler->new(
+    process_url => $base_uri . '/processes/122-30490',
+    step_url => $base_uri . '/steps/122-30490',
+  );
+
+  my $expected_bait_library = "14M_haemv1";
+
+  is($pooler->_bait_library, $expected_bait_library, "Got the expected bait library name.");
+}
+
+{ # Test for getting the bait information from the samples, when no bait info at all
+  my $pooler = wtsi_clarity::epp::isc::pooling::analyte_pooler->new(
     process_url => $base_uri . '/processes/122-29034',
     step_url => $base_uri . '/steps/122-29034',
   );
-  lives_ok {$pooler->update_step_with_pools} "Get a correct response for updating for the step's pools";
+
+  throws_ok { $pooler->_bait_library}
+    qr/The samples does not contains Bait Library Name information./,
+    'Got error when the BAIT Library information is missing from the samples.';
+}
+
+{ # Test for getting the bait information from the samples, when no bait info at all
+  my $pooler = wtsi_clarity::epp::isc::pooling::analyte_pooler->new(
+    process_url => $base_uri . '/processes/122-29034_without_baits',
+    step_url => $base_uri . '/steps/122-29034_without_baits',
+  );
+
+  throws_ok { $pooler->_bait_library}
+    qr/One or some of the samples does not contains Bait Library Name information./,
+    'Got error when the BAIT Library information is missing from one of the samples.';
+}
+
+{ # Tests if the bait info is registered in the config file
+  my $pooler = wtsi_clarity::epp::isc::pooling::analyte_pooler->new(
+    process_url => $base_uri . '/processes/122-30490',
+    step_url => $base_uri . '/steps/122-30490',
+  );
+
+  my $expedted_plexing_mode = '16_plex';
+
+  is($pooler->_plexing_mode_by_bait_library('14M_haemv1'), $expedted_plexing_mode, 'Got back the expected plexing mode for valid bait library');
+  throws_ok { $pooler->_plexing_mode_by_bait_library('not valid bait library')}
+    qr/This Bait Library is not registered\: not valid bait library./,
+    'Got error when the Bait Library is not registered in the config file.';
 }
 
 1;

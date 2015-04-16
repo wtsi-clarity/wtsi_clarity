@@ -1,31 +1,28 @@
-package wtsi_clarity::epp::isc::pooling_by_8_plex;
+package wtsi_clarity::epp::isc::pooling::pooling_strategy;
 
-use Moose;
-use Carp;
+use Moose::Role;
 use Readonly;
+use Carp;
 
 our $VERSION = '0.0';
 
-with 'wtsi_clarity::epp::isc::pooling_strategy';
+Readonly::Hash my %POOL_NAMES_BY_TARGET_WELL => {};
 
-Readonly::Hash my %POOL_NAMES_BY_TARGET_WELL => {
-  'A:1' => 'A1:H1',
-  'B:1' => 'A2:H2',
-  'C:1' => 'A3:H3',
-  'D:1' => 'A4:H4',
-  'E:1' => 'A5:H5',
-  'F:1' => 'A6:H6',
-  'G:1' => 'A7:H7',
-  'H:1' => 'A8:H8',
-  'A:2' => 'A9:H9',
-  'B:2' => 'A10:H10',
-  'C:2' => 'A11:H11',
-  'D:2' => 'A12:H12'
-};
-
-has '+pool_names_by_target_well' => (
-  default => sub { return \%POOL_NAMES_BY_TARGET_WELL; }
+has 'pool_names_by_target_well' => (
+  isa        => 'HashRef',
+  is         => 'ro',
+  required   => 0,
 );
+
+sub get_pool_name {
+  my ($self, $destination_well_name) = @_;
+
+  my $pool_name = $self->pool_names_by_target_well->{$destination_well_name};
+
+  croak qq{Pool name ($destination_well_name) is not defined for this destination well} if (! defined $pool_name);
+
+  return $pool_name;
+}
 
 1;
 
@@ -33,15 +30,19 @@ __END__
 
 =head1 NAME
 
- wtsi_clarity::epp::isc::pooling_by_8_plex
+ wtsi_clarity::epp::isc::pooling::pooling_strategy
 
 =head1 SYNOPSIS
 
 =head1 DESCRIPTION
 
- Pooling startegy for 8 plex pooling.
+ Interface for pooling strategies.
 
 =head1 SUBROUTINES/METHODS
+
+=head2 get_pool_name
+
+  Returns the pooling range by the destination well.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
@@ -51,9 +52,9 @@ __END__
 
 =item Moose::Role
 
-=item Readonly
-
 =item Carp
+
+=item Readonly
 
 =back
 

@@ -1,24 +1,18 @@
-package wtsi_clarity::epp::isc::pooling_by_16_plex;
+package wtsi_clarity::epp::isc::pooling::pooling_common;
 
-use Moose;
+use Moose::Role;
+use Carp;
 use Readonly;
 
 our $VERSION = '0.0';
 
-with 'wtsi_clarity::epp::isc::pooling_strategy';
+sub get_pool_name_by_plexing {
+  my ($self, $destination_well_name, $plexing_strategy) = @_;
 
-Readonly::Hash my %POOL_NAMES_BY_TARGET_WELL => {
-  'A:1' => 'A1:H2',
-  'B:1' => 'A3:H4',
-  'C:1' => 'A5:H6',
-  'D:1' => 'A7:H8',
-  'E:1' => 'A9:H10',
-  'F:1' => 'A11:H12',
-};
+  return join q{ }, $plexing_strategy->get_pool_name($destination_well_name), qq{($destination_well_name)};
+}
 
-has '+pool_names_by_target_well' => (
-  default => sub { return \%POOL_NAMES_BY_TARGET_WELL; }
-);
+no Moose::Role;
 
 1;
 
@@ -26,15 +20,19 @@ __END__
 
 =head1 NAME
 
- wtsi_clarity::epp::isc::pooling_by_16_plex
+ wtsi_clarity::epp::isc::pooling::pooling_common
 
 =head1 SYNOPSIS
 
 =head1 DESCRIPTION
 
- Pooling startegy for 16 plex pooling.
+ Common methods for epp modules dealing with tag plates and indexing.
 
 =head1 SUBROUTINES/METHODS
+
+=head2 get_pool_name_by_plexing
+
+  Returns the pooling range by the destination well and the plexing strategy.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
