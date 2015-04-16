@@ -26,10 +26,13 @@ my @defaults = ( is => 'ro', isa => 'Str', required => 1 );
 
 has ['flowcell_barcode',
      'flowcell_id',
-     'forward_read_length',
-     'reverse_read_length',
      'updated_at',
     ] => @defaults;
+
+has ['forward_read_length',
+     'reverse_read_length',]
+     => @defaults,
+     isa => 'Int';
 
 has 'lanes' => @defaults, isa => 'WtsiClarityMessageFlowcellLanes', coerce => 1;
 
