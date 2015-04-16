@@ -66,8 +66,6 @@ wtsi_clarity::mq::messages::flowcell::control
 
 =item MooseX::Storage;
 
-=item wtsi_clarity::util::types;
-
 =back
 
 =head1 AUTHOR
