@@ -48,6 +48,7 @@ wtsi_clarity::mq::messages::flowcell::flowcell
     flowcell_id         => '24-12345',
     forward_read_length => 222,
     reverse_read_length => 222,
+    updated_at          => '2015-04-12 10:30:30',
     lanes               => [{
       entity_type  => 'library',
       id_pool_lims => 'DN324095D A1:H2',
