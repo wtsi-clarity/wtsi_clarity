@@ -1,0 +1,30 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/artifacts/2-246012?state=121946" limsid="2-246012">
+    <name>Pool #2</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://testserver.com:1234/processes/24-30038" limsid="24-30038"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/containers/27-5829" limsid="27-5829"/>
+        <value>1:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/samples/SMI102A9" limsid="SMI102A9"/>
+    <sample uri="http://testserver.com:1234/samples/SMI102A10" limsid="SMI102A10"/>
+    <sample uri="http://testserver.com:1234/samples/SMI102A11" limsid="SMI102A11"/>
+    <sample uri="http://testserver.com:1234/samples/SMI102A12" limsid="SMI102A12"/>
+    <sample uri="http://testserver.com:1234/samples/SMI102A13" limsid="SMI102A13"/>
+    <sample uri="http://testserver.com:1234/samples/SMI102A14" limsid="SMI102A14"/>
+    <sample uri="http://testserver.com:1234/samples/SMI102A15" limsid="SMI102A15"/>
+    <sample uri="http://testserver.com:1234/samples/SMI102A16" limsid="SMI102A16"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 15 (TAAGCGTT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 16 (TCCGTCTT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 13 (TGGTTGTT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 14 (TCTCGGTT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 11 (GGCTACAG)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 12 (CTTGTACT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 9 (GATCAGCG)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 10 (TAGCTTGT)"/>
+    <workflow-stages/>
+</art:artifact>

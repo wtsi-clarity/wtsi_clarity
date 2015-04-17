@@ -1,16 +1,19 @@
-package wtsi_clarity::epp::isc::analyte_pooler;
+package wtsi_clarity::epp::isc::pooling::analyte_pooler;
 
 use Moose;
 use Carp;
 use Readonly;
 use XML::LibXML::NodeList;
 use List::MoreUtils qw/uniq/;
+use Moose::Util::TypeConstraints;
+use wtsi_clarity::util::types;
 
 use wtsi_clarity::isc::pooling::mapper;
+use wtsi_clarity::epp::isc::pooling::bait_library_mapper;
 
 extends 'wtsi_clarity::epp';
 
-with 'wtsi_clarity::epp::isc::pooling_common';
+with 'wtsi_clarity::epp::isc::pooling::pooling_common';
 
 our $VERSION = '0.0';
 
@@ -19,14 +22,36 @@ Readonly::Scalar my $BATCH_CONTAINER_PATH     => q{/art:details/art:artifact/loc
 Readonly::Scalar my $BATCH_ARTIFACT_PATH      => q{/art:details/art:artifact };
 Readonly::Scalar my $ARTIFACT_URI_PATH        => q{/art:artifact/@uri };
 Readonly::Scalar my $ARTIFACT_LOCATION_PATH   => q{location/value };
-Readonly::Scalar my $CONTAINER_LIMSID_PATH      => q{/con:details/con:container/@limsid };
+Readonly::Scalar my $ARTIFACT_CONTAINER_PATH  => q{location/container/@limsid };
+Readonly::Scalar my $CONTAINER_LIMSID_PATH    => q{/con:details/con:container/@limsid };
+Readonly::Scalar my $SAMPLE_URI_PATH          => q{/art:details/art:artifact/sample/@uri};
+Readonly::Scalar my $BAIT_LIBRARY_PATH        => q{/smp:details/smp:sample/udf:field[@name='WTSI Bait Library Name']/text()};
 ## use critic
+Readonly::Scalar my $SAMPLE_PATH              => q{/smp:details/smp:sample};
+
+Readonly::Scalar my $PLEX_8                   => q{8};
+Readonly::Hash   my %PLEXING_METHODS          => {
+  '8_plex'   => 'wtsi_clarity::epp::isc::pooling::pooling_by_8_plex',
+  '16_plex'  => 'wtsi_clarity::epp::isc::pooling::pooling_by_16_plex',
+};
 
 has 'step_url' => (
   isa        => 'Str',
   is         => 'ro',
   required   => 1,
 );
+
+has '_input_artifacts' => (
+  isa             => 'XML::LibXML::Document',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build__input_artifacts {
+  my $self = shift;
+
+  return $self->process_doc->input_artifacts;
+}
 
 has '_input_artifacts_location' => (
   isa             => 'HashRef',
@@ -38,15 +63,35 @@ sub _build__input_artifacts_location {
   my $self = shift;
 
   my %artifacts_location;
-  my @artifact_node_list = $self->process_doc->input_artifacts->findnodes($BATCH_ARTIFACT_PATH)->get_nodelist();
+
+  my @artifact_node_list = $self->_input_artifacts->findnodes($BATCH_ARTIFACT_PATH)->get_nodelist();
 
   foreach my $artifact_node (@artifact_node_list) {
     my $analyte_uri = $artifact_node->getAttribute('uri');
     my $analyte_location = $artifact_node->findnodes($ARTIFACT_LOCATION_PATH)->pop()->string_value;
-    $artifacts_location{$analyte_location} = $analyte_uri;
+    my $analyte_container = $artifact_node->findnodes($ARTIFACT_CONTAINER_PATH)->pop()->getValue;
+    $artifacts_location{$analyte_container} ||= {};
+    $artifacts_location{$analyte_container}{$analyte_location} = $analyte_uri;
   }
   return \%artifacts_location;
 }
+
+has '_samples' => (
+  isa             => 'XML::LibXML::Document',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build__samples {
+  my $self = shift;
+
+  my @sample_node_list = $self->_input_artifacts->findnodes($SAMPLE_URI_PATH)->get_nodelist();
+  my @sample_uris = map { $_->getValue } @sample_node_list;
+
+  return $self->request->batch_retrieve('samples', \@sample_uris);
+}
+
+
 
 has '_container_uris' => (
   isa             => 'ArrayRef',
@@ -57,7 +102,7 @@ has '_container_uris' => (
 sub _build__container_uris {
   my $self = shift;
 
-  my $uri_node_list = $self->process_doc->input_artifacts->findnodes($BATCH_CONTAINER_PATH);
+  my $uri_node_list = $self->_input_artifacts->findnodes($BATCH_CONTAINER_PATH);
   my @container_uris = uniq(map { $_->getValue } $uri_node_list->get_nodelist);
 
   return \@container_uris;
@@ -80,7 +125,7 @@ sub _build__container_ids {
 }
 
 has '_mapping' => (
-  isa             => 'ArrayRef',
+  isa             => 'HashRef',
   is              => 'rw',
   required        => 0,
   lazy_build      => 1,
@@ -90,18 +135,12 @@ sub _build__mapping {
 
   my $container_ids = $self->_container_ids;
 
-  # for now we just supporting only one input container per pooling
-  if (scalar @{$container_ids} > 1) {
-    croak("Only 1 input container is supported.");
-  }
-
   my $mapper = wtsi_clarity::isc::pooling::mapper->new(
-    container_id => $container_ids->[0],
+    container_ids     => $container_ids,
+    pooling_strategy  => $self->_pooling_strategy,
   );
 
-  my $mapping = $mapper->mapping;
-
-  return $mapping;
+  return $mapper->mapping;
 }
 
 has '_pools_doc' => (
@@ -117,6 +156,66 @@ sub _build__pools_doc {
   return $self->fetch_and_parse($pool_request_uri);
 }
 
+has '_bait_library' => (
+  isa             => 'Str',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build__bait_library {
+  my $self = shift;
+
+  my @bait_library_node_list = $self->_samples->findnodes($BAIT_LIBRARY_PATH);
+  my @bait_libraries = map { $_->getValue() } @bait_library_node_list;
+
+  my $samples_count = $self->_samples->findnodes($SAMPLE_PATH)->get_nodelist;
+  my $bait_libraries_count = @bait_libraries;
+
+  @bait_libraries = uniq(@bait_libraries);
+
+  if (scalar @bait_libraries == 0) {
+    croak q{The samples does not contains Bait Library Name information.};
+  } elsif ($samples_count !=  $bait_libraries_count) {
+    croak q{One or some of the samples does not contains Bait Library Name information.};
+  } elsif (scalar @bait_libraries > 1) {
+    my $library_names = join q{, }, @bait_libraries;
+    croak qq{The samples contains multiple Bait Libraries. It is not supported. The step contains the following libraries: $library_names};
+  }
+
+  return $bait_libraries[0];
+}
+
+sub _plexing_mode_by_bait_library {
+  my ($self, $bait_library_name) = @_;
+
+  my $bait_library_mapper = wtsi_clarity::epp::isc::pooling::bait_library_mapper->new();
+
+  return $bait_library_mapper->plexing_mode_by_bait_library($bait_library_name);
+}
+
+has '_pooling_strategy' => (
+  isa             => 'WtsiClarityPoolingStrategy',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build__pooling_strategy {
+  my $self = shift;
+
+  my $plexing_method = $PLEXING_METHODS{$self->_plexing_mode_by_bait_library($self->_bait_library)};
+
+  if (!defined $plexing_method) {
+    croak qq{The plexing method for bait: ($self->_bait_info) you would like to use is not defined.};
+  }
+
+  my $loaded = eval "require $plexing_method";
+  if (!$loaded) {
+    croak qq{Failed to require $plexing_method};
+  }
+
+  return $plexing_method->new();
+}
+
 has '_pools' => (
   isa             => 'HashRef',
   is              => 'rw',
@@ -127,14 +226,19 @@ sub _build__pools {
   my $self = shift;
 
   my $mappings = $self->_mapping;
+
   my $pools = {};
-  while ( my ($location, $analyte_uri) = each %{$self->_input_artifacts_location}) {
-    foreach my $mapping (@{$mappings}) {
-      if ($mapping->{'source_well'} eq $location) {
-        my $pool_name = join q{ }, $self->process_doc->get_container_name_by_limsid($mapping->{'source_plate'}), $self->get_pool_name($mapping->{'dest_well'});
-        $pools->{$pool_name} ||= [];
-        push @{$pools->{$pool_name}}, $analyte_uri;
-      }
+  while ( my ($container_limsid, $locations_and_analyte_uris) = each %{$self->_input_artifacts_location}) {
+    my $container_name = $self->process_doc->get_container_name_by_limsid($container_limsid);
+    my $container_mapping = $mappings->{$container_limsid};
+    while ( my ($location, $analyte_uri) = each %{$locations_and_analyte_uris}) {
+      my $mapping = $container_mapping->{$location};
+      my $pool_name = join q{ },
+        $container_name,
+        $self->get_pool_name_by_plexing($mapping->{'dest_well'}, $self->_pooling_strategy);
+
+      $pools->{$pool_name} ||= [];
+      push @{$pools->{$pool_name}}, $analyte_uri;
     }
   }
 
@@ -193,11 +297,11 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::epp::isc::analyte_pooler
+wtsi_clarity::epp::isc::pooling::analyte_pooler
 
 =head1 SYNOPSIS
 
-  my $pooler = wtsi_clarity::epp::isc::analyte_pooler->new(
+  my $pooler = wtsi_clarity::epp::isc::pooling::analyte_pooler->new(
     process_url => $base_uri . '/processes/122-21977',
     step_url => $base_uri . '/steps/122-21977',
   );

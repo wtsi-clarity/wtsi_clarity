@@ -1,0 +1,28 @@
+<?xml version="1.0" standalone="yes"?>
+<prj:project xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:prj="http://genologics.com/ri/project" uri="http://testserver.com:1234/projects/TES156" limsid="TES156">
+    <name>Test_102</name>
+    <open-date>2014-08-04</open-date>
+    <researcher uri="http://testserver.com:1234/researchers/17"/>
+    <udf:type name="WTSI Standard data release"/>
+    <udf:field type="String" name="WTSI ECAP Tracking Number">1234</udf:field>
+    <udf:field type="String" name="WTSI Type">Exome Sequencing</udf:field>
+    <udf:field type="Numeric" name="WTSI Project ID">1234</udf:field>
+    <udf:field type="String" name="WTSI Project Cost Code">123456</udf:field>
+    <udf:field type="String" name="WTSI Project Funding Model">external</udf:field>
+    <udf:field type="Boolean" name="WTSI standard access agreement to be used?">false</udf:field>
+    <udf:field type="String" name="WTSI Data release timing">Standard</udf:field>
+    <udf:field type="URI" name="WTSI Data Access Agreement">1</udf:field>
+    <udf:field type="String" name="WTSI Data Access Contact (DAC)">2</udf:field>
+    <udf:field type="String" name="WTSI Study Title for Publishing">3</udf:field>
+    <udf:field type="String" name="WTSI Data Access Group">4</udf:field>
+    <udf:field type="Boolean" name="WTSI Do samples contain Human DNA?">false</udf:field>
+    <udf:field type="Boolean" name="WTSI Contaminated with Human DNA that needs removal?">false</udf:field>
+    <udf:field type="Boolean" name="WTSI Does the study require the removal of X-chromosome and autosome sequence?">false</udf:field>
+    <udf:field type="Boolean" name="WTSI Does the study require the removal of Y-chromosome and autosome sequence?">false</udf:field>
+    <udf:field type="String" name="WTSI Library Construction Protocol">GCLP-ISC Standard</udf:field>
+    <udf:field type="String" name="WTSI Instrument Model">Illumina HiSeq Rapid</udf:field>
+    <udf:field type="String" name="WTSI Run Length">75 PE</udf:field>
+    <file:file limsid="TES156-40-218" uri="http://testserver.com:1234/files/TES156-40-218"/>
+    <file:file limsid="TES156-40-221" uri="http://testserver.com:1234/files/TES156-40-221"/>
+    <file:file limsid="TES156-40-462" uri="http://testserver.com:1234/files/TES156-40-462"/>
+</prj:project>

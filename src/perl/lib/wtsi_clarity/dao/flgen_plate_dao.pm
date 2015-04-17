@@ -124,8 +124,8 @@ sub _build_well {
 
   # study
   my $study = $self->_get_study($sample->project_limsid);
-  $well{'study_id'}    = $study->id;
-  $well{'cost_code'}   = $study->cost_code;
+  $well{'id_study_lims'} = $study->id;
+  $well{'cost_code'}     = $study->cost_code;
 
   return \%well;
 }

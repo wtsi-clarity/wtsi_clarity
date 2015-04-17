@@ -43,7 +43,7 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
   is($flgen_plate_dao->plate_size, 96, 'Gets the plate size from container type');
 
   my $well = {
-    'study_id' => 'SMI102',
+    'id_study_lims' => 'SMI102',
     'well_label' => 'S001',
     'sample_uuid' => '9f4dce30-0bff-11e4-b42e-68b59977951e',
     'cost_code' => 4

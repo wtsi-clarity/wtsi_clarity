@@ -19,8 +19,12 @@ lib/wtsi_clarity/epp/isc/agilent_analyser.pm
 lib/wtsi_clarity/epp/isc/plate_tagger.pm
 lib/wtsi_clarity/epp/isc/tag_indexer.pm
 lib/wtsi_clarity/epp/isc/tag_plate_common.pm
-lib/wtsi_clarity/epp/isc/analyte_pooler.pm
-lib/wtsi_clarity/epp/isc/pool_placer.pm
+lib/wtsi_clarity/epp/isc/pooling/analyte_pooler.pm
+lib/wtsi_clarity/epp/isc/pooling/bait_library_mapper.pm
+lib/wtsi_clarity/epp/isc/pooling/pooling_by_16_plex.pm
+lib/wtsi_clarity/epp/isc/pooling/pooling_by_8_plex.pm
+lib/wtsi_clarity/epp/isc/pooling/pooling_common.pm
+lib/wtsi_clarity/epp/isc/pooling/pooling_strategy.pm
 lib/wtsi_clarity/epp/mapper.pm
 lib/wtsi_clarity/epp/sm/cherrypick_bed_verifier.pm
 lib/wtsi_clarity/epp/sm/cherrypick_volume_updater.pm

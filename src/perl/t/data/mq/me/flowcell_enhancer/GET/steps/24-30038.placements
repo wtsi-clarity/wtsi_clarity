@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="yes"?>
+<stp:placements xmlns:stp="http://genologics.com/ri/step" uri="http://testserver.com:1234/steps/24-30038/placements">
+    <step uri="http://testserver.com:1234/steps/24-30038" rel="steps"/>
+    <configuration uri="http://testserver.com:1234/configuration/protocols/105/steps/602">Cluster Generation</configuration>
+    <selected-containers>
+        <container uri="http://testserver.com:1234/containers/27-5829"/>
+    </selected-containers>
+    <output-placements>
+        <output-placement uri="http://testserver.com:1234/artifacts/2-246012">
+            <location>
+                <container uri="http://testserver.com:1234/containers/27-5829" limsid="27-5829"/>
+                <value>1:1</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/artifacts/2-246011">
+            <location>
+                <container uri="http://testserver.com:1234/containers/27-5829" limsid="27-5829"/>
+                <value>2:1</value>
+            </location>
+        </output-placement>
+    </output-placements>
+</stp:placements>
