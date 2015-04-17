@@ -1,5 +1,9 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.83
+ - Added bait driven pooling
+ - Added flowcell message generation for the Unified Warehouse
+
 Release 0.82
  - Updates samples with concentrations rather than total_micrograms
  - Increased the timeout value for our request module for querying Clarity REST API
