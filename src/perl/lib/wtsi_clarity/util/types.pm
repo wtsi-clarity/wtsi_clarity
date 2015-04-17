@@ -44,6 +44,8 @@ coerce 'WtsiClarityPlates',
 
 duck_type 'HasRequestAndConfig', [qw/request config/];
 
+duck_type 'WtsiClarityPoolingStrategy', [qw/get_pool_name dest_well_position/];
+
 no Moose::Util::TypeConstraints;
 
 1;

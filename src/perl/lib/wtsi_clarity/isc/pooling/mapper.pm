@@ -5,6 +5,7 @@ use Carp;
 use Readonly;
 
 use wtsi_clarity::util::request;
+use wtsi_clarity::util::types;
 
 with qw/MooseX::Getopt wtsi_clarity::util::configurable/;
 with 'wtsi_clarity::util::well_mapper';
@@ -13,45 +14,58 @@ our $VERSION = '0.0';
 
 Readonly::Scalar my $CONTAINER_NAME_PATH  => q{/con:container/name};
 Readonly::Scalar my $CONTAINERS_URI_STR   => q{containers};
-Readonly::Scalar my $TEMP_CONTAINER_NAME1 => q{temp_1};
+Readonly::Scalar my $TEMP_CONTAINER_NAME => q{temp_};
 
 Readonly::Scalar my $NB_ROWS_96      => 8;
 Readonly::Scalar my $NB_COLS_96      => 12;
 
-has 'container_id' => (
+has 'container_ids' => (
   is        => 'ro',
-  isa       => 'Str',
+  isa       => 'ArrayRef[Str]',
+  required  => 1,
+);
+
+has 'pooling_strategy' => (
+  is        => 'rw',
+  isa       => 'WtsiClarityPoolingStrategy',
   required  => 1,
 );
 
 has 'mapping' => (
     is        => 'ro',
-    isa       => 'ArrayRef',
+    isa       => 'HashRef',
     required  => 0,
     lazy_build => 1,
 );
 sub _build_mapping {
   my $self = shift;
 
-  return $self->_column_to_well_mapping($self->container_id);
+  my %plate_mapping = ();
+  my $output_container_count = 1;
+  foreach my $container_id (@{$self->container_ids}) {
+    $plate_mapping{$container_id} = $self->_column_to_well_mapping($output_container_count);
+    $output_container_count++;
+  }
+
+  return \%plate_mapping;
 }
 
 sub _column_to_well_mapping {
-  my ($self, $container_id) = @_;
-  my @mappings;
+  my ($self, $output_container_count) = @_;
+  my %mappings = ();
 
   foreach my $col (1..$NB_COLS_96) {
     foreach my $row ('A'...'H') {
-      my %mapping = ( 'source_plate' => $container_id,
-                      'source_well'  => $row. q{:}. $col,
-                      'dest_plate'   => $TEMP_CONTAINER_NAME1,
-                      'dest_well'    => $self->position_to_well($col, $NB_ROWS_96, $NB_COLS_96),
-                    );
-      push @mappings, \%mapping;
+      my %mapping = (
+        'dest_plate'   => $TEMP_CONTAINER_NAME . $output_container_count,
+        'dest_well'    => $self->position_to_well(
+                            $self->pooling_strategy->dest_well_position($col), $NB_ROWS_96, $NB_COLS_96),
+      );
+      $mappings{$row. q{:}. $col} = \%mapping;
     }
   }
 
-  return \@mappings;
+  return \%mappings;
 }
 
 1;

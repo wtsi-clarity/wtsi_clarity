@@ -1,4 +1,4 @@
-package wtsi_clarity::epp::isc::pooling_common;
+package wtsi_clarity::epp::isc::pooling::pooling_common;
 
 use Moose::Role;
 use Carp;
@@ -6,39 +6,11 @@ use Readonly;
 
 our $VERSION = '0.0';
 
-Readonly::Hash my %POOL_NAMES_BY_TARGET_WELL => {
-  'A:1' => 'A1:H1',
-  'B:1' => 'A2:H2',
-  'C:1' => 'A3:H3',
-  'D:1' => 'A4:H4',
-  'E:1' => 'A5:H5',
-  'F:1' => 'A6:H6',
-  'G:1' => 'A7:H7',
-  'H:1' => 'A8:H8',
-  'A:2' => 'A9:H9',
-  'B:2' => 'A10:H10',
-  'C:2' => 'A11:H11',
-  'D:2' => 'A12:H12'
-};
+sub get_pool_name_by_plexing {
+  my ($self, $destination_well_name, $plexing_strategy) = @_;
 
-sub get_pool_name {
-  my ($self, $destination_well_name) = @_;
-
-  my $pool_name = $POOL_NAMES_BY_TARGET_WELL{$destination_well_name};
-
-  croak qq{Pool name ($destination_well_name) is not defined for this destination well} if (! defined $pool_name);
-
-  return $pool_name;
+  return join q{ }, $plexing_strategy->get_pool_name($destination_well_name), qq{($destination_well_name)};
 }
-
-sub pool_location_by_pool_range {
-  my ($self, $pool_range) = @_;
-
-  my @pool_location = grep { $POOL_NAMES_BY_TARGET_WELL{$_} eq $pool_range } keys %POOL_NAMES_BY_TARGET_WELL;
-
-  return $pool_location[0];
-}
-
 
 no Moose::Role;
 
@@ -48,7 +20,7 @@ __END__
 
 =head1 NAME
 
- wtsi_clarity::epp::isc::pooling_common
+ wtsi_clarity::epp::isc::pooling::pooling_common
 
 =head1 SYNOPSIS
 
@@ -58,13 +30,9 @@ __END__
 
 =head1 SUBROUTINES/METHODS
 
-=head2 get_pool_name
+=head2 get_pool_name_by_plexing
 
-  Returns the pooling range by the destination well.
-
-=head2 pool_location_by_pool_range
-
-  Returns the pool's well location by the pooling range.
+  Returns the pooling range by the destination well and the plexing strategy.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
