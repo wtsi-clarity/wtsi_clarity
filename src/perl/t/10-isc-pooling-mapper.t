@@ -1,16 +1,21 @@
 use strict;
 use warnings;
-use Test::More tests => 4;
+use Test::More tests => 5;
+
+use wtsi_clarity::epp::isc::pooling::pooling_by_8_plex;
+use wtsi_clarity::epp::isc::pooling::pooling_by_16_plex;
 
 use_ok('wtsi_clarity::isc::pooling::mapper', 'can use ISC Pooling mapper');
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/isc/pooling/mapper';
 
-{ # tests mapping for 1 plate
+{ # tests mapping for 1 plate with 8 plex
   my @container_ids = ('27-1');
+  my $pooling_strategy = wtsi_clarity::epp::isc::pooling::pooling_by_8_plex->new();
   my $mapper = wtsi_clarity::isc::pooling::mapper->new(
-    container_ids => \@container_ids
+    container_ids       => \@container_ids,
+    pooling_strategy    => $pooling_strategy
   );
 
   isa_ok( $mapper, 'wtsi_clarity::isc::pooling::mapper');
@@ -118,10 +123,12 @@ local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/isc/pooling/mapper';
   is_deeply($mapper->mapping, $expected_mapping, qq/Should return the correct mapping for the source container./);
 }
 
-{ # tests mapping for 1 plate
+{ # tests mapping for 4 plate with 8 plex
   my @container_ids = ('27-1', '27-2', '27-3', '27-4');
+  my $pooling_strategy = wtsi_clarity::epp::isc::pooling::pooling_by_8_plex->new();
   my $mapper = wtsi_clarity::isc::pooling::mapper->new(
-    container_ids => \@container_ids
+    container_ids => \@container_ids,
+    pooling_strategy    => $pooling_strategy
   );
 
   my $expected_mapping = { 
@@ -516,6 +523,117 @@ local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/isc/pooling/mapper';
         'F:12' => { 'dest_plate' => 'temp_4', 'dest_well' =>  'D:2' },
         'G:12' => { 'dest_plate' => 'temp_4', 'dest_well' =>  'D:2' },
         'H:12' => { 'dest_plate' => 'temp_4', 'dest_well' =>  'D:2' },
+    }
+  };
+
+  is_deeply($mapper->mapping, $expected_mapping, qq/Should return the correct mapping for the source container./);
+}
+
+{ # tests mapping for 1 plate with 8 plex
+  my @container_ids = ('27-1');
+  my $pooling_strategy = wtsi_clarity::epp::isc::pooling::pooling_by_16_plex->new();
+  my $mapper = wtsi_clarity::isc::pooling::mapper->new(
+    container_ids       => \@container_ids,
+    pooling_strategy    => $pooling_strategy
+  );
+
+  my $expected_mapping = { '27-1' => {
+        'A:1' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+        'B:1' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+        'C:1' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+        'D:1' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+        'E:1' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+        'F:1' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+        'G:1' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+        'H:1' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+        'A:2' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+        'B:2' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+        'C:2' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+        'D:2' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+        'E:2' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+        'F:2' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+        'G:2' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+        'H:2' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'A:1' },
+        'A:3' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+        'B:3' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+        'C:3' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+        'D:3' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+        'E:3' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+        'F:3' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+        'G:3' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+        'H:3' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+        'A:4' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+        'B:4' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+        'C:4' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+        'D:4' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+        'E:4' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+        'F:4' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+        'G:4' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+        'H:4' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'B:1' },
+        'A:5' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+        'B:5' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+        'C:5' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+        'D:5' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+        'E:5' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+        'F:5' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+        'G:5' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+        'H:5' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+        'A:6' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+        'B:6' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+        'C:6' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+        'D:6' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+        'E:6' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+        'F:6' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+        'G:6' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+        'H:6' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'C:1' },
+        'A:7' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+        'B:7' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+        'C:7' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+        'D:7' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+        'E:7' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+        'F:7' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+        'G:7' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+        'H:7' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+        'A:8' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+        'B:8' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+        'C:8' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+        'D:8' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+        'E:8' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+        'F:8' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+        'G:8' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+        'H:8' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'D:1' },
+        'A:9' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+        'B:9' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+        'C:9' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+        'D:9' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+        'E:9' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+        'F:9' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+        'G:9' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+        'H:9' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+        'A:10' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+        'B:10' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+        'C:10' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+        'D:10' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+        'E:10' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+        'F:10' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+        'G:10' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+        'H:10' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'E:1' },
+        'A:11' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+        'B:11' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+        'C:11' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+        'D:11' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+        'E:11' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+        'F:11' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+        'G:11' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+        'H:11' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+        'A:12' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+        'B:12' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+        'C:12' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+        'D:12' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+        'E:12' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+        'F:12' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+        'G:12' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
+        'H:12' => { 'dest_plate' => 'temp_1', 'dest_well' =>  'F:1' },
     }
   };
 

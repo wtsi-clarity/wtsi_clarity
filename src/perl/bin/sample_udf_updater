@@ -2,12 +2,9 @@
 
 package sample_udf_updater;
 
-use strict;
-use warnings;
+use Moose;
 use FindBin qw($Bin);
 use lib ( -d "$Bin/../lib/perl5" ? "$Bin/../lib/perl5" : "$Bin/../lib" );
-
-use Moose;
 use Carp;
 use Readonly;
 use XML::LibXML;
@@ -15,7 +12,8 @@ use List::MoreUtils qw/uniq/;
 
 use wtsi_clarity::clarity::process;
 
-with qw/wtsi_clarity::util::configurable
+with qw/MooseX::Getopt
+        wtsi_clarity::util::configurable
         wtsi_clarity::util::roles::clarity_request
         wtsi_clarity::util::clarity_elements/;
 

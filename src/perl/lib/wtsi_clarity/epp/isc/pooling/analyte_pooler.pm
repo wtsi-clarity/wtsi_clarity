@@ -6,6 +6,7 @@ use Readonly;
 use XML::LibXML::NodeList;
 use List::MoreUtils qw/uniq/;
 use Moose::Util::TypeConstraints;
+use wtsi_clarity::util::types;
 
 use wtsi_clarity::isc::pooling::mapper;
 use wtsi_clarity::epp::isc::pooling::bait_library_mapper;
@@ -135,7 +136,8 @@ sub _build__mapping {
   my $container_ids = $self->_container_ids;
 
   my $mapper = wtsi_clarity::isc::pooling::mapper->new(
-    container_ids => $container_ids,
+    container_ids     => $container_ids,
+    pooling_strategy  => $self->_pooling_strategy,
   );
 
   return $mapper->mapping;
@@ -191,8 +193,6 @@ sub _plexing_mode_by_bait_library {
   return $bait_library_mapper->plexing_mode_by_bait_library($bait_library_name);
 }
 
-duck_type 'WtsiClarityPoolingStrategy', [qw/get_pool_name/];
-
 has '_pooling_strategy' => (
   isa             => 'WtsiClarityPoolingStrategy',
   is              => 'rw',
@@ -203,6 +203,7 @@ sub _build__pooling_strategy {
   my $self = shift;
 
   my $plexing_method = $PLEXING_METHODS{$self->_plexing_mode_by_bait_library($self->_bait_library)};
+
   if (!defined $plexing_method) {
     croak qq{The plexing method for bait: ($self->_bait_info) you would like to use is not defined.};
   }
@@ -225,6 +226,7 @@ sub _build__pools {
   my $self = shift;
 
   my $mappings = $self->_mapping;
+
   my $pools = {};
   while ( my ($container_limsid, $locations_and_analyte_uris) = each %{$self->_input_artifacts_location}) {
     my $container_mapping = $mappings->{$container_limsid};

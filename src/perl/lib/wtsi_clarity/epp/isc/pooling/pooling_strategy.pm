@@ -24,6 +24,8 @@ sub get_pool_name {
   return $pool_name;
 }
 
+requires qw/dest_well_position/;
+
 1;
 
 __END__

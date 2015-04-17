@@ -5,6 +5,7 @@ use Carp;
 use Readonly;
 
 use wtsi_clarity::util::request;
+use wtsi_clarity::util::types;
 
 with qw/MooseX::Getopt wtsi_clarity::util::configurable/;
 with 'wtsi_clarity::util::well_mapper';
@@ -21,6 +22,12 @@ Readonly::Scalar my $NB_COLS_96      => 12;
 has 'container_ids' => (
   is        => 'ro',
   isa       => 'ArrayRef[Str]',
+  required  => 1,
+);
+
+has 'pooling_strategy' => (
+  is        => 'rw',
+  isa       => 'WtsiClarityPoolingStrategy',
   required  => 1,
 );
 
@@ -51,7 +58,8 @@ sub _column_to_well_mapping {
     foreach my $row ('A'...'H') {
       my %mapping = (
         'dest_plate'   => $TEMP_CONTAINER_NAME . $output_container_count,
-        'dest_well'    => $self->position_to_well($col, $NB_ROWS_96, $NB_COLS_96),
+        'dest_well'    => $self->position_to_well(
+                            $self->pooling_strategy->dest_well_position($col), $NB_ROWS_96, $NB_COLS_96),
       );
       $mappings{$row. q{:}. $col} = \%mapping;
     }

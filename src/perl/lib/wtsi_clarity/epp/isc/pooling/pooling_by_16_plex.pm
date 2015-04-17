@@ -38,6 +38,12 @@ has '+pool_names_by_target_well' => (
   default => sub { return \%POOL_NAMES_BY_TARGET_WELL; }
 );
 
+sub dest_well_position {
+  my ($self, $well_position) = @_;
+
+  return int(($well_position + 1)/2);
+}
+
 1;
 
 __END__
@@ -53,6 +59,10 @@ __END__
  Pooling startegy for 16 plex pooling.
 
 =head1 SUBROUTINES/METHODS
+
+=head2 dest_well_position
+
+  Returns the position of the destination well.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
