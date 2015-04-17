@@ -5,7 +5,6 @@ use Carp;
 use Readonly;
 use wtsi_clarity::epp::generic::stamper;
 use wtsi_clarity::file_parsing::ISC_pool_calculator;
-use wtsi_clarity::isc::pooling::mapper;
 use List::Util qw/sum/;
 
 extends 'wtsi_clarity::epp';
@@ -199,11 +198,9 @@ __END__
 
 =item Carp
 
-=item wtsi_clarity::epp::generic::stamper;
+=item wtsi_clarity::epp::generic::stamper
 
-=item wtsi_clarity::file_parsing::ISC_pool_calculator;
-
-=item wtsi_clarity::isc::pooling::mapper;
+=item wtsi_clarity::file_parsing::ISC_pool_calculator
 
 =back
 
