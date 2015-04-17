@@ -24,6 +24,7 @@ use_ok 'wtsi_clarity::mq::messages::flowcell::flowcell';
         bait_name                  => 'DDD_V5_plus',
         sample_uuid                => '00000000-0000-0000-000000000',
         study_uuid                 => '00000000-0000-0000-000000001',
+        id_study_lims              => '28-12345',
         cost_code                  => '12345',
         entity_id_lims             => '12345',
         is_r_and_d                 => 'false',

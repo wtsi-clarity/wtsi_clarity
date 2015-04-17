@@ -23,7 +23,9 @@ has [
      'is_r_and_d',
     ] => @defaults;
 
-has 'study_uuid' => @defaults, required => 0;
+has [
+    'study_uuid',
+    'id_study_lims'] => @defaults, required => 0;
 
 has [
      'tag_index',

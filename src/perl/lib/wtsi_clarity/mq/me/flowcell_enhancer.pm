@@ -44,6 +44,7 @@ Readonly::Scalar my $SAMPLE_PROJECT_URI      => q{smp:sample/project/@uri};
 Readonly::Scalar my $CONTAINER_NAME          => q{./con:container/name};
 
 Readonly::Scalar my $PROJECT_COST_CODE_PATH  => q{prj:project/udf:field[@name="WTSI Project Cost Code"]};
+Readonly::Scalar my $PROJECT_LIMSID          => q{prj:project/@limsid};
 
 Readonly::Scalar my $TAG_PLATE_PROCESS_NAME  => q{Library PCR set up};
 
@@ -216,18 +217,22 @@ sub _build_sample {
 
   $sample{'sample_uuid'} = $sample_doc->findvalue($SAMPLE_NAME);
 
-  # Stuff from project
-  $sample{'cost_code'} = $self->_get_sample_cost_code($sample_doc);
+  %sample = (%sample, $self->_get_project_info($sample_doc));
 
   %sample = (%sample, $self->_get_tag_info($sample_doc));
 
   return \%sample;
 }
 
-sub _get_sample_cost_code {
+sub _get_project_info {
   my ($self, $sample_doc) = @_;
+  my %project_info = ();
   my $project_doc = $self->fetch_and_parse($sample_doc->findvalue($SAMPLE_PROJECT_URI));
-  return $project_doc->findvalue($PROJECT_COST_CODE_PATH);
+
+  $project_info{'cost_code'}     = $project_doc->findvalue($PROJECT_COST_CODE_PATH);
+  $project_info{'id_study_lims'} = $project_doc->findvalue($PROJECT_LIMSID);
+
+  return %project_info;
 }
 
 sub _get_tag_info {
