@@ -14,8 +14,7 @@ use wtsi_clarity::clarity::process;
 
 with qw/MooseX::Getopt
         wtsi_clarity::util::configurable
-        wtsi_clarity::util::roles::clarity_request
-        wtsi_clarity::util::clarity_elements/;
+        wtsi_clarity::util::roles::clarity_request/;
 
 our $VERSION = '0.0';
 
