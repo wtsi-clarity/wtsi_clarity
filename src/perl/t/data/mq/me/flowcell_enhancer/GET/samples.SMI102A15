@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:sample xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample" uri="http://testserver.com:1234/samples/SMI102A15" limsid="SMI102A15">
+    <name>9f4dce30-0bff-11e4-b42e-68b59977951e</name>
+    <date-received>2014-07-15</date-received>
+    <project limsid="SMI102" uri="http://testserver.com:1234/projects/SMI102"/>
+    <artifact limsid="SMI102A15PA1" uri="http://testserver.com:1234/artifacts/SMI102A15PA1?state=783"/>
+    <udf:field type="String" name="WTSI Donor ID">Test 15</udf:field>
+    <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+    <udf:field type="String" name="WTSI Phenotype">Not Applicable</udf:field>
+    <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+    <udf:field type="String" name="WTSI Supplier Sample Name (SM)">Test 15</udf:field>
+    <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    <udf:field type="String" name="WTSI Bait Library Name">DDD_V5_plus</udf:field>
+    <udf:field type="Numeric" name="WTSI Requested Size Range From">100</udf:field>
+    <udf:field type="Numeric" name="WTSI Requested Size Range To">200</udf:field>
+    <udf:field type="String" name="Read Length">222</udf:field>
+</smp:sample>
