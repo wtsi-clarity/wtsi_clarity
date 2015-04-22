@@ -24,6 +24,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'store_plate'                    => 'generic::plate_storer',
 
     'check_volume'                   => 'sm::volume_checker',
+    'display_file'                   => 'sm::file_downloader',
     'receive_sample'                 => 'sm::sample_receiver',
     'update_fluidigm_request_volume' => 'sm::fluidigm_request_volume_updater',
     'update_cherrypick_volume'       => 'sm::cherrypick_volume_updater',
