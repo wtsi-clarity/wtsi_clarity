@@ -232,10 +232,10 @@ sub _build__pools {
     my $container_name = $self->process_doc->get_container_name_by_limsid($container_limsid);
     my $container_mapping = $mappings->{$container_limsid};
     while ( my ($location, $analyte_uri) = each %{$locations_and_analyte_uris}) {
-      my $mapping = $container_mapping->{$location};
+      my $dest_well = $container_mapping->{$location};
       my $pool_name = join q{ },
         $container_name,
-        $self->get_pool_name_by_plexing($mapping->{'dest_well'}, $self->_pooling_strategy);
+        $self->get_pool_name_by_plexing($dest_well, $self->_pooling_strategy);
 
       $pools->{$pool_name} ||= [];
       push @{$pools->{$pool_name}}, $analyte_uri;
