@@ -10,6 +10,18 @@ extends 'wtsi_clarity::epp';
 
 our $VERSION = '0.0';
 
+has '_client' => (
+  is => 'ro',
+  isa => 'wtsi_clarity::mq::client',
+  lazy => 1,
+  builder => '_build__client',
+);
+
+sub _build__client {
+  my $self = shift;
+  return wtsi_clarity::mq::client->new();
+}
+
 has 'step_url' => (
   isa        => 'Str',
   is         => 'ro',
@@ -17,7 +29,7 @@ has 'step_url' => (
 );
 
 has 'purpose' => (
-  isa => 'Str',
+  isa => 'ArrayRef',
   is  => 'ro',
   required => 1,
 );
@@ -29,26 +41,42 @@ has '_date' => (
   default    => sub { return DateTime->now(); },
 );
 
-has '_message' => (
-  isa        => 'wtsi_clarity::mq::message',
+has '_messages' => (
+  isa        => 'ArrayRef[wtsi_clarity::mq::message]',
   is         => 'ro',
   required   => 0,
   lazy_build => 1,
 );
-sub _build__message {
+sub _build__messages {
   my $self = shift;
+  my @messages = map { $self->_build_message($_) } @{$self->purpose};
+  return \@messages;
+}
+
+sub _build_message {
+  my ($self, $purpose) = @_;
+
   return wtsi_clarity::mq::message->new(
     process_url => $self->process_url,
     step_url    => $self->step_url,
     timestamp   => $self->_date,
-    purpose     => $self->purpose,
+    purpose     => $purpose,
   );
+}
+
+sub _send_message {
+  my ($self, $message) = @_;
+  return $self->_client->send_message($message->freeze);
 }
 
 override 'run' => sub {
   my $self = shift;
-  super(); #call parent's run method
-  wtsi_clarity::mq::client->new()->send_message($self->_message->freeze);
+  super();
+
+  foreach my $message (@{$self->_messages}) {
+    $self->_send_message($message);
+  }
+
   return;
 };
 
@@ -73,8 +101,6 @@ wtsi_clarity::epp::generic::messenger
 
 =head2 step_url - required attribute
 
-=head2 step_start - an optional boolean attribute, defaults to false
-
 =head2 run - runs a callback
 
 =head1 CONFIGURATION AND ENVIRONMENT
@@ -86,6 +112,10 @@ wtsi_clarity::epp::generic::messenger
 =item Moose
 
 =item DateTime
+
+=item wtsi_clarity::mq::client
+
+=item wtsi_clarity::mq::message
 
 =back
 
