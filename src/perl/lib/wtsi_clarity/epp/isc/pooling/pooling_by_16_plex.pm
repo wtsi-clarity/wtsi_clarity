@@ -39,9 +39,9 @@ has '+pool_names_by_target_well' => (
 );
 
 sub dest_well_position {
-  my ($self, $well_position) = @_;
+  my ($self, $well_position, $nb_cols, $container_count) = @_;
 
-  return int(($well_position + 1)/2);
+  return int(($well_position + 1)/2) + $nb_cols * ($container_count - 1) / 2;
 }
 
 1;

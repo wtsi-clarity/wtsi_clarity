@@ -1,5 +1,11 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.85
+ - Fixes #366: correct pool mapping using with more than 1 container
+
+Release 0.84
+ - Fixed signature not being consistent when multiple samples on an artifact
+
 Release 0.83
  - Added bait driven pooling
  - Added flowcell message generation for the Unified Warehouse

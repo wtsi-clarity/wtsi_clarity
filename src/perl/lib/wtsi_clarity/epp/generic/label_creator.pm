@@ -5,6 +5,7 @@ use Carp;
 use Readonly;
 use DateTime;
 use namespace::autoclean;
+use List::MoreUtils qw/uniq/;
 
 use wtsi_clarity::util::signature;
 
@@ -194,11 +195,11 @@ sub _build__container {
     }
     my @control_flag = $analyte_dom->findnodes($CONTROL_PATH);
     if (!@control_flag) { # Sample list should not contain controls
-      my $sample_lims_id = $analyte_dom->findvalue($SAMPLE_PATH);
-      if (!$sample_lims_id) {
+      my @sample_lims_ids = $analyte_dom->findnodes($SAMPLE_PATH)->to_literal_list;
+      if (!@sample_lims_ids) {
         croak qq[Sample lims id not defined for $url];
       }
-      push @{$containers->{$container_url}->{'samples'}}, $sample_lims_id;
+      push @{$containers->{$container_url}->{'samples'}}, @sample_lims_ids;
     }
 
     if (!$self->source_plate && !exists $containers->{$container_url}->{'parent_barcode'}) {
@@ -313,7 +314,8 @@ sub _set_container_data {
 
 sub _get_signature {
   my ($self, $samples) = @_;
-  return wtsi_clarity::util::signature->new(sig_length => $SIGNATURE_LENGTH)->encode(sort @{$samples});
+  my @uniq_samples = uniq(@{$samples});
+  return wtsi_clarity::util::signature->new(sig_length => $SIGNATURE_LENGTH)->encode(sort @uniq_samples);
 }
 
 sub _update_container {
@@ -446,6 +448,8 @@ wtsi_clarity::epp::generic::label_creator
 =item Readonly
 
 =item DateTime
+
+=item List::MoreUtils
 
 =item wtsi_clarity::util::barcode
 

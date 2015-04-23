@@ -14,7 +14,6 @@ our $VERSION = '0.0';
 
 Readonly::Scalar my $CONTAINER_NAME_PATH  => q{/con:container/name};
 Readonly::Scalar my $CONTAINERS_URI_STR   => q{containers};
-Readonly::Scalar my $TEMP_CONTAINER_NAME => q{temp_};
 
 Readonly::Scalar my $NB_ROWS_96      => 8;
 Readonly::Scalar my $NB_COLS_96      => 12;
@@ -29,6 +28,13 @@ has 'pooling_strategy' => (
   is        => 'rw',
   isa       => 'WtsiClarityPoolingStrategy',
   required  => 1,
+);
+
+has 'nb_cols' => (
+  is        => 'rw',
+  isa       => 'Int',
+  required  => '0',
+  default   => $NB_COLS_96,
 );
 
 has 'mapping' => (
@@ -54,14 +60,12 @@ sub _column_to_well_mapping {
   my ($self, $output_container_count) = @_;
   my %mappings = ();
 
-  foreach my $col (1..$NB_COLS_96) {
+  foreach my $col (1..$self->nb_cols) {
     foreach my $row ('A'...'H') {
-      my %mapping = (
-        'dest_plate'   => $TEMP_CONTAINER_NAME . $output_container_count,
-        'dest_well'    => $self->position_to_well(
-                            $self->pooling_strategy->dest_well_position($col), $NB_ROWS_96, $NB_COLS_96),
-      );
-      $mappings{$row. q{:}. $col} = \%mapping;
+      my $dest_well = $self->position_to_well(
+                        $self->pooling_strategy->dest_well_position(
+                          $col, $self->nb_cols, $output_container_count), $NB_ROWS_96, $NB_COLS_96);
+      $mappings{$row. q{:}. $col} = $dest_well;
     }
   }
 
