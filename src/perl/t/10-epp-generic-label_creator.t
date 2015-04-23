@@ -101,7 +101,7 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
                                                                               'date_user' => '21-May-2014 ',
                                                                               'purpose'   => 'Stock Plate',
                                                                               'num'       => 'SM-271204S',
-                                                                              'signature' => 'QKJMF'
+                                                                              'signature' => 'EL2LO'
                                                                             }
                                                           }
                                              },

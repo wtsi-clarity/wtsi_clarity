@@ -29,6 +29,7 @@ lib/wtsi_clarity/epp/mapper.pm
 lib/wtsi_clarity/epp/sm/cherrypick_bed_verifier.pm
 lib/wtsi_clarity/epp/sm/cherrypick_volume_updater.pm
 lib/wtsi_clarity/epp/sm/dtx_file_attacher.pm
+lib/wtsi_clarity/epp/sm/file_downloader.pm
 lib/wtsi_clarity/epp/sm/fluidigm_analyser.pm
 lib/wtsi_clarity/epp/sm/fluidigm_request_volume_updater.pm
 lib/wtsi_clarity/epp/sm/pico_analyser.pm

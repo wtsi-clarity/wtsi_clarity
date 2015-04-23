@@ -1,5 +1,6 @@
 [clarity_api]
 base_uri = http://testserver.com:1234/here
+app_uri = http://testserver.com:1234/clarity/api
 username = user1
 password = pword1
 
