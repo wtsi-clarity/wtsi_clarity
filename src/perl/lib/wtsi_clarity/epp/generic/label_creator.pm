@@ -211,7 +211,7 @@ sub _build__container {
       push @{$containers->{$container_url}->{'samples'}}, @sample_lims_ids;
     }
 
-    if (any {$_ eq $self->container_type } @TUBELIKE  && !exists $containers->{$container_url}->{'parent_barcode_with_pooling_range'}) {
+    if ((any {$_ eq $self->container_type } @TUBELIKE)  && !exists $containers->{$container_url}->{'parent_barcode_with_pooling_range'}) {
       $containers->{$container_url}->{'parent_barcode_with_pooling_range'} = $self->_parent_barcode_with_pooling_range($anode);
     }
   }
