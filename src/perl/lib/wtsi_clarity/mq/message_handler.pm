@@ -2,6 +2,7 @@ package wtsi_clarity::mq::message_handler;
 
 use Moose;
 use Carp;
+use JSON;
 
 use wtsi_clarity::mq::message;
 use wtsi_clarity::mq::mapper;
@@ -27,13 +28,12 @@ has '_wh_client' => (
 
 sub process_message {
   my ($self, $json_string) = @_;
+
   my $message = $self->_thaw($json_string);
-  my $package_name = $self->_find_enhancer_by_purpose($message->purpose);
+  my $messages = $self->prepare_messages($message);
 
-  $self->_require_enhancer($package_name);
-
-  foreach my $message_to_wh (@{$self->_prepare_messages($package_name, $message)}) {
-    $self->_send_message($message_to_wh, $message->purpose);
+  foreach my $message_to_wh (@{$messages}) {
+    $self->_send_message(to_json($message_to_wh), $message->purpose);
   }
 
   return 1;
@@ -41,12 +41,17 @@ sub process_message {
 
 sub _send_message {
   my ($self, $message, $purpose) = @_;
+  print $purpose . ": " . $message . "\n"; # So it goes into the log
   $self->_wh_client->send_message($message, $purpose);
   return;
 }
 
-sub _prepare_messages {
-  my ($self, $package_name, $message) = @_;
+sub prepare_messages {
+  my ($self, $message) = @_;
+
+  my $package_name = $self->_find_enhancer_by_purpose($message->purpose);
+
+  $self->_require_enhancer($package_name);
 
   return $package_name->new(
             process_url => $message->process_url,

@@ -4,6 +4,7 @@ use Moose;
 use Readonly;
 use Carp;
 use JSON;
+use English qw(-no_match_vars);
 use WTSI::DNAP::RabbitMQ::Client;
 
 with 'wtsi_clarity::util::configurable';
@@ -67,39 +68,114 @@ sub _build__mq_config {
   return $self->config->$mb_type;
 }
 
+has 'blocking_enabled' => (
+  is => 'ro',
+  isa => 'Bool',
+  default => 0,
+);
+
+has '_client' => (
+  is => 'rw',
+  isa => 'WTSI::DNAP::RabbitMQ::Client',
+  handles => {
+    _disconnect => 'disconnect',
+  }
+);
+
+has '_client_params' => (
+  is      => 'ro',
+  isa     => 'ArrayRef',
+  lazy    => 1,
+  builder => '_build__client_params',
+);
+sub _build__client_params {
+  my $self = shift;
+
+  my @params = ( blocking_enabled => $self->blocking_enabled );
+
+  if (!$self->blocking_enabled) {
+    push @params, $self->_get_non_blocking_params();
+  }
+
+  return \@params;
+}
+
+has '_channel' => ( is => 'ro', isa => 'Str', lazy => 1, builder => '_build__channel');
+sub _build__channel {
+  return 'client_channel'. $PID;
+}
+
+sub _open_channel {
+  my $self = shift;
+  return $self->_client->open_channel(name => $self->_channel);
+}
+
+has '_publish_callback' => (
+  is => 'rw',
+  isa => 'CodeRef',
+  writer => '_set_publish_callback',
+);
+
+sub _create_publish_callback {
+  my ($self, $message, $purpose) = @_;
+
+  return sub {
+    return $self->_client->publish(
+      channel     => $self->_channel,
+      exchange    => $self->exchange,
+      routing_key => $self->_assemble_routing_key($purpose),
+      body        => $message,
+      mandatory   => 1
+    );
+  }
+}
+
 sub send_message {
   my ($self, $message, $purpose) = @_;
+
+  $self->_set_publish_callback($self->_create_publish_callback($message, $purpose));
 
   my @credentials = ( host  => $self->host,
                       port  => $self->port,
                       vhost => $self->vhost,
                       user  => $self->username,
                       pass  => $self->password,);
-                      # cond  => $cv);
 
-  ##no critic(Variables::ProhibitPunctuationVars)
-  my $channel_name = 'client_channel'. $$;
-  ## use critic
-  my $client;
+  $self->_client(WTSI::DNAP::RabbitMQ::Client->new(@{$self->_client_params}));
 
-  $client = WTSI::DNAP::RabbitMQ::Client->new(
-    blocking_enabled => 0,
-    connect_handler => sub {
-      $client->open_channel(name => $channel_name);
-    },
-    open_channel_handler => sub {
-      $client->publish( channel     => $channel_name,
-                        exchange    => $self->exchange,
-                        routing_key => $self->_assemble_routing_key($purpose),
-                        body        => to_json($message),
-                        mandatory   => 1);
-      $client->disconnect;
-    }
-  );
+  $self->_client->connect(@credentials);
 
-  $client->connect(@credentials);
+  if ($self->blocking_enabled) {
+    $self->_connect_callback();
+  }
 
   return;
+}
+
+sub _connect_callback {
+  my $self = shift;
+  $self->_open_channel();
+  return $self->_publish_and_disconnect();
+}
+
+sub _publish_and_disconnect {
+  my $self = shift;
+  $self->_publish_callback->();
+  return $self->_disconnect();
+}
+
+sub _get_non_blocking_params {
+  my $self = shift;
+  return (
+    connect_handler => sub { $self->_open_channel },
+    open_channel_handler => sub { $self->_publish_and_disconnect },
+    connect_failure_handler => sub {
+      print {*STDERR} "Connection Failure " . @_;
+    },
+    error_handler => sub {
+      print {*STDERR} "Error " . @_;
+    }
+  );
 }
 
 sub _assemble_routing_key {
