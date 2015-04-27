@@ -30,10 +30,6 @@ Readonly::Scalar my $BAIT_LIBRARY_PATH        => q{/smp:details/smp:sample/udf:f
 Readonly::Scalar my $SAMPLE_PATH              => q{/smp:details/smp:sample};
 
 Readonly::Scalar my $PLEX_8                   => q{8};
-Readonly::Hash   my %PLEXING_METHODS          => {
-  '8_plex'   => 'wtsi_clarity::epp::isc::pooling::pooling_by_8_plex',
-  '16_plex'  => 'wtsi_clarity::epp::isc::pooling::pooling_by_16_plex',
-};
 
 has 'step_url' => (
   isa        => 'Str',
@@ -137,7 +133,7 @@ sub _build__mapping {
 
   my $mapper = wtsi_clarity::isc::pooling::mapper->new(
     container_ids     => $container_ids,
-    pooling_strategy  => $self->_pooling_strategy,
+    pooling_strategy  => $self->pooling_strategy,
   );
 
   return $mapper->mapping;
@@ -185,37 +181,6 @@ sub _build__bait_library {
   return $bait_libraries[0];
 }
 
-sub _plexing_mode_by_bait_library {
-  my ($self, $bait_library_name) = @_;
-
-  my $bait_library_mapper = wtsi_clarity::epp::isc::pooling::bait_library_mapper->new();
-
-  return $bait_library_mapper->plexing_mode_by_bait_library($bait_library_name);
-}
-
-has '_pooling_strategy' => (
-  isa             => 'WtsiClarityPoolingStrategy',
-  is              => 'rw',
-  required        => 0,
-  lazy_build      => 1,
-);
-sub _build__pooling_strategy {
-  my $self = shift;
-
-  my $plexing_method = $PLEXING_METHODS{$self->_plexing_mode_by_bait_library($self->_bait_library)};
-
-  if (!defined $plexing_method) {
-    croak qq{The plexing method for bait: ($self->_bait_info) you would like to use is not defined.};
-  }
-
-  my $loaded = eval "require $plexing_method";
-  if (!$loaded) {
-    croak qq{Failed to require $plexing_method};
-  }
-
-  return $plexing_method->new();
-}
-
 has '_pools' => (
   isa             => 'HashRef',
   is              => 'rw',
@@ -235,7 +200,7 @@ sub _build__pools {
       my $dest_well = $container_mapping->{$location};
       my $pool_name = join q{ },
         $container_name,
-        $self->get_pool_name_by_plexing($dest_well, $self->_pooling_strategy);
+        $self->get_pool_name_by_plexing($dest_well, $self->pooling_strategy);
 
       $pools->{$pool_name} ||= [];
       push @{$pools->{$pool_name}}, $analyte_uri;
