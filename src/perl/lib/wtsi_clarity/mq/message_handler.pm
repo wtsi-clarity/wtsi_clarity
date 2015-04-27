@@ -41,7 +41,7 @@ sub process_message {
 
 sub _send_message {
   my ($self, $message, $purpose) = @_;
-  print $purpose . ": " . $message . "\n"; # So it goes into the log
+  print $purpose . ": " . $message . "\n" or carp "Can't write to the log file"; # So it goes into the log
   $self->_wh_client->send_message($message, $purpose);
   return;
 }
@@ -101,6 +101,11 @@ wtsi_clarity::mq::message_handler
 =head2 process_message
 
   Takes in JSON string. Converts to mq::message, and dispatches to relevant message enhancer.
+
+=head2 prepare_messages
+
+  Receives the message from the local queue, finds the relevant enhancer, and then runs
+  prepare_messages on that enhancer, returning the result
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

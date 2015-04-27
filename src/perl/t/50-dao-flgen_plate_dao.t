@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 use Moose;
-use Test::More tests => 12;
+use Test::More tests => 13;
 use Test::MockObject::Extends;
 use Test::Exception;
 use XML::LibXML;
@@ -42,14 +42,20 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
   is($flgen_plate_dao->plate_barcode_lims, q{8754679423576}, 'Extracts plate_barcode_lims');
   is($flgen_plate_dao->plate_size, 96, 'Gets the plate size from container type');
 
-  my $well = {
+  my $well = $flgen_plate_dao->_build_well('2-121338');
+
+  my $fake_well = {
     'id_study_lims' => 'SMI102',
     'well_label' => 'S001',
     'sample_uuid' => '9f4dce30-0bff-11e4-b42e-68b59977951e',
     'cost_code' => 4
   };
 
-  is_deeply($flgen_plate_dao->_build_well('2-121338'), $well, 'Builds a well correctly');
+  is(defined $well->{'last_updated'}, 1, 'Has the last_updated attribute set');
+
+  delete $well->{'last_updated'};
+
+  is_deeply($well, $fake_well, 'Builds a well correctly');
 }
 
 1;

@@ -23,13 +23,14 @@ my $delay_exchange_name = $config->clarity_mq->{'delay_exchange'};
 my $dead_letter_exchange_name = $config->clarity_mq->{'dead_letter_exchange'};
 my $clarity_exchange_name = $config->clarity_mq->{'exchange'};
 
+##no critic (InputOutput::RequireCheckedSyscalls)
+
 my $daemon = Daemon::Control->new(
   name => 'Clarity Message Consumer',
   pid_file => $config->dir_path . '/pid',
   stderr_file => $config->dir_path . '/message_consumer.err',
   stdout_file => $config->dir_path . '/message_consumer.log',
   program => sub {
-    ##no critic (InputOutput::RequireCheckedSyscalls)
     my ($dc, $type, $test) = @_;
 
     my $process_message;
@@ -48,7 +49,7 @@ my $daemon = Daemon::Control->new(
         my $message = $message_handler->_thaw($json);
         my $messages = $message_handler->prepare_messages($message);
 
-        print Dumper $messages;
+        print {*Dumper} $messages;
       };
 
     } else {
@@ -119,13 +120,15 @@ my $daemon = Daemon::Control->new(
 );
 
 sub _log {
-  my $message = shift // '';
-  print {*STDOUT} join q{ }, _now(), $message, "\n";
+  my $message = shift // q{};
+  print {*STDOUT} join q{}, _now(), qq{$message\n};
+  return;
 }
 
 sub _err {
-  my $message = shift // '';
-  print {*STDERR} join q{ }, _now(), $message, "\n";
+  my $message = shift // q{};
+  print {*STDERR} join q{}, _now(), qq{$message\n};
+  return;
 }
 
 sub _now {

@@ -1,5 +1,7 @@
 package wtsi_clarity::mq::client;
 
+use autodie;
+
 use Moose;
 use Readonly;
 use Carp;
@@ -79,7 +81,7 @@ has '_client' => (
   isa => 'WTSI::DNAP::RabbitMQ::Client',
   handles => {
     _disconnect => 'disconnect',
-  }
+  },
 );
 
 has '_client_params' => (
@@ -170,10 +172,10 @@ sub _get_non_blocking_params {
     connect_handler => sub { $self->_open_channel },
     open_channel_handler => sub { $self->_publish_and_disconnect },
     connect_failure_handler => sub {
-      print {*STDERR} "Connection Failure " . @_;
+      print {*STDERR} "Connection Failure " . @_ or carp "Can't write to STDERR";
     },
     error_handler => sub {
-      print {*STDERR} "Error " . @_;
+      print {*STDERR} "Error " . @_ or carp "Can't write to STDERR";
     }
   );
 }
