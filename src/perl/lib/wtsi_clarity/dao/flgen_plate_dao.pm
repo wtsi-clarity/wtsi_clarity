@@ -3,6 +3,7 @@ package wtsi_clarity::dao::flgen_plate_dao;
 use Moose;
 use Readonly;
 use Carp;
+use POSIX qw(strftime);
 
 use wtsi_clarity::dao::containertypes_dao;
 use wtsi_clarity::dao::sample_dao;
@@ -113,6 +114,8 @@ sub _build_well {
   my %well = ();
   my $artifact_doc = $self->_get_artifact($limsid);
 
+  $well{'last_updated'} = strftime('%Y-%m-%Od %H:%M:%S', localtime);
+
   # well_label
   my $location = $artifact_doc->findvalue($ARTIFACT_LOCATION);
   $well{'well_label'} = $self->flgen_well_position($location, $self->type->y_dimension_size, $self->type->x_dimension_size);
@@ -151,6 +154,7 @@ around 'init' => sub {
 
   $self->$next();
   $self->wells;
+  $self->plate_size;
 
   return;
 };
