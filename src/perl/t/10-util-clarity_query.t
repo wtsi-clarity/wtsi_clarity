@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 8;
+use Test::More tests => 9;
 use Test::Exception;
 
 use_ok('wtsi_clarity::util::clarity_query');
@@ -54,6 +54,13 @@ use_ok('wtsi_clarity::util::clarity_query');
       'resource' => 'artifacts',
       'expected' => 'udf.Concentration.max=0',
     },
+    {
+      'input' => {
+        'start_index' => 500,
+      },
+      'resource' => 'artifacts',
+      'expected' => 'start-index=500',
+    }
   ];
 
   foreach my $data (@{$test_data}) {
