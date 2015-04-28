@@ -19,7 +19,7 @@ has '_client' => (
 
 sub _build__client {
   my $self = shift;
-  return wtsi_clarity::mq::client->new();
+  return wtsi_clarity::mq::client->new( blocking_enabled => 1 );
 }
 
 has 'step_url' => (
