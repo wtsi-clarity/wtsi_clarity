@@ -30,7 +30,7 @@ Readonly::Scalar my $IO_MAP_PATH              => q{ /prc:process/input-output-ma
 Readonly::Scalar my $IO_MAP_PATH_ANALYTE_OUTPUT => $IO_MAP_PATH . q{[output[@output-type='Analyte' or @output-type='Pool']] };
 Readonly::Scalar my $CONTAINER_PATH           => q{ /art:artifact/location/container/@uri };
 Readonly::Scalar my $SAMPLE_PATH              => q{ /art:artifact/sample/@limsid };
-Readonly::Scalar my $SAMPLE_URI_PATH          => q{ /art:artifact/sample/@uri };
+Readonly::Scalar my $SAMPLE_URI_PATH          => q{ /art:artifact/sample[1]/@uri };
 Readonly::Scalar my $CONTROL_PATH             => q{ /art:artifact/control-type };
 
 Readonly::Scalar my $CONTAINER_LIMSID_PATH    => q{ /con:container/@limsid };
