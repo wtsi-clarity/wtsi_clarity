@@ -9,9 +9,9 @@
         <value>A:1</value>
     </location>
     <working-flag>true</working-flag>
-    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/SMI102A1" limsid="SMI102A1"/>
-    <artifact-group name="GCLP Fluidigm 96.96" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifactgroups/101"/>
-    <artifact-group name="QC Report Test" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifactgroups/103"/>
-    <artifact-group name="Fluidigm Analysis Only" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifactgroups/151"/>
-    <artifact-group name="Chris PCR Whatever" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifactgroups/402"/>
+    <sample uri="http://testserver.com:1234/here/samples/SMI102A1" limsid="SMI102A1"/>
+    <artifact-group name="GCLP Fluidigm 96.96" uri="http://testserver.com:1234/here/artifactgroups/101"/>
+    <artifact-group name="QC Report Test" uri="http://testserver.com:1234/here/artifactgroups/103"/>
+    <artifact-group name="Fluidigm Analysis Only" uri="http://testserver.com:1234/here/artifactgroups/151"/>
+    <artifact-group name="Chris PCR Whatever" uri="http://testserver.com:1234/here/artifactgroups/402"/>
 </art:artifact>

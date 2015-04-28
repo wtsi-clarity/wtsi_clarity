@@ -3,13 +3,50 @@ package wtsi_clarity::epp::isc::pooling::pooling_common;
 use Moose::Role;
 use Carp;
 use Readonly;
+use wtsi_clarity::epp::isc::pooling::bait_library_mapper;
 
 our $VERSION = '0.0';
+
+Readonly::Hash   my %PLEXING_METHODS          => {
+  '8_plex'   => 'wtsi_clarity::epp::isc::pooling::pooling_by_8_plex',
+  '16_plex'  => 'wtsi_clarity::epp::isc::pooling::pooling_by_16_plex',
+};
 
 sub get_pool_name_by_plexing {
   my ($self, $destination_well_name, $plexing_strategy) = @_;
 
   return join q{ }, $plexing_strategy->get_pool_name($destination_well_name), qq{($destination_well_name)};
+}
+
+sub _plexing_mode_by_bait_library {
+  my ($self, $bait_library_name) = @_;
+
+  my $bait_library_mapper = wtsi_clarity::epp::isc::pooling::bait_library_mapper->new();
+
+  return $bait_library_mapper->plexing_mode_by_bait_library($bait_library_name);
+}
+
+has 'pooling_strategy' => (
+  isa             => 'WtsiClarityPoolingStrategy',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build_pooling_strategy {
+  my ($self) = @_;
+
+  my $plexing_method = $PLEXING_METHODS{$self->_plexing_mode_by_bait_library($self->_bait_library)};
+
+  if (!defined $plexing_method) {
+    croak qq{The plexing method for bait: ($self->_bait_info) you would like to use is not defined.};
+  }
+
+  my $loaded = eval "require $plexing_method";
+  if (!$loaded) {
+    croak qq{Failed to require $plexing_method};
+  }
+
+  return $plexing_method->new();
 }
 
 no Moose::Role;

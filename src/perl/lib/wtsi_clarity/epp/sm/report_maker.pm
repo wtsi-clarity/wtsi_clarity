@@ -40,6 +40,9 @@ Readonly::Scalar my $PRC_FLUIDIGM_GENDER=> qq{Fluidigm 96.96 IFC Analysis (SM)};
 
 Readonly::Scalar my $CONCENTRATION_UDF_NAME => q{Sample Conc. (ng\/µL) (SM)};
 
+Readonly::Scalar my $NEXT_PAGE_URI => q{/art:artifacts/next-page/@uri};
+Readonly::Scalar my $PAGE_SIZE     => 500;
+
 ## use critic
 
 has 'produce_report_anyway' => (
@@ -418,28 +421,42 @@ sub _build__all_udf_values {
   return $data;
 }
 
-sub _get_artifact_uris_from_udf {
-  my ($self, $step, $udf_name) = @_;
+sub _search_artifacts {
+  my ($self, $step, $udf_name, $start_index) = @_;
 
-  my $res_arts_doc = $self->request->query_resources(
+  return $self->request->query_resources(
         q{artifacts},
         {
-          udf       => qq{udf.$udf_name.min=0},
-          type      => qq{Analyte},
-          step      => $step,
-          sample_id => $self->_sample_ids(),
+          udf         => qq{udf.$udf_name.min=0},
+          type        => qq{Analyte},
+          step        => $step,
+          sample_id   => $self->_sample_ids(),
+          start_index => $start_index // 0,
         }
   );
-
-  return $self->grab_values($res_arts_doc, $ARTEFACTS_ARTEFACT_URIS_PATH);
 };
 
 sub _get_udf_values {
   my ($self, $step, $udf_name) = @_;
 
-  my $artifacts_uris = $self->_get_artifact_uris_from_udf($step, $udf_name);
-  my $artifacts = $self->request->batch_retrieve('artifacts', $artifacts_uris);
-  my @nodes;
+  my $artifacts_doc;
+  my @artifacts_uris = ();
+  my $start_index = 0;
+
+  do {
+    $artifacts_doc  = $self->_search_artifacts($step, $udf_name, $start_index);
+    push @artifacts_uris, @{$self->grab_values($artifacts_doc, $ARTEFACTS_ARTEFACT_URIS_PATH)};
+
+    $start_index += $PAGE_SIZE;
+
+  } ## no critic(ControlStructures::ProhibitPostfixControls)
+    while ($artifacts_doc->findvalue($NEXT_PAGE_URI) ne q{});
+    ## use critic
+
+  my $artifacts = $self->request->batch_retrieve('artifacts', \@artifacts_uris);
+
+  my @nodes = ();
+
   try {
     @nodes = $artifacts->findnodes(q{/art:details/art:artifact})->get_nodelist();
   } catch {
@@ -456,11 +473,14 @@ sub _get_udf_values {
                 my $found_sample_id     = $b->findvalue( q{./sample/@limsid}                 );
                 my $udf_value           = $b->findvalue( qq{./udf:field[\@name="$udf_name"]} );
                 # use critic
+
                 if (defined $a->{$found_sample_id} && defined $a->{$found_sample_id}->{$udf_name} ) {
                   # if the sample has been run more than once through the step producing this udf,
                   # then we will use the latest value
                   if ($a->{$found_sample_id}->{'art_lims_id'} < $artifact_limsid ) {
+
                     $a->{ $found_sample_id }->{$udf_name} = $udf_value;
+                    $a->{ $found_sample_id }->{'art_lims_id'} = $artifact_limsid;
                   }
                 } else {
 

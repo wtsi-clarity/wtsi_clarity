@@ -1,7 +1,9 @@
 use strict;
 use warnings;
-use Test::More tests => 39;
+use Test::More tests => 47;
 use Test::Exception;
+use Cwd;
+use Carp;
 use DateTime;
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
@@ -221,6 +223,104 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
   my $container = $label_creator->_container->{'http://testserver.com:1234/here/containers/27-4580'};
 
   is($container->{'signature'}, q{}, 'Signature is blank when there are no samples');
+}
+
+{ # get the tube location
+  my $l = wtsi_clarity::epp::generic::label_creator->new(
+     process_url => $base_uri . '/processes/122-26669',
+  );
+
+  my $input_analyte_uri1 = 'http://testserver.com:1234/here/artifacts/LAB106A289PA1?state=63032';
+  my $input_analyte_dom1 = $l->fetch_and_parse($input_analyte_uri1);
+  my $input_analyte_uri2 = 'http://testserver.com:1234/here/artifacts/LAB106A305PA1?state=63016';
+  my $input_analyte_dom2 = $l->fetch_and_parse($input_analyte_uri2);
+
+  my $expected_tube1_location = 'A:1';
+  my $expected_tube2_location = 'A:3';
+
+  is($l->_get_tube_location($input_analyte_dom1), $expected_tube1_location,
+    'Returns the correct tube location');
+  is($l->_get_tube_location($input_analyte_dom2), $expected_tube2_location,
+    'Returns the correct tube location');
+}
+
+{ # get the Bait Library Name of the sample
+  my $l = wtsi_clarity::epp::generic::label_creator->new(
+     process_url => $base_uri . '/processes/122-26669',
+  );
+
+  my $sample_uri = 'http://testserver.com:1234/here/samples/LAB106A305';
+  my $sample_dom = $l->fetch_and_parse($sample_uri);
+
+  my $expected_bait_library_name = '14M_haemv1';
+
+  is($l->_bait_library_name_by_sample($sample_dom), $expected_bait_library_name,
+    'Returns the correct bait library name');
+}
+
+{ # get the plexing strategy from the Bait Library Name of the sample - 16 plex
+  my $l = wtsi_clarity::epp::generic::label_creator->new(
+     process_url => $base_uri . '/processes/122-26669',
+  );
+
+  my $bait_library_name = '14M_haemv1';
+
+  isa_ok( $l->_plexing_strategy_by_bait_library($bait_library_name),
+          'wtsi_clarity::epp::isc::pooling::pooling_by_16_plex',
+          'Returns the correct plexing startegy.');
+}
+
+{ # get the plexing strategy from the Bait Library Name of the sample - 8 plex
+  my $l = wtsi_clarity::epp::generic::label_creator->new(
+     process_url => $base_uri . '/processes/122-26669',
+  );
+
+  my $bait_library_name = 'V5 Exome';
+
+  isa_ok( $l->_plexing_strategy_by_bait_library($bait_library_name),
+          'wtsi_clarity::epp::isc::pooling::pooling_by_8_plex',
+          'Returns the correct plexing startegy.');
+}
+
+{ # gets the pool range
+  my $l = wtsi_clarity::epp::generic::label_creator->new(
+     process_url => $base_uri . '/processes/122-26669',
+  );
+
+  my $input_analyte_uri1 = 'http://testserver.com:1234/here/artifacts/LAB106A297PA1?state=62966';
+  my $input_analyte_dom1 = $l->fetch_and_parse($input_analyte_uri1);
+
+  my $expected_pool_range = 'A5:H6';
+  is( $l->_pooling_range($input_analyte_dom1), $expected_pool_range,
+      'Returns the correct pool range.');
+}
+
+{ # gets an exception message when pool range is outside of allowed values
+  my $l = wtsi_clarity::epp::generic::label_creator->new(
+     process_url => $base_uri . '/processes/122-26669',
+  );
+
+  my $input_analyte_uri1 = 'http://testserver.com:1234/here/artifacts/LAB106A321PA1?state=62964';
+  my $input_analyte_dom1 = $l->fetch_and_parse($input_analyte_uri1);
+
+  throws_ok { $l->_pooling_range($input_analyte_dom1)}
+              qr/Pool name \(A:5\) is not defined for this destination well /,
+              'error when printer not defined';
+}
+
+{ # gets parent barcode with pooling range
+  my $l = wtsi_clarity::epp::generic::label_creator->new(
+     process_url => $base_uri . '/processes/122-26669',
+  );
+
+  my $analyte_node_xml = q{test_analyte_node.xml};
+  my $testdata_dir  = q{/t/data/epp/generic/label_creator/};
+  my $analyte_node = XML::LibXML->load_xml(location => cwd . $testdata_dir . $analyte_node_xml) or croak 'File cannot be found at ' . cwd() . $testdata_dir . $analyte_node_xml;
+
+  my $expected_parent_barcode_with_pooling_range = "275821A5:H6";
+  is( $l->_parent_barcode_with_pooling_range($analyte_node),
+      $expected_parent_barcode_with_pooling_range,
+      'Returns the correct parent barcode with the pooling range.');
 }
 
 1;

@@ -1,0 +1,40 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="122-26669" uri="http://testserver.com:1234/here/processes/122-26669" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://testserver.com:1234/here/processtypes/89">Post Capture Library Pooling</type>
+  <technician uri="http://testserver.com:1234/here/researchers/58">
+    <first-name>Karoly</first-name>
+    <last-name>Erdos</last-name>
+  </technician>
+  <input-output-map>
+    <input limsid="LAB106A289PA1" post-process-uri="http://testserver.com:1234/here/artifacts/LAB106A289PA1?state=63032" uri="http://testserver.com:1234/here/artifacts/LAB106A289PA1?state=63032"/>
+    <output limsid="2-185522" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/here/artifacts/2-185522?state=89622"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A297PA1" post-process-uri="http://testserver.com:1234/here/artifacts/LAB106A297PA1?state=62966" uri="http://testserver.com:1234/here/artifacts/LAB106A297PA1?state=62966"/>
+    <output limsid="2-185523" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/here/artifacts/2-185523?state=89623"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A305PA1" post-process-uri="http://testserver.com:1234/here/artifacts/LAB106A305PA1?state=63016" uri="http://testserver.com:1234/here/artifacts/LAB106A305PA1?state=63016"/>
+    <output limsid="2-185524" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/here/artifacts/2-185524?state=89624"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A313PA1" post-process-uri="http://testserver.com:1234/here/artifacts/LAB106A313PA1?state=62995" uri="http://testserver.com:1234/here/artifacts/LAB106A313PA1?state=62995"/>
+    <output limsid="2-185525" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/here/artifacts/2-185525?state=89625"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A321PA1" post-process-uri="http://testserver.com:1234/here/artifacts/LAB106A321PA1?state=62964" uri="http://testserver.com:1234/here/artifacts/LAB106A321PA1?state=62964"/>
+    <output limsid="2-185526" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/here/artifacts/2-185526?state=89626"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="LAB106A329PA1" post-process-uri="http://testserver.com:1234/here/artifacts/LAB106A329PA1?state=63038" uri="http://testserver.com:1234/here/artifacts/LAB106A329PA1?state=63038"/>
+    <output limsid="2-185527" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/here/artifacts/2-185527?state=89627"/>
+  </input-output-map>
+  <udf:field name="Barcode copies" type="Numeric">1</udf:field>
+  <udf:field name="Select Barcode Printer" type="String">e367bc</udf:field>
+  <udf:field name="Robot ID" type="String">1</udf:field>
+  <udf:field name="Barcode Prefix" type="String">IC</udf:field>
+  <udf:field name="Plate Purpose" type="String">Cap Lib</udf:field>
+  <udf:field name="Workstation Name:" type="String">Beckman NX8_01</udf:field>
+  <udf:field name="Program Used" type="String">Post Capture Pooling</udf:field>
+  <process-parameter name="16- Print Tube Labels"/>
+</prc:process>

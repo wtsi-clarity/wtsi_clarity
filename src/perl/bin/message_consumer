@@ -10,6 +10,8 @@ use Carp;
 use WTSI::DNAP::RabbitMQ::Client;
 use wtsi_clarity::mq::message_handler;
 use wtsi_clarity::util::config;
+use POSIX qw(strftime);
+use Data::Dumper;
 
 use AnyEvent;
 use Daemon::Control;
@@ -19,6 +21,9 @@ my $config = wtsi_clarity::util::config->new();
 
 my $delay_exchange_name = $config->clarity_mq->{'delay_exchange'};
 my $dead_letter_exchange_name = $config->clarity_mq->{'dead_letter_exchange'};
+my $clarity_exchange_name = $config->clarity_mq->{'exchange'};
+
+##no critic (InputOutput::RequireCheckedSyscalls)
 
 my $daemon = Daemon::Control->new(
   name => 'Clarity Message Consumer',
@@ -26,29 +31,36 @@ my $daemon = Daemon::Control->new(
   stderr_file => $config->dir_path . '/message_consumer.err',
   stdout_file => $config->dir_path . '/message_consumer.log',
   program => sub {
-    ##no critic (InputOutput::RequireCheckedSyscalls)
     my ($dc, $type, $test) = @_;
 
     my $process_message;
 
-    print {*STDOUT} "Starting...\n";
+    _log("Starting...");
 
-    if (defined $test && $test eq '--test') {
-      print {*STDOUT} "In test mode\n";
+    if (defined $test && $test eq '--sandbox') {
+
+      print {*STDOUT} "IN SANDBOX MODE. CREATED MESSAGES WILL BE WRITTEN TO STDOUT" .
+                      " AND MESSAGES WILL BE NOT BE REQUEUED\n";
+
       $process_message = sub {
-        my $payload = shift;
+        my $json = shift;
+        _log("About to handle json: " . $json);
 
-        if ($payload eq 'croak') {
-          croak 'croak';
-        } else {
-          print {*STDOUT} $payload . "\n";
-        }
+        my $message = $message_handler->_thaw($json);
+        my $messages = $message_handler->prepare_messages($message);
+
+        print {*Dumper} $messages;
       };
-    } else {
-      $process_message = sub { $message_handler->process_message(@_); };
-    }
 
-    my $cv = AnyEvent->condvar;
+    } else {
+
+      $process_message = sub {
+        my $json = shift;
+        _log("About to handle json: " . $json);
+        $message_handler->process_message($json);
+      };
+
+    }
 
     my @message_ttls = split /,/smx, $config->clarity_mq->{'message_ttls'};
 
@@ -70,7 +82,7 @@ my $daemon = Daemon::Control->new(
         try {
           $process_message->($args->{'body'}->{'payload'});
         } catch {
-          print {*STDERR} $_ . "\n";
+          _err($_);
 
           my $headers = $args->{'header'}->{'headers'};
           my $headers_to_publish = {};
@@ -95,7 +107,7 @@ my $daemon = Daemon::Control->new(
         }
       },
       error_handler => sub {
-        print {*STDERR} @_ . "\n";
+        _err(@_);
       }
     );
 
@@ -103,9 +115,25 @@ my $daemon = Daemon::Control->new(
     $channel = $client->open_channel(name => $channel_name);
     $client->consume(channel => $channel_name, queue => $config->clarity_mq->{'queue'});
 
-    $cv->recv;
+    AnyEvent->condvar->recv;
   }
 );
+
+sub _log {
+  my $message = shift // q{};
+  print {*STDOUT} join q{}, _now(), qq{$message\n};
+  return;
+}
+
+sub _err {
+  my $message = shift // q{};
+  print {*STDERR} join q{}, _now(), qq{$message\n};
+  return;
+}
+
+sub _now {
+  return strftime "%F %H:%M:%S", localtime;
+}
 
 sub _republish {
   my ($client, $exchange_name, $channel_name, $args, $headers) = @_;
