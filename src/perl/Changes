@@ -1,5 +1,8 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.87
+ - Fixed the tube label printing: getting the bait library from the first sample
+
 Release 0.86
  - Refactored message client so accepts blocking_enabled parameter
  - Fixed Fluidigm message
