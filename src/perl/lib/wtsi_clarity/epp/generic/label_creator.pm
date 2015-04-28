@@ -5,15 +5,16 @@ use Carp;
 use Readonly;
 use DateTime;
 use namespace::autoclean;
-use List::MoreUtils qw/uniq/;
+use List::MoreUtils qw/uniq any/;
 
 use wtsi_clarity::util::signature;
 
 extends 'wtsi_clarity::epp';
 with qw{wtsi_clarity::util::clarity_elements
-  wtsi_clarity::util::print
-  wtsi_clarity::util::label
-  wtsi_clarity::epp::generic::roles::barcode_common};
+        wtsi_clarity::util::print
+        wtsi_clarity::util::label
+        wtsi_clarity::epp::generic::roles::barcode_common
+        wtsi_clarity::epp::isc::pooling::pooling_common};
 
 our $VERSION = '0.0';
 
@@ -29,6 +30,7 @@ Readonly::Scalar my $IO_MAP_PATH              => q{ /prc:process/input-output-ma
 Readonly::Scalar my $IO_MAP_PATH_ANALYTE_OUTPUT => $IO_MAP_PATH . q{[output[@output-type='Analyte' or @output-type='Pool']] };
 Readonly::Scalar my $CONTAINER_PATH           => q{ /art:artifact/location/container/@uri };
 Readonly::Scalar my $SAMPLE_PATH              => q{ /art:artifact/sample/@limsid };
+Readonly::Scalar my $SAMPLE_URI_PATH          => q{ /art:artifact/sample/@uri };
 Readonly::Scalar my $CONTROL_PATH             => q{ /art:artifact/control-type };
 
 Readonly::Scalar my $CONTAINER_LIMSID_PATH    => q{ /con:container/@limsid };
@@ -36,6 +38,8 @@ Readonly::Scalar my $SUPPLIER_CONTAINER_NAME_PATH =>
   q{ /con:container/udf:field[@name='Supplier Container Name'] };
 Readonly::Scalar my $CONTAINER_NAME_PATH      => q{ /con:container/name };
 Readonly::Scalar my $INPUT_ANALYTES_PATH      => q{./input/@uri};
+Readonly::Scalar my $TUBE_LOCATION_PATH       => q{ /art:artifact/location/value};
+Readonly::Scalar my $BAIT_LIBRARY_NAME_PATH   => q{ /smp:sample/udf:field[@name='WTSI Bait Library Name']/text()};
 ##use critic
 
 Readonly::Scalar my $SIGNATURE_LENGTH         => 5;
@@ -44,6 +48,10 @@ Readonly::Scalar my $CHILD_ERROR_SHIFT        => 8;
 
 Readonly::Scalar my $DEFAULT_BARCODE_LOWEST   => 1_000_000;
 Readonly::Scalar my $DEFAULT_BARCODE_RANGE    => 1_000_000;
+
+Readonly::Array  my @TUBELIKE                 => qw{ tube };
+Readonly::Scalar my $BARCODE_START            => 4;
+Readonly::Scalar my $BARCODE_LENGTH           => 6;
 
 has 'source_plate' => (
   isa        => 'Bool',
@@ -108,6 +116,7 @@ sub _build_user {
 
   my $technician_node = $self->process_doc->find(q(prc:process/technician))->[0];
   my $user = q[];
+
   if($technician_node) {
     $user = $technician_node->find(q(./first-name))->[0]->textContent;
     if ($user) {
@@ -202,8 +211,8 @@ sub _build__container {
       push @{$containers->{$container_url}->{'samples'}}, @sample_lims_ids;
     }
 
-    if (!$self->source_plate && !exists $containers->{$container_url}->{'parent_barcode'}) {
-      $containers->{$container_url}->{'parent_barcode'} = $self->_parent_barcode($anode);
+    if ((any {$_ eq $self->container_type } @TUBELIKE)  && !exists $containers->{$container_url}->{'parent_barcode_with_pooling_range'}) {
+      $containers->{$container_url}->{'parent_barcode_with_pooling_range'} = $self->_parent_barcode_with_pooling_range($anode);
     }
   }
   if (scalar keys %{$containers} == 0) {
@@ -213,14 +222,54 @@ sub _build__container {
   return $containers;
 }
 
-sub _parent_barcode {
+sub _parent_barcode_with_pooling_range {
   my ($self, $analyte_node) = @_;
 
   my $input_analyte_dom = $self->fetch_and_parse($analyte_node->findvalue($INPUT_ANALYTES_PATH));
   my $input_container_dom = $self->fetch_and_parse($input_analyte_dom->findvalue($CONTAINER_PATH));
+  my $location = $self->_get_tube_location($input_analyte_dom);
 
-  return $input_container_dom->findvalue($CONTAINER_NAME_PATH);
+  my $full_plate_name = $input_container_dom->findvalue($CONTAINER_NAME_PATH);
+
+  return substr($full_plate_name, $BARCODE_START, $BARCODE_LENGTH) . $self->_pooling_range($input_analyte_dom);
 }
+
+sub _get_tube_location {
+  my ($self, $input_analyte_dom) = @_;
+
+  return $input_analyte_dom->findvalue($TUBE_LOCATION_PATH);
+}
+
+sub _bait_library_name_by_sample {
+  my ($self, $sample_dom) = @_;
+
+  return $sample_dom->findvalue($BAIT_LIBRARY_NAME_PATH);
+}
+
+has '_bait_library' => (
+  isa             => 'Str',
+  is              => 'ro',
+  writer          => '_set_bait_library',
+);
+
+sub _plexing_strategy_by_bait_library {
+  my ($self, $bait_library_name) = @_;
+
+  $self->_set_bait_library($bait_library_name);
+
+  return $self->pooling_strategy;
+}
+
+sub _pooling_range {
+  my ($self, $input_analyte_dom) = @_;
+
+  my $destination_well_name = $self->_get_tube_location($input_analyte_dom);
+  my $sample_dom = $self->fetch_and_parse($input_analyte_dom->findvalue($SAMPLE_URI_PATH));
+  my $bait_library_name = $self->_bait_library_name_by_sample($sample_dom);
+
+  return $self->_plexing_strategy_by_bait_library($bait_library_name)->get_pool_name($destination_well_name);
+}
+
 
 has '_plate_purpose_suffix' => (
   isa        => 'ArrayRef',
