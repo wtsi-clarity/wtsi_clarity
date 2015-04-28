@@ -89,8 +89,8 @@ sub _format_label {
           'ean13' => $container->{'barcode'},
           'label_text' => {
             'date_user' => join(q[ ], $date, $user),
-            'purpose'  => $container->{'purpose'},
-            'num' => $container->{'num'},
+            'purpose'   => $container->{'purpose'},
+            'num'       => $container->{'num'},
             'signature' => $container->{'signature'}
           }
         }
@@ -110,9 +110,9 @@ sub _format_label {
           'number'  => $sanger_barcode_number
         },
         'label_text' => {
-          'date'            => $date,
-          'pool_number'     => q[], # TODO add pool number later:
-          'parent_barcode'  => $container->{'parent_barcode'}
+          'date'                              => $date,
+          'tube_barcode'                      => $sanger_barcode_number,
+          'parent_barcode_with_pooling_range' => $container->{'parent_barcode_with_pooling_range'}
         },
     }};
   } else {

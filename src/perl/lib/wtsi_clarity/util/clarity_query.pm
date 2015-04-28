@@ -44,7 +44,8 @@ sub _build_query
     step        => 'process-type',
     type        => 'type',
     udf         => 'udf',
-    name        => 'name'
+    name        => 'name',
+    start_index => 'start-index',
   };
   my $query = q{};
 

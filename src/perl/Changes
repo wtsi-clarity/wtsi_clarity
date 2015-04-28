@@ -1,5 +1,13 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.86
+ - Refactored message client so accepts blocking_enabled parameter
+ - Fixed Fluidigm message
+ - Added sandbox mode to message_consumer
+ - Added pool range and tube barcode to the normal label. Replaced the parent ean13 barcode with only the number part,
+without the pre and postfix.
+ - Fixed QC report: pico analysis 
+
 Release 0.85
  - Fixes #366: correct pool mapping using with more than 1 container
 

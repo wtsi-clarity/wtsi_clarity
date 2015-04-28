@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/LAB106A305PA1?state=63016" limsid="LAB106A305PA1">
+    <name>113</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-652" limsid="27-652"/>
+        <value>A:3</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/LAB106A305" limsid="LAB106A305"/>
+    <artifact-group name="Pooling" uri="http://testserver.com:1234/here/artifactgroups/253"/>
+    <artifact-group name="Karoly's Post Capture Lib Pooling WF" uri="http://testserver.com:1234/here/artifactgroups/451"/>
+    <workflow-stages>
+        <workflow-stage status="IN_PROGRESS" name="Post Capture Library Pooling" uri="http://testserver.com:1234/here/configuration/workflows/351/stages/852"/>
+        <workflow-stage status="COMPLETE" name="Library PCR set up" uri="http://testserver.com:1234/here/configuration/workflows/203/stages/584"/>
+    </workflow-stages>
+</art:artifact>
