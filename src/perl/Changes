@@ -1,5 +1,8 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.88
+ - Fixes Coeffienct of Variation miscalculation: Standard Deviation is done correctly now
+
 Release 0.87
  - Fixed the tube label printing: getting the bait library from the first sample
 
