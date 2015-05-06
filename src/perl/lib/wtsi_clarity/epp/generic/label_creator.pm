@@ -6,6 +6,7 @@ use Readonly;
 use DateTime;
 use namespace::autoclean;
 use List::MoreUtils qw/uniq any/;
+use URI::Escape;
 
 use wtsi_clarity::util::signature;
 
@@ -18,6 +19,9 @@ with qw{wtsi_clarity::util::clarity_elements
 
 our $VERSION = '0.0';
 
+Readonly::Scalar my $CONTAINER_SIGNATURE_FIELD_NAME => q{WTSI Container Signature};
+Readonly::Scalar my $LIB_PCR_PURIFICATION_PROCESS_NAME => q{Lib PCR Purification};
+
 ##no critic (ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $PRINTER_PATH             => q{ /prc:process/udf:field[contains(@name, 'Printer')] };
 Readonly::Scalar my $NUM_COPIES_PATH          => q{ /prc:process/udf:field[@name='Barcode Copies'] };
@@ -28,7 +32,7 @@ Readonly::Scalar my $CONTAINER_PURPOSE_PATH   => q{ /con:container/udf:field[@na
 
 Readonly::Scalar my $IO_MAP_PATH              => q{ /prc:process/input-output-map};
 Readonly::Scalar my $IO_MAP_PATH_ANALYTE_OUTPUT => $IO_MAP_PATH . q{[output[@output-type='Analyte' or @output-type='Pool']] };
-Readonly::Scalar my $CONTAINER_PATH           => q{ /art:artifact/location/container/@uri };
+Readonly::Scalar my $CONTAINER_URI_PATH       => q{ /art:artifact/location/container/@uri };
 Readonly::Scalar my $SAMPLE_PATH              => q{ /art:artifact/sample/@limsid };
 Readonly::Scalar my $SAMPLE_URI_PATH          => q{ /art:artifact/sample[1]/@uri };
 Readonly::Scalar my $CONTROL_PATH             => q{ /art:artifact/control-type };
@@ -40,18 +44,22 @@ Readonly::Scalar my $CONTAINER_NAME_PATH      => q{ /con:container/name };
 Readonly::Scalar my $INPUT_ANALYTES_PATH      => q{./input/@uri};
 Readonly::Scalar my $TUBE_LOCATION_PATH       => q{ /art:artifact/location/value};
 Readonly::Scalar my $BAIT_LIBRARY_NAME_PATH   => q{ /smp:sample/udf:field[@name='WTSI Bait Library Name']/text()};
+Readonly::Scalar my $SAMPLE_LIMSID_PATH       => q{ /smp:sample/@limsid};
+Readonly::Scalar my $ARTIFACT_LIMSID_PATH     => q{ /art:artifacts/artifact/@limsid};
+Readonly::Scalar my $ARTIFACT_URI_PATH        => q{ /art:artifacts/artifact[@limsid='%s']/@uri};
+Readonly::Scalar my $CONTAINER_SIGNATURE_PATH => q{ /con:container/udf:field[@name='} . $CONTAINER_SIGNATURE_FIELD_NAME . q{']/text()};
 ##use critic
 
-Readonly::Scalar my $SIGNATURE_LENGTH         => 5;
-Readonly::Scalar my $DEFAULT_CONTAINER_TYPE   => 'plate';
-Readonly::Scalar my $CHILD_ERROR_SHIFT        => 8;
+Readonly::Scalar my $SIGNATURE_LENGTH               => 5;
+Readonly::Scalar my $DEFAULT_CONTAINER_TYPE         => 'plate';
+Readonly::Scalar my $CHILD_ERROR_SHIFT              => 8;
 
-Readonly::Scalar my $DEFAULT_BARCODE_LOWEST   => 1_000_000;
-Readonly::Scalar my $DEFAULT_BARCODE_RANGE    => 1_000_000;
+Readonly::Scalar my $DEFAULT_BARCODE_LOWEST         => 1_000_000;
+Readonly::Scalar my $DEFAULT_BARCODE_RANGE          => 1_000_000;
 
-Readonly::Array  my @TUBELIKE                 => qw{ tube };
-Readonly::Scalar my $BARCODE_START            => 4;
-Readonly::Scalar my $BARCODE_LENGTH           => 6;
+Readonly::Array  my @TUBELIKE                       => qw{ tube };
+Readonly::Scalar my $BARCODE_START                  => 4;
+Readonly::Scalar my $BARCODE_LENGTH                 => 6;
 
 has 'source_plate' => (
   isa        => 'Bool',
@@ -194,7 +202,7 @@ sub _build__container {
     my $url = $anode->findvalue(q{./} . $path . q{/@uri});
     ##use critic
     my $analyte_dom = $self->fetch_and_parse($url);
-    my $container_url = $analyte_dom->findvalue($CONTAINER_PATH);
+    my $container_url = $analyte_dom->findvalue($CONTAINER_URI_PATH);
     if (!$container_url) {
       croak qq[Container not defined for $url];
     }
@@ -212,7 +220,16 @@ sub _build__container {
     }
 
     if ((any {$_ eq $self->container_type } @TUBELIKE)  && !exists $containers->{$container_url}->{'parent_barcode_with_pooling_range'}) {
-      $containers->{$container_url}->{'parent_barcode_with_pooling_range'} = $self->_parent_barcode_with_pooling_range($anode);
+      my $input_analyte_dom = $self->fetch_and_parse($anode->findvalue($INPUT_ANALYTES_PATH));
+
+      my $sample_data = $self->_sample_data($input_analyte_dom);
+
+      $containers->{$container_url}->{'pooling_range'} =
+        $self->_pooling_range($input_analyte_dom, $sample_data->{'bait_library_name'});
+
+      my $artifact_doc = $self->_search_artifact_by_process_and_samplelimsid($LIB_PCR_PURIFICATION_PROCESS_NAME, $sample_data->{'limsid'});
+      my $container_xml = $self->_container_doc($artifact_doc);
+      $containers->{$container_url}->{'original_plate_signature'} = $self->_signature_from_container($container_xml);
     }
   }
   if (scalar keys %{$containers} == 0) {
@@ -222,28 +239,18 @@ sub _build__container {
   return $containers;
 }
 
-sub _parent_barcode_with_pooling_range {
-  my ($self, $analyte_node) = @_;
+sub _pooling_range {
+  my ($self, $input_analyte_dom, $bait_library_name) = @_;
 
-  my $input_analyte_dom = $self->fetch_and_parse($analyte_node->findvalue($INPUT_ANALYTES_PATH));
-  my $input_container_dom = $self->fetch_and_parse($input_analyte_dom->findvalue($CONTAINER_PATH));
-  my $location = $self->_get_tube_location($input_analyte_dom);
+  my $destination_well_name = $self->_get_tube_location($input_analyte_dom);
 
-  my $full_plate_name = $input_container_dom->findvalue($CONTAINER_NAME_PATH);
-
-  return substr($full_plate_name, $BARCODE_START, $BARCODE_LENGTH) . $self->_pooling_range($input_analyte_dom);
+  return $self->_plexing_strategy_by_bait_library($bait_library_name)->get_pool_name($destination_well_name);
 }
 
 sub _get_tube_location {
   my ($self, $input_analyte_dom) = @_;
 
   return $input_analyte_dom->findvalue($TUBE_LOCATION_PATH);
-}
-
-sub _bait_library_name_by_sample {
-  my ($self, $sample_dom) = @_;
-
-  return $sample_dom->findvalue($BAIT_LIBRARY_NAME_PATH);
 }
 
 has '_bait_library' => (
@@ -260,16 +267,58 @@ sub _plexing_strategy_by_bait_library {
   return $self->pooling_strategy;
 }
 
-sub _pooling_range {
+sub _sample_data {
   my ($self, $input_analyte_dom) = @_;
 
-  my $destination_well_name = $self->_get_tube_location($input_analyte_dom);
   my $sample_dom = $self->fetch_and_parse($input_analyte_dom->findvalue($SAMPLE_URI_PATH));
-  my $bait_library_name = $self->_bait_library_name_by_sample($sample_dom);
 
-  return $self->_plexing_strategy_by_bait_library($bait_library_name)->get_pool_name($destination_well_name);
+  return  {
+            'bait_library_name' => $sample_dom->findvalue($BAIT_LIBRARY_NAME_PATH),
+            'limsid'            => $sample_dom->findvalue($SAMPLE_LIMSID_PATH)
+          };
 }
 
+sub _search_artifact_by_process_and_samplelimsid {
+  my ($self, $process_type, $sample_limsid) = @_;
+
+  my $artifact_request_uri = $self->config->clarity_api->{'base_uri'} .
+                                q{/artifacts?} .
+                                q{samplelimsid=}  . $sample_limsid .
+                                q{&process-type=}  . uri_escape($process_type) .
+                                q{&type=Analyte};
+
+  my $artifact_xml = $self->fetch_and_parse($artifact_request_uri);
+  my @artifact_limsids_nodes = $artifact_xml->findnodes($ARTIFACT_LIMSID_PATH)->get_nodelist;
+  my @limsids = reverse uniq( sort map { $_->getValue() } @artifact_limsids_nodes);
+
+  if (scalar @limsids < 1) {
+    croak qq{The artifact could not be found by the given process: '$process_type' and samplelimsid: '$sample_limsid'.};
+  }
+
+  my $searched_artifact_uri = $artifact_xml->findvalue(sprintf $ARTIFACT_URI_PATH, $limsids[0]);
+
+  return $self->fetch_and_parse($searched_artifact_uri);
+}
+
+sub _container_doc {
+  my ($self, $artifact_doc) = @_;
+
+  my $container_uri = $artifact_doc->findvalue($CONTAINER_URI_PATH);
+
+  return $self->fetch_and_parse($container_uri);;
+}
+
+sub _signature_from_container {
+  my ($self, $container_doc) = @_;
+
+  my $signature = $container_doc->findvalue($CONTAINER_SIGNATURE_PATH);
+
+  if (!defined $signature || length $signature < 1) {
+    croak q{The signature has not been registered on this container.};
+  }
+
+  return $signature;
+}
 
 has '_plate_purpose_suffix' => (
   isa        => 'ArrayRef',
@@ -353,10 +402,20 @@ sub _set_container_data {
 
     $self->_copy_barcode2container($doc, $barcode);
 
-    $container->{'signature'} = ($container->{'samples'}) ? $self->_get_signature($container->{'samples'}) : q{};
+    $self->_add_signature_to_container_doc($container);
 
     $count++;
   }
+
+  return;
+}
+
+sub _add_signature_to_container_doc {
+  my ($self, $container) = @_;
+
+  $container->{'signature'} = ($container->{'samples'}) ? $self->_get_signature($container->{'samples'}) : q{};
+
+  $self->add_udf_element($container->{'doc'}, $CONTAINER_SIGNATURE_FIELD_NAME, $container->{'signature'});
 
   return;
 }
@@ -371,6 +430,7 @@ sub _update_container {
   my $self = shift;
   foreach my $container_url (keys %{$self->_container}) {
     my $doc = $self->_container->{$container_url}->{'doc'};
+
     $self->request->put($container_url, $doc->toString);
   }
   return;
