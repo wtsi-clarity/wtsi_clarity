@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/2-253657?state=125941" limsid="2-253657">
+    <name>5cc5ebdc-bcd6-11e4-b42e-68b59977951e-Lib PCR XP</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://testserver.com:1234/here/processes/24-30495" limsid="24-30495"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-6077" limsid="27-6077"/>
+        <value>G:2</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A149" limsid="SV2454A149"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 15 (TAAGCGTT)"/>
+    <workflow-stages>
+        <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        <workflow-stage status="COMPLETE" name="Pre Capture Lib Pooling" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/373"/>
+    </workflow-stages>
+</art:artifact>
