@@ -1,9 +1,10 @@
 use strict;
 use warnings;
-use Test::More tests => 47;
+use Test::More tests => 52;
 use Test::Exception;
 use Cwd;
 use Carp;
+use XML::SemanticDiff;
 use DateTime;
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
@@ -249,13 +250,16 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
      process_url => $base_uri . '/processes/122-26669',
   );
 
-  my $sample_uri = 'http://testserver.com:1234/here/samples/LAB106A305';
-  my $sample_dom = $l->fetch_and_parse($sample_uri);
+  my $input_analyte_uri1 = 'http://testserver.com:1234/here/artifacts/LAB106A289PA1?state=63032';
+  my $input_analyte_dom1 = $l->fetch_and_parse($input_analyte_uri1);
 
-  my $expected_bait_library_name = '14M_haemv1';
+  my $expected_bait_library_name  = '14M_haemv1';
+  my $expected_sample_limsid      = 'LAB106A289';
 
-  is($l->_bait_library_name_by_sample($sample_dom), $expected_bait_library_name,
+  is($l->_sample_data($input_analyte_dom1)->{'bait_library_name'}, $expected_bait_library_name,
     'Returns the correct bait library name');
+  is($l->_sample_data($input_analyte_dom1)->{'limsid'}, $expected_sample_limsid,
+    'Returns the correct limsid of a sample');
 }
 
 { # get the plexing strategy from the Bait Library Name of the sample - 16 plex
@@ -289,9 +293,10 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
 
   my $input_analyte_uri1 = 'http://testserver.com:1234/here/artifacts/LAB106A297PA1?state=62966';
   my $input_analyte_dom1 = $l->fetch_and_parse($input_analyte_uri1);
+  my $bait_library_name = '14M_haemv1';
 
   my $expected_pool_range = 'A5:H6';
-  is( $l->_pooling_range($input_analyte_dom1), $expected_pool_range,
+  is( $l->_pooling_range($input_analyte_dom1, $bait_library_name), $expected_pool_range,
       'Returns the correct pool range.');
 }
 
@@ -302,25 +307,92 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
 
   my $input_analyte_uri1 = 'http://testserver.com:1234/here/artifacts/LAB106A321PA1?state=62964';
   my $input_analyte_dom1 = $l->fetch_and_parse($input_analyte_uri1);
+  my $bait_library_name = '14M_haemv1';
 
-  throws_ok { $l->_pooling_range($input_analyte_dom1)}
+  throws_ok { $l->_pooling_range($input_analyte_dom1, $bait_library_name)}
               qr/Pool name \(A:5\) is not defined for this destination well /,
-              'error when printer not defined';
+              'error when pool name not defined';
 }
 
-{ # gets parent barcode with pooling range
+{ # search artifact by process and samplelimsid
   my $l = wtsi_clarity::epp::generic::label_creator->new(
-     process_url => $base_uri . '/processes/122-26669',
+     process_url => $base_uri . 'anything',
   );
 
-  my $analyte_node_xml = q{test_analyte_node.xml};
-  my $testdata_dir  = q{/t/data/epp/generic/label_creator/};
-  my $analyte_node = XML::LibXML->load_xml(location => cwd . $testdata_dir . $analyte_node_xml) or croak 'File cannot be found at ' . cwd() . $testdata_dir . $analyte_node_xml;
+  my $samplelimsid = 'SV2454A149';
+  my $process_type = 'Lib PCR Purification';
 
-  my $expected_parent_barcode_with_pooling_range = "275821A5:H6";
-  is( $l->_parent_barcode_with_pooling_range($analyte_node),
-      $expected_parent_barcode_with_pooling_range,
-      'Returns the correct parent barcode with the pooling range.');
+  my $expected_file = q{expected_artifact_by_samplelimsid_and_processtype.xml};
+  my $testdata_dir  = q{/t/data/epp/generic/label_creator/};
+  my $expected_container_xml = XML::LibXML->load_xml(location => cwd . $testdata_dir . $expected_file) or croak 'File cannot be found at ' . cwd() . $testdata_dir . $expected_file;
+  my $comparer = XML::SemanticDiff->new();
+
+  my @differences = $comparer->compare(
+    $l->_search_artifact_by_process_and_samplelimsid($process_type, $samplelimsid), $expected_container_xml);
+  cmp_ok(scalar @differences, '==', 0, 'Returns the correct artifact XML.');
+}
+
+{ # gets an exception message when the artifact could not be found
+  my $l = wtsi_clarity::epp::generic::label_creator->new(
+     process_url => $base_uri . 'anything',
+  );
+
+  my $samplelimsid = 'SV2454A999';
+  my $process_type = 'Lib PCR Purification';
+
+  throws_ok { $l->_search_artifact_by_process_and_samplelimsid($process_type, $samplelimsid)}
+              qr/The artifact could not be found by the given process\: 'Lib PCR Purification' and samplelimsid: 'SV2454A999'./,
+              'error when the artifact could not be found';
+}
+
+{ # Test for getting the container doc
+  my $l = wtsi_clarity::epp::generic::label_creator->new(
+     process_url => $base_uri . 'anything',
+  );
+
+  my $samplelimsid = 'SV2454A149';
+  my $process_type = 'Lib PCR Purification';
+  my $artifact_doc = $l->_search_artifact_by_process_and_samplelimsid($process_type, $samplelimsid);
+
+  my $expected_file = q{expected_container_by_artifact.xml};
+  my $testdata_dir  = q{/t/data/epp/generic/label_creator/};
+  my $expected_container_xml = XML::LibXML->load_xml(location => cwd . $testdata_dir . $expected_file) or croak 'File cannot be found at ' . cwd() . $testdata_dir . $expected_file;
+  my $comparer = XML::SemanticDiff->new();
+
+  my @differences = $comparer->compare(
+    $l->_container_doc($artifact_doc), $expected_container_xml);
+  cmp_ok(scalar @differences, '==', 0, 'Returns the correct container XML.');
+}
+
+{ # Test for getting the signature UDF field from the container
+  my $l = wtsi_clarity::epp::generic::label_creator->new(
+     process_url => $base_uri . 'anything',
+  );
+
+  my $samplelimsid = 'SV2454A149';
+  my $process_type = 'Lib PCR Purification';
+  my $artifact_doc = $l->_search_artifact_by_process_and_samplelimsid($process_type, $samplelimsid);
+  my $container_xml = $l->_container_doc($artifact_doc);
+
+  my $expected_signature = 'aBcDe';
+
+  is( $l->_signature_from_container($container_xml), $expected_signature,
+      'Returns the correct signature.');
+}
+
+{ # Test for getting the signature UDF field from the container
+  my $l = wtsi_clarity::epp::generic::label_creator->new(
+     process_url => $base_uri . 'anything',
+  );
+
+  my $samplelimsid = 'SV2454A159';
+  my $process_type = 'Lib PCR Purification';
+  my $artifact_doc = $l->_search_artifact_by_process_and_samplelimsid($process_type, $samplelimsid);
+  my $container_xml = $l->_container_doc($artifact_doc);
+
+  throws_ok { $l->_signature_from_container($container_xml)}
+              qr/The signature has not been registered on this container./,
+              'error when the signature could not be found';
 }
 
 1;

@@ -62,7 +62,7 @@ sub _build_cvs {
     my $x2 = ($self->plateB_fluorescence->{$well} - $average_fluorescence) ** 2;
 
     my $variance = 0.5 * ($x1 + $x2);
-    my $std_deviation = sqrt($variance);
+    my $std_deviation = sqrt $variance;
 
     $results->{$well} = ($std_deviation / $average_fluorescence) * 100;
   }
