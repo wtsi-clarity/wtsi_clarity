@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="yes"?>
+<con:container xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container" uri="http://testserver.com:1234/here/containers/27-6077" limsid="27-6077">
+    <name>2460276077799</name>
+    <type uri="http://testserver.com:1234/here/containertypes/4" name="96 Well Plate"/>
+    <occupied-wells>95</occupied-wells>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-253562" limsid="2-253562">
+        <value>C:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-253579" limsid="2-253579">
+        <value>B:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-253585" limsid="2-253585">
+        <value>A:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-253592" limsid="2-253592">
+        <value>H:5</value>
+    </placement>
+    <udf:field type="String" name="WTSI Container Purpose Name">Lib PCR XP</udf:field>
+    <udf:field type="String" name="WTSI Container Signature">aBcDe</udf:field>
+    <state>Populated</state>
+</con:container>

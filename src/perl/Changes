@@ -1,5 +1,14 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.89
+ - Changed the tube layout. We have the following info on the tube label: 
+   - ean13 barcode (vertical)
+   - original plate's signature
+   - pooling range
+   - tube's barcode number
+   - date
+ - Also added the signature to the container as a UDF.
+
 Release 0.88
  - Fixes Coeffienct of Variation miscalculation: Standard Deviation is done correctly now
 
