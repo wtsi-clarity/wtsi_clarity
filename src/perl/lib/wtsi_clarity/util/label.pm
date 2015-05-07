@@ -54,7 +54,7 @@ sub generateLabels {
 
   my @labels = ();
 
-  foreach my $container_url (keys %{$params->{'containers'}}) {
+  foreach my $container_url (sort keys %{$params->{'containers'}}) {
     my $count = 0;
     while ($count < $params->{'number'}) {
       my $container = $params->{'containers'}->{$container_url};
