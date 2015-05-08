@@ -28,6 +28,7 @@ Readonly::Scalar my $SMP_DETAIL_ARTIFACTS_IDS_PATH          => q{/smp:details/sm
 Readonly::Scalar my $ARTEFACTS_ARTEFACT_CONTAINTER_IDS_PATH => q{/art:details/art:artifact/location/container/@limsid};
 Readonly::Scalar my $ARTEFACTS_ARTEFACT_URIS_PATH           => q{/art:artifacts/artifact/@uri};
 Readonly::Scalar my $THOUSANDTH                             => 0.001;
+Readonly::Scalar my $LABORATORY_VOLUME_SUBSTRACTION         => 2;
 
 Readonly::Scalar my $UDF_VOLUME         => qq{Volume};
 Readonly::Scalar my $UDF_CONCENTRATION  => qq{Concentration};
@@ -191,7 +192,7 @@ sub _get_total_micrograms {
   my $concentration = $self->_get_concentration($sample_id);
   my $measured_volume = $self->_get_measured_volume($sample_id);
   if ($concentration ne q{} && $measured_volume ne q{}) {
-    $total_micrograms = $concentration * $measured_volume * $THOUSANDTH;
+    $total_micrograms = $concentration * ($measured_volume -  $LABORATORY_VOLUME_SUBSTRACTION) * $THOUSANDTH;
   }
 
   return $total_micrograms;
