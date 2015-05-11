@@ -574,7 +574,7 @@ my $TEST_DATA4 = {
   );
   my $expected_plate_purpose = q{PLATE_PURPOSE_TEST};
   my %expected_plate_name = (
-    'http://testserver.com:1234/here/containers/27-23' => '277228',
+    'http://testserver.com:1234/here/containers/27-23' => '7020',
     'http://testserver.com:1234/here/containers/27-27' => '273251',
   );
 

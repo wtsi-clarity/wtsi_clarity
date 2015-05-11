@@ -547,7 +547,14 @@ sub _get_containers_data {
 
         my $barcode   = $self->find_clarity_element_textContent($in_container, q{name});
         my $type_name = $self->find_elements_first_value($in_container, $CONTAINER_TYPE_NAME);
-        my $plate_name = length $barcode == $EAN13_BARCODE_LENGTH ? substr $barcode, $PLATE_NAME_START_INDEX, $PLATE_NAME_START_LENGTH : $barcode;
+
+        my $plate_name;
+        if (length $barcode == $EAN13_BARCODE_LENGTH) {
+          $plate_name = substr $barcode, $PLATE_NAME_START_INDEX, $PLATE_NAME_START_LENGTH;
+          $plate_name =~ s/^0*//xms;
+        } else {
+          $plate_name = $barcode;
+        }
 
         $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{plate_name} } = $plate_name;
         $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{barcode}    } = $barcode;
