@@ -219,12 +219,18 @@ sub _build__container {
       push @{$containers->{$container_url}->{'samples'}}, @sample_lims_ids;
     }
 
+    $containers->{$container_url}->{'signature'} =
+      ($containers->{$container_url}->{'samples'}) ?
+        $self->_get_signature($containers->{$container_url}->{'samples'}) : q{};
+
     if ((any {$_ eq $self->container_type } @TUBELIKE)  && !exists $containers->{$container_url}->{'parent_barcode_with_pooling_range'}) {
       my $input_analyte_dom = $self->fetch_and_parse($anode->findvalue($INPUT_ANALYTES_PATH));
 
       my $sample_data = $self->_sample_data($input_analyte_dom);
 
-      $containers->{$container_url}->{'pooling_range'} =
+      $containers->{$container_url}->{'tube_signature_and_pooling_range'} =
+        $containers->{$container_url}->{'signature'} .
+        q{ } .
         $self->_pooling_range($input_analyte_dom, $sample_data->{'bait_library_name'});
 
       my $artifact_doc = $self->_search_artifact_by_process_and_samplelimsid($LIB_PCR_PURIFICATION_PROCESS_NAME, $sample_data->{'limsid'});
@@ -244,7 +250,11 @@ sub _pooling_range {
 
   my $destination_well_name = $self->_get_tube_location($input_analyte_dom);
 
-  return $self->_plexing_strategy_by_bait_library($bait_library_name)->get_pool_name($destination_well_name);
+  my $pool_name = $self->_plexing_strategy_by_bait_library($bait_library_name)->get_pool_name($destination_well_name);
+
+  $pool_name =~ s/://xmsg;
+
+  return $pool_name;
 }
 
 sub _get_tube_location {
@@ -412,8 +422,6 @@ sub _set_container_data {
 
 sub _add_signature_to_container_doc {
   my ($self, $container) = @_;
-
-  $container->{'signature'} = ($container->{'samples'}) ? $self->_get_signature($container->{'samples'}) : q{};
 
   $self->add_udf_element($container->{'doc'}, $CONTAINER_SIGNATURE_FIELD_NAME, $container->{'signature'});
 
