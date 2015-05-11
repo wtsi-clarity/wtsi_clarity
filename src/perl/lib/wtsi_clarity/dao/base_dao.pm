@@ -21,6 +21,7 @@ has 'resource_type' => (
 );
 
 has 'lims_id' => (
+  traits      => [ 'DoNotSerialize' ],
   isa         => 'Str',
   is          => 'ro',
   required    => 1,
@@ -98,7 +99,9 @@ sub to_message {
   my $self = shift;
 
   $self->init;
-  return $self->freeze();
+  my $message = $self->pack();
+  delete $message->{'__CLASS__'};
+  return $message;
 }
 
 1;

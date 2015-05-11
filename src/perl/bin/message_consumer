@@ -49,7 +49,8 @@ my $daemon = Daemon::Control->new(
         my $message = $message_handler->_thaw($json);
         my $messages = $message_handler->prepare_messages($message);
 
-        print {*Dumper} $messages;
+        use Data::Dumper;
+        print Dumper $messages;
       };
 
     } else {

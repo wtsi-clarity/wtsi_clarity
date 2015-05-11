@@ -6,6 +6,7 @@ use Carp;
 use URI::Escape;
 use POSIX qw(strftime);
 use wtsi_clarity::mq::messages::flowcell::flowcell;
+use JSON;
 
 with qw/ wtsi_clarity::mq::message_enhancer /;
 
@@ -71,7 +72,7 @@ sub prepare_messages {
   $message{$self->type} = $self->_get_flowcell_message->freeze;
   $message{'lims'}      = $self->config->clarity_mq->{'id_lims'};
 
-  return [\%message];
+  return to_json([\%message]);
 }
 
 sub _get_flowcell_message {

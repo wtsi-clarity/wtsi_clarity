@@ -1,12 +1,9 @@
-package wtsi_clarity::mq::client;
-
-use autodie;
+package wtsi_clarity::mq::client_again;
 
 use Moose;
 use Readonly;
 use Carp;
 use JSON;
-use English qw(-no_match_vars);
 use WTSI::DNAP::RabbitMQ::Client;
 
 with 'wtsi_clarity::util::configurable';
@@ -82,11 +79,10 @@ sub send_message {
 
   ##no critic(Variables::ProhibitPunctuationVars)
   my $channel_name = 'client_channel'. $$;
-  ## use critic
+  ## use critic
   my $client;
 
   $client = WTSI::DNAP::RabbitMQ::Client->new(
-    # blocked_enabled => 1,
     blocking_enabled => 0,
     connect_handler => sub {
       $client->open_channel(name => $channel_name);
@@ -102,13 +98,6 @@ sub send_message {
   );
 
   $client->connect(@credentials);
-  # $client->open_channel(name => $channel_name);
-  # $client->publish( channel     => $channel_name,
-  #                       exchange    => $self->exchange,
-  #                       routing_key => $self->_assemble_routing_key($purpose),
-  #                       body        => $message,
-  #                       mandatory   => 1);
-  # $client->disconnect;
 
   return;
 }

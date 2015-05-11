@@ -6,7 +6,7 @@ use JSON;
 
 use wtsi_clarity::mq::message;
 use wtsi_clarity::mq::mapper;
-use wtsi_clarity::mq::client;
+use wtsi_clarity::mq::client_again;
 
 our $VERSION = '0.0';
 
@@ -18,11 +18,11 @@ has 'mapper' => (
 );
 
 has '_wh_client' => (
-  isa         => 'wtsi_clarity::mq::client',
+  isa         => 'wtsi_clarity::mq::client_again',
   is          => 'ro',
   required    => 0,
   default     => sub {
-    return wtsi_clarity::mq::client->new(message_bus_type => 'warehouse_mq');
+    return wtsi_clarity::mq::client_again->new(message_bus_type => 'warehouse_mq');
   },
 );
 

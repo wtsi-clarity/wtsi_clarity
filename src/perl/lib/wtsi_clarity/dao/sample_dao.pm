@@ -2,6 +2,7 @@ package wtsi_clarity::dao::sample_dao;
 
 use Moose;
 use Readonly;
+use POSIX qw(strftime);
 
 with 'wtsi_clarity::dao::base_dao';
 
@@ -9,7 +10,8 @@ with 'wtsi_clarity::dao::base_dao';
 # and the element's value is the XPATH to get the attribute's value
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Hash  my %ATTRIBUTES  => {  'uuid' => q{/smp:sample/name},
+Readonly::Hash  my %ATTRIBUTES  => {  'id_sample_lims'   => q{/smp:sample/@limsid},
+                                      'uuid_sample_lims' => q{/smp:sample/name},
                                       'name' => q{/smp:sample/name},
                                       'reference_genome' => q{/smp:sample/udf:field[@name='Reference Genome']},
                                       'organism' => q{/smp:sample/udf:field[@name='WTSI Organism']},
@@ -20,12 +22,30 @@ Readonly::Hash  my %ATTRIBUTES  => {  'uuid' => q{/smp:sample/name},
                                       'supplier_name' => q{/smp:sample/udf:field[@name='WTSI Supplier']},
                                       'public_name' => q{/smp:sample/udf:field[@name='WTSI Supplier Sample Name (SM)']},
                                       'donor_id' => q{/smp:sample/udf:field[@name='WTSI Donor ID']},
-                                      'project_limsid' => q{/smp:sample/project/@limsid},
-                                      'bait_library_name' => q{/smp:sample/udf:field[@name='WTSI Bait Library Name']}
                                     };
 ## use critic
 
 our $VERSION = '0.0';
+
+has 'project_limsid' => (
+  is => 'ro',
+  isa => 'Str',
+  lazy => 1,
+  builder => '_build_project_limsid',
+  traits      => [ 'DoNotSerialize' ],
+);
+sub _build_project_limsid {
+  my $self = shift;
+  return $self->findvalue(q{/smp:sample/project/@limsid});
+}
+
+has 'last_updated' => (
+  is => 'ro',
+  isa => 'Str',
+  default => sub {
+    return strftime('%Y-%m-%Od %H:%M:%S', localtime);
+  }
+);
 
 has '+resource_type' => (
   default     => 'samples',

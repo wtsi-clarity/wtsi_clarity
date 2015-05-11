@@ -18,6 +18,7 @@ with 'wtsi_clarity::dao::base_dao';
 Readonly::Hash  my %ATTRIBUTES  => {
   id_flgen_plate_lims => q{/con:container/@limsid},
   plate_barcode_lims  => q{/con:container/name},
+  plate_barcode       => q{/con:container/name},
 };
 
 Readonly::Scalar my $TYPE_URI_PATH => q{/con:container/type/@uri};
@@ -127,8 +128,8 @@ sub _build_well {
 
   # study
   my $study = $self->_get_study($sample->project_limsid);
-  $well{'id_study_lims'} = $study->id;
-  $well{'cost_code'}     = $study->cost_code;
+  $well{'study_id'}  = $study->id;
+  $well{'cost_code'} = $study->cost_code;
 
   return \%well;
 }
