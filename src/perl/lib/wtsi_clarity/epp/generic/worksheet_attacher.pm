@@ -50,6 +50,9 @@ Readonly::Scalar my $RACK_PATH                 => q{WTSI Rack};
 Readonly::Scalar my $nb_col                   => 12;
 Readonly::Scalar my $nb_row                   => 8;
 Readonly::Scalar my $A_CHAR_CODE              => 64;
+Readonly::Scalar my $PLATE_NAME_START_INDEX   => 4;
+Readonly::Scalar my $PLATE_NAME_START_LENGTH  => 6;
+Readonly::Scalar my $EAN13_BARCODE_LENGTH     => 13;
 
 override 'run' => sub {
   my $self= shift;
@@ -544,10 +547,16 @@ sub _get_containers_data {
 
         my $barcode   = $self->find_clarity_element_textContent($in_container, q{name});
         my $type_name = $self->find_elements_first_value($in_container, $CONTAINER_TYPE_NAME);
-        my $name      = $in_container_id;
-        $name =~ s/\-//xms;
 
-        $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{plate_name} } = $name;
+        my $plate_name;
+        if (length $barcode == $EAN13_BARCODE_LENGTH) {
+          $plate_name = substr $barcode, $PLATE_NAME_START_INDEX, $PLATE_NAME_START_LENGTH;
+          $plate_name =~ s/^0*//xms;
+        } else {
+          $plate_name = $barcode;
+        }
+
+        $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{plate_name} } = $plate_name;
         $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{barcode}    } = $barcode;
         $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{type}       } = $type_name;
         $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{freezer}    } = $freezer;
