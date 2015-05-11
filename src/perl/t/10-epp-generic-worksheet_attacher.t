@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 167;
+use Test::More tests => 170;
 use Test::Exception;
 use Test::MockObject::Extends;
 use DateTime;
@@ -551,8 +551,7 @@ my $TEST_DATA4 = {
 
   my $data = $step->_get_containers_data();
 
-  my $input_uri     = q{http://testserver.com:1234/here/containers/27-23};
-  my $input = $data->{'input_container_info'}->{$input_uri}->{'container_details'};
+  my @input_uris     = qw{http://testserver.com:1234/here/containers/27-23 http://testserver.com:1234/here/containers/27-27};
 
   my $container_uri = q{http://testserver.com:1234/here/containers/27-8129};
   my $cont = $data->{'output_container_info'}->{$container_uri}->{'container_details'};
@@ -572,6 +571,11 @@ my $TEST_DATA4 = {
       'exp_id' => "27-27",
       'exp_type' => "ABgene 0800",
     },
+  );
+  my $expected_plate_purpose = q{PLATE_PURPOSE_TEST};
+  my %expected_plate_name = (
+    'http://testserver.com:1234/here/containers/27-23' => '277228',
+    'http://testserver.com:1234/here/containers/27-27' => '273251',
   );
 
   foreach my $datum (@expected_out_data) {
@@ -594,9 +598,12 @@ my $TEST_DATA4 = {
   }
 
   cmp_ok($data->{'output_container_info'}->{$container_uri}->{'wells'}, 'eq', 96, "_get_containers_data(...) should give the correct nb of wells");
-  cmp_ok($data->{'output_container_info'}->{$container_uri}->{'occ_wells'}, 'eq', 73, "_get_containers_data(...) should give the correct nb of wells");
+  cmp_ok($data->{'output_container_info'}->{$container_uri}->{'occ_wells'}, 'eq', 73, "_get_containers_data(...) should give the correct occupied wells");
 
-  cmp_ok($data->{'input_container_info'}->{$input_uri}->{'purpose'}, 'eq', 'PLATE_PURPOSE_23', "_get_containers_data(...) should give the correct nb of wells");
+  foreach my $input_uri (@input_uris) {
+    cmp_ok($data->{'input_container_info'}->{$input_uri}->{'purpose'}, 'eq', $expected_plate_purpose, "_get_containers_data(...) should give the correct plate purpose");
+    cmp_ok($data->{'input_container_info'}->{$input_uri}->{'plate_name'}, 'eq', $expected_plate_name{$input_uri}, "_get_containers_data(...) should give the correct barcode of the plate");
+  }
 }
 
 { # _get_cell_properties

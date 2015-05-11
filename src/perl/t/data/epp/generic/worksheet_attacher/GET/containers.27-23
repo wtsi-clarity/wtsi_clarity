@@ -1,6 +1,6 @@
 <?xml version="1.0" standalone="yes"?>
 <con:container xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container" uri="http://testserver.com:1234/here/containers/27-23" limsid="27-23">
-    <name>eag plate 1</name>
+    <name>5260277228698</name>
     <type uri="http://testserver.com:1234/here/containertypes/1" name="96 Well Plate"/>
     <occupied-wells>95</occupied-wells>
     <placement uri="http://testserver.com:1234/here/artifacts/GIB11A2PA1" limsid="GIB11A2PA1">
@@ -288,7 +288,7 @@
     <placement uri="http://testserver.com:1234/here/artifacts/GIB11A78PA1" limsid="GIB11A78PA1">
         <value>G:6</value>
     </placement>
-    <udf:field type="String" name="WTSI Container Purpose Name">PLATE_PURPOSE_23</udf:field>
+    <udf:field type="String" name="WTSI Container Purpose Name">PLATE_PURPOSE_TEST</udf:field>
     <udf:field type="String" name="WTSI Freezer">0000011</udf:field>
     <udf:field type="String" name="WTSI Shelf">0000012</udf:field>
     <udf:field type="String" name="WTSI Rack">0000013</udf:field>
