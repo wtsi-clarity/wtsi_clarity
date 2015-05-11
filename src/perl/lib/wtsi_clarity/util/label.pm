@@ -110,10 +110,10 @@ sub _format_label {
           'number'  => $sanger_barcode_number
         },
         'label_text' => {
-          'date'                      => $date,
-          'tube_barcode'              => $sanger_barcode_number,
-          'pooling_range'             => $container->{'pooling_range'},
-          'original_plate_signature'  => $container->{'original_plate_signature'}
+          'date'                              => $date,
+          'tube_barcode'                      => $sanger_barcode_number,
+          'tube_signature_and_pooling_range'  => $container->{'tube_signature_and_pooling_range'},
+          'original_plate_signature'          => $container->{'original_plate_signature'}
         },
     }};
   } else {

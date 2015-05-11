@@ -295,7 +295,7 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
   my $input_analyte_dom1 = $l->fetch_and_parse($input_analyte_uri1);
   my $bait_library_name = '14M_haemv1';
 
-  my $expected_pool_range = 'A5:H6';
+  my $expected_pool_range = 'A5H6';
   is( $l->_pooling_range($input_analyte_dom1, $bait_library_name), $expected_pool_range,
       'Returns the correct pool range.');
 }

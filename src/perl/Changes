@@ -1,5 +1,11 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.90
+ - Added tube signature to tube label
+ - Fixed total microgram calculation in QC report
+ - In the 'Cherrypick Worksheet and Barcode' step the generated worksheet is using 
+ the middle part of the barcode as the plate name in the source plate table
+
 Release 0.89
  - Changed the tube layout. We have the following info on the tube label: 
    - ean13 barcode (vertical)
