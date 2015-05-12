@@ -75,8 +75,7 @@ sub prepare_messages {
   my $self = shift;
 
   my %message = ();
-  $message{$self->type} = $self->_get_flowcell_message->pack();
-  delete $message{$self->type}->{'__CLASS__'};
+  $message{$self->type} = $self->_get_flowcell_message();
   $message{'lims'}      = $self->config->clarity_mq->{'id_lims'};
 
   return [\%message];
@@ -94,7 +93,7 @@ sub _get_flowcell_message {
     updated_at          => strftime('%Y-%m-%Od %H:%M:%S', localtime),
   );
 
-  return $flowcell;
+  return $flowcell->pack();
 }
 
 my @defaults = (is => 'ro', isa => 'Str');
@@ -191,11 +190,8 @@ sub _build_lane {
   $lane{'position'}       = $self->_extract_lane_position($well);
   $lane{'id_pool_lims'}   = $artifact->findvalue($ARTIFACT_NAME_PATH);
   $lane{'entity_id_lims'} = $artifact->findvalue($ARTIFACT_LIMSID_PATH);
-
-  # $lane{'entity_type'} = $LANE_ENTITY_TYPE;
-
-  $lane{'samples'} = $self->_build_samples($artifact);
-  $lane{'controls'} = $self->_build_controls();
+  $lane{'samples'}        = $self->_build_samples($artifact);
+  $lane{'controls'}       = $self->_build_controls();
 
   return \%lane;
 }

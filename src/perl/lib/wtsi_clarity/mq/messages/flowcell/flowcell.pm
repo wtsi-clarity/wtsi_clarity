@@ -12,6 +12,8 @@ with Storage( 'traits' => ['OnlyWhenBuilt'],
               'format' => 'JSON',
               'io' => 'File' );
 
+with 'wtsi_clarity::mq::messages::packer';
+
 subtype 'WtsiClarityMessageFlowcellLanes'
       => as 'ArrayRef[wtsi_clarity::mq::messages::flowcell::lane]';
 
