@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<lot:reagent-lot xmlns:lot="http://genologics.com/ri/reagentlot" limsid="124-289" uri="http://testserver.com:1234/here/reagentlots/124-289">
+    <reagent-kit uri="http://testserver.com:1234/here/reagentkits/231" name="Sodium Hydroxide 2M"/>
+    <name>APR2015</name>
+    <lot-number>1372799</lot-number>
+    <created-date>2015-04-13</created-date>
+    <last-modified-date>2015-04-13</last-modified-date>
+    <expiry-date>2017-04-08</expiry-date>
+    <created-by uri="http://testserver.com:1234/here/researchers/56"/>
+    <last-modified-by uri="http://testserver.com:1234/here/researchers/56"/>
+    <status>ACTIVE</status>
+    <usage-count>20</usage-count>
+</lot:reagent-lot>

@@ -56,7 +56,7 @@ has 'last_updated' => (
   isa => 'Str',
   default => sub {
     return strftime('%Y-%m-%Od %H:%M:%S', localtime);
-  }
+  },
 );
 
 has 'study_user_ids' => (

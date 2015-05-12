@@ -23,6 +23,9 @@ Readonly::Hash  my %ATTRIBUTES  => {  'id_sample_lims'   => q{/smp:sample/@limsi
                                       'public_name' => q{/smp:sample/udf:field[@name='WTSI Supplier Sample Name (SM)']},
                                       'donor_id' => q{/smp:sample/udf:field[@name='WTSI Donor ID']},
                                     };
+
+Readonly::Scalar my $PROJECT_LIMSID => q{/smp:sample/project/@limsid};
+Readonly::Scalar my $BAIT_LIBRARY_PATH => q{/smp:sample/udf:field[@name='WTSI Bait Library Name']};
 ## use critic
 
 our $VERSION = '0.0';
@@ -36,7 +39,19 @@ has 'project_limsid' => (
 );
 sub _build_project_limsid {
   my $self = shift;
-  return $self->findvalue(q{/smp:sample/project/@limsid});
+  return $self->findvalue($PROJECT_LIMSID);
+}
+
+has 'bait_library_name' => (
+  is => 'ro',
+  isa => 'Str',
+  lazy => 1,
+  builder => '_build_bait_library_name',
+  traits  => ['DoNotSerialize'],
+);
+sub _build_bait_library_name {
+  my $self = shift;
+  return $self->findvalue($BAIT_LIBRARY_PATH);
 }
 
 has 'last_updated' => (
@@ -44,7 +59,7 @@ has 'last_updated' => (
   isa => 'Str',
   default => sub {
     return strftime('%Y-%m-%Od %H:%M:%S', localtime);
-  }
+  },
 );
 
 has '+resource_type' => (

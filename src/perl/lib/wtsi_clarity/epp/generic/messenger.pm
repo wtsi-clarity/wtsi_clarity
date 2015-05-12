@@ -3,7 +3,7 @@ package wtsi_clarity::epp::generic::messenger;
 use Moose;
 use DateTime;
 
-use wtsi_clarity::mq::client;
+use wtsi_clarity::mq::local_client;
 use wtsi_clarity::mq::message;
 
 extends 'wtsi_clarity::epp';
@@ -12,14 +12,14 @@ our $VERSION = '0.0';
 
 has '_client' => (
   is => 'ro',
-  isa => 'wtsi_clarity::mq::client',
+  isa => 'wtsi_clarity::mq::local_client',
   lazy => 1,
   builder => '_build__client',
 );
 
 sub _build__client {
   my $self = shift;
-  return wtsi_clarity::mq::client->new( blocking_enabled => 1 );
+  return wtsi_clarity::mq::local_client->new();
 }
 
 has 'step_url' => (
@@ -113,7 +113,7 @@ wtsi_clarity::epp::generic::messenger
 
 =item DateTime
 
-=item wtsi_clarity::mq::client
+=item wtsi_clarity::mq::local_client
 
 =item wtsi_clarity::mq::message
 

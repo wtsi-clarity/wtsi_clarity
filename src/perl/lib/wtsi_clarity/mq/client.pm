@@ -1,13 +1,7 @@
 package wtsi_clarity::mq::client;
 
-use autodie;
-
 use Moose;
 use Readonly;
-use Carp;
-use JSON;
-use English qw(-no_match_vars);
-use WTSI::DNAP::RabbitMQ::Client;
 
 with 'wtsi_clarity::util::configurable';
 
@@ -20,7 +14,8 @@ has 'message_bus_type'  => (
   isa             => 'Str',
   is              => 'ro',
   required        => 0,
-  default         => 'clarity_mq',
+  lazy            => 1,
+  builder         => '_build_message_bus_type',
 );
 
 has 'host'      => (
@@ -58,11 +53,11 @@ foreach my $attr ( qw/env password username vhost exchange routing_key/) {
     };
 }
 
-has '_mq_config'      => (
-  isa             => 'HashRef',
-  is              => 'ro',
-  required        => 0,
-  lazy_build      => 1,
+has '_mq_config' => (
+  isa        => 'HashRef',
+  is         => 'ro',
+  required   => 0,
+  lazy_build => 1,
 );
 sub _build__mq_config {
   my $self = shift;
@@ -70,50 +65,7 @@ sub _build__mq_config {
   return $self->config->$mb_type;
 }
 
-sub send_message {
-  my ($self, $message, $purpose) = @_;
-
-  my @credentials = ( host  => $self->host,
-                      port  => $self->port,
-                      vhost => $self->vhost,
-                      user  => $self->username,
-                      pass  => $self->password,);
-                      # cond  => $cv);
-
-  ##no critic(Variables::ProhibitPunctuationVars)
-  my $channel_name = 'client_channel'. $$;
-  ## use critic
-  my $client;
-
-  $client = WTSI::DNAP::RabbitMQ::Client->new(
-    # blocked_enabled => 1,
-    blocking_enabled => 0,
-    connect_handler => sub {
-      $client->open_channel(name => $channel_name);
-    },
-    open_channel_handler => sub {
-      $client->publish( channel     => $channel_name,
-                        exchange    => $self->exchange,
-                        routing_key => $self->_assemble_routing_key($purpose),
-                        body        => $message,
-                        mandatory   => 1);
-      $client->disconnect;
-    }
-  );
-
-  $client->connect(@credentials);
-  # $client->open_channel(name => $channel_name);
-  # $client->publish( channel     => $channel_name,
-  #                       exchange    => $self->exchange,
-  #                       routing_key => $self->_assemble_routing_key($purpose),
-  #                       body        => $message,
-  #                       mandatory   => 1);
-  # $client->disconnect;
-
-  return;
-}
-
-sub _assemble_routing_key {
+sub assemble_routing_key {
   my ($self, $purpose) = @_;
 
   my $routing_key;
@@ -142,9 +94,9 @@ wtsi_clarity::mq::client
 
 =head1 SUBROUTINES/METHODS
 
-=head2 send_message
+=head2 assemble_routing_key
 
-  $client->send_message("Some message", "purpose");
+  Will determine the correct routing key for the type of message being sent
 
 =head2 host
 
@@ -174,12 +126,6 @@ wtsi_clarity::mq::client
 =item Moose
 
 =item Readonly
-
-=item Carp
-
-=item JSON
-
-=item WTSI::DNAP::RabbitMQ::Client
 
 =back
 

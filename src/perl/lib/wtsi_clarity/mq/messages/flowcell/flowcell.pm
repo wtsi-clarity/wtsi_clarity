@@ -32,7 +32,7 @@ has ['flowcell_barcode',
 has ['forward_read_length',
      'reverse_read_length',]
      => @defaults,
-     isa => 'Int';
+     isa => 'Str', required => 0;
 
 has 'lanes' => @defaults, isa => 'WtsiClarityMessageFlowcellLanes', coerce => 1;
 

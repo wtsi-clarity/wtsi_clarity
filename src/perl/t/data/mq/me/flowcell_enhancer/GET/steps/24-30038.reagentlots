@@ -1,0 +1,6 @@
+<?xml version="1.0" standalone="yes"?>
+<stp:lots xmlns:stp="http://genologics.com/ri/step" uri="http://testserver.com:1234/here/steps/24-30038/reagentlots">
+    <step uri="http://testserver.com:1234/here/steps/24-30038" rel="steps"/>
+    <configuration uri="http://testserver.com:1234/here/configuration/protocols/105/steps/602">Cluster Generation</configuration>
+    <reagent-lots/>
+</stp:lots>

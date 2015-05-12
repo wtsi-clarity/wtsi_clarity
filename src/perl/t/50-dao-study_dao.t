@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 27;
+use Test::More tests => 25;
 use Test::Exception;
 use JSON;
 
@@ -56,8 +56,8 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
   my $expected_study_user_ids = [21];
   is_deeply($study_dao->study_user_ids, $expected_study_user_ids, 'Returns the correct id of the user of the study');
 
-  my $study_user_json = JSON->new->utf8->encode([ {name => "John Smith", email => "js123\@test.com", login => "js123"} ]);
-  is($study_dao->manager, $study_user_json, 'Returns the correct user of the study');
+  my $study_user = [ {name => "John Smith", email => "js123\@test.com", login => "js123"} ];
+  is_deeply($study_dao->manager, $study_user, 'Returns the correct user of the study');
 }
 
 {
@@ -65,10 +65,6 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
   my $study_dao = wtsi_clarity::dao::study_dao->new( lims_id => $lims_id);
   my $study_json;
   lives_ok { $study_json = $study_dao->to_message } 'can serialize study object';
-
-  like($study_json, qr/$lims_id/, 'Lims id serialised correctly');
-  lives_ok { wtsi_clarity::dao::study_dao->thaw($study_json) }
-    'can read json string back';
 }
 
 1;

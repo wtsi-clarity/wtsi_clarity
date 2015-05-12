@@ -11,6 +11,7 @@ our $VERSION = '0.0';
 with Storage( 'traits' => ['OnlyWhenBuilt'],
               'format' => 'JSON',
               'io' => 'File' );
+with 'wtsi_clarity::mq::messages::packer';
 
 subtype 'WtsiClarityMessageFlowcellSamples'
       => as 'ArrayRef[wtsi_clarity::mq::messages::flowcell::sample]';
@@ -34,13 +35,13 @@ coerce 'WtsiClarityMessageFlowcellControls',
 
 my @defaults = ( is => 'ro', isa => 'Str', required => 1 );
 
-has ['entity_type', 'id_pool_lims'] => @defaults;
+has ['id_pool_lims', 'entity_id_lims'] => @defaults;
 
 has 'position' => @defaults, isa => 'Int';
 
 has 'samples' => @defaults, isa => 'WtsiClarityMessageFlowcellSamples', coerce => 1;
 
-has 'controls' => @defaults, isa => 'WtsiClarityMessageFlowcellControls', coerce   => 1;
+has 'controls' => @defaults, isa => 'WtsiClarityMessageFlowcellControls', coerce => 1;
 
 1;
 
@@ -106,6 +107,8 @@ wtsi_clarity::mq::messages::flowcell::lane
 =item Moose
 
 =item MooseX::Storage
+
+=item wtsi_clarity::mq::messages::packer
 
 =item Moose::Util::TypeConstraints
 
