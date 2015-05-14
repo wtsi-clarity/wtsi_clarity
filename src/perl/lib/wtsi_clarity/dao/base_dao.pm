@@ -101,6 +101,13 @@ sub to_message {
   $self->init;
   my $message = $self->pack();
   delete $message->{'__CLASS__'};
+
+  foreach my $key (keys %{$message}) {
+    if ($message->{$key} eq q{}) {
+      delete $message->{$key};
+    }
+  }
+
   return $message;
 }
 
