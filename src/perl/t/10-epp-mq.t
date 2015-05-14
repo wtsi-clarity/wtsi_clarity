@@ -7,7 +7,7 @@ use Test::MockObject::Extends;
 
 use_ok('wtsi_clarity::mq::message');
 use_ok('wtsi_clarity::epp::generic::messenger');
-use_ok('wtsi_clarity::mq::client');
+use_ok('wtsi_clarity::mq::local_client');
 
 {
   my $m;
@@ -87,7 +87,7 @@ use_ok('wtsi_clarity::mq::client');
 }
 
 {
-  my $client = wtsi_clarity::mq::client->new();
+  my $client = wtsi_clarity::mq::local_client->new();
   my $mocked_client = Test::MockObject::Extends->new($client);
   $mocked_client->set_true('send_message');
 

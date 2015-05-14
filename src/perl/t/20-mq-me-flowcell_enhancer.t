@@ -12,22 +12,22 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/mq/me/flowcell_enhancer';
 
   my $me = wtsi_clarity::mq::me::flowcell_enhancer->new(
-    process_url => 'http://testserver.com:1234/processes/24-30038',
-    step_url    => 'http://testserver.com:1234/steps/24-30038',
+    process_url => 'http://testserver.com:1234/here/processes/24-41132',
+    step_url    => 'http://testserver.com:1234/here/steps/24-41132',
     timestamp   => '123456789',
   );
 
-  is($me->_flowcell_barcode, '12345678903', 'Extracts the Flowcell barcode correctly');
-  is($me->_spiked_hyb_barcode, '999999999999', 'Extracts the Spiked Hyb barcode correctly');
-  is($me->_flowcell_id, '27-5829', 'Extracts the flowcell id correctly');
+  is($me->_flowcell_barcode, 'HFC2HADXX', 'Extracts the Flowcell barcode correctly');
+  is($me->_spiked_hyb_barcode, '3980622307787', 'Extracts the Spiked Hyb barcode correctly');
+  is($me->_flowcell_id, '27-7093', 'Extracts the flowcell id correctly');
 
   lives_ok { $me->prepare_messages } 'Prepares those messages just fine';
 }
 
 {
   my $me = wtsi_clarity::mq::me::flowcell_enhancer->new(
-    process_url => 'http://testserver.com:1234/processes/24-30038',
-    step_url    => 'http://testserver.com:1234/steps/24-30038',
+    process_url => 'http://testserver.com:1234/here/processes/24-41132',
+    step_url    => 'http://testserver.com:1234/here/steps/24-41132',
     timestamp   => '123456789',
   );
 

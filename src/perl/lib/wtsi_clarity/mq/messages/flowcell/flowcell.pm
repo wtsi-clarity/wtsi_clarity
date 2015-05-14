@@ -12,6 +12,8 @@ with Storage( 'traits' => ['OnlyWhenBuilt'],
               'format' => 'JSON',
               'io' => 'File' );
 
+with 'wtsi_clarity::mq::messages::packer';
+
 subtype 'WtsiClarityMessageFlowcellLanes'
       => as 'ArrayRef[wtsi_clarity::mq::messages::flowcell::lane]';
 
@@ -32,7 +34,7 @@ has ['flowcell_barcode',
 has ['forward_read_length',
      'reverse_read_length',]
      => @defaults,
-     isa => 'Int';
+     isa => 'Str', required => 0;
 
 has 'lanes' => @defaults, isa => 'WtsiClarityMessageFlowcellLanes', coerce => 1;
 

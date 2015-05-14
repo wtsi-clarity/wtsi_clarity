@@ -8,6 +8,7 @@ our $VERSION = '0.0';
 with Storage( 'traits' => ['OnlyWhenBuilt'],
               'format' => 'JSON',
               'io' => 'File' );
+with 'wtsi_clarity::mq::messages::packer';
 
 my @defaults = ( is => 'ro', isa => 'Str', required => 1 );
 
@@ -17,7 +18,7 @@ has [
      'entity_type',
      'sample_uuid',
      'study_uuid',
-     'entity_id_lims',
+     'id_library_lims',
     ] => @defaults;
 
 has 'tag_index' => @defaults, isa => 'Int';
@@ -64,6 +65,8 @@ wtsi_clarity::mq::messages::flowcell::control
 =item Moose
 
 =item MooseX::Storage;
+
+=item wtsi_clarity::mq::messages::packer
 
 =back
 

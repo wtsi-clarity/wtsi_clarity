@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 13;
+use Test::More tests => 11;
 use Test::Exception;
 
 use_ok('wtsi_clarity::dao::study_user_dao');
@@ -46,10 +46,6 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
   my $study_user_dao = wtsi_clarity::dao::study_user_dao->new( lims_id => $lims_id);
   my $study_user_json;
   lives_ok { $study_user_json = $study_user_dao->to_message } 'can serialize study_user object';
-
-  like($study_user_json, qr/$lims_id/, 'Lims id serialised correctly');
-  lives_ok { wtsi_clarity::dao::study_user_dao->thaw($study_user_json) }
-    'can read json string back';
 }
 
 1;

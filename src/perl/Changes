@@ -1,5 +1,11 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 0.91
+ - Changed Fluidigm well format for Warehouse
+ - This release contains many changes that were necessary once we 
+ started getting real data to the Warehouse. There was a lot of back and forth with NPG.
+ - The message clients have also been split into two as it was clearer and hopefully less error prone.
+
 Release 0.90
  - Added tube signature to tube label
  - Fixed total microgram calculation in QC report
