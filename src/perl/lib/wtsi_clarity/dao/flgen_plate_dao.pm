@@ -25,6 +25,9 @@ Readonly::Scalar my $TYPE_URI_PATH => q{/con:container/type/@uri};
 Readonly::Scalar my $ARTIFACT_PATH      => q{/con:container/placement/@limsid};
 Readonly::Scalar my $ARTIFACT_LOCATION  => q{/art:artifact/location/value};
 Readonly::Scalar my $SAMPLE_LIMSID_PATH => q{/art:artifact/sample/@limsid};
+
+Readonly::Scalar my $LITTLE_PLATE       => 96;
+Readonly::Scalar my $BIG_PLATE          => 192;
 ## use critic
 
 our $VERSION = '0.0';
@@ -94,7 +97,15 @@ sub flgen_well_position {
     croak "Invalid row address '$letter' for $nb_rows:$nb_cols layout";
   }
 
-  return 'S' . sprintf "%03d", ($number-1)*$nb_rows + $letter_as_number;
+  my %well_formats = (
+    $LITTLE_PLATE => "%02d",
+    $BIG_PLATE    => "%03d",
+  );
+
+  my $format = $well_formats{$self->plate_size}
+                or croak "Unknown well format for " . $self->plate_size . " size plate";
+
+  return 'S' . sprintf $format, ($number-1)*$nb_rows + $letter_as_number;
 }
 
 has 'wells' => (
