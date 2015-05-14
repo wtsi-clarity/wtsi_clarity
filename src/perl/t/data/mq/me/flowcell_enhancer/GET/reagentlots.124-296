@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<lot:reagent-lot xmlns:lot="http://genologics.com/ri/reagentlot" limsid="124-296" uri="http://testserver.com:1234/here/reagentlots/124-296">
+    <reagent-kit uri="http://testserver.com:1234/here/reagentkits/306" name="HiPerSolv"/>
+    <name>Apr2015</name>
+    <lot-number>15A160500</lot-number>
+    <created-date>2015-04-16</created-date>
+    <last-modified-date>2015-04-16</last-modified-date>
+    <expiry-date>2016-12-31</expiry-date>
+    <created-by uri="http://testserver.com:1234/here/researchers/56"/>
+    <last-modified-by uri="http://testserver.com:1234/here/researchers/56"/>
+    <notes>Stored At Room Temperature</notes>
+    <status>ACTIVE</status>
+    <usage-count>20</usage-count>
+</lot:reagent-lot>

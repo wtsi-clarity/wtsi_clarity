@@ -15,6 +15,7 @@ use_ok 'wtsi_clarity::mq::messages::flowcell::flowcell';
     lanes               => [{
       entity_type  => 'library',
       id_pool_lims => 'DN324095D A1:H2',
+      entity_id_lims             => '29-098',
       position     => 1,
       samples      => [{
         tag_sequence               => 'ATAG',
@@ -31,6 +32,7 @@ use_ok 'wtsi_clarity::mq::messages::flowcell::flowcell';
         tag_index                  => 3,
         requested_insert_size_from => 100,
         requested_insert_size_to   => 200,
+        id_library_lims            => '1234567890',
       }],
       controls    => [{
         sample_uuid                => '00000000-0000-0000-00000003',
@@ -41,10 +43,11 @@ use_ok 'wtsi_clarity::mq::messages::flowcell::flowcell';
         tag_set_id_lims            => '2',
         entity_id_lims             => '12345',
         tag_set_name               => 'Sanger_168tags - 10 mer tags',
+        id_library_lims            => '1234567890',
       }],
     }],
   );
 
   my $json;
-  lives_ok { $json = $flowcell->freeze() } 'Can create a JSON string from the class' ;
+  lives_ok { $json = $flowcell->pack() } 'Can create an object from the class' ;
 }

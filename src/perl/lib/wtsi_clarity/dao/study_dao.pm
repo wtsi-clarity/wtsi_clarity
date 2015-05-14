@@ -3,6 +3,7 @@ package wtsi_clarity::dao::study_dao;
 use Moose;
 use Readonly;
 use JSON;
+use POSIX qw(strftime);
 
 use wtsi_clarity::dao::study_user_dao;
 
@@ -18,7 +19,9 @@ Readonly::Scalar my $COST_CODE_PATH           => q{/prj:project/udf:field[@name=
 # In the ATTRIBUTES hash: an element's key is the attribute name
 # and the element's value is the XPATH to get the attribute's value
 
-Readonly::Hash  my %ATTRIBUTES => { 'name'                        => q{/prj:project/name},
+Readonly::Hash  my %ATTRIBUTES => {
+                                    'id_study_lims'               => q{/prj:project/@limsid},
+                                    'name'                        => q{/prj:project/name},
                                     'reference_genome'            => q{/prj:project/udf:field[@name='WTSI Study reference genome']},
                                     'state'                       => q{/prj:project/udf:field[@name='WTSI Project State']},
                                     'study_type'                  => q{/prj:project/udf:field[@name='WTSI Type']},
@@ -48,6 +51,14 @@ has '+attributes' => (
   default     => sub { return \%ATTRIBUTES; },
 );
 
+has 'last_updated' => (
+  is => 'ro',
+  isa => 'Str',
+  default => sub {
+    return strftime('%Y-%m-%Od %H:%M:%S', localtime);
+  },
+);
+
 has 'study_user_ids' => (
   traits      => [ 'DoNotSerialize' ],
   isa         => 'ArrayRef[Str]',
@@ -67,7 +78,7 @@ sub _build_study_user_ids {
 }
 
 has 'manager' => (
-  isa         => 'Str',
+  isa         => 'ArrayRef',
   is          => 'rw',
   required    => 0,
   lazy_build  => 1,
@@ -75,7 +86,7 @@ has 'manager' => (
 sub _build_manager {
   my $self = shift;
   my @users = map { $self->get_user_message($_) } @{$self->study_user_ids};
-  return to_json(\@users);
+  return \@users;
 }
 
 has 'cost_code' => (

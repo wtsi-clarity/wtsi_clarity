@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/2-251677?state=124961" limsid="2-251677">
+    <name>940e28a2-bcd6-11e4-b42e-68b59977951e_Lib PCR</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://testserver.com:1234/here/processes/24-30476" limsid="24-30476"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-6069" limsid="27-6069"/>
+        <value>G:3</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A287" limsid="SV2454A287"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 23 (TGCATAGT)"/>
+    <workflow-stages>
+        <workflow-stage status="COMPLETE" name="Library PCR" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/368"/>
+        <workflow-stage status="COMPLETE" name="Lib PCR Purification" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/369"/>
+    </workflow-stages>
+</art:artifact>

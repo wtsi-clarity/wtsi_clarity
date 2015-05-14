@@ -18,12 +18,16 @@ with 'wtsi_clarity::dao::base_dao';
 Readonly::Hash  my %ATTRIBUTES  => {
   id_flgen_plate_lims => q{/con:container/@limsid},
   plate_barcode_lims  => q{/con:container/name},
+  plate_barcode       => q{/con:container/name},
 };
 
 Readonly::Scalar my $TYPE_URI_PATH => q{/con:container/type/@uri};
 Readonly::Scalar my $ARTIFACT_PATH      => q{/con:container/placement/@limsid};
 Readonly::Scalar my $ARTIFACT_LOCATION  => q{/art:artifact/location/value};
 Readonly::Scalar my $SAMPLE_LIMSID_PATH => q{/art:artifact/sample/@limsid};
+
+Readonly::Scalar my $LITTLE_PLATE       => 96;
+Readonly::Scalar my $BIG_PLATE          => 192;
 ## use critic
 
 our $VERSION = '0.0';
@@ -93,7 +97,15 @@ sub flgen_well_position {
     croak "Invalid row address '$letter' for $nb_rows:$nb_cols layout";
   }
 
-  return 'S' . sprintf "%03d", ($number-1)*$nb_rows + $letter_as_number;
+  my %well_formats = (
+    $LITTLE_PLATE => "%02d",
+    $BIG_PLATE    => "%03d",
+  );
+
+  my $format = $well_formats{$self->plate_size}
+                or croak "Unknown well format for " . $self->plate_size . " size plate";
+
+  return 'S' . sprintf $format, ($number-1)*$nb_rows + $letter_as_number;
 }
 
 has 'wells' => (
@@ -127,8 +139,8 @@ sub _build_well {
 
   # study
   my $study = $self->_get_study($sample->project_limsid);
-  $well{'id_study_lims'} = $study->id;
-  $well{'cost_code'}     = $study->cost_code;
+  $well{'study_id'}  = $study->id;
+  $well{'cost_code'} = $study->cost_code;
 
   return \%well;
 }

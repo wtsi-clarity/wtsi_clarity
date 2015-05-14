@@ -1,0 +1,47 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/2-289193?state=145089" limsid="2-289193">
+    <name>Pool #2</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://testserver.com:1234/here/processes/24-41132" limsid="24-41132"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-7093" limsid="27-7093"/>
+        <value>2:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A159" limsid="SV2454A159"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A165" limsid="SV2454A165"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A169" limsid="SV2454A169"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A170" limsid="SV2454A170"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A177" limsid="SV2454A177"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A186" limsid="SV2454A186"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A324" limsid="SV2454A324"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A316" limsid="SV2454A316"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A320" limsid="SV2454A320"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A297" limsid="SV2454A297"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A287" limsid="SV2454A287"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A291" limsid="SV2454A291"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A301" limsid="SV2454A301"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A300" limsid="SV2454A300"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A302" limsid="SV2454A302"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 19 (TCTGCTGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 20 (TTGGAGGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 17 (TGTACCTT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 18 (TTCTGTGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 28 (TACAGGAT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 27 (TAGTGACT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 26 (TTCCTGCT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 24 (TTGACTCT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 23 (TGCATAGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 22 (TGATACGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 21 (TCGAGCGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 32 (TTCCATTG)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 31 (TAGTCTTG)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 30 (TGTGGTTG)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 29 (TCCTCAAT)"/>
+    <workflow-stages>
+        <workflow-stage status="COMPLETE" name="Illumina Sequencing" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/854"/>
+        <workflow-stage status="QUEUED" name="Sequencing Data Manual QC (NPG)" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/390"/>
+    </workflow-stages>
+</art:artifact>

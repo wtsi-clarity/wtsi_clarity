@@ -1,0 +1,43 @@
+<?xml version="1.0" standalone="yes"?>
+<prj:project xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:prj="http://genologics.com/ri/project" uri="http://testserver.com:1234/here/projects/SV2454" limsid="SV2454">
+    <name>14M_GCLP SysVal</name>
+    <open-date>2015-02-17</open-date>
+    <researcher uri="http://testserver.com:1234/here/researchers/358"/>
+    <udf:type name="WTSI Delayed data release">
+        <udf:field type="Boolean" name="Delay approved">true</udf:field>
+        <udf:field type="String" name="Length of delay">Never</udf:field>
+        <udf:field type="String" name="Reason for delay">I want to</udf:field>
+    </udf:type>
+    <udf:field type="String" name="WTSI ECAP Tracking Number">222</udf:field>
+    <udf:field type="Text" name="WTSI Project Description">14M_GCLP SysVal</udf:field>
+    <udf:field type="Text" name="WTSI Project Abstract">Project for Plate 2 of the GCLP System Validation</udf:field>
+    <udf:field type="String" name="WTSI Type">Exome Sequencing</udf:field>
+    <udf:field type="String" name="WTSI Project Abbreviation">SV2</udf:field>
+    <udf:field type="Numeric" name="WTSI Project ID">454</udf:field>
+    <udf:field type="String" name="WTSI Project Cost Code">S4019</udf:field>
+    <udf:field type="String" name="WTSI Project Funding Model">internal</udf:field>
+    <udf:field type="String" name="WTSI Project State">active</udf:field>
+    <udf:field type="String" name="WTSI Project Approved">true</udf:field>
+    <udf:field type="String" name="WTSI Release Strategy">Managed</udf:field>
+    <udf:field type="Boolean" name="WTSI standard access agreement to be used?">true</udf:field>
+    <udf:field type="String" name="WTSI Data release timing">Never</udf:field>
+    <udf:field type="URI" name="WTSI Data Access Agreement">222</udf:field>
+    <udf:field type="String" name="WTSI Data Access Contact (DAC)">None</udf:field>
+    <udf:field type="String" name="WTSI Study Title for Publishing">14M_GCLP SysVal</udf:field>
+    <udf:field type="String" name="WTSI Data Access Group">SV2</udf:field>
+    <udf:field type="String" name="WTSI Study reference genome">Homo_sapiens (1000Genomes_hs37d5)</udf:field>
+    <udf:field type="Boolean" name="WTSI Do samples contain Human DNA?">true</udf:field>
+    <udf:field type="Boolean" name="WTSI Contaminated with Human DNA that needs removal?">false</udf:field>
+    <udf:field type="Boolean" name="WTSI Does the study require the removal of X-chromosome and autosome sequence?">false</udf:field>
+    <udf:field type="Boolean" name="WTSI Does the study require the removal of Y-chromosome and autosome sequence?">false</udf:field>
+    <udf:field type="String" name="WTSI Library Construction Protocol">ISC Standard</udf:field>
+    <udf:field type="String" name="WTSI Estimated number of lanes">12</udf:field>
+    <udf:field type="String" name="WTSI Instrument Model">Illumina HiSeq Rapid</udf:field>
+    <udf:field type="String" name="WTSI Run Length">75 PE</udf:field>
+    <udf:field type="String" name="WTSI Accession Number">222</udf:field>
+    <udf:field type="String" name="WTSI Bait">Human Exome v5</udf:field>
+    <file:file limsid="SV2454-40-1457" uri="http://testserver.com:1234/here/files/SV2454-40-1457"/>
+    <file:file limsid="SV2454-40-1458" uri="http://testserver.com:1234/here/files/SV2454-40-1458"/>
+    <file:file limsid="SV2454-40-1459" uri="http://testserver.com:1234/here/files/SV2454-40-1459"/>
+    <file:file limsid="SV2454-40-1460" uri="http://testserver.com:1234/here/files/SV2454-40-1460"/>
+</prj:project>
