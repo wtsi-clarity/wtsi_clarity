@@ -1,14 +1,15 @@
 use strict;
 use warnings;
-use Test::More tests => 17;
+use Test::More tests => 18;
 
-use_ok('wtsi_clarity::mq::client');
+use_ok('wtsi_clarity::mq::local_client');
+use_ok('wtsi_clarity::mq::warehouse_client');
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 
 { # Tests for clarity mq client settings
-  my $client = wtsi_clarity::mq::client->new();
-  isa_ok( $client, 'wtsi_clarity::mq::client');
+  my $client = wtsi_clarity::mq::local_client->new();
+  isa_ok( $client, 'wtsi_clarity::mq::local_client');
   is( $client->port, 5672, 'default port');
   is( $client->host, 'localhost', 'localhost');
   is( $client->username, 'guest', 'username from config file');
@@ -16,8 +17,8 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 }
 
 { # Tests for warehouse mq client settings
-  my $client = wtsi_clarity::mq::client->new(message_bus_type => 'warehouse_mq');
-  isa_ok( $client, 'wtsi_clarity::mq::client');
+  my $client = wtsi_clarity::mq::warehouse_client->new();
+  isa_ok( $client, 'wtsi_clarity::mq::warehouse_client');
   is( $client->env, 'devel', 'Gets the correct environment value from the config file.');
   is( $client->port, 1234, 'Gets the correct port from the config file.');
   is( $client->host, 'host1', 'Gets the correct host from the config file.');
@@ -29,17 +30,17 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 }
 
 { # Tests for generating the routing key
-  my $client = wtsi_clarity::mq::client->new();
+  my $client = wtsi_clarity::mq::local_client->new();
 
   use wtsi_clarity::util::config;
   my $config = wtsi_clarity::util::config->new();
   my $expected_routing_key = $config->clarity_mq->{'routing_key'};
-  is($client->_assemble_routing_key, $expected_routing_key, 'Got back the correct routing key for clarity mq.');
+  is($client->assemble_routing_key, $expected_routing_key, 'Got back the correct routing key for clarity mq.');
 
-  my $client_wh = wtsi_clarity::mq::client->new(message_bus_type => 'warehouse_mq');
+  my $client_wh = wtsi_clarity::mq::warehouse_client->new();
   my $purpose = 'sample';
   my $expected_routing_key_wh = $config->warehouse_mq->{'env'} . q{.} . $config->warehouse_mq->{'routing_key'} . q{.} . $purpose;
-  is($client_wh->_assemble_routing_key($purpose), $expected_routing_key_wh, 'Got back the correct routing key for warehouse mq.');
+  is($client_wh->assemble_routing_key($purpose), $expected_routing_key_wh, 'Got back the correct routing key for warehouse mq.');
 }
 
 1;

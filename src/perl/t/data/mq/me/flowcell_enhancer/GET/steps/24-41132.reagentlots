@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="yes"?>
+<stp:lots xmlns:stp="http://genologics.com/ri/step" uri="http://testserver.com:1234/here/steps/24-41132/reagentlots">
+    <step uri="http://testserver.com:1234/here/steps/24-41132" rel="steps"/>
+    <configuration uri="http://testserver.com:1234/here/configuration/protocols/105/steps/602">Cluster Generation</configuration>
+    <reagent-lots>
+        <reagent-lot limsid="124-289" uri="http://testserver.com:1234/here/reagentlots/124-289"/>
+        <reagent-lot limsid="124-296" uri="http://testserver.com:1234/here/reagentlots/124-296"/>
+        <reagent-lot limsid="124-288" uri="http://testserver.com:1234/here/reagentlots/124-288"/>
+        <reagent-lot limsid="124-264" uri="http://testserver.com:1234/here/reagentlots/124-264"/>
+        <reagent-lot limsid="124-290" uri="http://testserver.com:1234/here/reagentlots/124-290"/>
+    </reagent-lots>
+</stp:lots>

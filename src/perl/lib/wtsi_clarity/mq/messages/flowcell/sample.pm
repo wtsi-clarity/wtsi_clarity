@@ -9,6 +9,8 @@ with Storage( 'traits' => ['OnlyWhenBuilt'],
               'format' => 'JSON',
               'io' => 'File' );
 
+with 'wtsi_clarity::mq::messages::packer';
+
 my @defaults = ( is => 'ro', isa => 'Str', required => 1 );
 
 has [
@@ -19,18 +21,18 @@ has [
      'bait_name',
      'sample_uuid',
      'cost_code',
-     'entity_id_lims',
      'is_r_and_d',
+     'id_library_lims',
     ] => @defaults;
 
 has [
     'study_uuid',
-    'id_study_lims'] => @defaults, required => 0;
+    'study_id',
+    'requested_insert_size_from',
+    'requested_insert_size_to',] => @defaults, required => 0;
 
 has [
      'tag_index',
-     'requested_insert_size_from',
-     'requested_insert_size_to'
     ] => @defaults, isa => 'Int';
 
 1;
@@ -80,7 +82,9 @@ wtsi_clarity::mq::messages::flowcell::sample
 
 =item Moose
 
-=item MooseX::Storage;
+=item MooseX::Storage
+
+=item wtsi_clarity::mq::messages::packer
 
 =back
 

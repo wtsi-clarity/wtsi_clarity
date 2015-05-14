@@ -6,6 +6,7 @@ use Carp;
 use URI::Escape;
 use POSIX qw(strftime);
 use wtsi_clarity::mq::messages::flowcell::flowcell;
+use JSON;
 
 with qw/ wtsi_clarity::mq::message_enhancer /;
 
@@ -23,6 +24,7 @@ Readonly::Scalar my $ARTIFACTS_ARTIFACT_URI  => q{art:artifacts/artifact/@uri};
 
 Readonly::Scalar my $ARTIFACT_WELL_PATH      => q{art:artifact/location/value};
 Readonly::Scalar my $ARTIFACT_NAME_PATH      => q{art:artifact/name};
+Readonly::Scalar my $ARTIFACT_LIMSID_PATH    => q{art:artifact/@limsid};
 Readonly::Scalar my $ARTIFACT_SAMPLE_LIMSID  => q{art:artifact/sample/@limsid};
 Readonly::Scalar my $ARTIFACT_REAGENT_NAME   => q{./art:artifact/reagent-label/@name};
 Readonly::Scalar my $ARTIFACT_LOCATION_VALUE => q{./art:artifact/location/value};
@@ -37,7 +39,7 @@ Readonly::Scalar my $SAMPLE_LIMSID           => q{smp:sample/@limsid};
 Readonly::Scalar my $SAMPLE_BAIT_NAME        => q{smp:sample/udf:field[@name="WTSI Bait Library Name"]};
 Readonly::Scalar my $SAMPLE_INSERT_SIZE_FROM => q{smp:sample/udf:field[@name="WTSI Requested Size Range From"]};
 Readonly::Scalar my $SAMPLE_INSERT_SIZE_TO   => q{smp:sample/udf:field[@name="WTSI Requested Size Range To"]};
-Readonly::Scalar my $SAMPLE_READ_LENGTH      => q{smp:sample/udf:field[@name="WTSI Requested Size Range From"]};
+Readonly::Scalar my $SAMPLE_READ_LENGTH      => q{smp:sample/udf:field[@name="Read Length"]};
 Readonly::Scalar my $SAMPLE_NAME             => q{smp:sample/name};
 Readonly::Scalar my $SAMPLE_PROJECT_URI      => q{smp:sample/project/@uri};
 
@@ -53,10 +55,15 @@ Readonly::Scalar my $CONTROL_STUDY_UUID      => q{2aa1cd2e-a557-11df-8092-00144f
 Readonly::Scalar my $CONTROL_TAG_INDEX       => q{888};
 Readonly::Scalar my $CONTROL_TAG_SEQUENCE    => q{ACAACGCAATC};
 Readonly::Scalar my $CONTROL_TAG_SET_NAME    => q{Sanger_168tags - 10 mer tags};
-Readonly::Scalar my $CONTROL_ENTITY_TYPE     => q{library_indexed_buffer};
+Readonly::Scalar my $CONTROL_ENTITY_TYPE     => q{library_indexed_spike};
+
+Readonly::Scalar my $REAGENT_LOT_URI_PATH    => q{/stp:lots/reagent-lots/reagent-lot/@uri};
+Readonly::Scalar my $REAGENT_KIT_NAME_PATH   => q{/lot:reagent-lot/reagent-kit/@name};
+Readonly::Scalar my $SPIKED_HYB_BUFFER       => q{Spiked Hyb Buffer};
+Readonly::Scalar my $LOT_NUMBER_PATH         => q{/lot:reagent-lot/lot-number};
 ## use critic
 
-sub type { return 'iseq_flowcell' };
+sub type { return 'flowcell' };
 
 # Unfortunately have to do this to get around message_enhancer requiring them
 sub _build__lims_ids { return 'noop' };
@@ -68,7 +75,7 @@ sub prepare_messages {
   my $self = shift;
 
   my %message = ();
-  $message{$self->type} = $self->_get_flowcell_message->freeze;
+  $message{$self->type} = $self->_get_flowcell_message();
   $message{'lims'}      = $self->config->clarity_mq->{'id_lims'};
 
   return [\%message];
@@ -78,15 +85,15 @@ sub _get_flowcell_message {
   my $self = shift;
 
   my $flowcell = wtsi_clarity::mq::messages::flowcell::flowcell->new(
-    lanes => $self->_lanes,
-    flowcell_barcode => $self->_flowcell_barcode,
-    flowcell_id      => $self->_flowcell_id,
+    lanes               => $self->_lanes,
+    flowcell_barcode    => $self->_flowcell_barcode,
+    flowcell_id         => $self->_flowcell_id,
     forward_read_length => $self->_forward_read_length,
     reverse_read_length => $self->_reverse_read_length,
-    updated_at => strftime('%Y-%m-%Od %H:%M:%S', localtime),
+    updated_at          => strftime('%Y-%m-%Od %H:%M:%S', localtime),
   );
 
-  return $flowcell;
+  return $flowcell->pack();
 }
 
 my @defaults = (is => 'ro', isa => 'Str');
@@ -95,13 +102,25 @@ has '_spiked_hyb_barcode' => @defaults, lazy_build => 1;
 
 sub _build__spiked_hyb_barcode {
   my $self = shift;
-  my $barcode = $self->process->findvalue($SPIKED_HYB_BARCODE);
 
-  if (!$barcode) {
-    croak 'Spiked hyb barcode was not set';
+  my @reagent_lot_uris = $self->fetch_and_parse($self->step_url . '/reagentlots')
+                              ->findnodes($REAGENT_LOT_URI_PATH)
+                              ->to_literal_list;
+
+  return $self->_find_spiked_hyb_barcode(@reagent_lot_uris);
+}
+
+sub _find_spiked_hyb_barcode {
+  my ($self, @uris) = @_;
+  my $uri  = shift @uris || croak "Spike Hyb Buffer not used as a reagent at Cluster Generation";
+
+  my $reagent_doc = $self->fetch_and_parse($uri);
+
+  if($reagent_doc->findvalue($REAGENT_KIT_NAME_PATH) eq $SPIKED_HYB_BUFFER) {
+    return $reagent_doc->findvalue($LOT_NUMBER_PATH) || croak 'Spiked hyb barcode was not set';
+  } else {
+    return $self->_find_spiked_hyb_barcode(@uris);
   }
-
-  return $barcode;
 }
 
 has '_flowcell_barcode' => @defaults, lazy_build => 1;
@@ -168,13 +187,11 @@ sub _build_lane {
   my $artifact = $self->fetch_and_parse($self->config->clarity_api->{'base_uri'} . '/artifacts/' . $artifact_id);
 
   my $well = $artifact->findvalue($ARTIFACT_WELL_PATH);
-  $lane{'position'} = $self->_extract_lane_position($well);
-  $lane{'id_pool_lims'} = $artifact->findvalue($ARTIFACT_NAME_PATH);
-
-  $lane{'entity_type'} = $LANE_ENTITY_TYPE;
-
-  $lane{'samples'} = $self->_build_samples($artifact);
-  $lane{'controls'} = $self->_build_controls();
+  $lane{'position'}       = $self->_extract_lane_position($well);
+  $lane{'id_pool_lims'}   = $artifact->findvalue($ARTIFACT_NAME_PATH);
+  $lane{'entity_id_lims'} = $artifact->findvalue($ARTIFACT_LIMSID_PATH);
+  $lane{'samples'}        = $self->_build_samples($artifact);
+  $lane{'controls'}       = $self->_build_controls();
 
   return \%lane;
 }
@@ -210,7 +227,7 @@ sub _build_sample {
 
   my $read_length = $sample_doc->findvalue($SAMPLE_READ_LENGTH);
 
-  if ($read_length && !$self->has_forward_read_length && !$self->has_reverse_read_length) {
+  if (defined $read_length && !$self->has_forward_read_length && !$self->has_reverse_read_length) {
     $self->_forward_read_length($read_length);
     $self->_reverse_read_length($read_length);
   }
@@ -230,7 +247,7 @@ sub _get_project_info {
   my $project_doc = $self->fetch_and_parse($sample_doc->findvalue($SAMPLE_PROJECT_URI));
 
   $project_info{'cost_code'}     = $project_doc->findvalue($PROJECT_COST_CODE_PATH);
-  $project_info{'id_study_lims'} = $project_doc->findvalue($PROJECT_LIMSID);
+  $project_info{'study_id'} = $project_doc->findvalue($PROJECT_LIMSID);
 
   return %project_info;
 }
@@ -260,7 +277,7 @@ sub _get_tag_info {
 
   ($tag_info{'tag_set_name'}, $tag_info{'tag_index'}, $tag_info{'tag_sequence'}) = $self->_extract_tag_info($reagent_label_name);
 
-  $tag_info{'entity_id_lims'} = $self->_get_entity_id_lims($artifact);
+  $tag_info{'id_library_lims'} = $self->_get_id_library_lims($artifact);
 
   return %tag_info;
 }
@@ -271,12 +288,27 @@ sub _extract_tag_info {
   return @result;
 }
 
-sub _get_entity_id_lims {
+sub _get_id_library_lims {
   my ($self, $artifact_doc) = @_;
   my $well = $artifact_doc->findvalue($ARTIFACT_LOCATION_VALUE);
-  my $container = $self->fetch_and_parse($artifact_doc->findvalue($ARTIFACT_CONTAINER_URI));
-  my $barcode = $container->findvalue($CONTAINER_NAME);
-  return $barcode . q{:} . $well;
+  $well =~ s/://sxm;
+  my $container_barcode = $self->_get_container_barcode($artifact_doc);
+  return $container_barcode . q{:} . $well;
+}
+
+my %container_cache = ();
+
+sub _get_container_barcode {
+  my ($self, $artifact_doc) = @_;
+
+  my $container_uri = $artifact_doc->findvalue($ARTIFACT_CONTAINER_URI);
+
+  if (!exists $container_cache{$container_uri}) {
+    my $container = $self->fetch_and_parse($container_uri);
+    $container_cache{$container_uri} = $container->findvalue($CONTAINER_NAME);
+  }
+
+  return $container_cache{$container_uri};
 }
 
 sub _build_controls {
@@ -285,13 +317,13 @@ sub _build_controls {
 
   # Always will be just the one...
   my %control = ();
-  $control{'sample_uuid'}    = $CONTROL_SAMPLE_UUID;
-  $control{'study_uuid'}     = $CONTROL_STUDY_UUID;
-  $control{'tag_index'}      = $CONTROL_TAG_INDEX;
-  $control{'tag_sequence'}   = $CONTROL_TAG_SEQUENCE;
-  $control{'tag_set_name'}   = $CONTROL_TAG_SET_NAME;
-  $control{'entity_type'}    = $CONTROL_ENTITY_TYPE;
-  $control{'entity_id_lims'} = $self->_spiked_hyb_barcode;
+  $control{'sample_uuid'}     = $CONTROL_SAMPLE_UUID;
+  $control{'study_uuid'}      = $CONTROL_STUDY_UUID;
+  $control{'tag_index'}       = $CONTROL_TAG_INDEX;
+  $control{'tag_sequence'}    = $CONTROL_TAG_SEQUENCE;
+  $control{'tag_set_name'}    = $CONTROL_TAG_SET_NAME;
+  $control{'entity_type'}     = $CONTROL_ENTITY_TYPE;
+  $control{'id_library_lims'} = $self->_spiked_hyb_barcode;
 
   push @controls, \%control;
 
