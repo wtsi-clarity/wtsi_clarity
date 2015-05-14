@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 17;
+use Test::More tests => 18;
 use Test::Exception;
 
 use_ok('wtsi_clarity::dao::sample_dao');
@@ -52,6 +52,12 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
   my $sample_dao = wtsi_clarity::dao::sample_dao->new( lims_id => $lims_id);
   my $sample_json;
   lives_ok { $sample_json = $sample_dao->to_message } 'can serialize sample object';
+}
+
+{
+  my $sample_dao = wtsi_clarity::dao::sample_dao->new( lims_id => 'SYY2');
+  my $obj = $sample_dao->pack();
+  is($obj->{'supplier_name'}, undef, 'Fields that are not present are undefined rather than empty strings');
 }
 
 1;
