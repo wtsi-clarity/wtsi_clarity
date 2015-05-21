@@ -3,7 +3,7 @@ use warnings;
 use JSON;
 use utf8;
 use Moose::Meta::Class;
-use Test::More tests => 21;
+use Test::More tests => 22;
 use Test::Exception;
 use Test::MockObject;
 
