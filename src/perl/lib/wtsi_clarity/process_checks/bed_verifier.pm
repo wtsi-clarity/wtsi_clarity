@@ -17,6 +17,15 @@ has 'config' => (
   required   => 1,
 );
 
+# Optional
+has '_input_only' => (
+  is       => 'ro',
+  isa      => 'Bool',
+  required => 0,
+  init_arg => 'input_only',
+  default  => 0,
+);
+
 sub verify {
   my ($self, $epp) = @_;
 
@@ -117,9 +126,21 @@ sub _verify_plate_mapping {
   my ($self, $epp, $plate_mapping) = @_;
 
   foreach my $plate_io (@{$epp->process_doc->plate_io_map_barcodes}) {
-    my $matches = grep { ($_->{'source_plate'} == $plate_io->{'source_plate'} && $_->{'dest_plate'} == $plate_io->{'dest_plate'}) } @{$plate_mapping};
-    if ($matches != 1) {
-      croak "Expected source plate " . $plate_io->{'source_plate'} . " to be paired with destination plate " . $plate_io->{'dest_plate'};
+    my $matches;
+
+    if ($self->_input_only) {
+      $matches = grep { $_->{'source_plate'} == $plate_io->{'source_plate'} } @{$plate_mapping};
+
+      if ($matches != 1) {
+        croak "Expected source plate " . $plate_io->{'source_plate'};
+      }
+
+    } else {
+      $matches = grep { ($_->{'source_plate'} == $plate_io->{'source_plate'} && $_->{'dest_plate'} == $plate_io->{'dest_plate'}) } @{$plate_mapping};
+
+      if ($matches != 1) {
+        croak "Expected source plate " . $plate_io->{'source_plate'} . " to be paired with destination plate " . $plate_io->{'dest_plate'};
+      }
     }
   }
 
