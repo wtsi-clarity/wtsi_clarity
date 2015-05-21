@@ -3,11 +3,14 @@ package wtsi_clarity::process_checks::bed_verifier;
 use Moose;
 use Carp;
 use Readonly;
+use List::MoreUtils qw/all/;
 
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $ROBOT_BARCODE_PATH => q[ /prc:process/udf:field[@name="Robot ID"] ];
+Readonly::Scalar my $INPUT_ONLY_ERROR   => q[Expected source plate %s];
+Readonly::Scalar my $INPUT_OUTPUT_ERROR => q[Expected source plate %s to be paired with destination plate %s];
 ## use critic
 
 # Required
@@ -15,6 +18,15 @@ has 'config' => (
   isa        => 'HashRef',
   is         => 'ro',
   required   => 1,
+);
+
+# Optional
+has '_input_only' => (
+  is       => 'ro',
+  isa      => 'Bool',
+  required => 0,
+  init_arg => 'input_only',
+  default  => 0,
 );
 
 sub verify {
@@ -113,13 +125,46 @@ sub _find_output_plate {
   return \@output_plates;
 }
 
+my $source_plate_match = _plate_match('source_plate');
+my $dest_plate_match   = _plate_match('dest_plate');
+
+sub _plate_match {
+  my ($plate_name) = @_;
+  return sub {
+    my ($a, $b) = @_;
+    return $a->{$plate_name} == $b->{$plate_name};
+  }
+}
+
+sub _match_all {
+  my ($self, $plate_mapping, $plate_io, @verifiers) = @_;
+  return grep { $self->_match_verifiers($_, $plate_io, @verifiers) } @{$plate_mapping};
+}
+
+sub _match_verifiers {
+  my ($self, $mapping, $plate_io, @verifiers) = @_;
+  return all { $_->($mapping, $plate_io) } @verifiers;
+}
+
 sub _verify_plate_mapping {
   my ($self, $epp, $plate_mapping) = @_;
 
   foreach my $plate_io (@{$epp->process_doc->plate_io_map_barcodes}) {
-    my $matches = grep { ($_->{'source_plate'} == $plate_io->{'source_plate'} && $_->{'dest_plate'} == $plate_io->{'dest_plate'}) } @{$plate_mapping};
-    if ($matches != 1) {
-      croak "Expected source plate " . $plate_io->{'source_plate'} . " to be paired with destination plate " . $plate_io->{'dest_plate'};
+    my $matches;
+
+    if ($self->_input_only) {
+      $matches = $self->_match_all($plate_mapping, $plate_io, $source_plate_match);
+
+      if ($matches != 1) {
+        croak sprintf $INPUT_ONLY_ERROR, $plate_io->{'source_plate'};
+      }
+
+    } else {
+      $matches = $self->_match_all($plate_mapping, $plate_io, $source_plate_match, $dest_plate_match);
+
+      if ($matches != 1) {
+        croak sprintf $INPUT_OUTPUT_ERROR, $plate_io->{'source_plate'}, $plate_io->{'dest_plate'};
+      }
     }
   }
 
@@ -162,6 +207,8 @@ wtsi_clarity::process_checks::bed_verifier
 =item Carp
 
 =item Readonly
+
+=item List::MoreUtils
 
 =back
 
