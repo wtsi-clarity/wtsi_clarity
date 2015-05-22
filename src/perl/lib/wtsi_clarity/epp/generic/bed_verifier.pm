@@ -30,6 +30,15 @@ has 'step_name' => (
   required   => 1,
 );
 
+# Optional parameters
+has '_input_only' => (
+  is       => 'ro',
+  isa      => 'Bool',
+  required => 0,
+  default  => 0,
+  init_arg => 'input_only',
+);
+
 # Main method
 override 'run' => sub {
   my $self = shift;
@@ -63,7 +72,10 @@ has '_bed_verifier' => (
 
 sub _build__bed_verifier {
   my $self = shift;
-  return wtsi_clarity::process_checks::bed_verifier->new(config => $self->_bed_config_file);
+  return wtsi_clarity::process_checks::bed_verifier->new(
+    config     => $self->_bed_config_file,
+    input_only => $self->_input_only,
+  );
 }
 
 has '_bed_config_file' => (

@@ -1,5 +1,8 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 1.1
+ - Can now add `--input_only 1` flag to bed verifier epp. It will only verify input plates.
+
 Release 1.0 (Hummingbird)
  - Warehouse: Fields that are not present are undefined rather than empty strings
 
