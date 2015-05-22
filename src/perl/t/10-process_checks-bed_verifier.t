@@ -3,7 +3,7 @@ use warnings;
 use JSON;
 use utf8;
 use Moose::Meta::Class;
-use Test::More tests => 21;
+use Test::More tests => 22;
 use Test::Exception;
 use Test::MockObject;
 
@@ -319,6 +319,36 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
   throws_ok { $bed_verifier->_verify_plate_mapping($process, $plate_map) }
     qr/Expected source plate 2222 to be paired with destination plate 3333/,
     'Throws when incorrect plates in beds 2 inputs => 1 output';
+}
+
+{
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/bed_verifier/working_dilution/';
+
+  my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(
+    config     => get_config(),
+    input_only => 1,
+  );
+
+  my $process = Test::MockObject->new();
+  my $process_doc = Test::MockObject->new();
+
+  $process_doc->mock(q{plate_io_map_barcodes}, sub {
+    return [
+      {source_plate => 1111},
+      {source_plate => 2222}
+    ];
+  });
+
+  $process->mock(q{process_doc}, sub {
+    return $process_doc;
+  });
+
+  my $plate_map = [
+    {source_plate => 1111, dest_plate => 3333},
+    {source_plate => 2222, dest_plate => 3333}
+  ];
+
+  is($bed_verifier->_verify_plate_mapping($process, $plate_map), 1, 'Input only test');
 }
 
 1;
