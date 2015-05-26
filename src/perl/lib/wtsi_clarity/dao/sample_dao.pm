@@ -19,7 +19,7 @@ Readonly::Hash  my %ATTRIBUTES  => {  'id_sample_lims'   => q{/smp:sample/@limsi
                                       'taxon_id' => q{/smp:sample/udf:field[@name='WTSI Taxon ID']},
                                       'gender' => q{/smp:sample/udf:field[@name='WTSI Supplier Gender - (SM)']},
                                       'control' => q{/smp:sample/udf:field[@name='Control?']},
-                                      'supplier_name' => q{/smp:sample/udf:field[@name='WTSI Supplier']},
+                                      'supplier_name' => q{/smp:sample/udf:field[@name='WTSI Supplier Sample Name (SM)']},
                                       'public_name' => q{/smp:sample/udf:field[@name='WTSI Supplier Sample Name (SM)']},
                                       'donor_id' => q{/smp:sample/udf:field[@name='WTSI Donor ID']},
                                     };
