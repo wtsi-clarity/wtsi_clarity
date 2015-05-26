@@ -38,7 +38,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
   is($sample_dao->name, q{111}, 'Returns the correct name of the sample');
   is($sample_dao->reference_genome, q{Test Reference Genome}, 'Returns the correct reference genome of the sample');
   is($sample_dao->organism, q{Homo Sapiens}, 'Returns the correct organism of the sample');
-  is($sample_dao->common_name, q{Test Supplier Sample Name}, 'Returns the correct common name of the sample');
+  is($sample_dao->common_name, q{Homo Sapiens}, 'Returns the correct common name of the sample');
   is($sample_dao->taxon_id, q{9606}, 'Returns the correct taxon id of the sample');
   is($sample_dao->gender, q{Female}, 'Returns the correct gender of the sample');
   is($sample_dao->control, q{false}, 'Returns the correct control of the sample');
