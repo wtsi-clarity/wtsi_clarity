@@ -1,5 +1,10 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 1.2
+ - Warehouse sample info fixes:
+  - Updated the Sample Common Name
+  - Updated Sample Supplier Name
+
 Release 1.1
  - Can now add `--input_only 1` flag to bed verifier epp. It will only verify input plates.
 
