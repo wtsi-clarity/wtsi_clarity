@@ -570,7 +570,7 @@ sub _build__original_container_map {
   return  c->new(@{$self->_original_container_ids})
             ->reduce( sub {
                   my $container_id = $b;
-                  $a->{$container_id} = $self->find_elements_first_value($self->_build__original_container_details,
+                  $a->{$container_id} = $self->find_elements_first_value($self->_original_container_details,
                                             qq{/con:details/con:container[\@limsid='$container_id']/name/text()}, qq{});
                   $a;
                 }, {});
