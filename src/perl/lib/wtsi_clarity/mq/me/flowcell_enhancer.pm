@@ -317,13 +317,14 @@ sub _build_controls {
 
   # Always will be just the one...
   my %control = ();
-  $control{'sample_uuid'}     = $CONTROL_SAMPLE_UUID;
-  $control{'study_uuid'}      = $CONTROL_STUDY_UUID;
-  $control{'tag_index'}       = $CONTROL_TAG_INDEX;
-  $control{'tag_sequence'}    = $CONTROL_TAG_SEQUENCE;
-  $control{'tag_set_name'}    = $CONTROL_TAG_SET_NAME;
-  $control{'entity_type'}     = $CONTROL_ENTITY_TYPE;
-  $control{'id_library_lims'} = $self->_spiked_hyb_barcode;
+  $control{'sample_uuid'}      = $CONTROL_SAMPLE_UUID;
+  $control{'study_uuid'}       = $CONTROL_STUDY_UUID;
+  $control{'tag_index'}        = $CONTROL_TAG_INDEX;
+  $control{'tag_sequence'}     = $CONTROL_TAG_SEQUENCE;
+  $control{'tag_set_name'}     = $CONTROL_TAG_SET_NAME;
+  $control{'entity_type'}      = $CONTROL_ENTITY_TYPE;
+  $control{'id_library_lims'}  = $self->_spiked_hyb_barcode;
+  $control{'pipeline_id_lims'} = $PIPELINE_ID_LIMS;
 
   push @controls, \%control;
 
