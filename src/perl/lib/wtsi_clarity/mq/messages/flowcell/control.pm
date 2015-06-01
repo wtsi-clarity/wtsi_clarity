@@ -19,6 +19,7 @@ has [
      'sample_uuid',
      'study_uuid',
      'id_library_lims',
+     'pipeline_id_lims',
     ] => @defaults;
 
 has 'tag_index' => @defaults, isa => 'Int';
