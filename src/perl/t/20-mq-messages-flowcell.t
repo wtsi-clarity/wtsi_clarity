@@ -44,6 +44,7 @@ use_ok 'wtsi_clarity::mq::messages::flowcell::flowcell';
         entity_id_lims             => '12345',
         tag_set_name               => 'Sanger_168tags - 10 mer tags',
         id_library_lims            => '1234567890',
+        pipeline_id_lims           => 'GCLP-CLARITY-ISC',
       }],
     }],
   );
