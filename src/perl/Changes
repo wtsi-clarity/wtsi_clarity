@@ -1,5 +1,8 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 1.3
+ - Added pipline_id_lims to PhiX Controls in iseq_flowcell table
+
 Release 1.2
  - Warehouse sample info fixes:
   - Updated the Sample Common Name
