@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 use Moose;
-use Test::More tests => 18;
+use Test::More tests => 20;
 use Test::MockObject::Extends;
 use Test::Exception;
 use XML::LibXML;
@@ -24,8 +24,9 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
   );
 
   is($flgen_plate_dao->flgen_well_position('A:1', 16, 6), q/S01/, 'Converts well A:1 to Fluidigm well position S01 for a 96.96 plate');
-  is($flgen_plate_dao->flgen_well_position('B:1', 16, 6), q/S02/, 'Converts well B:1 to Fluidigm well position S02 for a 96.96 plate');
-  is($flgen_plate_dao->flgen_well_position('A:2', 16, 6), q/S17/, 'Converts well A:2 to Fluidigm well position S17 for a 96.96 plate');
+  is($flgen_plate_dao->flgen_well_position('B:1', 16, 6), q/S07/, 'Converts well B:1 to Fluidigm well position S02 for a 96.96 plate');
+  is($flgen_plate_dao->flgen_well_position('A:2', 16, 6), q/S02/, 'Converts well A:2 to Fluidigm well position S17 for a 96.96 plate');
+  is($flgen_plate_dao->flgen_well_position('F:2', 16, 6), q/S32/, 'Converts well F:2 to Fluidigm well position S32 for a 96.96 plate');
   is($flgen_plate_dao->flgen_well_position('P:6', 16, 6), q/S96/, 'Converts well F:6 to Fluidigm well position S96 for a 96.96 plate');
 
   my $big_flgen_plate_dao = wtsi_clarity::dao::flgen_plate_dao->new(
@@ -34,9 +35,10 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
   );
 
   is($big_flgen_plate_dao->flgen_well_position('A:1', 16, 12), q/S001/, 'Converts well A:1 to Fluidigm well position S001 for a 192.24 plate');
-  is($big_flgen_plate_dao->flgen_well_position('B:1', 16, 12), q/S002/, 'Converts well B:1 to Fluidigm well position S002 for a 192.24 plate');
-  is($big_flgen_plate_dao->flgen_well_position('A:2', 16, 12), q/S017/, 'Converts well A:2 to Fluidigm well position S017 for a 192.24 plate');
-  is($big_flgen_plate_dao->flgen_well_position('P:6', 16, 12), q/S096/, 'Converts well F:6 to Fluidigm well position S096 for a 192.24 plate');
+  is($big_flgen_plate_dao->flgen_well_position('B:1', 16, 12), q/S013/, 'Converts well B:1 to Fluidigm well position S002 for a 192.24 plate');
+  is($big_flgen_plate_dao->flgen_well_position('A:2', 16, 12), q/S002/, 'Converts well A:2 to Fluidigm well position S017 for a 192.24 plate');
+  is($big_flgen_plate_dao->flgen_well_position('I:3', 16, 12), q/S099/, 'Converts well I:3 to Fluidigm well position S099 for a 192.24 plate');
+  is($big_flgen_plate_dao->flgen_well_position('P:6', 16, 12), q/S186/, 'Converts well F:6 to Fluidigm well position S096 for a 192.24 plate');
 
   my $crazy_flgen_plate_dao = wtsi_clarity::dao::flgen_plate_dao->new(
     lims_id    => $lims_id,
