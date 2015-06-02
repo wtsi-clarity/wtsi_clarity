@@ -1,5 +1,9 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 1.4
+ - Removed uuid_api config parameter
+ - Fixed Fluidigm mapping when sending data to warehouse
+
 Release 1.3
  - Added pipline_id_lims to PhiX Controls in iseq_flowcell table
 

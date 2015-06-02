@@ -90,7 +90,7 @@ sub flgen_well_position {
   }
 
   ## no critic(CodeLayout::ProhibitParensWithBuiltins)
-  my $letter_as_number = 1 + ord( uc ($letter) ) - ord('A');
+  my $letter_as_number = ord( uc ($letter) ) - ord('A');
   ## use critic
 
   if ($letter_as_number > $nb_rows) {
@@ -105,7 +105,7 @@ sub flgen_well_position {
   my $format = $well_formats{$self->plate_size}
                 or croak "Unknown well format for " . $self->plate_size . " size plate";
 
-  return 'S' . sprintf $format, ($number-1)*$nb_rows + $letter_as_number;
+  return 'S' . sprintf $format, ($letter_as_number * $nb_cols) + $number;
 }
 
 has 'wells' => (

@@ -14,7 +14,6 @@ Readonly::Scalar my $WTSI_CLARITY_HOME_VAR_NAME => q[WTSI_CLARITY_HOME];
 Readonly::Scalar my $CONF_DIR        => q[.wtsi_clarity];
 Readonly::Scalar my $CONF_FILE_NAME  => q[config];
 Readonly::Array  my @CONF_ITEMS      => qw/ clarity_api
-                                            uuid_api
                                             clarity_mq
                                             warehouse_mq
                                             robot_file_dir
