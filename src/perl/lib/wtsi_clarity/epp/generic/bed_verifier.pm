@@ -31,12 +31,11 @@ has 'step_name' => (
 );
 
 # Optional parameters
-has '_input_only' => (
+has 'input_only' => (
   is       => 'ro',
   isa      => 'Bool',
   required => 0,
   default  => 0,
-  init_arg => 'input_only',
 );
 
 # Main method
@@ -74,7 +73,7 @@ sub _build__bed_verifier {
   my $self = shift;
   return wtsi_clarity::process_checks::bed_verifier->new(
     config     => $self->_bed_config_file,
-    input_only => $self->_input_only,
+    input_only => $self->input_only,
   );
 }
 
