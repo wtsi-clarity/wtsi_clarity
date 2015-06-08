@@ -104,15 +104,19 @@ sub _plate_mapping {
   my @plate_mapping = ();
 
   foreach my $plate (@{$epp->plates}) {
-    next if $plate->is_output;
+    if ($self->_input_only) {
+      push @plate_mapping, { source_plate => $plate->barcode }
+    } else {
+      next if $plate->is_output;
 
-    my $plate_name = $plate->plate_name;
-    $plate_name =~ s/Input/Output/gsm;
+      my $plate_name = $plate->plate_name;
+      $plate_name =~ s/Input/Output/gsm;
 
-    my $output_plates = $self->_find_output_plate($epp, $plate_name);
+      my $output_plates = $self->_find_output_plate($epp, $plate_name);
 
-    foreach my $output_plate (@{$output_plates}) {
-      push @plate_mapping, { source_plate => $plate->barcode, dest_plate => $output_plate->barcode };
+      foreach my $output_plate (@{$output_plates}) {
+        push @plate_mapping, { source_plate => $plate->barcode, dest_plate => $output_plate->barcode };
+      }
     }
   }
 
@@ -130,6 +134,7 @@ my $dest_plate_match   = _plate_match('dest_plate');
 
 sub _plate_match {
   my ($plate_name) = @_;
+
   return sub {
     my ($a, $b) = @_;
     return $a->{$plate_name} == $b->{$plate_name};
