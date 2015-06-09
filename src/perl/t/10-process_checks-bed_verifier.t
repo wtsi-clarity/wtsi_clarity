@@ -344,8 +344,8 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
   });
 
   my $plate_map = [
-    {source_plate => 1111, dest_plate => 3333},
-    {source_plate => 2222, dest_plate => 3333}
+    {source_plate => 1111},
+    {source_plate => 2222}
   ];
 
   is($bed_verifier->_verify_plate_mapping($process, $plate_map), 1, 'Input only test');
