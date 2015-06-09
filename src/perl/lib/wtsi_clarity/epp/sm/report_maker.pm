@@ -97,7 +97,7 @@ sub _main_method{
 
   $self->report_file->saveas(q{./} . $self->qc_report_file_name);
 
-  # $self->request->batch_update('samples', $self->_sample_details);
+  $self->request->batch_update('samples', $self->_sample_details);
 
   return;
 }
