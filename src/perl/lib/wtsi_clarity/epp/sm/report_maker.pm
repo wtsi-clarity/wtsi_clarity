@@ -7,6 +7,7 @@ use Mojo::Collection 'c';
 use URI::Escape;
 use List::Compare;
 use Try::Tiny;
+use Scalar::Util qw/looks_like_number/;
 use wtsi_clarity::util::textfile;
 use wtsi_clarity::util::report;
 
@@ -42,7 +43,7 @@ Readonly::Scalar my $PRC_FLUIDIGM_GENDER=> qq{Fluidigm 96.96 IFC Analysis (SM)};
 Readonly::Scalar my $CONCENTRATION_UDF_NAME => q{Sample Conc. (ng\/µL) (SM)};
 
 Readonly::Scalar my $NEXT_PAGE_URI => q{/art:artifacts/next-page/@uri};
-Readonly::Scalar my $PAGE_SIZE     => 500;
+Readonly::Scalar my $PAGE_SIZE     => 50;
 
 ## use critic
 
@@ -96,7 +97,7 @@ sub _main_method{
 
   $self->report_file->saveas(q{./} . $self->qc_report_file_name);
 
-  $self->request->batch_update('samples', $self->_sample_details);
+  # $self->request->batch_update('samples', $self->_sample_details);
 
   return;
 }
@@ -191,7 +192,9 @@ sub _get_total_micrograms {
 
   my $concentration = $self->_get_concentration($sample_id);
   my $measured_volume = $self->_get_measured_volume($sample_id);
-  if ($concentration ne q{} && $measured_volume ne q{}) {
+
+  # Ocasionaly have seen concentration set to something other than a number, hence the check
+  if (looks_like_number($concentration) && looks_like_number($measured_volume)) {
     $total_micrograms = $concentration * ($measured_volume -  $LABORATORY_VOLUME_SUBTRACTION) * $THOUSANDTH;
   }
 
@@ -422,39 +425,41 @@ sub _build__all_udf_values {
   return $data;
 }
 
+# We have to find all artifacts in a recursive manner, because if we searched for all artifacts
+# on 4 plates, the URL gets so long Clarity returns a 400
+# That's why we chunk it up into 50 artifacts at a time...
 sub _search_artifacts {
-  my ($self, $step, $udf_name, $start_index) = @_;
+  my ($self, $step, $udf_name, $sample_ids, @artifact_uris) = @_;
 
-  return $self->request->query_resources(
+  my @samples_to_find = splice @{$sample_ids}, 0, $PAGE_SIZE;
+  my $artifacts_doc   = $self->request->query_resources(
         q{artifacts},
         {
           udf         => qq{udf.$udf_name.min=0},
           type        => qq{Analyte},
           step        => $step,
-          sample_id   => $self->_sample_ids(),
-          start_index => $start_index // 0,
+          sample_id   => \@samples_to_find,
+          start_index => 0,
         }
   );
+
+  push @artifact_uris, @{$self->grab_values($artifacts_doc, $ARTEFACTS_ARTEFACT_URIS_PATH)};
+
+  if (@{$sample_ids}) {
+    return $self->_search_artifacts($step, $udf_name, $sample_ids, @artifact_uris);
+  } else {
+    return @artifact_uris;
+  }
 };
 
 sub _get_udf_values {
   my ($self, $step, $udf_name) = @_;
 
-  my $artifacts_doc;
-  my @artifacts_uris = ();
-  my $start_index = 0;
+  # We need to make a copy of _sample_ids as _search_artifacts splices away at it
+  my @sample_ids    = @{$self->_sample_ids};
+  my @artifact_uris = $self->_search_artifacts($step, $udf_name, \@sample_ids);
 
-  do {
-    $artifacts_doc  = $self->_search_artifacts($step, $udf_name, $start_index);
-    push @artifacts_uris, @{$self->grab_values($artifacts_doc, $ARTEFACTS_ARTEFACT_URIS_PATH)};
-
-    $start_index += $PAGE_SIZE;
-
-  } ## no critic(ControlStructures::ProhibitPostfixControls)
-    while ($artifacts_doc->findvalue($NEXT_PAGE_URI) ne q{});
-    ## use critic
-
-  my $artifacts = $self->request->batch_retrieve('artifacts', \@artifacts_uris);
+  my $artifacts = $self->request->batch_retrieve('artifacts', \@artifact_uris);
 
   my @nodes = ();
 
@@ -640,6 +645,8 @@ wtsi_clarity::epp::sm::report_maker
 =item List::Compare
 
 =item Try::Tiny
+
+=item Scalar::Util
 
 =item wtsi_clarity::util::textfile
 
