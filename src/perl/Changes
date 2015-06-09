@@ -1,5 +1,9 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 1.5
+ - Another fix to bed verification
+ - QC report fix and support for multiple plates
+
 Release 1.4
  - Removed uuid_api config parameter
  - Fixed Fluidigm mapping when sending data to warehouse
