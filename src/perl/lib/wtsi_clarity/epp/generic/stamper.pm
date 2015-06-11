@@ -114,8 +114,6 @@ has 'container_type_name' => (
   isa        => 'ArrayRef[Str]',
   is         => 'ro',
   required   => 0,
-  predicate  => 'has_container_type_name',
-  clearer    => 'clear_container_type_name',
   lazy_build => 1,
 );
 sub _build_container_type_name {
