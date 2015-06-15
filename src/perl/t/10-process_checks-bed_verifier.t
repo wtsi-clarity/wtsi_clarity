@@ -3,7 +3,7 @@ use warnings;
 use JSON;
 use utf8;
 use Moose::Meta::Class;
-use Test::More tests => 22;
+use Test::More tests => 23;
 use Test::Exception;
 use Test::MockObject;
 
@@ -112,6 +112,15 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
   throws_ok { $bed_verifier->_verify_bed_barcodes($process3) }
     qr/Bed 2 barcode \(12345\) differs from config bed barcode \(580040002672\)/,
     'Throws an error when a bed has different barcode to the config';
+
+  my $process4 = $epp->new_object(
+    step_name => 'working_dilution',
+    process_url => $base_url . 'processes/24-102433_e',
+  );
+
+  throws_ok { $bed_verifier->_verify_bed_barcodes($process4) }
+    qr/The barcode of the bed\(s\) are empty. Please, add barcode value\(s\) to the form./,
+    'Throws an error when no bed has barcodes filled in';
 }
 
 # Plate Mappings
