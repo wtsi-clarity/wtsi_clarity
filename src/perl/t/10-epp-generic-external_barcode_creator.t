@@ -44,13 +44,13 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
   );
 
   my $expected_container_data = {
-    'http://testserver.com:1234/here/containers/27-5496' => { 
+    'http://testserver.com:1234/here/containers/27-5496' => {
       'limsid'    => '27-5496',
       'barcode'   => '5260275496792',
       'num'       => 'SM-275496O',
       'purpose'   => 'Stock Plate',
     },
-    'http://testserver.com:1234/here/containers/27-5497' => { 
+    'http://testserver.com:1234/here/containers/27-5497' => {
       'limsid'    => '27-5497',
       'barcode'   => '5260275497805',
       'num'       => 'SM-275497P',
@@ -122,13 +122,13 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
   );
 
   my $expected_containers_data = {
-    'http://testserver.com:1234/here/containers/27-5496' => { 
+    'http://testserver.com:1234/here/containers/27-5496' => {
       'limsid'    => '27-5496',
       'barcode'   => '5260275496792',
       'num'       => 'SM-275496O',
       'purpose'   => 'Stock Plate',
     },
-    'http://testserver.com:1234/here/containers/27-5497' => { 
+    'http://testserver.com:1234/here/containers/27-5497' => {
       'limsid'    => '27-5497',
       'barcode'   => '5260275497805',
       'num'       => 'SM-275497P',
@@ -136,7 +136,7 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
     }
   };
 
-  my $expected_label_parameters = { 
+  my $expected_label_parameters = {
     'number'        => '1',
     'type'          => 'plate',
     'user'          => 'Karel',
@@ -187,7 +187,8 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
               'signature' => undef,
               'num' => 'SM-275496O',
               'date_user' => '24-Mar-2015 ',
-              'purpose' => 'Stock Plate'
+              'purpose' => 'Stock Plate',
+              'sanger_barcode' => ''
             }
           }
         },
@@ -199,7 +200,8 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
               'signature' => undef,
               'num' => 'SM-275497P',
               'date_user' => '24-Mar-2015 ',
-              'purpose' => 'Stock Plate'
+              'purpose' => 'Stock Plate',
+              'sanger_barcode' => ''
             }
           }
         }

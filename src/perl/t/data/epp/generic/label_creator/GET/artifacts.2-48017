@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/2-48017?state=21817" limsid="2-48017">
+    <name>595e25b2-39ba-11e4-b42e-68b59977951e</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://testserver.com:1234/here/processes/24-17997" limsid="24-17997"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-1697" limsid="27-1697"/>
+        <value>E:4</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/TES155A694" limsid="TES155A694"/>
+    <udf:field type="Numeric" name="Volume">107.628</udf:field>
+    <workflow-stages>
+        <workflow-stage status="IN_PROGRESS" name="Working Dilution (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/255"/>
+        <workflow-stage status="COMPLETE" name="Cherrypick (SM)" uri="http://testserver.com:1234/here/configuration/workflows/23/stages/653"/>
+        <workflow-stage status="COMPLETE" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/23/stages/654"/>
+        <workflow-stage status="COMPLETE" name="Plate Delivery (SM)" uri="http://testserver.com:1234/here/configuration/workflows/301/stages/704"/>
+        <workflow-stage status="COMPLETE" name="Plate Delivery (SM)" uri="http://testserver.com:1234/here/configuration/workflows/301/stages/704"/>
+    </workflow-stages>
+</art:artifact>
