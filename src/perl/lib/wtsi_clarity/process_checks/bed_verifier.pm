@@ -86,6 +86,10 @@ sub _verify_robot_config {
 sub _verify_bed_barcodes {
   my ($self, $epp) = @_;
 
+  if (scalar @{$epp->beds} == 0 ) {
+    croak 'The barcode of the bed(s) are empty. Please, add barcode value(s) to the form.';
+  }
+
   foreach my $bed (@{$epp->beds}) {
     if (!exists $self->_robot_config->{$bed->bed_name}) {
       croak $bed->bed_name . ' can not be found in config for specified robot';
