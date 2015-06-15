@@ -36,19 +36,7 @@ override 'run' => sub {
   super(); #call parent's run method
   $self->epp_log('Step url is ' . $self->step_url);
 
-  if ($self->shadow_plate && $self->copy_on_target ) {
-    croak qq{One cannot use the shadow plate stamping with the copy_on_target option!};
-  }
-
-  if ($self->group && $self->copy_on_target) {
-    croak q{One can not use the group stamping with the copy_on_target option!};
-  }
-
-  ##no critic ValuesAndExpressions::ProhibitMagicNumbers
-  if ($self->group && $self->process_doc->input_artifacts->findnodes('/art:details/art:artifact')->size() > 96) {
-    croak q{Can not do a group stamp for more than 96 inputs!};
-  }
-  ##use critic
+  $self->_check_options();
 
   $self->_create_containers();
   my $doc = $self->_create_placements_doc;
@@ -71,6 +59,31 @@ override 'run' => sub {
 
   return;
 };
+
+sub _check_options {
+  my $self = shift;
+
+  if ($self->shadow_plate && $self->copy_on_target ) {
+    croak qq{One cannot use the shadow plate stamping with the copy_on_target option!};
+  }
+
+  if ($self->shadow_plate && $self->has_container_type_name) {
+    $self->epp_log(q{Argument container_type_name should not be provided when shadow stamping. Output container type(s) will match input container type(s)});
+    $self->clear_container_type_name;
+  }
+
+  if ($self->group && $self->copy_on_target) {
+    croak q{One can not use the group stamping with the copy_on_target option!};
+  }
+
+  ##no critic ValuesAndExpressions::ProhibitMagicNumbers
+  if ($self->group && $self->process_doc->input_artifacts->findnodes('/art:details/art:artifact')->size() > 96) {
+    croak q{Can not do a group stamp for more than 96 inputs!};
+  }
+  ##use critic
+
+  return 1;
+}
 
 ##
 

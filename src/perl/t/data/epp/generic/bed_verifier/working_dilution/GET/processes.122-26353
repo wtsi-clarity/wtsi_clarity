@@ -1151,6 +1151,8 @@
   <udf:field name="Select Barcode Printer" type="String">dnapbc2</udf:field>
   <udf:field name="Plate Purpose" type="String">ReArray</udf:field>
   <udf:field name="Robot ID" type="String">0023751</udf:field>
+  <udf:field type="String" name="Bed 2 (Input Plate 1)">580000002810</udf:field>
+  <udf:field type="String" name="Bed 3 (Output Plate 1)">580000003824</udf:field>
   <udf:field name="Input Plate 1" type="String">2460274028854</udf:field>
   <udf:field name="Output Plate 1" type="String">2460274034831</udf:field>
   <udf:field name="Barcode Prefix" type="String">IC</udf:field>
