@@ -315,7 +315,7 @@ sub _container_doc {
 
   my $container_uri = $artifact_doc->findvalue($CONTAINER_URI_PATH);
 
-  return $self->fetch_and_parse($container_uri);;
+  return $self->fetch_and_parse($container_uri);
 }
 
 sub _signature_from_container {
