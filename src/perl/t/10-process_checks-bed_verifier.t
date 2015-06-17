@@ -3,7 +3,7 @@ use warnings;
 use JSON;
 use utf8;
 use Moose::Meta::Class;
-use Test::More tests => 26;
+use Test::More tests => 25;
 use Test::Exception;
 use Test::MockObject;
 
@@ -127,14 +127,14 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
     qr/The barcode of the bed\(s\) are empty. Please, add barcode value\(s\) to the form./,
     'Throws an error when no bed has barcodes filled in';
 
-  my $process5 = $epp->new_object(
-    step_name => 'working_dilution',
-    process_url => $base_url . '/processes/24-50647',
-  );
+  # my $process5 = $epp->new_object(
+  #   step_name => 'working_dilution',
+  #   process_url => $base_url . '/processes/24-50647',
+  # );
 
-  throws_ok {$bed_verifier->_verify_bed_barcodes($process5) }
-    qr/Not all bed\(s\) barcode has been filled. Please, add all bed barcode value\(s\) to the form./,
-    'Throws an error when not every bed barcodes has been filled in';
+  # throws_ok {$bed_verifier->_verify_bed_barcodes($process5) }
+  #   qr/Not all bed\(s\) barcode has been filled. Please, add all bed barcode value\(s\) to the form./,
+  #   'Throws an error when not every bed barcodes has been filled in';
 
   my $process6 = $epp->new_object(
     step_name => 'working_dilution',
