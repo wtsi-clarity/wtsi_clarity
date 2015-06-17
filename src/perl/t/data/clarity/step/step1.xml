@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="yes"?>
+<stp:step current-state="Completed" limsid="24-30034" uri="http://testserver.com:1234/here/steps/24-30034" xmlns:stp="http://genologics.com/ri/step">
+  <configuration uri="http://testserver.com:1234/here/configuration/protocols/9/steps/36">Cherrypick Submission (SM)</configuration>
+  <actions uri="http://testserver.com:1234/here/steps/24-30034/actions"/>
+  <placements uri="http://testserver.com:1234/here/steps/24-30034/placements"/>
+  <program-status uri="http://testserver.com:1234/here/steps/24-30034/programstatus"/>
+  <details uri="http://testserver.com:1234/here/steps/24-30034/details"/>
+  <available-programs>
+    <available-program name="1. Update samples to proceed cherrypick" uri="http://testserver.com:1234/here/steps/24-30034/trigger/755"/>
+  </available-programs>
+</stp:step>
