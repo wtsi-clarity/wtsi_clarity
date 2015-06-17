@@ -119,23 +119,24 @@ sub _create_plate_name_value_mapping {
   return $self->_set_plate_name_value_mapping(\%plate_name_value_map);
 }
 
-has '_number_of_input_beds' => (
-  is => 'rw',
-  isa => 'Int',
-  writer => "_set_number_of_input_beds",
-);
-sub _create_number_of_input_beds {
-  my ($self, $epp) = @_;
-  my $input_bed_count = 0;
+# TODO ke4 uncomment it when fixing #433
+# has '_number_of_input_beds' => (
+#   is => 'rw',
+#   isa => 'Int',
+#   writer => "_set_number_of_input_beds",
+# );
+# sub _create_number_of_input_beds {
+#   my ($self, $epp) = @_;
+#   my $input_bed_count = 0;
 
-  foreach my $bed (@{$epp->beds}) {
-    if ($bed->is_input) {
-      $input_bed_count++;
-    }
-  }
+#   foreach my $bed (@{$epp->beds}) {
+#     if ($bed->is_input) {
+#       $input_bed_count++;
+#     }
+#   }
 
-  return $self->_set_number_of_input_beds($input_bed_count);
-}
+#   return $self->_set_number_of_input_beds($input_bed_count);
+# }
 
 sub _verify_bed_barcodes {
   my ($self, $epp) = @_;
@@ -146,9 +147,11 @@ sub _verify_bed_barcodes {
     croak 'The barcode of the bed(s) are empty. Please, add barcode value(s) to the form.';
   }
 
-  if ($self->_create_number_of_input_beds($epp) != $epp->step_doc->input_container_count) {
-    croak 'Not all bed(s) barcode has been filled. Please, add all bed barcode value(s) to the form.';
-  }
+  # TODO ke4: Fix this bug later #433
+  # We should get the input container from the proper place
+  # if ($self->_create_number_of_input_beds($epp) != $epp->step_doc->input_container_count) {
+  #   croak 'Not all bed(s) barcode has been filled. Please, add all bed barcode value(s) to the form.';
+  # }
 
   foreach my $bed (@{$epp->beds}) {
     if (!exists $self->_robot_config->{$bed->bed_name}) {
