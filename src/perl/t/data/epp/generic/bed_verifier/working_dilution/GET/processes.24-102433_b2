@@ -1,0 +1,27 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="24-102433" uri="http://testserver.com:1234/here/processes/24-102433" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+    <type uri="http://testserver.com:1234/here/processtypes/454">Working Dilution (SM)</type>
+    <technician uri="http://testserver.com:1234/here/researchers/254">
+        <first-name>Christopher</first-name>
+        <last-name>Smith</last-name>
+    </technician>
+    <input-output-map>
+        <input limsid="JON1407A1132PA1" post-process-uri="http://testserver.com:1234/here/artifacts/JON1407A1132PA1?state=336096" uri="http://testserver.com:1234/here/artifacts/JON1407A1132PA1?state=336096"/>
+        <output limsid="2-688667" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-688667?state=371137"/>
+    </input-output-map>
+    <input-output-map>
+        <input limsid="JON1407A1131PA1" post-process-uri="http://testserver.com:1234/here/artifacts/JON1407A1131PA1?state=336014" uri="http://testserver.com:1234/here/artifacts/JON1407A1131PA1?state=336014"/>
+        <output limsid="2-688668" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-688668?state=371138"/>
+    </input-output-map>
+    <input-output-map>
+        <input limsid="JON1407A1130PA1" post-process-uri="http://testserver.com:1234/here/artifacts/JON1407A1130PA1?state=333520" uri="http://testserver.com:1234/here/artifacts/JON1407A1130PA1?state=333520"/>
+        <output limsid="2-688669" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-688669?state=371139"/>
+    </input-output-map>
+    <udf:field name="Robot ID" type="String">009851</udf:field>
+    <udf:field type="String" name="Bed 2 (Input Plate 1)">580040002672</udf:field>
+    <udf:field type="String" name="Input Plate 1">1</udf:field>
+    <udf:field type="String" name="Bed 5 (Output Plate 1)">580040005703</udf:field>
+    <udf:field name="Select Barcode Printer" type="String">g214bc</udf:field>
+    <udf:field name="Plate Purpose" type="String">Working Dilution</udf:field>
+    <process-parameter name="Bed Verification"/>
+</prc:process>
