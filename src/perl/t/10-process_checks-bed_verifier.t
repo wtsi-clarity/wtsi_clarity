@@ -3,9 +3,13 @@ use warnings;
 use JSON;
 use utf8;
 use Moose::Meta::Class;
-use Test::More tests => 22;
+use Test::More tests => 25;
 use Test::Exception;
 use Test::MockObject;
+
+use wtsi_clarity::util::config;
+my $config = wtsi_clarity::util::config->new();
+# my $base_url = $config->clarity_api->{'base_uri'};
 
 use_ok('wtsi_clarity::process_checks::bed_verifier');
 
@@ -17,6 +21,7 @@ sub get_config {
 }
 
 local $ENV{'WTSI_CLARITY_HOME'} = q[t/data/config];
+local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 my $epp = Moose::Meta::Class
             ->create_anon_class(
@@ -31,7 +36,7 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
   can_ok($bed_verifier, qw / config verify /);
 }
 
-# Step Config
+# Step Config
 {
   my $process1 = $epp->new_object(
     step_name => 'working_dilution',
@@ -59,7 +64,7 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
 
   my $process1 = $epp->new_object(
     step_name => 'working_dilution',
-    process_url => 'processes/24-102433',
+    process_url => '/processes/24-102433',
   );
 
   $bed_verifier->_verify_robot_config($process1);
@@ -67,7 +72,7 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
 
   my $process2 = $epp->new_object(
     step_name => 'working_dilution',
-    process_url => 'processes/24-102433_a',
+    process_url => '/processes/24-102433_a',
   );
 
   throws_ok { $bed_verifier->_verify_robot_config($process2) }
@@ -76,7 +81,7 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
 
   my $process3 = $epp->new_object(
     step_name => 'working_dilution',
-    process_url => 'processes/24-103751',
+    process_url => '/processes/24-103751',
   );
 
   throws_ok { $bed_verifier->_verify_robot_config($process3) }
@@ -90,14 +95,14 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
 
   my $process = $epp->new_object(
     step_name => 'working_dilution',
-    process_url => $base_url . 'processes/24-102433_b',
+    process_url => $base_url . '/processes/24-102433_b1',
   );
 
   is($bed_verifier->_verify_bed_barcodes($process), 1, 'Verifies the bed barcodes are correct');
 
   my $process2 = $epp->new_object(
     step_name => 'working_dilution',
-    process_url => $base_url . 'processes/24-102433_c',
+    process_url => $base_url . '/processes/24-102433_c',
   );
 
   throws_ok { $bed_verifier->_verify_bed_barcodes($process2) }
@@ -106,12 +111,49 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
 
   my $process3 = $epp->new_object(
     step_name => 'working_dilution',
-    process_url => $base_url . 'processes/24-102433_d',
+    process_url => $base_url . '/processes/24-102433_d',
   );
 
   throws_ok { $bed_verifier->_verify_bed_barcodes($process3) }
     qr/Bed 2 barcode \(12345\) differs from config bed barcode \(580040002672\)/,
     'Throws an error when a bed has different barcode to the config';
+
+  my $process4 = $epp->new_object(
+    step_name => 'working_dilution',
+    process_url => $base_url . '/processes/24-102433_e',
+  );
+
+  throws_ok { $bed_verifier->_verify_bed_barcodes($process4) }
+    qr/The barcode of the bed\(s\) are empty. Please, add barcode value\(s\) to the form./,
+    'Throws an error when no bed has barcodes filled in';
+
+  # my $process5 = $epp->new_object(
+  #   step_name => 'working_dilution',
+  #   process_url => $base_url . '/processes/24-50647',
+  # );
+
+  # throws_ok {$bed_verifier->_verify_bed_barcodes($process5) }
+  #   qr/Not all bed\(s\) barcode has been filled. Please, add all bed barcode value\(s\) to the form./,
+  #   'Throws an error when not every bed barcodes has been filled in';
+
+  my $process6 = $epp->new_object(
+    step_name => 'working_dilution',
+    process_url => $base_url . '/processes/24-102433_b2',
+  );
+
+  throws_ok {$bed_verifier->_verify_bed_barcodes($process6) }
+    qr/Not all input\/output plate barcode has been filled out./,
+    'Throws an error when not every plate barcodes has been filled in';
+
+  my $process7 = $epp->new_object(
+    step_name => 'working_dilution',
+    process_url => $base_url . '/processes/24-102433_b3',
+  );
+
+  # $bed_verifier->_plate_mapping($process7);
+  throws_ok {$bed_verifier->_plate_mapping($process7) }
+    qr/Not all bed barcode has been filled out./,
+    'Throws an error when not every bed barcodes has been filled in';
 }
 
 # Plate Mappings
@@ -121,7 +163,7 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
 
   my $process = $epp->new_object(
     step_name => 'working_dilution',
-    process_url => $base_url . 'processes/24-103751_a',
+    process_url => $base_url . '/processes/24-103751_a',
   );
 
   my $plate_mapping = [
@@ -133,7 +175,7 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
   ## no.2
   my $process2 = $epp->new_object(
     step_name => 'working_dilution',
-    process_url => $base_url . 'processes/24-102433_b',
+    process_url => $base_url . '/processes/24-102433_b',
   );
 
   my $plate_mapping2 = [
@@ -148,7 +190,7 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
   ## no.3
   my $process3 = $epp->new_object(
     step_name => 'working_dilution',
-    process_url => $base_url . 'processes/24-103751',
+    process_url => $base_url . '/processes/24-103751',
   );
 
   my $plate_mapping3 = [
@@ -161,7 +203,7 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
   ## no.4
   my $process4 = $epp->new_object(
     step_name => 'working_dilution',
-    process_url => $base_url . 'processes/24-103751_c',
+    process_url => $base_url . '/processes/24-103751_c',
   );
 
   my $plate_mapping4 = [
