@@ -34,19 +34,6 @@ sub _build_plate_name {
   return $name;
 }
 
-has 'plate_full_name' => (
-  is => 'ro',
-  isa => 'Str',
-  lazy_build => 1,
-);
-
-sub _build_plate_full_name {
-  my $self = shift;
-  my $name = $self->get_name();
-
-  return $name;
-}
-
 sub is_input {
   my $self = shift;
   return (index($self->plate_name, 'Input') != $NOT_FOUND);

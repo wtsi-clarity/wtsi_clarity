@@ -1,1354 +1,1354 @@
 <?xml version="1.0" standalone="yes"?>
 <art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173273?state=83449" limsid="2-173273">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173273?state=83449" limsid="2-173273">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>E:1</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A5" limsid="DEA51A5"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A5" limsid="DEA51A5"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 5 (ACAGTGGT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173274?state=83450" limsid="2-173274">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173274?state=83450" limsid="2-173274">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>D:1</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A4" limsid="DEA51A4"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A4" limsid="DEA51A4"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 4 (TGACCACT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173275?state=83451" limsid="2-173275">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173275?state=83451" limsid="2-173275">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>G:1</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A7" limsid="DEA51A7"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A7" limsid="DEA51A7"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 7 (CAGATCTG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173276?state=83452" limsid="2-173276">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173276?state=83452" limsid="2-173276">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>F:1</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A6" limsid="DEA51A6"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A6" limsid="DEA51A6"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 6 (GCCAATGT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173277?state=83453" limsid="2-173277">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173277?state=83453" limsid="2-173277">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>A:1</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A1" limsid="DEA51A1"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A1" limsid="DEA51A1"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 1 (ATCACGTT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173278?state=83454" limsid="2-173278">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173278?state=83454" limsid="2-173278">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>C:1</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A3" limsid="DEA51A3"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A3" limsid="DEA51A3"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 3 (TTAGGCAT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173279?state=83455" limsid="2-173279">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173279?state=83455" limsid="2-173279">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>B:1</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A2" limsid="DEA51A2"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A2" limsid="DEA51A2"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 2 (CGATGTTT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173280?state=83456" limsid="2-173280">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173280?state=83456" limsid="2-173280">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>D:3</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A20" limsid="DEA51A20"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A20" limsid="DEA51A20"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 20 (TTGGAGGT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173281?state=83457" limsid="2-173281">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173281?state=83457" limsid="2-173281">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>E:3</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A21" limsid="DEA51A21"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A21" limsid="DEA51A21"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 21 (TCGAGCGT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173282?state=83458" limsid="2-173282">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173282?state=83458" limsid="2-173282">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>F:3</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A22" limsid="DEA51A22"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A22" limsid="DEA51A22"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 22 (TGATACGT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173283?state=83459" limsid="2-173283">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173283?state=83459" limsid="2-173283">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>G:3</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A23" limsid="DEA51A23"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A23" limsid="DEA51A23"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 23 (TGCATAGT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173284?state=83460" limsid="2-173284">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173284?state=83460" limsid="2-173284">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>H:2</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A16" limsid="DEA51A16"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A16" limsid="DEA51A16"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 16 (TCCGTCTT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173285?state=83461" limsid="2-173285">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173285?state=83461" limsid="2-173285">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>A:3</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A17" limsid="DEA51A17"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A17" limsid="DEA51A17"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 17 (TGTACCTT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173286?state=83462" limsid="2-173286">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173286?state=83462" limsid="2-173286">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>B:3</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A18" limsid="DEA51A18"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A18" limsid="DEA51A18"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 18 (TTCTGTGT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173287?state=83463" limsid="2-173287">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173287?state=83463" limsid="2-173287">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>C:3</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A19" limsid="DEA51A19"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A19" limsid="DEA51A19"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 19 (TCTGCTGT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173288?state=83464" limsid="2-173288">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173288?state=83464" limsid="2-173288">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>D:2</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A12" limsid="DEA51A12"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A12" limsid="DEA51A12"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 12 (CTTGTACT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173289?state=83465" limsid="2-173289">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173289?state=83465" limsid="2-173289">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>E:2</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A13" limsid="DEA51A13"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A13" limsid="DEA51A13"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 13 (TGGTTGTT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173290?state=83466" limsid="2-173290">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173290?state=83466" limsid="2-173290">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>F:2</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A14" limsid="DEA51A14"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A14" limsid="DEA51A14"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 14 (TCTCGGTT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173291?state=83467" limsid="2-173291">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173291?state=83467" limsid="2-173291">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>G:2</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A15" limsid="DEA51A15"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A15" limsid="DEA51A15"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 15 (TAAGCGTT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173292?state=83468" limsid="2-173292">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173292?state=83468" limsid="2-173292">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>H:1</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A8" limsid="DEA51A8"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A8" limsid="DEA51A8"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 8 (ACTTGATG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173293?state=83469" limsid="2-173293">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173293?state=83469" limsid="2-173293">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>A:2</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A9" limsid="DEA51A9"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A9" limsid="DEA51A9"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 9 (GATCAGCG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173294?state=83470" limsid="2-173294">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173294?state=83470" limsid="2-173294">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>B:2</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A10" limsid="DEA51A10"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A10" limsid="DEA51A10"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 10 (TAGCTTGT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173295?state=83471" limsid="2-173295">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173295?state=83471" limsid="2-173295">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>C:2</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A11" limsid="DEA51A11"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A11" limsid="DEA51A11"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 11 (GGCTACAG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173296?state=83472" limsid="2-173296">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173296?state=83472" limsid="2-173296">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>G:5</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A39" limsid="DEA51A39"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A39" limsid="DEA51A39"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 39 (TCAGGAGG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173297?state=83473" limsid="2-173297">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173297?state=83473" limsid="2-173297">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>F:5</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A38" limsid="DEA51A38"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A38" limsid="DEA51A38"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 38 (TCTCACGG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173298?state=83474" limsid="2-173298">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173298?state=83474" limsid="2-173298">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>E:5</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A37" limsid="DEA51A37"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A37" limsid="DEA51A37"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 37 (TACTTCGG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173299?state=83475" limsid="2-173299">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173299?state=83475" limsid="2-173299">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>D:5</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A36" limsid="DEA51A36"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A36" limsid="DEA51A36"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 36 (TGAACTGG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173300?state=83476" limsid="2-173300">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173300?state=83476" limsid="2-173300">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>C:5</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A35" limsid="DEA51A35"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A35" limsid="DEA51A35"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 35 (TTGGTATG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173351?state=83477" limsid="2-173351">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173351?state=83477" limsid="2-173351">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>B:5</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A34" limsid="DEA51A34"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A34" limsid="DEA51A34"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 34 (TAACGCTG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173352?state=83478" limsid="2-173352">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173352?state=83478" limsid="2-173352">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>A:5</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A33" limsid="DEA51A33"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A33" limsid="DEA51A33"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 33 (TCGAAGTG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173353?state=83479" limsid="2-173353">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173353?state=83479" limsid="2-173353">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>H:4</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A32" limsid="DEA51A32"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A32" limsid="DEA51A32"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 32 (TTCCATTG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173354?state=83480" limsid="2-173354">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173354?state=83480" limsid="2-173354">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>G:4</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A31" limsid="DEA51A31"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A31" limsid="DEA51A31"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 31 (TAGTCTTG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173355?state=83481" limsid="2-173355">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173355?state=83481" limsid="2-173355">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>F:4</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A30" limsid="DEA51A30"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A30" limsid="DEA51A30"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 30 (TGTGGTTG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173356?state=83482" limsid="2-173356">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173356?state=83482" limsid="2-173356">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>E:4</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A29" limsid="DEA51A29"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A29" limsid="DEA51A29"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 29 (TCCTCAAT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173357?state=83483" limsid="2-173357">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173357?state=83483" limsid="2-173357">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>D:4</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A28" limsid="DEA51A28"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A28" limsid="DEA51A28"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 28 (TACAGGAT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173358?state=83484" limsid="2-173358">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173358?state=83484" limsid="2-173358">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>C:4</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A27" limsid="DEA51A27"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A27" limsid="DEA51A27"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 27 (TAGTGACT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173359?state=83485" limsid="2-173359">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173359?state=83485" limsid="2-173359">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>B:4</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A26" limsid="DEA51A26"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A26" limsid="DEA51A26"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 26 (TTCCTGCT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173360?state=83486" limsid="2-173360">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173360?state=83486" limsid="2-173360">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>A:4</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A25" limsid="DEA51A25"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A25" limsid="DEA51A25"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 25 (TGCGATCT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173361?state=83487" limsid="2-173361">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173361?state=83487" limsid="2-173361">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>H:3</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A24" limsid="DEA51A24"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A24" limsid="DEA51A24"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 24 (TTGACTCT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173362?state=83488" limsid="2-173362">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173362?state=83488" limsid="2-173362">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>F:7</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A54" limsid="DEA51A54"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A54" limsid="DEA51A54"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 54 (TGTTCTCC)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173363?state=83489" limsid="2-173363">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173363?state=83489" limsid="2-173363">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>G:7</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A55" limsid="DEA51A55"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A55" limsid="DEA51A55"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 55 (TTCGCACC)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173364?state=83490" limsid="2-173364">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173364?state=83490" limsid="2-173364">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>D:7</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A52" limsid="DEA51A52"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A52" limsid="DEA51A52"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 52 (TCGTTAGC)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173365?state=83491" limsid="2-173365">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173365?state=83491" limsid="2-173365">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>E:7</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A53" limsid="DEA51A53"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A53" limsid="DEA51A53"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 53 (TACCGAGC)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173366?state=83492" limsid="2-173366">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173366?state=83492" limsid="2-173366">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>B:7</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A50" limsid="DEA51A50"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A50" limsid="DEA51A50"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 50 (TATGTGGC)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173367?state=83493" limsid="2-173367">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173367?state=83493" limsid="2-173367">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>C:7</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A51" limsid="DEA51A51"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A51" limsid="DEA51A51"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 51 (TTACTCGC)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173368?state=83494" limsid="2-173368">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173368?state=83494" limsid="2-173368">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>H:6</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A48" limsid="DEA51A48"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A48" limsid="DEA51A48"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 48 (TTCAGCTC)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173369?state=83495" limsid="2-173369">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173369?state=83495" limsid="2-173369">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>A:7</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A49" limsid="DEA51A49"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A49" limsid="DEA51A49"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 49 (TGTCTATC)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173370?state=83496" limsid="2-173370">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173370?state=83496" limsid="2-173370">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>F:6</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A46" limsid="DEA51A46"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A46" limsid="DEA51A46"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 46 (TCAGATTC)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173371?state=83497" limsid="2-173371">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173371?state=83497" limsid="2-173371">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>G:6</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A47" limsid="DEA51A47"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A47" limsid="DEA51A47"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 47 (TACTAGTC)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173372?state=83498" limsid="2-173372">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173372?state=83498" limsid="2-173372">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>D:6</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A44" limsid="DEA51A44"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A44" limsid="DEA51A44"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 44 (TGGCTCAG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173373?state=83499" limsid="2-173373">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173373?state=83499" limsid="2-173373">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>E:6</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A45" limsid="DEA51A45"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A45" limsid="DEA51A45"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 45 (TATGCCAG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173374?state=83500" limsid="2-173374">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173374?state=83500" limsid="2-173374">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>B:6</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A42" limsid="DEA51A42"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A42" limsid="DEA51A42"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 42 (TGTATGCG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173375?state=83501" limsid="2-173375">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173375?state=83501" limsid="2-173375">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>C:6</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A43" limsid="DEA51A43"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A43" limsid="DEA51A43"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 43 (TCATTGAG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173376?state=83502" limsid="2-173376">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173376?state=83502" limsid="2-173376">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>H:5</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A40" limsid="DEA51A40"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A40" limsid="DEA51A40"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 40 (TAAGTTCG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173377?state=83503" limsid="2-173377">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173377?state=83503" limsid="2-173377">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>A:6</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A41" limsid="DEA51A41"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A41" limsid="DEA51A41"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 41 (TCCAGTCG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173378?state=83504" limsid="2-173378">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173378?state=83504" limsid="2-173378">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>C:10</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A75" limsid="DEA51A75"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A75" limsid="DEA51A75"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 75 (GAATCTGT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173379?state=83505" limsid="2-173379">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173379?state=83505" limsid="2-173379">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>B:10</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A74" limsid="DEA51A74"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A74" limsid="DEA51A74"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 74 (GGTCGTGT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173380?state=83506" limsid="2-173380">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173380?state=83506" limsid="2-173380">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>A:10</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A73" limsid="DEA51A73"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A73" limsid="DEA51A73"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 73 (GCAACATT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173381?state=83507" limsid="2-173381">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173381?state=83507" limsid="2-173381">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>H:9</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A72" limsid="DEA51A72"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A72" limsid="DEA51A72"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 72 (GACGGATT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173382?state=83508" limsid="2-173382">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173382?state=83508" limsid="2-173382">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>G:10</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A79" limsid="DEA51A79"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A79" limsid="DEA51A79"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 79 (GTTAGCCT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173383?state=83509" limsid="2-173383">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173383?state=83509" limsid="2-173383">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>F:10</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A78" limsid="DEA51A78"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A78" limsid="DEA51A78"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 78 (GCATGGCT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173384?state=83510" limsid="2-173384">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173384?state=83510" limsid="2-173384">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>E:10</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A77" limsid="DEA51A77"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A77" limsid="DEA51A77"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 77 (GAGGTGCT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173385?state=83511" limsid="2-173385">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173385?state=83511" limsid="2-173385">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>D:10</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A76" limsid="DEA51A76"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A76" limsid="DEA51A76"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 76 (GTACATCT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173386?state=83512" limsid="2-173386">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173386?state=83512" limsid="2-173386">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>C:11</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A83" limsid="DEA51A83"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A83" limsid="DEA51A83"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 83 (GCTCCTTG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173387?state=83513" limsid="2-173387">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173387?state=83513" limsid="2-173387">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>B:11</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A82" limsid="DEA51A82"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A82" limsid="DEA51A82"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 82 (GAGCCAAT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173388?state=83514" limsid="2-173388">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173388?state=83514" limsid="2-173388">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>A:11</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A81" limsid="DEA51A81"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A81" limsid="DEA51A81"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 81 (GGAATGAT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173389?state=83515" limsid="2-173389">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173389?state=83515" limsid="2-173389">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>H:10</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A80" limsid="DEA51A80"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A80" limsid="DEA51A80"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 80 (GTCGCTAT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173390?state=83516" limsid="2-173390">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173390?state=83516" limsid="2-173390">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>G:11</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A87" limsid="DEA51A87"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A87" limsid="DEA51A87"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 87 (GGATTAGG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173391?state=83517" limsid="2-173391">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173391?state=83517" limsid="2-173391">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>F:11</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A86" limsid="DEA51A86"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A86" limsid="DEA51A86"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 86 (GTTGTCGG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173392?state=83518" limsid="2-173392">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173392?state=83518" limsid="2-173392">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>E:11</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A85" limsid="DEA51A85"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A85" limsid="DEA51A85"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 85 (GAGGATGG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173393?state=83519" limsid="2-173393">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173393?state=83519" limsid="2-173393">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>D:11</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A84" limsid="DEA51A84"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A84" limsid="DEA51A84"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 84 (GTAAGGTG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173394?state=83520" limsid="2-173394">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173394?state=83520" limsid="2-173394">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>B:8</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A58" limsid="DEA51A58"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A58" limsid="DEA51A58"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 58 (TGACAGAC)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173395?state=83521" limsid="2-173395">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173395?state=83521" limsid="2-173395">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>C:8</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A59" limsid="DEA51A59"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A59" limsid="DEA51A59"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 59 (TAGAACAC)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173396?state=83522" limsid="2-173396">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173396?state=83522" limsid="2-173396">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>H:7</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A56" limsid="DEA51A56"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A56" limsid="DEA51A56"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 56 (TTGCGTAC)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173397?state=83523" limsid="2-173397">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173397?state=83523" limsid="2-173397">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>A:8</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A57" limsid="DEA51A57"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A57" limsid="DEA51A57"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 57 (TCTACGAC)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173398?state=83524" limsid="2-173398">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173398?state=83524" limsid="2-173398">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>F:8</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A62" limsid="DEA51A62"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A62" limsid="DEA51A62"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 62 (TAGACGGA)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173399?state=83525" limsid="2-173399">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173399?state=83525" limsid="2-173399">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>G:8</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A63" limsid="DEA51A63"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A63" limsid="DEA51A63"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 63 (TGTGAAGA)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173400?state=83526" limsid="2-173400">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173400?state=83526" limsid="2-173400">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>D:8</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A60" limsid="DEA51A60"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A60" limsid="DEA51A60"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 60 (TCATCCTA)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173451?state=83527" limsid="2-173451">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173451?state=83527" limsid="2-173451">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>E:8</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A61" limsid="DEA51A61"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A61" limsid="DEA51A61"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 61 (TGCTGATA)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173452?state=83528" limsid="2-173452">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173452?state=83528" limsid="2-173452">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>B:9</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A66" limsid="DEA51A66"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A66" limsid="DEA51A66"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 66 (TGAAGCCA)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173453?state=83529" limsid="2-173453">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173453?state=83529" limsid="2-173453">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>C:9</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A67" limsid="DEA51A67"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A67" limsid="DEA51A67"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 67 (TACCACCA)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173454?state=83530" limsid="2-173454">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173454?state=83530" limsid="2-173454">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>H:8</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A64" limsid="DEA51A64"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A64" limsid="DEA51A64"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 64 (TCTCTTCA)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173455?state=83531" limsid="2-173455">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173455?state=83531" limsid="2-173455">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>A:9</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A65" limsid="DEA51A65"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A65" limsid="DEA51A65"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 65 (TTGTTCCA)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173456?state=83532" limsid="2-173456">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173456?state=83532" limsid="2-173456">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>F:9</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A70" limsid="DEA51A70"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A70" limsid="DEA51A70"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 70 (GATCTCTT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173457?state=83533" limsid="2-173457">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173457?state=83533" limsid="2-173457">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>G:9</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A71" limsid="DEA51A71"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A71" limsid="DEA51A71"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 71 (GTGTCCTT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173458?state=83534" limsid="2-173458">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173458?state=83534" limsid="2-173458">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>D:9</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A68" limsid="DEA51A68"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A68" limsid="DEA51A68"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 68 (TGCGTGAA)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173459?state=83535" limsid="2-173459">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173459?state=83535" limsid="2-173459">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>E:9</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A69" limsid="DEA51A69"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A69" limsid="DEA51A69"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 69 (GGTGAGTT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173460?state=83536" limsid="2-173460">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173460?state=83536" limsid="2-173460">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>H:11</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A88" limsid="DEA51A88"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A88" limsid="DEA51A88"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 88 (GATAGAGG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173461?state=83537" limsid="2-173461">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173461?state=83537" limsid="2-173461">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>A:12</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A89" limsid="DEA51A89"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A89" limsid="DEA51A89"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 89 (GTGTGTCG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173462?state=83538" limsid="2-173462">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173462?state=83538" limsid="2-173462">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>B:12</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A90" limsid="DEA51A90"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A90" limsid="DEA51A90"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 90 (GCAATCCG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173463?state=83539" limsid="2-173463">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173463?state=83539" limsid="2-173463">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>C:12</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A91" limsid="DEA51A91"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A91" limsid="DEA51A91"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 91 (GACCTTAG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173464?state=83540" limsid="2-173464">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173464?state=83540" limsid="2-173464">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>D:12</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A92" limsid="DEA51A92"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A92" limsid="DEA51A92"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 92 (GCCTGTTC)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173465?state=83541" limsid="2-173465">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173465?state=83541" limsid="2-173465">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>E:12</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A93" limsid="DEA51A93"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A93" limsid="DEA51A93"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 93 (GCACTGTC)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173466?state=83542" limsid="2-173466">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173466?state=83542" limsid="2-173466">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>F:12</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A94" limsid="DEA51A94"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A94" limsid="DEA51A94"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 94 (GCTAACTC)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-173467?state=83543" limsid="2-173467">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-173467?state=83543" limsid="2-173467">
         <name>319b744a-0903-11e4-b42e-68b59977951e-Lib PCR XP</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/24-26349" limsid="24-26349"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26349" limsid="24-26349"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4028" limsid="27-4028"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4028" limsid="27-4028"/>
             <value>G:12</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A95" limsid="DEA51A95"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A95" limsid="DEA51A95"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 95 (GATTCATC)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-174200?state=83926" limsid="2-174200">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-174200?state=83926" limsid="2-174200">
         <name>Pool #1</name>
         <type>Analyte</type>
         <output-type>Pool</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/122-26353" limsid="122-26353"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/122-26353" limsid="122-26353"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4034" limsid="27-4034"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4034" limsid="27-4034"/>
             <value>A:1</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A1" limsid="DEA51A1"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A6" limsid="DEA51A6"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A7" limsid="DEA51A7"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A8" limsid="DEA51A8"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A2" limsid="DEA51A2"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A3" limsid="DEA51A3"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A4" limsid="DEA51A4"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A5" limsid="DEA51A5"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A1" limsid="DEA51A1"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A6" limsid="DEA51A6"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A7" limsid="DEA51A7"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A8" limsid="DEA51A8"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A2" limsid="DEA51A2"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A3" limsid="DEA51A3"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A4" limsid="DEA51A4"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A5" limsid="DEA51A5"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 8 (ACTTGATG)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 5 (ACAGTGGT)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 6 (GCCAATGT)"/>
@@ -1358,25 +1358,25 @@
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 3 (TTAGGCAT)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 7 (CAGATCTG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-174251?state=83927" limsid="2-174251">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-174251?state=83927" limsid="2-174251">
         <name>Pool #2</name>
         <type>Analyte</type>
         <output-type>Pool</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/122-26353" limsid="122-26353"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/122-26353" limsid="122-26353"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4034" limsid="27-4034"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4034" limsid="27-4034"/>
             <value>B:1</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A9" limsid="DEA51A9"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A14" limsid="DEA51A14"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A15" limsid="DEA51A15"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A16" limsid="DEA51A16"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A10" limsid="DEA51A10"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A11" limsid="DEA51A11"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A12" limsid="DEA51A12"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A13" limsid="DEA51A13"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A9" limsid="DEA51A9"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A14" limsid="DEA51A14"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A15" limsid="DEA51A15"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A16" limsid="DEA51A16"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A10" limsid="DEA51A10"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A11" limsid="DEA51A11"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A12" limsid="DEA51A12"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A13" limsid="DEA51A13"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 15 (TAAGCGTT)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 16 (TCCGTCTT)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 13 (TGGTTGTT)"/>
@@ -1386,25 +1386,25 @@
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 9 (GATCAGCG)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 10 (TAGCTTGT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-174252?state=83928" limsid="2-174252">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-174252?state=83928" limsid="2-174252">
         <name>Pool #3</name>
         <type>Analyte</type>
         <output-type>Pool</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/122-26353" limsid="122-26353"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/122-26353" limsid="122-26353"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4034" limsid="27-4034"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4034" limsid="27-4034"/>
             <value>C:1</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A23" limsid="DEA51A23"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A22" limsid="DEA51A22"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A24" limsid="DEA51A24"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A19" limsid="DEA51A19"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A18" limsid="DEA51A18"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A21" limsid="DEA51A21"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A20" limsid="DEA51A20"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A17" limsid="DEA51A17"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A23" limsid="DEA51A23"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A22" limsid="DEA51A22"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A24" limsid="DEA51A24"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A19" limsid="DEA51A19"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A18" limsid="DEA51A18"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A21" limsid="DEA51A21"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A20" limsid="DEA51A20"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A17" limsid="DEA51A17"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 19 (TCTGCTGT)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 20 (TTGGAGGT)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 17 (TGTACCTT)"/>
@@ -1414,25 +1414,25 @@
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 22 (TGATACGT)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 21 (TCGAGCGT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-174253?state=83929" limsid="2-174253">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-174253?state=83929" limsid="2-174253">
         <name>Pool #4</name>
         <type>Analyte</type>
         <output-type>Pool</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/122-26353" limsid="122-26353"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/122-26353" limsid="122-26353"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4034" limsid="27-4034"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4034" limsid="27-4034"/>
             <value>D:1</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A25" limsid="DEA51A25"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A31" limsid="DEA51A31"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A30" limsid="DEA51A30"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A32" limsid="DEA51A32"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A27" limsid="DEA51A27"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A26" limsid="DEA51A26"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A29" limsid="DEA51A29"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A28" limsid="DEA51A28"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A25" limsid="DEA51A25"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A31" limsid="DEA51A31"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A30" limsid="DEA51A30"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A32" limsid="DEA51A32"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A27" limsid="DEA51A27"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A26" limsid="DEA51A26"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A29" limsid="DEA51A29"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A28" limsid="DEA51A28"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 28 (TACAGGAT)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 27 (TAGTGACT)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 26 (TTCCTGCT)"/>
@@ -1442,25 +1442,25 @@
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 30 (TGTGGTTG)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 29 (TCCTCAAT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-174254?state=83930" limsid="2-174254">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-174254?state=83930" limsid="2-174254">
         <name>Pool #5</name>
         <type>Analyte</type>
         <output-type>Pool</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/122-26353" limsid="122-26353"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/122-26353" limsid="122-26353"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4034" limsid="27-4034"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4034" limsid="27-4034"/>
             <value>E:1</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A33" limsid="DEA51A33"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A37" limsid="DEA51A37"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A36" limsid="DEA51A36"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A35" limsid="DEA51A35"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A34" limsid="DEA51A34"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A40" limsid="DEA51A40"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A39" limsid="DEA51A39"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A38" limsid="DEA51A38"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A33" limsid="DEA51A33"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A37" limsid="DEA51A37"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A36" limsid="DEA51A36"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A35" limsid="DEA51A35"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A34" limsid="DEA51A34"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A40" limsid="DEA51A40"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A39" limsid="DEA51A39"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A38" limsid="DEA51A38"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 37 (TACTTCGG)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 38 (TCTCACGG)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 39 (TCAGGAGG)"/>
@@ -1470,25 +1470,25 @@
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 34 (TAACGCTG)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 33 (TCGAAGTG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-174255?state=83931" limsid="2-174255">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-174255?state=83931" limsid="2-174255">
         <name>Pool #6</name>
         <type>Analyte</type>
         <output-type>Pool</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/122-26353" limsid="122-26353"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/122-26353" limsid="122-26353"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4034" limsid="27-4034"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4034" limsid="27-4034"/>
             <value>F:1</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A45" limsid="DEA51A45"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A44" limsid="DEA51A44"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A43" limsid="DEA51A43"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A42" limsid="DEA51A42"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A48" limsid="DEA51A48"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A47" limsid="DEA51A47"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A46" limsid="DEA51A46"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A41" limsid="DEA51A41"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A45" limsid="DEA51A45"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A44" limsid="DEA51A44"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A43" limsid="DEA51A43"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A42" limsid="DEA51A42"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A48" limsid="DEA51A48"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A47" limsid="DEA51A47"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A46" limsid="DEA51A46"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A41" limsid="DEA51A41"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 41 (TCCAGTCG)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 48 (TTCAGCTC)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 47 (TACTAGTC)"/>
@@ -1498,25 +1498,25 @@
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 43 (TCATTGAG)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 42 (TGTATGCG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-174256?state=83932" limsid="2-174256">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-174256?state=83932" limsid="2-174256">
         <name>Pool #7</name>
         <type>Analyte</type>
         <output-type>Pool</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/122-26353" limsid="122-26353"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/122-26353" limsid="122-26353"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4034" limsid="27-4034"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4034" limsid="27-4034"/>
             <value>G:1</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A52" limsid="DEA51A52"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A53" limsid="DEA51A53"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A50" limsid="DEA51A50"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A51" limsid="DEA51A51"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A56" limsid="DEA51A56"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A54" limsid="DEA51A54"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A55" limsid="DEA51A55"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A49" limsid="DEA51A49"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A52" limsid="DEA51A52"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A53" limsid="DEA51A53"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A50" limsid="DEA51A50"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A51" limsid="DEA51A51"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A56" limsid="DEA51A56"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A54" limsid="DEA51A54"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A55" limsid="DEA51A55"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A49" limsid="DEA51A49"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 55 (TTCGCACC)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 56 (TTGCGTAC)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 53 (TACCGAGC)"/>
@@ -1526,25 +1526,25 @@
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 49 (TGTCTATC)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 50 (TATGTGGC)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-174257?state=83933" limsid="2-174257">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-174257?state=83933" limsid="2-174257">
         <name>Pool #8</name>
         <type>Analyte</type>
         <output-type>Pool</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/122-26353" limsid="122-26353"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/122-26353" limsid="122-26353"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4034" limsid="27-4034"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4034" limsid="27-4034"/>
             <value>H:1</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A60" limsid="DEA51A60"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A61" limsid="DEA51A61"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A58" limsid="DEA51A58"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A59" limsid="DEA51A59"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A64" limsid="DEA51A64"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A62" limsid="DEA51A62"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A63" limsid="DEA51A63"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A57" limsid="DEA51A57"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A60" limsid="DEA51A60"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A61" limsid="DEA51A61"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A58" limsid="DEA51A58"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A59" limsid="DEA51A59"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A64" limsid="DEA51A64"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A62" limsid="DEA51A62"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A63" limsid="DEA51A63"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A57" limsid="DEA51A57"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 63 (TGTGAAGA)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 64 (TCTCTTCA)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 61 (TGCTGATA)"/>
@@ -1554,25 +1554,25 @@
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 57 (TCTACGAC)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 58 (TGACAGAC)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-174258?state=83934" limsid="2-174258">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-174258?state=83934" limsid="2-174258">
         <name>Pool #9</name>
         <type>Analyte</type>
         <output-type>Pool</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/122-26353" limsid="122-26353"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/122-26353" limsid="122-26353"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4034" limsid="27-4034"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4034" limsid="27-4034"/>
             <value>A:2</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A65" limsid="DEA51A65"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A67" limsid="DEA51A67"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A66" limsid="DEA51A66"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A69" limsid="DEA51A69"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A68" limsid="DEA51A68"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A71" limsid="DEA51A71"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A70" limsid="DEA51A70"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A72" limsid="DEA51A72"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A65" limsid="DEA51A65"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A67" limsid="DEA51A67"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A66" limsid="DEA51A66"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A69" limsid="DEA51A69"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A68" limsid="DEA51A68"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A71" limsid="DEA51A71"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A70" limsid="DEA51A70"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A72" limsid="DEA51A72"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 66 (TGAAGCCA)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 65 (TTGTTCCA)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 68 (TGCGTGAA)"/>
@@ -1582,25 +1582,25 @@
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 72 (GACGGATT)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 71 (GTGTCCTT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-174259?state=83935" limsid="2-174259">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-174259?state=83935" limsid="2-174259">
         <name>Pool #10</name>
         <type>Analyte</type>
         <output-type>Pool</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/122-26353" limsid="122-26353"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/122-26353" limsid="122-26353"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4034" limsid="27-4034"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4034" limsid="27-4034"/>
             <value>B:2</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A75" limsid="DEA51A75"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A74" limsid="DEA51A74"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A77" limsid="DEA51A77"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A76" limsid="DEA51A76"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A79" limsid="DEA51A79"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A78" limsid="DEA51A78"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A80" limsid="DEA51A80"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A73" limsid="DEA51A73"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A75" limsid="DEA51A75"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A74" limsid="DEA51A74"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A77" limsid="DEA51A77"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A76" limsid="DEA51A76"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A79" limsid="DEA51A79"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A78" limsid="DEA51A78"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A80" limsid="DEA51A80"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A73" limsid="DEA51A73"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 74 (GGTCGTGT)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 73 (GCAACATT)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 76 (GTACATCT)"/>
@@ -1610,25 +1610,25 @@
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 80 (GTCGCTAT)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 79 (GTTAGCCT)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-174260?state=83936" limsid="2-174260">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-174260?state=83936" limsid="2-174260">
         <name>Pool #11</name>
         <type>Analyte</type>
         <output-type>Pool</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/122-26353" limsid="122-26353"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/122-26353" limsid="122-26353"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4034" limsid="27-4034"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4034" limsid="27-4034"/>
             <value>C:2</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A82" limsid="DEA51A82"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A83" limsid="DEA51A83"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A84" limsid="DEA51A84"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A85" limsid="DEA51A85"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A86" limsid="DEA51A86"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A87" limsid="DEA51A87"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A88" limsid="DEA51A88"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A81" limsid="DEA51A81"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A82" limsid="DEA51A82"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A83" limsid="DEA51A83"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A84" limsid="DEA51A84"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A85" limsid="DEA51A85"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A86" limsid="DEA51A86"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A87" limsid="DEA51A87"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A88" limsid="DEA51A88"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A81" limsid="DEA51A81"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 81 (GGAATGAT)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 82 (GAGCCAAT)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 83 (GCTCCTTG)"/>
@@ -1638,24 +1638,24 @@
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 87 (GGATTAGG)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 88 (GATAGAGG)"/>
     </art:artifact>
-    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-174261?state=83937" limsid="2-174261">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-174261?state=83937" limsid="2-174261">
         <name>Pool #12</name>
         <type>Analyte</type>
         <output-type>Pool</output-type>
-        <parent-process uri="http://testserver.com:1234/here/processes/122-26353" limsid="122-26353"/>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/122-26353" limsid="122-26353"/>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://testserver.com:1234/here/containers/27-4034" limsid="27-4034"/>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4034" limsid="27-4034"/>
             <value>D:2</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A90" limsid="DEA51A90"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A91" limsid="DEA51A91"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A92" limsid="DEA51A92"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A93" limsid="DEA51A93"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A94" limsid="DEA51A94"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A95" limsid="DEA51A95"/>
-        <sample uri="http://testserver.com:1234/here/samples/DEA51A89" limsid="DEA51A89"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A90" limsid="DEA51A90"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A91" limsid="DEA51A91"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A92" limsid="DEA51A92"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A93" limsid="DEA51A93"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A94" limsid="DEA51A94"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A95" limsid="DEA51A95"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA51A89" limsid="DEA51A89"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 89 (GTGTGTCG)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 90 (GCAATCCG)"/>
         <reagent-label name="Sanger_168tags - 10 mer tags: tag 91 (GACCTTAG)"/>
