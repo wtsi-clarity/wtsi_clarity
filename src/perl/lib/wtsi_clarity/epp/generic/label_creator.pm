@@ -48,6 +48,13 @@ Readonly::Scalar my $SAMPLE_LIMSID_PATH       => q{ /smp:sample/@limsid};
 Readonly::Scalar my $ARTIFACT_LIMSID_PATH     => q{ /art:artifacts/artifact/@limsid};
 Readonly::Scalar my $ARTIFACT_URI_PATH        => q{ /art:artifacts/artifact[@limsid='%s']/@uri};
 Readonly::Scalar my $CONTAINER_SIGNATURE_PATH => q{ /con:container/udf:field[@name='} . $CONTAINER_SIGNATURE_FIELD_NAME . q{']/text()};
+Readonly::Scalar my $FIRST_ANALYTE_URI        => q{ con:details/con:container/placement[1]/@uri };
+Readonly::Scalar my $STEP_OUTPUT_CONTAINERS   => q{ stp:placements/selected-containers/container/@uri };
+Readonly::Scalar my $EACH_ARTIFACT            => q{ art:details/art:artifact };
+Readonly::Scalar my $ANALYTE_CONTAINER_LIMSID => q{ ./location/container/@limsid };
+Readonly::Scalar my $ANALYTE_SAMPLE_LIMSID    => q{ ./sample/@limsid };
+Readonly::Scalar my $LAST_ARTIFACT            => q{ art:artifacts/artifact[last()]/@uri };
+Readonly::Scalar my $FIRST_CONTAINER          => q{ con:containers/container[1]/@limsid };
 ##use critic
 
 Readonly::Scalar my $SIGNATURE_LENGTH               => 5;
@@ -73,6 +80,20 @@ has 'temp_barcode' => (
   is  => 'ro',
   required => 0,
   default  => 0,
+);
+
+has 'get_sanger_barcode_from' => (
+  isa       => 'Str',
+  is        => 'ro',
+  required  => 0,
+  predicate => 'has_get_sanger_barcode_from',
+);
+
+has 'step_url' => (
+  isa       => 'Str',
+  is        => 'ro',
+  required  => 0,
+  predicate => 'has_step_url',
 );
 
 has 'container_type' => (
@@ -315,7 +336,7 @@ sub _container_doc {
 
   my $container_uri = $artifact_doc->findvalue($CONTAINER_URI_PATH);
 
-  return $self->fetch_and_parse($container_uri);;
+  return $self->fetch_and_parse($container_uri);
 }
 
 sub _signature_from_container {
@@ -337,9 +358,19 @@ has '_plate_purpose_suffix' => (
   default    => sub { my @a = ('A'..'Z'); return \@a; },
 );
 
+has '_plate_to_parent_plate_map' => (
+  isa      => 'HashRef',
+  is       => 'rw',
+  required => 0,
+  writer   => q{_set_plate_to_parent_plate_map},
+  default  => sub { {} },
+);
+
 override 'run' => sub {
   my $self = shift;
   super(); #call parent's run method
+
+  $self->_check_options();
 
   if (!$self->temp_barcode) {
     $self->_set_container_data();
@@ -347,10 +378,76 @@ override 'run' => sub {
   }
 
   my $template = $self->_generate_labels();
+
   $self->print_labels($self->printer, $template);
 
   return;
 };
+
+sub _check_options {
+  my $self = shift;
+
+  if ($self->has_get_sanger_barcode_from && !$self->has_step_url) {
+    croak 'Step URL must be provided when get_sanger_barcode_from is set';
+  }
+
+  return 1;
+}
+
+sub _fetch_sanger_barcode {
+  my ($self, $step_name) = @_;
+
+  # Fetch the output containers
+  my $placements        = $self->fetch_and_parse($self->step_url . q{/placements});
+  my @output_containers = $placements
+                            ->findnodes($STEP_OUTPUT_CONTAINERS)
+                            ->to_literal_list;
+
+  my $container_xml = $self->request->batch_retrieve('containers', \@output_containers);
+
+  # Fetch the first analyte from each container
+  my @analyte_uris  = $container_xml->findnodes($FIRST_ANALYTE_URI)->to_literal_list;
+  my $analytes_xml  = $self->request->batch_retrieve('artifacts', \@analyte_uris);
+
+  my %limsid_to_num = ();
+
+  foreach my $analyte ($analytes_xml->findnodes($EACH_ARTIFACT)) {
+
+    my $container_limsid = $analyte->findvalue($ANALYTE_CONTAINER_LIMSID);
+    my $sample_limsid    = $analyte->findvalue($ANALYTE_SAMPLE_LIMSID);
+
+    my $artifacts_uri = $self->config->clarity_api->{'base_uri'}
+                      . q{/artifacts?type=Analyte&process-type=}
+                      . uri_escape($step_name)
+                      . q{&samplelimsid=} . $sample_limsid;
+
+    my $artifacts_xml = $self->fetch_and_parse($artifacts_uri);
+
+    my $artifact_uri  = $artifacts_xml->findvalue($LAST_ARTIFACT);
+
+    if ($artifact_uri eq q{}) {
+      $self->epp_log('No parent plate of plate ' . $container_limsid . ' has been through step ' . $step_name);
+      next;
+    }
+
+    my $artifact_xml            = $self->fetch_and_parse($artifact_uri);
+    my $container_uri           = $artifact_xml->findvalue($CONTAINER_URI_PATH);
+    my $container_from_step_xml = $self->fetch_and_parse($container_uri);
+    my $container_name          = $container_from_step_xml->findvalue($CONTAINER_NAME_PATH);
+
+    my $container_search_uri = $self->config->clarity_api->{'base_uri'}
+                                . q{/containers?name=} . $container_name;
+
+    my $container_search_xml        = $self->fetch_and_parse($container_search_uri);
+    my $container_search_xml_limsid = $container_search_xml->findvalue($FIRST_CONTAINER);
+
+    my ($barcode, $num) = $self->generate_barcode($container_search_xml_limsid);
+
+    $limsid_to_num{$container_limsid} = $num;
+  }
+
+  return \%limsid_to_num;
+}
 
 sub _generate_labels {
   my $self = shift;
@@ -372,9 +469,9 @@ sub _generate_temp_container {
 
   return {
     'tmp' => {
-      'barcode' => $barcode,
-      'num'     => $num,
-      'purpose' => 'AssayPlate',
+      'barcode'   => $barcode,
+      'num'       => $num,
+      'purpose'   => 'AssayPlate',
       'signature' => 'n/a'
     }
   }
@@ -386,6 +483,13 @@ sub _generate_random_number {
 
 sub _set_container_data {
   my $self = shift;
+
+  if ($self->has_get_sanger_barcode_from) {
+    $self->epp_log('Fetching Sanger Barcodes from ' . $self->get_sanger_barcode_from);
+    my $plate_to_parent_plate_map = $self->_fetch_sanger_barcode($self->get_sanger_barcode_from);
+    $self->_set_plate_to_parent_plate_map($plate_to_parent_plate_map);
+    $self->epp_log('Found Sanger Barcodes for ' . (scalar keys %{$plate_to_parent_plate_map}) . ' plate(s)');
+  }
 
   my $count = 0;
   my @urls = keys %{$self->_container};
@@ -406,9 +510,15 @@ sub _set_container_data {
                  q[] : $self->_plate_purpose_suffix->[$count];
     $container->{'purpose'} = $self->_copy_purpose($doc, $suffix);
 
-    my ($barcode, $num) = $self->generate_barcode($lims_id);
+    my ($barcode, $num)     = $self->generate_barcode($lims_id);
     $container->{'barcode'} = $barcode;
-    $container->{'num'} = $num;
+    $container->{'num'}     = $num;
+
+    if ( $self->has_get_sanger_barcode_from &&
+         exists $self->_plate_to_parent_plate_map->{$container->{'limsid'}} ) {
+
+      $container->{'sanger_barcode'} = $self->_plate_to_parent_plate_map->{$container->{'limsid'}};
+    }
 
     $self->_copy_barcode2container($doc, $barcode);
 
@@ -545,6 +655,11 @@ wtsi_clarity::epp::generic::label_creator
 
   A boolean flag indicating whether container purpose has to be incremented in
   case of multiple outputs, defaults to false, an optional attribute.
+
+=head2 get_sanger_barcode_from
+
+  An optional string that can be set to the name of a previous step. The "sanger barcodes" for the matching
+  containers in this previous step will be added to the label for these new containers.
 
 =head2 run
 
