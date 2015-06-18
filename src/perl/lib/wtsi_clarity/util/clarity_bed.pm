@@ -2,13 +2,10 @@ package wtsi_clarity::util::clarity_bed;
 
 use Moose;
 use Carp;
-use Readonly;
 use wtsi_clarity::util::string qw/trim/;
 extends 'wtsi_clarity::util::clarity_udf';
 
 our $VERSION = '0.0';
-
-Readonly::Scalar my $NOT_FOUND => -1;
 
 has 'barcode' => (
   is => 'ro',
@@ -33,34 +30,6 @@ sub _build_bed_name {
   } else {
     croak 'Could not extract bed name from ' . $self->get_name();
   }
-}
-
-has 'plate_name' => (
-  is => 'ro',
-  isa => 'Str',
-  lazy_build => 1,
-);
-
-sub _build_plate_name {
-  my $self = shift;
-  my $plate_name;
-
-  if($self->get_name() =~ /(Bed .+)[(](.*)[)]/sxm) {
-    $plate_name = trim $2;
-    return $plate_name;
-  } else {
-    croak 'Could not extract plate name from ' . $self->get_name();
-  }
-}
-
-sub is_input {
-  my $self = shift;
-  return (index($self->get_name, 'Input') != $NOT_FOUND);
-}
-
-sub is_output {
-  my $self = shift;
-  return (index($self->get_name, 'Output') != $NOT_FOUND);
 }
 
 1;
@@ -89,10 +58,6 @@ wtsi_clarity::util::clarity_bed
 =head2 bed_name
   Returns the bed name. For example, if the element_name is "Bed 1 (Input Plate 1)",
   it will return "Bed 1"
-
-=head2 is_input Returns true if bed is an input bed (i.e. it's name contains "Input")
-
-=head2 is_output Returns true if bed is an output bed (i.e. it's name contains "Output")
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
