@@ -1,5 +1,8 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 1.6.1
+ - Fix bed verification bug #443 (corrects plate name mapping)
+
 Release 1.6
  - QC Report speed up
  - Bed Verification extra checks

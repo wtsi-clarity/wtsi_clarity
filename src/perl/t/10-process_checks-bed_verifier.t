@@ -3,7 +3,7 @@ use warnings;
 use JSON;
 use utf8;
 use Moose::Meta::Class;
-use Test::More tests => 25;
+use Test::More tests => 26;
 use Test::Exception;
 use Test::MockObject;
 
@@ -102,39 +102,37 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
 
   my $process2 = $epp->new_object(
     step_name => 'working_dilution',
+    process_url => $base_url . '/processes/24-102433_b4',
+  );
+
+  is($bed_verifier->_verify_bed_barcodes($process2), 1, 'Verifies the bed and input/output barcodes are correct');
+
+  my $process3 = $epp->new_object(
+    step_name => 'working_dilution',
     process_url => $base_url . '/processes/24-102433_c',
   );
 
-  throws_ok { $bed_verifier->_verify_bed_barcodes($process2) }
+  throws_ok { $bed_verifier->_verify_bed_barcodes($process3) }
     qr/Bed something else can not be found in config for specified robot/,
     'Throws an error when a bed has a name not in the config';
 
-  my $process3 = $epp->new_object(
+  my $process4 = $epp->new_object(
     step_name => 'working_dilution',
     process_url => $base_url . '/processes/24-102433_d',
   );
 
-  throws_ok { $bed_verifier->_verify_bed_barcodes($process3) }
+  throws_ok { $bed_verifier->_verify_bed_barcodes($process4) }
     qr/Bed 2 barcode \(12345\) differs from config bed barcode \(580040002672\)/,
     'Throws an error when a bed has different barcode to the config';
 
-  my $process4 = $epp->new_object(
+  my $process5 = $epp->new_object(
     step_name => 'working_dilution',
     process_url => $base_url . '/processes/24-102433_e',
   );
 
-  throws_ok { $bed_verifier->_verify_bed_barcodes($process4) }
+  throws_ok { $bed_verifier->_verify_bed_barcodes($process5) }
     qr/The barcode of the bed\(s\) are empty. Please, add barcode value\(s\) to the form./,
     'Throws an error when no bed has barcodes filled in';
-
-  # my $process5 = $epp->new_object(
-  #   step_name => 'working_dilution',
-  #   process_url => $base_url . '/processes/24-50647',
-  # );
-
-  # throws_ok {$bed_verifier->_verify_bed_barcodes($process5) }
-  #   qr/Not all bed\(s\) barcode has been filled. Please, add all bed barcode value\(s\) to the form./,
-  #   'Throws an error when not every bed barcodes has been filled in';
 
   my $process6 = $epp->new_object(
     step_name => 'working_dilution',
@@ -154,6 +152,15 @@ my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(config => get
   throws_ok {$bed_verifier->_plate_mapping($process7) }
     qr/Not all bed barcode has been filled out./,
     'Throws an error when not every bed barcodes has been filled in';
+
+  # my $process8 = $epp->new_object(
+  #   step_name => 'working_dilution',
+  #   process_url => $base_url . '/processes/24-50647',
+  # );
+
+  # throws_ok {$bed_verifier->_verify_bed_barcodes($process8) }
+  #   qr/Not all bed\(s\) barcode has been filled. Please, add all bed barcode value\(s\) to the form./,
+  #   'Throws an error when not every bed barcodes has been filled in';
 }
 
 # Plate Mappings
