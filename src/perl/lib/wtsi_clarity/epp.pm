@@ -8,6 +8,7 @@ use Readonly;
 use wtsi_clarity::util::request;
 use wtsi_clarity::util::types;
 use wtsi_clarity::clarity::process;
+use wtsi_clarity::clarity::step;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $BED_PATH => q{/prc:process/udf:field[starts-with(@name, "Bed") and contains(@name, "Plate")]};
@@ -37,6 +38,21 @@ sub _build_process_doc {
   my ($self) = @_;
   my $xml = $self->fetch_and_parse($self->process_url);
   return wtsi_clarity::clarity::process->new(xml => $xml, parent => $self);
+}
+
+has 'step_doc'  => (
+  isa             => 'wtsi_clarity::clarity::step',
+  is              => 'ro',
+  required        => 0,
+  traits          => [ 'NoGetopt' ],
+  lazy_build      => 1,
+);
+sub _build_step_doc {
+  my ($self) = @_;
+  my $step_url = $self->process_url;
+  $step_url =~ s/processes/steps/smxg;
+  my $xml = $self->fetch_and_parse($step_url);
+  return wtsi_clarity::clarity::step->new(xml => $xml, parent => $self);
 }
 
 has 'beds' => (

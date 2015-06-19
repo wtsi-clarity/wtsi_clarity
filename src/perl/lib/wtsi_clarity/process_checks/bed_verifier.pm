@@ -83,8 +83,75 @@ sub _verify_robot_config {
   return $self->_set__robot_config($self->_step_config->{$robot_bc});
 }
 
+has '_bed_names' => (
+  isa        => 'ArrayRef',
+  is         => 'rw',
+  required => 0,
+  writer => "_set_bed_names",
+);
+sub _create_bed_names {
+  my ($self, $epp) = @_;
+
+  my @bed_names = ();
+
+  foreach my $bed (@{$epp->beds}) {
+
+    push @bed_names, $bed->plate_name;
+  }
+
+  return $self->_set_bed_names(\@bed_names);
+}
+
+has '_plate_name_value_mapping' => (
+  is => 'rw',
+  isa => 'HashRef',
+  required => 0,
+  writer => "_set_plate_name_value_mapping",
+);
+sub _create_plate_name_value_mapping {
+  my ($self, $epp) = @_;
+  my %plate_name_value_map = ();
+
+  foreach my $plate (@{$epp->plates}) {
+    $plate_name_value_map{$plate->plate_name} = $plate->barcode;
+  }
+
+  return $self->_set_plate_name_value_mapping(\%plate_name_value_map);
+}
+
+# TODO ke4 uncomment it when fixing #433
+# has '_number_of_input_beds' => (
+#   is => 'rw',
+#   isa => 'Int',
+#   writer => "_set_number_of_input_beds",
+# );
+# sub _create_number_of_input_beds {
+#   my ($self, $epp) = @_;
+#   my $input_bed_count = 0;
+
+#   foreach my $bed (@{$epp->beds}) {
+#     if ($bed->is_input) {
+#       $input_bed_count++;
+#     }
+#   }
+
+#   return $self->_set_number_of_input_beds($input_bed_count);
+# }
+
 sub _verify_bed_barcodes {
   my ($self, $epp) = @_;
+
+  my %plate_name_value_mapping = %{$self->_create_plate_name_value_mapping($epp)};
+
+  if (scalar @{$epp->beds} == 0 ) {
+    croak 'The barcode of the bed(s) are empty. Please, add barcode value(s) to the form.';
+  }
+
+  # TODO ke4: Fix this bug later #433
+  # We should get the input container from the proper place
+  # if ($self->_create_number_of_input_beds($epp) != $epp->step_doc->input_container_count) {
+  #   croak 'Not all bed(s) barcode has been filled. Please, add all bed barcode value(s) to the form.';
+  # }
 
   foreach my $bed (@{$epp->beds}) {
     if (!exists $self->_robot_config->{$bed->bed_name}) {
@@ -93,6 +160,10 @@ sub _verify_bed_barcodes {
 
     if ($self->_robot_config->{$bed->bed_name} ne $bed->barcode) {
       croak $bed->bed_name . ' barcode (' . $bed->barcode . ') differs from config bed barcode (' . $self->_robot_config->{$bed->bed_name} . ')';
+    }
+
+    if (! $plate_name_value_mapping{$bed->plate_name}) {
+      croak 'Not all input/output plate barcode has been filled out.';
     }
   }
 
@@ -103,16 +174,29 @@ sub _plate_mapping {
   my ($self, $epp) = @_;
   my @plate_mapping = ();
 
+  $self->_create_bed_names($epp);
+
   foreach my $plate (@{$epp->plates}) {
-    next if $plate->is_output;
 
-    my $plate_name = $plate->plate_name;
-    $plate_name =~ s/Input/Output/gsm;
+    my %bed_names = map { $_ => 1 } @{$self->_bed_names};
 
-    my $output_plates = $self->_find_output_plate($epp, $plate_name);
+    if(!exists($bed_names{$plate->plate_full_name})) {
+      croak 'Not all bed barcode has been filled out.';
+    }
 
-    foreach my $output_plate (@{$output_plates}) {
-      push @plate_mapping, { source_plate => $plate->barcode, dest_plate => $output_plate->barcode };
+    if ($self->_input_only) {
+      push @plate_mapping, { source_plate => $plate->barcode }
+    } else {
+      next if $plate->is_output;
+
+      my $plate_name = $plate->plate_name;
+      $plate_name =~ s/Input/Output/gsm;
+
+      my $output_plates = $self->_find_output_plate($epp, $plate_name);
+
+      foreach my $output_plate (@{$output_plates}) {
+        push @plate_mapping, { source_plate => $plate->barcode, dest_plate => $output_plate->barcode };
+      }
     }
   }
 
@@ -130,6 +214,7 @@ my $dest_plate_match   = _plate_match('dest_plate');
 
 sub _plate_match {
   my ($plate_name) = @_;
+
   return sub {
     my ($a, $b) = @_;
     return $a->{$plate_name} == $b->{$plate_name};

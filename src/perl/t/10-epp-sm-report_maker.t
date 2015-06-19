@@ -24,8 +24,8 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
     qc_report_file_name => '24-25342'
   );
 
-  my $res = $m->_search_artifacts('Volume Check (SM)', qq{Volume});
-  my $uris = $res->findnodes('/art:artifacts/artifact/@uri')->to_literal_list;
+  my @sample_ids = @{$m->_sample_ids};
+  my @uris = $m->_search_artifacts('Volume Check (SM)', qq{Volume}, \@sample_ids);
 
   my $expected = [
     'http://testserver.com:1234/here/artifacts/2-112536',
@@ -36,7 +36,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
     'http://testserver.com:1234/here/artifacts/2-112541'
   ];
 
-  cmp_bag($uris, $expected, qq{_search_artifacts should return the correct ids.} );
+  cmp_bag(\@uris, $expected, qq{_search_artifacts should return the correct ids.} );
 }
 
 { # _get_udf_values

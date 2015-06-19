@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 54;
+use Test::More tests => 58;
 use Test::Exception;
 use File::Temp qw/tempdir/;
 use File::Slurp;
@@ -13,6 +13,22 @@ my $base_uri =  'http://testserver.com:1234/here' ;
 {
   my $s = wtsi_clarity::epp::generic::stamper->new(process_url => 'some', step_url => 'some');
   isa_ok($s, 'wtsi_clarity::epp::generic::stamper');
+}
+
+{
+  my $s = wtsi_clarity::epp::generic::stamper->new(
+    process_url         => 'http://not_important',
+    step_url            => 'http://not_important',
+    shadow_plate        => 1,
+    container_type_name => ['ABgene 0800']
+  );
+
+  is($s->has_container_type_name, 1, 'Container type name has been set and the predicate says so');
+  is_deeply($s->container_type_name, ['ABgene 0800'], 'The container_type_name is set correctly');
+
+  is($s->_check_options, 1, 'Running check options returns 1 as the options are fine (although a warning will be produced)');
+
+  is($s->has_container_type_name, q{}, 'has_container_type should be cleared because we are doing a shadow stamp');
 }
 
 {
