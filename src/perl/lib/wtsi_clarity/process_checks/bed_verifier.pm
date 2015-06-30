@@ -113,7 +113,7 @@ sub _create_plate_name_value_mapping {
   my %plate_name_value_map = ();
 
   foreach my $plate (@{$epp->plates}) {
-    $plate_name_value_map{$plate->plate_name} = $plate->barcode;
+    $plate_name_value_map{$plate->plate_full_name} = $plate->barcode;
   }
 
   return $self->_set_plate_name_value_mapping(\%plate_name_value_map);
