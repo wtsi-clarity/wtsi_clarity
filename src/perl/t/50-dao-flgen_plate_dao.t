@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 use Moose;
-use Test::More tests => 20;
+use Test::More tests => 21;
 use Test::MockObject::Extends;
 use Test::Exception;
 use XML::LibXML;
@@ -79,6 +79,18 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
   delete $well->{'last_updated'};
 
   is_deeply($well, $fake_well, 'Builds a well correctly');
+}
+
+{
+  my $lims_id = '27-3315';
+
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/dao/flgen_plate_dao';
+  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
+
+  my $flgen_plate_dao = wtsi_clarity::dao::flgen_plate_dao->new(lims_id => $lims_id);
+
+  throws_ok { $flgen_plate_dao->init } qr/Validation for value 132 failed.*/,
+    'Throws an error when the plate barcode is not a valid Fluidigm one';
 }
 
 1;
