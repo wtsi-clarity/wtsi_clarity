@@ -1,0 +1,52 @@
+<?xml version="1.0" standalone="yes"?>
+<protstepcnf:step xmlns:protstepcnf="http://genologics.com/ri/stepconfiguration" protocol-uri="http://testserver.com:1234/here/configuration/protocols/9" uri="http://testserver.com:1234/here/configuration/protocols/9/steps/36" name="Cherrypick Submission (SM)">
+    <protocol-step-index>1</protocol-step-index>
+    <process-type uri="http://testserver.com:1234/here/processtypes/39">Cherrypick Submission (SM)</process-type>
+    <permitted-containers>
+        <container-type>96 Well Plate</container-type>
+    </permitted-containers>
+    <permitted-reagent-categories/>
+    <required-reagent-kits/>
+    <permitted-control-types/>
+    <transitions>
+        <transition next-step-uri="http://testserver.com:1234/here/configuration/protocols/9/steps/37" sequence="2" name="Cherrypick Worksheet &amp; Barcode(SM)"/>
+    </transitions>
+    <default-grouping>containerGroup</default-grouping>
+    <queue-fields>
+        <queue-field detail="false" attach-to="Analyte" name="Sample Name"/>
+        <queue-field detail="false" attach-to="Sample" name="LIMS ID (Submitted Sample)"/>
+        <queue-field detail="false" attach-to="Container" name="Well"/>
+        <queue-field detail="false" attach-to="Container" name="Container Name"/>
+        <queue-field detail="true" attach-to="Project" name="Project Name"/>
+        <queue-field detail="true" attach-to="Container" name="LIMS ID (Container)"/>
+        <queue-field detail="false" attach-to="Analyte" name="Waiting"/>
+    </queue-fields>
+    <step-fields>
+        <step-field attach-to="ConfiguredProcess" name="Plate Purpose"/>
+        <step-field attach-to="ConfiguredProcess" name="Comment"/>
+    </step-fields>
+    <sample-fields>
+        <sample-field attach-to="Analyte" name="Sample Name"/>
+        <sample-field attach-to="Container" name="Container Name"/>
+        <sample-field attach-to="Container" name="Well"/>
+        <sample-field attach-to="Container" name="LIMS ID (Container)"/>
+        <sample-field attach-to="Project" name="Project Name"/>
+    </sample-fields>
+    <step-properties>
+        <step-property value="false" name="qcProtocolStep"/>
+        <step-property value="false" name="qcWithPlacement"/>
+        <step-property value="false" name="eSignatureRequired"/>
+        <step-property value="true" name="measurementWithFile"/>
+        <step-property value="false" name="eppLocksNextSteps"/>
+        <step-property value="column" name="multiwellSortOrder"/>
+        <step-property value="" name="stepDetailsHeading"/>
+        <step-property value="" name="sampleDetailsHeading"/>
+        <step-property value="false" name="expandContainerGroupsCheckBox"/>
+        <step-property value="false" name="arrangeFieldsHorizontally"/>
+    </step-properties>
+    <epp-triggers>
+        <epp-trigger status="RECORD_DETAILS" point="AFTER" type="AUTOMATIC" name="Plate Purpose"/>
+        <epp-trigger status="PLACEMENT" point="BEFORE" type="AUTOMATIC" name="Stamping"/>
+        <epp-trigger type="MANUAL" name="Update samples to proceed cherrypick"/>
+    </epp-triggers>
+</protstepcnf:step>

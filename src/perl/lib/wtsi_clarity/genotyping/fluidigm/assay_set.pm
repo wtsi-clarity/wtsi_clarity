@@ -10,13 +10,33 @@ use wtsi_clarity::genotyping::fluidigm::assay;
 
 our $VERSION = '0.0';
 
-Readonly::Hash our %SEX_MAP => { XX => 'M', XY => 'F', YY => 'F' };
+Readonly::Scalar our $NO_CALL          => q{No Call};
+Readonly::Scalar our $NO_TEMPLATE_CALL => q{NTC};
+Readonly::Hash   our %SEX_MAP          => { XY => 'M', XX => 'F', YY => 'F' };
 
 has 'file_content' => (
   is       => 'ro',
   isa      => 'ArrayRef[ArrayRef]',
   required => 1,
 );
+
+has 'sample_name' => (
+  is => 'ro',
+  isa => 'Str',
+  lazy_build => 1,
+);
+
+sub _build_sample_name {
+  my $self = shift;
+
+  my $count = scalar uniq map { $_->sample_name } @{$self->assay_results};
+
+  if ($count > 1) {
+    croak 'Sample names in assay result set are not homogenous';
+  }
+
+  return $self->assay_results->[0]->sample_name;
+}
 
 has 'assay_results' => (
   is      => 'ro',
@@ -57,12 +77,15 @@ sub _build_gender {
   my ($self) = @_;
 
   my $res = scalar uniq @{$self->gender_set};
-  if ($res != 1) {
+
+  # Since gender_set is supposedly homogenous we can just return the first one...
+  my $gender = $self->gender_set->[0];
+
+  if ($res != 1 || $gender eq $NO_CALL || $gender eq $NO_TEMPLATE_CALL) {
     return 'Unknown';
   }
 
-  # Since gender_set is homogenous we can just return the first one...
-  return $SEX_MAP{ $self->gender_set->[0] };
+  return $SEX_MAP{ $gender } || 'Unknown';
 }
 
 has 'gender_set' => (

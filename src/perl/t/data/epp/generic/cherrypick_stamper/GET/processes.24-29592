@@ -1,0 +1,1449 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="24-29592" uri="http://testserver.com:1234/here/processes/24-29592" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://testserver.com:1234/here/processtypes/41">Cherrypick Worksheet &amp; Barcode(SM)</type>
+  <technician uri="http://testserver.com:1234/here/researchers/58">
+    <first-name>Karoly</first-name>
+    <last-name>Erdos</last-name>
+  </technician>
+  <input-output-map>
+    <input limsid="2-178798" post-process-uri="http://testserver.com:1234/here/artifacts/2-178798?state=86306" uri="http://testserver.com:1234/here/artifacts/2-178798?state=86306">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230965" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230965?state=113564"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178798" post-process-uri="http://testserver.com:1234/here/artifacts/2-178798?state=86306" uri="http://testserver.com:1234/here/artifacts/2-178798?state=86306">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178798" post-process-uri="http://testserver.com:1234/here/artifacts/2-178798?state=86306" uri="http://testserver.com:1234/here/artifacts/2-178798?state=86306">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178799" post-process-uri="http://testserver.com:1234/here/artifacts/2-178799?state=86307" uri="http://testserver.com:1234/here/artifacts/2-178799?state=86307">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230966" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230966?state=113565"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178799" post-process-uri="http://testserver.com:1234/here/artifacts/2-178799?state=86307" uri="http://testserver.com:1234/here/artifacts/2-178799?state=86307">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178799" post-process-uri="http://testserver.com:1234/here/artifacts/2-178799?state=86307" uri="http://testserver.com:1234/here/artifacts/2-178799?state=86307">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178800" post-process-uri="http://testserver.com:1234/here/artifacts/2-178800?state=86308" uri="http://testserver.com:1234/here/artifacts/2-178800?state=86308">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230967" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230967?state=113566"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178800" post-process-uri="http://testserver.com:1234/here/artifacts/2-178800?state=86308" uri="http://testserver.com:1234/here/artifacts/2-178800?state=86308">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178800" post-process-uri="http://testserver.com:1234/here/artifacts/2-178800?state=86308" uri="http://testserver.com:1234/here/artifacts/2-178800?state=86308">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178851" post-process-uri="http://testserver.com:1234/here/artifacts/2-178851?state=86309" uri="http://testserver.com:1234/here/artifacts/2-178851?state=86309">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230968" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230968?state=113567"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178851" post-process-uri="http://testserver.com:1234/here/artifacts/2-178851?state=86309" uri="http://testserver.com:1234/here/artifacts/2-178851?state=86309">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178851" post-process-uri="http://testserver.com:1234/here/artifacts/2-178851?state=86309" uri="http://testserver.com:1234/here/artifacts/2-178851?state=86309">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178794" post-process-uri="http://testserver.com:1234/here/artifacts/2-178794?state=86302" uri="http://testserver.com:1234/here/artifacts/2-178794?state=86302">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230961" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230961?state=113560"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178794" post-process-uri="http://testserver.com:1234/here/artifacts/2-178794?state=86302" uri="http://testserver.com:1234/here/artifacts/2-178794?state=86302">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178794" post-process-uri="http://testserver.com:1234/here/artifacts/2-178794?state=86302" uri="http://testserver.com:1234/here/artifacts/2-178794?state=86302">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178795" post-process-uri="http://testserver.com:1234/here/artifacts/2-178795?state=86303" uri="http://testserver.com:1234/here/artifacts/2-178795?state=86303">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230962" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230962?state=113561"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178795" post-process-uri="http://testserver.com:1234/here/artifacts/2-178795?state=86303" uri="http://testserver.com:1234/here/artifacts/2-178795?state=86303">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178795" post-process-uri="http://testserver.com:1234/here/artifacts/2-178795?state=86303" uri="http://testserver.com:1234/here/artifacts/2-178795?state=86303">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178796" post-process-uri="http://testserver.com:1234/here/artifacts/2-178796?state=86304" uri="http://testserver.com:1234/here/artifacts/2-178796?state=86304">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230963" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230963?state=113562"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178796" post-process-uri="http://testserver.com:1234/here/artifacts/2-178796?state=86304" uri="http://testserver.com:1234/here/artifacts/2-178796?state=86304">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178796" post-process-uri="http://testserver.com:1234/here/artifacts/2-178796?state=86304" uri="http://testserver.com:1234/here/artifacts/2-178796?state=86304">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178797" post-process-uri="http://testserver.com:1234/here/artifacts/2-178797?state=86305" uri="http://testserver.com:1234/here/artifacts/2-178797?state=86305">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230964" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230964?state=113563"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178797" post-process-uri="http://testserver.com:1234/here/artifacts/2-178797?state=86305" uri="http://testserver.com:1234/here/artifacts/2-178797?state=86305">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178797" post-process-uri="http://testserver.com:1234/here/artifacts/2-178797?state=86305" uri="http://testserver.com:1234/here/artifacts/2-178797?state=86305">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178857" post-process-uri="http://testserver.com:1234/here/artifacts/2-178857?state=86315" uri="http://testserver.com:1234/here/artifacts/2-178857?state=86315">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230974" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230974?state=113573"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178857" post-process-uri="http://testserver.com:1234/here/artifacts/2-178857?state=86315" uri="http://testserver.com:1234/here/artifacts/2-178857?state=86315">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178857" post-process-uri="http://testserver.com:1234/here/artifacts/2-178857?state=86315" uri="http://testserver.com:1234/here/artifacts/2-178857?state=86315">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178856" post-process-uri="http://testserver.com:1234/here/artifacts/2-178856?state=86314" uri="http://testserver.com:1234/here/artifacts/2-178856?state=86314">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230973" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230973?state=113572"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178856" post-process-uri="http://testserver.com:1234/here/artifacts/2-178856?state=86314" uri="http://testserver.com:1234/here/artifacts/2-178856?state=86314">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178856" post-process-uri="http://testserver.com:1234/here/artifacts/2-178856?state=86314" uri="http://testserver.com:1234/here/artifacts/2-178856?state=86314">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178859" post-process-uri="http://testserver.com:1234/here/artifacts/2-178859?state=86317" uri="http://testserver.com:1234/here/artifacts/2-178859?state=86317">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230976" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230976?state=113575"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178859" post-process-uri="http://testserver.com:1234/here/artifacts/2-178859?state=86317" uri="http://testserver.com:1234/here/artifacts/2-178859?state=86317">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178859" post-process-uri="http://testserver.com:1234/here/artifacts/2-178859?state=86317" uri="http://testserver.com:1234/here/artifacts/2-178859?state=86317">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178858" post-process-uri="http://testserver.com:1234/here/artifacts/2-178858?state=86316" uri="http://testserver.com:1234/here/artifacts/2-178858?state=86316">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230975" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230975?state=113574"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178858" post-process-uri="http://testserver.com:1234/here/artifacts/2-178858?state=86316" uri="http://testserver.com:1234/here/artifacts/2-178858?state=86316">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178858" post-process-uri="http://testserver.com:1234/here/artifacts/2-178858?state=86316" uri="http://testserver.com:1234/here/artifacts/2-178858?state=86316">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178853" post-process-uri="http://testserver.com:1234/here/artifacts/2-178853?state=86311" uri="http://testserver.com:1234/here/artifacts/2-178853?state=86311">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230970" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230970?state=113569"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178853" post-process-uri="http://testserver.com:1234/here/artifacts/2-178853?state=86311" uri="http://testserver.com:1234/here/artifacts/2-178853?state=86311">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178853" post-process-uri="http://testserver.com:1234/here/artifacts/2-178853?state=86311" uri="http://testserver.com:1234/here/artifacts/2-178853?state=86311">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178852" post-process-uri="http://testserver.com:1234/here/artifacts/2-178852?state=86310" uri="http://testserver.com:1234/here/artifacts/2-178852?state=86310">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230969" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230969?state=113568"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178852" post-process-uri="http://testserver.com:1234/here/artifacts/2-178852?state=86310" uri="http://testserver.com:1234/here/artifacts/2-178852?state=86310">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178852" post-process-uri="http://testserver.com:1234/here/artifacts/2-178852?state=86310" uri="http://testserver.com:1234/here/artifacts/2-178852?state=86310">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178855" post-process-uri="http://testserver.com:1234/here/artifacts/2-178855?state=86313" uri="http://testserver.com:1234/here/artifacts/2-178855?state=86313">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230972" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230972?state=113571"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178855" post-process-uri="http://testserver.com:1234/here/artifacts/2-178855?state=86313" uri="http://testserver.com:1234/here/artifacts/2-178855?state=86313">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178855" post-process-uri="http://testserver.com:1234/here/artifacts/2-178855?state=86313" uri="http://testserver.com:1234/here/artifacts/2-178855?state=86313">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178854" post-process-uri="http://testserver.com:1234/here/artifacts/2-178854?state=86312" uri="http://testserver.com:1234/here/artifacts/2-178854?state=86312">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230971" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230971?state=113570"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178854" post-process-uri="http://testserver.com:1234/here/artifacts/2-178854?state=86312" uri="http://testserver.com:1234/here/artifacts/2-178854?state=86312">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178854" post-process-uri="http://testserver.com:1234/here/artifacts/2-178854?state=86312" uri="http://testserver.com:1234/here/artifacts/2-178854?state=86312">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178865" post-process-uri="http://testserver.com:1234/here/artifacts/2-178865?state=86323" uri="http://testserver.com:1234/here/artifacts/2-178865?state=86323">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230982" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230982?state=113581"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178865" post-process-uri="http://testserver.com:1234/here/artifacts/2-178865?state=86323" uri="http://testserver.com:1234/here/artifacts/2-178865?state=86323">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178865" post-process-uri="http://testserver.com:1234/here/artifacts/2-178865?state=86323" uri="http://testserver.com:1234/here/artifacts/2-178865?state=86323">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178864" post-process-uri="http://testserver.com:1234/here/artifacts/2-178864?state=86322" uri="http://testserver.com:1234/here/artifacts/2-178864?state=86322">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230981" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230981?state=113580"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178864" post-process-uri="http://testserver.com:1234/here/artifacts/2-178864?state=86322" uri="http://testserver.com:1234/here/artifacts/2-178864?state=86322">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178864" post-process-uri="http://testserver.com:1234/here/artifacts/2-178864?state=86322" uri="http://testserver.com:1234/here/artifacts/2-178864?state=86322">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178867" post-process-uri="http://testserver.com:1234/here/artifacts/2-178867?state=86325" uri="http://testserver.com:1234/here/artifacts/2-178867?state=86325">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230984" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230984?state=113583"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178867" post-process-uri="http://testserver.com:1234/here/artifacts/2-178867?state=86325" uri="http://testserver.com:1234/here/artifacts/2-178867?state=86325">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178867" post-process-uri="http://testserver.com:1234/here/artifacts/2-178867?state=86325" uri="http://testserver.com:1234/here/artifacts/2-178867?state=86325">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178866" post-process-uri="http://testserver.com:1234/here/artifacts/2-178866?state=86324" uri="http://testserver.com:1234/here/artifacts/2-178866?state=86324">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230983" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230983?state=113582"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178866" post-process-uri="http://testserver.com:1234/here/artifacts/2-178866?state=86324" uri="http://testserver.com:1234/here/artifacts/2-178866?state=86324">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178866" post-process-uri="http://testserver.com:1234/here/artifacts/2-178866?state=86324" uri="http://testserver.com:1234/here/artifacts/2-178866?state=86324">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178861" post-process-uri="http://testserver.com:1234/here/artifacts/2-178861?state=86319" uri="http://testserver.com:1234/here/artifacts/2-178861?state=86319">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230978" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230978?state=113577"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178861" post-process-uri="http://testserver.com:1234/here/artifacts/2-178861?state=86319" uri="http://testserver.com:1234/here/artifacts/2-178861?state=86319">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178861" post-process-uri="http://testserver.com:1234/here/artifacts/2-178861?state=86319" uri="http://testserver.com:1234/here/artifacts/2-178861?state=86319">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178860" post-process-uri="http://testserver.com:1234/here/artifacts/2-178860?state=86318" uri="http://testserver.com:1234/here/artifacts/2-178860?state=86318">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230977" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230977?state=113576"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178860" post-process-uri="http://testserver.com:1234/here/artifacts/2-178860?state=86318" uri="http://testserver.com:1234/here/artifacts/2-178860?state=86318">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178860" post-process-uri="http://testserver.com:1234/here/artifacts/2-178860?state=86318" uri="http://testserver.com:1234/here/artifacts/2-178860?state=86318">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178863" post-process-uri="http://testserver.com:1234/here/artifacts/2-178863?state=86321" uri="http://testserver.com:1234/here/artifacts/2-178863?state=86321">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230980" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230980?state=113579"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178863" post-process-uri="http://testserver.com:1234/here/artifacts/2-178863?state=86321" uri="http://testserver.com:1234/here/artifacts/2-178863?state=86321">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178863" post-process-uri="http://testserver.com:1234/here/artifacts/2-178863?state=86321" uri="http://testserver.com:1234/here/artifacts/2-178863?state=86321">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178862" post-process-uri="http://testserver.com:1234/here/artifacts/2-178862?state=86320" uri="http://testserver.com:1234/here/artifacts/2-178862?state=86320">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230979" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230979?state=113578"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178862" post-process-uri="http://testserver.com:1234/here/artifacts/2-178862?state=86320" uri="http://testserver.com:1234/here/artifacts/2-178862?state=86320">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178862" post-process-uri="http://testserver.com:1234/here/artifacts/2-178862?state=86320" uri="http://testserver.com:1234/here/artifacts/2-178862?state=86320">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178879" post-process-uri="http://testserver.com:1234/here/artifacts/2-178879?state=86337" uri="http://testserver.com:1234/here/artifacts/2-178879?state=86337">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230996" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230996?state=113595"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178879" post-process-uri="http://testserver.com:1234/here/artifacts/2-178879?state=86337" uri="http://testserver.com:1234/here/artifacts/2-178879?state=86337">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178879" post-process-uri="http://testserver.com:1234/here/artifacts/2-178879?state=86337" uri="http://testserver.com:1234/here/artifacts/2-178879?state=86337">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178878" post-process-uri="http://testserver.com:1234/here/artifacts/2-178878?state=86336" uri="http://testserver.com:1234/here/artifacts/2-178878?state=86336">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230995" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230995?state=113594"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178878" post-process-uri="http://testserver.com:1234/here/artifacts/2-178878?state=86336" uri="http://testserver.com:1234/here/artifacts/2-178878?state=86336">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178878" post-process-uri="http://testserver.com:1234/here/artifacts/2-178878?state=86336" uri="http://testserver.com:1234/here/artifacts/2-178878?state=86336">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178877" post-process-uri="http://testserver.com:1234/here/artifacts/2-178877?state=86335" uri="http://testserver.com:1234/here/artifacts/2-178877?state=86335">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230994" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230994?state=113593"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178877" post-process-uri="http://testserver.com:1234/here/artifacts/2-178877?state=86335" uri="http://testserver.com:1234/here/artifacts/2-178877?state=86335">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178877" post-process-uri="http://testserver.com:1234/here/artifacts/2-178877?state=86335" uri="http://testserver.com:1234/here/artifacts/2-178877?state=86335">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178876" post-process-uri="http://testserver.com:1234/here/artifacts/2-178876?state=86334" uri="http://testserver.com:1234/here/artifacts/2-178876?state=86334">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230993" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230993?state=113592"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178876" post-process-uri="http://testserver.com:1234/here/artifacts/2-178876?state=86334" uri="http://testserver.com:1234/here/artifacts/2-178876?state=86334">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178876" post-process-uri="http://testserver.com:1234/here/artifacts/2-178876?state=86334" uri="http://testserver.com:1234/here/artifacts/2-178876?state=86334">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178883" post-process-uri="http://testserver.com:1234/here/artifacts/2-178883?state=86341" uri="http://testserver.com:1234/here/artifacts/2-178883?state=86341">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231000" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231000?state=113599"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178883" post-process-uri="http://testserver.com:1234/here/artifacts/2-178883?state=86341" uri="http://testserver.com:1234/here/artifacts/2-178883?state=86341">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178883" post-process-uri="http://testserver.com:1234/here/artifacts/2-178883?state=86341" uri="http://testserver.com:1234/here/artifacts/2-178883?state=86341">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178882" post-process-uri="http://testserver.com:1234/here/artifacts/2-178882?state=86340" uri="http://testserver.com:1234/here/artifacts/2-178882?state=86340">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230999" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230999?state=113598"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178882" post-process-uri="http://testserver.com:1234/here/artifacts/2-178882?state=86340" uri="http://testserver.com:1234/here/artifacts/2-178882?state=86340">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178882" post-process-uri="http://testserver.com:1234/here/artifacts/2-178882?state=86340" uri="http://testserver.com:1234/here/artifacts/2-178882?state=86340">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178881" post-process-uri="http://testserver.com:1234/here/artifacts/2-178881?state=86339" uri="http://testserver.com:1234/here/artifacts/2-178881?state=86339">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230998" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230998?state=113597"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178881" post-process-uri="http://testserver.com:1234/here/artifacts/2-178881?state=86339" uri="http://testserver.com:1234/here/artifacts/2-178881?state=86339">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178881" post-process-uri="http://testserver.com:1234/here/artifacts/2-178881?state=86339" uri="http://testserver.com:1234/here/artifacts/2-178881?state=86339">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178880" post-process-uri="http://testserver.com:1234/here/artifacts/2-178880?state=86338" uri="http://testserver.com:1234/here/artifacts/2-178880?state=86338">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230997" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230997?state=113596"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178880" post-process-uri="http://testserver.com:1234/here/artifacts/2-178880?state=86338" uri="http://testserver.com:1234/here/artifacts/2-178880?state=86338">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178880" post-process-uri="http://testserver.com:1234/here/artifacts/2-178880?state=86338" uri="http://testserver.com:1234/here/artifacts/2-178880?state=86338">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178871" post-process-uri="http://testserver.com:1234/here/artifacts/2-178871?state=86329" uri="http://testserver.com:1234/here/artifacts/2-178871?state=86329">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230988" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230988?state=113587"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178871" post-process-uri="http://testserver.com:1234/here/artifacts/2-178871?state=86329" uri="http://testserver.com:1234/here/artifacts/2-178871?state=86329">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178871" post-process-uri="http://testserver.com:1234/here/artifacts/2-178871?state=86329" uri="http://testserver.com:1234/here/artifacts/2-178871?state=86329">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178870" post-process-uri="http://testserver.com:1234/here/artifacts/2-178870?state=86328" uri="http://testserver.com:1234/here/artifacts/2-178870?state=86328">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230987" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230987?state=113586"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178870" post-process-uri="http://testserver.com:1234/here/artifacts/2-178870?state=86328" uri="http://testserver.com:1234/here/artifacts/2-178870?state=86328">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178870" post-process-uri="http://testserver.com:1234/here/artifacts/2-178870?state=86328" uri="http://testserver.com:1234/here/artifacts/2-178870?state=86328">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178869" post-process-uri="http://testserver.com:1234/here/artifacts/2-178869?state=86327" uri="http://testserver.com:1234/here/artifacts/2-178869?state=86327">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230986" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230986?state=113585"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178869" post-process-uri="http://testserver.com:1234/here/artifacts/2-178869?state=86327" uri="http://testserver.com:1234/here/artifacts/2-178869?state=86327">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178869" post-process-uri="http://testserver.com:1234/here/artifacts/2-178869?state=86327" uri="http://testserver.com:1234/here/artifacts/2-178869?state=86327">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178868" post-process-uri="http://testserver.com:1234/here/artifacts/2-178868?state=86326" uri="http://testserver.com:1234/here/artifacts/2-178868?state=86326">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230985" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230985?state=113584"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178868" post-process-uri="http://testserver.com:1234/here/artifacts/2-178868?state=86326" uri="http://testserver.com:1234/here/artifacts/2-178868?state=86326">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178868" post-process-uri="http://testserver.com:1234/here/artifacts/2-178868?state=86326" uri="http://testserver.com:1234/here/artifacts/2-178868?state=86326">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178875" post-process-uri="http://testserver.com:1234/here/artifacts/2-178875?state=86333" uri="http://testserver.com:1234/here/artifacts/2-178875?state=86333">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230992" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230992?state=113591"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178875" post-process-uri="http://testserver.com:1234/here/artifacts/2-178875?state=86333" uri="http://testserver.com:1234/here/artifacts/2-178875?state=86333">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178875" post-process-uri="http://testserver.com:1234/here/artifacts/2-178875?state=86333" uri="http://testserver.com:1234/here/artifacts/2-178875?state=86333">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178874" post-process-uri="http://testserver.com:1234/here/artifacts/2-178874?state=86332" uri="http://testserver.com:1234/here/artifacts/2-178874?state=86332">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230991" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230991?state=113590"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178874" post-process-uri="http://testserver.com:1234/here/artifacts/2-178874?state=86332" uri="http://testserver.com:1234/here/artifacts/2-178874?state=86332">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178874" post-process-uri="http://testserver.com:1234/here/artifacts/2-178874?state=86332" uri="http://testserver.com:1234/here/artifacts/2-178874?state=86332">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178873" post-process-uri="http://testserver.com:1234/here/artifacts/2-178873?state=86331" uri="http://testserver.com:1234/here/artifacts/2-178873?state=86331">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230990" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230990?state=113589"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178873" post-process-uri="http://testserver.com:1234/here/artifacts/2-178873?state=86331" uri="http://testserver.com:1234/here/artifacts/2-178873?state=86331">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178873" post-process-uri="http://testserver.com:1234/here/artifacts/2-178873?state=86331" uri="http://testserver.com:1234/here/artifacts/2-178873?state=86331">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178872" post-process-uri="http://testserver.com:1234/here/artifacts/2-178872?state=86330" uri="http://testserver.com:1234/here/artifacts/2-178872?state=86330">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-230989" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-230989?state=113588"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178872" post-process-uri="http://testserver.com:1234/here/artifacts/2-178872?state=86330" uri="http://testserver.com:1234/here/artifacts/2-178872?state=86330">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178872" post-process-uri="http://testserver.com:1234/here/artifacts/2-178872?state=86330" uri="http://testserver.com:1234/here/artifacts/2-178872?state=86330">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178894" post-process-uri="http://testserver.com:1234/here/artifacts/2-178894?state=86352" uri="http://testserver.com:1234/here/artifacts/2-178894?state=86352">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231011" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231011?state=113660"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178894" post-process-uri="http://testserver.com:1234/here/artifacts/2-178894?state=86352" uri="http://testserver.com:1234/here/artifacts/2-178894?state=86352">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178894" post-process-uri="http://testserver.com:1234/here/artifacts/2-178894?state=86352" uri="http://testserver.com:1234/here/artifacts/2-178894?state=86352">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178895" post-process-uri="http://testserver.com:1234/here/artifacts/2-178895?state=86353" uri="http://testserver.com:1234/here/artifacts/2-178895?state=86353">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231012" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231012?state=113661"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178895" post-process-uri="http://testserver.com:1234/here/artifacts/2-178895?state=86353" uri="http://testserver.com:1234/here/artifacts/2-178895?state=86353">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178895" post-process-uri="http://testserver.com:1234/here/artifacts/2-178895?state=86353" uri="http://testserver.com:1234/here/artifacts/2-178895?state=86353">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178892" post-process-uri="http://testserver.com:1234/here/artifacts/2-178892?state=86350" uri="http://testserver.com:1234/here/artifacts/2-178892?state=86350">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231009" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231009?state=113658"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178892" post-process-uri="http://testserver.com:1234/here/artifacts/2-178892?state=86350" uri="http://testserver.com:1234/here/artifacts/2-178892?state=86350">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178892" post-process-uri="http://testserver.com:1234/here/artifacts/2-178892?state=86350" uri="http://testserver.com:1234/here/artifacts/2-178892?state=86350">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178893" post-process-uri="http://testserver.com:1234/here/artifacts/2-178893?state=86351" uri="http://testserver.com:1234/here/artifacts/2-178893?state=86351">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231010" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231010?state=113659"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178893" post-process-uri="http://testserver.com:1234/here/artifacts/2-178893?state=86351" uri="http://testserver.com:1234/here/artifacts/2-178893?state=86351">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178893" post-process-uri="http://testserver.com:1234/here/artifacts/2-178893?state=86351" uri="http://testserver.com:1234/here/artifacts/2-178893?state=86351">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178898" post-process-uri="http://testserver.com:1234/here/artifacts/2-178898?state=86356" uri="http://testserver.com:1234/here/artifacts/2-178898?state=86356">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231015" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231015?state=113664"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178898" post-process-uri="http://testserver.com:1234/here/artifacts/2-178898?state=86356" uri="http://testserver.com:1234/here/artifacts/2-178898?state=86356">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178898" post-process-uri="http://testserver.com:1234/here/artifacts/2-178898?state=86356" uri="http://testserver.com:1234/here/artifacts/2-178898?state=86356">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178899" post-process-uri="http://testserver.com:1234/here/artifacts/2-178899?state=86357" uri="http://testserver.com:1234/here/artifacts/2-178899?state=86357">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231016" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231016?state=113665"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178899" post-process-uri="http://testserver.com:1234/here/artifacts/2-178899?state=86357" uri="http://testserver.com:1234/here/artifacts/2-178899?state=86357">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178899" post-process-uri="http://testserver.com:1234/here/artifacts/2-178899?state=86357" uri="http://testserver.com:1234/here/artifacts/2-178899?state=86357">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178896" post-process-uri="http://testserver.com:1234/here/artifacts/2-178896?state=86354" uri="http://testserver.com:1234/here/artifacts/2-178896?state=86354">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231013" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231013?state=113662"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178896" post-process-uri="http://testserver.com:1234/here/artifacts/2-178896?state=86354" uri="http://testserver.com:1234/here/artifacts/2-178896?state=86354">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178896" post-process-uri="http://testserver.com:1234/here/artifacts/2-178896?state=86354" uri="http://testserver.com:1234/here/artifacts/2-178896?state=86354">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178897" post-process-uri="http://testserver.com:1234/here/artifacts/2-178897?state=86355" uri="http://testserver.com:1234/here/artifacts/2-178897?state=86355">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231014" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231014?state=113663"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178897" post-process-uri="http://testserver.com:1234/here/artifacts/2-178897?state=86355" uri="http://testserver.com:1234/here/artifacts/2-178897?state=86355">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178897" post-process-uri="http://testserver.com:1234/here/artifacts/2-178897?state=86355" uri="http://testserver.com:1234/here/artifacts/2-178897?state=86355">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178886" post-process-uri="http://testserver.com:1234/here/artifacts/2-178886?state=86344" uri="http://testserver.com:1234/here/artifacts/2-178886?state=86344">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231003" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231003?state=113652"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178886" post-process-uri="http://testserver.com:1234/here/artifacts/2-178886?state=86344" uri="http://testserver.com:1234/here/artifacts/2-178886?state=86344">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178886" post-process-uri="http://testserver.com:1234/here/artifacts/2-178886?state=86344" uri="http://testserver.com:1234/here/artifacts/2-178886?state=86344">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178887" post-process-uri="http://testserver.com:1234/here/artifacts/2-178887?state=86345" uri="http://testserver.com:1234/here/artifacts/2-178887?state=86345">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231004" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231004?state=113653"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178887" post-process-uri="http://testserver.com:1234/here/artifacts/2-178887?state=86345" uri="http://testserver.com:1234/here/artifacts/2-178887?state=86345">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178887" post-process-uri="http://testserver.com:1234/here/artifacts/2-178887?state=86345" uri="http://testserver.com:1234/here/artifacts/2-178887?state=86345">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178884" post-process-uri="http://testserver.com:1234/here/artifacts/2-178884?state=86342" uri="http://testserver.com:1234/here/artifacts/2-178884?state=86342">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231001" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231001?state=113600"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178884" post-process-uri="http://testserver.com:1234/here/artifacts/2-178884?state=86342" uri="http://testserver.com:1234/here/artifacts/2-178884?state=86342">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178884" post-process-uri="http://testserver.com:1234/here/artifacts/2-178884?state=86342" uri="http://testserver.com:1234/here/artifacts/2-178884?state=86342">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178885" post-process-uri="http://testserver.com:1234/here/artifacts/2-178885?state=86343" uri="http://testserver.com:1234/here/artifacts/2-178885?state=86343">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231002" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231002?state=113651"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178885" post-process-uri="http://testserver.com:1234/here/artifacts/2-178885?state=86343" uri="http://testserver.com:1234/here/artifacts/2-178885?state=86343">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178885" post-process-uri="http://testserver.com:1234/here/artifacts/2-178885?state=86343" uri="http://testserver.com:1234/here/artifacts/2-178885?state=86343">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178890" post-process-uri="http://testserver.com:1234/here/artifacts/2-178890?state=86348" uri="http://testserver.com:1234/here/artifacts/2-178890?state=86348">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231007" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231007?state=113656"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178890" post-process-uri="http://testserver.com:1234/here/artifacts/2-178890?state=86348" uri="http://testserver.com:1234/here/artifacts/2-178890?state=86348">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178890" post-process-uri="http://testserver.com:1234/here/artifacts/2-178890?state=86348" uri="http://testserver.com:1234/here/artifacts/2-178890?state=86348">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178891" post-process-uri="http://testserver.com:1234/here/artifacts/2-178891?state=86349" uri="http://testserver.com:1234/here/artifacts/2-178891?state=86349">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231008" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231008?state=113657"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178891" post-process-uri="http://testserver.com:1234/here/artifacts/2-178891?state=86349" uri="http://testserver.com:1234/here/artifacts/2-178891?state=86349">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178891" post-process-uri="http://testserver.com:1234/here/artifacts/2-178891?state=86349" uri="http://testserver.com:1234/here/artifacts/2-178891?state=86349">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178888" post-process-uri="http://testserver.com:1234/here/artifacts/2-178888?state=86346" uri="http://testserver.com:1234/here/artifacts/2-178888?state=86346">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231005" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231005?state=113654"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178888" post-process-uri="http://testserver.com:1234/here/artifacts/2-178888?state=86346" uri="http://testserver.com:1234/here/artifacts/2-178888?state=86346">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178888" post-process-uri="http://testserver.com:1234/here/artifacts/2-178888?state=86346" uri="http://testserver.com:1234/here/artifacts/2-178888?state=86346">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178889" post-process-uri="http://testserver.com:1234/here/artifacts/2-178889?state=86347" uri="http://testserver.com:1234/here/artifacts/2-178889?state=86347">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231006" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231006?state=113655"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178889" post-process-uri="http://testserver.com:1234/here/artifacts/2-178889?state=86347" uri="http://testserver.com:1234/here/artifacts/2-178889?state=86347">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178889" post-process-uri="http://testserver.com:1234/here/artifacts/2-178889?state=86347" uri="http://testserver.com:1234/here/artifacts/2-178889?state=86347">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178959" post-process-uri="http://testserver.com:1234/here/artifacts/2-178959?state=86367" uri="http://testserver.com:1234/here/artifacts/2-178959?state=86367">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231026" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231026?state=113675"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178959" post-process-uri="http://testserver.com:1234/here/artifacts/2-178959?state=86367" uri="http://testserver.com:1234/here/artifacts/2-178959?state=86367">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178959" post-process-uri="http://testserver.com:1234/here/artifacts/2-178959?state=86367" uri="http://testserver.com:1234/here/artifacts/2-178959?state=86367">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178958" post-process-uri="http://testserver.com:1234/here/artifacts/2-178958?state=86366" uri="http://testserver.com:1234/here/artifacts/2-178958?state=86366">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231025" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231025?state=113674"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178958" post-process-uri="http://testserver.com:1234/here/artifacts/2-178958?state=86366" uri="http://testserver.com:1234/here/artifacts/2-178958?state=86366">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178958" post-process-uri="http://testserver.com:1234/here/artifacts/2-178958?state=86366" uri="http://testserver.com:1234/here/artifacts/2-178958?state=86366">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178961" post-process-uri="http://testserver.com:1234/here/artifacts/2-178961?state=86369" uri="http://testserver.com:1234/here/artifacts/2-178961?state=86369">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231028" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231028?state=113677"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178961" post-process-uri="http://testserver.com:1234/here/artifacts/2-178961?state=86369" uri="http://testserver.com:1234/here/artifacts/2-178961?state=86369">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178961" post-process-uri="http://testserver.com:1234/here/artifacts/2-178961?state=86369" uri="http://testserver.com:1234/here/artifacts/2-178961?state=86369">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178960" post-process-uri="http://testserver.com:1234/here/artifacts/2-178960?state=86368" uri="http://testserver.com:1234/here/artifacts/2-178960?state=86368">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231027" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231027?state=113676"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178960" post-process-uri="http://testserver.com:1234/here/artifacts/2-178960?state=86368" uri="http://testserver.com:1234/here/artifacts/2-178960?state=86368">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178960" post-process-uri="http://testserver.com:1234/here/artifacts/2-178960?state=86368" uri="http://testserver.com:1234/here/artifacts/2-178960?state=86368">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178963" post-process-uri="http://testserver.com:1234/here/artifacts/2-178963?state=86371" uri="http://testserver.com:1234/here/artifacts/2-178963?state=86371">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231030" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231030?state=113679"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178963" post-process-uri="http://testserver.com:1234/here/artifacts/2-178963?state=86371" uri="http://testserver.com:1234/here/artifacts/2-178963?state=86371">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178963" post-process-uri="http://testserver.com:1234/here/artifacts/2-178963?state=86371" uri="http://testserver.com:1234/here/artifacts/2-178963?state=86371">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178962" post-process-uri="http://testserver.com:1234/here/artifacts/2-178962?state=86370" uri="http://testserver.com:1234/here/artifacts/2-178962?state=86370">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231029" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231029?state=113678"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178962" post-process-uri="http://testserver.com:1234/here/artifacts/2-178962?state=86370" uri="http://testserver.com:1234/here/artifacts/2-178962?state=86370">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178962" post-process-uri="http://testserver.com:1234/here/artifacts/2-178962?state=86370" uri="http://testserver.com:1234/here/artifacts/2-178962?state=86370">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178965" post-process-uri="http://testserver.com:1234/here/artifacts/2-178965?state=86373" uri="http://testserver.com:1234/here/artifacts/2-178965?state=86373">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231032" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231032?state=113681"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178965" post-process-uri="http://testserver.com:1234/here/artifacts/2-178965?state=86373" uri="http://testserver.com:1234/here/artifacts/2-178965?state=86373">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178965" post-process-uri="http://testserver.com:1234/here/artifacts/2-178965?state=86373" uri="http://testserver.com:1234/here/artifacts/2-178965?state=86373">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178964" post-process-uri="http://testserver.com:1234/here/artifacts/2-178964?state=86372" uri="http://testserver.com:1234/here/artifacts/2-178964?state=86372">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231031" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231031?state=113680"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178964" post-process-uri="http://testserver.com:1234/here/artifacts/2-178964?state=86372" uri="http://testserver.com:1234/here/artifacts/2-178964?state=86372">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178964" post-process-uri="http://testserver.com:1234/here/artifacts/2-178964?state=86372" uri="http://testserver.com:1234/here/artifacts/2-178964?state=86372">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178951" post-process-uri="http://testserver.com:1234/here/artifacts/2-178951?state=86359" uri="http://testserver.com:1234/here/artifacts/2-178951?state=86359">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231018" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231018?state=113667"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178951" post-process-uri="http://testserver.com:1234/here/artifacts/2-178951?state=86359" uri="http://testserver.com:1234/here/artifacts/2-178951?state=86359">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178951" post-process-uri="http://testserver.com:1234/here/artifacts/2-178951?state=86359" uri="http://testserver.com:1234/here/artifacts/2-178951?state=86359">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178900" post-process-uri="http://testserver.com:1234/here/artifacts/2-178900?state=86358" uri="http://testserver.com:1234/here/artifacts/2-178900?state=86358">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231017" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231017?state=113666"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178900" post-process-uri="http://testserver.com:1234/here/artifacts/2-178900?state=86358" uri="http://testserver.com:1234/here/artifacts/2-178900?state=86358">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178900" post-process-uri="http://testserver.com:1234/here/artifacts/2-178900?state=86358" uri="http://testserver.com:1234/here/artifacts/2-178900?state=86358">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178953" post-process-uri="http://testserver.com:1234/here/artifacts/2-178953?state=86361" uri="http://testserver.com:1234/here/artifacts/2-178953?state=86361">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231020" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231020?state=113669"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178953" post-process-uri="http://testserver.com:1234/here/artifacts/2-178953?state=86361" uri="http://testserver.com:1234/here/artifacts/2-178953?state=86361">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178953" post-process-uri="http://testserver.com:1234/here/artifacts/2-178953?state=86361" uri="http://testserver.com:1234/here/artifacts/2-178953?state=86361">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178952" post-process-uri="http://testserver.com:1234/here/artifacts/2-178952?state=86360" uri="http://testserver.com:1234/here/artifacts/2-178952?state=86360">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231019" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231019?state=113668"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178952" post-process-uri="http://testserver.com:1234/here/artifacts/2-178952?state=86360" uri="http://testserver.com:1234/here/artifacts/2-178952?state=86360">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178952" post-process-uri="http://testserver.com:1234/here/artifacts/2-178952?state=86360" uri="http://testserver.com:1234/here/artifacts/2-178952?state=86360">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178955" post-process-uri="http://testserver.com:1234/here/artifacts/2-178955?state=86363" uri="http://testserver.com:1234/here/artifacts/2-178955?state=86363">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231022" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231022?state=113671"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178955" post-process-uri="http://testserver.com:1234/here/artifacts/2-178955?state=86363" uri="http://testserver.com:1234/here/artifacts/2-178955?state=86363">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178955" post-process-uri="http://testserver.com:1234/here/artifacts/2-178955?state=86363" uri="http://testserver.com:1234/here/artifacts/2-178955?state=86363">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178954" post-process-uri="http://testserver.com:1234/here/artifacts/2-178954?state=86362" uri="http://testserver.com:1234/here/artifacts/2-178954?state=86362">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231021" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231021?state=113670"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178954" post-process-uri="http://testserver.com:1234/here/artifacts/2-178954?state=86362" uri="http://testserver.com:1234/here/artifacts/2-178954?state=86362">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178954" post-process-uri="http://testserver.com:1234/here/artifacts/2-178954?state=86362" uri="http://testserver.com:1234/here/artifacts/2-178954?state=86362">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178957" post-process-uri="http://testserver.com:1234/here/artifacts/2-178957?state=86365" uri="http://testserver.com:1234/here/artifacts/2-178957?state=86365">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231024" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231024?state=113673"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178957" post-process-uri="http://testserver.com:1234/here/artifacts/2-178957?state=86365" uri="http://testserver.com:1234/here/artifacts/2-178957?state=86365">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178957" post-process-uri="http://testserver.com:1234/here/artifacts/2-178957?state=86365" uri="http://testserver.com:1234/here/artifacts/2-178957?state=86365">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178956" post-process-uri="http://testserver.com:1234/here/artifacts/2-178956?state=86364" uri="http://testserver.com:1234/here/artifacts/2-178956?state=86364">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231023" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231023?state=113672"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178956" post-process-uri="http://testserver.com:1234/here/artifacts/2-178956?state=86364" uri="http://testserver.com:1234/here/artifacts/2-178956?state=86364">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178956" post-process-uri="http://testserver.com:1234/here/artifacts/2-178956?state=86364" uri="http://testserver.com:1234/here/artifacts/2-178956?state=86364">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178966" post-process-uri="http://testserver.com:1234/here/artifacts/2-178966?state=86374" uri="http://testserver.com:1234/here/artifacts/2-178966?state=86374">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231033" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231033?state=113682"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178966" post-process-uri="http://testserver.com:1234/here/artifacts/2-178966?state=86374" uri="http://testserver.com:1234/here/artifacts/2-178966?state=86374">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178966" post-process-uri="http://testserver.com:1234/here/artifacts/2-178966?state=86374" uri="http://testserver.com:1234/here/artifacts/2-178966?state=86374">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178967" post-process-uri="http://testserver.com:1234/here/artifacts/2-178967?state=86375" uri="http://testserver.com:1234/here/artifacts/2-178967?state=86375">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231034" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231034?state=113683"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178967" post-process-uri="http://testserver.com:1234/here/artifacts/2-178967?state=86375" uri="http://testserver.com:1234/here/artifacts/2-178967?state=86375">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178967" post-process-uri="http://testserver.com:1234/here/artifacts/2-178967?state=86375" uri="http://testserver.com:1234/here/artifacts/2-178967?state=86375">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178968" post-process-uri="http://testserver.com:1234/here/artifacts/2-178968?state=86376" uri="http://testserver.com:1234/here/artifacts/2-178968?state=86376">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231035" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231035?state=113684"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178968" post-process-uri="http://testserver.com:1234/here/artifacts/2-178968?state=86376" uri="http://testserver.com:1234/here/artifacts/2-178968?state=86376">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178968" post-process-uri="http://testserver.com:1234/here/artifacts/2-178968?state=86376" uri="http://testserver.com:1234/here/artifacts/2-178968?state=86376">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178969" post-process-uri="http://testserver.com:1234/here/artifacts/2-178969?state=86377" uri="http://testserver.com:1234/here/artifacts/2-178969?state=86377">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231036" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231036?state=113685"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178969" post-process-uri="http://testserver.com:1234/here/artifacts/2-178969?state=86377" uri="http://testserver.com:1234/here/artifacts/2-178969?state=86377">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178969" post-process-uri="http://testserver.com:1234/here/artifacts/2-178969?state=86377" uri="http://testserver.com:1234/here/artifacts/2-178969?state=86377">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178970" post-process-uri="http://testserver.com:1234/here/artifacts/2-178970?state=86378" uri="http://testserver.com:1234/here/artifacts/2-178970?state=86378">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231037" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231037?state=113686"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178970" post-process-uri="http://testserver.com:1234/here/artifacts/2-178970?state=86378" uri="http://testserver.com:1234/here/artifacts/2-178970?state=86378">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178970" post-process-uri="http://testserver.com:1234/here/artifacts/2-178970?state=86378" uri="http://testserver.com:1234/here/artifacts/2-178970?state=86378">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178971" post-process-uri="http://testserver.com:1234/here/artifacts/2-178971?state=86379" uri="http://testserver.com:1234/here/artifacts/2-178971?state=86379">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="2-231038" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231038?state=113687"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178971" post-process-uri="http://testserver.com:1234/here/artifacts/2-178971?state=86379" uri="http://testserver.com:1234/here/artifacts/2-178971?state=86379">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-178971" post-process-uri="http://testserver.com:1234/here/artifacts/2-178971?state=86379" uri="http://testserver.com:1234/here/artifacts/2-178971?state=86379">
+      <parent-process limsid="24-26465" uri="http://testserver.com:1234/here/processes/24-26465"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-206320" post-process-uri="http://testserver.com:1234/here/artifacts/2-206320?state=100213" uri="http://testserver.com:1234/here/artifacts/2-206320?state=100213">
+      <parent-process limsid="24-28533" uri="http://testserver.com:1234/here/processes/24-28533"/>
+    </input>
+    <output limsid="2-231039" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231039?state=113688"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-206320" post-process-uri="http://testserver.com:1234/here/artifacts/2-206320?state=100213" uri="http://testserver.com:1234/here/artifacts/2-206320?state=100213">
+      <parent-process limsid="24-28533" uri="http://testserver.com:1234/here/processes/24-28533"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-206320" post-process-uri="http://testserver.com:1234/here/artifacts/2-206320?state=100213" uri="http://testserver.com:1234/here/artifacts/2-206320?state=100213">
+      <parent-process limsid="24-28533" uri="http://testserver.com:1234/here/processes/24-28533"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-206323" post-process-uri="http://testserver.com:1234/here/artifacts/2-206323?state=100216" uri="http://testserver.com:1234/here/artifacts/2-206323?state=100216">
+      <parent-process limsid="24-28533" uri="http://testserver.com:1234/here/processes/24-28533"/>
+    </input>
+    <output limsid="2-231040" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-231040?state=113689"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-206323" post-process-uri="http://testserver.com:1234/here/artifacts/2-206323?state=100216" uri="http://testserver.com:1234/here/artifacts/2-206323?state=100216">
+      <parent-process limsid="24-28533" uri="http://testserver.com:1234/here/processes/24-28533"/>
+    </input>
+    <output limsid="92-231041" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231041?state=113690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-206323" post-process-uri="http://testserver.com:1234/here/artifacts/2-206323?state=100216" uri="http://testserver.com:1234/here/artifacts/2-206323?state=100216">
+      <parent-process limsid="24-28533" uri="http://testserver.com:1234/here/processes/24-28533"/>
+    </input>
+    <output limsid="92-231042" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-231042?state=113691"/>
+  </input-output-map>
+  <udf:field name="Barcode Printer" type="String">g214bc</udf:field>
+</prc:process>

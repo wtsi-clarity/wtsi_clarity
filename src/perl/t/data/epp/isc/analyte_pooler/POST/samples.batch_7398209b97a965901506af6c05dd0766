@@ -1,0 +1,1238 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample">
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1" limsid="DEA103A1">
+        <name>1</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A1PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1PA1?state=352"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A2" limsid="DEA103A2">
+        <name>2</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A2PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A2PA1?state=353"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A3" limsid="DEA103A3">
+        <name>3</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A3PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A3PA1?state=354"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A4" limsid="DEA103A4">
+        <name>4</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A4PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A4PA1?state=355"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A5" limsid="DEA103A5">
+        <name>5</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A5PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A5PA1?state=356"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A6" limsid="DEA103A6">
+        <name>6</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A6PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A6PA1?state=357"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A7" limsid="DEA103A7">
+        <name>7</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A7PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A7PA1?state=358"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A8" limsid="DEA103A8">
+        <name>8</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A8PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A8PA1?state=359"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A9" limsid="DEA103A9">
+        <name>9</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A9PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A9PA1?state=360"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A10" limsid="DEA103A10">
+        <name>10</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A10PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A10PA1?state=361"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A11" limsid="DEA103A11">
+        <name>11</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A11PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A11PA1?state=362"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A12" limsid="DEA103A12">
+        <name>12</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A12PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A12PA1?state=363"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A13" limsid="DEA103A13">
+        <name>13</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A13PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A13PA1?state=364"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A14" limsid="DEA103A14">
+        <name>14</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A14PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A14PA1?state=365"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A15" limsid="DEA103A15">
+        <name>15</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A15PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A15PA1?state=366"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A16" limsid="DEA103A16">
+        <name>16</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A16PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A16PA1?state=367"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A17" limsid="DEA103A17">
+        <name>17</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A17PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A17PA1?state=368"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A18" limsid="DEA103A18">
+        <name>18</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A18PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A18PA1?state=369"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A19" limsid="DEA103A19">
+        <name>19</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A19PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A19PA1?state=370"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A20" limsid="DEA103A20">
+        <name>20</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A20PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A20PA1?state=371"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A21" limsid="DEA103A21">
+        <name>21</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A21PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A21PA1?state=372"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A22" limsid="DEA103A22">
+        <name>22</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A22PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A22PA1?state=373"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A23" limsid="DEA103A23">
+        <name>23</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A23PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A23PA1?state=374"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A24" limsid="DEA103A24">
+        <name>24</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A24PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A24PA1?state=375"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A25" limsid="DEA103A25">
+        <name>25</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A25PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A25PA1?state=376"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A26" limsid="DEA103A26">
+        <name>26</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A26PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A26PA1?state=377"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A27" limsid="DEA103A27">
+        <name>27</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A27PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A27PA1?state=378"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A28" limsid="DEA103A28">
+        <name>28</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A28PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A28PA1?state=379"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A29" limsid="DEA103A29">
+        <name>29</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A29PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A29PA1?state=380"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A30" limsid="DEA103A30">
+        <name>30</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A30PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A30PA1?state=381"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A31" limsid="DEA103A31">
+        <name>31</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A31PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A31PA1?state=382"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A32" limsid="DEA103A32">
+        <name>32</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A32PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A32PA1?state=383"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A33" limsid="DEA103A33">
+        <name>33</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A33PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A33PA1?state=384"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A34" limsid="DEA103A34">
+        <name>34</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A34PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A34PA1?state=385"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A35" limsid="DEA103A35">
+        <name>35</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A35PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A35PA1?state=386"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A36" limsid="DEA103A36">
+        <name>36</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A36PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A36PA1?state=387"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A37" limsid="DEA103A37">
+        <name>37</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A37PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A37PA1?state=388"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A38" limsid="DEA103A38">
+        <name>38</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A38PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A38PA1?state=389"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A39" limsid="DEA103A39">
+        <name>39</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A39PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A39PA1?state=390"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A40" limsid="DEA103A40">
+        <name>40</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A40PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A40PA1?state=391"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A41" limsid="DEA103A41">
+        <name>41</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A41PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A41PA1?state=392"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A42" limsid="DEA103A42">
+        <name>42</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A42PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A42PA1?state=393"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A43" limsid="DEA103A43">
+        <name>43</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A43PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A43PA1?state=394"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A44" limsid="DEA103A44">
+        <name>44</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A44PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A44PA1?state=395"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A45" limsid="DEA103A45">
+        <name>45</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A45PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A45PA1?state=396"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A46" limsid="DEA103A46">
+        <name>46</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A46PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A46PA1?state=397"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A47" limsid="DEA103A47">
+        <name>47</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A47PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A47PA1?state=398"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A48" limsid="DEA103A48">
+        <name>48</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A48PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A48PA1?state=399"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A49" limsid="DEA103A49">
+        <name>49</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A49PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A49PA1?state=400"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A50" limsid="DEA103A50">
+        <name>50</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A50PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A50PA1?state=401"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A51" limsid="DEA103A51">
+        <name>51</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A51PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A51PA1?state=402"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A52" limsid="DEA103A52">
+        <name>52</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A52PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A52PA1?state=403"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A53" limsid="DEA103A53">
+        <name>53</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A53PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A53PA1?state=404"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A54" limsid="DEA103A54">
+        <name>54</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A54PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A54PA1?state=405"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A55" limsid="DEA103A55">
+        <name>55</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A55PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A55PA1?state=406"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A56" limsid="DEA103A56">
+        <name>56</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A56PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A56PA1?state=407"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A57" limsid="DEA103A57">
+        <name>57</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A57PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A57PA1?state=408"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A58" limsid="DEA103A58">
+        <name>58</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A58PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A58PA1?state=409"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A59" limsid="DEA103A59">
+        <name>59</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A59PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A59PA1?state=410"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A60" limsid="DEA103A60">
+        <name>60</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A60PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A60PA1?state=411"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A61" limsid="DEA103A61">
+        <name>61</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A61PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A61PA1?state=412"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A62" limsid="DEA103A62">
+        <name>62</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A62PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A62PA1?state=413"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A63" limsid="DEA103A63">
+        <name>63</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A63PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A63PA1?state=414"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A64" limsid="DEA103A64">
+        <name>64</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A64PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A64PA1?state=415"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A65" limsid="DEA103A65">
+        <name>65</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A65PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A65PA1?state=416"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A66" limsid="DEA103A66">
+        <name>66</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A66PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A66PA1?state=417"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A67" limsid="DEA103A67">
+        <name>67</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A67PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A67PA1?state=418"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A68" limsid="DEA103A68">
+        <name>68</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A68PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A68PA1?state=419"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A69" limsid="DEA103A69">
+        <name>69</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A69PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A69PA1?state=420"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A70" limsid="DEA103A70">
+        <name>70</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A70PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A70PA1?state=421"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A71" limsid="DEA103A71">
+        <name>71</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A71PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A71PA1?state=422"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A72" limsid="DEA103A72">
+        <name>72</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A72PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A72PA1?state=423"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A73" limsid="DEA103A73">
+        <name>73</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A73PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A73PA1?state=424"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A74" limsid="DEA103A74">
+        <name>74</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A74PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A74PA1?state=425"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A75" limsid="DEA103A75">
+        <name>75</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A75PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A75PA1?state=426"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A76" limsid="DEA103A76">
+        <name>76</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A76PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A76PA1?state=427"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A77" limsid="DEA103A77">
+        <name>77</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A77PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A77PA1?state=428"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A78" limsid="DEA103A78">
+        <name>78</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A78PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A78PA1?state=429"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A79" limsid="DEA103A79">
+        <name>79</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A79PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A79PA1?state=430"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A80" limsid="DEA103A80">
+        <name>80</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A80PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A80PA1?state=431"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A81" limsid="DEA103A81">
+        <name>81</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A81PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A81PA1?state=432"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A82" limsid="DEA103A82">
+        <name>82</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A82PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A82PA1?state=433"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A83" limsid="DEA103A83">
+        <name>83</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A83PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A83PA1?state=434"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A84" limsid="DEA103A84">
+        <name>84</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A84PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A84PA1?state=435"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A85" limsid="DEA103A85">
+        <name>85</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A85PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A85PA1?state=436"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A86" limsid="DEA103A86">
+        <name>86</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A86PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A86PA1?state=437"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A87" limsid="DEA103A87">
+        <name>87</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A87PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A87PA1?state=438"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A88" limsid="DEA103A88">
+        <name>88</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A88PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A88PA1?state=439"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A89" limsid="DEA103A89">
+        <name>89</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A89PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A89PA1?state=440"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A90" limsid="DEA103A90">
+        <name>90</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A90PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A90PA1?state=441"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A91" limsid="DEA103A91">
+        <name>91</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A91PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A91PA1?state=442"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A92" limsid="DEA103A92">
+        <name>92</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A92PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A92PA1?state=443"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A93" limsid="DEA103A93">
+        <name>93</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A93PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A93PA1?state=444"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A94" limsid="DEA103A94">
+        <name>94</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A94PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A94PA1?state=445"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A95" limsid="DEA103A95">
+        <name>95</name>
+        <date-received>2014-07-14</date-received>
+        <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
+        <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="DEA103A95PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A95PA1?state=446"/>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    </smp:sample>
+</smp:details>

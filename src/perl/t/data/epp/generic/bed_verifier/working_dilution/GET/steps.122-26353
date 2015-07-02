@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<stp:step xmlns:stp="http://genologics.com/ri/step" current-state="Record Details" limsid="24-50647" uri="http://testserver.com:1234/here/steps/24-50647">
+    <configuration uri="http://testserver.com:1234/here/configuration/protocols/3/steps/5">Working Dilution (SM)</configuration>
+    <actions uri="http://testserver.com:1234/here/steps/24-50647/actions"/>
+    <placements uri="http://testserver.com:1234/here/steps/24-102433_d/placements"/>
+    <reagent-lots uri="http://testserver.com:1234/here/steps/24-50647/reagentlots"/>
+    <details uri="http://testserver.com:1234/here/steps/24-50647/details"/>
+    <available-programs>
+        <available-program name="1 - Print Barcode" uri="http://testserver.com:1234/here/steps/24-50647/trigger/240"/>
+        <available-program name="2 - Verify Beds" uri="http://testserver.com:1234/here/steps/24-50647/trigger/241"/>
+        <available-program name="3 - Assign stock plate to QC Report" uri="http://testserver.com:1234/here/steps/24-50647/trigger/404"/>
+    </available-programs>
+</stp:step>

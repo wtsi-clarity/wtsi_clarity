@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 8;
+use Test::More tests => 10;
 use Test::Exception;
 
 use_ok('wtsi_clarity::genotyping::fluidigm::assay_set');
@@ -68,6 +68,26 @@ my $file_content = [[
   is(scalar @{$assay_set->assay_results}, 3, 'Has 3 results');
 }
 
+# Sample Name
+{
+  my $assay_set = wtsi_clarity::genotyping::fluidigm::assay_set->new(
+    file_content => $file_content,
+  );
+
+  is($assay_set->sample_name, 'ABC0123456789', 'Extracts the sample name');
+
+  my $file_content2 = $file_content;
+
+  $file_content2->[0]->[4] = 'Different sample name';
+
+  my $assay_set2 = wtsi_clarity::genotyping::fluidigm::assay_set->new(
+    file_content => $file_content2,
+  );
+
+  throws_ok { $assay_set2->sample_name } qr/Sample names in assay result set are not homogenous/,
+    'Throws when sample names in an assay set are not homogeneous';
+}
+
 # Gender Set
 {
   my $assay_set = wtsi_clarity::genotyping::fluidigm::assay_set->new(
@@ -95,8 +115,8 @@ my $file_content = [[
     file_content => \@file_content2,
   );
 
-  is($assay_set->gender, 'F', 'Correctly identifies the gender');
-  is($assay_set2->gender, 'M', 'Correctly identitfies the gender');
+  is($assay_set->gender, 'M', 'Correctly identifies the gender');
+  is($assay_set2->gender, 'F', 'Correctly identitfies the gender');
 
   $file_content2->[3] = [
                      'S26-A03',

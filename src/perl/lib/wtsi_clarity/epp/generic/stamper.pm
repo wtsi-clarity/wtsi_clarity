@@ -11,7 +11,6 @@ use Try::Tiny;
 
 extends 'wtsi_clarity::epp';
 with 'wtsi_clarity::util::clarity_elements';
-with 'wtsi_clarity::util::roles::clarity_process_base';
 
 ##no critic ValuesAndExpressions::RequireInterpolationOfMetachars
 Readonly::Scalar my $IO_MAP_PATH              => q{ /prc:process/input-output-map[output[@output-type='Analyte']]};
@@ -37,31 +36,19 @@ override 'run' => sub {
   super(); #call parent's run method
   $self->epp_log('Step url is ' . $self->step_url);
 
-  if ($self->shadow_plate && $self->copy_on_target ) {
-    croak qq{One cannot use the shadow plate stamping with the copy_on_target option!};
-  }
-
-  if ($self->group && $self->copy_on_target) {
-    croak q{One can not use the group stamping with the copy_on_target option!};
-  }
-
-  ##no critic ValuesAndExpressions::ProhibitMagicNumbers
-  if ($self->group && $self->input_artifacts->findnodes('/art:details/art:artifact')->size() > 96) {
-    croak q{Can not do a group stamp for more than 96 inputs!};
-  }
-  ##use critic
+  $self->_check_options();
 
   $self->_create_containers();
   my $doc = $self->_create_placements_doc;
 
   if ($self->copy_on_target) {
     # in terms of wells, one well (e.g. A1) will be transfered to several wells (hence the 'copy') on the output plates
-    $doc = $self->_stamp_with_copy($doc);
+    $doc = $self->_stamping($doc, \&_stamp_with_copy, \&_direct_well_calculation);
   } elsif ($self->group) {
-    $doc = $self->_group_inputs_by_container_stamp($doc);
+    $doc = $self->_stamping($doc, \&_group_inputs_by_container_stamp);
   } else {
     # in terms of wells, one well (e.g. A1) will be transfered to only one well on the output plate
-    $doc = $self->_direct_stamp($doc);
+    $doc = $self->_stamping($doc, \&_direct_stamp, \&_direct_well_calculation);
   }
 
   $self->request->post($self->step_url . '/placements', $doc->toString);
@@ -73,13 +60,38 @@ override 'run' => sub {
   return;
 };
 
+sub _check_options {
+  my $self = shift;
+
+  if ($self->shadow_plate && $self->copy_on_target ) {
+    croak qq{One cannot use the shadow plate stamping with the copy_on_target option!};
+  }
+
+  if ($self->shadow_plate && $self->has_container_type_name) {
+    $self->epp_log(q{Argument container_type_name should not be provided when shadow stamping. Output container type(s) will match input container type(s)});
+    $self->clear_container_type_name;
+  }
+
+  if ($self->group && $self->copy_on_target) {
+    croak q{One can not use the group stamping with the copy_on_target option!};
+  }
+
+  ##no critic ValuesAndExpressions::ProhibitMagicNumbers
+  if ($self->group && $self->process_doc->input_artifacts->findnodes('/art:details/art:artifact')->size() > 96) {
+    croak q{Can not do a group stamp for more than 96 inputs!};
+  }
+  ##use critic
+
+  return 1;
+}
+
 ##
 
 has 'controls' => (
   isa       => 'Bool',
   is        => 'rw',
   required  => 0,
-  default   => 0,
+  default   => 1,
   predicate => 'has_controls',
   writer    => 'set_controls',
 );
@@ -120,13 +132,13 @@ has 'shadow_plate' => (
   trigger  => \&_set_controls,
 );
 
-# If it's a shadow_plate, we always want to stamp controls too,
+# If it's a shadow_plate and controls haven't been set, we always want to stamp controls too,
 # so we set controls to 1
 sub _set_controls {
   my $self = shift;
   my $shadow_plate = shift;
 
-  if ($shadow_plate == 1) {
+  if (!$self->has_controls && $shadow_plate == 1) {
     $self->set_controls(1);
   }
 
@@ -247,7 +259,7 @@ sub _build__output_container_details {
   my $self = shift;
   my $base_url = $self->config->clarity_api->{'base_uri'};
 
-  my $output_ids = $self->grab_values($self->process_doc, $OUTPUT_IDS_PATH);
+  my $output_ids = $self->grab_values($self->process_doc->xml, $OUTPUT_IDS_PATH);
   my @output_uris = c ->new(@{$output_ids})
                       ->uniq()
                       ->map( sub {
@@ -387,83 +399,20 @@ sub _create_placements_doc {
   return XML::LibXML->load_xml(string => $pXML);
 }
 
-sub _direct_stamp {
-  my ($self, $doc) = @_;
+sub _stamping {
+  my ($self, $doc, $stamping_callback, $well_callback) = @_;
 
-  my @placements = $doc->findnodes(q{ /stp:placements/output-placements });
-  if (!@placements) {
-    croak 'Placements element not found';
-  }
-
-  foreach my $input_container ( keys %{$self->_analytes}) {
-
-    foreach my $input_analyte ( keys %{$self->_analytes->{$input_container} } ) {
-      if ( $input_analyte eq 'output_containers' || $input_analyte eq 'doc' ) {
-        next;
-      }
-
-      my $well = $self->_analytes->{$input_container}->{$input_analyte}->{'well'};
-
-      my $container_index = 0;
-      foreach my $output_container ( @{$self->_analytes->{$input_container}->{'output_containers'}} ) {
-        my $uri = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'}->[$container_index];
-        if (!$uri) {
-          croak qq[No target analyte uri for container index $container_index];
-        }
-
-        my $placement = $self->_create_placement($doc, $uri, $output_container, $well);
-        $placements[0]->addChild($placement);
-
-        $container_index++;
-      }
-    }
-  }
-
-  return $doc;
-}
-
-sub _stamp_with_copy {
-  my ($self, $doc) = @_;
-
-  my @placements = $doc->findnodes(q{ /stp:placements/output-placements });
-  if (!@placements) {
-    croak 'Placements element not found';
-  }
-
-  foreach my $input_container ( keys %{$self->_analytes}) {
-
-    foreach my $input_analyte ( keys %{$self->_analytes->{$input_container} } ) {
-      if ( $input_analyte eq 'output_containers' || $input_analyte eq 'doc' ) {
-        next;
-      }
-
-      my ($destination_well_1, $destination_well_2) = $self->calculate_destination_wells($self->_analytes->{$input_container}->{$input_analyte}->{'well'});
-      my $output_container = @{$self->_analytes->{$input_container}->{'output_containers'}}[0]; # Always just 1 here
-
-      my $output_artifact_uris = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'};
-
-      my $placement = $self->_create_placement($doc, $output_artifact_uris->[0], $output_container, $destination_well_1);
-      $placements[0]->addChild($placement);
-
-      $placement = $self->_create_placement($doc, $output_artifact_uris->[1], $output_container, $destination_well_2);
-      $placements[0]->addChild($placement);
-    }
-  }
-
-  return $doc;
-}
-
-sub _group_inputs_by_container_stamp {
-  my ($self, $doc) = @_;
   my @wells = (); # Ordered list of wells
-
-  ##no critic ValuesAndExpressions::ProhibitMagicNumbers
-  for (1..12) {
-    foreach my $column ('A'..'H') {
-      push @wells, $column . ':' . $_;
+  my $well;
+  if (!defined $well_callback) {
+    ##no critic ValuesAndExpressions::ProhibitMagicNumbers
+    for (1..12) {
+      foreach my $column ('A'..'H') {
+        push @wells, $column . ':' . $_;
+      }
     }
+    ##use critic
   }
-  ##use critic
 
   my @placements = $doc->findnodes(q{ /stp:placements/output-placements });
 
@@ -476,16 +425,76 @@ sub _group_inputs_by_container_stamp {
       if ( $input_analyte eq 'output_containers' || $input_analyte eq 'doc' ) {
         next;
       }
-
-      my $output_container = @{$self->_analytes->{$input_container}->{'output_containers'}}[0];
-      my $output_artifact_uri = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'}[0];
-      my $placement = $self->_create_placement($doc, $output_artifact_uri, $output_container, shift @wells);
-
-      $placements[0]->addChild($placement);
+      if (defined $well_callback) {
+        $well = $well_callback->($self, $input_container, $input_analyte);
+      } else {
+        $well = shift @wells;
+      }
+      ($doc, my @new_placements) = $stamping_callback->($self, $doc, $input_container, $input_analyte, $well);
+      foreach my $placement (@new_placements) {
+        $placements[0]->addChild($placement);
+      }
     }
   }
 
   return $doc;
+}
+
+sub _direct_well_calculation {
+  my ($self, $input_container, $input_analyte) = @_;
+
+  return $self->_analytes->{$input_container}->{$input_analyte}->{'well'};
+}
+
+sub _direct_stamp {
+  my ($self, $doc, $input_container, $input_analyte, $well) = @_;
+
+  my @new_placements = ();
+  my $container_index = 0;
+  foreach my $output_container ( @{$self->_analytes->{$input_container}->{'output_containers'}} ) {
+    my $uri = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'}->[$container_index];
+    if (!$uri) {
+      croak qq[No target analyte uri for container index $container_index];
+    }
+
+    my $placement = $self->_create_placement($doc, $uri, $output_container, $well);
+    push @new_placements, $placement;
+
+    $container_index++;
+  }
+
+  return ($doc, @new_placements);
+}
+
+sub _stamp_with_copy {
+  my ($self, $doc, $input_container, $input_analyte, $well) = @_;
+
+  my @new_placements = ();
+  my ($destination_well_1, $destination_well_2) = $self->calculate_destination_wells($well);
+  my $output_container = @{$self->_analytes->{$input_container}->{'output_containers'}}[0]; # Always just 1 here
+
+  my $output_artifact_uris = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'};
+
+  my $placement = $self->_create_placement($doc, $output_artifact_uris->[0], $output_container, $destination_well_1);
+  push @new_placements, $placement;
+
+  $placement = $self->_create_placement($doc, $output_artifact_uris->[1], $output_container, $destination_well_2);
+  push @new_placements, $placement;
+
+  return ($doc, @new_placements);
+}
+
+sub _group_inputs_by_container_stamp {
+  my ($self, $doc, $input_container, $input_analyte, $well) = @_;
+
+  my @new_placements = ();
+  my $output_container = @{$self->_analytes->{$input_container}->{'output_containers'}}[0];
+  my $output_artifact_uri = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'}[0];
+
+  my $placement = $self->_create_placement($doc, $output_artifact_uri, $output_container, $well);
+  push @new_placements, $placement;
+
+  return ($doc, @new_placements);
 }
 
 sub calculate_destination_wells {

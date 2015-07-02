@@ -14,8 +14,7 @@ my $base_uri = q{http://testserver.com:1234/here};
 use_ok('wtsi_clarity::epp::sm::cherrypick_volume_updater', 'can use wtsi_clarity::epp::sm::cherrypick_volume_updater' );
 use_ok('util::xml', 'can use wtsi_clarity::t::util::xml' );
 
-
-my $espilon = 0.000001;
+my $epsilon = 0.000001;
 
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/cherrypick_volume_updater';
@@ -50,8 +49,8 @@ my $espilon = 0.000001;
     my $expected_sample = @{$expected_result{$sampleURI}}[0];
     my $expected_buffer = @{$expected_result{$sampleURI}}[1];
 
-    cmp_ok(abs($element_sample - $expected_sample), '<', $espilon, 'In case (1), the sample volume should be as expected ('.($expected_sample).' rather than '.$element_sample.').');
-    cmp_ok(abs($element_buffer - $expected_buffer), '<', $espilon, 'In case (1), the buffer volume should be as expected ('.($expected_buffer).' rather than '.$element_buffer.').');
+    cmp_ok(abs($element_sample - $expected_sample), '<', $epsilon, 'In case (1), the sample volume should be as expected ('.($expected_sample).' rather than '.$element_sample.').');
+    cmp_ok(abs($element_buffer - $expected_buffer), '<', $epsilon, 'In case (1), the buffer volume should be as expected ('.($expected_buffer).' rather than '.$element_buffer.').');
   }
 }
 
@@ -63,7 +62,7 @@ my $espilon = 0.000001;
 
   lives_ok { $step->fetch_and_update_targets($step->process_doc) } 'In case (2), the class managed to fetch and updates the artifact';
 
-  cmp_ok(scalar keys %{$step->_targets}, '==', 12, 'In case (2), there should be 11 artifacts (Test Fixture).');
+  cmp_ok(scalar keys %{$step->_targets}, '==', 12, 'In case (2), there should be 12 artifacts (Test Fixture).');
 
   my $SAMPLE_PATH = q(/art:artifact/udf:field[@name='Cherrypick Sample Volume']);
   my $BUFFER_PATH = q(/art:artifact/udf:field[@name='Cherrypick Buffer Volume']);
@@ -96,8 +95,8 @@ my $espilon = 0.000001;
     my $expected_sample = @{$expected_result{$sampleURI}}[0]   + 0;
     my $expected_buffer = @{$expected_result{$sampleURI}}[1]   + 0;
 
-    cmp_ok(abs($element_sample - $expected_sample), '<', $espilon, 'In case (2), the sample volume should be as expected ('.($expected_sample).' rather than '.$element_sample.').');
-    cmp_ok(abs($element_buffer - $expected_buffer), '<', $espilon, 'In case (2), the buffer volume should be as expected ('.($expected_buffer).' rather than '.$element_buffer.').');
+    cmp_ok(abs($element_sample - $expected_sample), '<', $epsilon, 'In case (2), the sample volume should be as expected ('.($expected_sample).' rather than '.$element_sample.').');
+    cmp_ok(abs($element_buffer - $expected_buffer), '<', $epsilon, 'In case (2), the buffer volume should be as expected ('.($expected_buffer).' rather than '.$element_buffer.').');
   }
 }
 

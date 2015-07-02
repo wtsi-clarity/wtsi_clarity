@@ -8,6 +8,28 @@ use DateTime;
 our $VERSION = '0.0';
 
 Readonly::Scalar my $USER_NAME_LENGTH => 12;
+Readonly::Scalar our $PLATE_96_WELL_CONTAINER_NAME  => q{96 Well Plate};
+Readonly::Scalar our $ABGENE_800_CONTAINER_NAME     => q{ABgene 0800};
+Readonly::Scalar our $ABGENE_765_CONTAINER_NAME     => q{ABgene 0765};
+Readonly::Scalar our $FLUIDX_075_CONTAINER_NAME     => q{FluidX 0.75ml};
+Readonly::Scalar our $TUBE_CONTAINER_NAME           => q{Tube};
+
+Readonly::Scalar our $PLATE_LABEL_TYPE              => q{plate};
+Readonly::Scalar our $TUBE_LABEL_TYPE               => q{tube};
+
+Readonly::Hash   our %LABEL_TYPES                   => {
+  $PLATE_96_WELL_CONTAINER_NAME => $PLATE_LABEL_TYPE,
+  $FLUIDX_075_CONTAINER_NAME    => $PLATE_LABEL_TYPE,
+  $ABGENE_800_CONTAINER_NAME    => $PLATE_LABEL_TYPE,
+  $ABGENE_765_CONTAINER_NAME    => $PLATE_LABEL_TYPE,
+  $TUBE_CONTAINER_NAME          => $TUBE_LABEL_TYPE
+};
+
+sub label_type_by_container_name {
+  my ($self, $container_name) = @_;
+
+  return $LABEL_TYPES{$container_name};
+}
 
 has '_date' => (
   isa        => 'DateTime',
@@ -32,7 +54,7 @@ sub generateLabels {
 
   my @labels = ();
 
-  foreach my $container_url (keys %{$params->{'containers'}}) {
+  foreach my $container_url (sort keys %{$params->{'containers'}}) {
     my $count = 0;
     while ($count < $params->{'number'}) {
       my $container = $params->{'containers'}->{$container_url};
@@ -62,14 +84,14 @@ sub _format_label {
   if ($type eq 'plate') {
 
     $label = {
-        'template'  => 'plate',
+        'template'  => 'clarity_plate',
         'plate' => {
           'ean13' => $container->{'barcode'},
-          'sanger' => join(q[ ], $date, $user),
           'label_text' => {
-            'role'  => $container->{'purpose'},
-            'text5' => $container->{'num'},
-            'text6' => $container->{'signature'}
+            'date_user' => join(q[ ], $date, $user),
+            'purpose'   => $container->{'purpose'},
+            'num'       => $container->{'num'},
+            'signature' => $container->{'signature'}
           }
         }
     };
@@ -88,9 +110,10 @@ sub _format_label {
           'number'  => $sanger_barcode_number
         },
         'label_text' => {
-          'date'            => $date,
-          'pool_number'     => q[], # TODO add pool number later:
-          'parent_barcode'  => $container->{'parent_barcode'}
+          'date'                              => $date,
+          'tube_barcode'                      => $sanger_barcode_number,
+          'tube_signature_and_pooling_range'  => $container->{'tube_signature_and_pooling_range'},
+          'original_plate_signature'          => $container->{'original_plate_signature'}
         },
     }};
   } else {
@@ -127,6 +150,10 @@ wtsi_clarity::util::label
 =head1 SUBROUTINES/METHODS
 
 =head2 generateLabels
+
+=head2 label_type_by_container_name
+
+  Returns the type of the label by container name.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

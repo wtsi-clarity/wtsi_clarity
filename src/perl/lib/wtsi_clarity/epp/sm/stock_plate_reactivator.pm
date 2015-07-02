@@ -8,8 +8,6 @@ use wtsi_clarity::epp::generic::workflow_assigner;
 
 extends 'wtsi_clarity::epp';
 
-with 'wtsi_clarity::util::clarity_process';
-
 our $VERSION = '0.0';
 
 has 'from_process' => (
@@ -29,7 +27,7 @@ override 'run' => sub {
   super();
 
   # Get all input artifacts' parent process URIs
-  my $parent_processes = $self->find_parent($self->from_process, $self->process_url);
+  my $parent_processes = $self->process_doc->find_parent($self->from_process, $self->process_url);
 
   if (scalar @{ $parent_processes } == 0) {
     croak 'None of the samples in these plates seem to have gone through ' . $self->from_process;

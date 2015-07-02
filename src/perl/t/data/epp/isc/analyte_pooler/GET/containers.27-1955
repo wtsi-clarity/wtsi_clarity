@@ -1,0 +1,295 @@
+<?xml version="1.0" standalone="yes"?>
+<con:container xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-1955" limsid="27-1955">
+    <name>27-1955</name>
+    <type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containertypes/4" name="96 Well Plate"/>
+    <occupied-wells>96</occupied-wells>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56006" limsid="2-56006">
+        <value>B:12</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56023" limsid="2-56023">
+        <value>D:10</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56045" limsid="2-56045">
+        <value>G:7</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56047" limsid="2-56047">
+        <value>E:7</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56049" limsid="2-56049">
+        <value>C:7</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56106" limsid="2-56106">
+        <value>E:6</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56112" limsid="2-56112">
+        <value>D:1</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56114" limsid="2-56114">
+        <value>D:4</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56117" limsid="2-56117">
+        <value>A:4</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56124" limsid="2-56124">
+        <value>B:5</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56126" limsid="2-56126">
+        <value>H:4</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56128" limsid="2-56128">
+        <value>F:4</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56136" limsid="2-56136">
+        <value>E:1</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56140" limsid="2-56140">
+        <value>A:3</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56040" limsid="2-56040">
+        <value>F:8</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56007" limsid="2-56007">
+        <value>C:12</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56009" limsid="2-56009">
+        <value>E:12</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56011" limsid="2-56011">
+        <value>G:12</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56018" limsid="2-56018">
+        <value>F:11</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56044" limsid="2-56044">
+        <value>B:8</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56046" limsid="2-56046">
+        <value>H:7</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56121" limsid="2-56121">
+        <value>E:3</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56132" limsid="2-56132">
+        <value>A:2</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56143" limsid="2-56143">
+        <value>H:2</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56038" limsid="2-56038">
+        <value>H:8</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56146" limsid="2-56146">
+        <value>E:5</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56013" limsid="2-56013">
+        <value>A:11</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56014" limsid="2-56014">
+        <value>B:11</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56020" limsid="2-56020">
+        <value>H:11</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56022" limsid="2-56022">
+        <value>A:10</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56028" limsid="2-56028">
+        <value>G:10</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56118" limsid="2-56118">
+        <value>H:3</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56119" limsid="2-56119">
+        <value>G:3</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56123" limsid="2-56123">
+        <value>C:5</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56141" limsid="2-56141">
+        <value>B:3</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56034" limsid="2-56034">
+        <value>E:9</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56039" limsid="2-56039">
+        <value>E:8</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56005" limsid="2-56005">
+        <value>A:12</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56021" limsid="2-56021">
+        <value>B:10</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56042" limsid="2-56042">
+        <value>D:8</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56043" limsid="2-56043">
+        <value>A:8</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56105" limsid="2-56105">
+        <value>F:6</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56113" limsid="2-56113">
+        <value>C:1</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56120" limsid="2-56120">
+        <value>F:3</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56133" limsid="2-56133">
+        <value>B:2</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56029" limsid="2-56029">
+        <value>B:9</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56031" limsid="2-56031">
+        <value>D:9</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56032" limsid="2-56032">
+        <value>C:9</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56145" limsid="2-56145">
+        <value>F:2</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56148" limsid="2-56148">
+        <value>G:5</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56150" limsid="2-56150">
+        <value>A:6</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56012" limsid="2-56012">
+        <value>H:12</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56025" limsid="2-56025">
+        <value>F:10</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56050" limsid="2-56050">
+        <value>D:7</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56115" limsid="2-56115">
+        <value>C:4</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56130" limsid="2-56130">
+        <value>C:2</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56035" limsid="2-56035">
+        <value>H:9</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56008" limsid="2-56008">
+        <value>D:12</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56024" limsid="2-56024">
+        <value>C:10</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56027" limsid="2-56027">
+        <value>H:10</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56102" limsid="2-56102">
+        <value>B:7</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56104" limsid="2-56104">
+        <value>G:6</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56111" limsid="2-56111">
+        <value>A:1</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56122" limsid="2-56122">
+        <value>D:5</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56127" limsid="2-56127">
+        <value>G:4</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56134" limsid="2-56134">
+        <value>G:1</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56137" limsid="2-56137">
+        <value>F:1</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56138" limsid="2-56138">
+        <value>C:3</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56139" limsid="2-56139">
+        <value>D:3</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56033" limsid="2-56033">
+        <value>F:9</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56036" limsid="2-56036">
+        <value>G:9</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56037" limsid="2-56037">
+        <value>G:8</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56144" limsid="2-56144">
+        <value>E:2</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56010" limsid="2-56010">
+        <value>F:12</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56016" limsid="2-56016">
+        <value>D:11</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56017" limsid="2-56017">
+        <value>E:11</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56048" limsid="2-56048">
+        <value>F:7</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56103" limsid="2-56103">
+        <value>H:6</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56109" limsid="2-56109">
+        <value>B:6</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56116" limsid="2-56116">
+        <value>B:4</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56129" limsid="2-56129">
+        <value>E:4</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56135" limsid="2-56135">
+        <value>H:1</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56142" limsid="2-56142">
+        <value>G:2</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56030" limsid="2-56030">
+        <value>A:9</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56041" limsid="2-56041">
+        <value>C:8</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56147" limsid="2-56147">
+        <value>F:5</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56149" limsid="2-56149">
+        <value>H:5</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56015" limsid="2-56015">
+        <value>C:11</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56019" limsid="2-56019">
+        <value>G:11</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56026" limsid="2-56026">
+        <value>E:10</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56101" limsid="2-56101">
+        <value>A:7</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56107" limsid="2-56107">
+        <value>D:6</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56108" limsid="2-56108">
+        <value>C:6</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56110" limsid="2-56110">
+        <value>B:1</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56125" limsid="2-56125">
+        <value>A:5</value>
+    </placement>
+    <placement uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-56131" limsid="2-56131">
+        <value>D:2</value>
+    </placement>
+    <state>Populated</state>
+</con:container>

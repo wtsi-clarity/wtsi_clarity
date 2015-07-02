@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 10;
+use Test::More tests => 14;
 
 use_ok('wtsi_clarity::genotyping::fluidigm::assay');
 
@@ -123,8 +123,76 @@ use_ok('wtsi_clarity::genotyping::fluidigm::assay');
     y_intensity    => '0.1'
   );
 
+  my $assay3 = wtsi_clarity::genotyping::fluidigm::assay->new(
+    assay          => 'S26-A01',
+    snp_assayed    => '',
+    x_allele       => 'C',
+    y_allele       => 'T',
+    sample_name    => 'ABC0123456789',
+    type           => 'Unknown',
+    auto           => 'No Call',
+    confidence     => '0.1',
+    final          => 'XY',
+    converted_call => 'No Call',
+    x_intensity    => '0.1',
+    y_intensity    => '0.1'
+  );
+
   is($assay->is_call, '', 'Assay is not seen as a call');
   is($assay2->is_call, 1, 'Assay is seen as a call');
+  is($assay3->is_call, '', 'Assay is not seen as a call');
+}
+
+# is_valid
+{
+  my $assay = wtsi_clarity::genotyping::fluidigm::assay->new(
+    assay          => 'S26-A01',
+    snp_assayed    => '',
+    x_allele       => 'C',
+    y_allele       => 'T',
+    sample_name    => 'ABC0123456789',
+    type           => 'Unknown',
+    auto           => 'No Call',
+    confidence     => '0.1',
+    final          => 'Invalid',
+    converted_call => 'C:T',
+    x_intensity    => '0.1',
+    y_intensity    => '0.1'
+  );
+
+  my $assay2 = wtsi_clarity::genotyping::fluidigm::assay->new(
+    assay          => 'S26-A01',
+    snp_assayed    => '',
+    x_allele       => 'C',
+    y_allele       => 'T',
+    sample_name    => 'ABC0123456789',
+    type           => 'Unknown',
+    auto           => 'No Call',
+    confidence     => '0.1',
+    final          => 'XY',
+    converted_call => 'Invalid',
+    x_intensity    => '0.1',
+    y_intensity    => '0.1'
+  );
+
+  my $assay3 = wtsi_clarity::genotyping::fluidigm::assay->new(
+    assay          => 'S26-A01',
+    snp_assayed    => 'rs0123456',
+    x_allele       => 'C',
+    y_allele       => 'T',
+    sample_name    => '[ Empty ]',
+    type           => 'Unknown',
+    auto           => 'No Call',
+    confidence     => '0.1',
+    final          => 'XY',
+    converted_call => 'C:T',
+    x_intensity    => '0.1',
+    y_intensity    => '0.1'
+  );
+
+  is($assay->is_valid, '', 'Assay is invalid');
+  is($assay2->is_valid, '', 'Assay is invalid');
+  is($assay3->is_valid, 1, 'Assay is valid');
 }
 
 # is_gender_marker

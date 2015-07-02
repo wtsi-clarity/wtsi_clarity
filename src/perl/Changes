@@ -1,5 +1,160 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 1.6.1
+ - Fix bed verification bug #443 (corrects plate name mapping)
+
+Release 1.6
+ - QC Report speed up
+ - Bed Verification extra checks
+
+Release 1.5
+ - Another fix to bed verification
+ - QC report fix and support for multiple plates
+
+Release 1.4
+ - Removed uuid_api config parameter
+ - Fixed Fluidigm mapping when sending data to warehouse
+
+Release 1.3
+ - Added pipline_id_lims to PhiX Controls in iseq_flowcell table
+
+Release 1.2
+ - Warehouse sample info fixes:
+  - Updated the Sample Common Name
+  - Updated Sample Supplier Name
+
+Release 1.1
+ - Can now add `--input_only 1` flag to bed verifier epp. It will only verify input plates.
+
+Release 1.0 (Hummingbird)
+ - Warehouse: Fields that are not present are undefined rather than empty strings
+
+Release 0.91
+ - Changed Fluidigm well format for Warehouse
+ - This release contains many changes that were necessary once we 
+ started getting real data to the Warehouse. There was a lot of back and forth with NPG.
+ - The message clients have also been split into two as it was clearer and hopefully less error prone.
+
+Release 0.90
+ - Added tube signature to tube label
+ - Fixed total microgram calculation in QC report
+ - In the 'Cherrypick Worksheet and Barcode' step the generated worksheet is using 
+ the middle part of the barcode as the plate name in the source plate table
+
+Release 0.89
+ - Changed the tube layout. We have the following info on the tube label: 
+   - ean13 barcode (vertical)
+   - original plate's signature
+   - pooling range
+   - tube's barcode number
+   - date
+ - Also added the signature to the container as a UDF.
+
+Release 0.88
+ - Fixes Coeffienct of Variation miscalculation: Standard Deviation is done correctly now
+
+Release 0.87
+ - Fixed the tube label printing: getting the bait library from the first sample
+
+Release 0.86
+ - Refactored message client so accepts blocking_enabled parameter
+ - Fixed Fluidigm message
+ - Added sandbox mode to message_consumer
+ - Added pool range and tube barcode to the normal label. Replaced the parent ean13 barcode with only the number part,
+without the pre and postfix.
+ - Fixed QC report: pico analysis 
+
+Release 0.85
+ - Fixes #366: correct pool mapping using with more than 1 container
+
+Release 0.84
+ - Fixed signature not being consistent when multiple samples on an artifact
+
+Release 0.83
+ - Added bait driven pooling
+ - Added flowcell message generation for the Unified Warehouse
+
+Release 0.82
+ - Updates samples with concentrations rather than total_micrograms
+ - Increased the timeout value for our request module for querying Clarity REST API
+
+Release 0.81
+ - Tecan file sample order: can order the mapping between inputs and outputs
+ - Added a new UUID generator module
+
+Release 0.80
+ - Fixed: added print barcodes action to the action mapper
+
+Release 0.79
+ - Input analytes were being selected to be updated in the cherrypick volume updater.
+   Updated the xpath so it selects the output ones instead.
+ - Added new action: generate barcodes to external collaborator
+
+Release 0.78
+ - The QC Report will update samples with their calculated concentration.
+ - Volume checker updates the working volume on samples, too.
+
+Release 0.77
+ - Fixed the CSV file reader: clean up the white spaces from each lines
+ 
+Release 0.76
+ - Added stamper action for cherry-picking
+ 
+Release 0.75
+ - Added step_assigner_by_field action
+ - fixed sample updater: added missing modules and fix array comparing
+
+Release 0.74
+ - Fix to QC Report fetching the Fluidigm data
+
+Release 0.73
+ - Fix changing pool naming to barcode plus pooling range
+
+Release 0.72
+ - Allow storage of plates from previous steps
+ - Fix for file download in proceed_sample_updater
+
+Release 0.71
+  - Refactored Fluidigm Analysis EPP and added extra tests:
+    Updated is_call method in Fluidigm/Assay. Fixes #206
+    Added is_valid method to Fluidigm/Assay
+    Added sample_name method to Fluidigm/Assay_Set
+
+Release 0.70
+  - Update samples from proceedlist (QC report with Proceed column)
+  
+Release 0.69
+  - Reverted "Bed verification only inputs" fix
+
+Release 0.68
+  - Fixed label creation for control plates
+  - Fluidigm analysis workfile should show NTC for empty wells
+  - Fixed Fluidigm tecan with no buffers
+  - Fluidigm message purpose has been added
+  - Fix worksheet attacher calling with incorrect arguments
+
+Release 0.67
+  - New message enhancer for Fluidigm
+  - When searching for previous processes, will now find latest one
+  - New bed verification option for when there are only inputs
+
+Release 0.66
+  - Make Fluidigm Analysis file generator a little more robost (barcode can also be a String)
+  - Fix QC report's concentration result
+  - Fix Fluidigm report unneeded spaces issue
+
+Release 0.65
+  - Fixes #261 - Bed verification with pools
+  - Fixed Travis build failures
+  - Refactored some duplication with processes
+  - Added Fluidigm analysis CSV generation EPP
+  - Fixed labels missing signature
+
+Release 0.64
+  - Fixed the io mapping in bed verification
+  - Change in stamping: shadow stamp now acknowledges controls i.e. it won't automatically
+just stamp a control.
+
 Release 0.63
   - Tecan robot files are sorted by destination well
   - Fix to print a label when output type is pool

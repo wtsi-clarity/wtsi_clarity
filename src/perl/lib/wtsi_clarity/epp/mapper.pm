@@ -11,16 +11,20 @@ our $VERSION = '0.0';
 
 Readonly::Hash my %ACTION2MODULE => (
     'create_label'                   => 'generic::label_creator',
+    'print_barcodes'                 => 'generic::external_barcode_creator',
     'update_plate_purpose'           => 'generic::plate_purpose_updater',
     'verify_bed'                     => 'generic::bed_verifier',
     'attach_worksheet'               => 'generic::worksheet_attacher',
     'assign_to_workflow'             => 'generic::workflow_assigner',
+    'assign_to_next_step'            => 'generic::step_assigner_by_field',
     'publish_file'                   => 'generic::file_publisher',
     'stamp'                          => 'generic::stamper',
+    'cherrypick_stamp'               => 'generic::cherrypick_stamper',
     'queue_message'                  => 'generic::messenger',
     'store_plate'                    => 'generic::plate_storer',
 
     'check_volume'                   => 'sm::volume_checker',
+    'display_file'                   => 'sm::file_downloader',
     'receive_sample'                 => 'sm::sample_receiver',
     'update_fluidigm_request_volume' => 'sm::fluidigm_request_volume_updater',
     'update_cherrypick_volume'       => 'sm::cherrypick_volume_updater',
@@ -29,14 +33,17 @@ Readonly::Hash my %ACTION2MODULE => (
     'attach_dtx_file'                => 'sm::dtx_file_attacher',
     'analyse_pico'                   => 'sm::pico_analyser',
     'analyse_fluidigm'               => 'sm::fluidigm_analyser',
+    'create_fluidigm_file'           => 'sm::fluidigm_analysis_file_creator',
+    'update_sample_to_proceed'       => 'sm::proceed_sample_updater',
+
     'make_report'                    => 'sm::report_maker',
 
     'tag_plate'                      => 'isc::plate_tagger',
     'index_tag'                      => 'isc::tag_indexer',
     'analyse_agilent'                => 'isc::agilent_analyser',
     'analyse_calliper'               => 'isc::calliper_analyser',
-    'pool_samples'                   => 'isc::analyte_pooler',
-    'place_pools'                    => 'isc::pool_placer',
+    'pool_samples'                   => 'isc::pooling::analyte_pooler',
+    'place_pools'                    => 'isc::pooling::pool_placer',
     'make_beckman_file'              => 'isc::pool_beckman_creator',
     'analyse_pool'                   => 'isc::pool_analyser',
 );

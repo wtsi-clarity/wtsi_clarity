@@ -21,6 +21,7 @@ has 'resource_type' => (
 );
 
 has 'lims_id' => (
+  traits      => [ 'DoNotSerialize' ],
   isa         => 'Str',
   is          => 'ro',
   required    => 1,
@@ -39,10 +40,17 @@ has '_artifact_xml' => (
 );
 sub _build__artifact_xml {
   my $self = shift;
+  return $self->_get_xml($self->resource_type, $self->lims_id);
+}
+
+sub _get_xml {
+  my ($self, $resource_type, $lims_id) = @_;
 
   my $xml_resource_reader = wtsi_clarity::util::xml_resource_reader->new(
-    resource_type => $self->resource_type,
-    lims_id       => $self->lims_id);
+    resource_type => $resource_type,
+    lims_id       => $lims_id
+  );
+
   return $xml_resource_reader->get_xml;
 }
 
@@ -91,7 +99,16 @@ sub to_message {
   my $self = shift;
 
   $self->init;
-  return $self->freeze();
+  my $message = $self->pack();
+  delete $message->{'__CLASS__'};
+
+  foreach my $key (keys %{$message}) {
+    if ($message->{$key} eq q{}) {
+      delete $message->{$key};
+    }
+  }
+
+  return $message;
 }
 
 1;

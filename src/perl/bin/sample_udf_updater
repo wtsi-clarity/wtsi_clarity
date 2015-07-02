@@ -1,0 +1,237 @@
+#! /usr/bin/env perl
+
+package sample_udf_updater;
+
+use Moose;
+use FindBin qw($Bin);
+use lib ( -d "$Bin/../lib/perl5" ? "$Bin/../lib/perl5" : "$Bin/../lib" );
+use Carp;
+use Readonly;
+use XML::LibXML;
+use List::MoreUtils qw/uniq/;
+
+use wtsi_clarity::clarity::process;
+
+with qw/MooseX::Getopt
+        wtsi_clarity::util::configurable
+        wtsi_clarity::util::roles::clarity_request/;
+
+our $VERSION = '0.0';
+
+## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+Readonly::Scalar my $SAMPLE_URI_PATH  => q{/art:details/art:artifact/sample/@uri};
+## use critic
+Readonly::Scalar my $SAMPLE_PATH      => q{/smp:details/smp:sample};
+
+has 'process_url'  => (
+  isa             => 'Str',
+  is              => 'ro',
+  required        => 1,
+);
+
+has 'process_doc'  => (
+  isa             => 'wtsi_clarity::clarity::process',
+  is              => 'ro',
+  required        => 0,
+  traits          => [ 'NoGetopt' ],
+  lazy_build      => 1,
+  handles         => {'findnodes' => 'findnodes'},
+);
+sub _build_process_doc {
+  my ($self) = @_;
+  my $xml = $self->fetch_and_parse($self->process_url);
+  return wtsi_clarity::clarity::process->new(xml => $xml, parent => $self);
+}
+
+has 'udf_name'  => (
+  isa             => 'Str',
+  is              => 'ro',
+  required        => 1,
+);
+
+has 'udf_value'  => (
+  isa             => 'Str',
+  is              => 'ro',
+  required        => 1,
+);
+
+has '_input_artifacts' => (
+  isa             => 'XML::LibXML::Document',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build__input_artifacts {
+  my $self = shift;
+
+  return $self->process_doc->input_artifacts;
+}
+
+has '_samples' => (
+  isa             => 'XML::LibXML::Document',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build__samples {
+  my $self = shift;
+
+  my @sample_uri_node_list = $self->_input_artifacts->findnodes($SAMPLE_URI_PATH)->get_nodelist();
+  my @sample_uris = map { $_->getValue } @sample_uri_node_list;
+
+  return $self->request->batch_retrieve('samples', \@sample_uris);
+}
+
+sub _update_samples_with_udfs {
+  my $self = shift;
+
+  my @sample_node_list = $self->_samples->findnodes($SAMPLE_PATH)->get_nodelist();
+
+  foreach my $sample (@sample_node_list) {
+    $self->_add_udf_to_sample($sample);
+  }
+
+  return;
+}
+
+sub _add_udf_to_sample {
+  my ($self, $sample_xml) = @_;
+
+  my $new_udf_element = XML::LibXML::Element->new('field');
+  $new_udf_element->setNamespace("http://genologics.com/ri/userdefined", "udf");
+  $new_udf_element->setAttribute('type', 'String');
+  $new_udf_element->setAttribute('name', $self->udf_name);
+  $new_udf_element->appendTextNode($self->udf_value);
+  $sample_xml->addChild($new_udf_element);
+
+  return;
+}
+
+sub _save_updated_samples {
+  my ($self) = @_;
+
+  $self->request->batch_update('samples', $self->_samples);
+
+  return;
+}
+
+sub run {
+  my $self = shift;
+
+  $self->_update_samples_with_udfs();
+
+  $self->_save_updated_samples();
+
+  return;
+}
+
+my $updater = sample_udf_updater->new_with_options();
+$updater->run();
+
+1;
+
+__END__
+
+=head1 NAME
+
+sample_udf_updater
+
+=head1 SYNOPSIS
+
+=head1 USAGE
+
+  my $sample_updater = sample_udf_updater->new(
+    process_url => $base_uri . '/processes/122-21977',
+    udf_name    => 'name1',
+    udv_value   => 'value1'
+  );
+
+=head1 REQUIRED ARGUMENTS
+
+  process_url
+    The URL of the process
+  udf_name
+    The name of the UDF field to add
+  udv_value
+    The value of the UDF filed to add
+
+=head1 OPTIONS
+
+=head1 DIAGNOSTICS
+
+=head1 EXIT STATUS
+
+=head1 CONFIGURATION
+
+=head1 INCOMPATIBILITIES
+
+=head1 BUGS AND LIMITATIONS
+
+=head1 DESCRIPTION
+
+  This script can add UDF fields to the samples of a process.
+
+=head2 run
+
+  Execute the sample update in the given process with the specified UDF field and value.
+
+=head1 SUBROUTINES/METHODS
+
+=head1 CONFIGURATION AND ENVIRONMENT
+
+=head1 DEPENDENCIES
+
+=over
+
+=item strict
+
+=item warnings
+
+=item FindBin
+
+=item lib 
+
+=item Moose
+
+=item Carp
+
+=item Readonly
+
+=item XML::LibXML
+
+=item List::MoreUtils
+
+=item wtsi_clarity::clarity::process;
+
+=item wtsi_clarity::util::configurable
+
+=item wtsi_clarity::util::roles::clarity_request
+
+=item wtsi_clarity::util::clarity_elements
+
+=back
+
+=head1 AUTHOR
+
+Karoly Erdos E<lt>ke4@sanger.ac.ukE<gt>
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright (C) 2014 Genome Research Ltd.
+
+This file is part of wtsi_clarity project.
+
+wtsi_clarity is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+=cut

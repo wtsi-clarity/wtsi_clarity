@@ -61,9 +61,10 @@ sub _build_cvs {
     my $x1 = ($self->plateA_fluorescence->{$well} - $average_fluorescence) ** 2;
     my $x2 = ($self->plateB_fluorescence->{$well} - $average_fluorescence) ** 2;
 
-    # Coefficient of variance = standard deviation / mean... but that's not what this is doing!!
-    # Still to find out what user wants
-    $results->{$well} = sqrt($x1 + $x2) * 100 / $average_fluorescence;
+    my $variance = 0.5 * ($x1 + $x2);
+    my $std_deviation = sqrt $variance;
+
+    $results->{$well} = ($std_deviation / $average_fluorescence) * 100;
   }
   return $results;
 }
@@ -214,7 +215,6 @@ sub _build_plateB_fluorescence {
 sub _get_fluorescence_from_doc {
   my ($self, $fluorescences) = @_;
   while (my ($well, $data) = each %{$fluorescences} ) {
-    my $d = $data->{'d1m1'}*1.0 + $data->{'d2m1'}*1.0 + $data->{'d1m2'}*1.0 + $data->{'d2m2'}*1.0;
     $fluorescences->{$well} = 0.25 * ( $data->{'d1m1'} + $data->{'d2m1'} + $data->{'d1m2'} + $data->{'d2m2'} );
   }
   return $fluorescences;

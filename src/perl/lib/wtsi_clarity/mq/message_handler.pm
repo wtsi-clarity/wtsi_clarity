@@ -2,10 +2,11 @@ package wtsi_clarity::mq::message_handler;
 
 use Moose;
 use Carp;
+use JSON;
 
 use wtsi_clarity::mq::message;
 use wtsi_clarity::mq::mapper;
-use wtsi_clarity::mq::client;
+use wtsi_clarity::mq::warehouse_client;
 
 our $VERSION = '0.0';
 
@@ -17,23 +18,22 @@ has 'mapper' => (
 );
 
 has '_wh_client' => (
-  isa         => 'wtsi_clarity::mq::client',
+  isa         => 'wtsi_clarity::mq::warehouse_client',
   is          => 'ro',
   required    => 0,
   default     => sub {
-    return wtsi_clarity::mq::client->new(message_bus_type => 'warehouse_mq');
+    return wtsi_clarity::mq::warehouse_client->new();
   },
 );
 
 sub process_message {
   my ($self, $json_string) = @_;
+
   my $message = $self->_thaw($json_string);
-  my $package_name = $self->_find_enhancer_by_purpose($message->purpose);
+  my $messages = $self->prepare_messages($message);
 
-  $self->_require_enhancer($package_name);
-
-  foreach my $message_to_wh (@{$self->_prepare_messages($package_name, $message)}) {
-    $self->_send_message($message_to_wh, $message->purpose);
+  foreach my $message_to_wh (@{$messages}) {
+    $self->_send_message(to_json($message_to_wh), $message->purpose);
   }
 
   return 1;
@@ -41,12 +41,17 @@ sub process_message {
 
 sub _send_message {
   my ($self, $message, $purpose) = @_;
+  print $purpose . ": " . $message . "\n" or carp "Can't write to the log file"; # So it goes into the log
   $self->_wh_client->send_message($message, $purpose);
   return;
 }
 
-sub _prepare_messages {
-  my ($self, $package_name, $message) = @_;
+sub prepare_messages {
+  my ($self, $message) = @_;
+
+  my $package_name = $self->_find_enhancer_by_purpose($message->purpose);
+
+  $self->_require_enhancer($package_name);
 
   return $package_name->new(
             process_url => $message->process_url,
@@ -96,6 +101,11 @@ wtsi_clarity::mq::message_handler
 =head2 process_message
 
   Takes in JSON string. Converts to mq::message, and dispatches to relevant message enhancer.
+
+=head2 prepare_messages
+
+  Receives the message from the local queue, finds the relevant enhancer, and then runs
+  prepare_messages on that enhancer, returning the result
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

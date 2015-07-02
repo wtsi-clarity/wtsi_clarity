@@ -12,8 +12,6 @@ use Try::Tiny;
 use wtsi_clarity::util::config;
 use wtsi_clarity::process_checks::bed_verifier;
 
-with 'wtsi_clarity::util::roles::clarity_process_io';
-
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
@@ -30,6 +28,14 @@ has 'step_name' => (
   isa        => 'Str',
   is         => 'ro',
   required   => 1,
+);
+
+# Optional parameters
+has 'input_only' => (
+  is       => 'ro',
+  isa      => 'Bool',
+  required => 0,
+  default  => 0,
 );
 
 # Main method
@@ -65,7 +71,10 @@ has '_bed_verifier' => (
 
 sub _build__bed_verifier {
   my $self = shift;
-  return wtsi_clarity::process_checks::bed_verifier->new(config => $self->_bed_config_file);
+  return wtsi_clarity::process_checks::bed_verifier->new(
+    config     => $self->_bed_config_file,
+    input_only => $self->input_only,
+  );
 }
 
 has '_bed_config_file' => (

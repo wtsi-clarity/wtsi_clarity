@@ -1,5 +1,6 @@
 [clarity_api]
 base_uri = http://testserver.com:1234/here
+app_uri = http://testserver.com:1234/clarity/api
 username = user1
 password = pword1
 
@@ -25,9 +26,6 @@ username=user3
 password=pword3
 routing_key=clarity
 exchange=warehouse_exch
-
-[uuid_api]
-uri = http://uuid.web.service/
 
 [printing]
 service_url=http://psd2g.internal.sanger.ac.uk:8000/lims-support

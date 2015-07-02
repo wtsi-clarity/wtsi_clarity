@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:sample xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample" uri="http://testserver.com:1234/samples/TES156A430" limsid="TES156A430">
+    <name>3338</name>
+    <project limsid="TES156" uri="http://testserver.com:1234/projects/TES156"/>
+    <submitter uri="http://testserver.com:1234/researchers/17">
+        <first-name>AD</first-name>
+        <last-name>Test</last-name>
+    </submitter>
+    <artifact limsid="TES156A430PA1" uri="http://testserver.com:1234/artifacts/TES156A430PA1?state=13086"/>
+    <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+    <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+    <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    <udf:field type="String" name="WTSI Supplier">WTSI_2338</udf:field>
+    <udf:field type="String" name="WTSI Bait Library Name">DDD_V5_plus</udf:field>
+    <udf:field type="Numeric" name="WTSI Requested Size Range From">100</udf:field>
+    <udf:field type="Numeric" name="WTSI Requested Size Range To">200</udf:field>
+    <udf:field type="String" name="Read Length">222</udf:field>
+</smp:sample>

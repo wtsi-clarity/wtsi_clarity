@@ -16,19 +16,10 @@ has '_xml_parser'  => (
   default         => sub { return XML::LibXML->new(); },
 );
 
-sub query_artifacts {
-  my ($self, $criteria) = @_;
+sub query_resources {
+  my ($self, $resource, $criteria) = @_;
 
-  my $uri = $self->_build_query_url( q{artifacts}, _build_query(q{artifacts}, $criteria) );
-  my $response = $self->_xml_parser->parse_string($self->get($uri));
-
-  return $response;
-}
-
-sub query_processes {
-  my ($self, $criteria) = @_;
-
-  my $uri = $self->_build_query_url( q{processes}, _build_query(q{processes}, $criteria) );
+  my $uri = $self->_build_query_url( $resource, _build_query($criteria));
   my $response = $self->_xml_parser->parse_string($self->get($uri));
 
   return $response;
@@ -45,7 +36,7 @@ sub _build_query_url
 
 sub _build_query
 {
-  my ($resource, $criteria) = @_;
+  my ($criteria) = @_;
 
   my $map_key = {
     sample_id   => 'samplelimsid',
@@ -53,6 +44,8 @@ sub _build_query
     step        => 'process-type',
     type        => 'type',
     udf         => 'udf',
+    name        => 'name',
+    start_index => 'start-index',
   };
   my $query = q{};
 
@@ -95,7 +88,10 @@ wtsi_clarity::util::clarity_query
 =head1 SYNOPSIS
 
   with 'wtsi_clarity::util::clarity_query';
-  my $response = $self->request->clarity_query->query_artifacts( {sample_id => 'ABC12345' } );
+  my $response = $self->request->clarity_query->query_resources(
+    q{artifacts},
+    {sample_id => 'ABC12345' }
+  );
 
 =head1 DESCRIPTION
 
@@ -103,20 +99,17 @@ wtsi_clarity::util::clarity_query
 
 =head1 SUBROUTINES/METHODS
 
-=head2 query_artifacts
-  Takes a series of criteria (as a hash) to find artifacts.
+=head2 query_resources
+  Takes a resource name (in plural) and a series of criteria (as a hash) to find artifacts.
 
-  criteria hash example :
+  criteria hash example for querying artifacts:
   {
     sample_id => 'ABC12345',
     step => 'PicoGreen',
     type => 'Analyte',
   }
 
-=head2 query_processes
-  Takes a series of criteria (as a hash) to find processes.
-
-  criteria hash example :
+  criteria hash example for querying processes:
   {
     sample_id => 'ABC12345',
   }

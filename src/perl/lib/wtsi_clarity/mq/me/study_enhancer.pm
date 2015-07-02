@@ -22,13 +22,18 @@ sub _build__lims_ids {
   my $sample_limsid_node_list = $self->sample_limsid_node_list;
   my $sample_limsids = $self->get_values_from_nodelist('getValue', $sample_limsid_node_list);
   foreach my $sample_limsid (@{$sample_limsids}) {
-    my $sample_dao = wtsi_clarity::dao::sample_dao->new(lims_id => $sample_limsid);
+    my $sample_dao = $self->_get_sample($sample_limsid);
     push @study_lims_ids, $sample_dao->project_limsid;
   }
 
   @study_lims_ids = uniq(@study_lims_ids);
 
   return \@study_lims_ids;
+}
+
+sub _get_sample {
+  my ($self, $lims_id) = @_;
+  return wtsi_clarity::dao::sample_dao->new(lims_id => $lims_id);
 }
 
 1;

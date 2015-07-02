@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 166;
+use Test::More tests => 170;
 use Test::Exception;
 use Test::MockObject::Extends;
 use DateTime;
@@ -551,8 +551,7 @@ my $TEST_DATA4 = {
 
   my $data = $step->_get_containers_data();
 
-  my $input_uri     = q{http://testserver.com:1234/here/containers/27-23};
-  my $input = $data->{'input_container_info'}->{$input_uri}->{'container_details'};
+  my @input_uris     = qw{http://testserver.com:1234/here/containers/27-23 http://testserver.com:1234/here/containers/27-27};
 
   my $container_uri = q{http://testserver.com:1234/here/containers/27-8129};
   my $cont = $data->{'output_container_info'}->{$container_uri}->{'container_details'};
@@ -572,6 +571,11 @@ my $TEST_DATA4 = {
       'exp_id' => "27-27",
       'exp_type' => "ABgene 0800",
     },
+  );
+  my $expected_plate_purpose = q{PLATE_PURPOSE_TEST};
+  my %expected_plate_name = (
+    'http://testserver.com:1234/here/containers/27-23' => '7020',
+    'http://testserver.com:1234/here/containers/27-27' => '273251',
   );
 
   foreach my $datum (@expected_out_data) {
@@ -594,9 +598,12 @@ my $TEST_DATA4 = {
   }
 
   cmp_ok($data->{'output_container_info'}->{$container_uri}->{'wells'}, 'eq', 96, "_get_containers_data(...) should give the correct nb of wells");
-  cmp_ok($data->{'output_container_info'}->{$container_uri}->{'occ_wells'}, 'eq', 73, "_get_containers_data(...) should give the correct nb of wells");
+  cmp_ok($data->{'output_container_info'}->{$container_uri}->{'occ_wells'}, 'eq', 73, "_get_containers_data(...) should give the correct occupied wells");
 
-  cmp_ok($data->{'input_container_info'}->{$input_uri}->{'purpose'}, 'eq', 'PLATE_PURPOSE_23', "_get_containers_data(...) should give the correct nb of wells");
+  foreach my $input_uri (@input_uris) {
+    cmp_ok($data->{'input_container_info'}->{$input_uri}->{'purpose'}, 'eq', $expected_plate_purpose, "_get_containers_data(...) should give the correct plate purpose");
+    cmp_ok($data->{'input_container_info'}->{$input_uri}->{'plate_name'}, 'eq', $expected_plate_name{$input_uri}, "_get_containers_data(...) should give the correct barcode of the plate");
+  }
 }
 
 { # _get_cell_properties
@@ -901,6 +908,201 @@ my $TEST_DATA4 = {
   throws_ok { $worksheet_attacher->_get_TECAN_file_content_per_URI($TEST_DATA3, 'container_uri'); }
     qr/Input location is not an integer: 4.5/,
     "Throws an error when well mapper does return an integer";
+}
+
+# No buffer lines if buffer is empty
+{
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/worksheet_attacher/no_buffers';
+
+  my $worksheet_attacher = wtsi_clarity::epp::generic::worksheet_attacher->new(
+    process_url => 'http://testserver.com:1234/here/processes/24-26963',
+    worksheet_filename => 'blah.pdf',
+    worksheet_type => 'fluidigm',
+    tecan_filename => 'blah.gwl',
+  );
+
+  my $containers_data = {
+    'user_first_name' => 'Christopher',
+    'process_id' => '2426963',
+    'output_container_info' => {
+      'http://testserver.com:1234/here/containers/27-4345' => {
+        'container_details' => {
+          'A:2' => {
+            'input_location' => 'B:1',
+            'sample_volume' => '1.25',
+            'buffer_volume' => 0,
+            'input_id' => '27-4304',
+            'input_uri' => 'http://testserver.com:1234/here/containers/27-4304'
+          },
+          'C:1' => {
+            'input_location' => 'C:1',
+            'sample_volume' => '1.25',
+            'buffer_volume' => 0,
+            'input_id' => '27-4304',
+            'input_uri' => 'http://testserver.com:1234/here/containers/27-4304'
+          },
+          'G:1' => {
+            'input_location' => 'F:1',
+            'sample_volume' => '1.25',
+            'buffer_volume' => 0,
+            'input_id' => '27-4304',
+            'input_uri' => 'http://testserver.com:1234/here/containers/27-4304'
+          },
+          'G:2' => {
+            'input_location' => 'D:1',
+            'sample_volume' => '1.25',
+            'buffer_volume' => 0,
+            'input_id' => '27-4330',
+            'input_uri' => 'http://testserver.com:1234/here/containers/27-4330'
+          },
+          'A:1' => {
+            'input_location' => 'H:1',
+            'sample_volume' => '1.25',
+            'buffer_volume' => 0,
+            'input_id' => '27-4304',
+            'input_uri' => 'http://testserver.com:1234/here/containers/27-4304'
+          },
+          'H:1' => {
+            'input_location' => 'G:1',
+            'sample_volume' => '1.25',
+            'buffer_volume' => 0,
+            'input_id' => '27-4304',
+            'input_uri' => 'http://testserver.com:1234/here/containers/27-4304'
+          },
+          'C:2' => {
+            'input_location' => 'A:2',
+            'sample_volume' => '1.25',
+            'buffer_volume' => 0,
+            'input_id' => '27-4330',
+            'input_uri' => 'http://testserver.com:1234/here/containers/27-4330'
+          },
+          'A:3' => {
+            'input_location' => 'H:1',
+            'sample_volume' => '1.25',
+            'buffer_volume' => 0,
+            'input_id' => '27-4330',
+            'input_uri' => 'http://testserver.com:1234/here/containers/27-4330'
+          },
+          'E:1' => {
+            'input_location' => 'B:2',
+            'sample_volume' => '1.25',
+            'buffer_volume' => 0,
+            'input_id' => '27-4304',
+            'input_uri' => 'http://testserver.com:1234/here/containers/27-4304'
+          },
+          'D:2' => {
+            'input_location' => 'A:1',
+            'sample_volume' => '1.25',
+            'buffer_volume' => 0,
+            'input_id' => '27-4330',
+            'input_uri' => 'http://testserver.com:1234/here/containers/27-4330'
+          },
+          'B:2' => {
+            'input_location' => 'A:2',
+            'sample_volume' => '1.25',
+            'buffer_volume' => 0,
+            'input_id' => '27-4304',
+            'input_uri' => 'http://testserver.com:1234/here/containers/27-4304'
+          },
+          'B:1' => {
+            'input_location' => 'A:1',
+            'sample_volume' => '1.25',
+            'buffer_volume' => 0,
+            'input_id' => '27-4304',
+            'input_uri' => 'http://testserver.com:1234/here/containers/27-4304'
+          },
+          'F:2' => {
+            'input_location' => 'F:1',
+            'sample_volume' => '1.25',
+            'buffer_volume' => 0,
+            'input_id' => '27-4330',
+            'input_uri' => 'http://testserver.com:1234/here/containers/27-4330'
+          },
+          'D:1' => {
+            'input_location' => 'E:1',
+            'sample_volume' => '1.25',
+            'buffer_volume' => 0,
+            'input_id' => '27-4304',
+            'input_uri' => 'http://testserver.com:1234/here/containers/27-4304'
+          },
+          'C:3' => {
+            'input_location' => 'C:1',
+            'sample_volume' => '1.25',
+            'buffer_volume' => 0,
+            'input_id' => '27-4330',
+            'input_uri' => 'http://testserver.com:1234/here/containers/27-4330'
+          },
+          'H:2' => {
+            'input_location' => 'B:2',
+            'sample_volume' => '1.25',
+            'buffer_volume' => 0,
+            'input_id' => '27-4330',
+            'input_uri' => 'http://testserver.com:1234/here/containers/27-4330'
+          },
+          'F:1' => {
+            'input_location' => 'D:1',
+            'sample_volume' => '1.25',
+            'buffer_volume' => 0,
+            'input_id' => '27-4304',
+            'input_uri' => 'http://testserver.com:1234/here/containers/27-4304'
+          },
+          'E:2' => {
+            'input_location' => 'E:1',
+            'sample_volume' => '1.25',
+            'buffer_volume' => 0,
+            'input_id' => '27-4330',
+            'input_uri' => 'http://testserver.com:1234/here/containers/27-4330'
+          },
+          'B:3' => {
+            'input_location' => 'G:1',
+            'sample_volume' => '1.25',
+            'buffer_volume' => 0,
+            'input_id' => '27-4330',
+            'input_uri' => 'http://testserver.com:1234/here/containers/27-4330'
+          },
+          'D:3' => {
+            'input_location' => 'B:1',
+            'sample_volume' => '1.25',
+            'buffer_volume' => 0,
+            'input_id' => '27-4330',
+            'input_uri' => 'http://testserver.com:1234/here/containers/27-4330'
+          }
+        },
+        'plate_name' => '274345',
+        'purpose' => 'Unknown',
+        'type' => 'ABgene 0800',
+        'barcode' => '5260274330776',
+        'occ_wells' => 20,
+        'wells' => 96
+      }
+    },
+    'user_last_name' => 'Smith',
+    'input_container_info' => {
+      'http://testserver.com:1234/here/containers/27-4330' => {
+        'freezer' => 'Unknown',
+        'purpose' => 'Working Dilution',
+        'tray' => 'Unknown',
+        'barcode' => '5260274330776',
+        'shelf' => 'Unknown',
+        'rack' => 'Unknown',
+        'plate_name' => '274330',
+        'type' => 'ABgene 0800'
+      },
+      'http://testserver.com:1234/here/containers/27-4304' => {
+        'freezer' => 'Unknown',
+        'purpose' => 'Working Dilution',
+        'tray' => 'Unknown',
+        'barcode' => '5260274304753',
+        'shelf' => 'Unknown',
+        'rack' => 'Unknown',
+        'plate_name' => '274304',
+        'type' => 'ABgene 0800'
+      }
+    }
+  };
+  my ($sample_output, $buffer_output) = $worksheet_attacher->_get_TECAN_file_content_per_URI($containers_data, 'http://testserver.com:1234/here/containers/27-4345');
+
+  is_deeply($buffer_output, [], 'Buffer output is empty array when buffer volume is 0');
 }
 
 1;

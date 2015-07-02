@@ -10,9 +10,13 @@ use wtsi_clarity::file_parsing::volume_checker;
 use wtsi_clarity::util::types;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $ANALYTE_PATH => q( prc:process/input-output-map[output/@output-generation-type='PerInput'] );
-Readonly::Scalar my $LOCATION_PATH => q ( art:artifact/location/value );
+Readonly::Scalar my $ANALYTE_PATH           => q( prc:process/input-output-map[output/@output-generation-type='PerInput'] );
+Readonly::Scalar my $LOCATION_PATH          => q( art:artifact/location/value );
+Readonly::Scalar my $SAMPLE_URI_PATH        => q( art:artifact/sample/@uri );
 ## use critic
+
+Readonly::Scalar my $VOLUME_UDF_FIELD_NAME              => q(Volume);
+Readonly::Scalar my $WTSI_WORKING_VOLUME_UDF_FIELD_NAME => q(WTSI Working Volume (µL) (SM));
 
 extends 'wtsi_clarity::epp';
 
@@ -59,9 +63,7 @@ override 'run' => sub {
   my $self = shift;
   super(); #call parent's run method
 
-  # Parse the robot file
-  my $parsed_file = $self->_parse_robot_file();
-  $self->_update_analytes($parsed_file);
+  $self->_update_volumes;
 
   copy($self->robot_file, $self->output)
     or croak sprintf 'Failed to copy %s to %s', $self->robot_file, $self->output;
@@ -74,15 +76,27 @@ sub _parse_robot_file {
   return $parser->parse();
 }
 
-sub _update_analytes {
-  my ($self, $parsed_file) = @_;
+sub _update_volumes {
+  my ($self) = @_;
+
+  my $parsed_file = $self->_parse_robot_file();
 
   foreach my $analyteNode ($self->process_doc->findnodes($ANALYTE_PATH)) {
     my $analyteUri = $self->_extract_analyte_uri($analyteNode);
     my $analyteDoc = $self->fetch_and_parse($analyteUri);
     my $wellLocation = $self->_extract_well_location($analyteDoc);
 
-    $self->_update_analyte($analyteUri, $analyteDoc, $wellLocation, $parsed_file);
+    my $sample_uri = $analyteDoc->findvalue($SAMPLE_URI_PATH);
+    my $sample_doc = $self->fetch_and_parse($sample_uri);
+
+    croak "Well location $wellLocation does not exist in volume check file " . $self->robot_file if (!exists($parsed_file->{$wellLocation}));
+
+    my $new_volume = $parsed_file->{$wellLocation};
+
+    # TODO refactor the QC report to read the volume from the sample and not from the analyte,
+    # then the line, which is updating the analyte could be removed
+    $self->_update_artifact_with_volume($analyteUri, $analyteDoc, $new_volume, $VOLUME_UDF_FIELD_NAME);
+    $self->_update_artifact_with_volume($sample_uri, $sample_doc, $new_volume, $WTSI_WORKING_VOLUME_UDF_FIELD_NAME);
   }
 
   return;
@@ -99,17 +113,14 @@ sub _extract_well_location {
   return $analyteDoc->findvalue($LOCATION_PATH);
 }
 
-sub _update_analyte {
-  my ($self, $analyteUri, $analyteDoc, $wellLocation, $parsed_file) = @_;
+sub _update_artifact_with_volume {
+  my ($self, $analyteUri, $analyteDoc, $new_volume, $field_name) = @_;
 
-  croak "Well location $wellLocation does not exist in volume check file " . $self->robot_file if (!exists($parsed_file->{$wellLocation}));
-
-  my $newVolume = $parsed_file->{$wellLocation};
-  $self->add_udf_element($analyteDoc, "Volume", $newVolume);
+  $self->add_udf_element($analyteDoc, $field_name, $new_volume);
 
   $self->request->put($analyteUri, $analyteDoc->toString());
 
-  return;
+  return $analyteDoc;
 }
 
 1;

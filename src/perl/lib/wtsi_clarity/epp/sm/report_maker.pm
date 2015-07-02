@@ -7,6 +7,7 @@ use Mojo::Collection 'c';
 use URI::Escape;
 use List::Compare;
 use Try::Tiny;
+use Scalar::Util qw/looks_like_number/;
 use wtsi_clarity::util::textfile;
 use wtsi_clarity::util::report;
 
@@ -23,20 +24,26 @@ with qw/
 Readonly::Scalar my $PROCESS_ID_PATH                        => q(/prc:process/@limsid);
 Readonly::Scalar my $INPUT_ARTIFACTS_IDS_PATH               => q(/prc:process/input-output-map/input/@limsid);
 Readonly::Scalar my $ART_DETAIL_SAMPLE_IDS_PATH             => q{/art:details/art:artifact/sample/@limsid};
+Readonly::Scalar my $SAMPLE_PATH                            => q{smp:details/smp:sample[@limsid="%s"]};
 Readonly::Scalar my $SMP_DETAIL_ARTIFACTS_IDS_PATH          => q{/smp:details/smp:sample/artifact/@limsid};
 Readonly::Scalar my $ARTEFACTS_ARTEFACT_CONTAINTER_IDS_PATH => q{/art:details/art:artifact/location/container/@limsid};
-Readonly::Scalar my $ARTEFACTS_ARTEFACT_URIS_PATH            => q{/art:artifacts/artifact/@uri};
+Readonly::Scalar my $ARTEFACTS_ARTEFACT_URIS_PATH           => q{/art:artifacts/artifact/@uri};
 Readonly::Scalar my $THOUSANDTH                             => 0.001;
-Readonly::Scalar my $DILUTION_COMPENSATION_FACTOR           => 50;
+Readonly::Scalar my $LABORATORY_VOLUME_SUBTRACTION          => 2;
 
 Readonly::Scalar my $UDF_VOLUME         => qq{Volume};
 Readonly::Scalar my $UDF_CONCENTRATION  => qq{Concentration};
 Readonly::Scalar my $PRC_VOLUME         => qq{Volume Check (SM)};
 Readonly::Scalar my $PRC_CONCENTRATION  => qq{Picogreen Analysis (SM)};
 Readonly::Scalar my $CALL_RATE          => qq{WTSI Fluidigm Call Rate (SM)};
-Readonly::Scalar my $PRC_CALL_RATE      => qq{Fluidigm Analysis};
+Readonly::Scalar my $PRC_CALL_RATE      => qq{Fluidigm 96.96 IFC Analysis (SM)};
 Readonly::Scalar my $FLUIDIGM_GENDER    => qq{WTSI Fluidigm Gender (SM)};
-Readonly::Scalar my $PRC_FLUIDIGM_GENDER=> qq{Fluidigm Analysis};
+Readonly::Scalar my $PRC_FLUIDIGM_GENDER=> qq{Fluidigm 96.96 IFC Analysis (SM)};
+
+Readonly::Scalar my $CONCENTRATION_UDF_NAME => q{Sample Conc. (ng\/µL) (SM)};
+
+Readonly::Scalar my $NEXT_PAGE_URI => q{/art:artifacts/next-page/@uri};
+Readonly::Scalar my $PAGE_SIZE     => 50;
 
 ## use critic
 
@@ -89,6 +96,8 @@ sub _main_method{
   }
 
   $self->report_file->saveas(q{./} . $self->qc_report_file_name);
+
+  $self->request->batch_update('samples', $self->_sample_details);
 
   return;
 }
@@ -164,11 +173,10 @@ sub _get_supplier_gender {
 
 sub _get_concentration {
   my ($self, $sample_id) = @_;
-
   my $concentration = $self->_get_value_from_data($UDF_CONCENTRATION, $sample_id);
-  if ($concentration ne q{}) {
-    return $concentration *= $DILUTION_COMPENSATION_FACTOR;
-  }
+
+  # We set this on the sample now so it can be used later in Cherrypicking ("Cherrypick Worksheet & Barcode" to be specific)
+  $self->_update_sample_concentration($sample_id, $concentration);
 
   return $concentration;
 }
@@ -184,8 +192,10 @@ sub _get_total_micrograms {
 
   my $concentration = $self->_get_concentration($sample_id);
   my $measured_volume = $self->_get_measured_volume($sample_id);
-  if ($concentration ne q{} && $measured_volume ne q{}) {
-    return $total_micrograms = $concentration * $measured_volume * $THOUSANDTH;
+
+  # Ocasionaly have seen concentration set to something other than a number, hence the check
+  if (looks_like_number($concentration) && looks_like_number($measured_volume)) {
+    $total_micrograms = $concentration * ($measured_volume -  $LABORATORY_VOLUME_SUBTRACTION) * $THOUSANDTH;
   }
 
   return $total_micrograms;
@@ -300,7 +310,7 @@ sub _build__sample_ids {
 
 has '_sample_details' => (
   isa => 'XML::LibXML::Document',
-  is  => 'ro',
+  is  => 'rw',
   required => 0,
   lazy_build => 1,
 );
@@ -317,6 +327,23 @@ sub _build__sample_details {
 
   return $self->request->batch_retrieve('samples', \@uris );
 };
+
+sub _update_sample_concentration {
+  my ($self, $sample_limsid, $concentration) = @_;
+
+  my $sample_list = $self->_sample_details->findnodes(sprintf $SAMPLE_PATH, $sample_limsid);
+
+  if ($sample_list->size() != 1) {
+    croak sprintf 'Found %i samples for sample %s', $sample_list->size(), $sample_limsid;
+  }
+
+  my $sample_xml        = $sample_list->pop();
+  my $concentration_udf = $self->create_udf_element($self->_sample_details, $CONCENTRATION_UDF_NAME, $concentration);
+
+  $sample_xml->appendChild($concentration_udf);
+
+  return;
+}
 
 has '_required_sources' => (
   isa => 'HashRef',
@@ -398,25 +425,44 @@ sub _build__all_udf_values {
   return $data;
 }
 
-sub _get_artifact_uris_from_udf {
-  my ($self, $step, $udf_name) = @_;
+# We have to find all artifacts in a recursive manner, because if we searched for all artifacts
+# on 4 plates, the URL gets so long Clarity returns a 400
+# That's why we chunk it up into 50 artifacts at a time...
+sub _search_artifacts {
+  my ($self, $step, $udf_name, $sample_ids, @artifact_uris) = @_;
 
-  my $res_arts_doc = $self->request->query_artifacts({
-    udf       => qq{udf.$udf_name.min=0},
-    type      => qq{Analyte},
-    step      => $step,
-    sample_id => $self->_sample_ids(),
-    });
+  my @samples_to_find = splice @{$sample_ids}, 0, $PAGE_SIZE;
+  my $artifacts_doc   = $self->request->query_resources(
+        q{artifacts},
+        {
+          udf         => qq{udf.$udf_name.min=0},
+          type        => qq{Analyte},
+          step        => $step,
+          sample_id   => \@samples_to_find,
+          start_index => 0,
+        }
+  );
 
-  return $self->grab_values($res_arts_doc, $ARTEFACTS_ARTEFACT_URIS_PATH);
+  push @artifact_uris, @{$self->grab_values($artifacts_doc, $ARTEFACTS_ARTEFACT_URIS_PATH)};
+
+  if (@{$sample_ids}) {
+    return $self->_search_artifacts($step, $udf_name, $sample_ids, @artifact_uris);
+  } else {
+    return @artifact_uris;
+  }
 };
 
 sub _get_udf_values {
   my ($self, $step, $udf_name) = @_;
 
-  my $artifacts_uris = $self->_get_artifact_uris_from_udf($step, $udf_name);
-  my $artifacts = $self->request->batch_retrieve('artifacts', $artifacts_uris);
-  my @nodes;
+  # We need to make a copy of _sample_ids as _search_artifacts splices away at it
+  my @sample_ids    = @{$self->_sample_ids};
+  my @artifact_uris = $self->_search_artifacts($step, $udf_name, \@sample_ids);
+
+  my $artifacts = $self->request->batch_retrieve('artifacts', \@artifact_uris);
+
+  my @nodes = ();
+
   try {
     @nodes = $artifacts->findnodes(q{/art:details/art:artifact})->get_nodelist();
   } catch {
@@ -433,11 +479,14 @@ sub _get_udf_values {
                 my $found_sample_id     = $b->findvalue( q{./sample/@limsid}                 );
                 my $udf_value           = $b->findvalue( qq{./udf:field[\@name="$udf_name"]} );
                 # use critic
+
                 if (defined $a->{$found_sample_id} && defined $a->{$found_sample_id}->{$udf_name} ) {
                   # if the sample has been run more than once through the step producing this udf,
                   # then we will use the latest value
                   if ($a->{$found_sample_id}->{'art_lims_id'} < $artifact_limsid ) {
+
                     $a->{ $found_sample_id }->{$udf_name} = $udf_value;
+                    $a->{ $found_sample_id }->{'art_lims_id'} = $artifact_limsid;
                   }
                 } else {
 
@@ -526,7 +575,7 @@ sub _build__original_container_map {
   return  c->new(@{$self->_original_container_ids})
             ->reduce( sub {
                   my $container_id = $b;
-                  $a->{$container_id} = $self->find_elements_first_value($self->_build__original_container_details,
+                  $a->{$container_id} = $self->find_elements_first_value($self->_original_container_details,
                                             qq{/con:details/con:container[\@limsid='$container_id']/name/text()}, qq{});
                   $a;
                 }, {});
@@ -596,6 +645,8 @@ wtsi_clarity::epp::sm::report_maker
 =item List::Compare
 
 =item Try::Tiny
+
+=item Scalar::Util
 
 =item wtsi_clarity::util::textfile
 

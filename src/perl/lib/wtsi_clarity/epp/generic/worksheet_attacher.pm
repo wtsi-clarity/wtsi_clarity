@@ -50,6 +50,9 @@ Readonly::Scalar my $RACK_PATH                 => q{WTSI Rack};
 Readonly::Scalar my $nb_col                   => 12;
 Readonly::Scalar my $nb_row                   => 8;
 Readonly::Scalar my $A_CHAR_CODE              => 64;
+Readonly::Scalar my $PLATE_NAME_START_INDEX   => 4;
+Readonly::Scalar my $PLATE_NAME_START_LENGTH  => 6;
+Readonly::Scalar my $EAN13_BARCODE_LENGTH     => 13;
 
 override 'run' => sub {
   my $self= shift;
@@ -60,7 +63,7 @@ override 'run' => sub {
   my $stamp = _get_stamp($containers_data, $self->request->user);
 
   # pdf generation
-  my $pdf_data = $self->_get_pdf_data($containers_data, $stamp, $type_data);
+  my $pdf_data = _get_pdf_data($containers_data, $stamp, $type_data);
   my $pdf_generator = wtsi_clarity::util::pdf::layout::worksheet->new( 'pdf_data' => $pdf_data );
   my $worksheet_file = $pdf_generator->create() or croak q{Impossible to create the pdf version of the worksheet!};
 
@@ -92,12 +95,12 @@ has 'worksheet_type' => (
   isa => 'Str',
   is => 'ro',
   required => 1,
-  trigger => \&_set_worksheet_type,
+  trigger => \&_set_action_title,
 );
 
-has 'action_title'              => ( isa => 'Str', is => 'rw', );
+has 'action_title' => ( isa => 'Str', is => 'rw', );
 
-sub _set_worksheet_type {
+sub _set_action_title {
   my ($self, $type, $old_type) = @_;
 
   if ($type =~ /fluidigm/xms )
@@ -243,18 +246,20 @@ sub _get_TECAN_file_content_per_URI {
       my $output_sample_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$sample_volume};
       my $w_string = q{W;};
 
-      my $input_buffer_string  = qq{A;BUFF;;96-TROUGH;$inp_loc_dec;;$buffer_volume};
-      my $output_buffer_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$buffer_volume};
-
       push @sample_output, {
         output_location => $out_loc_dec,
         output          => join "\n", $input_sample_string, $output_sample_string, $w_string,
       };
 
-      push @buffer_output, {
-        output_location => $out_loc_dec,
-        output => join "\n", $input_buffer_string, $output_buffer_string, $w_string,
-      };
+      if ($buffer_volume != 0) {
+        my $input_buffer_string  = qq{A;BUFF;;96-TROUGH;$inp_loc_dec;;$buffer_volume};
+        my $output_buffer_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$buffer_volume};
+
+        push @buffer_output, {
+          output_location => $out_loc_dec,
+          output => join "\n", $input_buffer_string, $output_buffer_string, $w_string,
+        };
+      }
     }
   }
 
@@ -485,12 +490,12 @@ sub _get_containers_data {
   my $oi_map = $self->_get_oi_map($previous_processes);
 
   my $all_data = {};
-  my $process_id  = $self->find_elements_first_value($self->process_doc, $PROCESS_ID_PATH);
+  my $process_id  = $self->find_elements_first_value($self->process_doc->xml, $PROCESS_ID_PATH);
   $process_id =~ s/\-//xms;
   $all_data->{ q{process_id} } = $process_id;
 
-  $all_data->{ q{user_first_name} } = $self->find_elements_first_value($self->process_doc, $TECHNICIAN_FIRSTNAME_PATH);
-  $all_data->{ q{user_last_name}  } = $self->find_elements_first_value($self->process_doc, $TECHNICIAN_LASTNAME_PATH);
+  $all_data->{ q{user_first_name} } = $self->find_elements_first_value($self->process_doc->xml, $TECHNICIAN_FIRSTNAME_PATH);
+  $all_data->{ q{user_last_name}  } = $self->find_elements_first_value($self->process_doc->xml, $TECHNICIAN_LASTNAME_PATH);
 
   while (my ($uri, $out_artifact) = each %{$artifacts_tmp} ) {
     if ($uri =~ /(.*)[?].*/xms){
@@ -542,10 +547,16 @@ sub _get_containers_data {
 
         my $barcode   = $self->find_clarity_element_textContent($in_container, q{name});
         my $type_name = $self->find_elements_first_value($in_container, $CONTAINER_TYPE_NAME);
-        my $name      = $in_container_id;
-        $name =~ s/\-//xms;
 
-        $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{plate_name} } = $name;
+        my $plate_name;
+        if (length $barcode == $EAN13_BARCODE_LENGTH) {
+          $plate_name = substr $barcode, $PLATE_NAME_START_INDEX, $PLATE_NAME_START_LENGTH;
+          $plate_name =~ s/^0*//xms;
+        } else {
+          $plate_name = $barcode;
+        }
+
+        $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{plate_name} } = $plate_name;
         $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{barcode}    } = $barcode;
         $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{type}       } = $type_name;
         $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{freezer}    } = $freezer;

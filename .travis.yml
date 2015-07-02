@@ -4,12 +4,79 @@ perl:
 env:
   global:
     - secure: "n/Gtam/+Qnrz7qMEzu1IBJbkB4YYCZWy4mMK/THQhBr+KM8suveqRe6UNjHIks7hroFkn39SOHFitb8vhLTirFrrG/GhUZVjGpUyAjt5r63yjm4hElkvJTULjFssyWdUL9M1Itx4/w2F953ovBa4Nqw6iIajB1ehnO6xkbABzrA="
-before_install:
+    - DNAP_UTILITIES_VERSION="0.4.1"
+    - PERL_RABBIT_WRAP_VERSION="0.3.0"
+install:
   - cpanm Devel::Cover
   - cd $TRAVIS_BUILD_DIR
   - chmod 755 ./scripts/push_test_coverage_to_github.sh
   - cd $TRAVIS_BUILD_DIR/src/perl/
-install:
+
+  - cpanm --quiet --notest Module::Build
+  - cpanm --quiet --notest ExtUtils::CBuilder
+  - cpanm --quiet --notest Test::Compile
+  - cpanm --quiet --notest Test::Distribution
+  - cpanm --quiet --notest Test::Deep
+  - cpanm --quiet --notest Test::Exception
+  - cpanm --quiet --notest Test::MockObject::Extends
+  - cpanm --quiet --notest Test::More
+  - cpanm --quiet --notest Test::Pod
+  - cpanm --quiet --notest Test::Pod::Coverage
+  - cpanm --quiet --notest Test::Perl::Critic
+  - cpanm --quiet --notest Test::Warn
+  - cpanm --quiet --notest File::Slurp
+  - cpanm --quiet --notest Cwd
+
+  - cpanm --quiet --notest AnyEvent
+  - cpanm --quiet --notest AnyEvent::RabbitMQ
+  - cpanm --quiet --notest Carp
+  - cpanm --quiet --notest Config::Auto
+  - cpanm --quiet --notest Daemon::Control
+  - cpanm --quiet --notest DateTime
+  - cpanm --quiet --notest Digest::MD5
+  - cpanm --quiet --notest English
+  - cpanm --quiet --notest Exporter
+  - cpanm --quiet --notest Getopt::Long
+  - cpanm --quiet --notest File::Basename
+  - cpanm --quiet --notest File::Spec::Functions
+  - cpanm --quiet --notest File::Copy
+  - cpanm --quiet --notest File::Copy::Recursive
+  - cpanm --quiet --notest File::Path
+  - cpanm --quiet --notest File::Temp
+  - cpanm --quiet --notest FindBin
+  - cpanm --quiet --notest JSON
+  - cpanm --quiet --notest JSON::Any
+  - cpanm --quiet --notest JSON::Parse
+  - cpanm --quiet --notest HTTP::Request
+  - cpanm --quiet --notest List::Compare
+  - cpanm --quiet --notest Log::Log4perl
+  - cpanm --quiet --notest LWP::UserAgent
+  - cpanm --quiet --notest Mojo::Collection
+  - cpanm --quiet --notest Moose
+  - cpanm --quiet --notest Moose::Util::TypeConstraints
+  - cpanm --quiet --notest MooseX::ClassAttribute
+  - cpanm --quiet --notest MooseX::Getopt
+  - cpanm --quiet --notest MooseX::Getopt::Meta::Attribute::Trait::NoGetopt
+  - cpanm --quiet --notest MooseX::Storage
+  - cpanm --quiet --notest MooseX::Aliases
+  - cpanm --quiet --notest MooseX::StrictConstructor
+  - cpanm --quiet --notest MooseX::Aliases
+  - cpanm --quiet --notest namespace::autoclean
+  - cpanm --quiet --notest PDF::API2
+  - cpanm --quiet --notest PDF::Table~0.9.7
+  - cpanm --quiet --notest Net::SFTP::Foreign
+  - cpanm --quiet --notest Readonly
+  - cpanm --quiet --notest Text::CSV
+  - cpanm --quiet --notest Try::Tiny
+  - cpanm --quiet --notest warnings
+  - cpanm --quiet --notest XML::LibXML~2.0105,
+  - cpanm --quiet --notest XML::SemanticDiff
+  - cpanm --quiet --notest URI::Escape
+  - cpanm --quiet --notest POSIX
+  - cpanm --quiet --notest UUID::Tiny
+  - cpanm --quiet --notest --no-lwp https://github.com/wtsi-npg/perl-dnap-utilities/releases/download/${DNAP_UTILITIES_VERSION}/WTSI-DNAP-Utilities-${DNAP_UTILITIES_VERSION}.tar.gz
+  - cpanm --quiet --notest --no-lwp https://github.com/wtsi-npg/perl-rabbit-wrap/releases/download/${PERL_RABBIT_WRAP_VERSION}/WTSI-DNAP-RabbitMQ-${PERL_RABBIT_WRAP_VERSION}.tar.gz
+
   - perl Build.PL
   - yes | perl Build installdeps
 after_success:
