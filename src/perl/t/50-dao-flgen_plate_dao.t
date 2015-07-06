@@ -89,7 +89,7 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 
   my $flgen_plate_dao = wtsi_clarity::dao::flgen_plate_dao->new(lims_id => $lims_id);
 
-  throws_ok { $flgen_plate_dao->init } qr/Validation for value 132 failed.*/,
+  throws_ok { $flgen_plate_dao->init } qr/Validation for value 132 failed. The barcode must have a length of 10./,
     'Throws an error when the plate barcode is not a valid Fluidigm one';
 }
 

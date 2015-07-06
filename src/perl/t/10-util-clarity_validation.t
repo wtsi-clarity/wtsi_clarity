@@ -3,7 +3,7 @@ use warnings;
 
 use Test::More tests => 16;
 
-use_ok('wtsi_clarity::util::validators', (qw/flgen_bc ean13_bc/));
+use_ok('wtsi_clarity::util::clarity_validation', (qw/flgen_bc ean13_bc/));
 
 {
   is(flgen_bc(1234567890)->failed, 0, 'Returns 1 for a valid Fluidigm barcode');

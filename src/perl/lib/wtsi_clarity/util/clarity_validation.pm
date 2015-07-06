@@ -1,12 +1,11 @@
-package wtsi_clarity::util::validators;
+package wtsi_clarity::util::clarity_validation;
 
 use strict;
 use warnings;
 
-use wtsi_clarity::util::validation;
+use wtsi_clarity::util::validation::validator;
 
 use List::Util   qw/reduce/;
-use Scalar::Util qw/looks_like_number/;
 use Readonly;
 use Exporter 'import';
 
@@ -18,49 +17,21 @@ Readonly::Scalar my $FLUIDIGM_BC_LENGTH => 10;
 Readonly::Scalar my $EAN_BC_LENGTH      => 13;
 
 sub flgen_bc {
-  return _validator(_has_length($FLUIDIGM_BC_LENGTH), _is_integer())->(shift);
+  return _validate(shift)
+           ->has_length($FLUIDIGM_BC_LENGTH)
+           ->is_integer()
+           ->result();
 }
 sub ean13_bc {
-  return _validator(_has_length($EAN_BC_LENGTH), _is_integer())->(shift);
+  return _validate(shift)
+           ->has_length($EAN_BC_LENGTH)
+           ->is_integer()
+           ->result();
 }
 
-sub _validator {
-  my @validators = @_;
-
-  return sub {
-    my $val = shift;
-
-    my $errors = reduce {
-      if (!$b->{'check'}->($val)) {
-        push @{$a}, $b->{'message'};
-      }
-      return $a;
-    } [], @validators;
-
-    return wtsi_clarity::util::validation->new(value => $val, errors => $errors);
-  }
-}
-
-sub _has_length {
-  my $length = shift;
-  my $message = shift;
-
-  return {
-    check   => sub {
-      my $val = shift;
-      return $length == length $val;
-    },
-    message => $message // 'The barcode must have a length of ' . $length,
-  }
-}
-
-sub _is_integer {
-  my $message = shift;
-
-  return {
-    check   => \&looks_like_number,
-    message => $message // 'The barcode must be numeric',
-  }
+sub _validate {
+  my $val = shift;
+  return wtsi_clarity::util::validation::validator->new(value => $val);
 }
 
 1;
@@ -69,15 +40,15 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::util::validators
+wtsi_clarity::util::clarity_validation
 
 =head1 SYNOPSIS
 
-use wtsi_clarity::util::validators qw/flgen_bc/;
+use wtsi_clarity::util::clarity_validation qw/flgen_bc/;
 
 my $validation = flgen_bc('1234567');
 
-if (!$validation->failed) {
+if ($validation->failed) {
   croak $validation->error_message;
 }
 
@@ -100,11 +71,11 @@ object with 2 methods on: failed and error_message.
 
 =over
 
-=item wtsi_clarity::util::validation
+=item wtsi_clarity::util::validation::validator
 
 =item List::Util
 
-=item Scalar::Util
+=item Readonly
 
 =item Exporter
 

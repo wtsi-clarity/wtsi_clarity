@@ -1,4 +1,4 @@
-package wtsi_clarity::util::validation;
+package wtsi_clarity::util::validation::result;
 
 use Moose;
 
@@ -42,13 +42,13 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::util::validation
+wtsi_clarity::util::validation::result
 
 =head1 SYNOPSIS
 
-use wtsi_clarity::util::validation;
+use wtsi_clarity::util::validation::result;
 
-my $validation = wtsi_clarity::util::validation->new(
+my $validation = wtsi_clarity::util::validation::result->new(
   value  => '1234aaa',
   errors => ['Barcode too short', 'Barcode not an integer']
 );

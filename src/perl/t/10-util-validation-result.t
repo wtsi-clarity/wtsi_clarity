@@ -3,16 +3,16 @@ use warnings;
 
 use Test::More tests => 5;
 
-use_ok('wtsi_clarity::util::validation');
+use_ok('wtsi_clarity::util::validation::result');
 
 {
-  my $validation = wtsi_clarity::util::validation->new(value => 1);
-  isa_ok($validation, 'wtsi_clarity::util::validation');
+  my $validation = wtsi_clarity::util::validation::result->new(value => 1);
+  isa_ok($validation, 'wtsi_clarity::util::validation::result');
   is($validation->failed, 0, 'False when no error messages are present');
 }
 
 {
-  my $validation = wtsi_clarity::util::validation->new(
+  my $validation = wtsi_clarity::util::validation::result->new(
     errors => [
       'Here is error number one',
       'Here is error number two',

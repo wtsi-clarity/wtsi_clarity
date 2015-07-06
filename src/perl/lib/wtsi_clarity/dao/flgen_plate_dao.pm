@@ -8,7 +8,7 @@ use POSIX qw(strftime);
 use wtsi_clarity::dao::containertypes_dao;
 use wtsi_clarity::dao::sample_dao;
 use wtsi_clarity::dao::study_dao;
-use wtsi_clarity::util::validators qw/flgen_bc/;
+use wtsi_clarity::util::clarity_validation qw/flgen_bc/;
 
 with 'wtsi_clarity::dao::base_dao';
 

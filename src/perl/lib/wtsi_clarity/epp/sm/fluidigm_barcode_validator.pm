@@ -2,7 +2,7 @@ package wtsi_clarity::epp::sm::fluidigm_barcode_validator;
 
 use Moose;
 use Carp;
-use wtsi_clarity::util::validators qw/flgen_bc/;
+use wtsi_clarity::util::clarity_validation qw/flgen_bc/;
 
 extends 'wtsi_clarity::epp';
 
@@ -55,7 +55,7 @@ wtsi_clarity::epp::sm::fluidigm_barcode_validator
 =head1 DESCRIPTION
 
   Will look at the output plate's barcode and validate that it is a valid Fluidigm barcode. It will
-  throw an error if it is. It'll do nothing if not.
+  throw an error if it isn't valid. It'll do nothing otherwise.
 
 =head1 SUBROUTINES/METHODS
 
