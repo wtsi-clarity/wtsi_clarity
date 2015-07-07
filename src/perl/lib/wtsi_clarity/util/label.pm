@@ -75,7 +75,7 @@ sub _format_label {
 
   my $type = $params->{'type'};
   my $date = $self->_date->strftime('%d-%b-%Y');
-  my $user = $params->{'source_plate'} ? q[] : $params->{'user'}; #no user for sample management stock plates  
+  my $user = $params->{'source_plate'} ? q[] : $params->{'user'}; #no user for sample management stock plates
 
   if ($user && length $user > $USER_NAME_LENGTH) {
     $user = substr $user, 0, $USER_NAME_LENGTH;
@@ -88,10 +88,11 @@ sub _format_label {
         'plate' => {
           'ean13' => $container->{'barcode'},
           'label_text' => {
-            'date_user' => join(q[ ], $date, $user),
-            'purpose'   => $container->{'purpose'},
-            'num'       => $container->{'num'},
-            'signature' => $container->{'signature'}
+            'date_user'      => join(q[ ], $date, $user),
+            'purpose'        => $container->{'purpose'},
+            'num'            => $container->{'num'},
+            'signature'      => $container->{'signature'},
+            'sanger_barcode' => $container->{'sanger_barcode'} // q{},
           }
         }
     };
@@ -136,7 +137,7 @@ wtsi_clarity::util::label
     use wtsi_clarity::epp::label qw/generateLabels/;
 
     generateLabels({
-      'number'       => $num_copies, 
+      'number'       => $num_copies,
       'type'         => $container_type,
       'user'         => $user,
       'containers'   => $container,

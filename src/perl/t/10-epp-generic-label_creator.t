@@ -1,7 +1,8 @@
 use strict;
 use warnings;
-use Test::More tests => 52;
+use Test::More tests => 61;
 use Test::Exception;
+use Test::MockObject::Extends;
 use Cwd;
 use Carp;
 use XML::SemanticDiff;
@@ -101,10 +102,11 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
                                                'plate' => {
                                                             'ean13' => '5260271204834',
                                                             'label_text' => {
-                                                                              'date_user' => '21-May-2014 ',
-                                                                              'purpose'   => 'Stock Plate',
-                                                                              'num'       => 'SM-271204S',
-                                                                              'signature' => 'EL2LO'
+                                                                              'date_user'      => '21-May-2014 ',
+                                                                              'purpose'        => 'Stock Plate',
+                                                                              'num'            => 'SM-271204S',
+                                                                              'signature'      => 'EL2LO',
+                                                                              'sanger_barcode' => ''
                                                                             }
                                                           }
                                              },
@@ -155,10 +157,11 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
                                                'plate' => {
                                                             'ean13' => '5260276710705',
                                                             'label_text' => {
-                                                                              'date_user' => '21-May-2014 D. Jones',
-                                                                              'purpose'   => 'Pico Assay A',
-                                                                              'num'       => 'SM-276710F',
-                                                                              'signature' => 'HP2MX'
+                                                                              'date_user'      => '21-May-2014 D. Jones',
+                                                                              'purpose'        => 'Pico Assay A',
+                                                                              'num'            => 'SM-276710F',
+                                                                              'signature'      => 'HP2MX',
+                                                                              'sanger_barcode' => ''
                                                                             }
                                                           }
                                              },
@@ -167,10 +170,11 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
                                                'plate' => {
                                                             'ean13' => '5260276711719',
                                                             'label_text' => {
-                                                                              'date_user' => '21-May-2014 D. Jones',
-                                                                              'purpose'   => 'Pico Assay',
-                                                                              'num'       => 'SM-276711G',
-                                                                              'signature' => 'HP2MX'
+                                                                              'date_user'      => '21-May-2014 D. Jones',
+                                                                              'purpose'        => 'Pico Assay',
+                                                                              'num'            => 'SM-276711G',
+                                                                              'signature'      => 'HP2MX',
+                                                                              'sanger_barcode' => '',
                                                                             }
                                                           }
                                              }
@@ -393,6 +397,69 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
   throws_ok { $l->_signature_from_container($container_xml)}
               qr/The signature has not been registered on this container./,
               'error when the signature could not be found';
+}
+
+{
+  my $lc = wtsi_clarity::epp::generic::label_creator->new(
+     process_url => $base_uri . 'anything',
+  );
+
+  is($lc->has_get_sanger_barcode_from, q{}, 'has_get_sanger_barcode_from is false when get_sanger_barcode_from is not passed in');
+
+  my $lc2 = wtsi_clarity::epp::generic::label_creator->new(
+     process_url             => $base_uri . 'anything',
+     step_url                => $base_uri . 'anything',
+     get_sanger_barcode_from => 'Volume Check (SM)',
+  );
+
+  is($lc2->has_get_sanger_barcode_from, 1, 'has_get_sanger_barcode_from is true when get_sanger_barcode_from is passed in');
+  is($lc2->get_sanger_barcode_from, 'Volume Check (SM)', 'get_sanger_barcode_from is set correctly');
+  is($lc2->_check_options, 1, 'Options are fine when get_sanger_barcode_from and step_url are provided');
+
+  my $lc3 = wtsi_clarity::epp::generic::label_creator->new(
+     process_url             => $base_uri . 'anything',
+     get_sanger_barcode_from => 'Volume Check (SM)',
+  );
+
+  throws_ok { $lc3->_check_options() } qr/Step URL must be provided when get_sanger_barcode_from is set/,
+    'Check options throws when get_sanger_barcode_from is set but step_url is not';
+}
+
+{
+  my $lc_mock = Test::MockObject::Extends->new(
+    wtsi_clarity::epp::generic::label_creator->new(
+     process_url             => $base_uri . '/processes/24-97619',
+     step_url                => $base_uri . '/steps/24-97619',
+     get_sanger_barcode_from => 'Volume Check (SM)',
+    )
+  );
+
+  $lc_mock->mock(q{_fetch_sanger_barcode}, sub {
+    return { '27-6710' => '123', '27-6711' => '456' };
+  });
+
+  $lc_mock->_set_container_data();
+
+  is_deeply($lc_mock->_plate_to_parent_plate_map, { '27-6710' => '123', '27-6711' => '456' },
+    'The plate to older plate map gets set at _set_container_data when get_sanger_barcode_from and step_url are provided');
+
+  my $container = $lc_mock->_container();
+
+  is($container->{'http://testserver.com:1234/here/containers/27-6710'}->{'sanger_barcode'}, '123',
+    'Uses the plate to older plate hash if it has what we neeeeeeed');
+  is($container->{'http://testserver.com:1234/here/containers/27-6711'}->{'sanger_barcode'}, '456',
+    'Uses the plate to older plate hash if it has what we neeeeeeed');
+}
+
+{
+  my $lc = wtsi_clarity::epp::generic::label_creator->new(
+    process_url             => $base_uri . '/processes/24-49810',
+    step_url                => $base_uri . '/steps/24-49810',
+    get_sanger_barcode_from => 'Volume Check (SM)',
+  );
+
+  is_deeply($lc->_fetch_sanger_barcode('Volume Check (SM)'), { '27-7833' => 'SM-27234A' },
+    'Fetches and creates the Sanger barcodes correctly');
 }
 
 1;
