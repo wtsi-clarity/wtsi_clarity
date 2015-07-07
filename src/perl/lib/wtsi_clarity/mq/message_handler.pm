@@ -3,6 +3,7 @@ package wtsi_clarity::mq::message_handler;
 use Moose;
 use Carp;
 use JSON;
+use Encode;
 
 use wtsi_clarity::mq::message;
 use wtsi_clarity::mq::mapper;
@@ -33,7 +34,7 @@ sub process_message {
   my $messages = $self->prepare_messages($message);
 
   foreach my $message_to_wh (@{$messages}) {
-    $self->_send_message(to_json($message_to_wh), $message->purpose);
+    $self->_send_message(encode_utf8(to_json($message_to_wh)), $message->purpose);
   }
 
   return 1;
