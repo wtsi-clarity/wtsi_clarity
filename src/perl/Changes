@@ -1,5 +1,8 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 1.8
+ - Fix the message consumer: adds UTF-8 support
+
 Release 1.7
  - Get a Sanger barcode from a previous step
 
