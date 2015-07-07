@@ -2,8 +2,8 @@
 
 set -ev
 
-if [ "$TRAVIS_PULL_REQUEST" = false ] ; then
-  echo 'Not a Pull Request. No need to upload test coverage artifacts.'
+if [ "$GH_TOKEN" = false ] ; then
+  echo 'We can not do anything because the GH_TOKEN is not set'
   exit 0
 fi
 
