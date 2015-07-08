@@ -1,0 +1,83 @@
+package wtsi_clarity::util::validation::predicates;
+
+use strict;
+use warnings;
+
+use Exporter     qw/import/;
+
+our $VERSION   = '0.0';
+our @EXPORT_OK = qw/has_length_of is_integer/;
+
+sub has_length_of {
+  my ($length) = @_;
+  return sub {
+    my $val = shift;
+    return $length == length $val;
+  }
+}
+
+sub is_integer {
+  return sub {
+    $_[0] =~ /^\s*[+-]?\d+\s*$/sxm;
+  }
+}
+
+1;
+
+__END__
+
+=head1 NAME
+
+wtsi_clarity::util::validation::predicates
+
+=head1 SYNOPSIS
+
+use wtsi_clarity::util::validation::predicates;
+
+my $has_length_of_3 = has_length_of(3);
+$has_length_of_3->('abc') == 1
+
+=head1 DESCRIPTION
+
+A module providing a subroutines for generating validation subroutines
+
+=head1 SUBROUTINES/METHODS
+
+=head2 has_length_of
+
+=head2 is_integer
+
+=head1 CONFIGURATION AND ENVIRONMENT
+
+=head1 DEPENDENCIES
+
+=over
+
+=item Exporter
+
+=back
+
+=head1 AUTHOR
+
+Chris Smith E<lt>cs24@sanger.ac.ukE<gt>
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright (C) 2015 GRL by Chris Smith
+
+This file is part of wtsi_clarity project.
+
+wtsi_clarity is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+=cut
