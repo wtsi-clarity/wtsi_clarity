@@ -8,6 +8,7 @@ use POSIX qw(strftime);
 use wtsi_clarity::dao::containertypes_dao;
 use wtsi_clarity::dao::sample_dao;
 use wtsi_clarity::dao::study_dao;
+use wtsi_clarity::util::clarity_validation qw/flgen_bc/;
 
 with 'wtsi_clarity::dao::base_dao';
 
@@ -160,6 +161,18 @@ sub _get_study {
   return wtsi_clarity::dao::study_dao->new(lims_id => $limsid);
 }
 
+sub _validate_plate_barcode {
+  my ($self, $plate_bc) = @_;
+
+  my $validation = flgen_bc($plate_bc);
+
+  if ($validation->failed) {
+    croak $validation->error_message;
+  }
+
+  return;
+}
+
 around 'init' => sub {
   my $next = shift;
   my $self = shift;
@@ -167,6 +180,8 @@ around 'init' => sub {
   $self->$next();
   $self->wells;
   $self->plate_size;
+
+  $self->_validate_plate_barcode($self->plate_barcode);
 
   return;
 };
