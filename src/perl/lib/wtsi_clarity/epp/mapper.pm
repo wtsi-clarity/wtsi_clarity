@@ -35,6 +35,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'analyse_fluidigm'               => 'sm::fluidigm_analyser',
     'create_fluidigm_file'           => 'sm::fluidigm_analysis_file_creator',
     'update_sample_to_proceed'       => 'sm::proceed_sample_updater',
+    'validate_fluidigm_barcode'      => 'sm::fluidigm_barcode_validator',
 
     'make_report'                    => 'sm::report_maker',
 
