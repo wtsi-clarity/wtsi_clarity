@@ -1,10 +1,15 @@
 package wtsi_clarity::mq::message;
 
 use Moose;
+use Readonly;
 use namespace::autoclean;
 use Moose::Util::TypeConstraints;
 use MooseX::StrictConstructor;
 use MooseX::Storage;
+use Carp;
+use List::MoreUtils qw/any/;
+
+use wtsi_clarity::util::config;
 
 with Storage( 'traits' => ['OnlyWhenBuilt'],
               'format' => 'JSON',
@@ -22,32 +27,72 @@ coerce 'WtsiClarityTimestamp',
        from 'WtsiClarityDateTime',
        via { $_->strftime('%a %b %d %Y %T') };
 
-enum 'WtsiClarityMqPurpose', [qw( sample study user fluidigm flowcell )];
+Readonly::Scalar my $MESSAGE_PATH => q{wtsi_clarity::mq::message_types::%s_message};
 
 has 'process_url' => (
-  isa        => 'Str',
-  is         => 'ro',
-  required   => 1,
-);
-
-has 'step_url' => (
-  isa        => 'Str',
-  is         => 'ro',
-  required   => 1,
-);
-
-has 'timestamp' => (
-  isa        => 'WtsiClarityTimestamp',
-  is         => 'ro',
-  required   => 1,
-  coerce     => 1,
-);
-
-has 'purpose' => (
-  isa      => 'WtsiClarityMqPurpose',
+  isa      => 'Str',
   is       => 'ro',
   required => 1,
 );
+
+has 'step_url' => (
+  isa      => 'Str',
+  is       => 'ro',
+  required => 1,
+);
+
+has 'timestamp' => (
+  isa      => 'WtsiClarityTimestamp',
+  is       => 'ro',
+  required => 1,
+  coerce   => 1,
+);
+
+sub create {
+  my ($message_type, %args) = @_;
+  return $message_type->new(%args);
+}
+
+sub defrost {
+  my ($message_type, $message) = @_;
+  return $message_type->thaw($message);
+}
+
+around ['create', 'defrost'] => sub {
+  my $orig         = shift;
+  my $self         = shift;
+  my $message_type = shift;
+
+  # TODO: Make the config module a singleton (or something)...
+  my $config = wtsi_clarity::util::config->new();
+  my @valid_message_types = values $config->message_queues;
+
+  if (!_message_type_is_valid($message_type, @valid_message_types)) {
+    croak 'Message type must be one of the following: ' . join q{,}, @valid_message_types;
+  }
+
+  my $message = _get_message_module($message_type);
+
+  return $orig->($message, @_);
+};
+
+sub _get_message_module {
+  my $message_type = shift;
+  my $module       = sprintf $MESSAGE_PATH, $message_type;
+
+  my $loaded = eval "require $module";
+
+  if (!$loaded) {
+    croak "The required package: $module does not exist";
+  }
+
+  return $module;
+}
+
+sub _message_type_is_valid {
+  my ($routing_key, @message_types) = @_;
+  return (any { $_ eq $routing_key } @message_types) ? 1 : undef;
+}
 
 1;
 

@@ -46,6 +46,8 @@ duck_type 'HasRequestAndConfig', [qw/request config/];
 
 duck_type 'WtsiClarityPoolingStrategy', [qw/get_pool_name dest_well_position/];
 
+duck_type 'WtsiClarityMessageHandler', [qw/process/];
+
 no Moose::Util::TypeConstraints;
 
 1;

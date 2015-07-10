@@ -9,7 +9,7 @@ our $VERSION = '0.0';
 sub _build_message_bus_type { return q{clarity_mq} };
 
 sub send_message {
-  my ($self, $message, $purpose) = @_;
+  my ($self, $message, $routing_key) = @_;
 
   my @credentials = ( host  => $self->host,
                       port  => $self->port,
@@ -32,7 +32,7 @@ sub send_message {
   $client->publish(
     channel     => $channel_name,
     exchange    => $self->exchange,
-    routing_key => $self->assemble_routing_key($purpose),
+    routing_key => $routing_key,
     body        => $message,
     mandatory   => 1
   );

@@ -1,0 +1,1635 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A100PA1?state=183005" limsid="ERD851A100PA1">
+        <name>c31072c1-2400-11e5-9fe5-f3a4e17d05d2</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>D:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A100" limsid="ERD851A100"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A101PA1?state=183076" limsid="ERD851A101PA1">
+        <name>cd4f58be-2400-11e5-9fe5-a97430dc4661</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>E:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A101" limsid="ERD851A101"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A102PA1?state=183000" limsid="ERD851A102PA1">
+        <name>c8d6fd97-2400-11e5-9fe5-e5bab0b224a2</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>F:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A102" limsid="ERD851A102"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A103PA1?state=183052" limsid="ERD851A103PA1">
+        <name>c85624d4-2400-11e5-9fe5-9cff681f631b</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>G:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A103" limsid="ERD851A103"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A104PA1?state=183037" limsid="ERD851A104PA1">
+        <name>c7e0e336-2400-11e5-9fe5-d4eb9d21f255</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>H:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A104" limsid="ERD851A104"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A105PA1?state=183099" limsid="ERD851A105PA1">
+        <name>c7696da4-2400-11e5-9fe5-ed03e459712b</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>A:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A105" limsid="ERD851A105"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A106PA1?state=183139" limsid="ERD851A106PA1">
+        <name>cc0803fd-2400-11e5-9fe5-dc92320f1c5b</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>B:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A106" limsid="ERD851A106"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A107PA1?state=183113" limsid="ERD851A107PA1">
+        <name>ca5af566-2400-11e5-9fe5-9a725efa0b63</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>C:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A107" limsid="ERD851A107"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A108PA1?state=183123" limsid="ERD851A108PA1">
+        <name>c9e41553-2400-11e5-9fe5-d46e58db14b6</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>D:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A108" limsid="ERD851A108"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A109PA1?state=183031" limsid="ERD851A109PA1">
+        <name>c95b44df-2400-11e5-9fe5-86f5e8a9a387</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>E:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A109" limsid="ERD851A109"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A110PA1?state=182996" limsid="ERD851A110PA1">
+        <name>c404fa35-2400-11e5-9fe5-d6e5b2903d79</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>F:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A110" limsid="ERD851A110"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A111PA1?state=183159" limsid="ERD851A111PA1">
+        <name>c4a08441-2400-11e5-9fe5-938a4867e38a</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>G:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A111" limsid="ERD851A111"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A112PA1?state=183158" limsid="ERD851A112PA1">
+        <name>cdfe3cfa-2400-11e5-9fe5-fcff8c824031</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>H:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A112" limsid="ERD851A112"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A113PA1?state=183007" limsid="ERD851A113PA1">
+        <name>ce9cfda4-2400-11e5-9fe5-bb8bdc189ebc</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>A:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A113" limsid="ERD851A113"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A114PA1?state=183017" limsid="ERD851A114PA1">
+        <name>c651d822-2400-11e5-9fe5-a9ed59c4ad42</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>B:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A114" limsid="ERD851A114"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A115PA1?state=183040" limsid="ERD851A115PA1">
+        <name>c6ec2cba-2400-11e5-9fe5-a5167eb58136</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>C:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A115" limsid="ERD851A115"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A116PA1?state=183048" limsid="ERD851A116PA1">
+        <name>c52b949b-2400-11e5-9fe5-b106cf309542</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>D:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A116" limsid="ERD851A116"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A117PA1?state=183034" limsid="ERD851A117PA1">
+        <name>c5b603c0-2400-11e5-9fe5-d94181b87978</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>E:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A117" limsid="ERD851A117"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A118PA1?state=183004" limsid="ERD851A118PA1">
+        <name>d15b6c4a-2400-11e5-9fe5-8481658f97ff</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>F:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A118" limsid="ERD851A118"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A119PA1?state=183008" limsid="ERD851A119PA1">
+        <name>d1e1d97f-2400-11e5-9fe5-b6555de3fa63</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>G:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A119" limsid="ERD851A119"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A120PA1?state=183050" limsid="ERD851A120PA1">
+        <name>d27b0e02-2400-11e5-9fe5-d695a02434aa</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>H:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A120" limsid="ERD851A120"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A121PA1?state=183027" limsid="ERD851A121PA1">
+        <name>d3c46182-2400-11e5-9fe5-8c2086aa0cd5</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>A:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A121" limsid="ERD851A121"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A122PA1?state=183069" limsid="ERD851A122PA1">
+        <name>cf2e3b3e-2400-11e5-9fe5-b083a8f212cf</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>B:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A122" limsid="ERD851A122"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A123PA1?state=182979" limsid="ERD851A123PA1">
+        <name>cfbe3747-2400-11e5-9fe5-934e8d1a37f6</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>C:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A123" limsid="ERD851A123"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A124PA1?state=183101" limsid="ERD851A124PA1">
+        <name>d0479c49-2400-11e5-9fe5-edcc2e84fbd9</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>D:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A124" limsid="ERD851A124"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A125PA1?state=183146" limsid="ERD851A125PA1">
+        <name>d0cc52c8-2400-11e5-9fe5-aabeaea0c56a</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>E:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A125" limsid="ERD851A125"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A126PA1?state=183073" limsid="ERD851A126PA1">
+        <name>d7af219c-2400-11e5-9fe5-a16037dc47af</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>F:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A126" limsid="ERD851A126"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A127PA1?state=183135" limsid="ERD851A127PA1">
+        <name>d8489623-2400-11e5-9fe5-ac330803b93f</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>G:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A127" limsid="ERD851A127"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A128PA1?state=183118" limsid="ERD851A128PA1">
+        <name>d7142ae6-2400-11e5-9fe5-c4d07ff39567</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>H:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A128" limsid="ERD851A128"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A129PA1?state=183090" limsid="ERD851A129PA1">
+        <name>d67c36fb-2400-11e5-9fe5-bbfada1fa395</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>A:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A129" limsid="ERD851A129"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A130PA1?state=183136" limsid="ERD851A130PA1">
+        <name>d5f662dd-2400-11e5-9fe5-f092e4363885</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>B:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A130" limsid="ERD851A130"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A131PA1?state=183057" limsid="ERD851A131PA1">
+        <name>d56901f9-2400-11e5-9fe5-d9e4f1febe51</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>C:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A131" limsid="ERD851A131"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A132PA1?state=183153" limsid="ERD851A132PA1">
+        <name>d4e27874-2400-11e5-9fe5-d92ca1761766</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>D:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A132" limsid="ERD851A132"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A133PA1?state=183115" limsid="ERD851A133PA1">
+        <name>d44ebb8e-2400-11e5-9fe5-e1c5d8f08404</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>E:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A133" limsid="ERD851A133"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A134PA1?state=182984" limsid="ERD851A134PA1">
+        <name>dc7b0901-2400-11e5-9fe5-8e68ef013051</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>F:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A134" limsid="ERD851A134"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A135PA1?state=183064" limsid="ERD851A135PA1">
+        <name>dd321821-2400-11e5-9fe5-a43024822bef</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>G:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A135" limsid="ERD851A135"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A136PA1?state=183125" limsid="ERD851A136PA1">
+        <name>db2bd9f8-2400-11e5-9fe5-bfb9371d4a2f</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>H:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A136" limsid="ERD851A136"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A137PA1?state=183160" limsid="ERD851A137PA1">
+        <name>dbc70e83-2400-11e5-9fe5-955ec793fa0c</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>A:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A137" limsid="ERD851A137"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A138PA1?state=183063" limsid="ERD851A138PA1">
+        <name>da1201bf-2400-11e5-9fe5-d32e4cb0a2f3</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>B:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A138" limsid="ERD851A138"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A139PA1?state=183072" limsid="ERD851A139PA1">
+        <name>da975710-2400-11e5-9fe5-9411cfa5793a</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>C:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A139" limsid="ERD851A139"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A140PA1?state=183130" limsid="ERD851A140PA1">
+        <name>d8f779e5-2400-11e5-9fe5-86672d6e89d8</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>D:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A140" limsid="ERD851A140"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A141PA1?state=183127" limsid="ERD851A141PA1">
+        <name>d995ed10-2400-11e5-9fe5-837bc0baed71</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>E:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A141" limsid="ERD851A141"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A142PA1?state=182990" limsid="ERD851A142PA1">
+        <name>e2488a94-2400-11e5-9fe5-d0c6d4bef843</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>F:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A142" limsid="ERD851A142"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A143PA1?state=182980" limsid="ERD851A143PA1">
+        <name>e2d72932-2400-11e5-9fe5-bd18fc8ae625</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>G:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A143" limsid="ERD851A143"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A144PA1?state=183023" limsid="ERD851A144PA1">
+        <name>e0b7552a-2400-11e5-9fe5-c18771fcceca</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>H:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A144" limsid="ERD851A144"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A145PA1?state=183091" limsid="ERD851A145PA1">
+        <name>e0314836-2400-11e5-9fe5-f8999c9d7d53</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>A:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A145" limsid="ERD851A145"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A146PA1?state=183138" limsid="ERD851A146PA1">
+        <name>df768154-2400-11e5-9fe5-acdaf2adfd4d</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>B:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A146" limsid="ERD851A146"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A147PA1?state=183119" limsid="ERD851A147PA1">
+        <name>dee86310-2400-11e5-9fe5-faa66a568bac</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>C:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A147" limsid="ERD851A147"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A148PA1?state=183110" limsid="ERD851A148PA1">
+        <name>de5983d4-2400-11e5-9fe5-dd2f7249dd34</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>D:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A148" limsid="ERD851A148"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A149PA1?state=183102" limsid="ERD851A149PA1">
+        <name>ddbec32e-2400-11e5-9fe5-c8651015ea65</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>E:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A149" limsid="ERD851A149"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A150PA1?state=183078" limsid="ERD851A150PA1">
+        <name>e6ce6f48-2400-11e5-9fe5-e655cee8cf85</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>F:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A150" limsid="ERD851A150"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A151PA1?state=183087" limsid="ERD851A151PA1">
+        <name>e760ab06-2400-11e5-9fe5-db3bfc1bc881</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>G:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A151" limsid="ERD851A151"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A152PA1?state=183116" limsid="ERD851A152PA1">
+        <name>e35eb492-2400-11e5-9fe5-a1c812cc7a7e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>H:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A152" limsid="ERD851A152"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A153PA1?state=183006" limsid="ERD851A153PA1">
+        <name>e3dfbde5-2400-11e5-9fe5-c6c93361d056</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>A:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A153" limsid="ERD851A153"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A154PA1?state=183094" limsid="ERD851A154PA1">
+        <name>e468238d-2400-11e5-9fe5-acbb7ab4bbbf</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>B:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A154" limsid="ERD851A154"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A155PA1?state=183061" limsid="ERD851A155PA1">
+        <name>e4e9b169-2400-11e5-9fe5-85b8f897e1a8</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>C:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A155" limsid="ERD851A155"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A156PA1?state=183066" limsid="ERD851A156PA1">
+        <name>e13ea0e7-2400-11e5-9fe5-d39b2e5d6003</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>D:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A156" limsid="ERD851A156"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A157PA1?state=183018" limsid="ERD851A157PA1">
+        <name>e1c4e9b2-2400-11e5-9fe5-f952dd84ce55</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>E:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A157" limsid="ERD851A157"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A158PA1?state=183042" limsid="ERD851A158PA1">
+        <name>c01c5234-2400-11e5-9fe5-e87847af0734</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>F:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A158" limsid="ERD851A158"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A159PA1?state=183024" limsid="ERD851A159PA1">
+        <name>c190717c-2400-11e5-9fe5-f349b7744c9c</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>G:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A159" limsid="ERD851A159"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A160PA1?state=183014" limsid="ERD851A160PA1">
+        <name>c2108e0c-2400-11e5-9fe5-a9eaf1451d96</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>H:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A160" limsid="ERD851A160"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A161PA1?state=183126" limsid="ERD851A161PA1">
+        <name>c098490c-2400-11e5-9fe5-925a59d408ae</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>A:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A161" limsid="ERD851A161"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A162PA1?state=183082" limsid="ERD851A162PA1">
+        <name>c1122b96-2400-11e5-9fe5-c47c8f02f120</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>B:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A162" limsid="ERD851A162"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A163PA1?state=182971" limsid="ERD851A163PA1">
+        <name>bd13884f-2400-11e5-9fe5-8d3fdb7b1905</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>C:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A163" limsid="ERD851A163"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A164PA1?state=183001" limsid="ERD851A164PA1">
+        <name>bd963546-2400-11e5-9fe5-ef7e1508a196</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>D:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A164" limsid="ERD851A164"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A165PA1?state=183059" limsid="ERD851A165PA1">
+        <name>bc208c04-2400-11e5-9fe5-f47b737f8f79</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>E:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A165" limsid="ERD851A165"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A166PA1?state=183155" limsid="ERD851A166PA1">
+        <name>bc9849ec-2400-11e5-9fe5-baeceb86fee9</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>F:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A166" limsid="ERD851A166"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A167PA1?state=182981" limsid="ERD851A167PA1">
+        <name>bf1047f5-2400-11e5-9fe5-bb646897fb34</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>G:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A167" limsid="ERD851A167"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A168PA1?state=183088" limsid="ERD851A168PA1">
+        <name>bf9442c2-2400-11e5-9fe5-cdbb57c680e8</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>H:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A168" limsid="ERD851A168"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A169PA1?state=183020" limsid="ERD851A169PA1">
+        <name>be1745f2-2400-11e5-9fe5-e6aa6d6f9197</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>A:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A169" limsid="ERD851A169"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A170PA1?state=183033" limsid="ERD851A170PA1">
+        <name>be86a58c-2400-11e5-9fe5-d7c32020dcd8</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>B:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A170" limsid="ERD851A170"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A171PA1?state=182993" limsid="ERD851A171PA1">
+        <name>f033efd6-2400-11e5-9fe5-a90bf2bb34cd</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>C:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A171" limsid="ERD851A171"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A172PA1?state=183154" limsid="ERD851A172PA1">
+        <name>efc42246-2400-11e5-9fe5-e912c7b6a2f7</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>D:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A172" limsid="ERD851A172"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A173PA1?state=183068" limsid="ERD851A173PA1">
+        <name>f10988a7-2400-11e5-9fe5-cc5fbad915e0</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>E:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A173" limsid="ERD851A173"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A174PA1?state=183150" limsid="ERD851A174PA1">
+        <name>ee48e922-2400-11e5-9fe5-8f06f806757a</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>F:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A174" limsid="ERD851A174"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A175PA1?state=183028" limsid="ERD851A175PA1">
+        <name>f09a1ce8-2400-11e5-9fe5-88ef151038e2</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>G:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A175" limsid="ERD851A175"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A176PA1?state=183051" limsid="ERD851A176PA1">
+        <name>ef5acfa8-2400-11e5-9fe5-dd6c9b4f54f0</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>H:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A176" limsid="ERD851A176"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A177PA1?state=182989" limsid="ERD851A177PA1">
+        <name>edd7645c-2400-11e5-9fe5-dec8dfe3ba4a</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>A:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A177" limsid="ERD851A177"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A178PA1?state=183105" limsid="ERD851A178PA1">
+        <name>ec8196c2-2400-11e5-9fe5-e541cd149f92</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>B:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A178" limsid="ERD851A178"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A179PA1?state=182973" limsid="ERD851A179PA1">
+        <name>eec4fcf8-2400-11e5-9fe5-c55b85db1763</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>C:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A179" limsid="ERD851A179"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A180PA1?state=182997" limsid="ERD851A180PA1">
+        <name>ed5fe698-2400-11e5-9fe5-ef9a84ee668a</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>D:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A180" limsid="ERD851A180"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A181PA1?state=182999" limsid="ERD851A181PA1">
+        <name>ec10688a-2400-11e5-9fe5-895a93ff4a23</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>E:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A181" limsid="ERD851A181"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A182PA1?state=182985" limsid="ERD851A182PA1">
+        <name>ead8ff4a-2400-11e5-9fe5-ae8d3230cd26</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>F:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A182" limsid="ERD851A182"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A183PA1?state=182987" limsid="ERD851A183PA1">
+        <name>eced734c-2400-11e5-9fe5-be0d7bfbb786</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>G:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A183" limsid="ERD851A183"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A184PA1?state=183046" limsid="ERD851A184PA1">
+        <name>ebab5c2d-2400-11e5-9fe5-de2db733ecf1</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>H:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A184" limsid="ERD851A184"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A185PA1?state=183131" limsid="ERD851A185PA1">
+        <name>ea6a2a66-2400-11e5-9fe5-967f95ba36d1</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>A:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A185" limsid="ERD851A185"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A186PA1?state=183098" limsid="ERD851A186PA1">
+        <name>e7f7bff9-2400-11e5-9fe5-d48a379c1b5f</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>B:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A186" limsid="ERD851A186"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A187PA1?state=183054" limsid="ERD851A187PA1">
+        <name>eb433b76-2400-11e5-9fe5-cf5bcecca726</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>C:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A187" limsid="ERD851A187"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A188PA1?state=182974" limsid="ERD851A188PA1">
+        <name>e93288aa-2400-11e5-9fe5-a5c20d61d5cd</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>D:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A188" limsid="ERD851A188"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A189PA1?state=183137" limsid="ERD851A189PA1">
+        <name>e892c823-2400-11e5-9fe5-bf8c7f90c6bc</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>E:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A189" limsid="ERD851A189"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A190PA1?state=183093" limsid="ERD851A190PA1">
+        <name>e590f9a0-2400-11e5-9fe5-d74125770b64</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>F:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A190" limsid="ERD851A190"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A191PA1?state=183065" limsid="ERD851A191PA1">
+        <name>e63abb40-2400-11e5-9fe5-d7bbe8c49e64</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>G:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A191" limsid="ERD851A191"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A192PA1?state=183021" limsid="ERD851A192PA1">
+        <name>e9c3afba-2400-11e5-9fe5-f624b8a99bf8</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>H:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A192" limsid="ERD851A192"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A97PA1?state=183047" limsid="ERD851A97PA1">
+        <name>ccb79679-2400-11e5-9fe5-8c82b12cf1e3</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A97" limsid="ERD851A97"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A98PA1?state=183089" limsid="ERD851A98PA1">
+        <name>c38d453e-2400-11e5-9fe5-d0d05948628e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>B:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A98" limsid="ERD851A98"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/ERD851A99PA1?state=183161" limsid="ERD851A99PA1">
+        <name>c296a8e8-2400-11e5-9fe5-cdbafcab50e7</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11037" limsid="27-11037"/>
+            <value>C:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/ERD851A99" limsid="ERD851A99"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="IN_PROGRESS" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+        </workflow-stages>
+    </art:artifact>
+</art:details>
