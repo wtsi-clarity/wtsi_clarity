@@ -21,26 +21,28 @@ has 'process_url' => (
   isa             => 'Str',
   is              => 'ro',
   required        => 0,
+  predicate       => 'has_process_url',
 );
 
 has 'project_name'  => (
   isa               => 'Str',
   is                => 'ro',
   required          => 0,
+  predicate         => 'has_project_name',
 );
 
 my $self = bulk_publish_wh_messages->new_with_options();
 my $parameters = { model => $self->model };
 
-if ((defined $self->process_url and length $self->process_url) and (defined $self->project_name and length $self->project_name)) {
+if ($self->has_process_url and $self->has_project_name) {
   croak q{You can define process URL or project name, but not both.};
 }
 
-if (defined $self->process_url and length $self->process_url) {
+if ($self->has_process_url) {
   $parameters->{'process_url'} = $self->process_url;
 }
 
-if (defined $self->project_name and length $self->project_name) {
+if ($self->has_project_name) {
   $parameters->{'project_name'} = $self->project_name;
 }
 
