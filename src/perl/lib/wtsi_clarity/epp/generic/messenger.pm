@@ -8,12 +8,11 @@ use wtsi_clarity::mq::local_client;
 use wtsi_clarity::util::config;
 use wtsi_clarity::mq::message;
 
-my $config = wtsi_clarity::util::config->new();
-enum 'WtsiClarityRoutingKeys', [values %{$config->message_queues}];
+our $VERSION = '0.0';
 
 extends 'wtsi_clarity::epp';
 
-our $VERSION = '0.0';
+enum 'WtsiClarityRoutingKeys', [qw/warehouse report/];
 
 has '_client' => (
   is => 'ro',

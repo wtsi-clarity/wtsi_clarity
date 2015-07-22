@@ -13,9 +13,6 @@ use_ok('wtsi_clarity::mq::message');
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 
-local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/manifest';
-local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-
 {
   my $manifest = wtsi_clarity::epp::generic::manifest->new( process_url => 'http://clarity.com/processes/1' );
   isa_ok($manifest, 'wtsi_clarity::epp::generic::manifest',
@@ -1875,6 +1872,8 @@ my $EXPECTED_FILE_CONTENT = [
 ];
 
 {
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/manifest';
+
   my $manifest = wtsi_clarity::epp::generic::manifest->new( process_url => 'http://clarity.com/processes/1' );
 
   my $containers_xml = XML::LibXML->load_xml(

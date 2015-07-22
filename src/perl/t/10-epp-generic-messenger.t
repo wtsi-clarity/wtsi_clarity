@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use DateTime;
-use Test::More tests => 9;
+use Test::More tests => 10;
 use Test::Exception;
 use Test::MockObject::Extends;
 
@@ -10,6 +10,8 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 use_ok('wtsi_clarity::mq::local_client');
 use_ok('wtsi_clarity::epp::generic::messenger');
 use_ok('wtsi_clarity::mq::message');
+
+use_ok('wtsi_clarity::util::config');
 
 # Happpppppppy path...
 {
