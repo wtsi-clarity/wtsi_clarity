@@ -137,7 +137,7 @@ sub _build_wells {
             $container->findnodes('./placement/value')->to_literal_list;
 
   use Data::Dumper;
-  print Dumper \%wells;
+  warn(Dumper \%wells);
 
   return \%wells;
 }
