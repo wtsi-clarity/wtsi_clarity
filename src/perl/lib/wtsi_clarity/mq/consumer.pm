@@ -178,8 +178,8 @@ sub _build_on_consume_error {
   return sub {
     my ($error_message, $message_args) = @_;
 
-    $self->err('There was an error while trying to handle a message');
-    $self->err($error_message);
+    $self->log_error_message('There was an error while trying to handle a message');
+    $self->log_error_message($error_message);
 
     $self->send_to_dlx($message_args);
 
@@ -191,8 +191,8 @@ sub _build_on_client_error {
   my $self = shift;
   return sub {
     my $response = shift;
-    $self->err('There was an error with the message queue client');
-    $self->err($response);
+    $self->log_error_message('There was an error with the message queue client');
+    $self->log_error_message($response);
   }
 }
 
