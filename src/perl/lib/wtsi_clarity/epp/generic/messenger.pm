@@ -8,12 +8,12 @@ use wtsi_clarity::mq::local_client;
 use wtsi_clarity::util::config;
 use wtsi_clarity::mq::message;
 
-my $config = wtsi_clarity::util::config->new();
-enum 'WtsiClarityRoutingKeys', [values %{$config->message_queues}];
+our $VERSION = '0.0';
 
 extends 'wtsi_clarity::epp';
 
-our $VERSION = '0.0';
+my $config = wtsi_clarity::util::config->new();
+enum 'WtsiClarityRoutingKeys', [values %{$config->message_queues}];
 
 has '_client' => (
   is => 'ro',
@@ -113,6 +113,8 @@ wtsi_clarity::epp::generic::messenger
 =head2 step_url - required attribute
 
 =head2 run - runs a callback
+
+=head2 BUILD - adds in a new type after object is created
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
