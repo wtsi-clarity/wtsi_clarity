@@ -149,7 +149,7 @@ sub _build_client {
 sub _build_on_startup {
   my $self = shift;
   return sub {
-    $self->log('Starting ' . $self->name . '...');
+    $self->log_message('Starting ' . $self->name . '...');
   }
 }
 
