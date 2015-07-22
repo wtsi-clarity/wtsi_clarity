@@ -12,8 +12,7 @@ our $VERSION = '0.0';
 
 extends 'wtsi_clarity::epp';
 
-my $config = wtsi_clarity::util::config->new();
-enum 'WtsiClarityRoutingKeys', [values %{$config->message_queues}];
+enum 'WtsiClarityRoutingKeys', [qw/warehouse report/];
 
 has '_client' => (
   is => 'ro',
@@ -113,8 +112,6 @@ wtsi_clarity::epp::generic::messenger
 =head2 step_url - required attribute
 
 =head2 run - runs a callback
-
-=head2 BUILD - adds in a new type after object is created
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

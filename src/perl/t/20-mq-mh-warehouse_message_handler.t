@@ -5,6 +5,8 @@ use Test::More tests => 3;
 use Test::MockObject::Extends;
 use Test::Exception;
 
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+
 use_ok('wtsi_clarity::mq::mh::warehouse_message_handler');
 
 {
