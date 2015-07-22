@@ -136,6 +136,9 @@ sub _build_wells {
   %wells = map { $self->_get_sample_uri($_, $analytes) }
             $container->findnodes('./placement/value')->to_literal_list;
 
+  use Data::Dumper;
+  print Dumper \%wells;
+
   return \%wells;
 }
 
