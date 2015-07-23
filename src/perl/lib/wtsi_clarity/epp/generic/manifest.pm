@@ -98,7 +98,7 @@ sub _create_file {
            ->create(
              type      => 'report_writer',
              headers   => keys $data->[0],
-             data      => $self->_file_content($container),
+             data      => $data,
              delimiter => "\t",
            );
 }

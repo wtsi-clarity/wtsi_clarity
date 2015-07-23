@@ -58,11 +58,11 @@ has 'message_handler' => (
   required => 1,
 );
 
-has 'on_startup'       => ( %CALLBACK_ATTRS, builder => '_build_on_startup', );
-has 'on_consume'       => ( %CALLBACK_ATTRS, builder => '_build_on_consume', );
-has 'on_consume_error' => ( %CALLBACK_ATTRS, builder => '_build_on_consume_error', );
-has 'on_consume_end'   => ( %CALLBACK_ATTRS, builder => '_build_default_callback', );
-has 'on_client_error'  => ( %CALLBACK_ATTRS, builder => '_build_on_client_error', );
+has '_on_startup'       => ( %CALLBACK_ATTRS, init_arg=> 'on_startup',       builder => '_build_on_startup', );
+has '_on_consume'       => ( %CALLBACK_ATTRS, init_arg=> 'on_consumer',      builder => '_build_on_consume', );
+has '_on_consume_error' => ( %CALLBACK_ATTRS, init_arg=> 'on_consume_error', builder => '_build_on_consume_error', );
+has '_on_consume_end'   => ( %CALLBACK_ATTRS, init_arg=> 'on_consume_end',   builder => '_build_default_callback', );
+has '_on_client_error'  => ( %CALLBACK_ATTRS, init_arg=> 'on_client_error',  builder => '_build_on_client_error', );
 
 sub run {
   my $self = shift;
@@ -73,21 +73,27 @@ sub run {
 sub log_message {
   my $self    = shift;
   my $message = shift // q{};
-  print {*STDOUT} join q{ }, _now(), qq{$message\n} or croak 'Can not write to STDOUT';
+  $self->_log(\*STDOUT, $message, 'Can not write to STDOUT');
   return;
 }
 
 sub log_error_message {
   my $self    = shift;
   my $message = shift // q{};
-  print {*STDERR} join q{ }, _now(), qq{$message\n} or croak 'Can not write to STDERR';
+  $self->_log(\*STDERR, $message, 'Can not write to STDERR');
   return;
 }
 
-sub program {
-  my ($self, @args) = @_;
+sub _log {
+  my ($self, $fh, $message, $err_message) = @_;
+  print {$fh} join q{ }, _now(), qq{$message\n} or croak $err_message;
+  return;
+}
 
-  $self->on_startup->(@args);
+sub _program {
+  my ($self) = @_;
+
+  $self->_on_startup->();
 
   $self->client->connect( @{$self->credentials} )
                ->open_channel( name => $self->channel_name )
@@ -132,7 +138,7 @@ sub _build_daemon {
     pid_file    => $self->pid_file,
     stderr_file => $self->stderr_file,
     stdout_file => $self->stdout_file,
-    program     => sub { $self->program },
+    program     => sub { $self->_program },
   );
 }
 
@@ -141,8 +147,8 @@ sub _build_client {
 
   return WTSI::DNAP::RabbitMQ::Client->new(
     acking_enabled  => 1,
-    consume_handler => sub { $self->on_consume->( @_ ) },
-    error_handler   => sub { $self->on_client_error->( @_ ) },
+    consume_handler => sub { $self->_on_consume->( @_ ) },
+    error_handler   => sub { $self->_on_client_error->( @_ ) },
   );
 }
 
@@ -165,9 +171,9 @@ sub _build_on_consume {
         routing_key => $args->{'deliver'}->{'method_frame'}->{'routing_key'},
       );
     } catch {
-      $self->on_consume_error->($_, $args);
+      $self->_on_consume_error->($_, $args);
     } finally {
-      $self->on_consume_end->();
+      $self->_on_consume_end->();
     }
   }
 }
@@ -214,7 +220,35 @@ wtsi_clarity::mq::consumer
 
 =head1 SYNOPSIS
 
+wtsi_clarity::mq::consumer->new(
+  name            => 'Notification Consumer',
+  queue           => 'notification_queue',
+  pid_file        => 'notification_pid',
+  stderr_file     => 'notification_log',
+  stdout_file     => 'notification_err',
+  message_handler => wtsi_clarity::mq::mh::notification_message_handler->new(),
+);
+
 =head1 DESCRIPTION
+
+A class for building consumers for the Clarity message queue server. By default the consumer
+will connect to RabbitMQ with WTSI::DNAP::RabbitMQ::Client. However, an alternative client
+can be passed in. After creating a consumer with new, it can be daemonized using the run method.
+
+There are a number of callbacks that have sane defaults but can be overidden if desired:
+
+  on_client_error - Called if the client encounters (usually if it can not connect to RabbitMQ)
+
+  on_startup - Called when the daemon starts
+
+  on_consume - Called when a message is passed from the queue to the consumer. By default the
+    pass the message to the message handler.
+
+  on_consume_error - Called if the message handler throws an error. By default it will log an
+    error message and send the message to the dead letter exchange
+
+  on_consume_end - Called after a message has been handled (even if there was an error whilst
+    handling it)
 
 =head1 SUBROUTINES/METHODS
 
@@ -223,8 +257,6 @@ wtsi_clarity::mq::consumer
 =head2 log_message Sends a message with a timestamp to STDOUT
 
 =head2 log_error_message Sends a message with a timestamp to STDERR
-
-=head2 program A subroutine that is passed to Daemon::Contols program arg
 
 =head2 send_to_dlx Sends a message to the configured DLX using the already opened channel
 

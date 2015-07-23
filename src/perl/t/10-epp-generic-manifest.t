@@ -29,7 +29,7 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
   my $message  = wtsi_clarity::mq::message->create('report',
     process_url => 'http://clarity.com/processes/1',
     step_url    => 'http://clarity.com/steps/1',
-    purpose     => '14MG',
+    purpose     => '14MG_sample_manifest',
     timestamp   => DateTime->now(),
   );
   my $manifest = wtsi_clarity::epp::generic::manifest->new( message => $message );

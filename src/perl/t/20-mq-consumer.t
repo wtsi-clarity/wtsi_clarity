@@ -35,11 +35,11 @@ use_ok('wtsi_clarity::mq::consumer');
   isa_ok($consumer, 'wtsi_clarity::mq::consumer');
 
   can_ok($consumer, qw/ name queue pid_file stderr_file stdout_file message_handler
-                        channel_name credentials daemon client on_startup on_consume
-                        on_consume_error on_consume_end run log_message log_error_message
-                        program /);
+                        channel_name credentials daemon client _on_startup _on_consume
+                        _on_consume_error _on_consume_end _on_client_error run log_message
+                        log_error_message _log _program /);
 
-  $consumer->on_consume->({
+  $consumer->_on_consume->({
     body => {
       payload => 'here is the message'
     },
@@ -95,7 +95,7 @@ use_ok('wtsi_clarity::mq::consumer');
     }
   };
 
-  $consumer->on_consume->($args);
+  $consumer->_on_consume->($args);
 
   is($on_consume_error_called, 1, 'The on_consume_error callback is called when message_handler::process croaks');
   like($error_message, qr/something has gone wrong processing the message/,
