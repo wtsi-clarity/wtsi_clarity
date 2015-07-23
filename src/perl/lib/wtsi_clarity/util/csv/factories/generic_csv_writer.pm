@@ -11,16 +11,17 @@ our $VERSION = '0.0';
 sub build {
   my ($self, %args) = @_;
 
-  my $headers  = $args{'headers'} || croak qq{Requires headers!};
-  my $csv_data = $args{'data'}    || croak qq{Requires some data to write down!};
+  my $headers   = $args{'headers'}   || croak qq{Requires headers!};
+  my $csv_data  = $args{'data'}      || croak qq{Requires some data to write down!};
+  my $delimiter = $args{'delimiter'} || q{,};
 
   my $text_data = [];
   my $c_headers = Mojo::Collection->new(@{$headers});
-  my $s_headers = $c_headers->join(q{,});
+  my $s_headers = $c_headers->join($delimiter);
   push @{$text_data},"$s_headers"; # quote are needed to stringify
 
   foreach my $datum (@{$csv_data}){
-    my $c_datum = $c_headers->map(sub { $datum->{$_} })->join(q{,});
+    my $c_datum = $c_headers->map(sub { $datum->{$_} })->join($delimiter);
     push @{$text_data},"$c_datum"; # quote are needed to stringify
   }
 

@@ -22,6 +22,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'cherrypick_stamp'               => 'generic::cherrypick_stamper',
     'queue_message'                  => 'generic::messenger',
     'store_plate'                    => 'generic::plate_storer',
+    'create_manifest'                => 'generic::manifest',
 
     'check_volume'                   => 'sm::volume_checker',
     'display_file'                   => 'sm::file_downloader',

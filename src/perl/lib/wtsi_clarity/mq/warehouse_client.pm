@@ -17,7 +17,6 @@ sub send_message {
                       vhost => $self->vhost,
                       user  => $self->username,
                       pass  => $self->password,);
-                      # cond  => $cv);
 
   ##no critic(Variables::ProhibitPunctuationVars)
   my $channel_name = 'client_channel'. $$;
@@ -44,6 +43,11 @@ sub send_message {
   return;
 }
 
+sub assemble_routing_key {
+  my ($self, $purpose) = @_;
+  return $self->_mq_config->{'env'}. q{.} . $self->_mq_config->{'routing_key'} . q{.} . $purpose;
+}
+
 1;
 __END__
 
@@ -62,6 +66,10 @@ wtsi_clarity::mq::warehouse_client
 =head2 send_message
 
   $client->send_message("Some message", "purpose");
+
+=head2 assemble_routing_key
+
+  Will determine the correct routing key for the type of message being sent
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
