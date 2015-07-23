@@ -1,5 +1,17 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 1.9.1
+ - Missed adding in the new action for Fluidigm validation. Added it in.
+
+Release 1.9
+ - Added validation for Fluidigm barcodes
+
+Release 1.8
+ - Fix the message consumer: adds UTF-8 support
+
+Release 1.7
+ - Get a Sanger barcode from a previous step
+
 Release 1.6.1
  - Fix bed verification bug #443 (corrects plate name mapping)
 
