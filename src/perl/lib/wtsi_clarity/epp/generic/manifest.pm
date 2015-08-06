@@ -62,7 +62,7 @@ has '_message' => (
   is        => 'ro',
   isa       => 'wtsi_clarity::mq::message',
   required  => 0,
-  trigger   => \&_set_process_url,
+  trigger   => \&_set_attributes,
   init_arg  => 'message',
   predicate => '_has_message',
 );
@@ -78,7 +78,9 @@ has 'publish_to_irods' => (
   is        => 'ro',
   isa       => 'Bool',
   predicate => '_has_publish_to_irods',
+  default   => 0,
   required  => 0,
+  writer    => 'write_publish_to_irods',
 );
 
 has '_irods_publisher' => (
@@ -220,9 +222,11 @@ sub _build_row {
   }
 }
 
-sub _set_process_url {
+sub _set_attributes {
   my $self = shift;
-  return $self->write_process_url($self->_message->process_url);
+  $self->write_process_url($self->_message->process_url);
+  $self->write_publish_to_irods($self->_message->publish_to_irods);
+  return 1;
 }
 
 sub _build__containers {
