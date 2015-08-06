@@ -5,7 +5,10 @@ use Readonly;
 use Carp;
 use List::Util qw/first/;
 use List::MoreUtils qw/uniq/;
+use DateTime;
+
 use wtsi_clarity::util::csv::factory;
+use wtsi_clarity::irods::irods_publisher;
 
 extends 'wtsi_clarity::epp';
 with 'wtsi_clarity::util::clarity_elements';
@@ -33,8 +36,17 @@ override 'run' => sub {
 
   my $reports = $self->_create_reports();
 
+  my @reports_path = ();
+  my $report_path;
+
   foreach my $container_id (keys %{$reports}) {
-    $reports->{$container_id}->saveas(q{./} . $self->_get_file_name($container_id));
+    $report_path = q{./} . $self->_get_file_name($container_id);
+    push @reports_path, $report_path;
+    $reports->{$container_id}->saveas($report_path);
+  }
+
+  if ($self->_has_publish_to_irods) {
+    $self->_publish_reports_to_irods(@reports_path);
   }
 
   return 1;
@@ -60,6 +72,25 @@ has 'container_id' => (
   isa       => 'ArrayRef',
   predicate => '_has_container_id',
   required  => 0,
+);
+
+has 'publish_to_irods' => (
+  is        => 'ro',
+  isa       => 'Bool',
+  predicate => '_has_publish_to_irods',
+  required  => 0,
+);
+
+has '_irods_publisher' => (
+  is        => 'ro',
+  isa       => 'wtsi_clarity::irods::irods_publisher',
+  required  => 0,
+  lazy      => 1,
+  default   => sub {
+    my ($self) = @_;
+
+    return wtsi_clarity::irods::irods_publisher->new();
+  },
 );
 
 has '_containers' => (
@@ -232,6 +263,37 @@ sub _sort_analyte {
   my $location_index_b = first { $sort_by[$_] eq $analyte_b->{'Sample/Well Location'} } 0..$#sort_by;
 
   return $location_index_a <=> $location_index_b;
+}
+
+sub _publish_reports_to_irods {
+  my ($self, @reports_path) = @_;
+
+  my $destination_base_path = $self->config->irods->{'irods_path'} . q{/};
+
+  foreach my $report_path (@reports_path) {
+    my @file_paths = split /\//sxm, $report_path;
+    my $report_filename = pop @file_paths;
+    $self->_irods_publisher->publish($report_path, $destination_base_path . $report_filename, 1, $self->_get_metadatum);
+  }
+
+  return 1;
+}
+
+sub _get_metadatum {
+  my ($self) = @_;
+
+  my @metadatum = (
+    {
+      "attribute" => "type",
+      "value"     => "manifest.txt",
+    },
+    {
+      "attribute" => "time",
+      "value"     => DateTime->now(),
+    }
+  );
+
+  return @metadatum;
 }
 
 1;

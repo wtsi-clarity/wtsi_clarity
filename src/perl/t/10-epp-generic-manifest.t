@@ -1,12 +1,14 @@
 use strict;
 use warnings;
 
-use Test::More tests => 9;
+use Test::More tests => 12;
 use Test::MockObject::Extends;
 use Test::Exception;
 
 use DateTime;
 use XML::LibXML;
+
+use File::Slurp;
 
 use_ok('wtsi_clarity::epp::generic::manifest');
 use_ok('wtsi_clarity::mq::message');
@@ -1889,6 +1891,33 @@ my $EXPECTED_FILE_CONTENT = [
 {
   my $manifest = wtsi_clarity::epp::generic::manifest->new( process_url => 'http://clarity.com/processes/1' );
   is($manifest->_get_file_name('24-123'), '24-123.manifest.txt', 'Creates a file name correctly');
+}
+
+{
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/manifest';
+
+  my $manifest = wtsi_clarity::epp::generic::manifest->new(
+    process_url       => 'http://clarity.com/processes/1',
+    publish_to_irods  => 1
+  );
+
+  my @reports_path = (
+    $ENV{'WTSICLARITY_WEBCACHE_DIR'} . q{/example_manifest.txt}
+  );
+
+  lives_ok {$manifest->_publish_reports_to_irods(@reports_path)}
+    'Successfully published the file into iRODS.';
+
+  #cleanup
+  my $irods_publisher = wtsi_clarity::irods::irods_publisher->new();
+  my $exit_code;
+  foreach my $report_path (@reports_path) {
+    my @file_paths = split(/\//, $report_path);
+    my $file_to_remove = pop @file_paths;
+    lives_ok {$exit_code = $irods_publisher->remove($file_to_remove)}
+      'Successfully removed file from iRODS.';
+    is($exit_code, 0, "Successfully exited from the irm command.");
+  }
 }
 
 1;
