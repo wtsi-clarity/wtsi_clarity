@@ -13,7 +13,9 @@ with qw/ wtsi_clarity::mq::message_enhancer /;
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $OUTPUT_ARTIFACT_LIMSIDS => q{prc:process/input-output-map/output[@output-type="Analyte"]/@limsid};
+Readonly::Scalar my $INPUT_OUTPUT_MAP        => q{prc:process/input-output-map};
+Readonly::Scalar my $INPUT_LIMSID            => q{input/@limsid};
+Readonly::Scalar my $OUTPUT_LIMSID           => q{output/@limsid};
 Readonly::Scalar my $FLOWCELL_BARCODE_UDF    => q{prc:process/udf:field[@name="Flow Cell ID"]};
 Readonly::Scalar my $SPIKED_HYB_BARCODE      => q{prc:process/udf:field[@name="WTSI Spiked Hyb Barcode"]};
 Readonly::Scalar my $PROCESS_LIMSID_PATH     => q{prc:process/@limsid};
@@ -23,7 +25,6 @@ Readonly::Scalar my $CONTAINER_URI_PATH      => q{./stp:placements/selected-cont
 Readonly::Scalar my $ARTIFACTS_ARTIFACT_URI  => q{art:artifacts/artifact/@uri};
 
 Readonly::Scalar my $ARTIFACT_WELL_PATH      => q{art:artifact/location/value};
-Readonly::Scalar my $ARTIFACT_NAME_PATH      => q{art:artifact/name};
 Readonly::Scalar my $ARTIFACT_LIMSID_PATH    => q{art:artifact/@limsid};
 Readonly::Scalar my $ARTIFACT_SAMPLE_LIMSID  => q{art:artifact/sample/@limsid};
 Readonly::Scalar my $ARTIFACT_REAGENT_NAME   => q{./art:artifact/reagent-label/@name};
@@ -172,28 +173,44 @@ has '_lanes' => (
 );
 sub _build__lanes {
   my $self = shift;
-  my @output_analytes = $self->process
-                             ->findnodes($OUTPUT_ARTIFACT_LIMSIDS)
-                             ->to_literal_list;
+  my @input_output_map = $self->process->findnodes($INPUT_OUTPUT_MAP);
 
-  my @lanes = map { $self->_build_lane($_) } @output_analytes;
+  my @lanes = map { $self->_build_lane($_) } @input_output_map;
+
   return \@lanes;
 }
 
 sub _build_lane {
-  my ($self, $artifact_id) = @_;
+  my ($self, $input_output_map) = @_;
   my %lane = ();
 
-  my $artifact = $self->fetch_and_parse($self->config->clarity_api->{'base_uri'} . '/artifacts/' . $artifact_id);
+  my $input_artifact_id  = $input_output_map->findvalue($INPUT_LIMSID);
+  my $output_artifact_id = $input_output_map->findvalue($OUTPUT_LIMSID);
 
-  my $well = $artifact->findvalue($ARTIFACT_WELL_PATH);
+  my $input_artifact  = $self->_fetch_artifact($input_artifact_id);
+  my $output_artifact = $self->_fetch_artifact($output_artifact_id);
+
+  my $well = $output_artifact->findvalue($ARTIFACT_WELL_PATH);
+
   $lane{'position'}       = $self->_extract_lane_position($well);
-  $lane{'id_pool_lims'}   = $artifact->findvalue($ARTIFACT_NAME_PATH);
-  $lane{'entity_id_lims'} = $artifact->findvalue($ARTIFACT_LIMSID_PATH);
-  $lane{'samples'}        = $self->_build_samples($artifact);
+  $lane{'id_pool_lims'}   = $self->_find_id_pools_lims($input_artifact);
+  $lane{'entity_id_lims'} = $output_artifact->findvalue($ARTIFACT_LIMSID_PATH);
+  $lane{'samples'}        = $self->_build_samples($output_artifact);
   $lane{'controls'}       = $self->_build_controls();
 
   return \%lane;
+}
+
+sub _find_id_pools_lims {
+  my ($self, $artifact) = @_;
+  my $container_uri = $artifact->findvalue($ARTIFACT_CONTAINER_URI);
+  my $container     = $self->fetch_and_parse($container_uri);
+  return $container->findvalue($CONTAINER_NAME);
+}
+
+sub _fetch_artifact {
+  my ($self, $artifact_id) = @_;
+  return $self->fetch_and_parse($self->config->clarity_api->{'base_uri'} . '/artifacts/' . $artifact_id);
 }
 
 sub _extract_lane_position {
