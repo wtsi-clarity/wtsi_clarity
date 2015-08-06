@@ -1893,7 +1893,11 @@ my $EXPECTED_FILE_CONTENT = [
   is($manifest->_get_file_name('24-123'), '24-123.manifest.txt', 'Creates a file name correctly');
 }
 
-{
+SKIP: {
+  my $irods_setup_exit_code = system('ihelp > /dev/null 2>&1');
+
+  skip 'iRODS icommands needs to be installed and they needs to be on the PATH.', 3 if ($irods_setup_exit_code != 0);
+
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/manifest';
 
   my $manifest = wtsi_clarity::epp::generic::manifest->new(
