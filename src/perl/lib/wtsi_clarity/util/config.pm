@@ -22,6 +22,7 @@ Readonly::Array  my @CONF_ITEMS      => qw/ clarity_api
                                             tag_plate
                                             warehouse_consumer
                                             report_consumer
+                                            irods
                                           /;
 
 has 'dir_path'  => (

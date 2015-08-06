@@ -10,9 +10,16 @@ extends 'wtsi_clarity::mq::message';
 enum 'WtsiClarityMqReportPurpose', [qw( 14MG_sample_manifest )];
 
 has 'purpose' => (
-  isa      => 'WtsiClarityMqReportPurpose',
-  is       => 'ro',
-  required => 1,
+  isa       => 'WtsiClarityMqReportPurpose',
+  is        => 'ro',
+  required  => 1,
+);
+
+has 'publish_to_irods' => (
+  isa       => 'Bool',
+  is        => 'ro',
+  required  => 1,
+  default   => 1,
 );
 
 1;
