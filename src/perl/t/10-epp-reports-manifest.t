@@ -10,21 +10,21 @@ use XML::LibXML;
 
 use File::Slurp;
 
-use_ok('wtsi_clarity::epp::generic::manifest');
+use_ok('wtsi_clarity::epp::reports::manifest');
 use_ok('wtsi_clarity::mq::message');
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 
 {
-  my $manifest = wtsi_clarity::epp::generic::manifest->new( process_url => 'http://clarity.com/processes/1' );
-  isa_ok($manifest, 'wtsi_clarity::epp::generic::manifest',
-    'Creates a wtsi_clarity::epp::generic::manifest when passed just a process_url');
+  my $manifest = wtsi_clarity::epp::reports::manifest->new( process_url => 'http://clarity.com/processes/1' );
+  isa_ok($manifest, 'wtsi_clarity::epp::reports::manifest',
+    'Creates a wtsi_clarity::epp::reports::manifest when passed just a process_url');
 }
 
 {
-  my $manifest = wtsi_clarity::epp::generic::manifest->new( container_id => [qw/24-123/] );
-  isa_ok($manifest, 'wtsi_clarity::epp::generic::manifest',
-    'Creates a wtsi_clarity::epp::generic::manifest when passed just a container_id');
+  my $manifest = wtsi_clarity::epp::reports::manifest->new( container_id => [qw/24-123/] );
+  isa_ok($manifest, 'wtsi_clarity::epp::reports::manifest',
+    'Creates a wtsi_clarity::epp::reports::manifest when passed just a container_id');
 }
 
 {
@@ -34,14 +34,14 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
     purpose     => '14MG_sample_manifest',
     timestamp   => DateTime->now(),
   );
-  my $manifest = wtsi_clarity::epp::generic::manifest->new( message => $message );
-  isa_ok($manifest, 'wtsi_clarity::epp::generic::manifest',
-    'Creates a wtsi_clarity::epp::generic::manifest when passed just a message');
+  my $manifest = wtsi_clarity::epp::reports::manifest->new( message => $message );
+  isa_ok($manifest, 'wtsi_clarity::epp::reports::manifest',
+    'Creates a wtsi_clarity::epp::reports::manifest when passed just a message');
   is($manifest->process_url, 'http://clarity.com/processes/1', '...and sets the process_url when message is set');
 }
 
 {
-  throws_ok { wtsi_clarity::epp::generic::manifest->new() }
+  throws_ok { wtsi_clarity::epp::reports::manifest->new() }
     qr/Either process_url, container_id, or message must be passed into generic::manifest/,
     'Throws an error when none of the arguments are passed in';
 }
@@ -1876,7 +1876,7 @@ my $EXPECTED_FILE_CONTENT = [
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/manifest';
 
-  my $manifest = wtsi_clarity::epp::generic::manifest->new( process_url => 'http://clarity.com/processes/1' );
+  my $manifest = wtsi_clarity::epp::reports::manifest->new( process_url => 'http://clarity.com/processes/1' );
 
   my $containers_xml = XML::LibXML->load_xml(
     location => $ENV{'WTSICLARITY_WEBCACHE_DIR'} . '/POST/containers.batch_a96e03cdcd0c7bb75d2263d8cdf143b0'
@@ -1889,7 +1889,7 @@ my $EXPECTED_FILE_CONTENT = [
 }
 
 {
-  my $manifest = wtsi_clarity::epp::generic::manifest->new( process_url => 'http://clarity.com/processes/1' );
+  my $manifest = wtsi_clarity::epp::reports::manifest->new( process_url => 'http://clarity.com/processes/1' );
   is($manifest->_get_file_name('24-123'), '24-123.manifest.txt', 'Creates a file name correctly');
 }
 
@@ -1900,7 +1900,7 @@ SKIP: {
 
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/manifest';
 
-  my $manifest = wtsi_clarity::epp::generic::manifest->new(
+  my $manifest = wtsi_clarity::epp::reports::manifest->new(
     process_url       => 'http://clarity.com/processes/1',
     publish_to_irods  => 1
   );

@@ -14,7 +14,7 @@ Readonly::Hash my %PURPOSE_TO_ENHANCER_TYPE => (
   'fluidigm'             => 'mq::me::fluidigm_enhancer',
   'flowcell'             => 'mq::me::flowcell_enhancer',
 
-  '14MG_sample_manifest' => 'epp::generic::manifest',
+  '14MG_sample_manifest' => 'epp::reports::manifest',
 );
 
 sub package_name {

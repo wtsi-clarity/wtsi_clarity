@@ -24,7 +24,7 @@ use_ok('wtsi_clarity::mq::mapper');
 
 {
   my $mq_mapper = wtsi_clarity::mq::mapper->new();
-  is($mq_mapper->package_name('14MG_sample_manifest'), 'wtsi_clarity::epp::generic::manifest',
+  is($mq_mapper->package_name('14MG_sample_manifest'), 'wtsi_clarity::epp::reports::manifest',
     'Creates the correct package name for a 14MG sample manifest report');
 }
 

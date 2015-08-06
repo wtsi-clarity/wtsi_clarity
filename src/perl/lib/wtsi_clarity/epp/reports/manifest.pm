@@ -1,4 +1,4 @@
-package wtsi_clarity::epp::generic::manifest;
+package wtsi_clarity::epp::reports::manifest;
 
 use Moose;
 use Readonly;
@@ -306,11 +306,11 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::epp::generic::manifest
+wtsi_clarity::epp::reports::manifest
 
 =head1 SYNOPSIS
 
-wtsi_clarity::epp::generic::manifest->new( container_id => ['24-123', '24-567'])->run()
+wtsi_clarity::epp::reports::manifest->new( container_id => ['24-123', '24-567'])->run()
 
 # Files 24-123.manifest.txt and 24-567.manifest.txt will appear in the current directory
 
