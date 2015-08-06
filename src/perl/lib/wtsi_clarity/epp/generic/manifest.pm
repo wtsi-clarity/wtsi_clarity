@@ -272,7 +272,7 @@ sub _sort_analyte {
 sub _publish_reports_to_irods {
   my ($self, @reports_path) = @_;
 
-  my $destination_base_path = $self->config->irods->{'irods_path'} . q{/};
+  my $destination_base_path = $self->config->irods->{'14m_manifest_path'} . q{/};
 
   foreach my $report_path (@reports_path) {
     my @file_paths = split /\//sxm, $report_path;
