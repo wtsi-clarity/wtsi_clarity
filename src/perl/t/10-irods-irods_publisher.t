@@ -21,10 +21,9 @@ use_ok('wtsi_clarity::irods::irods_publisher');
 
 my $data_path = 't/data/irods/irods_publisher';
 my $test_file_name = 'test_file.txt';
-my $destination_folder = '/Sanger1-dev/home/glsai';
 
 my $file_to_put = "$data_path/$test_file_name";
-my $destination_path = "$destination_folder/$test_file_name";
+my $destination_path = "$test_file_name";
 my $file_to_add_metadata = $destination_path;
 my $file_to_remove = $destination_path;
 
