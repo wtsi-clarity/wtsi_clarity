@@ -70,10 +70,16 @@ wtsi_clarity::irods::irods_publisher
 
 =head1 SYNOPSIS
 
-  wtsi_clarity::irods::irods_publisher->new(
-       process_url => 'http://clarity-ap:8080/processes/3345',
-       step_url    => 'http://testserver.com:1234/here/steps/24-98970',
-  )->run();
+  Publish a data object (file) into iRODS:
+
+  my $publisher = wtsi_clarity::irods::irods_publisher->new();
+  $publisher->publish(file, $destination, $is_overwrite, @metadata);
+
+  Remove a data object (file) from iRODS:
+
+  my $publisher = wtsi_clarity::irods::irods_publisher->new();
+  $publisher->remove(file);
+
 
 =head1 DESCRIPTION
 
@@ -103,8 +109,6 @@ wtsi_clarity::irods::irods_publisher
 
 =item Readonly
 
-=item XML::LibXML
-
 =back
 
 =head1 AUTHOR
@@ -113,7 +117,7 @@ Karoly Erdos E<lt>ke4@sanger.ac.ukE<gt>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (C) 2014 Genome Research Ltd.
+Copyright (C) 2015 Genome Research Ltd.
 
 This file is part of wtsi_clarity project.
 
