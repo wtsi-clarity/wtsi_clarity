@@ -31,7 +31,7 @@ sub remove {
 sub _put {
   my ($self, $file, $destination, $is_overwrite) = @_;
 
-  my $iput_command = "iput -K $file $destination";
+  my $iput_command = "iput -K -f $file $destination";
 
   return $self->_execute_irods_command($iput_command);
 }
@@ -41,7 +41,7 @@ sub _add_metadata_to_file {
   my $exit_code;
 
   foreach my $metadata (@metadatum) {
-    my $imeta_command = "imeta add -d $file $metadata->{'attribute'} $metadata->{'value'}";
+    my $imeta_command = "imeta set -d $file $metadata->{'attribute'} $metadata->{'value'}";
     $exit_code = $self->_execute_irods_command($imeta_command);
   }
 
