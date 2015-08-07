@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 12;
+use Test::More tests => 6;
 use Test::MockObject::Extends;
 use Test::Exception;
 
@@ -11,40 +11,8 @@ use XML::LibXML;
 use File::Slurp;
 
 use_ok('wtsi_clarity::epp::reports::manifest');
-use_ok('wtsi_clarity::mq::message');
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
-
-{
-  my $manifest = wtsi_clarity::epp::reports::manifest->new( process_url => 'http://clarity.com/processes/1' );
-  isa_ok($manifest, 'wtsi_clarity::epp::reports::manifest',
-    'Creates a wtsi_clarity::epp::reports::manifest when passed just a process_url');
-}
-
-{
-  my $manifest = wtsi_clarity::epp::reports::manifest->new( container_id => [qw/24-123/] );
-  isa_ok($manifest, 'wtsi_clarity::epp::reports::manifest',
-    'Creates a wtsi_clarity::epp::reports::manifest when passed just a container_id');
-}
-
-{
-  my $message  = wtsi_clarity::mq::message->create('report',
-    process_url => 'http://clarity.com/processes/1',
-    step_url    => 'http://clarity.com/steps/1',
-    purpose     => '14MG_sample_manifest',
-    timestamp   => DateTime->now(),
-  );
-  my $manifest = wtsi_clarity::epp::reports::manifest->new( message => $message );
-  isa_ok($manifest, 'wtsi_clarity::epp::reports::manifest',
-    'Creates a wtsi_clarity::epp::reports::manifest when passed just a message');
-  is($manifest->process_url, 'http://clarity.com/processes/1', '...and sets the process_url when message is set');
-}
-
-{
-  throws_ok { wtsi_clarity::epp::reports::manifest->new() }
-    qr/Either process_url, container_id, or message must be passed into generic::manifest/,
-    'Throws an error when none of the arguments are passed in';
-}
 
 my $EXPECTED_FILE_CONTENT = [
   {
@@ -391,8 +359,7 @@ my $EXPECTED_FILE_CONTENT = [
   },
   {
     'UDF/WTSI Supplier Volume' => '',
-    'UDF/WTSI Taxon ID' => '9606',
-    'Project Name' => 'UTF-8 TEST Project',
+    'UDF/WTSI Taxon ID' => '9606',    'Project Name' => 'UTF-8 TEST Project',
     'UDF/WTSI Bait Library Name' => 'Human all exon V5',
     'Sample UUID' => 'c6ec2cba-2400-11e5-9fe5-a5167eb58136',
     'UDF/WTSI Organism' => 'Homo Sapiens',
@@ -1884,13 +1851,13 @@ my $EXPECTED_FILE_CONTENT = [
 
   my $container = $containers_xml->findnodes('/con:details/con:container')->pop();
 
-  is_deeply($manifest->_file_content($container), $EXPECTED_FILE_CONTENT,
-    'File content is generated from a container node correctly');
-}
+  my $file_content = $manifest->file_content($container);
+  $file_content = $manifest->_sort_file_content($file_content, $manifest->sort_order, $manifest->sort_by_column);
 
-{
-  my $manifest = wtsi_clarity::epp::reports::manifest->new( process_url => 'http://clarity.com/processes/1' );
-  is($manifest->_get_file_name('24-123'), '24-123.manifest.txt', 'Creates a file name correctly');
+  is_deeply($file_content, $EXPECTED_FILE_CONTENT,
+    'File content is generated from a container node correctly');
+
+  is($manifest->file_name($container), '27-11037.manifest.txt', 'Creates a file name correctly');
 }
 
 SKIP: {
