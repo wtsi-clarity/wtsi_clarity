@@ -4,6 +4,7 @@ use Moose;
 use Carp;
 use Readonly;
 use List::Util qw/first/;
+use File::Temp qw/ tempdir /;
 
 use wtsi_clarity::util::csv::factory;
 use wtsi_clarity::irods::irods_publisher;
@@ -120,7 +121,8 @@ sub _create_reports {
     my $filename = $self->file_name($model);
 
     if ($self->_has_publish_to_irods && $self->publish_to_irods) {
-      my $file_path = $file->save_to_tmp($filename);
+      my $dir = tempdir(CLEANUP => 1);
+      my $file_path = $file->saveas(join q{/}, $dir, $filename);
       $self->_publish_report_to_irods($file_path);
     } else {
       $file->saveas($filename);
