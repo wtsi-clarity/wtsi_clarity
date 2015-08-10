@@ -191,6 +191,16 @@ message must be supplied
 
 =head2 run - Builds the report
 
+=head2 elements
+
+=head2 file_content
+
+=head2 file_name
+
+=head2 get_metadatum
+
+=head2 sort_by_column
+
 =head1 CONFIGURATION AND ENVIRONMENT
 
 =head1 DEPENDENCIES

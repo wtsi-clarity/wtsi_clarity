@@ -18,7 +18,7 @@ extends 'wtsi_clarity::epp';
 #   my $self = shift;
 
 #   if (!$self->_has_process_url && !$self->_has_message) {
-#     croak 'Either process_url, or message must be passed into generic::manifest';
+#     croak 'Either process_url or message must be passed for generating a report';
 #   }
 
 #   return $self;
@@ -106,7 +106,7 @@ sub _create_reports {
 
   while (my $model = $iterator->()) {
     my $file_content = $self->file_content($model);
-    my @headers      = keys($file_content->[0]);
+    my @headers      = keys $file_content->[0];
 
     $file_content = $self->_sort_file_content($file_content, $self->sort_order, $self->sort_by_column);
 
@@ -117,11 +117,13 @@ sub _create_reports {
       delimiter => $self->file_delimiter,
     );
 
+    my $filename = $self->file_name($model);
+
     if ($self->_has_publish_to_irods && $self->publish_to_irods) {
-      my $file_path = $file->save_to_tmp(); # TODO
+      my $file_path = $file->save_to_tmp($filename);
       $self->_publish_report_to_irods($file_path);
     } else {
-      $file->saveas($self->file_name($model));
+      $file->saveas($filename);
     }
   }
 
@@ -175,3 +177,78 @@ sub _comparator {
 }
 
 1;
+
+__END__
+
+=head1 NAME
+
+wtsi_clarity::epp::reports::report
+
+=head1 SYNOPSIS
+
+base report class for irods related reports
+
+=head1 DESCRIPTION
+
+=head1 SUBROUTINES/METHODS
+
+=head2 BUILD
+
+=head2 run
+
+=head2 run - Builds the report
+
+=head2 file_content
+
+=head2 file_delimiter
+
+=head2 sort_order
+
+=head2 sort_by_column
+
+=head1 CONFIGURATION AND ENVIRONMENT
+
+=head1 DEPENDENCIES
+
+=over
+
+=item Moose
+
+=item Readnly
+
+=item Carp
+
+=item List::Util
+
+=item wtsi_clarity::util::csv::factory
+
+=item wtsi_clarity::epp
+
+=item wtsi_clarity::irods::irods_publisher
+
+=back
+
+=head1 AUTHOR
+
+Author: Chris Smith E<lt>cs24@sanger.ac.ukE<gt>
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright (C) 2015 GRL
+
+This file is part of wtsi_clarity project.
+
+wtsi_clarity is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+=cut

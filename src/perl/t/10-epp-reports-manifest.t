@@ -1872,23 +1872,19 @@ SKIP: {
     publish_to_irods  => 1
   );
 
-  my @reports_path = (
-    $ENV{'WTSICLARITY_WEBCACHE_DIR'} . q{/example_manifest.txt}
-  );
+  my $report_path = $ENV{'WTSICLARITY_WEBCACHE_DIR'} . q{/example_manifest.txt};
 
-  lives_ok {$manifest->_publish_reports_to_irods(@reports_path)}
+  lives_ok {$manifest->_publish_report_to_irods($report_path)}
     'Successfully published the file into iRODS.';
 
   #cleanup
   my $irods_publisher = wtsi_clarity::irods::irods_publisher->new();
   my $exit_code;
-  foreach my $report_path (@reports_path) {
-    my @file_paths = split(/\//, $report_path);
-    my $file_to_remove = pop @file_paths;
-    lives_ok {$exit_code = $irods_publisher->remove($file_to_remove)}
-      'Successfully removed file from iRODS.';
-    is($exit_code, 0, "Successfully exited from the irm command.");
-  }
+  my @file_paths = split(/\//, $report_path);
+  my $file_to_remove = pop @file_paths;
+  lives_ok {$exit_code = $irods_publisher->remove($file_to_remove)}
+    'Successfully removed file from iRODS.';
+  is($exit_code, 0, "Successfully exited from the irm command.");
 }
 
 1;

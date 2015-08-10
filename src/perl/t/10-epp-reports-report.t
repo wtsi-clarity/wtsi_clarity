@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 5;
+use Test::More tests => 6;
 use Test::Exception;
 use DateTime;
 
@@ -35,10 +35,10 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
   is($manifest->process_url, 'http://clarity.com/processes/1', '...and sets the process_url when message is set');
 }
 
-{
-  throws_ok { wtsi_clarity::epp::reports::report->new() }
-    qr/Either process_url, container_id, or message must be passed into generic::manifest/,
-    'Throws an error when none of the arguments are passed in';
-}
+# {
+#   throws_ok { wtsi_clarity::epp::reports::report->new() }
+#     qr/Either process_url or message must be passed for generating a report/,
+#     'Throws an error when none of the arguments are passed in';
+# }
 
 1;
