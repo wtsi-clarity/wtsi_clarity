@@ -159,11 +159,11 @@ sub _publish_report_to_irods {
 
 sub _sort_file_content {
   my ($self, $file_content, $sort_order, $sort_by_column) = @_;
-  my @rows = sort { $self->_sort($sort_order, $sort_by_column, $a, $b) } @{$file_content};
+  my @rows = sort { $self->_comparator($sort_order, $sort_by_column, $a, $b) } @{$file_content};
   return \@rows;
 }
 
-sub _sort {
+sub _comparator {
   my ($self, $sort_order, $sort_by_column, $row_a, $row_b) = @_;
 
   my @sort_order = @{$sort_order};
