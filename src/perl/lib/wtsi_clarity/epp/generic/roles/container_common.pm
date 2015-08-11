@@ -22,7 +22,7 @@ Readonly::Scalar my $CONTAINER_LIMSID_PATH    => q{/con:container/@limsid};
 Readonly::Scalar our $PLATE_96_WELL_CONTAINER_NAME  => q{96 Well Plate};
 Readonly::Scalar our $ABGENE_800_CONTAINER_NAME     => q{ABgene 0800};
 Readonly::Scalar our $ABGENE_765_CONTAINER_NAME     => q{ABgene 0765};
-Readonly::Scalar our $FLUIDX_075_CONTAINER_NAME     => q{FluidX 0.75ml};
+Readonly::Scalar our $FLUIDX_075_CONTAINER_NAME     => q{FluidX075};
 Readonly::Scalar our $STOCK_PLATE_PURPOSE           => q{Stock Plate};
 Readonly::Scalar our $DEFAULT_CONTAINER_TYPE        => $FLUIDX_075_CONTAINER_NAME;
 
