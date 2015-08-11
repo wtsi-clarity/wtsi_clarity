@@ -1857,7 +1857,18 @@ my $EXPECTED_FILE_CONTENT = [
   is_deeply($file_content, $EXPECTED_FILE_CONTENT,
     'File content is generated from a container node correctly');
 
-  is($manifest->file_name($container), '27-11037.manifest.txt', 'Creates a file name correctly');
+  my $mocked_manifest = Test::MockObject::Extends->new(
+    wtsi_clarity::epp::reports::manifest->new(
+      process_url => 'http://clarity.com/processes/1',
+    )
+  );
+  $mocked_manifest->mock(q{now}, sub {
+    return "Tue January 12 2015 12:00:13";
+  });
+
+  my $expected_file_name = "27-11037.Tue January 12 2015 12:00:13.manifest.txt";
+
+  is($mocked_manifest->file_name($container), $expected_file_name, 'Creates a file name correctly');
 }
 
 SKIP: {

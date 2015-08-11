@@ -13,7 +13,7 @@ our $VERSION = '0.0';
 
 ## no critic (ValuesAndExpressions::RequireInterpolationOfMetachars)
 
-Readonly::Scalar my $FILE_NAME => q{%s.manifest.txt};
+Readonly::Scalar my $FILE_NAME => q{%s.%s.manifest.txt};
 
 has 'container_id' => (
   is        => 'ro',
@@ -48,7 +48,7 @@ sub sort_by_column { return 'Sample/Well Location' }
 
 sub file_name {
   my ($self, $container) = @_;
-  return sprintf $FILE_NAME, $container->findvalue('@limsid');
+  return sprintf $FILE_NAME, $container->findvalue('@limsid'), $self->now();
 }
 
 sub get_metadatum {
@@ -61,7 +61,7 @@ sub get_metadatum {
     },
     {
       "attribute" => "time",
-      "value"     => DateTime->now(),
+      "value"     => $self->now(),
     }
   );
 
@@ -88,6 +88,12 @@ sub file_content {
   } keys $file_content{$container_lims_id}{'wells'};
 
   return \@rows;
+}
+
+sub irods_destination_path {
+  my ($self) = @_;
+
+  return $self->config->irods->{'14m_manifest_path'} . q{/};
 }
 
 sub _build__containers {
@@ -182,7 +188,7 @@ wtsi_clarity::epp::reports::manifest->new( container_id => ['24-123', '24-567'])
  An EPP for creating a "manifest report". The EPP can be supplied with either a process_url, an
  array of container_ids, or a wtsi_clarity::mq::message object (which would come for the report
  queue). The report will be built and currently saved locally with the filename of
- {container_id}.manifest.txt.
+ {container_id}.{timestamp}.manifest.txt.
 
 =head1 SUBROUTINES/METHODS
 
@@ -193,13 +199,28 @@ message must be supplied
 
 =head2 elements
 
+  Creating the elements/rows of the report file.
+
 =head2 file_content
+
+  Generating the content of the report file.
 
 =head2 file_name
 
+  Generating a file name based on the sample UUID and the current time stamp.
+  The file name will be like {container_id}.{timestamp}.manifest.txt.
+
 =head2 get_metadatum
 
+  Returns the metadatum for the file publishing to iRODS.
+
 =head2 sort_by_column
+
+  Define the sorting criteria by column name.
+
+=head2 irods_destination_path
+
+  Returns the file's destination path on iRODS.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

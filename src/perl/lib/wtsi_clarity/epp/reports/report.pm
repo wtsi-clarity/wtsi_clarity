@@ -99,6 +99,14 @@ sub sort_by_column {
   croak 'Method sort_by_column must be overidden';
 }
 
+sub irods_destination_path {
+  croak 'Method irods_destination_path must be overidden';
+}
+
+sub now {
+  return DateTime->now()->strftime('%a %b %d %Y %T');
+}
+
 # Cheeky template method...
 sub _create_reports {
   my $self = shift;
@@ -109,6 +117,8 @@ sub _create_reports {
     my $file_content = $self->file_content($model);
     my @headers      = keys $file_content->[0];
 
+    # TODO: this should also take out from the base template
+    # as not always needed it
     $file_content = $self->_sort_file_content($file_content, $self->sort_order, $self->sort_by_column);
 
     my $file = $self->_file_factory->create(
@@ -152,7 +162,7 @@ sub _set_attributes {
 sub _publish_report_to_irods {
   my ($self, $report_path) = @_;
 
-  my $destination_base_path = $self->config->irods->{'14m_manifest_path'} . q{/};
+  my $destination_base_path = $self->irods_destination_path;
 
   my @file_paths = split /\//sxm, $report_path;
   my $report_filename = pop @file_paths;
@@ -196,17 +206,34 @@ base report class for irods related reports
 
 =head2 BUILD
 
-=head2 run
-
 =head2 run - Builds the report
 
 =head2 file_content
 
+  An abstract method, what the child class should be override.
+  Generating the content of the report file.
+
 =head2 file_delimiter
+
+  Returning the delimiter between the fields in the file.
 
 =head2 sort_order
 
+  Ordering the rows in the file.
+
+=head2 now
+
+  Returning the current date/time stamp in string format.
+
 =head2 sort_by_column
+
+  An abstract method, what the child class should be override.
+  Define the sorting criteria by column name.
+
+=head2 irods_destination_path
+
+  An abstract method, what the child class should be override.
+  Returns the file's destination path on iRODS.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
