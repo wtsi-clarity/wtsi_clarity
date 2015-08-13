@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="yes"?>
+<stp:step xmlns:stp="http://genologics.com/ri/step" current-state="Assign Next Steps" limsid="24-63229" uri="http://testserver.com:1234/here/steps/24-63229">
+    <configuration uri="http://testserver.com:1234/here/configuration/protocols/9/steps/701">Cherrypick Stamping (SM)</configuration>
+    <actions uri="http://testserver.com:1234/here/steps/24-63229/actions"/>
+    <placements uri="http://testserver.com:1234/here/steps/24-63229/placements"/>
+    <program-status uri="http://testserver.com:1234/here/steps/24-63229/programstatus"/>
+    <details uri="http://testserver.com:1234/here/steps/24-63229/details"/>
+    <available-programs>
+        <available-program name="Update Cherrypick Volumes" uri="http://testserver.com:1234/here/steps/24-63229/trigger/856"/>
+    </available-programs>
+</stp:step>

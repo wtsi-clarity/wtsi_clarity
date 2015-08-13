@@ -63,8 +63,8 @@ use_ok 'wtsi_clarity::clarity::step';
 
   isa_ok($step->_placement_doc, 'XML::LibXML::Document');
 
-  is_deeply($step->_input_containers_uri, \@expected_container_uris, 'Returns the correct input containers uri');
-  is($step->input_container_count, $expected_input_container_count, 'Returns the correct input container count.');
+  is_deeply($step->_output_containers_uri, \@expected_container_uris, 'Returns the correct output containers uri');
+  is($step->output_container_count, $expected_input_container_count, 'Returns the correct output container count.');
 }
 
 1;

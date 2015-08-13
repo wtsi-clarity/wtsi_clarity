@@ -1,98 +1,25 @@
-package wtsi_clarity::epp::generic::manifest;
+package wtsi_clarity::epp::reports::manifest;
 
 use Moose;
 use Readonly;
 use Carp;
-use List::Util qw/first/;
 use List::MoreUtils qw/uniq/;
 use DateTime;
 
-use wtsi_clarity::util::csv::factory;
-use wtsi_clarity::irods::irods_publisher;
-
-extends 'wtsi_clarity::epp';
+extends 'wtsi_clarity::epp::reports::report';
 with 'wtsi_clarity::util::clarity_elements';
 
 our $VERSION = '0.0';
 
 ## no critic (ValuesAndExpressions::RequireInterpolationOfMetachars)
 
-Readonly::Scalar my $FILE_NAME => q{%s.manifest.txt};
-Readonly::Scalar my $TWELVE    => 12;
-
-sub BUILD {
-  my $self = shift;
-
-  if (!$self->_has_process_url && !$self->_has_container_id && !$self->_has_message) {
-    croak 'Either process_url, container_id, or message must be passed into generic::manifest';
-  }
-
-  return $self;
-}
-
-override 'run' => sub {
-  my $self = shift;
-  super();
-
-  my $reports = $self->_create_reports();
-
-  my @reports_path = ();
-  my $report_path;
-
-  foreach my $container_id (keys %{$reports}) {
-    $report_path = q{./} . $self->_get_file_name($container_id);
-    push @reports_path, $report_path;
-    $reports->{$container_id}->saveas($report_path);
-  }
-
-  if ($self->_has_publish_to_irods) {
-    $self->_publish_reports_to_irods(@reports_path);
-  }
-
-  return 1;
-};
-
-has '+process_url' => (
-  required  => 0,
-  predicate => '_has_process_url',
-  writer    => 'write_process_url',
-);
-
-has '_message' => (
-  is        => 'ro',
-  isa       => 'wtsi_clarity::mq::message',
-  required  => 0,
-  trigger   => \&_set_attributes,
-  init_arg  => 'message',
-  predicate => '_has_message',
-);
+Readonly::Scalar my $FILE_NAME => q{%s.%s.manifest.txt};
 
 has 'container_id' => (
   is        => 'ro',
   isa       => 'ArrayRef',
   predicate => '_has_container_id',
   required  => 0,
-);
-
-has 'publish_to_irods' => (
-  is        => 'ro',
-  isa       => 'Bool',
-  predicate => '_has_publish_to_irods',
-  default   => 0,
-  required  => 0,
-  writer    => 'write_publish_to_irods',
-);
-
-has '_irods_publisher' => (
-  is        => 'ro',
-  isa       => 'wtsi_clarity::irods::irods_publisher',
-  required  => 0,
-  lazy      => 1,
-  default   => sub {
-    my ($self) = @_;
-
-    return wtsi_clarity::irods::irods_publisher->new();
-  },
 );
 
 has '_containers' => (
@@ -109,34 +36,39 @@ has '_projects' => (
   init_arg => undef,
 );
 
-sub _create_reports {
+sub elements {
   my $self = shift;
-
-  my %files = map { $self->_create_report_hash($_) }
-    $self->_containers->findnodes('/con:details/con:container');
-
-  return \%files;
+  my $containers = $self->_containers->findnodes('/con:details/con:container');
+  return sub {
+    return $containers->pop();
+  }
 }
 
-sub _create_report_hash {
+sub sort_by_column { return 'Sample/Well Location' }
+
+sub file_name {
   my ($self, $container) = @_;
-  return { $_->findvalue('@limsid') => $self->_create_file($container) };
+  return sprintf $FILE_NAME, $container->findvalue('@limsid'), $self->now();
 }
 
-sub _create_file {
-  my ($self, $container) = @_;
-  my $data = $self->_file_content($container);
+sub get_metadatum {
+  my ($self) = @_;
 
-  return wtsi_clarity::util::csv::factory->new()
-           ->create(
-             type      => 'report_writer',
-             headers   => keys $data->[0],
-             data      => $data,
-             delimiter => "\t",
-           );
+  my @metadatum = (
+    {
+      "attribute" => "type",
+      "value"     => "manifest.txt",
+    },
+    {
+      "attribute" => "time",
+      "value"     => $self->now(),
+    }
+  );
+
+  return @metadatum;
 }
 
-sub _file_content {
+sub file_content {
   my ($self, $container) = @_;
   my %file_content = ();
 
@@ -155,9 +87,24 @@ sub _file_content {
     $self->_build_row($_, \%file_content, $container_lims_id, $samples);
   } keys $file_content{$container_lims_id}{'wells'};
 
-  @rows = sort { $self->_sort_analyte($self->_sort_by(), $a, $b) } @rows;
-
   return \@rows;
+}
+
+sub irods_destination_path {
+  my ($self) = @_;
+
+  return $self->config->irods->{'14m_manifest_path'} . q{/};
+}
+
+sub _build__containers {
+  my $self = shift;
+
+  if ($self->_has_process_url) {
+    return $self->process_doc->containers;
+  } elsif ($self->_has_container_id) {
+    my @urls = map { $self->config->clarity_api->{'base_uri'} . '/containers/' . $_ } @{$self->container_id};
+    return $self->request->batch_retrieve('containers', \@urls);
+  }
 }
 
 sub _build_wells {
@@ -222,95 +169,17 @@ sub _build_row {
   }
 }
 
-sub _set_attributes {
-  my $self = shift;
-  $self->write_process_url($self->_message->process_url);
-  $self->write_publish_to_irods($self->_message->publish_to_irods);
-  return 1;
-}
-
-sub _build__containers {
-  my $self = shift;
-
-  if ($self->_has_process_url) {
-    return $self->process_doc->containers;
-  } elsif ($self->_has_container_id) {
-    my @urls = map { $self->config->clarity_api->{'base_uri'} . '/containers/' . $_ } @{$self->container_id};
-    return $self->request->batch_retrieve('containers', \@urls);
-  }
-}
-
-sub _get_file_name {
-  my ($self, $container_id) = @_;
-  return sprintf $FILE_NAME, $container_id;
-}
-
-sub _sort_by {
-  my $self = shift;
-  my @wells = ();
-
-  for my $column (1..$TWELVE) {
-    for my $row (q{A}..q{H}) {
-      push @wells, $row . q{:} . $column;
-    }
-  }
-
-  return \@wells;
-}
-
-sub _sort_analyte {
-  my ($self, $sort_by, $analyte_a, $analyte_b) = @_;
-
-  my @sort_by = @{$sort_by};
-
-  my $location_index_a = first { $sort_by[$_] eq $analyte_a->{'Sample/Well Location'} } 0..$#sort_by;
-  my $location_index_b = first { $sort_by[$_] eq $analyte_b->{'Sample/Well Location'} } 0..$#sort_by;
-
-  return $location_index_a <=> $location_index_b;
-}
-
-sub _publish_reports_to_irods {
-  my ($self, @reports_path) = @_;
-
-  my $destination_base_path = $self->config->irods->{'14m_manifest_path'} . q{/};
-
-  foreach my $report_path (@reports_path) {
-    my @file_paths = split /\//sxm, $report_path;
-    my $report_filename = pop @file_paths;
-    $self->_irods_publisher->publish($report_path, $destination_base_path . $report_filename, 1, $self->_get_metadatum);
-  }
-
-  return 1;
-}
-
-sub _get_metadatum {
-  my ($self) = @_;
-
-  my @metadatum = (
-    {
-      "attribute" => "type",
-      "value"     => "manifest.txt",
-    },
-    {
-      "attribute" => "time",
-      "value"     => DateTime->now(),
-    }
-  );
-
-  return @metadatum;
-}
-
 1;
 
 __END__
 
 =head1 NAME
 
-wtsi_clarity::epp::generic::manifest
+wtsi_clarity::epp::reports::manifest
 
 =head1 SYNOPSIS
 
-wtsi_clarity::epp::generic::manifest->new( container_id => ['24-123', '24-567'])->run()
+wtsi_clarity::epp::reports::manifest->new( container_id => ['24-123', '24-567'])->run()
 
 # Files 24-123.manifest.txt and 24-567.manifest.txt will appear in the current directory
 
@@ -319,7 +188,7 @@ wtsi_clarity::epp::generic::manifest->new( container_id => ['24-123', '24-567'])
  An EPP for creating a "manifest report". The EPP can be supplied with either a process_url, an
  array of container_ids, or a wtsi_clarity::mq::message object (which would come for the report
  queue). The report will be built and currently saved locally with the filename of
- {container_id}.manifest.txt.
+ {container_id}.{timestamp}.manifest.txt.
 
 =head1 SUBROUTINES/METHODS
 
@@ -327,6 +196,31 @@ wtsi_clarity::epp::generic::manifest->new( container_id => ['24-123', '24-567'])
 message must be supplied
 
 =head2 run - Builds the report
+
+=head2 elements
+
+  Creating the elements/rows of the report file.
+
+=head2 file_content
+
+  Generating the content of the report file.
+
+=head2 file_name
+
+  Generating a file name based on the sample UUID and the current time stamp.
+  The file name will be like {container_id}.{timestamp}.manifest.txt.
+
+=head2 get_metadatum
+
+  Returns the metadatum for the file publishing to iRODS.
+
+=head2 sort_by_column
+
+  Define the sorting criteria by column name.
+
+=head2 irods_destination_path
+
+  Returns the file's destination path on iRODS.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

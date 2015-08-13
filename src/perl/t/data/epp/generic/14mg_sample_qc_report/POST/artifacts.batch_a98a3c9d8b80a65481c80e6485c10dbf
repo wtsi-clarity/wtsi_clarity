@@ -1,0 +1,67 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-373510?state=186820" limsid="2-373510">
+        <name>0243d48c-a7c6-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63229" limsid="24-63229"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11472" limsid="27-11472"/>
+            <value>C:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A953" limsid="TES155A953"/>
+        <udf:field type="Numeric" name="Cherrypick Sample Volume">3.92948600846865</udf:field>
+        <udf:field type="Numeric" name="Cherrypick Buffer Volume">116.070513991531</udf:field>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-373511?state=186821" limsid="2-373511">
+        <name>01e9be16-a7c6-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63229" limsid="24-63229"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11472" limsid="27-11472"/>
+            <value>D:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A954" limsid="TES155A954"/>
+        <udf:field type="Numeric" name="Cherrypick Sample Volume">5.00907469236368</udf:field>
+        <udf:field type="Numeric" name="Cherrypick Buffer Volume">114.990925307636</udf:field>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-373512?state=186822" limsid="2-373512">
+        <name>031182d8-a7c6-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63229" limsid="24-63229"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11472" limsid="27-11472"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A951" limsid="TES155A951"/>
+        <udf:field type="Numeric" name="Cherrypick Sample Volume">5.62795847031593</udf:field>
+        <udf:field type="Numeric" name="Cherrypick Buffer Volume">114.372041529684</udf:field>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-373513?state=186823" limsid="2-373513">
+        <name>02a47f9e-a7c6-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63229" limsid="24-63229"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11472" limsid="27-11472"/>
+            <value>B:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A952" limsid="TES155A952"/>
+        <udf:field type="Numeric" name="Cherrypick Sample Volume">9.00245190564561</udf:field>
+        <udf:field type="Numeric" name="Cherrypick Buffer Volume">110.997548094354</udf:field>
+        <workflow-stages/>
+    </art:artifact>
+</art:details>
