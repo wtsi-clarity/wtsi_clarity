@@ -7,7 +7,7 @@ our $VERSION = '0.0';
 
 extends 'wtsi_clarity::mq::message';
 
-enum 'WtsiClarityMqReportPurpose', [qw( 14MG_sample_manifest )];
+enum 'WtsiClarityMqReportPurpose', [qw( 14MG_sample_manifest 14MG_sample_report )];
 
 has 'purpose' => (
   isa       => 'WtsiClarityMqReportPurpose',
