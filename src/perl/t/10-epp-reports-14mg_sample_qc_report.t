@@ -24,7 +24,7 @@ my $EXPECTED_FILE_CONTENT = [
   {
     'DNA amount library prep' => '192',
     'Library concentration' => '138.3304326231556',
-    'Status' => 'Yes',
+    'Status' => 'Passed',
     'Sample volume' => '120',
     'Concentration' => '38.3304326231556',
     'Sample UUID' => '01e9be16-a7c6-11e4-b42e-68b59977951e'

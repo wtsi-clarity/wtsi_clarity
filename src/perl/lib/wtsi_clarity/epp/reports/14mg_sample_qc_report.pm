@@ -145,8 +145,14 @@ sub _build_row {
     'Sample volume'           => $sample->findvalue('./udf:field[@name="WTSI Working Volume (µL) (SM)"]') // q{},
     'Library concentration'   => $sample->findvalue('./udf:field[@name="WTSI Library Concentration"]') // q{},
     'DNA amount library prep' => $self->_get_dna_amount_library_prep($sample),
-    'Status'                  => $sample->findvalue('./udf:field[@name="WTSI Proceed To Sequencing?"]') // q{},
+    'Status'                  => $self->_get_status($sample),
   }
+}
+
+sub _get_status {
+  my ($self, $sample) = @_;
+  my $status = ($sample->findvalue('./udf:field[@name="WTSI Proceed To Sequencing?"]') eq 'Yes') ? 'Passed' : 'Failed';
+  return $status;
 }
 
 sub _get_dna_amount_library_prep {
