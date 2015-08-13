@@ -104,7 +104,7 @@ sub irods_destination_path {
 }
 
 sub now {
-  return DateTime->now()->strftime('%a %b %d %Y %T');
+  return DateTime->now()->strftime('%Y%m%d%H%M%S');
 }
 
 # Cheeky template method...

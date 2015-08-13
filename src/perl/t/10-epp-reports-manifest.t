@@ -1863,10 +1863,10 @@ my $EXPECTED_FILE_CONTENT = [
     )
   );
   $mocked_manifest->mock(q{now}, sub {
-    return "Tue January 12 2015 12:00:13";
+    return "20150813121212";
   });
 
-  my $expected_file_name = "27-11037.Tue January 12 2015 12:00:13.manifest.txt";
+  my $expected_file_name = "27-11037.20150813121212.manifest.txt";
 
   is($mocked_manifest->file_name($container), $expected_file_name, 'Creates a file name correctly');
 }

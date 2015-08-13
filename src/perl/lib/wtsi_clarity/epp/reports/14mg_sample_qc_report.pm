@@ -46,20 +46,19 @@ sub elements {
   my $self = shift;
   my $containers = $self->_containers->findnodes('/con:details/con:container');
 
-  my %samples_by_container = ();
+  my @samples = ();
   foreach my $container (@{$containers}) {
     my $container_lims_id = $container->findvalue('@limsid');
-
-    my $samples = $self->_build_samples($container);
-    $samples_by_container{$container_lims_id} = $samples;
+    push @samples, @{$self->_build_samples($container)};
   }
 
   return sub {
-    while ( my ($container_lims_id, $samples) = each %samples_by_container ) {
-      my $sample_doc = $samples->pop();
-      $self->_write_sample_uuid($sample_doc->findvalue('./name'));
-      return $sample_doc;
+    if (scalar @samples == 0) {
+      return;
     }
+    my $sample_doc = pop @samples;
+    $self->_write_sample_uuid($sample_doc->findvalue('./name'));
+    return $sample_doc;
   }
 }
 
@@ -213,7 +212,7 @@ message must be supplied
   Creating the elements of the report files.
 
 =head2 file_content
-  
+
   Generating the content of the report file.
 
 =head2 file_name
