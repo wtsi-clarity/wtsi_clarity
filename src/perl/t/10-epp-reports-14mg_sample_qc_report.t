@@ -65,10 +65,10 @@ my $EXPECTED_FILE_CONTENT = [
     )
   );
   $mocked_report->mock(q{now}, sub {
-    return "Tue January 12 2015 12:00:13";
+    return "20150813121212";
   });
 
-  my $expected_file_name = "01e9be16-a7c6-11e4-b42e-68b59977951e.Tue January 12 2015 12:00:13.lab_sample_qc.txt";
+  my $expected_file_name = "01e9be16-a7c6-11e4-b42e-68b59977951e.20150813121212.lab_sample_qc.txt";
 
   $mocked_report->_write_sample_uuid($sample_doc->findvalue('./name'));
 
