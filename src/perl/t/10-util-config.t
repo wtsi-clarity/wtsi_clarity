@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 15;
+use Test::More tests => 16;
 use Test::Exception;
 use File::Temp qw/ tempdir /;
 
@@ -10,18 +10,18 @@ my $chome_name = 'WTSI_CLARITY_HOME';
 {
   my $c = wtsi_clarity::util::config->new();
   isa_ok( $c, 'wtsi_clarity::util::config');
-  
-  is($c->wtsi_clarity_home_var_name, $chome_name, 'homa var name from object instance');
+
+  is($c->wtsi_clarity_home_var_name, $chome_name, 'home var name from object instance');
   is(wtsi_clarity::util::config->wtsi_clarity_home_var_name, $chome_name, 'home var name called on package name');
 
   #unset the env vars within this scope in case they are set in caller's environment
   local $ENV{'HOME'} = q[];
   local $ENV{$chome_name} = q[];
-  
+
   throws_ok {$c->dir_path}
     qr/cannot find location of the wtsi_clarity project configuration directory/,
     'error if none of the variables defining the location of config directory is set';
-  
+
   local $ENV{$chome_name}= q[/somedir];
   throws_ok {$c->dir_path}
     qr/Validation failed for 'WtsiClarityDirectory'/,
@@ -60,6 +60,14 @@ my $chome_name = 'WTSI_CLARITY_HOME';
   foreach my $method (qw/clarity_api clarity_mq warehouse_mq/) {
     lives_and {is ref($c->$method), 'HASH'} "$method returns a hash ref";
   }
+}
+
+{
+  local $ENV{$chome_name}= q[t/data/config];
+  my $c = wtsi_clarity::util::config->new();
+
+  is_deeply($c->message_queues, { warehouse_queue => 'warehouse', report_queue => 'report' },
+    'Will build a convinient hash of consumers to queues');
 }
 
 1;

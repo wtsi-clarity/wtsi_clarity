@@ -11,7 +11,7 @@ Readonly::Scalar my $USER_NAME_LENGTH => 12;
 Readonly::Scalar our $PLATE_96_WELL_CONTAINER_NAME  => q{96 Well Plate};
 Readonly::Scalar our $ABGENE_800_CONTAINER_NAME     => q{ABgene 0800};
 Readonly::Scalar our $ABGENE_765_CONTAINER_NAME     => q{ABgene 0765};
-Readonly::Scalar our $FLUIDX_075_CONTAINER_NAME     => q{FluidX 0.75ml};
+Readonly::Scalar our $FLUIDX_075_CONTAINER_NAME     => q{FluidX075};
 Readonly::Scalar our $TUBE_CONTAINER_NAME           => q{Tube};
 
 Readonly::Scalar our $PLATE_LABEL_TYPE              => q{plate};

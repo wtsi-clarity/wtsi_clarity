@@ -9,12 +9,18 @@ host=localhost
 username=guest
 password=guest
 vhost=/
-queue=step_info_epp_test
 port=5672
-routing_key=test_routing_key
+dead_letter_exchange=clarity.deadletter_exchange
+
+[warehouse_consumer]
+queue=warehouse_queue
+routing_key=warehouse
 message_ttls=15000,30000,60000,300000,1800000,3600000
 delay_exchange=clarity.delay_exchange
-dead_letter_exchange=clarity.deadletter_exchange
+
+[report_consumer]
+queue=report_queue
+routing_key=report
 
 [warehouse_mq]
 id_lims=TEST_ID
@@ -43,3 +49,7 @@ user_uuid = 666
 search_path = 555
 api_key = 777
 ss_client_id= 888
+
+[irods]
+14m_manifest_path=/Sanger1-dev/home/glsai
+lab_sample_qc_path=/Sanger1-dev/home/glsai

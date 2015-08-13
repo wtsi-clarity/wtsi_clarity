@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/2-88095?state=35545" limsid="2-88095">
+    <name>Pool #5</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://testserver.com:1234/here/processes/24-37122" limsid="24-37122"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-2870" limsid="27-2870"/>
+        <value>1:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/SH2155A70" limsid="SH2155A70"/>
+    <sample uri="http://testserver.com:1234/here/samples/SH2155A68" limsid="SH2155A68"/>
+    <sample uri="http://testserver.com:1234/here/samples/SH2155A69" limsid="SH2155A69"/>
+    <sample uri="http://testserver.com:1234/here/samples/SH2155A72" limsid="SH2155A72"/>
+    <sample uri="http://testserver.com:1234/here/samples/SH2155A73" limsid="SH2155A73"/>
+    <sample uri="http://testserver.com:1234/here/samples/SH2155A67" limsid="SH2155A67"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 66 (TGAAGCCA)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 68 (TGCGTGAA)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 70 (GATCTCTT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 65 (TTGTTCCA)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 67 (TACCACCA)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 71 (GTGTCCTT)"/>
+    <workflow-stages>
+        <workflow-stage status="COMPLETE" name="Illumina Sequencing" uri="http://testserver.com:1234/here/configuration/workflows/152/stages/382"/>
+        <workflow-stage status="QUEUED" name="Sequencing Data Manual QC (NPG)" uri="http://testserver.com:1234/here/configuration/workflows/152/stages/383"/>
+    </workflow-stages>
+</art:artifact>

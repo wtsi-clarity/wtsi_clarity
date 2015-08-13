@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<con:container xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container" uri="http://testserver.com:1234/here/containers/27-6828" limsid="27-6828">
+    <name>2460276828711</name>
+    <type uri="http://testserver.com:1234/here/containertypes/2" name="Tube"/>
+    <occupied-wells>1</occupied-wells>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-286410" limsid="2-286410">
+        <value>1:1</value>
+    </placement>
+    <udf:field type="String" name="WTSI Container Purpose Name">Cap Lib</udf:field>
+    <state>Populated</state>
+</con:container>

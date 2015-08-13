@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<lot:reagent-lot xmlns:lot="http://genologics.com/ri/reagentlot" limsid="124-211" uri="http://testserver.com:1234/here/reagentlots/124-211">
+    <reagent-kit uri="http://testserver.com:1234/here/reagentkits/46" name="Spiked Hyb Buffer"/>
+    <name>June 2015</name>
+    <lot-number>17/04/2015</lot-number>
+    <created-date>2015-06-19</created-date>
+    <last-modified-date>2015-06-19</last-modified-date>
+    <expiry-date>2015-09-29</expiry-date>
+    <created-by uri="http://testserver.com:1234/here/researchers/158"/>
+    <last-modified-by uri="http://testserver.com:1234/here/researchers/158"/>
+    <notes>Stored in GCLP freezer</notes>
+    <status>ACTIVE</status>
+    <usage-count>100</usage-count>
+</lot:reagent-lot>

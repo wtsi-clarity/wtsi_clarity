@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:sample xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample" uri="http://testserver.com:1234/here/samples/SH2155A68" limsid="SH2155A68">
+    <name>bdd62309-0a04-11e5-b228-acca1e925fc7</name>
+    <date-received>2015-06-03</date-received>
+    <project limsid="SH2155" uri="http://testserver.com:1234/here/projects/SH2155"/>
+    <submitter uri="http://testserver.com:1234/here/researchers/9">
+        <first-name>Lucy</first-name>
+        <last-name>Hildyard</last-name>
+    </submitter>
+    <artifact limsid="SH2155A68PA1" uri="http://testserver.com:1234/here/artifacts/SH2155A68PA1?state=11040"/>
+    <udf:field type="String" name="WTSI Supplier Gender - (SM)">Unknown</udf:field>
+    <udf:field type="String" name="WTSI Supplier Sample Name (SM)">LK93</udf:field>
+    <udf:field type="String" name="WTSI Donor ID">bdd62309-0a04-11e5-b228-acca1e925fc7</udf:field>
+    <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+    <udf:field type="String" name="WTSI Proceed To Sequencing?">Yes</udf:field>
+    <udf:field type="String" name="WTSI Supplier">EORTC/UKD</udf:field>
+    <udf:field type="Numeric" name="WTSI Supplier Volume">25</udf:field>
+    <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    <udf:field type="String" name="WTSI Working Volume (ÂµL) (SM)">24.8120</udf:field>
+    <udf:field type="String" name="WTSI Bait Library Name">14M_0731661</udf:field>
+    <udf:field type="String" name="Sample Conc. (ng\/ÂµL) (SM)">6.44391903988406</udf:field>
+</smp:sample>

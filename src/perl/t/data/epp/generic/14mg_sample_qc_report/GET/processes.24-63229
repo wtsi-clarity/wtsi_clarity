@@ -1,0 +1,36 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="24-63229" uri="http://testserver.com:1234/here/processes/24-63229" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://testserver.com:1234/here/processtypes/605">Cherrypick Stamping (SM)</type>
+  <technician uri="http://testserver.com:1234/here/researchers/58">
+    <first-name>Karoly</first-name>
+    <last-name>Erdos</last-name>
+  </technician>
+  <input-output-map>
+    <input limsid="2-346056" post-process-uri="http://testserver.com:1234/here/artifacts/2-346056?state=174975" uri="http://testserver.com:1234/here/artifacts/2-346056?state=174975">
+      <parent-process limsid="24-50702" uri="http://testserver.com:1234/here/processes/24-50702"/>
+    </input>
+    <output limsid="2-373513" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-373513?state=186823"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-346054" post-process-uri="http://testserver.com:1234/here/artifacts/2-346054?state=174973" uri="http://testserver.com:1234/here/artifacts/2-346054?state=174973">
+      <parent-process limsid="24-50702" uri="http://testserver.com:1234/here/processes/24-50702"/>
+    </input>
+    <output limsid="2-373511" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-373511?state=186821"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-346055" post-process-uri="http://testserver.com:1234/here/artifacts/2-346055?state=174974" uri="http://testserver.com:1234/here/artifacts/2-346055?state=174974">
+      <parent-process limsid="24-50702" uri="http://testserver.com:1234/here/processes/24-50702"/>
+    </input>
+    <output limsid="2-373512" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-373512?state=186822"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-346053" post-process-uri="http://testserver.com:1234/here/artifacts/2-346053?state=174972" uri="http://testserver.com:1234/here/artifacts/2-346053?state=174972">
+      <parent-process limsid="24-50702" uri="http://testserver.com:1234/here/processes/24-50702"/>
+    </input>
+    <output limsid="2-373510" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-373510?state=186820"/>
+  </input-output-map>
+  <udf:field name="Pick by" type="String">(1) Concentration &amp; volume</udf:field>
+  <udf:field name="(1) Required Volume" type="String">120</udf:field>
+  <udf:field name="(1) Required Concentration" type="String">1.6</udf:field>
+  <process-parameter name="Update Cherrypick Volumes"/>
+</prc:process>

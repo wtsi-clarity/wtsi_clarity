@@ -1447,6 +1447,6 @@
   </input-output-map>
   <udf:field name="Select Barcode Printer" type="String">g214bc</udf:field>
   <udf:field name="Number of Containers" type="String">2</udf:field>
-  <udf:field name="Type of Container" type="String">FluidX 0.75ml</udf:field>
+  <udf:field name="Type of Container" type="String">FluidX075</udf:field>
   <udf:field name="User name" type="String">Karel</udf:field>
 </prc:process>

@@ -23,6 +23,9 @@ Readonly::Hash my %ACTION2MODULE => (
     'queue_message'                  => 'generic::messenger',
     'store_plate'                    => 'generic::plate_storer',
 
+    'create_manifest'                => 'reports::manifest',
+    'create_14mg_sample_qc_report'   => 'reports::14mg_sample_qc_report',
+
     'check_volume'                   => 'sm::volume_checker',
     'display_file'                   => 'sm::file_downloader',
     'receive_sample'                 => 'sm::sample_receiver',

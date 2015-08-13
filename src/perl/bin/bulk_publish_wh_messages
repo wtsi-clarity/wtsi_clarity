@@ -1,0 +1,156 @@
+#! /usr/bin/env perl
+
+package bulk_publish_wh_messages;
+
+use Moose;
+use FindBin qw($Bin);
+use lib ( -d "$Bin/../lib/perl5" ? "$Bin/../lib/perl5" : "$Bin/../lib" );
+use Carp;
+
+use wtsi_clarity::util::bulk_publish_wh_messages;
+
+with 'MooseX::Getopt';
+
+has 'model'  => (
+  isa             => 'Str',
+  is              => 'ro',
+  required        => 1,
+);
+
+has 'process_url' => (
+  isa             => 'Str',
+  is              => 'ro',
+  required        => 0,
+  predicate       => 'has_process_url',
+);
+
+has 'project_name'  => (
+  isa               => 'Str',
+  is                => 'ro',
+  required          => 0,
+  predicate         => 'has_project_name',
+);
+
+my $self = bulk_publish_wh_messages->new_with_options();
+my $parameters = { model => $self->model };
+
+if ($self->has_process_url and $self->has_project_name) {
+  croak q{You can define process URL or project name, but not both.};
+}
+
+if ($self->has_process_url) {
+  $parameters->{'process_url'} = $self->process_url;
+}
+
+if ($self->has_project_name) {
+  $parameters->{'project_name'} = $self->project_name;
+}
+
+my $messanger = wtsi_clarity::util::bulk_publish_wh_messages->new( $parameters );
+$messanger->run();
+
+1;
+
+__END__
+
+=head1 NAME
+
+bulk_publish_wh_messages
+
+=head1 SYNOPSIS
+
+=head1 USAGE
+
+  Publish the given model messages to the warehouse from just the given process (process_url):
+
+  my $wh_publisher = bulk_publish_wh_messages->new(
+    process_url => $base_uri . '/processes/122-21977',
+    model       => 'sample'
+  );
+
+  Publish the given model messages to the warehouse from a given project:
+
+  my $wh_publisher = bulk_publish_wh_messages->new(
+    project_name  => 'Test Project',
+    model         => 'sample'
+  );
+
+=head1 REQUIRED ARGUMENTS
+
+  process_url
+    The URL of the process
+  model (mandatory)
+    The name of the model, the data to be republish belongs to
+  project_name
+    The name of the project
+
+=head1 OPTIONS
+
+=head1 DIAGNOSTICS
+
+=head1 EXIT STATUS
+
+=head1 CONFIGURATION
+
+=head1 INCOMPATIBILITIES
+
+=head1 BUGS AND LIMITATIONS
+
+=head1 DESCRIPTION
+
+  This script can republish warehouse messages.
+
+=head2 run
+
+  Execute the publishing of warehouse messages.
+
+=head1 SUBROUTINES/METHODS
+
+=head1 CONFIGURATION AND ENVIRONMENT
+
+=head1 DEPENDENCIES
+
+=over
+
+=item strict
+
+=item warnings
+
+=item FindBin
+
+=item lib 
+
+=item Moose
+
+=item Carp
+
+=item wtsi_clarity::util::bulk_publish_wh_messages
+
+=item MooseX::Getopt
+
+=back
+
+=head1 AUTHOR
+
+Karoly Erdos E<lt>ke4@sanger.ac.ukE<gt>
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright (C) 2014 Genome Research Ltd.
+
+This file is part of wtsi_clarity project.
+
+wtsi_clarity is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+=cut
