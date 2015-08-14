@@ -1,4 +1,4 @@
-package wtsi_clarity::mq::message_handler;
+package wtsi_clarity::mq::mh::warehouse_message_handler;
 
 use Moose;
 use Carp;
@@ -6,17 +6,11 @@ use JSON;
 use Encode;
 
 use wtsi_clarity::mq::message;
-use wtsi_clarity::mq::mapper;
 use wtsi_clarity::mq::warehouse_client;
 
-our $VERSION = '0.0';
+with 'wtsi_clarity::mq::message_handler_interface';
 
-has 'mapper' => (
-  is        => 'ro',
-  isa       => 'wtsi_clarity::mq::mapper',
-  required  => 0,
-  default   => sub { return wtsi_clarity::mq::mapper->new() },
-);
+our $VERSION = '0.0';
 
 has '_wh_client' => (
   isa         => 'wtsi_clarity::mq::warehouse_client',
@@ -27,11 +21,10 @@ has '_wh_client' => (
   },
 );
 
-sub process_message {
-  my ($self, $json_string) = @_;
+sub process {
+  my ($self, $message, $package) = @_;
 
-  my $message = $self->_thaw($json_string);
-  my $messages = $self->prepare_messages($message);
+  my $messages = $self->prepare_messages($message, $package);
 
   foreach my $message_to_wh (@{$messages}) {
     $self->_send_message(encode_utf8(to_json($message_to_wh)), $message->purpose);
@@ -48,36 +41,13 @@ sub _send_message {
 }
 
 sub prepare_messages {
-  my ($self, $message) = @_;
+  my ($self, $message, $package) = @_;
 
-  my $package_name = $self->_find_enhancer_by_purpose($message->purpose);
-
-  $self->_require_enhancer($package_name);
-
-  return $package_name->new(
+  return $package->new(
             process_url => $message->process_url,
             step_url    => $message->step_url,
             timestamp   => $message->timestamp,
           )->prepare_messages();
-}
-
-sub _thaw {
-  my ($self, $json_string) = @_;
-  return wtsi_clarity::mq::message->thaw($json_string);
-}
-
-sub _find_enhancer_by_purpose {
-  my ($self, $purpose) = @_;
-  return $self->mapper->package_name($purpose);
-}
-
-sub _require_enhancer {
-  my ($self, $enhancer_name) = @_;
-  my $loaded = eval "require $enhancer_name";
-  if (!$loaded) {
-    croak "The required package: $enhancer_name does not exist"
-  }
-  return 1;
 }
 
 1;
@@ -86,11 +56,11 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::mq::message_handler
+wtsi_clarity::mq::mh::warehouse_message_handler
 
 =head1 SYNOPSIS
 
-  my $message_handler = wtsi_clarity::mq::message_handler->new();
+  my $message_handler = wtsi_clarity::mq::mh::warehouse_message_handler->new();
   $message_handler->process_message($json_string);
 
 =head1 DESCRIPTION
@@ -99,7 +69,7 @@ wtsi_clarity::mq::message_handler
 
 =head1 SUBROUTINES/METHODS
 
-=head2 process_message
+=head2 process
 
   Takes in JSON string. Converts to mq::message, and dispatches to relevant message enhancer.
 

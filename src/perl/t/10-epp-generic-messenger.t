@@ -1,46 +1,69 @@
 use strict;
 use warnings;
-use Test::More tests => 18;
-
-use_ok('wtsi_clarity::mq::local_client');
-use_ok('wtsi_clarity::mq::warehouse_client');
+use DateTime;
+use Test::More tests => 10;
+use Test::Exception;
+use Test::MockObject::Extends;
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 
-{ # Tests for clarity mq client settings
+use_ok('wtsi_clarity::mq::local_client');
+use_ok('wtsi_clarity::epp::generic::messenger');
+use_ok('wtsi_clarity::mq::message');
+
+use_ok('wtsi_clarity::util::config');
+
+# Happpppppppy path...
+{
   my $client = wtsi_clarity::mq::local_client->new();
-  isa_ok( $client, 'wtsi_clarity::mq::local_client');
-  is( $client->port, 5672, 'default port');
-  is( $client->host, 'localhost', 'localhost');
-  is( $client->username, 'guest', 'username from config file');
-  is( $client->password, 'guest', 'password from config file');
+  my $mocked_client = Test::MockObject::Extends->new($client);
+
+  $mocked_client->set_true('send_message');
+
+  my $m = wtsi_clarity::epp::generic::messenger->new(
+    process_url => 'http://some.com/process/XM4567',
+    step_url    => 'http://some.com/step/AS456',
+    purpose     => ['study', 'sample'],
+    routing_key => 'warehouse',
+    _client     => $mocked_client,
+    _messages   => _create_messages()
+  );
+
+  lives_ok { $m->run() }
+    'Can run the run action';
+
+  my ($method_name, $method_args) = $mocked_client->next_call();
+  is($method_name, 'send_message', 'Sends the first message');
+  ok($method_args->[1], '...and the argument is there');
+
+  my ($method_name2, $method_args2) = $mocked_client->next_call();
+  is($method_name2, 'send_message', 'Sends the second message');
+  ok($method_args2->[1], '...and the argument is there again');
 }
 
-{ # Tests for warehouse mq client settings
-  my $client = wtsi_clarity::mq::warehouse_client->new();
-  isa_ok( $client, 'wtsi_clarity::mq::warehouse_client');
-  is( $client->env, 'devel', 'Gets the correct environment value from the config file.');
-  is( $client->port, 1234, 'Gets the correct port from the config file.');
-  is( $client->host, 'host1', 'Gets the correct host from the config file.');
-  is( $client->vhost, 'vhost1', 'Gets the correct virtual host from the config file.');
-  is( $client->exchange, 'warehouse_exch', 'Gets the correct exchange name from the config file');
-  is( $client->username, 'user3', 'Gets the correct username from the config file.');
-  is( $client->password, 'pword3', 'Gets the correct password from the config file');
-  is( $client->routing_key, 'clarity', 'Gets the correct base routing key from the config file');
+{
+  throws_ok {
+    wtsi_clarity::epp::generic::messenger->new(
+      process_url => 'http://some.com/process/XM4567',
+      step_url    => 'http://some.com/step/AS456',
+      purpose     => ['study', 'sample'],
+      routing_key => 'not a good routing key!!',
+    );
+  } q{Moose::Exception::ValidationFailedForTypeConstraint},
+    q{Throws an error on creation if routing key is invalid};
 }
 
-{ # Tests for generating the routing key
-  my $client = wtsi_clarity::mq::local_client->new();
+sub _create_messages {
+  my @messages = map {
+    wtsi_clarity::mq::message->create('warehouse',
+      process_url => 'http://clarity.com/processes/' . $_,
+      step_url    => 'http://clarity.com/steps/' . $_,
+      timestamp   => DateTime->now(),
+      purpose     => 'sample',
+    );
+  } 1..2;
 
-  use wtsi_clarity::util::config;
-  my $config = wtsi_clarity::util::config->new();
-  my $expected_routing_key = $config->clarity_mq->{'routing_key'};
-  is($client->assemble_routing_key, $expected_routing_key, 'Got back the correct routing key for clarity mq.');
-
-  my $client_wh = wtsi_clarity::mq::warehouse_client->new();
-  my $purpose = 'sample';
-  my $expected_routing_key_wh = $config->warehouse_mq->{'env'} . q{.} . $config->warehouse_mq->{'routing_key'} . q{.} . $purpose;
-  is($client_wh->assemble_routing_key($purpose), $expected_routing_key_wh, 'Got back the correct routing key for warehouse mq.');
+  return \@messages;
 }
 
 1;

@@ -20,6 +20,9 @@ Readonly::Array  my @CONF_ITEMS      => qw/ clarity_api
                                             printing
                                             ftp_user
                                             tag_plate
+                                            warehouse_consumer
+                                            report_consumer
+                                            irods
                                           /;
 
 has 'dir_path'  => (
@@ -36,6 +39,27 @@ sub _build_dir_path {
       q[Neither WTSI_CLARITY_HOME not HOME environment variable is defined, cannot find location of the wtsi_clarity project configuration directory];
   return $clarity_home ? $clarity_home : (
          $home ? catdir($home, $CONF_DIR) : croak $error);
+}
+
+has 'message_queues' => (
+  is => 'ro',
+  isa => 'HashRef',
+  lazy => 1,
+  builder => '_build_message_queues',
+);
+sub _build_message_queues {
+  my $self = shift;
+
+  my %consumers = map {
+      $self->_queue_to_routing_key($_->name)
+    } grep { $_->name =~ /consumer$/sxm } $self->meta->get_all_attributes;
+
+  return \%consumers;
+}
+
+sub _queue_to_routing_key {
+  my ($self, $attr_name) = @_;
+  return ($self->$attr_name->{'queue'}, $self->$attr_name->{'routing_key'});
 }
 
 has 'file'  => (

@@ -2,13 +2,17 @@ package wtsi_clarity::epp::generic::messenger;
 
 use Moose;
 use DateTime;
+use Moose::Util::TypeConstraints;
 
 use wtsi_clarity::mq::local_client;
+use wtsi_clarity::util::config;
 use wtsi_clarity::mq::message;
+
+our $VERSION = '0.0';
 
 extends 'wtsi_clarity::epp';
 
-our $VERSION = '0.0';
+enum 'WtsiClarityRoutingKeys', [qw/warehouse report/];
 
 has '_client' => (
   is => 'ro',
@@ -21,6 +25,12 @@ sub _build__client {
   my $self = shift;
   return wtsi_clarity::mq::local_client->new();
 }
+
+has 'routing_key' => (
+  is       => 'ro',
+  isa      => 'WtsiClarityRoutingKeys',
+  required => 1,
+);
 
 has 'step_url' => (
   isa        => 'Str',
@@ -49,14 +59,14 @@ has '_messages' => (
 );
 sub _build__messages {
   my $self = shift;
-  my @messages = map { $self->_build_message($_) } @{$self->purpose};
+  my @messages = map { $self->_build_message($_); } @{$self->purpose};
   return \@messages;
 }
 
 sub _build_message {
   my ($self, $purpose) = @_;
 
-  return wtsi_clarity::mq::message->new(
+  return wtsi_clarity::mq::message->create($self->routing_key,
     process_url => $self->process_url,
     step_url    => $self->step_url,
     timestamp   => $self->_date,
@@ -66,7 +76,7 @@ sub _build_message {
 
 sub _send_message {
   my ($self, $message) = @_;
-  return $self->_client->send_message($message->freeze);
+  return $self->_client->send_message($message->freeze, $self->routing_key);
 }
 
 override 'run' => sub {

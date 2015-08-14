@@ -4,152 +4,20 @@ use strict;
 use warnings;
 use FindBin qw($Bin);
 use lib ( -d "$Bin/../lib/perl5" ? "$Bin/../lib/perl5" : "$Bin/../lib" );
-use Try::Tiny;
-use English qw(-no_match_vars);
-use Carp;
-use WTSI::DNAP::RabbitMQ::Client;
-use wtsi_clarity::mq::message_handler;
+
+use wtsi_clarity::mq::mh::warehouse_message_handler;
 use wtsi_clarity::util::config;
-use POSIX qw(strftime);
-use Data::Dumper;
+use wtsi_clarity::mq::consumer;
 
-use AnyEvent;
-use Daemon::Control;
-
-my $message_handler = wtsi_clarity::mq::message_handler->new();
 my $config = wtsi_clarity::util::config->new();
 
-my $delay_exchange_name = $config->clarity_mq->{'delay_exchange'};
-my $dead_letter_exchange_name = $config->clarity_mq->{'dead_letter_exchange'};
-my $clarity_exchange_name = $config->clarity_mq->{'exchange'};
+wtsi_clarity::mq::consumer->new(
+  name            => 'Warehouse Message Consumer',
+  pid_file        => $config->dir_path . '/warehouse_pid',
+  stderr_file     => $config->dir_path . '/warehouse_consumer.err',
+  stdout_file     => $config->dir_path . '/warehouse_consumer.log',
+  queue           => $config->warehouse_consumer->{'queue'},
+  message_handler => wtsi_clarity::mq::mh::warehouse_message_handler->new(),
+)->run();
 
-##no critic (InputOutput::RequireCheckedSyscalls)
-
-my $daemon = Daemon::Control->new(
-  name => 'Clarity Message Consumer',
-  pid_file => $config->dir_path . '/pid',
-  stderr_file => $config->dir_path . '/message_consumer.err',
-  stdout_file => $config->dir_path . '/message_consumer.log',
-  program => sub {
-    my ($dc, $type, $test) = @_;
-
-    my $process_message;
-
-    _log("Starting...");
-
-    if (defined $test && $test eq '--sandbox') {
-
-      print {*STDOUT} "IN SANDBOX MODE. CREATED MESSAGES WILL BE WRITTEN TO STDOUT" .
-                      " AND MESSAGES WILL BE NOT BE REQUEUED\n";
-
-      $process_message = sub {
-        my $json = shift;
-        _log("About to handle json: " . $json);
-
-        my $message = $message_handler->_thaw($json);
-        my $messages = $message_handler->prepare_messages($message);
-
-        print Dumper($messages);
-      };
-
-    } else {
-
-      $process_message = sub {
-        my $json = shift;
-        _log("About to handle json: " . $json);
-        $message_handler->process_message($json);
-      };
-
-    }
-
-    my @message_ttls = split /,/smx, $config->clarity_mq->{'message_ttls'};
-
-    my @credentials = (host  => $config->clarity_mq->{'host'},
-                        port  => $config->clarity_mq->{'port'},
-                        vhost => $config->clarity_mq->{'vhost'},
-                        user  => $config->clarity_mq->{'username'},
-                        pass  => $config->clarity_mq->{'password'},);
-
-    my $channel;
-    my $channel_name = 'channel' . $PID;
-    my $client;
-
-    $client = WTSI::DNAP::RabbitMQ::Client->new(
-      acking_enabled => 0,
-      consume_handler => sub {
-        my ($args) = @_;
-
-        try {
-          $process_message->($args->{'body'}->{'payload'});
-        } catch {
-          _err($_);
-
-          my $headers = $args->{'header'}->{'headers'};
-          my $headers_to_publish = {};
-          my $nb_delayed = 0;
-
-          if ($headers->{'nb_delayed'}) {
-            $nb_delayed = $headers->{'nb_delayed'};
-          }
-
-          if ($nb_delayed < scalar @message_ttls) {
-            $headers_to_publish =  {
-                          'expiration' => $message_ttls[$nb_delayed],
-                          'headers' => {'nb_delayed' => ++$nb_delayed}
-                        };
-            _republish($client, $delay_exchange_name, $channel_name, $args, $headers_to_publish);
-          } else {
-            # Ensure gets send to DLX
-            _republish($client, $dead_letter_exchange_name, $channel_name, $args, $headers_to_publish);
-          }
-        } finally {
-          $channel->channel($channel_name)->ack();
-        }
-      },
-      error_handler => sub {
-        _err(@_);
-      }
-    );
-
-    $client->connect(@credentials);
-    $channel = $client->open_channel(name => $channel_name);
-    $client->consume(channel => $channel_name, queue => $config->clarity_mq->{'queue'});
-
-    AnyEvent->condvar->recv;
-  }
-);
-
-sub _log {
-  my $message = shift // q{};
-  print {*STDOUT} join q{}, _now(), qq{$message\n};
-  return;
-}
-
-sub _err {
-  my $message = shift // q{};
-  print {*STDERR} join q{}, _now(), qq{$message\n};
-  return;
-}
-
-sub _now {
-  return strftime "%F %H:%M:%S", localtime;
-}
-
-sub _republish {
-  my ($client, $exchange_name, $channel_name, $args, $headers) = @_;
-
-  $client->publish(
-    channel     => $channel_name,
-    exchange    => $exchange_name,
-    routing_key => $args->{'deliver'}->{'method_frame'}->{'routing_key'},
-    headers     => $headers,
-    body        => $args->{'body'}->{'payload'},
-    mandatory   => 1
-  );
-
-  return;
-}
-
-$daemon->program_args(\@ARGV);
-
-exit $daemon->run;
+1;

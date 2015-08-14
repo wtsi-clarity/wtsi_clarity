@@ -4,6 +4,7 @@ use Moose;
 use Readonly;
 use Carp;
 use URI::Escape;
+use wtsi_clarity::util::request;
 
 our $VERSION = '0.0';
 
@@ -19,6 +20,18 @@ has '_parent' => (
   required => 1,
   init_arg => 'parent',
 );
+
+has '_request' => (
+  is => 'ro',
+  isa => 'wtsi_clarity::util::request',
+  required => 0,
+  init_arg => undef,
+  lazy_build => 1,
+);
+sub _build__request {
+  my $self = shift;
+  return $self->_parent->request;
+}
 
 has 'xml' => (
   is => 'rw',
@@ -47,7 +60,19 @@ sub _build__placement_doc {
   return $self->_parent->fetch_and_parse($placement_uri);
 }
 
-sub _input_containers_uri {
+has 'output_containers' => (
+  is => 'ro',
+  isa => 'XML::LibXML::Document',
+  lazy_build => 1,
+);
+
+sub _build_output_containers {
+  my $self = shift;
+  my @output_container_uris = $self->_placement_doc->findnodes($SELECTED_CONTAINERS_PATH)->to_literal_list;
+  return $self->_request->batch_retrieve('containers', \@output_container_uris);
+}
+
+sub _output_containers_uri {
   my $self = shift;
 
   my @uris = $self->_placement_doc->findnodes($SELECTED_CONTAINERS_PATH)->to_literal_list;
@@ -55,15 +80,15 @@ sub _input_containers_uri {
   return \@uris;
 }
 
-has 'input_container_count' => (
+has 'output_container_count' => (
   is => 'ro',
   isa => 'Int',
   lazy_build => 1,
 );
-sub _build_input_container_count {
+sub _build_output_container_count {
   my $self = shift;
 
-  return scalar @{$self->_input_containers_uri};
+  return scalar @{$self->_output_containers_uri};
 }
 
 1;
@@ -85,8 +110,8 @@ wtsi_clarity::clarity::step
 
 =head1 SUBROUTINES/METHODS
 
-=head2 input_container_count 
-  Returns the number of the input containers.
+=head2 output_container_count
+  Returns the number of the output containers.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
@@ -106,7 +131,9 @@ wtsi_clarity::clarity::step
 
 =item URI::Escape
 
-=item use wtsi_clarity::util::types
+=item wtsi_clarity::util::types
+
+=item wtsi_clarity::util::request
 
 =back
 

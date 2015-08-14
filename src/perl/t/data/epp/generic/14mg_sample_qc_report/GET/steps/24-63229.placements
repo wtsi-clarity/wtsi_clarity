@@ -1,0 +1,34 @@
+<?xml version="1.0" standalone="yes"?>
+<stp:placements xmlns:stp="http://genologics.com/ri/step" uri="http://testserver.com:1234/here/steps/24-63229/placements">
+    <step uri="http://testserver.com:1234/here/steps/24-63229" rel="steps"/>
+    <configuration uri="http://testserver.com:1234/here/configuration/protocols/9/steps/701">Cherrypick Stamping (SM)</configuration>
+    <selected-containers>
+        <container uri="http://testserver.com:1234/here/containers/27-11472"/>
+    </selected-containers>
+    <output-placements>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-373511">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-11472" limsid="27-11472"/>
+                <value>D:1</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-373512">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-11472" limsid="27-11472"/>
+                <value>A:1</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-373513">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-11472" limsid="27-11472"/>
+                <value>B:1</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-373510">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-11472" limsid="27-11472"/>
+                <value>C:1</value>
+            </location>
+        </output-placement>
+    </output-placements>
+</stp:placements>

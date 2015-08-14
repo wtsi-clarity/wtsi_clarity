@@ -6,13 +6,16 @@ use Readonly;
 
 our $VERSION = '0.0';
 
-Readonly::Scalar my $BASE_MQ_PACKAGE_NAME => q{wtsi_clarity::mq::};
+Readonly::Scalar my $BASE_MQ_PACKAGE_NAME => q{wtsi_clarity::};
 Readonly::Hash my %PURPOSE_TO_ENHANCER_TYPE => (
-  'sample'    => 'me::sample_enhancer',
-  'study'     => 'me::study_enhancer',
-  'user'      => 'me::study_user_enhancer',
-  'fluidigm'  => 'me::fluidigm_enhancer',
-  'flowcell'  => 'me::flowcell_enhancer',
+  'sample'                => 'mq::me::sample_enhancer',
+  'study'                 => 'mq::me::study_enhancer',
+  'user'                  => 'mq::me::study_user_enhancer',
+  'fluidigm'              => 'mq::me::fluidigm_enhancer',
+  'flowcell'              => 'mq::me::flowcell_enhancer',
+
+  '14MG_sample_manifest'  => 'epp::reports::manifest',
+  '14MG_sample_report'    => 'epp::reports::14mg_sample_qc_report',
 );
 
 sub package_name {

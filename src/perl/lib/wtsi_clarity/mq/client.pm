@@ -65,20 +65,6 @@ sub _build__mq_config {
   return $self->config->$mb_type;
 }
 
-sub assemble_routing_key {
-  my ($self, $purpose) = @_;
-
-  my $routing_key;
-
-  if ($self->message_bus_type eq 'warehouse_mq') {
-    $routing_key = $self->_mq_config->{'env'}. q{.} . $self->_mq_config->{'routing_key'} . q{.} . $purpose;
-  } else {
-    $routing_key = $self->routing_key;
-  }
-
-  return $routing_key;
-}
-
 1;
 __END__
 
@@ -93,10 +79,6 @@ wtsi_clarity::mq::client
  Rabbit message queue client.
 
 =head1 SUBROUTINES/METHODS
-
-=head2 assemble_routing_key
-
-  Will determine the correct routing key for the type of message being sent
 
 =head2 host
 
