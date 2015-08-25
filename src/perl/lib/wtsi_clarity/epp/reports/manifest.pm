@@ -68,6 +68,28 @@ sub get_metadatum {
   return @metadatum;
 }
 
+sub headers {
+  return [
+    'Sample/Well Location',
+    'Container/Name',
+    'Container/Type',
+    'Sample/Name',
+    'UDF/WTSI Supplier',
+    'UDF/WTSI Supplier Gender - (SM)',
+    'UDF/WTSI Supplier Volume',
+    'UDF/WTSI Phenotype',
+    'UDF/WTSI Donor ID',
+    'UDF/WTSI Requested Size Range From',
+    'UDF/WTSI Requested Size Range To',
+    'UDF/WTSI Bait Library Name',
+    'UDF/WTSI Organism',
+    'UDF/WTSI Taxon ID',
+    'Sample UUID',
+    'Project Name',
+    'Project ID',
+  ]
+}
+
 sub file_content {
   my ($self, $container) = @_;
   my %file_content = ();
@@ -200,6 +222,10 @@ message must be supplied
 =head2 elements
 
   Creating the elements/rows of the report file.
+
+=head2 headers
+
+  Returns the headers of the report file.
 
 =head2 file_content
 
