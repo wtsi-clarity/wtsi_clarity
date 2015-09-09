@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 use Moose;
-use Test::More tests => 21;
+use Test::More tests => 22;
 use Test::MockObject::Extends;
 use Test::Exception;
 use XML::LibXML;
@@ -64,6 +64,7 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
   is($flgen_plate_dao->id_flgen_plate_lims, q{27-3314}, 'Extracts id_flgen_plate_lims');
   is($flgen_plate_dao->plate_barcode_lims, q{8754679423576}, 'Extracts plate_barcode_lims');
   is($flgen_plate_dao->plate_size, 96, 'Gets the plate size from container type');
+  is($flgen_plate_dao->plate_size_occupied, 2, 'Gets the occupied plate size from the count of the wells correctly');
 
   my $well = $flgen_plate_dao->_build_well('2-121338');
 

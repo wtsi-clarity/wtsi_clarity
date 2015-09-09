@@ -161,6 +161,17 @@ sub _get_study {
   return wtsi_clarity::dao::study_dao->new(lims_id => $limsid);
 }
 
+has 'plate_size_occupied' => (
+  is => 'ro',
+  isa => 'Int',
+  lazy_build => 1,
+);
+
+sub _build_plate_size_occupied {
+  my $self = shift;
+  return scalar @{$self->wells};
+}
+
 sub _validate_plate_barcode {
   my ($self, $plate_bc) = @_;
 
@@ -180,6 +191,7 @@ around 'init' => sub {
   $self->$next();
   $self->wells;
   $self->plate_size;
+  $self->plate_size_occupied;
 
   $self->_validate_plate_barcode($self->plate_barcode);
 
