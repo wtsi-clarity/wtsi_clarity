@@ -86,6 +86,17 @@ sub get_metadatum {
   return @metadatum;
 }
 
+sub headers {
+  return [
+    'Sample UUID',
+    'Concentration',
+    'Sample volume',
+    'Library concentration',
+    'DNA amount library prep',
+    'Status',
+  ]
+}
+
 sub file_content {
   my ($self, $sample) = @_;
   my %file_content = ();
@@ -216,6 +227,10 @@ message must be supplied
 =head2 elements
 
   Creating the elements of the report files.
+
+=head2 headers
+
+  Returns the headers of the report file.
 
 =head2 file_content
 

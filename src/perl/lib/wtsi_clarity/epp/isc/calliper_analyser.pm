@@ -4,84 +4,39 @@ use Moose;
 use Carp;
 use Readonly;
 use Mojo::Collection;
+use List::Util qw/sum/;
+use URI::Escape;
 
 use wtsi_clarity::util::textfile;
 use wtsi_clarity::util::calliper;
 
 ##no critic ValuesAndExpressions::RequireInterpolationOfMetachars
-Readonly::Scalar my $FIRST_ANALYTE_PATH => q{/prc:process/input-output-map[1]/input/@uri};
-Readonly::Scalar my $OUTPUT_ANALYTES    => q{/prc:process/input-output-map/output[@output-type='Analyte']/@uri};
-Readonly::Scalar my $CONTAINER_PATH     => q{/art:artifact/location/container/@uri};
-Readonly::Scalar my $CONTAINER_NAME     => q{/con:container/name};
-Readonly::Scalar my $ARTIFACTS          => q{/art:details/art:artifact};
+Readonly::Scalar my $FIRST_ANALYTE_PATH               => q{/prc:process/input-output-map[1]/input/@uri};
+Readonly::Scalar my $PROCESS_INPUT_ARTIFACT_URI_PATH  => q{prc:process/input-output-map/input/@uri};
+Readonly::Scalar my $ARTIFACT_NODE_LIST_PATH          => q{art:details/art:artifact};
+Readonly::Scalar my $OUTPUT_ANALYTES                  => q{/prc:process/input-output-map/output[@output-type='Analyte']/@uri};
+Readonly::Scalar my $CONTAINER_PATH                   => q{/art:artifact/location/container/@uri};
+Readonly::Scalar my $CONTAINER_NAME                   => q{/con:container/name};
+Readonly::Scalar my $ARTIFACTS                        => q{/art:details/art:artifact};
+Readonly::Scalar my $ARTIFACTS_ARTIFACT_URI           => q{art:artifacts/artifact/@uri};
+Readonly::Scalar my $SAMPLE_PATH                      => q{smp:details/smp:sample[@uri="%s"]};
+Readonly::Scalar my $PARENT_PROCESS_URI               => q{art:artifact/parent-process/@uri};
+Readonly::Scalar my $LOCATION_VALUE_PATH              => q{./location/value};
+Readonly::Scalar my $SAMPLE_URI_PATH                  => q{./sample/@uri};
+Readonly::Scalar my $ARTIFACT_SAMPLE_LIMSID_PATH      => q{art:artifact/sample/@limsid};
 ##use critic
+Readonly::Scalar my $LIBRARY_CONCENTRATION_UDF_NAME   => q{WTSI Library Concentration};
+Readonly::Scalar my $POST_LIB_PCR_QC_STAMP_STEP       => q{Post Lib PCR QC Stamp};
+Readonly::Scalar my $TOTAL_CONCENTRATION_UDF_NAME     => q{Total Conc. (ng/ul)};
+Readonly::Scalar my $CONCENTRATION_KEY                => q{concentration};
+Readonly::Scalar my $LOCATION_KEY                     => q{location};
+Readonly::Scalar my $DILUTION_FACTOR                  => q{5};
 
 extends 'wtsi_clarity::epp';
 with 'wtsi_clarity::util::clarity_elements_fetcher_role_util';
 with 'wtsi_clarity::util::clarity_elements';
 
 our $VERSION = '0.0';
-
-override 'run' => sub {
-  my $self = shift;
-  super();
-  return $self->_main();
-};
-
-sub _main {
-  my $self = shift;
-
-  $self->_text_file->read_content($self->_file_path);
-
-  my $output = $self->_calliper->interpret(
-    $self->_text_file->content,
-    $self->_plate_barcode,
-  );
-
-  my $output_collection = Mojo::Collection->new(@{$output});
-
-  $self->_update_analytes($output_collection);
-
-  $self->_text_file->saveas(q{./} . $self->calliper_file_name);
-
-  return 1;
-}
-
-sub _update_analytes {
-  my ($self, $output) = @_;
-  $self->_add_molarity_to_analytes($output);
-  $self->request->batch_update('artifacts', $self->_output_analytes);
-  return 1;
-}
-
-sub _add_molarity_to_analytes {
-  my ($self, $output) = @_;
-  my $analytes = $self->_output_analytes->findnodes($ARTIFACTS);
-
-  foreach my $analyte ($analytes->get_nodelist) {
-    my $well = $analyte->findvalue('location/value');
-
-    my ($letter, $number) = $well =~ /([[:upper:]]):(\d+)/sxm;
-    $number = sprintf '%02d', $number;
-    $well = $letter . $number;
-
-    my $result = $output->first(sub { $_->{'Well Label'} eq $well });
-
-    my $molarity_key;
-    foreach my $key (keys %{$result}) {
-      if ($key =~ /Molarity/ismx) {
-        $molarity_key = $key;
-        last;
-      }
-    }
-
-    croak "No Molarity related column presents in the template file: " . $self->_file_path if (!defined $molarity_key);
-    my $udf = $self->create_udf_element($self->_output_analytes, 'Molarity', $result->{$molarity_key});
-    $analyte->appendChild($udf);
-  }
-
-  return 1;
-}
 
 ### Attributes ###
 
@@ -147,6 +102,208 @@ sub _build__file_path {
   return $path . $ext;
 }
 
+has '_sample_details' => (
+  isa         => 'XML::LibXML::Document',
+  is          => 'rw',
+  required    => 0,
+  lazy_build  => 1,
+  writer      => '_writer_sample_details',
+);
+
+
+override 'run' => sub {
+  my $self = shift;
+  super();
+
+  my $caliper_file = $self->_reading_the_caliper_file;
+
+  my $caliper_datum = $self->_create_collection_from_file($caliper_file);
+
+  my $average_concentration_by_wells = $self->_avarage_concentration_by_well(
+    $self->_get_concentration_by_wells($caliper_datum)
+  );
+
+  $self->_update_samples_by_location($average_concentration_by_wells);
+
+  return 1;
+};
+
+sub _reading_the_caliper_file {
+  my ($self) = @_;
+
+  $self->_text_file->read_content($self->_file_path);
+
+  my $caliper_file = $self->_calliper->interpret(
+    $self->_text_file->content,
+    $self->_plate_barcode,
+  );
+
+  return $caliper_file;
+}
+
+sub _create_collection_from_file {
+  my ($self, $caliper_file) = @_;
+
+  return Mojo::Collection->new(@{$caliper_file});
+}
+
+sub _get_concentration_by_wells {
+  my ($self, $caliper_datum) = @_;
+
+  my %concentration_by_wells;
+  foreach my $caliper_data (@{$caliper_datum}) {
+    # print Dumper %{$caliper_data};
+    # print "\n";
+    my ($well_name_letter, $well_name_number) = $caliper_data->{'Sample Name'} =~ /(^[A-H]{1})(\d{1,2})/smx;
+
+    if ($well_name_letter && $well_name_number) {
+      push @{$concentration_by_wells{$well_name_letter . q{:} . $well_name_number}}, $caliper_data->{$TOTAL_CONCENTRATION_UDF_NAME};
+    }
+  }
+
+  return \%concentration_by_wells;
+}
+
+sub _avarage_concentration_by_well {
+  my ($self, $concentration_by_wells) = @_;
+
+  my %average_concentration_by_wells;
+  while ( my ($well_name, $concentrations) = each %{$concentration_by_wells}) {
+    $average_concentration_by_wells{$well_name} = $self->_average_concentration_for_well($concentrations);
+  }
+
+  return \%average_concentration_by_wells;
+}
+
+sub _average_concentration_for_well {
+  my ($self, $concentration_by_well) = @_;
+
+  return (sum(@{$concentration_by_well}) / scalar @{$concentration_by_well}) * $DILUTION_FACTOR;
+}
+
+sub _update_samples_by_location {
+  my ($self, $average_concentration_by_wells) = @_;
+
+  my $parent_process_doc = $self->_parent_process_doc;
+
+  my $artifacts_from_parent_process = $self->_artifacts_from_parent_process($parent_process_doc);
+
+  my $sample_data_by_uris = $self->_sample_data_by_uris($artifacts_from_parent_process, $average_concentration_by_wells);
+
+  $self->_set_sample_details($sample_data_by_uris);
+
+  foreach my $sample_data (@{$sample_data_by_uris}) {
+    my @samples_uri = keys $sample_data;
+    my $sample_uri = pop @samples_uri;
+    $self->_update_sample_with_library_concentration(
+      $sample_uri,
+      $sample_data->{$sample_uri}->{$CONCENTRATION_KEY}
+    );
+  }
+
+  $self->request->batch_update('samples', $self->_sample_details);
+
+  return 1;
+}
+
+sub _parent_process_doc {
+  my ($self) = @_;
+
+  my $artifact_from_previous_process_doc = $self->_artifacts_by_sample_limsid_and_process_type(
+    $self->_a_sample_limsid_from_current_process, $POST_LIB_PCR_QC_STAMP_STEP
+  );
+
+  return $self->fetch_and_parse(
+    $artifact_from_previous_process_doc->findvalue($PARENT_PROCESS_URI)
+  );
+}
+
+sub _set_sample_details {
+  my ($self, $sample_data_by_uris) = @_;
+
+  my @sample_uris = map { keys $_ } @{$sample_data_by_uris};
+
+  $self->_writer_sample_details($self->request->batch_retrieve('samples', \@sample_uris));
+
+  return 1;
+}
+
+sub _update_sample_with_library_concentration {
+  my ($self, $sample_uri, $concentration) = @_;
+
+  my $sample_list = $self->_sample_details->findnodes(sprintf $SAMPLE_PATH, $sample_uri);
+
+  if ($sample_list->size() != 1) {
+    croak sprintf 'Found %i samples for sample %s', $sample_list->size(), $sample_uri;
+  }
+
+  my $sample_xml        = $sample_list->pop();
+  my $concentration_udf = $self->create_udf_element($self->_sample_details, $LIBRARY_CONCENTRATION_UDF_NAME, $concentration);
+
+  $sample_xml->appendChild($concentration_udf);
+
+  return 1;
+}
+
+sub _artifacts_from_parent_process {
+  my ($self, $parent_process_doc) = @_;
+
+  my @artifact_uri_nodes = $parent_process_doc->findnodes($PROCESS_INPUT_ARTIFACT_URI_PATH);
+  my @artifact_uris = map { $_->getValue() } @artifact_uri_nodes;
+
+  return $self->request->batch_retrieve('artifacts', \@artifact_uris);
+}
+
+sub _sample_data_by_uris {
+  my ($self, $doc, $average_concentration_by_wells) = @_;
+
+  my @sample_by_uris;
+  my @artifacts = $doc->findnodes($ARTIFACT_NODE_LIST_PATH)->get_nodelist;
+
+  foreach my $artifact (@artifacts) {
+    my $location = $artifact->findvalue($LOCATION_VALUE_PATH);
+    my $sample_uri = $artifact->findvalue($SAMPLE_URI_PATH);
+    push @sample_by_uris,
+      {
+        $sample_uri =>  {
+                          $LOCATION_KEY       => $location,
+                          $CONCENTRATION_KEY  => $average_concentration_by_wells->{$location}
+                        },
+      };
+  }
+
+  return \@sample_by_uris;
+}
+
+sub _artifacts_by_sample_limsid_and_process_type {
+  my ($self, $sample_limsid, $process_type) = @_;
+
+  my $uri = $self->config->clarity_api->{'base_uri'} . '/artifacts?';
+  my $params = 'samplelimsid=' . $sample_limsid;
+  $params .= '&process-type=' . uri_escape($process_type);
+
+  $uri .= $params;
+
+  my $artifact_list = $self->fetch_and_parse($uri)
+                           ->findnodes($ARTIFACTS_ARTIFACT_URI);
+
+  if ($artifact_list->size() == 0) {
+    croak 'Could not find a previous artifact for sample ' . $sample_limsid . " that has been through $process_type";
+  }
+
+  return $self->fetch_and_parse($artifact_list->pop()->value);
+}
+
+sub _a_sample_limsid_from_current_process {
+  my ($self) = @_;
+
+  my $an_input_artifact_limsid = $self->process_doc->findnodes($PROCESS_INPUT_ARTIFACT_URI_PATH)->to_literal_list->[0];
+
+  my $artifact_doc = $self->fetch_and_parse($an_input_artifact_limsid);
+
+  return $artifact_doc->findvalue($ARTIFACT_SAMPLE_LIMSID_PATH);
+}
+
 1;
 
 __END__
@@ -166,7 +323,9 @@ wtsi_clarity::epp::isc::calliper_analyser
 
 =head1 DESCRIPTION
 
-  Finds a calliper file from a process. Extracts molarity from that file and updates molarity on artifacts.
+  Finds a calliper file from a process. Extracts the duplicated concentration from that file and calculate the average of it.
+  Multiple the average concentration by 5 and update the related sample's UDF field (WTSI Library Concentration)
+  with that calculated value.
   Saves the calliper file.
 
 =head1 SUBROUTINES/METHODS
@@ -185,6 +344,12 @@ wtsi_clarity::epp::isc::calliper_analyser
 
 =item Readonly
 
+=item Mojo::Collection
+
+=item List::Util
+
+=item URI::Escape
+
 =item wtsi_clarity::util::textfile
 
 =item wtsi_clarity::util::calliper
@@ -192,6 +357,8 @@ wtsi_clarity::epp::isc::calliper_analyser
 =back
 
 =head1 AUTHOR
+
+Karoly Erdos E<lt>ke4@sanger.ac.ukE<gt>
 
 Chris Smith E<lt>cs24@sanger.ac.ukE<gt>
 

@@ -59,11 +59,4 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
   like ($file->saveas(join q{/}, $dir, $filename), qr/$filename/, 'save the temporary file with a correct name');
 }
 
-
-# {
-#   throws_ok { wtsi_clarity::epp::reports::report->new() }
-#     qr/Either process_url or message must be passed for generating a report/,
-#     'Throws an error when none of the arguments are passed in';
-# }
-
 1;
