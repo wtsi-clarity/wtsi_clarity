@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 12;
+use Test::More tests => 13;
 
 use_ok('wtsi_clarity::util::pdf::factory::pool_analysis_results');
 
@@ -1247,6 +1247,183 @@ DDD_V5_plus'
 
   ok($file, 'does create a file object');
   # $file->saveas('./test_pool_analysis.pdf');
+}
+
+{
+  my $factory = wtsi_clarity::util::pdf::factory::pool_analysis_results->new();
+
+  my $table_info = {
+    'input_table_data' => {
+      'Plate name'  => '0123456',
+      'Barcode'     => '6250354579651'
+    },
+    'plate_table_data' => {
+      'A:2' => {
+               'study_name' => 'Study_ABC',
+               'sample_name'  => 'sample_name9',
+               'organism'     => 'Homo_sapiens',
+               'bait_library_name' => 'DDD_V5_plus',
+               'pooled_into' => 'B:1'
+             },
+    }
+  };
+
+  my $table_data = [
+          [
+            '',
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          [
+            'A',
+            '',
+            'Study_ABC_sample_name9
+Homo_sapiens
+DDD_V5_plus',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            ''
+          ],
+          [
+            'B',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            ''
+          ],
+          [
+            'C',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            ''
+          ],
+          [
+            'D',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            ''
+          ],
+          [
+            'E',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            ''
+          ],
+          [
+            'F',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            ''
+          ],
+          [
+            'G',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            ''
+          ],
+          [
+            'H',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            ''
+          ],
+          [
+            '',
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        ];
+
+  is_deeply($factory->_format($factory->plate_table, $table_info->{'plate_table_data'}), $table_data);
 }
 
 1;
