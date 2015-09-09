@@ -1,7 +1,10 @@
 use strict;
 use warnings;
-use Test::More tests => 8;
+use Test::More tests => 12;
 use Test::Exception;
+use Cwd;
+use Carp;
+use XML::SemanticDiff;
 
 use Mojo::Collection;
 
@@ -11,89 +14,244 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/isc/calliper_analyser/';
 local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
+use wtsi_clarity::util::config;
+my $config = wtsi_clarity::util::config->new();
+my $base_uri = $config->clarity_api->{'base_uri'};
+
 # Can it run?
 {
-  my $process = wtsi_clarity::epp::isc::calliper_analyser->new(
+  my $analyser = wtsi_clarity::epp::isc::calliper_analyser->new(
     process_url => 'http://testserver.com:1234/processes/24-18045/',
     calliper_file_name => 'outputfile',
   );
 
-  can_ok($process, qw/ run /);
+  can_ok($analyser, qw/ run /);
 }
 
 # Extract input plate barcode
 {
-  my $process = wtsi_clarity::epp::isc::calliper_analyser->new(
+  my $analyser = wtsi_clarity::epp::isc::calliper_analyser->new(
     process_url => 'http://testserver.com:1234/processes/24-18045/',
     calliper_file_name => 'outputfile',
   );
 
-  can_ok($process, qw/ _plate_barcode /);
-  is($process->_plate_barcode, '12345678', 'Extracts the input plate barcode');
+  can_ok($analyser, qw/ _plate_barcode /);
+  is($analyser->_plate_barcode, '12345678', 'Extracts the input plate barcode');
 }
 
 # Creates the correct file location
 {
-  my $process = wtsi_clarity::epp::isc::calliper_analyser->new(
+  my $analyser = wtsi_clarity::epp::isc::calliper_analyser->new(
     process_url => 'http://clarityurl.com:8080/processes/24-18045',
     calliper_file_name => 'outputfile',
   );
 
-  is($process->_file_path, 't/data/epp/isc/calliper_analyser/12345678.csv', 'Extracts the input plate barcode');
+  is($analyser->_file_path, 't/data/epp/isc/calliper_analyser/12345678.csv', 'Extracts the input plate barcode');
 }
 
-# Add that molarity
 {
-  my $process = wtsi_clarity::epp::isc::calliper_analyser->new(
-    process_url => 'http://testserver.com:1234/processes/24-18155',
+  my $analyser = wtsi_clarity::epp::isc::calliper_analyser->new(
+    process_url => 'http://clarityurl.com:8080/processes/24-18045',
     calliper_file_name => 'outputfile',
   );
 
-  $process->_add_molarity_to_analytes(Mojo::Collection->new({
-    'Peak Count' => '0',
-    'Sample Name' => 'F12_ISC_1_5',
-    'Plate Name' => 'Caliper1_344745_ISC_1_5_2014-07-01_12-55-09',
-    'Region[200-1400] Molarity (nmol/l)' => '0.00741017327953466',
-    'Total Conc. (ng/ul)' => '0',
-    'Well Label' => 'D09'
-  },
-  {
-    'Peak Count' => '0',
-    'Sample Name' => 'G12_ISC_1_5',
-    'Plate Name' => 'Caliper1_344745_ISC_1_5_2014-07-01_12-55-09',
-    'Region[200-1400] Molarity (nmol/l)' => '0.0417860183721143',
-    'Total Conc. (ng/ul)' => '0',
-    'Well Label' => 'I09'
-  },
-  ));
-
-  my $artifact_d9 = $process->_output_analytes->findnodes('art:details/art:artifact[location/value="D:9"]')->pop();
-  my $artifact_i9 = $process->_output_analytes->findnodes('art:details/art:artifact[location/value="I:9"]')->pop();
-
-  my $artifact_d9_molarity = $artifact_d9->findvalue('udf:field');
-  my $artifact_i9_molarity = $artifact_i9->findvalue('udf:field');
-
-  is($artifact_d9_molarity, 0.00741017327953466, 'Updates the correct molarity for d9');
-  is($artifact_i9_molarity, 0.0417860183721143, 'Updates the correct molarity for i9');
+  my $expected_count = 208;
+  is(scalar @{$analyser->_reading_the_caliper_file}, $expected_count, 'Returns the the correct amount of data');
 }
 
-# Check missing molarity column in the caliper data file
-{
-  my $process = wtsi_clarity::epp::isc::calliper_analyser->new(
-    process_url => => 'http://testserver.com:1234/processes/24-18155',
+{ # get the concentration by wells
+  my $analyser = wtsi_clarity::epp::isc::calliper_analyser->new(
+    process_url => 'http://testserver.com:1234/processes/24-18045/',
     calliper_file_name => 'outputfile',
   );
 
-  throws_ok
-    { $process->_add_molarity_to_analytes(Mojo::Collection->new({
-        'Peak Count' => '15',
-        'Sample Name' => 'A1_ISC_1_5',
-        'Plate Name' => 'Caliper2_377031_ISC_1_5_2014-12-13_02-13-05',
-        'Region[200-700] (nmol/l)' => '37.6361466180786',
-        'Total Conc. (ng/ul)' => '6.90993167766489',
-        'Well Label' => 'A15'
-      }));
+  my $caliper_datum = [
+    {
+      'Peak Count' => '5',
+      'Sample Name' => 'A1_ISC_1_5',
+      'Plate Name' => 'Caliper1_344745_ISC_1_5_2014-07-01_12-55-09',
+      'Region[200-1400] Molarity (nmol/l)' => '2.20151284050569',
+      'Total Conc. (ng/ul)' => '0.173425862265629',
+      'Well Label' => 'A01'
+    },
+    {
+      'Peak Count' => '6',
+      'Sample Name' => 'A1_ISC_1_5',
+      'Plate Name' => 'Caliper1_344745_ISC_1_5_2014-07-01_12-55-09',
+      'Region[200-1400] Molarity (nmol/l)' => '2.23010180190948',
+      'Total Conc. (ng/ul)' => '0.147051987121658',
+      'Well Label' => 'B01'
+    },
+    {
+      'Peak Count' => '4',
+      'Sample Name' => 'B1_ISC_1_5',
+      'Plate Name' => 'Caliper1_344745_ISC_1_5_2014-07-01_12-55-09',
+      'Region[200-1400] Molarity (nmol/l)' => '2.53750708774114',
+      'Total Conc. (ng/ul)' => '0.182153780398987',
+      'Well Label' => 'C01'
+    },
+    {
+      'Peak Count' => '4',
+      'Sample Name' => 'B1_ISC_1_5',
+      'Plate Name' => 'Caliper1_344745_ISC_1_5_2014-07-01_12-55-09',
+      'Region[200-1400] Molarity (nmol/l)' => '2.13750708774114',
+      'Total Conc. (ng/ul)' => '0.122153780398987',
+      'Well Label' => 'D01'
     }
-    qr{No Molarity related column presents in the template file.},
-    q{_add_molarity_to_analytes should croak if there is no Molarity related columns in the data file};
+  ];
+
+  my $expected_concentration_by_wells = {
+    "A:1" => [0.173425862265629, 0.147051987121658],
+    "B:1" => [0.182153780398987, 0.122153780398987],
+  };
+
+  is_deeply($analyser->_get_concentration_by_wells($caliper_datum), $expected_concentration_by_wells,
+    'Returns the correct concentrations by well name');
 }
+
+{ # test the average concentration calculation
+  my $analyser = wtsi_clarity::epp::isc::calliper_analyser->new(
+    process_url => 'http://testserver.com:1234/processes/24-18045/',
+    calliper_file_name => 'outputfile',
+  );
+
+  my $well = "A:1";
+  my %concentration_by_wells = (
+    $well => [1.12, 1.22]
+  );
+
+  my $expected_avarage_concentration = 5.85;
+
+  is($analyser->_average_concentration_for_well($concentration_by_wells{$well}), $expected_avarage_concentration,
+    'Returns the correct average concentration');
+}
+
+{ # calculate the average concentration by wells
+  my $analyser = wtsi_clarity::epp::isc::calliper_analyser->new(
+    process_url => 'http://testserver.com:1234/processes/24-18045/',
+    calliper_file_name => 'outputfile',
+  );
+
+  my $concentration_by_wells = {
+    "A:1" => [0.173425862265629, 0.147051987121658],
+    "B:1" => [0.182153780398987, 0.122153780398987],
+  };
+
+  my $expected_average_concentration_by_wells = {
+    'A:1' => '0.801194623468218',
+    'B:1' => '0.760768901994935'
+  };
+
+  is_deeply($analyser->_avarage_concentration_by_well($concentration_by_wells), $expected_average_concentration_by_wells,
+    'Returns the correct average concentrations by well name');
+}
+
+{ # Tests the sample data with location and concentration by URIs
+  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
+
+  my $analyser = wtsi_clarity::epp::isc::calliper_analyser->new(
+    process_url => $base_uri . '/processes/24-63208/',
+    calliper_file_name => 'outputfile',
+  );
+
+  my $average_concentration_by_wells = {
+    'E:10'  => '0.160238924693644',
+    'F:10'  => '0.152153780398987',
+    'H:9'   => '1.643837939483848'
+  };
+
+  my $expected_sample_data_by_uris_with_location_and_concentration = [
+    {
+      'http://testserver.com:1234/here/samples/SV2454A171' => {
+        'location'      => 'E:10',
+        'concentration' => '0.160238924693644'
+      }
+    },
+    {
+      'http://testserver.com:1234/here/samples/SV2454A172' => {
+        'location' => 'F:10',
+        'concentration' => '0.152153780398987'
+      }
+    },
+    {
+      'http://testserver.com:1234/here/samples/SV2454A166' => {
+        'location' => 'H:9',
+        'concentration' => '1.643837939483848'
+      }
+    }
+  ];
+
+  my $parent_process_doc = XML::LibXML->load_xml(
+    location => $ENV{'WTSICLARITY_WEBCACHE_DIR'} . 'GET/processes.24-63206'
+  );
+
+  my $artifacts_from_parent_process = $analyser->_artifacts_from_parent_process($parent_process_doc);
+
+  is_deeply($analyser->_sample_data_by_uris($artifacts_from_parent_process, $average_concentration_by_wells), $expected_sample_data_by_uris_with_location_and_concentration,
+    'Returns the correct sample data with location and concentration by URIs');
+}
+
+{
+  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
+
+  my $analyser = wtsi_clarity::epp::isc::calliper_analyser->new(
+    process_url => $base_uri . '/processes/24-63208/',
+    calliper_file_name => 'outputfile',
+  );
+
+  my $parent_process_doc = XML::LibXML->load_xml(
+    location => $ENV{'WTSICLARITY_WEBCACHE_DIR'} . 'GET/processes.24-63206'
+  );
+
+  my $average_concentration_by_wells = {
+    'E:10'  => '0.160238924693644',
+    'F:10'  => '0.152153780398987',
+    'H:9'   => '1.643837939483848'
+  };
+
+  my $artifacts_from_parent_process = $analyser->_artifacts_from_parent_process($parent_process_doc);
+
+  my $sample_data_by_uris = $analyser->_sample_data_by_uris($artifacts_from_parent_process, $average_concentration_by_wells);
+
+  $analyser->_set_sample_details($sample_data_by_uris);
+
+  my $concentration = '0.160238924693644';
+  my $sample_uri = 'http://testserver.com:1234/here/samples/SV2454A171';
+
+  $analyser->_update_sample_with_library_concentration($sample_uri, $concentration);
+
+  my $expected_sample_details = q{updated_sample_details.xml};
+  my $testdata_dir  = q{/t/data/epp/isc/calliper_analyser/};
+  my $expected_sample_details_xml = XML::LibXML->load_xml(location => cwd . $testdata_dir . $expected_sample_details) or croak 'File cannot be found at ' . cwd() . $testdata_dir . $expected_sample_details ;
+  my $comparer = XML::SemanticDiff->new();
+
+  my @differences = $comparer->compare($analyser->_sample_details, $expected_sample_details_xml);
+  cmp_ok(scalar @differences, '==', 0, 'Updated samples with library concentration correctly');
+}
+
+{
+  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
+
+  my $analyser = wtsi_clarity::epp::isc::calliper_analyser->new(
+    process_url => $base_uri . '/processes/24-63208/',
+    calliper_file_name => 'outputfile',
+  );
+
+  my $average_concentration_by_wells = {
+    'E:10'  => '0.160238924693644',
+    'F:10'  => '0.152153780398987',
+    'H:9'   => '1.643837939483848'
+  };
+
+  $analyser->_update_samples_by_location($average_concentration_by_wells);
+
+  my $expected_samples_details = q{updated_sample_details_of_all_samples.xml};
+  my $testdata_dir  = q{/t/data/epp/isc/calliper_analyser/};
+  my $expected_samples_details_xml = XML::LibXML->load_xml(location => cwd . $testdata_dir . $expected_samples_details) or croak 'File cannot be found at ' . cwd() . $testdata_dir . $expected_samples_details ;
+  my $comparer = XML::SemanticDiff->new();
+
+  my @differences = $comparer->compare($analyser->_sample_details, $expected_samples_details_xml);
+  cmp_ok(scalar @differences, '==', 0, 'Updated all samples with library concentration correctly');
+}
+
+1;

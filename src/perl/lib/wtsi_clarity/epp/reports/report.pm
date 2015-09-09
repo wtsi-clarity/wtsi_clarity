@@ -15,16 +15,6 @@ Readonly::Scalar my $TWELVE => 12;
 
 extends 'wtsi_clarity::epp';
 
-# sub BUILD {
-#   my $self = shift;
-
-#   if (!$self->_has_process_url && !$self->_has_message) {
-#     croak 'Either process_url or message must be passed for generating a report';
-#   }
-
-#   return $self;
-# }
-
 override 'run' => sub {
   my $self = shift;
   super();
@@ -78,6 +68,10 @@ sub file_content {
   croak 'Method file_content must be overidden';
 }
 
+sub headers {
+  croak 'Method headers must be overidden';
+}
+
 sub file_delimiter {
   return "\t";
 }
@@ -115,7 +109,6 @@ sub _create_reports {
 
   while (my $model = $iterator->()) {
     my $file_content = $self->file_content($model);
-    my @headers      = keys $file_content->[0];
 
     # TODO: this should also take out from the base template
     # as not always needed it
@@ -123,7 +116,7 @@ sub _create_reports {
 
     my $file = $self->_file_factory->create(
       type      => 'report_writer',
-      headers   => \@headers,
+      headers   => $self->headers,
       data      => $file_content,
       delimiter => $self->file_delimiter,
     );
@@ -207,6 +200,10 @@ base report class for irods related reports
 =head2 BUILD
 
 =head2 run - Builds the report
+
+=head2 headers
+
+  Returns the headers of the report file.
 
 =head2 file_content
 

@@ -1,0 +1,58 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:details xmlns:file="http://genologics.com/ri/file" xmlns:ri="http://genologics.com/ri" xmlns:smp="http://genologics.com/ri/sample" xmlns:udf="http://genologics.com/ri/userdefined">
+    <smp:sample limsid="SV2454A171" uri="http://testserver.com:1234/here/samples/SV2454A171">
+        <name>304b6348-bcd6-11e4-b42e-68b59977951e</name>
+        <date-received>2015-02-25</date-received>
+        <project limsid="SV2454" uri="http://testserver.com:1234/here/projects/SV2454"/>
+        <submitter uri="http://testserver.com:1234/here/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="SV2454A171PA1" uri="http://testserver.com:1234/here/artifacts/SV2454A171PA1?state=96971"/>
+        <udf:field name="WTSI Taxon ID" type="Numeric">9606</udf:field>
+        <udf:field name="WTSI Bait Library Name" type="String">14M_0670551</udf:field>
+        <udf:field name="WTSI Donor ID" type="String">304b6348-bcd6-11e4-b42e-68b59977951e</udf:field>
+        <udf:field name="WTSI Organism" type="String">Homo Sapiens</udf:field>
+        <udf:field name="WTSI Supplier Gender - (SM)" type="String">Male</udf:field>
+        <udf:field name="WTSI Supplier Sample Name (SM)" type="String">FR03970451</udf:field>
+        <udf:field name="WTSI Working Volume (µL) (SM)" type="String">1.0613</udf:field>
+        <udf:field name="Sample Conc. (ng\/µL) (SM)" type="String">0.0747441523224134</udf:field>
+        <field name="WTSI Library Concentration" xmlns="http://genologics.com/ri/userdefined">0.160238924693644</field>
+    </smp:sample>
+    <smp:sample limsid="SV2454A172" uri="http://testserver.com:1234/here/samples/SV2454A172">
+        <name>2ea49762-bcd6-11e4-b42e-68b59977951e</name>
+        <date-received>2015-02-25</date-received>
+        <project limsid="SV2454" uri="http://testserver.com:1234/here/projects/SV2454"/>
+        <submitter uri="http://testserver.com:1234/here/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="SV2454A172PA1" uri="http://testserver.com:1234/here/artifacts/SV2454A172PA1?state=96979"/>
+        <udf:field name="WTSI Taxon ID" type="Numeric">9606</udf:field>
+        <udf:field name="WTSI Bait Library Name" type="String">14M_0670551</udf:field>
+        <udf:field name="WTSI Donor ID" type="String">2ea49762-bcd6-11e4-b42e-68b59977951e</udf:field>
+        <udf:field name="WTSI Organism" type="String">Homo Sapiens</udf:field>
+        <udf:field name="WTSI Supplier Gender - (SM)" type="String">Female</udf:field>
+        <udf:field name="WTSI Supplier Sample Name (SM)" type="String">FR03970582</udf:field>
+        <udf:field name="WTSI Working Volume (µL) (SM)" type="String">27.3042</udf:field>
+        <field name="WTSI Library Concentration" xmlns="http://genologics.com/ri/userdefined">0.152153780398987</field>
+    </smp:sample>
+    <smp:sample limsid="SV2454A166" uri="http://testserver.com:1234/here/samples/SV2454A166">
+        <name>32272a6c-bcd6-11e4-b42e-68b59977951e</name>
+        <date-received>2015-02-25</date-received>
+        <project limsid="SV2454" uri="http://testserver.com:1234/here/projects/SV2454"/>
+        <submitter uri="http://testserver.com:1234/here/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="SV2454A166PA1" uri="http://testserver.com:1234/here/artifacts/SV2454A166PA1?state=97004"/>
+        <udf:field name="WTSI Taxon ID" type="Numeric">9606</udf:field>
+        <udf:field name="WTSI Bait Library Name" type="String">14M_0670551</udf:field>
+        <udf:field name="WTSI Donor ID" type="String">32272a6c-bcd6-11e4-b42e-68b59977951e</udf:field>
+        <udf:field name="WTSI Organism" type="String">Homo Sapiens</udf:field>
+        <udf:field name="WTSI Supplier Gender - (SM)" type="String">Male</udf:field>
+        <udf:field name="WTSI Supplier Sample Name (SM)" type="String">FR03970101</udf:field>
+        <udf:field name="WTSI Working Volume (µL) (SM)" type="String">1.5645</udf:field>
+        <field name="WTSI Library Concentration" xmlns="http://genologics.com/ri/userdefined">1.643837939483848</field>
+    </smp:sample>
+</smp:details>
