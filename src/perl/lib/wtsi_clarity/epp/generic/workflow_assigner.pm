@@ -9,8 +9,9 @@ use Mojo::Collection 'c';
 use wtsi_clarity::util::request;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $INPUT_PATH     => q( /prc:process/input-output-map/input/@post-process-uri );
-Readonly::Scalar my $INPUT_IDS_PATH => q{ /prc:process/input-output-map/input/@limsid };
+Readonly::Scalar my $INPUT_PATH         => q( /prc:process/input-output-map/input/@post-process-uri );
+Readonly::Scalar my $INPUT_IDS_PATH     => q{ /prc:process/input-output-map/input/@limsid };
+Readonly::Scalar my $WORKFLOW_NAME_PATH => q{/wkfcnf:workflows/workflow/@name};
 ## use critic
 
 extends 'wtsi_clarity::epp';
@@ -24,6 +25,53 @@ has 'new_wf' => (
   isa        => 'Str',
   is         => 'ro',
   required   => 1,
+  trigger => \&_set_current_workflow,
+);
+
+sub _set_current_workflow {
+  my ($self, $new_wf, $old_wf) = @_;
+
+  $self->new_filtered_wf($self->_get_current_workflow_by_name($self->new_wf));
+
+  return;
+}
+
+sub _get_workflow_names {
+  my ($self) = @_;
+
+  my @workflow_names = map { $_->getValue } $self->_all_workflows_details->findnodes($WORKFLOW_NAME_PATH);
+
+  return \@workflow_names;
+}
+
+sub _get_current_workflow_by_name {
+  my ($self, $given_workflow_name) = @_;
+
+  my $workflow_names = $self->_get_workflow_names;
+
+  my @filtered_wf_names = grep {$_ =~ /\Q$given_workflow_name\E/sxm} @{$workflow_names};
+
+  my $current_workflow_name = q{};
+
+  my $size_of_filtered_names = scalar @filtered_wf_names;
+
+  if ($size_of_filtered_names > 1) {
+    my @sorted_workflow_names = sort @filtered_wf_names;
+    $current_workflow_name = $sorted_workflow_names[scalar @sorted_workflow_names - 1];
+  } elsif ($size_of_filtered_names == 1) {
+    $current_workflow_name = $filtered_wf_names[0];
+  } else {
+    croak qq{The given workflow '$given_workflow_name' is not exist.};
+  }
+
+  return $current_workflow_name;
+}
+
+has 'new_filtered_wf' => (
+  isa        => 'Str',
+  is         => 'rw',
+  required   => 1,
+  lazy_build => 1,
 );
 
 has 'new_step' => (
@@ -206,7 +254,7 @@ has '_new_workflow_uri' => (
 
 sub _build__new_workflow_uri {
   my $self= shift;
-  return _get_workflow_uri($self->new_wf, $self->_all_workflows_details());
+  return _get_workflow_uri($self->new_filtered_wf, $self->_all_workflows_details());
 }
 
 has '_new_protocol_uri' => (

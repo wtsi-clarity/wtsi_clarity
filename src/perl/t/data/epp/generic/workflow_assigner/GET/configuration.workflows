@@ -2,4 +2,10 @@
 <wkfcnf:workflows xmlns:wkfcnf="http://genologics.com/ri/workflowconfiguration">
     <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/999" name="new_workflow"/>
     <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/666" name="wrong_workflow"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/1000" name="workflow a"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/1001" name="workflow a_20150609"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/1002" name="workflow a_20150909"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/1003" name="workflow b"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/1004" name="workflow b_20150609"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/1005" name="workflow b_20150909"/>
 </wkfcnf:workflows>
