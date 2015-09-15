@@ -16,7 +16,8 @@
     <udf:field type="String" name="WTSI Supplier">EORTC/UKD</udf:field>
     <udf:field type="Numeric" name="WTSI Supplier Volume">25</udf:field>
     <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
-    <udf:field type="String" name="WTSI Working Volume (ÂµL) (SM)">23.9864</udf:field>
+    <udf:field type="String" name="WTSI Working Volume (µL) (SM)">23.9864</udf:field>
     <udf:field type="String" name="WTSI Bait Library Name">14M_0731661</udf:field>
-    <udf:field type="String" name="Sample Conc. (ng\/ÂµL) (SM)">6.8551197269589</udf:field>
+    <udf:field type="String" name="Sample Conc. (ng\/µL) (SM)">6.8551197269589</udf:field>
+    <udf:field type="String" name="Read Length">123</udf:field>
 </smp:sample>

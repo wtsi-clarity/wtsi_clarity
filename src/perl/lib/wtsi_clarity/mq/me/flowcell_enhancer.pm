@@ -13,55 +13,56 @@ with qw/ wtsi_clarity::mq::message_enhancer /;
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $INPUT_OUTPUT_MAP        => q{prc:process/input-output-map};
-Readonly::Scalar my $INPUT_LIMSID            => q{input/@limsid};
-Readonly::Scalar my $OUTPUT_LIMSID           => q{output/@limsid};
-Readonly::Scalar my $FLOWCELL_BARCODE_UDF    => q{prc:process/udf:field[@name="Flow Cell ID"]};
-Readonly::Scalar my $SPIKED_HYB_BARCODE      => q{prc:process/udf:field[@name="WTSI Spiked Hyb Barcode"]};
-Readonly::Scalar my $PROCESS_LIMSID_PATH     => q{prc:process/@limsid};
+Readonly::Scalar my $INPUT_OUTPUT_MAP         => q{prc:process/input-output-map};
+Readonly::Scalar my $INPUT_LIMSID             => q{input/@limsid};
+Readonly::Scalar my $OUTPUT_LIMSID            => q{output/@limsid};
+Readonly::Scalar my $FLOWCELL_BARCODE_UDF     => q{prc:process/udf:field[@name="Flow Cell ID"]};
+Readonly::Scalar my $SPIKED_HYB_BARCODE       => q{prc:process/udf:field[@name="WTSI Spiked Hyb Barcode"]};
+Readonly::Scalar my $PROCESS_LIMSID_PATH      => q{prc:process/@limsid};
 
-Readonly::Scalar my $CONTAINER_URI_PATH      => q{./stp:placements/selected-containers/container/@uri};
+Readonly::Scalar my $CONTAINER_URI_PATH       => q{./stp:placements/selected-containers/container/@uri};
 
-Readonly::Scalar my $ARTIFACTS_ARTIFACT_URI  => q{art:artifacts/artifact/@uri};
+Readonly::Scalar my $ARTIFACTS_ARTIFACT_URI   => q{art:artifacts/artifact/@uri};
 
-Readonly::Scalar my $ARTIFACT_WELL_PATH      => q{art:artifact/location/value};
-Readonly::Scalar my $ARTIFACT_LIMSID_PATH    => q{art:artifact/@limsid};
-Readonly::Scalar my $ARTIFACT_SAMPLE_LIMSID  => q{art:artifact/sample/@limsid};
-Readonly::Scalar my $ARTIFACT_REAGENT_NAME   => q{./art:artifact/reagent-label/@name};
-Readonly::Scalar my $ARTIFACT_LOCATION_VALUE => q{./art:artifact/location/value};
-Readonly::Scalar my $ARTIFACT_CONTAINER_URI  => q{./art:artifact/location/container/@uri};
+Readonly::Scalar my $ARTIFACT_WELL_PATH       => q{art:artifact/location/value};
+Readonly::Scalar my $ARTIFACT_LIMSID_PATH     => q{art:artifact/@limsid};
+Readonly::Scalar my $ARTIFACT_SAMPLE_LIMSID   => q{art:artifact/sample/@limsid};
+Readonly::Scalar my $ARTIFACT_REAGENT_NAME    => q{./art:artifact/reagent-label/@name};
+Readonly::Scalar my $ARTIFACT_LOCATION_VALUE  => q{./art:artifact/location/value};
+Readonly::Scalar my $ARTIFACT_CONTAINER_URI   => q{./art:artifact/location/container/@uri};
 
-Readonly::Scalar my $LANE_ENTITY_TYPE        => q{library};
-Readonly::Scalar my $PIPELINE_ID_LIMS        => q{GCLP-CLARITY-ISC};
-Readonly::Scalar my $SAMPLE_ENTITY_TYPE      => q{library_indexed};
-Readonly::Scalar my $IS_R_AND_D              => q{false};
+Readonly::Scalar my $LANE_ENTITY_TYPE         => q{library};
+Readonly::Scalar my $PIPELINE_ID_LIMS         => q{GCLP-CLARITY-ISC};
+Readonly::Scalar my $SAMPLE_ENTITY_TYPE       => q{library_indexed};
+Readonly::Scalar my $IS_R_AND_D               => q{false};
 
-Readonly::Scalar my $SAMPLE_LIMSID           => q{smp:sample/@limsid};
-Readonly::Scalar my $SAMPLE_BAIT_NAME        => q{smp:sample/udf:field[@name="WTSI Bait Library Name"]};
-Readonly::Scalar my $SAMPLE_INSERT_SIZE_FROM => q{smp:sample/udf:field[@name="WTSI Requested Size Range From"]};
-Readonly::Scalar my $SAMPLE_INSERT_SIZE_TO   => q{smp:sample/udf:field[@name="WTSI Requested Size Range To"]};
-Readonly::Scalar my $SAMPLE_READ_LENGTH      => q{smp:sample/udf:field[@name="Read Length"]};
-Readonly::Scalar my $SAMPLE_NAME             => q{smp:sample/name};
-Readonly::Scalar my $SAMPLE_PROJECT_URI      => q{smp:sample/project/@uri};
+Readonly::Scalar my $SAMPLE_LIMSID            => q{smp:sample/@limsid};
+Readonly::Scalar my $SAMPLE_BAIT_NAME         => q{smp:sample/udf:field[@name="WTSI Bait Library Name"]};
+Readonly::Scalar my $SAMPLE_NAME              => q{smp:sample/name};
+Readonly::Scalar my $SAMPLE_PROJECT_URI       => q{smp:sample/project/@uri};
 
-Readonly::Scalar my $CONTAINER_NAME          => q{./con:container/name};
+Readonly::Scalar my $CONTAINER_NAME           => q{./con:container/name};
 
-Readonly::Scalar my $PROJECT_COST_CODE_PATH  => q{prj:project/udf:field[@name="WTSI Project Cost Code"]};
-Readonly::Scalar my $PROJECT_LIMSID          => q{prj:project/@limsid};
+Readonly::Scalar my $PROJECT_COST_CODE_PATH   => q{prj:project/udf:field[@name="WTSI Project Cost Code"]};
+Readonly::Scalar my $PROJECT_SIZE_FROM_PATH   => q{prj:project/udf:field[@name="WTSI Requested Size Range From"]};
+Readonly::Scalar my $PROJECT_SIZE_RANGE_PATH  => q{prj:project/udf:field[@name="WTSI Requested Size Range"]};
+Readonly::Scalar my $PROJECT_READ_LENGTH_PATH => q{prj:project/udf:field[@name="WTSI Read Length"]};
+Readonly::Scalar my $PROJECT_LIMSID           => q{prj:project/@limsid};
+Readonly::Scalar my $PROJECT_ID_PATH          => q{prj:project/udf:field[@name="WTSI Project ID"]};
 
-Readonly::Scalar my $TAG_PLATE_PROCESS_NAME  => q{Library PCR set up};
+Readonly::Scalar my $TAG_PLATE_PROCESS_NAME   => q{Library PCR set up};
 
-Readonly::Scalar my $CONTROL_SAMPLE_UUID     => q{d3a59c4c-c037-11e0-834c-00144f01a414};
-Readonly::Scalar my $CONTROL_STUDY_UUID      => q{2aa1cd2e-a557-11df-8092-00144f01a414};
-Readonly::Scalar my $CONTROL_TAG_INDEX       => q{888};
-Readonly::Scalar my $CONTROL_TAG_SEQUENCE    => q{ACAACGCAATC};
-Readonly::Scalar my $CONTROL_TAG_SET_NAME    => q{Sanger_168tags - 10 mer tags};
-Readonly::Scalar my $CONTROL_ENTITY_TYPE     => q{library_indexed_spike};
+Readonly::Scalar my $CONTROL_SAMPLE_UUID      => q{d3a59c4c-c037-11e0-834c-00144f01a414};
+Readonly::Scalar my $CONTROL_STUDY_UUID       => q{2aa1cd2e-a557-11df-8092-00144f01a414};
+Readonly::Scalar my $CONTROL_TAG_INDEX        => q{888};
+Readonly::Scalar my $CONTROL_TAG_SEQUENCE     => q{ACAACGCAATC};
+Readonly::Scalar my $CONTROL_TAG_SET_NAME     => q{Sanger_168tags - 10 mer tags};
+Readonly::Scalar my $CONTROL_ENTITY_TYPE      => q{library_indexed_spike};
 
-Readonly::Scalar my $REAGENT_LOT_URI_PATH    => q{/stp:lots/reagent-lots/reagent-lot/@uri};
-Readonly::Scalar my $REAGENT_KIT_NAME_PATH   => q{/lot:reagent-lot/reagent-kit/@name};
-Readonly::Scalar my $SPIKED_HYB_BUFFER       => q{Spiked Hyb Buffer};
-Readonly::Scalar my $LOT_NUMBER_PATH         => q{/lot:reagent-lot/lot-number};
+Readonly::Scalar my $REAGENT_LOT_URI_PATH     => q{/stp:lots/reagent-lots/reagent-lot/@uri};
+Readonly::Scalar my $REAGENT_KIT_NAME_PATH    => q{/lot:reagent-lot/reagent-kit/@name};
+Readonly::Scalar my $SPIKED_HYB_BUFFER        => q{Spiked Hyb Buffer};
+Readonly::Scalar my $LOT_NUMBER_PATH          => q{/lot:reagent-lot/lot-number};
 ## use critic
 
 sub type { return 'flowcell' };
@@ -239,34 +240,51 @@ sub _build_sample {
 
   # Stuff from sample
   $sample{'bait_name'} = $sample_doc->findvalue($SAMPLE_BAIT_NAME);
-  $sample{'requested_insert_size_from'} = $sample_doc->findvalue($SAMPLE_INSERT_SIZE_FROM);
-  $sample{'requested_insert_size_to'} = $sample_doc->findvalue($SAMPLE_INSERT_SIZE_TO);
+  $sample{'sample_uuid'} = $sample_doc->findvalue($SAMPLE_NAME);
 
-  my $read_length = $sample_doc->findvalue($SAMPLE_READ_LENGTH);
+  my $project_info = $self->_get_project_info($sample_doc);
+
+  my $read_length = delete $project_info->{'read_length'};
 
   if (defined $read_length && !$self->has_forward_read_length && !$self->has_reverse_read_length) {
     $self->_forward_read_length($read_length);
     $self->_reverse_read_length($read_length);
   }
 
-  $sample{'sample_uuid'} = $sample_doc->findvalue($SAMPLE_NAME);
-
-  %sample = (%sample, $self->_get_project_info($sample_doc));
+  %sample = (%sample, %{$project_info});
 
   %sample = (%sample, $self->_get_tag_info($sample_doc));
 
   return \%sample;
 }
 
+has '_projects_info' => (
+  is      => 'rw',
+  isa     => 'HashRef',
+  writer  => q{_set_projects_info},
+  default => sub { {} },
+);
+
 sub _get_project_info {
   my ($self, $sample_doc) = @_;
   my %project_info = ();
   my $project_doc = $self->fetch_and_parse($sample_doc->findvalue($SAMPLE_PROJECT_URI));
 
-  $project_info{'cost_code'}     = $project_doc->findvalue($PROJECT_COST_CODE_PATH);
-  $project_info{'study_id'} = $project_doc->findvalue($PROJECT_LIMSID);
+  my $project_id = $project_doc->findvalue($PROJECT_ID_PATH);
 
-  return %project_info;
+  if (exists $self->_projects_info->{$project_id}) {
+    %project_info = %{$self->_projects_info->{$project_id}};
+  } else {
+    $project_info{'cost_code'}                  = $project_doc->findvalue($PROJECT_COST_CODE_PATH);
+    $project_info{'study_id'}                   = $project_doc->findvalue($PROJECT_LIMSID);
+    $project_info{'requested_insert_size_from'} = $project_doc->findvalue($PROJECT_SIZE_FROM_PATH);
+    $project_info{'requested_insert_size_to'}   = $project_doc->findvalue($PROJECT_SIZE_RANGE_PATH) + $project_info{'requested_insert_size_from'};
+    $project_info{'read_length'}                = $project_doc->findvalue($PROJECT_READ_LENGTH_PATH);
+
+    $self->_set_projects_info( { $project_id => \%project_info });
+  }
+
+  return \%project_info;
 }
 
 sub _get_tag_info {
