@@ -1,9 +1,9 @@
 <?xml version="1.0" standalone="yes"?>
-<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/92-168452?state=81028" limsid="92-168452">
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/92-24760?state=10360" limsid="92-24760">
     <name>Tecan File</name>
     <type>ResultFile</type>
     <output-type>ResultFile</output-type>
-    <parent-process uri="http://testserver.com:1234/here/processes/24-26309" limsid="24-26309"/>
+    <parent-process uri="http://testserver.com:1234/here/processes/24-12074" limsid="24-12074"/>
     <qc-flag>UNKNOWN</qc-flag>
     <sample uri="http://testserver.com:1234/here/samples/DEA103A476" limsid="DEA103A476"/>
     <sample uri="http://testserver.com:1234/here/samples/DEA103A477" limsid="DEA103A477"/>
@@ -38,27 +38,6 @@
     <sample uri="http://testserver.com:1234/here/samples/DEA103A506" limsid="DEA103A506"/>
     <sample uri="http://testserver.com:1234/here/samples/DEA103A507" limsid="DEA103A507"/>
     <sample uri="http://testserver.com:1234/here/samples/DEA103A508" limsid="DEA103A508"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A509" limsid="DEA103A509"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A510" limsid="DEA103A510"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A511" limsid="DEA103A511"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A512" limsid="DEA103A512"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A513" limsid="DEA103A513"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A514" limsid="DEA103A514"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A515" limsid="DEA103A515"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A516" limsid="DEA103A516"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A517" limsid="DEA103A517"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A518" limsid="DEA103A518"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A519" limsid="DEA103A519"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A520" limsid="DEA103A520"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A521" limsid="DEA103A521"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A522" limsid="DEA103A522"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A523" limsid="DEA103A523"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A524" limsid="DEA103A524"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A525" limsid="DEA103A525"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A526" limsid="DEA103A526"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A527" limsid="DEA103A527"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A528" limsid="DEA103A528"/>
-    <sample uri="http://testserver.com:1234/here/samples/DEA103A529" limsid="DEA103A529"/>
-    <file:file limsid="92-168452-40-1183" uri="http://testserver.com:1234/here/files/92-168452-40-1183"/>
+    <file:file limsid="40-4552" uri="http://testserver.com:1234/here/files/40-4552"/>
     <workflow-stages/>
 </art:artifact>
