@@ -27,7 +27,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'create_14mg_sample_qc_report'   => 'reports::14mg_sample_qc_report',
 
     'check_volume'                   => 'sm::volume_checker',
-    'display_file'                   => 'sm::file_downloader',
+    'display_earlier_file'           => 'sm::earlier_file_displayer',
     'receive_sample'                 => 'sm::sample_receiver',
     'update_fluidigm_request_volume' => 'sm::fluidigm_request_volume_updater',
     'update_cherrypick_volume'       => 'sm::cherrypick_volume_updater',
