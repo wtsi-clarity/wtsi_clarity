@@ -188,14 +188,28 @@ sub _get_dna_amount_library_prep {
 
   my $cherrypick_stamping_process_doc = $self->fetch_and_parse($artifact_doc->findvalue($ARTIFACT_PARENT_PROCESS_URI));
 
-  my $volume = $cherrypick_stamping_process_doc->findvalue($UDF_FIELD_REQUIRED_VOLUME);
+  my $volume_required = $cherrypick_stamping_process_doc->findvalue($UDF_FIELD_REQUIRED_VOLUME);
 
-  my $concentration = $cherrypick_stamping_process_doc->findvalue($UDF_FIELD_REQUIRED_CONCENTRATION);
+  my $concentration_required = $cherrypick_stamping_process_doc->findvalue($UDF_FIELD_REQUIRED_CONCENTRATION);
 
-  if ( $concentration eq q{} or $volume eq q{}) {
-    croak "The volume or concentration value is not defined on the sample: $sample_limsid";
+  if ( $concentration_required eq q{} or $volume_required eq q{}) {
+    croak "The volume required or concentration required value is not defined on the sample: $sample_limsid";
   }
-  return $volume * $concentration;
+
+  my $requirement = $volume_required * $concentration_required;
+
+  my $concentration     = $sample_doc->findvalue('./udf:field[@name="Sample Conc. (ng\/µL) (SM)"]');
+  my $cherrypick_volume = $artifact_doc->findvalue('art:artifact/udf:field[@name="Cherrypick Sample Volume"]');
+
+  my $dna_amount = $concentration * $cherrypick_volume;
+
+  # If the dna amount is not up to requirement, S.M. subtract 2ul from the cherrypick volume
+  # (to bring the concentration up)...
+  if ($dna_amount < $requirement) {
+    $dna_amount = $concentration * ($cherrypick_volume - 2);
+  }
+
+  return $dna_amount;
 }
 
 1;
