@@ -26,6 +26,9 @@
     <udf:field type="String" name="WTSI Instrument Model">Illumina HiSeq Rapid</udf:field>
     <udf:field type="String" name="WTSI Run Length">75 PE</udf:field>
     <udf:field type="String" name="WTSI Bait">0731661</udf:field>
+    <udf:field type="String" name="WTSI Requested Size Range From">100</udf:field>
+    <udf:field type="String" name="WTSI Requested Size Range">100</udf:field>
+    <udf:field type="String" name="WTSI Read Length">123</udf:field>
     <file:file limsid="SH2155-40-453" uri="http://testserver.com:1234/here/files/SH2155-40-453"/>
     <file:file limsid="SH2155-40-455" uri="http://testserver.com:1234/here/files/SH2155-40-455"/>
 </prj:project>
