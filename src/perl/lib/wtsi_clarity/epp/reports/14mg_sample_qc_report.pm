@@ -193,7 +193,7 @@ sub _get_dna_amount_library_prep {
   my $concentration_required = $cherrypick_stamping_process_doc->findvalue($UDF_FIELD_REQUIRED_CONCENTRATION);
 
   if ( $concentration_required eq q{} or $volume_required eq q{}) {
-    croak "The volume required or concentration required value is not defined on the sample: $sample_limsid";
+    croak "The volume and concentration required have not been defined at Cherrypick Stamping for sample: $sample_limsid";
   }
 
   my $requirement = $volume_required * $concentration_required;
