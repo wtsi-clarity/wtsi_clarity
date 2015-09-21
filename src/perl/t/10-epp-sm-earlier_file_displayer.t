@@ -70,7 +70,7 @@ use_ok('wtsi_clarity::epp::sm::earlier_file_displayer', 'can use wtsi_clarity::e
     'http://testserver.com:1234/here/artifacts/2-258164?state=128464',
     'http://testserver.com:1234/here/artifacts/2-258165?state=128465'
   ];
-  my @actual_output_limsids = $earlier_file_displayer->_output_artifact_uris;
+  my @actual_output_limsids = $earlier_file_displayer->process_doc->output_artifact_uris;
   is_deeply(\@actual_output_limsids, \@expected_output_artifact_uris,
     'Returns the correct output lims ids.');
 }
@@ -85,11 +85,12 @@ use_ok('wtsi_clarity::epp::sm::earlier_file_displayer', 'can use wtsi_clarity::e
       process_type          => 'process_type',
       file_name             => 'Tecan File',
       udf_name              => 'Tecan File',
-      _output_artifact_uris => @expected_output_artifact_uris,
+      output_artifact_uris => @expected_output_artifact_uris,
   );
 
   my $expected_sample_limsid = 'DEA103A476';
-  is($earlier_file_displayer->_sample_limsid, $expected_sample_limsid,
+  my $artifact_uri = $earlier_file_displayer->process_doc->output_artifact_uris->[0];
+  is($earlier_file_displayer->process_doc->sample_limsid_by_artifact_uri($artifact_uri), $expected_sample_limsid,
     'Returns the correct limsid of the sample');
 }
 

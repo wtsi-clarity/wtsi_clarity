@@ -15,8 +15,6 @@ with 'wtsi_clarity::util::clarity_elements';
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $OUTPUT_ARTIFACT_URI_PATH         => q{/prc:process/input-output-map/output[@output-type="Analyte"]/@uri};
-Readonly::Scalar my $SAMPLE_LIMSID_PATH               => q{/art:artifact/sample/@limsid};
 Readonly::Scalar my $RESULTFILE_ARTIFACT_LIMSID_PATH  => q{/art:artifacts/artifact/@limsid};
 ## use critic
 
@@ -50,11 +48,15 @@ override 'run' => sub {
 
   super();
 
-  my $artifact_limsid = $self->_artifact_limsid_by_process_type_with_samplelimsid($self->_sample_limsid);
+  my $artifact_limsid = $self->_artifact_limsid_by_process_type_with_samplelimsid(
+    $self->process_doc->sample_limsid_by_artifact_uri(
+      $self->process_doc->output_artifact_uris->[0]
+    )
+  );
 
-  my $container_uri = $self->_container_uri_by_artifact_limsid($artifact_limsid);
+  my $container_uri = $self->process_doc->container_uri_by_artifact_limsid($artifact_limsid);
 
-  my $analytes_to_reroute = $self->_get_analytes_uris_from_container($container_uri);
+  my $analytes_to_reroute = $self->process_doc->get_analytes_uris_by_container_uri($container_uri);
 
   $self->_reroute_analytes($analytes_to_reroute);
 
@@ -106,61 +108,6 @@ sub _artifact_limsid_by_process_type_with_samplelimsid {
   @artifact_file_limsids = sort @artifact_file_limsids;
 
   return $artifact_file_limsids[-1];
-}
-
-has '_sample_limsid'  => (
-  isa             => 'Str',
-  is              => 'ro',
-  required        => 0,
-  lazy_build      => 1,
-);
-sub _build__sample_limsid {
-  my $self = shift;
-
-  my $output_artifact_xml = $self->fetch_and_parse($self->_output_artifact_uris->[0]);
-  my @sample_limsids = $output_artifact_xml->findvalue($SAMPLE_LIMSID_PATH);
-
-  if (scalar @sample_limsids < 1) {
-    $self->_throw_file_not_found_error;
-  }
-
-  return $sample_limsids[0];
-}
-
-has '_output_artifact_uris' => (
-  isa             => 'ArrayRef',
-  is              => 'rw',
-  required        => 0,
-  lazy_build      => 1,
-);
-sub _build__output_artifact_uris {
-  my $self = shift;
-
-  my @output_uris = map { $_->getValue } $self->process_doc->findnodes($OUTPUT_ARTIFACT_URI_PATH)->get_nodelist;
-
-  return \@output_uris;
-}
-
-sub _container_uri_by_artifact_limsid {
-  my ($self, $artifact_limsid) = @_;
-
-  my $result_file_uri = $self->config->clarity_api->{'base_uri'} . q{/artifacts/} . $artifact_limsid;
-
-  my $artifact_xml = $self->fetch_and_parse($result_file_uri);
-
-  my $container_uri = $artifact_xml->findvalue(q{/art:artifact/location/container/@uri});
-
-  return $container_uri;
-}
-
-sub _get_analytes_uris_from_container {
-  my ($self, $container_uri) = @_;
-
-  my $container_xml = $self->fetch_and_parse($container_uri);
-
-  my @analytes_uris = map { $_->getValue } $container_xml->findnodes(q{/con:container/placement/@uri});
-
-  return \@analytes_uris;
 }
 
 1;

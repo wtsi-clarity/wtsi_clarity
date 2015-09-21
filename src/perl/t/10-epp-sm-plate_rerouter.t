@@ -60,7 +60,7 @@ use_ok('wtsi_clarity::epp::sm::plate_rerouter', 'can use wtsi_clarity::epp::sm::
     'http://testserver.com:1234/here/artifacts/2-376090?state=188428'
   ];
   
-  is_deeply($plate_rerouter->_output_artifact_uris, $expected_output_artifact_uris,
+  is_deeply($plate_rerouter->process_doc->output_artifact_uris, $expected_output_artifact_uris,
     'Returns the correct output lims ids.');
 }
 
@@ -75,7 +75,8 @@ use_ok('wtsi_clarity::epp::sm::plate_rerouter', 'can use wtsi_clarity::epp::sm::
   );
 
   my $expected_sample_limsid = 'DEA103A525';
-  is($plate_rerouter->_sample_limsid, $expected_sample_limsid,
+  my $artifact_uri = $plate_rerouter->process_doc->output_artifact_uris->[0];
+  is($plate_rerouter->process_doc->sample_limsid_by_artifact_uri($artifact_uri), $expected_sample_limsid,
     'Returns the correct limsid of the sample');
 }
 
@@ -112,7 +113,7 @@ use_ok('wtsi_clarity::epp::sm::plate_rerouter', 'can use wtsi_clarity::epp::sm::
 
   my $expected_container_uri = "http://testserver.com:1234/here/containers/27-2495";
 
-  is($plate_rerouter->_container_uri_by_artifact_limsid($artifact_limsid),
+  is($plate_rerouter->process_doc->container_uri_by_artifact_limsid($artifact_limsid),
     $expected_container_uri,
     'Returns the correct container URI.');
 }
@@ -141,7 +142,7 @@ use_ok('wtsi_clarity::epp::sm::plate_rerouter', 'can use wtsi_clarity::epp::sm::
     'http://testserver.com:1234/here/artifacts/2-101506',
   ];
 
-  is_deeply($plate_rerouter->_get_analytes_uris_from_container($container_uri),
+  is_deeply($plate_rerouter->process_doc->get_analytes_uris_by_container_uri($container_uri),
             $expected_analyte_uris,
             'Returns the correct analyte URIs.');
 }

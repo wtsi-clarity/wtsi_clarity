@@ -11,21 +11,25 @@ use wtsi_clarity::util::types;
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $PARENT_PROCESS_PATH => q( /prc:process/input-output-map/input/parent-process/@uri );
-Readonly::Scalar my $PROCESS_TYPE => q( /prc:process/type );
-Readonly::Scalar my $PROCESS_LIMSID_PATH => q(/prc:processes/process/@limsid);
+Readonly::Scalar my $OUTPUT_ARTIFACT_URI_PATH => q{/prc:process/input-output-map/output[@output-type="Analyte"]/@uri};
+Readonly::Scalar my $PARENT_PROCESS_PATH      => q( /prc:process/input-output-map/input/parent-process/@uri );
+Readonly::Scalar my $PROCESS_TYPE             => q( /prc:process/type );
+Readonly::Scalar my $PROCESS_LIMSID_PATH      => q(/prc:processes/process/@limsid);
 Readonly::Scalar my $INPUT_ARTIFACT_URIS_PATH => q{/prc:process/input-output-map/input/@uri};
-Readonly::Scalar my $INPUT_OUTPUT_PATH   => q{prc:process/input-output-map};
-Readonly::Scalar my $ALL_ANALYTES        => q(prc:process/input-output-map/output[@output-type!="ResultFile"]/@uri | prc:process/input-output-map/input/@uri);
-Readonly::Scalar my $ARTIFACT_BY_LIMSID  => q{art:details/art:artifact[@limsid="%s"]};
-Readonly::Scalar my $CONTAINER_BY_LIMSID => q{con:details/con:container[@limsid="%s"]};
-Readonly::Scalar my $INPUT_LIMSID        => q{./input/@limsid};
-Readonly::Scalar my $OUTPUT_LIMSID       => q{./output[@output-type!="ResultFile"]/@limsid};
-Readonly::Scalar my $ALL_CONTAINERS      => q{art:details/art:artifact/location/container/@uri};
-Readonly::Scalar my $RESULT_FILE_URI     => q{(prc:process/input-output-map/output[@output-type="ResultFile"]/@uri)[1]};
-Readonly::Scalar my $FILE_URL_PATH       => q(/art:artifact/file:file/@uri);
-Readonly::Scalar our $FILE_CONTENT_LOCATION => q(/file:file/content-location);
-Readonly::Scalar my $CONTAINER_NAME_LOCATION => q(/con:container/name);
+Readonly::Scalar my $INPUT_OUTPUT_PATH        => q{prc:process/input-output-map};
+Readonly::Scalar my $ALL_ANALYTES             => q(prc:process/input-output-map/output[@output-type!="ResultFile"]/@uri | prc:process/input-output-map/input/@uri);
+Readonly::Scalar my $ARTIFACT_BY_LIMSID       => q{art:details/art:artifact[@limsid="%s"]};
+Readonly::Scalar my $CONTAINER_BY_LIMSID      => q{con:details/con:container[@limsid="%s"]};
+Readonly::Scalar my $INPUT_LIMSID             => q{./input/@limsid};
+Readonly::Scalar my $OUTPUT_LIMSID            => q{./output[@output-type!="ResultFile"]/@limsid};
+Readonly::Scalar my $ALL_CONTAINERS           => q{art:details/art:artifact/location/container/@uri};
+Readonly::Scalar my $CONTAINER_URI_PATH       => q{/art:artifact/location/container/@uri};
+Readonly::Scalar my $PLACEMENTS_URI_PATH      => q{/con:container/placement/@uri};
+Readonly::Scalar my $RESULT_FILE_URI          => q{(prc:process/input-output-map/output[@output-type="ResultFile"]/@uri)[1]};
+Readonly::Scalar my $FILE_URL_PATH            => q(/art:artifact/file:file/@uri);
+Readonly::Scalar our $FILE_CONTENT_LOCATION   => q(/file:file/content-location);
+Readonly::Scalar my $CONTAINER_NAME_LOCATION  => q(/con:container/name);
+Readonly::Scalar my $SAMPLE_LIMSID_PATH       => q{/art:artifact/sample/@limsid};
 ## use critic
 
 has '_parent' => (
@@ -315,6 +319,55 @@ sub get_container_name_by_limsid {
   return $container_name;
 }
 
+sub sample_limsid_by_artifact_uri {
+  my ($self, $artifact_uri) = @_;
+
+  my $output_artifact_xml = $self->_parent->fetch_and_parse($artifact_uri);
+  my @sample_limsids = $output_artifact_xml->findvalue($SAMPLE_LIMSID_PATH);
+
+  if (scalar @sample_limsids < 1) {
+    $self->_throw_artifact_not_found_error;
+  }
+
+  return $sample_limsids[0];
+}
+
+has 'output_artifact_uris' => (
+  isa             => 'ArrayRef',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build_output_artifact_uris {
+  my $self = shift;
+
+  my @output_uris = map { $_->getValue } $self->_parent->findnodes($OUTPUT_ARTIFACT_URI_PATH)->get_nodelist;
+
+  return \@output_uris;
+}
+
+sub container_uri_by_artifact_limsid {
+  my ($self, $artifact_limsid) = @_;
+
+  my $result_file_uri = $self->_config->clarity_api->{'base_uri'} . q{/artifacts/} . $artifact_limsid;
+
+  my $artifact_xml = $self->_parent->fetch_and_parse($result_file_uri);
+
+  my $container_uri = $artifact_xml->findvalue($CONTAINER_URI_PATH);
+
+  return $container_uri;
+}
+
+sub get_analytes_uris_by_container_uri {
+  my ($self, $container_uri) = @_;
+
+  my $container_xml = $self->_parent->fetch_and_parse($container_uri);
+
+  my @analytes_uris = map { $_->getValue } $container_xml->findnodes($PLACEMENTS_URI_PATH);
+
+  return \@analytes_uris;
+}
+
 1;
 
 __END__
@@ -373,6 +426,18 @@ wtsi_clarity::clarity::process
 =head2 get_container_name_by_limsid
 
   Returns the name of the container by its limsid.
+
+=head2 sample_limsid_by_artifact_uri
+
+  Returns the sample LIMSID by the artifact URI.
+
+=head2 container_uri_by_artifact_limsid
+
+  Returns the container URI by the given artifact LIMSID.
+
+=head2 get_analytes_uris_by_container_uri
+
+  Returns URI of analytes by the given container.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
