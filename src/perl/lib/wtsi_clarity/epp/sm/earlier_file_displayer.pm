@@ -69,39 +69,6 @@ sub _throw_file_not_found_error {
   croak qq{The '$filename' could not be found in the given process: '$process_type'.};
 }
 
-has '_output_artifact_uris' => (
-  isa             => 'ArrayRef',
-  is              => 'rw',
-  required        => 0,
-  lazy_build      => 1,
-);
-sub _build__output_artifact_uris {
-  my $self = shift;
-
-  my @output_uris = map { $_->getValue } $self->process_doc->findnodes($OUTPUT_ARTIFACT_URI_PATH)->get_nodelist;
-
-  return \@output_uris;
-}
-
-has '_sample_limsid'  => (
-  isa             => 'Str',
-  is              => 'ro',
-  required        => 0,
-  lazy_build      => 1,
-);
-sub _build__sample_limsid {
-  my $self = shift;
-
-  my $output_artifact_xml = $self->fetch_and_parse($self->_output_artifact_uris->[0]);
-  my @sample_limsids = $output_artifact_xml->findvalue($SAMPLE_LIMSID_PATH);
-
-  if (scalar @sample_limsids < 1) {
-    $self->_throw_file_not_found_error;
-  }
-
-  return $sample_limsids[0];
-}
-
 has '_result_file_limsid'  => (
   isa             => 'Str',
   is              => 'ro',
@@ -111,9 +78,11 @@ has '_result_file_limsid'  => (
 sub _build__result_file_limsid {
   my $self = shift;
 
+  my $artifact_uri = $self->process_doc->output_artifact_uris->[0];
+
   my $result_file_request_uri = $self->config->clarity_api->{'base_uri'} .
                                 q{/artifacts?} .
-                                q{samplelimsid=}  . $self->_sample_limsid .
+                                q{samplelimsid=}  . $self->process_doc->sample_limsid_by_artifact_uri($artifact_uri) .
                                 q{&process-type=}  . uri_escape($self->process_type) .
                                 q{&type=ResultFile} .
                                 q{&name=}         . $self->file_name;

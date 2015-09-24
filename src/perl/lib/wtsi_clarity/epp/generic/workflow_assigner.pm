@@ -100,26 +100,26 @@ sub _main_method {
 
   my $post_uri = $self->config->clarity_api->{'base_uri'}.'/route/artifacts' ;
 
-  my $req = $self->_make_request();
-  my $response = $self->request->post($post_uri, $req) or croak qq{Could not send successful request for rerouting. ($post_uri)};
+  my $req_doc = $self->_make_request();
+  my $response = $self->request->post($post_uri, $req_doc) or croak qq{Could not send successful request for rerouting. ($post_uri)};
   return $response;
 };
 
 
 sub _make_request {
   my $self= shift;
-  my $req ;
+  my $req_doc ;
   if (defined $self->new_step && defined $self->new_protocol) {
     my $new_uri = $self->_new_step_uri;
-    $req = _make_step_rerouting_request($new_uri, $self->_input_uris())->toString();
+    $req_doc = $self->make_step_rerouting_request_doc($new_uri, $self->_input_uris())->toString();
   }
   else {
     my $new_workflow_id = _get_id_from_uri($self->_new_workflow_uri);
     my $new_uri = $self->_workflow_base_uri . q{/} . $new_workflow_id;
 
-    $req = _make_workflow_rerouting_request($new_uri, $self->_input_uris())->toString();
+    $req_doc = $self->_make_workflow_rerouting_request_doc($new_uri, $self->_input_uris())->toString();
   }
-  return $req;
+  return $req_doc;
 }
 
 
@@ -142,9 +142,9 @@ sub _get_id_from_uri {
   croak qq{Cannot find an id from the uri $uri};
 }
 
-sub _get_step_uri {
+sub get_step_uri {
   # returns the uri of the step searched for, going through the protocol specified by the user.
-  my ($self) = @_;
+  my ($self, $step_name) = @_;
 
   if (!defined $self->new_step) {
     croak qq{One cannot search for a step if the its name has not been defined!};
@@ -156,7 +156,7 @@ sub _get_step_uri {
     croak qq{The 'workflows details' object cannot be null!};
   }
 
-  my $step_name = $self->new_step;
+  # my $step_name = $self->new_step;
   my $step_uri = c->new($self->_new_workflow_details->findnodes(qq{/wkfcnf:workflow/stages/stage[\@name="$step_name"]/\@uri})->get_nodelist())
                   ->map( sub { $_->getValue(); })
                   ->first( sub {
@@ -181,8 +181,8 @@ sub _is_step_in_correct_protocol {
 
 ### creation of routing requests
 
-sub _make_workflow_rerouting_request {
-  my ($new_uri, $artifact_uris) = @_;
+sub _make_workflow_rerouting_request_doc {
+  my ($self, $new_uri, $artifact_uris) = @_;
 
   my $doc = XML::LibXML::Document->new('1.0', 'utf-8');
   my $root = $doc->createElementNS('http://genologics.com/ri/routing', 'rt:routing');
@@ -201,8 +201,8 @@ sub _make_workflow_rerouting_request {
   return $doc;
 }
 
-sub _make_step_rerouting_request {
-  my ($new_uri, $artifact_uris) = @_;
+sub make_step_rerouting_request_doc {
+  my ($self, $new_uri, $artifact_uris) = @_;
 
   my $doc = XML::LibXML::Document->new('1.0', 'utf-8');
   my $root = $doc->createElementNS('http://genologics.com/ri/routing', 'rt:routing');
@@ -291,7 +291,7 @@ has '_new_step_uri' => (
 
 sub _build__new_step_uri {
   my $self= shift;
-  return $self->_get_step_uri();
+  return $self->get_step_uri($self->new_step);
 }
 
 has '_all_workflows_details' => (
@@ -352,6 +352,15 @@ wtsi_clarity::epp::generic::workflow_assigner
 =head1 SUBROUTINES/METHODS
 
 =head2 run - executes the callback
+
+=head2 get_step_uri
+
+  The input parameter is the name of a step.
+  Returns the uri of the step searched for, going through the protocol specified by the user.
+
+=head2 make_step_rerouting_request_doc
+
+  Create an XML document for rerouting samples to be assigned to another step.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

@@ -49,7 +49,12 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
                           'uri3',
                         );
 
-  my $doc = wtsi_clarity::epp::generic::workflow_assigner::_make_workflow_rerouting_request("my_uri", \@uris);
+  my $workflow_assigner = wtsi_clarity::epp::generic::workflow_assigner->new(
+    process_url => $base_uri .'some_process',
+    new_wf => 'new_workflow'
+  );
+
+  my $doc = $workflow_assigner->_make_workflow_rerouting_request_doc("my_uri", \@uris);
   my $xpc = XML::LibXML::XPathContext->new($doc->getDocumentElement());
 
   my @elements = $doc->firstChild->childNodes();
@@ -103,17 +108,19 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 {
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
+  my $step_name = 'step_name_2';
+
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
     new_wf => 'new_workflow',
     new_protocol => 'prot 2',
-    new_step => 'step_name_2',
+    new_step => $step_name,
   );
 
-  my $res = $m->_get_step_uri();
+  my $res = $m->get_step_uri($step_name);
 
   my $expected =  q{http://testserver.com:1234/here/configuration/workflows/11/stages/003};
-  cmp_ok($res, 'eq', $expected, '_get_step_uri should return the correct uri');
+  cmp_ok($res, 'eq', $expected, 'get_step_uri should return the correct uri');
 }
 
 {
@@ -125,25 +132,27 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
     new_protocol => 'prot 2',
   );
   throws_ok {
-    $m->_get_step_uri();
+    $m->get_step_uri();
   }
   qr{One cannot search for a step if the its name has not been defined!},
-  qq{_get_step_uri should throw when there is no new_step'};
+  qq{get_step_uri should throw when there is no new_step'};
 }
 
 {
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
+  my $step_name = 'step_name_2';
+
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
     new_wf => 'new_workflow',
-    new_step => 'step_name_2',
+    new_step => $step_name,
   );
   throws_ok {
-    $m->_get_step_uri();
+    $m->get_step_uri($step_name);
   }
   qr{One cannot search for a step if the protocol name has not been defined!},
-  qq{_get_step_uri should throw when there is no new_protocol'};
+  qq{get_step_uri should throw when there is no new_protocol'};
 }
 
 {
@@ -180,31 +189,35 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 {
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
+  my $step_name = 'step_name_2';
+
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
     new_wf => 'new_workflow',
     new_protocol => 'prot unknown',
-    new_step => 'step_name_2',
+    new_step => $step_name,
   );
 
-  throws_ok { $m->_get_step_uri(); }
+  throws_ok { $m->get_step_uri($step_name); }
   qr{The protocol 'prot unknown' requested could not be found!},
-  q{_get_step_uri should throw with the wrong protocol name.} ;
+  q{get_step_uri should throw with the wrong protocol name.} ;
 }
 
 {
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
+   my $step_name = 'dev_only_Z';
+
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
     new_wf => 'new_workflow',
     new_protocol => 'prot 1',
-    new_step => 'dev_only_Z',
+    new_step => $step_name,
   );
 
-  throws_ok { $m->_get_step_uri(); }
+  throws_ok { $m->get_step_uri($step_name); }
   qr{Step 'dev_only_Z' not found!},
-  q{_get_step_uri should throw with the wrong step name.} ;
+  q{get_step_uri should throw with the wrong step name.} ;
 }
 
 {
