@@ -10,7 +10,7 @@ use XML::LibXML;
 
 use File::Slurp;
 
-use_ok('wtsi_clarity::epp::reports::14mg_sample_qc_report');
+use_ok('wtsi_clarity::epp::reports::sample_qc_report');
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 
@@ -18,7 +18,7 @@ use wtsi_clarity::util::config;
 my $config = wtsi_clarity::util::config->new();
 my $base_uri = $config->clarity_api->{'base_uri'};
 
-local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/14mg_sample_qc_report';
+local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/sample_qc_report';
 
 my $EXPECTED_FILE_CONTENT = [
   {
@@ -34,7 +34,7 @@ my $EXPECTED_FILE_CONTENT = [
 {
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
-  my $report = wtsi_clarity::epp::reports::14mg_sample_qc_report->new(
+  my $report = wtsi_clarity::epp::reports::sample_qc_report->new(
     process_url => $base_uri . '/processes/24-63229',
   );
 
@@ -60,7 +60,7 @@ my $EXPECTED_FILE_CONTENT = [
     'File content is generated from a sample node correctly');
 
   my $mocked_report = Test::MockObject::Extends->new(
-    wtsi_clarity::epp::reports::14mg_sample_qc_report->new(
+    wtsi_clarity::epp::reports::sample_qc_report->new(
       process_url => $base_uri . '/processes/24-63229',
     )
   );
@@ -78,7 +78,7 @@ my $EXPECTED_FILE_CONTENT = [
 {
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
-  my $report = wtsi_clarity::epp::reports::14mg_sample_qc_report->new(
+  my $report = wtsi_clarity::epp::reports::sample_qc_report->new(
     process_url => $base_uri . '/processes/24-63229',
   );
 
@@ -105,7 +105,7 @@ SKIP: {
 
   skip 'iRODS icommands needs to be installed and they needs to be on the PATH.', 3 if ($irods_setup_exit_code != 0);
 
-  my $report = wtsi_clarity::epp::reports::14mg_sample_qc_report->new(
+  my $report = wtsi_clarity::epp::reports::sample_qc_report->new(
     process_url => $base_uri . '/processes/24-63229',
     publish_to_irods  => 1
   );

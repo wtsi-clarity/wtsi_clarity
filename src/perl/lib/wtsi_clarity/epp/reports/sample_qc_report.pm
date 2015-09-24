@@ -1,4 +1,4 @@
-package wtsi_clarity::epp::reports::14mg_sample_qc_report;
+package wtsi_clarity::epp::reports::sample_qc_report;
 
 use Moose;
 use Readonly;
@@ -204,15 +204,15 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::epp::reports::14mg_sample_qc_report
+wtsi_clarity::epp::reports::sample_qc_report
 
 =head1 SYNOPSIS
 
-wtsi_clarity::epp::reports::14mg_sample_qc_report->new( container_id => ['24-123', '24-567'])->run()
+wtsi_clarity::epp::reports::sample_qc_report->new( container_id => ['24-123', '24-567'])->run()
 
 =head1 DESCRIPTION
 
- An EPP for creating a "14mg_sample_qc_report report". The EPP can be supplied with either a process_url, an
+ An EPP for creating a "sample_qc_report report". The EPP can be supplied with either a process_url, an
  array of container_ids, or a wtsi_clarity::mq::message object (which would come for the report
  queue). The report will be built and currently saved locally with the filename of
  {sample_uuid}.{timestamp}.lab_sample_qc.txt.
