@@ -17,7 +17,8 @@
         <udf:field name="WTSI Supplier Sample Name (SM)" type="String">FR03970451</udf:field>
         <udf:field name="WTSI Working Volume (µL) (SM)" type="String">1.0613</udf:field>
         <udf:field name="Sample Conc. (ng\/µL) (SM)" type="String">0.0747441523224134</udf:field>
-        <field name="WTSI Library Concentration" xmlns="http://genologics.com/ri/userdefined">0.160238924693644</field>
+        <field name="WTSI Library Concentration" xmlns="http://genologics.com/ri/userdefined">0.16</field>
+        <field name="WTSI Library Molarity" xmlns="http://genologics.com/ri/userdefined">11.22</field>
     </smp:sample>
     <smp:sample limsid="SV2454A172" uri="http://testserver.com:1234/here/samples/SV2454A172">
         <name>2ea49762-bcd6-11e4-b42e-68b59977951e</name>
@@ -35,7 +36,8 @@
         <udf:field name="WTSI Supplier Gender - (SM)" type="String">Female</udf:field>
         <udf:field name="WTSI Supplier Sample Name (SM)" type="String">FR03970582</udf:field>
         <udf:field name="WTSI Working Volume (µL) (SM)" type="String">27.3042</udf:field>
-        <field name="WTSI Library Concentration" xmlns="http://genologics.com/ri/userdefined">0.152153780398987</field>
+        <field name="WTSI Library Concentration" xmlns="http://genologics.com/ri/userdefined">0.15</field>
+        <field name="WTSI Library Molarity" xmlns="http://genologics.com/ri/userdefined">10.56</field>
     </smp:sample>
     <smp:sample limsid="SV2454A166" uri="http://testserver.com:1234/here/samples/SV2454A166">
         <name>32272a6c-bcd6-11e4-b42e-68b59977951e</name>
@@ -53,6 +55,7 @@
         <udf:field name="WTSI Supplier Gender - (SM)" type="String">Male</udf:field>
         <udf:field name="WTSI Supplier Sample Name (SM)" type="String">FR03970101</udf:field>
         <udf:field name="WTSI Working Volume (µL) (SM)" type="String">1.5645</udf:field>
-        <field name="WTSI Library Concentration" xmlns="http://genologics.com/ri/userdefined">1.643837939483848</field>
+        <field name="WTSI Library Concentration" xmlns="http://genologics.com/ri/userdefined">1.64</field>
+        <field name="WTSI Library Molarity" xmlns="http://genologics.com/ri/userdefined">11.45</field>
     </smp:sample>
 </smp:details>
