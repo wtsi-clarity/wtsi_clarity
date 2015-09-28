@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 8;
+use Test::More tests => 11;
 use Test::MockObject::Extends;
 use Test::Exception;
 
@@ -22,10 +22,10 @@ local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/sample_qc_report';
 
 my $EXPECTED_FILE_CONTENT = [
   {
-    'DNA amount library prep' => '192',
+    'DNA amount library prep' => '115.339134753689',
     'Library concentration' => '138.3304326231556',
     'Status' => 'Passed',
-    'Sample volume' => '120',
+    'Sample volume' => '5.00907469236368',
     'Concentration' => '38.3304326231556',
     'Sample UUID' => '01e9be16-a7c6-11e4-b42e-68b59977951e'
   },
@@ -94,9 +94,20 @@ my $EXPECTED_FILE_CONTENT = [
 
   my $sample_doc = $samples->[0];
 
-  my $expected_dna_amount_library_prep = 192;
+  my $sample_limsid           = $sample_doc->findvalue('./@limsid');
+  my $artifact                = $report->_get_cherrypick_sample_artifact($sample_limsid);
+  my $cherrypick_stamping_doc = $report->_get_cherrypick_stamping_process($artifact);
+  my $cherrypick_volume       = $report->_get_cherrypick_sample_volume($artifact);
 
-  is($report->_get_dna_amount_library_prep($sample_doc), $expected_dna_amount_library_prep,
+  is($artifact->findvalue('art:artifact/@limsid'), '2-373511', 'Finds the correct artifact');
+
+  is($cherrypick_stamping_doc->findvalue('prc:process/@limsid'), '24-63229', 'Finds the correct process');
+
+  is($cherrypick_volume, '5.00907469236368', 'Returns the correct value for the cherrypick volume');
+
+  my $expected_dna_amount_library_prep = 115.339134753689;
+
+  is($report->_get_dna_amount_library_prep($cherrypick_stamping_doc, $sample_doc, $cherrypick_volume), $expected_dna_amount_library_prep,
     'Returns the correct DNA amount library prep value.');
 }
 
