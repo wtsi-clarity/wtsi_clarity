@@ -27,7 +27,7 @@ Readonly::Scalar my $LIBRARY_CONCENTRATION_UDF_NAME   => q{WTSI Library Concentr
 Readonly::Scalar my $LIBRARY_MOLARITY_UDF_NAME        => q{WTSI Library Molarity};
 Readonly::Scalar my $POST_LIB_PCR_QC_STAMP_STEP       => q{Post Lib PCR QC Stamp};
 Readonly::Scalar my $TOTAL_CONCENTRATION_UDF_NAME     => q{Total Conc. (ng/ul)};
-Readonly::Scalar my $MOLARITY_UDF_NAME                => q{Region[200-1400] Molarity (nmol/l)};
+Readonly::Scalar my $MOLARITY_LIKE_CALLIPER_REGEXP    => qr/Molarity/smx;
 Readonly::Scalar my $CONCENTRATION_KEY                => q{concentration};
 Readonly::Scalar my $MOLARITY_KEY                     => q{molarity};
 Readonly::Scalar my $LOCATION_KEY                     => q{location};
@@ -140,7 +140,8 @@ sub _get_data_by_wells {
 
     if ($well_name_letter && $well_name_number) {
       push @{$data_by_wells{$well_name_letter . q{:} . $well_name_number}{$CONCENTRATION_KEY}},  $caliper_data->{$TOTAL_CONCENTRATION_UDF_NAME};
-      push @{$data_by_wells{$well_name_letter . q{:} . $well_name_number}{$MOLARITY_KEY}},       $caliper_data->{$MOLARITY_UDF_NAME};
+      my ($calliper_molarity_key) = grep { $_ =~ $MOLARITY_LIKE_CALLIPER_REGEXP } keys %{$caliper_data};
+      push @{$data_by_wells{$well_name_letter . q{:} . $well_name_number}{$MOLARITY_KEY}},       $caliper_data->{$calliper_molarity_key};
     }
   }
 
