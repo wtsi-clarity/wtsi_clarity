@@ -307,7 +307,6 @@ wtsi_clarity::epp::isc::calliper_analyser
   wtsi_clarity::epp::isc::calliper_analyser
     ->new(
       process_url        => 'http://clarity_url/processes/1234',
-      calliper_file_name => 'abcd_file',
     )
     ->run()
 
