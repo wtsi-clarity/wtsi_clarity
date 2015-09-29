@@ -26,8 +26,8 @@ http://www.pjcj.net
 <table>
 <tr><th>line</th><th>stmt</th><th>bran</th><th>cond</th><th>sub</th><th>pod</th><th>time</th><th>code</th></tr>
 <tr><td class="h">1</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="s">package wtsi_clarity::util::xml_resource_reader;</td></tr>
-<tr><td class="h">2</td><td colspan="7"></td></tr><tr><td class="h">3</td><td><div class="c3">14</div><div class="c3">14</div><div class="c3">14</div></td><td></td><td></td><td><div class="c3"><a href="blib-lib-wtsi_clarity-util-xml_resource_reader-pm--subroutine.html#L3">14</a></div></td><td></td><td><div>113890</div><div>25</div><div>104</div></td><td class="s">use Moose;</td></tr>
-<tr><td class="h">4</td><td><div class="c3">14</div><div class="c3">14</div><div class="c3">14</div></td><td></td><td></td><td><div class="c3"><a href="blib-lib-wtsi_clarity-util-xml_resource_reader-pm--subroutine.html#L4">14</a></div></td><td></td><td><div>60762</div><div>34441</div><div>78</div></td><td class="s">use XML::LibXML;</td></tr>
+<tr><td class="h">2</td><td colspan="7"></td></tr><tr><td class="h">3</td><td><div class="c3">14</div><div class="c3">14</div><div class="c3">14</div></td><td></td><td></td><td><div class="c3"><a href="blib-lib-wtsi_clarity-util-xml_resource_reader-pm--subroutine.html#L3">14</a></div></td><td></td><td><div>102729</div><div>17</div><div>81</div></td><td class="s">use Moose;</td></tr>
+<tr><td class="h">4</td><td><div class="c3">14</div><div class="c3">14</div><div class="c3">14</div></td><td></td><td></td><td><div class="c3"><a href="blib-lib-wtsi_clarity-util-xml_resource_reader-pm--subroutine.html#L4">14</a></div></td><td></td><td><div>55181</div><div>21922</div><div>56</div></td><td class="s">use XML::LibXML;</td></tr>
 <tr><td class="h">5</td><td colspan="7"></td></tr><tr><td class="h">6</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="s">with qw/wtsi_clarity::util::configurable wtsi_clarity::util::roles::clarity_request/;</td></tr>
 <tr><td class="h">7</td><td colspan="7"></td></tr><tr><td class="h">8</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="s">our $VERSION = &#39;1.14-rc2&#39;;</td></tr>
 <tr><td class="h">9</td><td colspan="7"></td></tr><tr><td class="h">10</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="s">has &#39;lims_id&#39; =&gt; (</td></tr>
@@ -47,8 +47,8 @@ http://www.pjcj.net
 <tr><td class="h">26</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="s">&nbsp;&nbsp;lazy_build&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt; 1,</td></tr>
 <tr><td class="h">27</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="s">);</td></tr>
 <tr><td class="h">28</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="s">sub _build__artifact_url {</td></tr>
-<tr><td class="h">29</td><td><div class="c3">448</div></td><td></td><td></td><td><div class="c3"><a href="blib-lib-wtsi_clarity-util-xml_resource_reader-pm--subroutine.html#L29">448</a></div></td><td></td><td><div>821</div></td><td class="s">&nbsp;&nbsp;my $self = shift;</td></tr>
-<tr><td class="h">30</td><td><div class="c3">448</div></td><td></td><td></td><td></td><td></td><td><div>15118</div></td><td class="s">&nbsp;&nbsp;return join q{/}, $self-&gt;config-&gt;clarity_api-&gt;{&#39;base_uri&#39;}, $self-&gt;resource_type, $self-&gt;lims_id;</td></tr>
+<tr><td class="h">29</td><td><div class="c3">448</div></td><td></td><td></td><td><div class="c3"><a href="blib-lib-wtsi_clarity-util-xml_resource_reader-pm--subroutine.html#L29">448</a></div></td><td></td><td><div>346</div></td><td class="s">&nbsp;&nbsp;my $self = shift;</td></tr>
+<tr><td class="h">30</td><td><div class="c3">448</div></td><td></td><td></td><td></td><td></td><td><div>11210</div></td><td class="s">&nbsp;&nbsp;return join q{/}, $self-&gt;config-&gt;clarity_api-&gt;{&#39;base_uri&#39;}, $self-&gt;resource_type, $self-&gt;lims_id;</td></tr>
 <tr><td class="h">31</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="s">}</td></tr>
 <tr><td class="h">32</td><td colspan="7"></td></tr><tr><td class="h">33</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="s">has &#39;get_xml&#39; =&gt; (</td></tr>
 <tr><td class="h">34</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="s">&nbsp;&nbsp;isa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt; &#39;XML::LibXML::Document&#39;,</td></tr>
@@ -57,8 +57,8 @@ http://www.pjcj.net
 <tr><td class="h">37</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="s">&nbsp;&nbsp;lazy_build&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt; 1,</td></tr>
 <tr><td class="h">38</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="s">);</td></tr>
 <tr><td class="h">39</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="s">sub _build_get_xml {</td></tr>
-<tr><td class="h">40</td><td><div class="c3">448</div></td><td></td><td></td><td><div class="c3"><a href="blib-lib-wtsi_clarity-util-xml_resource_reader-pm--subroutine.html#L40">448</a></div></td><td></td><td><div>924</div></td><td class="s">&nbsp;&nbsp;my $self = shift;</td></tr>
-<tr><td class="h">41</td><td colspan="7"></td></tr><tr><td class="h">42</td><td><div class="c3">448</div></td><td></td><td></td><td></td><td></td><td><div>16072</div></td><td class="s">&nbsp;&nbsp;return $self-&gt;fetch_and_parse($self-&gt;_artifact_url);</td></tr>
+<tr><td class="h">40</td><td><div class="c3">448</div></td><td></td><td></td><td><div class="c3"><a href="blib-lib-wtsi_clarity-util-xml_resource_reader-pm--subroutine.html#L40">448</a></div></td><td></td><td><div>525</div></td><td class="s">&nbsp;&nbsp;my $self = shift;</td></tr>
+<tr><td class="h">41</td><td colspan="7"></td></tr><tr><td class="h">42</td><td><div class="c3">448</div></td><td></td><td></td><td></td><td></td><td><div>11677</div></td><td class="s">&nbsp;&nbsp;return $self-&gt;fetch_and_parse($self-&gt;_artifact_url);</td></tr>
 <tr><td class="h">43</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="s">}</td></tr>
 <tr><td class="h">44</td><td colspan="7"></td></tr><tr><td class="h">45</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="s">1;</td></tr>
 <tr><td class="h">46</td><td colspan="7"></td></tr></table>
