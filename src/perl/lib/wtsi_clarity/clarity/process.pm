@@ -24,8 +24,9 @@ Readonly::Scalar my $OUTPUT_LIMSID       => q{./output[@output-type!="ResultFile
 Readonly::Scalar my $ALL_CONTAINERS      => q{art:details/art:artifact/location/container/@uri};
 Readonly::Scalar my $RESULT_FILE_URI     => q{(prc:process/input-output-map/output[@output-type="ResultFile"]/@uri)[1]};
 Readonly::Scalar my $FILE_URL_PATH       => q(/art:artifact/file:file/@uri);
-Readonly::Scalar our $FILE_CONTENT_LOCATION => q(/file:file/content-location);
-Readonly::Scalar my $CONTAINER_NAME_LOCATION => q(/con:container/name);
+Readonly::Scalar our $FILE_CONTENT_LOCATION   => q(/file:file/content-location);
+Readonly::Scalar my $CONTAINER_NAME_LOCATION  => q(/con:container/name);
+Readonly::Scalar my $OUTPUT_ANALYTES_URI_PATH => q{/prc:process/input-output-map/output/@uri};
 ## use critic
 
 has '_parent' => (
@@ -286,6 +287,34 @@ sub _build__analytes {
   my $self = shift;
   my @all_analyte_uris = $self->findnodes($ALL_ANALYTES)->to_literal_list;
   return $self->_request->batch_retrieve('artifacts', \@all_analyte_uris);
+}
+
+has 'output_analyte_uris' => (
+  isa             => 'ArrayRef',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build_output_analyte_uris {
+  my $self = shift;
+
+  my @output_uris = map { $_->getValue } $self->findnodes($OUTPUT_ANALYTES_URI_PATH)->get_nodelist;
+
+  return \@output_uris;
+}
+
+has 'output_analytes' => (
+  isa        => 'XML::LibXML::Document',
+  is         => 'ro',
+  required   => 0,
+  lazy_build => 1,
+);
+
+sub _build_output_analytes {
+  my $self = shift;
+  # my @uri_nodes = $self->process_doc->findnodes($OUTPUT_ANALYTES);
+  # my @uris = map { $_->getValue() } @uri_nodes;
+  return $self->_request->batch_retrieve('artifacts', $self->output_analyte_uris);
 }
 
 sub get_result_file_location {

@@ -60,20 +60,6 @@ has '_calliper' => (
   default  => sub { return wtsi_clarity::util::calliper->new(); },
 );
 
-has '_output_analytes' => (
-  isa        => 'XML::LibXML::Document',
-  is         => 'ro',
-  required   => 0,
-  lazy_build => 1,
-);
-
-sub _build__output_analytes {
-  my $self = shift;
-  my @uri_nodes = $self->process_doc->findnodes($OUTPUT_ANALYTES);
-  my @uris = map { $_->getValue() } @uri_nodes;
-  return $self->request->batch_retrieve('artifacts', \@uris);
-}
-
 has '_plate_barcode' => (
   isa        => 'Str',
   is         => 'ro',

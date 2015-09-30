@@ -70,7 +70,7 @@ use_ok('wtsi_clarity::epp::sm::earlier_file_displayer', 'can use wtsi_clarity::e
     'http://testserver.com:1234/here/artifacts/2-258164?state=128464',
     'http://testserver.com:1234/here/artifacts/2-258165?state=128465'
   ];
-  my @actual_output_limsids = $earlier_file_displayer->_output_artifact_uris;
+  my @actual_output_limsids = $earlier_file_displayer->process_doc->output_analyte_uris;
   is_deeply(\@actual_output_limsids, \@expected_output_artifact_uris,
     'Returns the correct output lims ids.');
 }
