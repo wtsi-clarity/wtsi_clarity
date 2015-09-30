@@ -13,7 +13,6 @@ with 'wtsi_clarity::util::clarity_elements';
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $OUTPUT_ARTIFACT_URI_PATH         => q{/prc:process/input-output-map/output/@uri};
 Readonly::Scalar my $SAMPLE_LIMSID_PATH               => q{/art:artifact/sample/@limsid};
 Readonly::Scalar my $RESULTFILE_ARTIFACT_LIMSID_PATH  => q{/art:artifacts/artifact/@limsid};
 Readonly::Scalar my $FILE_LIMSID_PATH                 => q{/art:artifact/file:file/@limsid};
@@ -69,20 +68,6 @@ sub _throw_file_not_found_error {
   croak qq{The '$filename' could not be found in the given process: '$process_type'.};
 }
 
-has '_output_artifact_uris' => (
-  isa             => 'ArrayRef',
-  is              => 'rw',
-  required        => 0,
-  lazy_build      => 1,
-);
-sub _build__output_artifact_uris {
-  my $self = shift;
-
-  my @output_uris = map { $_->getValue } $self->process_doc->findnodes($OUTPUT_ARTIFACT_URI_PATH)->get_nodelist;
-
-  return \@output_uris;
-}
-
 has '_sample_limsid'  => (
   isa             => 'Str',
   is              => 'ro',
@@ -92,7 +77,7 @@ has '_sample_limsid'  => (
 sub _build__sample_limsid {
   my $self = shift;
 
-  my $output_artifact_xml = $self->fetch_and_parse($self->_output_artifact_uris->[0]);
+  my $output_artifact_xml = $self->fetch_and_parse($self->process_doc->output_analyte_uris->[0]);
   my @sample_limsids = $output_artifact_xml->findvalue($SAMPLE_LIMSID_PATH);
 
   if (scalar @sample_limsids < 1) {
