@@ -43,7 +43,6 @@ Readonly::Hash my %ACTION2MODULE => (
     'make_report'                    => 'sm::report_maker',
 
     'tag_plate'                      => 'isc::plate_tagger',
-    'index_tag'                      => 'isc::tag_indexer',
     'validate_tags_on_plate'         => 'isc::plate_tagger_validator',
     'analyse_agilent'                => 'isc::agilent_analyser',
     'analyse_calliper'               => 'isc::calliper_analyser',
