@@ -43,7 +43,6 @@ Readonly::Hash my %ACTION2MODULE => (
     'make_report'                    => 'sm::report_maker',
 
     'tag_plate'                      => 'isc::plate_tagger',
-    'index_tag'                      => 'isc::tag_indexer',
     'analyse_agilent'                => 'isc::agilent_analyser',
     'analyse_calliper'               => 'isc::calliper_analyser',
     'pool_samples'                   => 'isc::pooling::analyte_pooler',
