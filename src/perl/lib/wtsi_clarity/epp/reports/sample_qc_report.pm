@@ -17,6 +17,7 @@ Readonly::Scalar my $ARTIFACTS_ARTIFACT_URI           => q{art:artifacts/artifac
 Readonly::Scalar my $ARTIFACT_PARENT_PROCESS_URI      => q{art:artifact/parent-process/@uri};
 Readonly::Scalar my $UDF_FIELD_REQUIRED_VOLUME        => q{prc:process/udf:field[@name="(1) Required Volume"]};
 Readonly::Scalar my $UDF_FIELD_REQUIRED_CONCENTRATION => q{prc:process/udf:field[@name="(1) Required Concentration"]};
+Readonly::Scalar my $BUFFER                           => 0.1;
 ## use critic
 
 Readonly::Scalar my $CHERRYPICK_STAMPING_PROCESS_NAME => q{Cherrypick Stamping (SM)};
@@ -227,7 +228,7 @@ sub _get_dna_amount_library_prep {
 
   # If the dna amount is not up to requirement, S.M. subtract 2ul from the cherrypick volume
   # (to bring the concentration up)...
-  if ($dna_amount < $requirement) {
+  if ($dna_amount < ($requirement - $BUFFER)) {
     $dna_amount = $sample_concentration * ($cherrypick_volume - 2);
   }
 
