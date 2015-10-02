@@ -1,5 +1,7 @@
 package wtsi_clarity::dao::flgen_plate_dao;
 
+use strict;
+use warnings;
 use Moose;
 use Readonly;
 use Carp;
@@ -38,7 +40,9 @@ has '+resource_type' => (
 );
 
 has '+attributes' => (
-  default     => sub { return \%ATTRIBUTES; },
+  default     => sub {
+    return \%ATTRIBUTES;
+  },
 );
 
 has 'type' => (
@@ -104,7 +108,7 @@ sub flgen_well_position {
   );
 
   my $format = $well_formats{$self->plate_size}
-                or croak "Unknown well format for " . $self->plate_size . " size plate";
+    or croak "Unknown well format for " . $self->plate_size . " size plate";
 
   return 'S' . sprintf $format, ($letter_as_number * $nb_cols) + $number;
 }
@@ -118,7 +122,9 @@ has 'wells' => (
 sub _build_wells {
   my $self = shift;
   my @artifact_ids = $self->findnodes($ARTIFACT_PATH)->to_literal_list();
-  my @wells = map { $self->_build_well($_) } @artifact_ids;
+  my @wells = map {
+    $self->_build_well($_)
+  } @artifact_ids;
   return \@wells;
 }
 
@@ -134,13 +140,13 @@ sub _build_well {
   $well{'well_label'} = $self->flgen_well_position($location, $self->type->y_dimension_size, $self->type->x_dimension_size);
 
   # cost_code and sample_uuid
-  my $sample_limsid    = $artifact_doc->findvalue($SAMPLE_LIMSID_PATH);
-  my $sample           = $self->_get_sample($sample_limsid);
+  my $sample_limsid = $artifact_doc->findvalue($SAMPLE_LIMSID_PATH);
+  my $sample = $self->_get_sample($sample_limsid);
   $well{'sample_uuid'} = $sample->name;
 
   # study
   my $study = $self->_get_study($sample->project_limsid);
-  $well{'study_id'}  = $study->id;
+  $well{'study_id'} = $study->id;
   $well{'cost_code'} = $study->cost_code;
 
   return \%well;

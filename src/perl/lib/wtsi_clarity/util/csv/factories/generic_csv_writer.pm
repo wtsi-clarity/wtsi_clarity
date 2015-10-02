@@ -1,5 +1,7 @@
 package wtsi_clarity::util::csv::factories::generic_csv_writer;
 
+use strict;
+use warnings;
 use Moose;
 use Carp;
 use wtsi_clarity::util::textfile;
@@ -11,21 +13,23 @@ our $VERSION = '0.0';
 sub build {
   my ($self, %args) = @_;
 
-  my $headers   = $args{'headers'}   || croak qq{Requires headers!};
-  my $csv_data  = $args{'data'}      || croak qq{Requires some data to write down!};
+  my $headers = $args{'headers'} || croak qq{Requires headers!};
+  my $csv_data = $args{'data'} || croak qq{Requires some data to write down!};
   my $delimiter = $args{'delimiter'} || q{,};
 
   my $text_data = [];
   my $c_headers = Mojo::Collection->new(@{$headers});
   my $s_headers = $c_headers->join($delimiter);
-  push @{$text_data},"$s_headers"; # quote are needed to stringify
+  push @{$text_data}, "$s_headers"; # quote are needed to stringify
 
-  foreach my $datum (@{$csv_data}){
-    my $c_datum = $c_headers->map(sub { $datum->{$_} })->join($delimiter);
-    push @{$text_data},"$c_datum"; # quote are needed to stringify
+  foreach my $datum (@{$csv_data}) {
+    my $c_datum = $c_headers->map(sub {
+      $datum->{$_}
+    })->join($delimiter);
+    push @{$text_data}, "$c_datum"; # quote are needed to stringify
   }
 
-  return wtsi_clarity::util::textfile->new(content=>$text_data);
+  return wtsi_clarity::util::textfile->new(content => $text_data);
 }
 
 1;

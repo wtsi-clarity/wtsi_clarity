@@ -1,5 +1,7 @@
 package wtsi_clarity::util::csv::factories::calliper_csv_reader;
 
+use strict;
+use warnings;
 use Moose;
 use Carp;
 use Data::Dumper;
@@ -14,10 +16,9 @@ sub build {
   # the samples are duplicated. we pack them together.
   my ($self, %args) = @_;
 
-
-  my $headers      = $args{'headers'}      || croak qq{Requires headers!};
+  my $headers = $args{'headers'} || croak qq{Requires headers!};
   my $file_content = $args{'file_content'} || croak qq{Requires a file content!};
-  my $barcode      = $args{'barcode'}      || croak qq{Requires the barcode of the original plate!};
+  my $barcode = $args{'barcode'} || croak qq{Requires the barcode of the original plate!};
 
   my $csv_parser = Text::CSV->new();
   shift $file_content;
@@ -31,13 +32,15 @@ sub build {
     shift @values;
     my %hash;
     # create a hash with the headers as key, and trim the values;
-    @hash{ @{$headers} } = map { _cleanup_key($_) } @values;
+    @hash{ @{$headers} } = map {
+      _cleanup_key($_)
+    } @values;
 
     # only add this hash to the output if there's a molarity.
     if ($hash{'Molarity'}) {
       $hash{'Sample_Name'} =~ /(\w\d)_.*/xms or croak qq{Impossible to parse the file. The sample name is not correct ($line);};
       my $real_label = $1;
-      if ($output->{ $real_label }){
+      if ($output->{ $real_label }) {
         $output->{ $real_label }{'Molarity_2'} = $hash{'Molarity'};
       } else {
         $hash{'Molarity_1'} = $hash{'Molarity'};
@@ -53,7 +56,7 @@ sub build {
 
 sub _cleanup_key {
   my $key = shift;
-  $key =~ s/^\s+|\s+$//xmsg ;
+  $key =~ s/^\s+|\s+$//xmsg;
   return $key;
 }
 
