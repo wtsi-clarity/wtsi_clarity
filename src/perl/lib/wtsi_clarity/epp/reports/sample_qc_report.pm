@@ -227,7 +227,8 @@ sub _get_dna_amount_library_prep {
   my $dna_amount = $sample_concentration * $cherrypick_volume;
 
   # If the dna amount is not up to requirement, S.M. subtract 2ul from the cherrypick volume
-  # (to bring the concentration up)...
+  # (to bring the concentration up). Added buffer as S.M. won't take off the 2 if the dna amount
+  # is close enough...
   if ($dna_amount < ($requirement - $BUFFER)) {
     $dna_amount = $sample_concentration * ($cherrypick_volume - 2);
   }
