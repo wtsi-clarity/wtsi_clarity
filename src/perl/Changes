@@ -1,5 +1,13 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 1.14
+ - The worksheet generated at pre capture pooling has been fixed (#357)
+ - The workflow assigner script made insensible to versioned workflow names
+ - The insert size and read length properties has been corrected on flowcell reports (NPG)
+ - The 'plate_size_occupied' column has been fixed for fluidigm report (NPG)
+ - Added a script to display a file from an earlier step
+ - Fixed DNA amount calculation for 14MG's sample report
+
 Release 1.13
  - The calliper analyser is from now on updating the sample with the library concentration value.
  - Reports for 14MG now have ordered headers.

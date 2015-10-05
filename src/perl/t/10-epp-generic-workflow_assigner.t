@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 20;
+use Test::More tests => 25;
 use XML::LibXML;
 use Test::Exception;
 use XML::SemanticDiff;
@@ -8,6 +8,11 @@ use XML::SemanticDiff;
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/workflow_assigner';
+
+use wtsi_clarity::util::config;
+
+my $config = wtsi_clarity::util::config->new();
+my $base_uri = $config->clarity_api->{'base_uri'};
 
 use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 
@@ -35,16 +40,16 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 
 {
   my @uris =  ( 'uri1',
-                'uri2',
-                'uri3',
-              );
+  'uri2',
+  'uri3',
+  );
 
   my @expected_values = ( 'uri1',
-                          'uri2',
-                          'uri3',
-                        );
+  'uri2',
+  'uri3',
+  );
 
-  my $doc = wtsi_clarity::epp::generic::workflow_assigner::_make_workflow_rerouting_request("my_uri", \@uris);
+  my $doc = wtsi_clarity::epp::generic::workflow_assigner::make_workflow_rerouting_request("my_uri", \@uris);
   my $xpc = XML::LibXML::XPathContext->new($doc->getDocumentElement());
 
   my @elements = $doc->firstChild->childNodes();
@@ -66,13 +71,6 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 }
 
 {
-  use wtsi_clarity::util::config;
-  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/epp/generic/workflow_assigner/config];
-
-  my $config = wtsi_clarity::util::config->new();
-  my $base_uri = $config->clarity_api->{'base_uri'};
-
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
     new_wf => 'new_workflow'
@@ -96,19 +94,14 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
                         </wkfcnf:workflow>};
   my $expected = XML::LibXML->load_xml(string => $expected_raw );
 
- my $comparer = XML::SemanticDiff->new();
+  my $comparer = XML::SemanticDiff->new();
 
   my @differences = $comparer->compare($res, $expected);
   cmp_ok(scalar @differences, '==', 0, '_new_workflow_details should return the correct workflow');
 }
 
 {
-  use wtsi_clarity::util::config;
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/epp/generic/workflow_assigner/config];
-
-  my $config = wtsi_clarity::util::config->new();
-  my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
@@ -124,12 +117,7 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 }
 
 {
-  use wtsi_clarity::util::config;
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/epp/generic/workflow_assigner/config];
-
-  my $config = wtsi_clarity::util::config->new();
-  my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
@@ -139,17 +127,12 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
   throws_ok {
     $m->_get_step_uri();
   }
-  qr{One cannot search for a step if the its name has not been defined!},
-  qq{_get_step_uri should throw when there is no new_step'};
+    qr{One cannot search for a step if the its name has not been defined!},
+    qq{_get_step_uri should throw when there is no new_step'};
 }
 
 {
-  use wtsi_clarity::util::config;
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/epp/generic/workflow_assigner/config];
-
-  my $config = wtsi_clarity::util::config->new();
-  my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
@@ -159,17 +142,12 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
   throws_ok {
     $m->_get_step_uri();
   }
-  qr{One cannot search for a step if the protocol name has not been defined!},
-  qq{_get_step_uri should throw when there is no new_protocol'};
+    qr{One cannot search for a step if the protocol name has not been defined!},
+    qq{_get_step_uri should throw when there is no new_protocol'};
 }
 
 {
-  use wtsi_clarity::util::config;
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/epp/generic/workflow_assigner/config];
-
-  my $config = wtsi_clarity::util::config->new();
-  my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
@@ -184,12 +162,7 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 }
 
 {
-  use wtsi_clarity::util::config;
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/epp/generic/workflow_assigner/config];
-
-  my $config = wtsi_clarity::util::config->new();
-  my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
@@ -200,16 +173,12 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
   throws_ok {
     $m->_new_protocol_uri();
   }
-  qr{There can only be one protocol name},
-  qq{_new_protocol_uri should throw when there are more than one protocol with a given name'};
+    qr{There can only be one protocol name},
+    qq{_new_protocol_uri should throw when there are more than one protocol with a given name'};
 }
 
 {
-  use wtsi_clarity::util::config;
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-
-  my $config = wtsi_clarity::util::config->new();
-  my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
@@ -219,16 +188,12 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
   );
 
   throws_ok { $m->_get_step_uri(); }
-  qr{The protocol 'prot unknown' requested could not be found!},
-  q{_get_step_uri should throw with the wrong protocol name.} ;
+    qr{The protocol 'prot unknown' requested could not be found!},
+    q{_get_step_uri should throw with the wrong protocol name.} ;
 }
 
 {
-  use wtsi_clarity::util::config;
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-
-  my $config = wtsi_clarity::util::config->new();
-  my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
@@ -238,16 +203,12 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
   );
 
   throws_ok { $m->_get_step_uri(); }
-  qr{Step 'dev_only_Z' not found!},
-  q{_get_step_uri should throw with the wrong step name.} ;
+    qr{Step 'dev_only_Z' not found!},
+    q{_get_step_uri should throw with the wrong step name.} ;
 }
 
 {
-  use wtsi_clarity::util::config;
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-
-  my $config = wtsi_clarity::util::config->new();
-  my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
@@ -275,11 +236,7 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 }
 
 {
-  use wtsi_clarity::util::config;
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-
-  my $config = wtsi_clarity::util::config->new();
-  my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
@@ -300,6 +257,67 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 
   my @differences = $comparer->compare($req, $expected);
   cmp_ok(scalar @differences, '==', 0, '_make_request should creates the correct request for new workflow');
+}
+
+{ # Gets the list of workflows
+  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
+
+  my $workflow_assigner = wtsi_clarity::epp::generic::workflow_assigner->new(
+    process_url => $base_uri .'/processes/24-103777',
+    new_wf => 'workflow b'
+  );
+
+  my @expected_workflows = (
+    'new_workflow',
+    'wrong_workflow',
+    'workflow a',
+    'workflow a_20150609',
+    'workflow a_20150909',
+    'workflow b',
+    'workflow b_20150609',
+    'workflow b_20150909',
+  );
+
+  is_deeply($workflow_assigner->_get_workflow_names, \@expected_workflows, 'Correctly returns the list of workflow names.')
+}
+
+{ # Gets the current workflow by name
+  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
+
+  my $workflow_assigner = wtsi_clarity::epp::generic::workflow_assigner->new(
+    process_url => $base_uri .'/processes/24-103777',
+    new_wf => 'workflow b'
+  );
+
+  my $given_workflow_name = "new_workflow";
+  my $expected_workflow_name = "new_workflow";
+
+  is($workflow_assigner->_get_current_workflow_by_name($given_workflow_name), $expected_workflow_name,
+  'Returns the current workflow name correctly.');
+
+  $given_workflow_name = 'workflow a';
+  $expected_workflow_name = "workflow a_20150909";
+  $workflow_assigner->_get_current_workflow_by_name($given_workflow_name);
+  is($workflow_assigner->_get_current_workflow_by_name($given_workflow_name), $expected_workflow_name,
+  'Returns the current workflow name correctly.');
+
+  $given_workflow_name = 'workflow x';
+  throws_ok { $workflow_assigner->_get_current_workflow_by_name($given_workflow_name); }
+    qr{The given workflow 'workflow x' is not exist.},
+    q{Got exception when workflow does not exist.} ;
+}
+
+{
+  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
+
+  my $workflow_assigner = wtsi_clarity::epp::generic::workflow_assigner->new(
+    process_url => $base_uri .'/processes/24-103777',
+    new_wf => 'workflow b'
+  );
+
+  my $expected_workflow_name = "workflow b_20150909";
+
+  is($workflow_assigner->new_filtered_wf, $expected_workflow_name, 'Returns the current workflow name correctly.')
 }
 
 1;

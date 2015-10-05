@@ -35,6 +35,7 @@ sub _build_dir_path {
   my $self = shift;
   my $home = $ENV{'HOME'};
   my $clarity_home = $ENV{$WTSI_CLARITY_HOME_VAR_NAME};
+
   my $error =
       q[Neither WTSI_CLARITY_HOME not HOME environment variable is defined, cannot find location of the wtsi_clarity project configuration directory];
   return $clarity_home ? $clarity_home : (

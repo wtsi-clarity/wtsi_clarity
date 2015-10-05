@@ -1,5 +1,7 @@
 package wtsi_clarity::clarity::process;
 
+use strict;
+use warnings;
 use Moose;
 use Readonly;
 use Carp;
@@ -24,8 +26,10 @@ Readonly::Scalar my $OUTPUT_LIMSID       => q{./output[@output-type!="ResultFile
 Readonly::Scalar my $ALL_CONTAINERS      => q{art:details/art:artifact/location/container/@uri};
 Readonly::Scalar my $RESULT_FILE_URI     => q{(prc:process/input-output-map/output[@output-type="ResultFile"]/@uri)[1]};
 Readonly::Scalar my $FILE_URL_PATH       => q(/art:artifact/file:file/@uri);
-Readonly::Scalar our $FILE_CONTENT_LOCATION => q(/file:file/content-location);
-Readonly::Scalar my $CONTAINER_NAME_LOCATION => q(/con:container/name);
+Readonly::Scalar our $FILE_CONTENT_LOCATION   => q(/file:file/content-location);
+Readonly::Scalar my $CONTAINER_NAME_LOCATION  => q(/con:container/name);
+Readonly::Scalar my $OUTPUT_ANALYTES_URI_PATH => q{/prc:process/input-output-map/output/@uri};
+Readonly::Scalar my $WORKFLOW_STAGE_URI  => q{/art:details/art:artifact[1]/workflow-stages/workflow-stage[@status="IN_PROGRESS"]/@uri};
 ## use critic
 
 has '_parent' => (
@@ -83,10 +87,38 @@ has 'input_artifacts' => (
 sub _build_input_artifacts {
   my $self = shift;
 
-  my $input_node_list = $self->findnodes($INPUT_ARTIFACT_URIS_PATH);
-  my @input_uris = uniq(map { $_->getValue } $input_node_list->get_nodelist);
+  my @input_states = @{$self->input_states()};
 
-  return $self->_request->batch_retrieve('artifacts', \@input_uris);
+  return $self->_request->batch_retrieve('artifacts', \@input_states);
+}
+
+has 'input_states' => (
+  isa             => 'ArrayRef',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build_input_states {
+  my $self = shift;
+
+  my $input_node_list = $self->findnodes($INPUT_ARTIFACT_URIS_PATH);
+  my @input_states = uniq(map { $_->getValue } $input_node_list->get_nodelist);
+
+  return \@input_states;
+}
+has 'input_uris' => (
+  isa             => 'ArrayRef',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build_input_uris {
+  my $self = shift;
+
+  my @input_states = @{$self->input_states};
+  my @input_uris = map {do{(my $tmp = $_) =~ s/[?]state=\d+/""/smx}} @input_states;
+
+  return \@input_uris;
 }
 
 sub find_parent {
@@ -288,6 +320,34 @@ sub _build__analytes {
   return $self->_request->batch_retrieve('artifacts', \@all_analyte_uris);
 }
 
+has 'output_analyte_uris' => (
+  isa             => 'ArrayRef',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build_output_analyte_uris {
+  my $self = shift;
+
+  my @output_uris = map { $_->getValue } $self->findnodes($OUTPUT_ANALYTES_URI_PATH)->get_nodelist;
+
+  return \@output_uris;
+}
+
+has 'output_analytes' => (
+  isa        => 'XML::LibXML::Document',
+  is         => 'ro',
+  required   => 0,
+  lazy_build => 1,
+);
+
+sub _build_output_analytes {
+  my $self = shift;
+  # my @uri_nodes = $self->process_doc->findnodes($OUTPUT_ANALYTES);
+  # my @uris = map { $_->getValue() } @uri_nodes;
+  return $self->_request->batch_retrieve('artifacts', $self->output_analyte_uris);
+}
+
 sub get_result_file_location {
   my $self = shift;
 
@@ -313,6 +373,16 @@ sub get_container_name_by_limsid {
   croak qq{Could not find the name of container with the given limsid: $limsid} if (!defined $container_name || $container_name eq q{});
 
   return $container_name;
+}
+
+sub get_current_workflow_uri {
+  my $self = shift;
+
+  my $artifacts_xml = $self->input_artifacts();
+  my $workflow_stage = $artifacts_xml->findnodes($WORKFLOW_STAGE_URI);
+
+  my ($workflow_uri) = $workflow_stage =~ /^(.*)\/stages\/\d+/smx;
+  return $workflow_uri;
 }
 
 1;
@@ -373,6 +443,10 @@ wtsi_clarity::clarity::process
 =head2 get_container_name_by_limsid
 
   Returns the name of the container by its limsid.
+
+=head2 get_current_workflow_uri
+
+    Returns the uri for the workflow.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

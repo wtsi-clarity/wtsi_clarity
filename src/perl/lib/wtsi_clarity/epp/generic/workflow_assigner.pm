@@ -1,5 +1,7 @@
 package wtsi_clarity::epp::generic::workflow_assigner;
 
+use strict;
+use warnings;
 use Moose;
 use Carp;
 use XML::LibXML;
@@ -9,8 +11,9 @@ use Mojo::Collection 'c';
 use wtsi_clarity::util::request;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $INPUT_PATH     => q( /prc:process/input-output-map/input/@post-process-uri );
-Readonly::Scalar my $INPUT_IDS_PATH => q{ /prc:process/input-output-map/input/@limsid };
+Readonly::Scalar my $INPUT_PATH         => q( /prc:process/input-output-map/input/@post-process-uri );
+Readonly::Scalar my $INPUT_IDS_PATH     => q{ /prc:process/input-output-map/input/@limsid };
+Readonly::Scalar my $WORKFLOW_NAME_PATH => q{/wkfcnf:workflows/workflow/@name};
 ## use critic
 
 extends 'wtsi_clarity::epp';
@@ -24,6 +27,53 @@ has 'new_wf' => (
   isa        => 'Str',
   is         => 'ro',
   required   => 1,
+  trigger => \&_set_current_workflow,
+);
+
+sub _set_current_workflow {
+  my ($self, $new_wf, $old_wf) = @_;
+
+  $self->new_filtered_wf($self->_get_current_workflow_by_name($self->new_wf));
+
+  return;
+}
+
+sub _get_workflow_names {
+  my ($self) = @_;
+
+  my @workflow_names = map { $_->getValue } $self->_all_workflows_details->findnodes($WORKFLOW_NAME_PATH);
+
+  return \@workflow_names;
+}
+
+sub _get_current_workflow_by_name {
+  my ($self, $given_workflow_name) = @_;
+
+  my $workflow_names = $self->_get_workflow_names;
+
+  my @filtered_wf_names = grep {/\Q$given_workflow_name\E/sxm} @{$workflow_names};
+
+  my $current_workflow_name = q{};
+
+  my $size_of_filtered_names = scalar @filtered_wf_names;
+
+  if ($size_of_filtered_names > 1) {
+    my @sorted_workflow_names = sort @filtered_wf_names;
+    $current_workflow_name = $sorted_workflow_names[scalar @sorted_workflow_names - 1];
+  } elsif ($size_of_filtered_names == 1) {
+    $current_workflow_name = $filtered_wf_names[0];
+  } else {
+    croak qq{The given workflow '$given_workflow_name' is not exist.};
+  }
+
+  return $current_workflow_name;
+}
+
+has 'new_filtered_wf' => (
+  isa        => 'Str',
+  is         => 'rw',
+  required   => 1,
+  lazy_build => 1,
 );
 
 has 'new_step' => (
@@ -63,13 +113,13 @@ sub _make_request {
   my $req ;
   if (defined $self->new_step && defined $self->new_protocol) {
     my $new_uri = $self->_new_step_uri;
-    $req = _make_step_rerouting_request($new_uri, $self->_input_uris())->toString();
+    $req = make_step_rerouting_request($new_uri, $self->_input_uris())->toString();
   }
   else {
     my $new_workflow_id = _get_id_from_uri($self->_new_workflow_uri);
     my $new_uri = $self->_workflow_base_uri . q{/} . $new_workflow_id;
 
-    $req = _make_workflow_rerouting_request($new_uri, $self->_input_uris())->toString();
+    $req = make_workflow_rerouting_request($new_uri, $self->_input_uris())->toString();
   }
   return $req;
 }
@@ -110,10 +160,10 @@ sub _get_step_uri {
 
   my $step_name = $self->new_step;
   my $step_uri = c->new($self->_new_workflow_details->findnodes(qq{/wkfcnf:workflow/stages/stage[\@name="$step_name"]/\@uri})->get_nodelist())
-                  ->map( sub { $_->getValue(); })
-                  ->first( sub {
-                    $self->_is_step_in_correct_protocol($_, $self->_new_protocol_uri);
-                  });
+    ->map( sub { $_->getValue(); })
+    ->first( sub {
+    $self->_is_step_in_correct_protocol($_, $self->_new_protocol_uri);
+  });
   if (!defined $step_uri) {
     croak qq{Step '$step_name' not found!};
   }
@@ -128,39 +178,76 @@ sub _is_step_in_correct_protocol {
   my $stage_details = XML::LibXML->load_xml(string => $stage_raw );
 
   return c->new($stage_details->findnodes(qq{/stg:stage/protocol[\@uri="$protocol_uri"]})->get_nodelist())
-          ->size();
+    ->size();
 }
 
 ### creation of routing requests
 
-sub _make_workflow_rerouting_request {
+=head2 make_workflow_rerouting_request()
+
+Assign analytes to the given workflow
+
+Input:
+  $new_uri - Uri for the new workflow.
+  $artifact_uris - Uris for the analytes.
+
+Output:
+  XmlDocument payload for the POST request.
+
+=cut
+
+sub make_workflow_rerouting_request {
   my ($new_uri, $artifact_uris) = @_;
 
-  my $doc = XML::LibXML::Document->new('1.0', 'utf-8');
-  my $root = $doc->createElementNS('http://genologics.com/ri/routing', 'rt:routing');
-
-  my $assign_tag = $doc->createElement('assign');
-  $assign_tag->setAttribute('workflow-uri', $new_uri);
-  $root->appendChild($assign_tag);
-
-  for my $uri (@{$artifact_uris}) {
-    my $tag = $doc->createElement('artifact');
-    $tag->setAttribute('uri', $uri);
-    $assign_tag->appendChild($tag);
-  }
-
-  $doc->setDocumentElement($root);
-  return $doc;
+  return _make_rerouting_request($new_uri, $artifact_uris, 'workflow-uri');
 }
 
-sub _make_step_rerouting_request {
+=head2 make_step_rerouting_request()
+
+Assign analytes to the given step
+
+Input:
+  $new_uri - Uri for the new step.
+  $artifact_uris - Uris for the analytes.
+
+Output:
+  XmlDocument payload for the POST request.
+
+=cut
+
+sub make_step_rerouting_request {
   my ($new_uri, $artifact_uris) = @_;
+
+  return _make_rerouting_request($new_uri, $artifact_uris, 'stage-uri');
+}
+
+=head2 make_workflow_unassign_request()
+
+Unassign the given analytes from the given workflow
+
+Input:
+  $new_uri - Uri for the workflow.
+  $artifact_uris - Uris for the analytes.
+
+Output:
+  XmlDocument payload for the POST request.
+
+=cut
+
+sub make_workflow_unassign_request {
+  my ($new_uri, $artifact_uris) = @_;
+
+  return _make_rerouting_request($new_uri, $artifact_uris, 'workflow-uri', 1);
+}
+
+sub _make_rerouting_request {
+  my ($new_uri, $artifact_uris, $uri_type, $unassign) = @_;
 
   my $doc = XML::LibXML::Document->new('1.0', 'utf-8');
   my $root = $doc->createElementNS('http://genologics.com/ri/routing', 'rt:routing');
 
-  my $assign_tag = $doc->createElement('assign');
-  $assign_tag->setAttribute('stage-uri', $new_uri);
+  my $assign_tag = $doc->createElement($unassign ? 'unassign' : 'assign');
+  $assign_tag->setAttribute($uri_type, $new_uri);
   $root->appendChild($assign_tag);
 
   for my $uri (@{$artifact_uris}) {
@@ -183,8 +270,8 @@ has '_input_uris' => (
 );
 
 sub _build__input_uris {
- my $self = shift;
- return $self->grab_values($self->process_doc->xml, $INPUT_PATH);
+  my $self = shift;
+  return $self->grab_values($self->process_doc->xml, $INPUT_PATH);
 }
 
 has '_workflow_base_uri' => (
@@ -206,7 +293,7 @@ has '_new_workflow_uri' => (
 
 sub _build__new_workflow_uri {
   my $self= shift;
-  return _get_workflow_uri($self->new_wf, $self->_all_workflows_details());
+  return _get_workflow_uri($self->new_filtered_wf, $self->_all_workflows_details());
 }
 
 has '_new_protocol_uri' => (
@@ -221,10 +308,10 @@ sub _build__new_protocol_uri {
   my $protocol_name = $self->new_protocol;
 
   my @uris = c->new($self->_new_workflow_details->findnodes(qq{/wkfcnf:workflow/protocols/protocol[\@name="$protocol_name"]/\@uri})->get_nodelist())
-              ->map(sub {
-                return $_->getValue();
-              })
-              ->each();
+    ->map(sub {
+    return $_->getValue();
+  })
+    ->each();
 
   if (scalar @uris > 1) {
     croak q{There can only be one protocol name };
