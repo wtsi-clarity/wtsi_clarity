@@ -22,12 +22,13 @@ Readonly::Hash my %ACTION2MODULE => (
     'cherrypick_stamp'               => 'generic::cherrypick_stamper',
     'queue_message'                  => 'generic::messenger',
     'store_plate'                    => 'generic::plate_storer',
+    'verify_control'                 => 'generic::control_verifier',
 
     'create_manifest'                => 'reports::manifest',
     'create_14mg_sample_qc_report'   => 'reports::14mg_sample_qc_report',
 
     'check_volume'                   => 'sm::volume_checker',
-    'display_file'                   => 'sm::file_downloader',
+    'display_earlier_file'           => 'sm::earlier_file_displayer',
     'receive_sample'                 => 'sm::sample_receiver',
     'update_fluidigm_request_volume' => 'sm::fluidigm_request_volume_updater',
     'update_cherrypick_volume'       => 'sm::cherrypick_volume_updater',
@@ -43,7 +44,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'make_report'                    => 'sm::report_maker',
 
     'tag_plate'                      => 'isc::plate_tagger',
-    'index_tag'                      => 'isc::tag_indexer',
+    'validate_tags_on_plate'         => 'isc::plate_tagger_validator',
     'analyse_agilent'                => 'isc::agilent_analyser',
     'analyse_calliper'               => 'isc::calliper_analyser',
     'pool_samples'                   => 'isc::pooling::analyte_pooler',

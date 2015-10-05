@@ -4,6 +4,7 @@ use Moose;
 use Carp;
 use Readonly;
 use wtsi_clarity::tag_plate::service;
+use wtsi_clarity::tag_plate::layout;
 
 extends 'wtsi_clarity::epp';
 with qw/
@@ -13,43 +14,108 @@ with qw/
 
 our $VERSION = '0.0';
 
-has 'validate' => (
-    isa        => 'Bool',
-    is         => 'ro',
-    required   => 0,
-);
-
-has 'exhaust'  => (
-    isa        => 'Bool',
-    is         => 'ro',
-    required   => 0,
-);
-
-sub BUILD {
-  my $self = shift;
-  if ($self->validate && $self->exhaust) {
-    croak 'Both "validate" and "exhaust" options cannot be true';
-  }
-  if (!$self->validate && !$self->exhaust) {
-    croak 'Either "validate" or "exhaust" option should be specified';
-  }
-  return;
-}
+##no critic (ValuesAndExpressions::RequireInterpolationOfMetachars)
+Readonly::Scalar my $DETAILS_ARTIFACT_PATH     => q{/art:details/art:artifact};
+Readonly::Scalar my $REAGENT_LABEL_PATH        => q{/art:artifact/reagent-label};
+Readonly::Scalar my $OUTPUT_URI_PATH           => q{/prc:process/input-output-map[output/@output-type='Analyte']};
+Readonly::Scalar my $URI_SEARCH_STRING         => q{@uri};
+##use critic
 
 override 'run' => sub {
   my $self = shift;
 
   super(); #call parent's run method
   my $service = wtsi_clarity::tag_plate::service->new(barcode => $self->barcode);
-  if ($self->validate) {
-    $service->validate();
-  }
-  if ($self->exhaust) {
-    $service->mark_as_used();
-  }
+
+  $service->validate();
+
+  $self->_index();
+  $self->request->batch_update('artifacts', $self->_batch_artifacts_doc);
+
+  $service->mark_as_used();
 
   return;
 };
+
+sub _index {
+  my $self = shift;
+
+  foreach my $analyte_xml ($self->_batch_artifacts_doc->findnodes($DETAILS_ARTIFACT_PATH)) {
+    my $location = $analyte_xml->getElementsByTagName(q[value])->[0]->textContent;
+    my ($location_index, $tag) = $self->_tag_layout->tag_info($location);
+    $self->_add_tags_to_analyte($analyte_xml, $location_index, $tag);
+  }
+
+  return;
+}
+
+sub _add_tags_to_analyte {
+  my ($self, $analyte_xml, $location_index, $tag) = @_;
+
+  $self->_remove_reagent_labels($analyte_xml);
+
+  my $reagent_label = XML::LibXML::Element->new('reagent-label');
+  $reagent_label->setAttribute('name', $self->_reagent_name($location_index, $tag));
+  $analyte_xml->addChild($reagent_label);
+
+  return $analyte_xml;
+}
+
+sub _reagent_name {
+  my ($self, $location_index, $tag) = @_;
+
+  my $tagset_name = $self->_tag_layout->tag_set_name;
+
+  return sprintf '%s: tag %s (%s)', $tagset_name, $location_index, $tag;
+}
+
+sub _remove_reagent_labels {
+  my ($self, $analyte_xml) = @_;
+
+  my @reagent_labels = $analyte_xml->findnodes($REAGENT_LABEL_PATH);
+  foreach my $reagent_label (@reagent_labels) {
+    my $parent_node = $reagent_label->parentNode;
+    $parent_node->removeChild( $reagent_label );
+  }
+
+  return;
+}
+
+has '_batch_artifacts_doc' => (
+  isa             => 'XML::LibXML::Document',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build__batch_artifacts_doc {
+  my $self = shift;
+
+  my @uris = ();
+  foreach my $analyte_mapping ($self->process_doc->findnodes($OUTPUT_URI_PATH)) {
+    my $output_uri = $analyte_mapping->findvalue(q(output/) . $URI_SEARCH_STRING);
+    push @uris, $output_uri;
+  }
+
+  if (!@uris) {
+    croak 'No output analytes found';
+  }
+
+  return $self->request->batch_retrieve('artifacts', \@uris);
+}
+
+has '_tag_layout' => (
+  isa             => 'wtsi_clarity::tag_plate::layout',
+  is              => 'ro',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build__tag_layout {
+  my $self = shift;
+  return wtsi_clarity::tag_plate::layout->new(
+    gatekeeper_info => wtsi_clarity::tag_plate::service->new(
+      barcode => $self->barcode)->get_layout()
+  );
+}
 
 no Moose;
 

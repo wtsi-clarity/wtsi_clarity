@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 20;
+use Test::More tests => 25;
 use XML::LibXML;
 use Test::Exception;
 use XML::SemanticDiff;
@@ -8,6 +8,11 @@ use XML::SemanticDiff;
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/workflow_assigner';
+
+use wtsi_clarity::util::config;
+
+my $config = wtsi_clarity::util::config->new();
+my $base_uri = $config->clarity_api->{'base_uri'};
 
 use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 
@@ -66,13 +71,6 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 }
 
 {
-  use wtsi_clarity::util::config;
-  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/epp/generic/workflow_assigner/config];
-
-  my $config = wtsi_clarity::util::config->new();
-  my $base_uri = $config->clarity_api->{'base_uri'};
-
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
     new_wf => 'new_workflow'
@@ -103,12 +101,7 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 }
 
 {
-  use wtsi_clarity::util::config;
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/epp/generic/workflow_assigner/config];
-
-  my $config = wtsi_clarity::util::config->new();
-  my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
@@ -124,12 +117,7 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 }
 
 {
-  use wtsi_clarity::util::config;
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/epp/generic/workflow_assigner/config];
-
-  my $config = wtsi_clarity::util::config->new();
-  my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
@@ -144,12 +132,7 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 }
 
 {
-  use wtsi_clarity::util::config;
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/epp/generic/workflow_assigner/config];
-
-  my $config = wtsi_clarity::util::config->new();
-  my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
@@ -164,12 +147,7 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 }
 
 {
-  use wtsi_clarity::util::config;
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/epp/generic/workflow_assigner/config];
-
-  my $config = wtsi_clarity::util::config->new();
-  my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
@@ -184,12 +162,7 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 }
 
 {
-  use wtsi_clarity::util::config;
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/epp/generic/workflow_assigner/config];
-
-  my $config = wtsi_clarity::util::config->new();
-  my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
@@ -205,11 +178,7 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 }
 
 {
-  use wtsi_clarity::util::config;
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-
-  my $config = wtsi_clarity::util::config->new();
-  my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
@@ -224,11 +193,7 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 }
 
 {
-  use wtsi_clarity::util::config;
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-
-  my $config = wtsi_clarity::util::config->new();
-  my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
@@ -243,11 +208,7 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 }
 
 {
-  use wtsi_clarity::util::config;
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-
-  my $config = wtsi_clarity::util::config->new();
-  my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
@@ -275,11 +236,7 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 }
 
 {
-  use wtsi_clarity::util::config;
   local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-
-  my $config = wtsi_clarity::util::config->new();
-  my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $m = wtsi_clarity::epp::generic::workflow_assigner->new(
     process_url => $base_uri .'/processes/24-103777',
@@ -300,6 +257,67 @@ use_ok('wtsi_clarity::epp::generic::workflow_assigner');
 
   my @differences = $comparer->compare($req, $expected);
   cmp_ok(scalar @differences, '==', 0, '_make_request should creates the correct request for new workflow');
+}
+
+{ # Gets the list of workflows
+  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
+
+  my $workflow_assigner = wtsi_clarity::epp::generic::workflow_assigner->new(
+    process_url => $base_uri .'/processes/24-103777',
+    new_wf => 'workflow b'
+  );
+
+  my @expected_workflows = (
+    'new_workflow',
+    'wrong_workflow',
+    'workflow a',
+    'workflow a_20150609',
+    'workflow a_20150909',
+    'workflow b',
+    'workflow b_20150609',
+    'workflow b_20150909',
+  );
+
+  is_deeply($workflow_assigner->_get_workflow_names, \@expected_workflows, 'Correctly returns the list of workflow names.')
+}
+
+{ # Gets the current workflow by name
+  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
+
+  my $workflow_assigner = wtsi_clarity::epp::generic::workflow_assigner->new(
+    process_url => $base_uri .'/processes/24-103777',
+    new_wf => 'workflow b'
+  );
+
+  my $given_workflow_name = "new_workflow";
+  my $expected_workflow_name = "new_workflow";
+
+  is($workflow_assigner->_get_current_workflow_by_name($given_workflow_name), $expected_workflow_name,
+    'Returns the current workflow name correctly.');
+
+  $given_workflow_name = 'workflow a';
+  $expected_workflow_name = "workflow a_20150909";
+  $workflow_assigner->_get_current_workflow_by_name($given_workflow_name);
+  is($workflow_assigner->_get_current_workflow_by_name($given_workflow_name), $expected_workflow_name,
+    'Returns the current workflow name correctly.');
+
+  $given_workflow_name = 'workflow x';
+  throws_ok { $workflow_assigner->_get_current_workflow_by_name($given_workflow_name); }
+  qr{The given workflow 'workflow x' is not exist.},
+  q{Got exception when workflow does not exist.} ;
+}
+
+{
+  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
+
+  my $workflow_assigner = wtsi_clarity::epp::generic::workflow_assigner->new(
+    process_url => $base_uri .'/processes/24-103777',
+    new_wf => 'workflow b'
+  );
+
+  my $expected_workflow_name = "workflow b_20150909";
+
+  is($workflow_assigner->new_filtered_wf, $expected_workflow_name, 'Returns the current workflow name correctly.')
 }
 
 1;

@@ -22,7 +22,7 @@ local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/14mg_sample_qc_repo
 
 my $EXPECTED_FILE_CONTENT = [
   {
-    'DNA amount library prep' => '192',
+    'DNA amount library prep' => '115.339134753689',
     'Library concentration' => '138.3304326231556',
     'Status' => 'Passed',
     'Sample volume' => '120',
@@ -94,7 +94,7 @@ my $EXPECTED_FILE_CONTENT = [
 
   my $sample_doc = $samples->[0];
 
-  my $expected_dna_amount_library_prep = 192;
+  my $expected_dna_amount_library_prep = 115.339134753689;
 
   is($report->_get_dna_amount_library_prep($sample_doc), $expected_dna_amount_library_prep,
     'Returns the correct DNA amount library prep value.');
