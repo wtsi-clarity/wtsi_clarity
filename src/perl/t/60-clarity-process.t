@@ -10,6 +10,7 @@ use wtsi_clarity::epp;
 
 use_ok 'wtsi_clarity::clarity::process';
 
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 use wtsi_clarity::util::config;
 my $config = wtsi_clarity::util::config->new();
 my $base_uri = $config->clarity_api->{'base_uri'};
