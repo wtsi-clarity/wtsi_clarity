@@ -1,5 +1,7 @@
 package wtsi_clarity::epp::generic::roles::barcode_common;
 
+use strict;
+use warnings;
 use Moose::Role;
 use Readonly;
 use Carp;
@@ -32,6 +34,12 @@ sub generate_barcode {
   }
   $container_id =~ s/-//smxg;
   return calculateBarcode($self->_barcode_prefix, $container_id);
+}
+
+sub get_barcode_from_id {
+  my ($self, $container_id) = @_;
+
+  return $self->generate_barcode($container_id);
 }
 
 no Moose::Role;

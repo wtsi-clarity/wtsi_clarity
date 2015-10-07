@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-196755?state=95363" limsid="2-196755">
+    <name> 5ng Human Genomic DNA-STD-5</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-27295" limsid="24-27295"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-4582" limsid="27-4582"/>
+        <value>B:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/51C-507" limsid="51C-507"/>
+    <control-type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/controltypes/51"/>
+    <workflow-stages>
+        <workflow-stage status="IN_PROGRESS" name="Pico: Run Standard and Control Plate" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/51/stages/315"/>
+    </workflow-stages>
+</art:artifact>
