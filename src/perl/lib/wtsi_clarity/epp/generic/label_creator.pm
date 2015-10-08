@@ -439,9 +439,9 @@ sub _set_container_data {
       q[] : $self->_plate_purpose_suffix->[$count];
     $container->{'purpose'} = $self->_copy_purpose($doc, $suffix);
 
-    my ($barcode, $num) = $self->generate_barcode($lims_id);
+    my $barcode = $self->generate_barcode($lims_id);
     $container->{'barcode'} = $barcode;
-    $container->{'num'} = $num;
+    $container->{'num'} = $barcode;
 
     if ($self->has_get_sanger_barcode_from &&
       exists $self->_plate_to_parent_plate_map->{$container->{'limsid'}}) {

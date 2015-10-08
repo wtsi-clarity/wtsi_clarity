@@ -89,7 +89,7 @@ sub _build__new_containers {
 
   my @containers_limsid = ();
 
-  foreach my $index (1..$self->number_of_containers) {
+  for (1..$self->number_of_containers) {
     my $container_xml = $self->create_new_container($self->container_type);
 
     push @containers_limsid, $self->get_container_data($container_xml)->{'limsid'};
@@ -110,12 +110,12 @@ sub _build__containers_data {
   my %containers_data = ();
 
   foreach my $container_limsid (@{$self->_new_containers}) {
-    my ($barcode, $num) = $self->generate_barcode($container_limsid);
+    my $barcode = $self->generate_barcode($container_limsid);
 
     my $container_data = ();
     $container_data->{'limsid'}   = $container_limsid;
     $container_data->{'barcode'}    = $barcode;
-    $container_data->{'num'}      = $num;
+    $container_data->{'num'}      = $barcode;
     $container_data->{'purpose'}  = $self->get_container_purpose($self->container_type);
 
     my $container_uri = join q{/}, $self->config->clarity_api->{'base_uri'}, 'containers', $container_limsid;

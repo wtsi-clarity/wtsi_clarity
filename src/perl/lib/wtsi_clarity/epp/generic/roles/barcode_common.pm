@@ -5,10 +5,19 @@ use warnings;
 use Moose::Role;
 use Readonly;
 use Carp;
+use JSON;
+
+local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+
+use wtsi_clarity::util::config;
+my $config = wtsi_clarity::util::config->new();
+my $base_uri = $config->clarity_api->{'base_uri'};
+my $mint_uri = $config->barcode_mint->{'barcode_mint_uri'};
 
 use wtsi_clarity::util::barcode qw/calculateBarcode/;
 
 with 'wtsi_clarity::util::clarity_elements';
+with 'wtsi_clarity::epp::generic::roles::container_common';
 
 our $VERSION = '0.0';
 
@@ -32,14 +41,30 @@ sub generate_barcode {
   if (!$container_id) {
     croak 'Container id is not given';
   }
-  $container_id =~ s/-//smxg;
-  return calculateBarcode($self->_barcode_prefix, $container_id);
+
+  my $request = wtsi_clarity::util::request->new(
+    'content_type'        => 'application/json'
+  );
+
+  my $return_json = $request->post($mint_uri . '/barcodes/', to_json({
+    source => q{gclp}, body => $self->_barcode_prefix . q{:} . $container_id
+  }));
+
+  my $barcode_object = from_json($return_json);
+
+  return $barcode_object->{'results'}[0]->{'barcode'};
 }
 
 sub get_barcode_from_id {
   my ($self, $container_id) = @_;
+  use Data::Dumper;
 
-  return $self->generate_barcode($container_id);
+  my @containers = ($base_uri . '/containers/' . $container_id);
+
+  my $container_xml = $self->batch_retrieve_containers_xml(\@containers);
+  my $container = $self->get_container_data($container_xml);
+
+  return $container->{'barcode'};
 }
 
 no Moose::Role;
@@ -65,6 +90,10 @@ wtsi_clarity::epp::generic::roles::barcode_common
 =head2 generate_barcode
 
   Generate barcode from the given container limsid.
+
+=head2 get_barcode_from_id
+
+  Return the barcode assosicated with the given id.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

@@ -101,7 +101,7 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
   } 'container data set';
 
   @nodes = $doc->findnodes( q{ /con:container/name } );
-  is ($nodes[0]->textContent(), '5260271204834', 'new container name');
+  is ($nodes[0]->textContent(), 'GCLP:SM:27-1204:0', 'new container name');
   my $xml = $doc->toString;
   like ($xml, qr/WTSI Container Purpose Name\">Stock Plate/, 'container purpose present');
   like ($xml, qr/Supplier Container Name\">ces_tester_101_/, 'container supplier present');
@@ -125,11 +125,11 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
       {
         'template' => 'clarity_plate',
         'plate' => {
-          'ean13' => '5260271204834',
+          'ean13' => 'GCLP:SM:27-1204:0',
           'label_text' => {
             'date_user'      => '21-May-2014 ',
             'purpose'        => 'Stock Plate',
-            'num'            => 'SM-271204S',
+            'num'            => 'GCLP:SM:27-1204:0',
             'signature'      => 'EL2LO',
             'sanger_barcode' => ''
           }
@@ -184,11 +184,11 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
         {
           'template' => 'clarity_plate',
           'plate' => {
-            'ean13' => '5260276710705',
+            'ean13' => 'GCLP:SM:27-6710:0',
             'label_text' => {
               'date_user'      => '21-May-2014 D. Jones',
               'purpose'        => 'Pico Assay A',
-              'num'            => 'SM-276710F',
+              'num'            => 'GCLP:SM:27-6710:0',
               'signature'      => 'HP2MX',
               'sanger_barcode' => ''
             }
@@ -197,11 +197,11 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
         {
           'template' => 'clarity_plate',
           'plate' => {
-            'ean13' => '5260276711719',
+            'ean13' => 'GCLP:SM:27-6711:0',
             'label_text' => {
               'date_user'      => '21-May-2014 D. Jones',
               'purpose'        => 'Pico Assay',
-              'num'            => 'SM-276711G',
+              'num'            => 'GCLP:SM:27-6711:0',
               'signature'      => 'HP2MX',
               'sanger_barcode' => '',
             }
@@ -261,7 +261,7 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
 
   $label_creator->_set_container_data();
 
-  my $container = $label_creator->_container->{'http://testserver.com:1234/here/containers/27-4580'};
+  my $container = $label_creator->_container->{$base_uri . '/containers/27-4580'};
 
   is($container->{'signature'}, q{}, 'Signature is blank when there are no samples');
 }
@@ -272,9 +272,9 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
     process_url => $base_uri . '/processes/122-26669',
   );
 
-  my $input_analyte_uri1 = 'http://testserver.com:1234/here/artifacts/LAB106A289PA1?state=63032';
+  my $input_analyte_uri1 = $base_uri . '/artifacts/LAB106A289PA1?state=63032';
   my $input_analyte_dom1 = $l->fetch_and_parse($input_analyte_uri1);
-  my $input_analyte_uri2 = 'http://testserver.com:1234/here/artifacts/LAB106A305PA1?state=63016';
+  my $input_analyte_uri2 = $base_uri . '/artifacts/LAB106A305PA1?state=63016';
   my $input_analyte_dom2 = $l->fetch_and_parse($input_analyte_uri2);
 
   my $expected_tube1_location = 'A:1';
@@ -292,7 +292,7 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
     process_url => $base_uri . '/processes/122-26669',
   );
 
-  my $input_analyte_uri1 = 'http://testserver.com:1234/here/artifacts/LAB106A289PA1?state=63032';
+  my $input_analyte_uri1 = $base_uri . '/artifacts/LAB106A289PA1?state=63032';
   my $input_analyte_dom1 = $l->fetch_and_parse($input_analyte_uri1);
 
   my $expected_bait_library_name = '14M_haemv1';
@@ -336,7 +336,7 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
     process_url => $base_uri . '/processes/122-26669',
   );
 
-  my $input_analyte_uri1 = 'http://testserver.com:1234/here/artifacts/LAB106A297PA1?state=62966';
+  my $input_analyte_uri1 = $base_uri . '/artifacts/LAB106A297PA1?state=62966';
   my $input_analyte_dom1 = $l->fetch_and_parse($input_analyte_uri1);
   my $bait_library_name = '14M_haemv1';
 
@@ -351,7 +351,7 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
     process_url => $base_uri . '/processes/122-26669',
   );
 
-  my $input_analyte_uri1 = 'http://testserver.com:1234/here/artifacts/LAB106A321PA1?state=62964';
+  my $input_analyte_uri1 = $base_uri . '/artifacts/LAB106A321PA1?state=62964';
   my $input_analyte_dom1 = $l->fetch_and_parse($input_analyte_uri1);
   my $bait_library_name = '14M_haemv1';
 
@@ -502,9 +502,9 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
 
   my $container = $lc_mock->_container();
 
-  is($container->{'http://testserver.com:1234/here/containers/27-6710'}->{'sanger_barcode'}, '123',
+  is($container->{$base_uri . '/containers/27-6710'}->{'sanger_barcode'}, '123',
   'Uses the plate to older plate hash if it has what we neeeeeeed');
-  is($container->{'http://testserver.com:1234/here/containers/27-6711'}->{'sanger_barcode'}, '456',
+  is($container->{$base_uri . '/containers/27-6711'}->{'sanger_barcode'}, '456',
   'Uses the plate to older plate hash if it has what we neeeeeeed');
 }
 
@@ -514,8 +514,8 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
     step_url                => $base_uri . '/steps/24-65189',
   );
   is_deeply($lc->_fetch_sanger_barcode(), {
-    '27-11766' => 'SM-2711766F',
-    '27-11767' => 'SM-2711767G'
+    '27-11766' => 'GCLP:SM:27-11766:0',
+    '27-11767' => 'GCLP:SM:27-11767:0'
   },
   'Fetches and creates the Sanger barcodes correctly');
 }
