@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 8;
+use Test::More tests => 10;
 use Test::Exception;
 use Carp;
 use English qw{-no_match_vars};
@@ -33,7 +33,7 @@ use_ok('wtsi_clarity::genotyping::fluidigm::file_wrapper');
     or croak "Failed to open Fluidigm export file '",
                      $file_wrapper->file_name, "': $OS_ERROR";
 
-  my ($header, $column_names, $sample_data) = $file_wrapper->_parse_fluidigm_table($in);
+  my $sample_data = $file_wrapper->_sample_data_from_fluidigm_table($in);
 
   my @expected_addresses = (
     'S01','S02','S03','S04','S05','S06','S07','S08','S09','S10',
@@ -637,6 +637,24 @@ use_ok('wtsi_clarity::genotyping::fluidigm::file_wrapper');
 
   is_deeply($sample_data->{'S01'}, $expected_s01_data, 'Returns the correct data for S01 well address');
   is_deeply($sample_data->{'S12'}, $expected_s12_data, 'Returns the correct data for S12 well address');
+}
+
+{
+  throws_ok {
+    my $file_wrapper = wtsi_clarity::genotyping::fluidigm::file_wrapper->new(
+      file_name => 't/data/genotyping/fluidigm/missing_data/0123456789/0123456789.csv'
+    );}
+    qr/Parse error: expected 9216 or 4608 sample data rows, found/,
+    'Throws error when data missing from the input table.';
+}
+
+{
+  throws_ok {
+    my $file_wrapper = wtsi_clarity::genotyping::fluidigm::file_wrapper->new(
+      file_name => 't/data/genotyping/fluidigm/missing_data/0123456789/0123456788.csv'
+    );}
+    qr/Parse error: expected data for 96 samples, found/,
+    'Throws error when well data missing from the 96 well input table.';
 }
 
 1;
