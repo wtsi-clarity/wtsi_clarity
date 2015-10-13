@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:sample xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample" uri="http://testserver.com:1234/clarity/api/samples/LAB106A294" limsid="LAB106A294">
+    <name>0a3804a9-0061-11e5-8d37-c56bea147222</name>
+    <date-received>2015-05-22</date-received>
+    <project limsid="LAB106" uri="http://testserver.com:1234/clarity/api/projects/LAB106"/>
+    <submitter uri="http://testserver.com:1234/clarity/api/researchers/58">
+        <first-name>Karoly</first-name>
+        <last-name>Erdos</last-name>
+    </submitter>
+    <artifact limsid="LAB106A294PA1" uri="http://testserver.com:1234/clarity/api/artifacts/LAB106A294PA1?state=14409"/>
+    <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    <udf:field type="String" name="WTSI Bait Library Name">14M_haemv1</udf:field>
+    <udf:field type="String" name="WTSI Donor ID">0a3804a9-0061-11e5-8d37-c56bea147222</udf:field>
+    <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+    <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+    <udf:field type="String" name="WTSI Supplier Sample Name (SM)">102</udf:field>
+</smp:sample>

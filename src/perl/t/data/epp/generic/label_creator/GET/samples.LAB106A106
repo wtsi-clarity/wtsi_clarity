@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:sample xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample" uri="http://testserver.com:1234/clarity/api/samples/LAB106A106" limsid="LAB106A106">
+    <name>106</name>
+    <project limsid="LAB106" uri="http://testserver.com:1234/clarity/api/projects/LAB106"/>
+    <artifact limsid="LAB106A106PA1" uri="http://testserver.com:1234/clarity/api/artifacts/LAB106A106PA1?state=10533"/>
+    <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    <udf:field type="String" name="WTSI Bait Library Name">14M_haemv1</udf:field>
+    <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+    <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+</smp:sample>
