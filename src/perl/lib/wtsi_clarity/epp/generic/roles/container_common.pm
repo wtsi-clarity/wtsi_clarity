@@ -1,7 +1,5 @@
 package wtsi_clarity::epp::generic::roles::container_common;
 
-use strict;
-use warnings;
 use Moose::Role;
 use Readonly;
 use Carp;

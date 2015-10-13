@@ -5,6 +5,9 @@ use Carp;
 use Readonly;
 use DateTime;
 
+use wtsi_clarity::util::config;
+my $config = wtsi_clarity::util::config->new();
+
 our $VERSION = '0.0';
 
 Readonly::Scalar my $USER_NAME_LENGTH => 12;
@@ -85,33 +88,70 @@ sub _format_label {
 
   if ($type eq 'plate') {
 
-    $label = {
-      'template'  => 'clarity_data_matrix_plate',
-      'plate' => {
-        'barcode' => $container->{'barcode'},
-        'date_user'      => join(q[ ], $date, $user),
-        'purpose'        => $container->{'purpose'},
-        'signature'      => $container->{'signature'},
-      }
-    };
+    if ($config->barcode_mint->{"internal_generation"}) {
+      $label = {
+        'template'  => 'clarity_plate',
+        'plate' => {
+          'ean13' => $container->{'barcode'},
+          'label_text' => {
+            'date_user'      => join(q[ ], $date, $user),
+            'purpose'        => $container->{'purpose'},
+            'num'            => $container->{'num'},
+            'signature'      => $container->{'signature'},
+            'sanger_barcode' => $container->{'sanger_barcode'} // q{},
+          }
+        }
+      };
+    } else {
+      $label = {
+        'template'  => 'clarity_data_matrix_plate',
+        'plate' => {
+          'barcode' => $container->{'barcode'},
+          'date_user'      => join(q[ ], $date, $user),
+          'purpose'        => $container->{'purpose'},
+          'signature'      => $container->{'signature'},
+        }
+      };
+    }
 
   } elsif ($type eq 'tube') {
+    if ($config->barcode_mint->{"internal_generation"}) {
+      my ($prefix, $sanger_barcode_number) = split /-/sxm, $container->{'num'};
+      chop $sanger_barcode_number;
 
-    my ($lims, $project, $clarity_id, $count) = split /:/sxm, $container->{'barcode'};
+      $label = {
+        'template' => 'clarity_tube',
+        'tube'     => {
+          'ean13' => $container->{'barcode'},
+          'sanger_barcode' => {
+            'prefix'  => $prefix,
+            'number'  => $sanger_barcode_number
+          },
+          'label_text' => {
+            'date'                              => $date,
+            'tube_barcode'                      => $sanger_barcode_number,
+            'tube_signature_and_pooling_range'  => $container->{'tube_signature_and_pooling_range'},
+            'original_plate_signature'          => $container->{'original_plate_signature'}
+          }
+        }
+      };
+    } else {
+      my ($lims, $project, $clarity_id, $count) = split /:/sxm, $container->{'barcode'};
 
-    $label = {
-      'template' => 'clarity_data_matrix_tube',
-      'tube'     => {
-        'barcode' => $container->{'barcode'},
-        'date'                              => $date,
-        'tube_signature_and_pooling_range'  => $container->{'tube_signature_and_pooling_range'},
-        'original_plate_signature'          => $container->{'original_plate_signature'},
-        'tube_lid' => {
-          'prefix'  => $project,
-          'number'  => $clarity_id
-        },
-      }
-    };
+      $label = {
+        'template' => 'clarity_data_matrix_tube',
+        'tube'     => {
+          'barcode' => $container->{'barcode'},
+          'date'                              => $date,
+          'tube_signature_and_pooling_range'  => $container->{'tube_signature_and_pooling_range'},
+          'original_plate_signature'          => $container->{'original_plate_signature'},
+          'tube_lid' => {
+            'prefix'  => $project,
+            'number'  => $clarity_id
+          },
+        }
+      };
+    }
   } else {
     croak qq[Unknown container type $type, known types: tube, plate];
   }

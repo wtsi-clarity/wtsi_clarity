@@ -1,7 +1,5 @@
 package wtsi_clarity::epp::generic::roles::barcode_common;
 
-use strict;
-use warnings;
 use Moose::Role;
 use Readonly;
 use Carp;
@@ -42,17 +40,23 @@ sub generate_barcode {
     croak 'Container id is not given';
   }
 
-  my $request = wtsi_clarity::util::request->new(
-    'content_type'        => 'application/json'
-  );
+  if ($config->barcode_mint->{'internal_generation'}) {
+    $container_id =~ s/-//smxg;
+    return calculateBarcode($self->_barcode_prefix, $container_id);
+  } else {
+    my $request = wtsi_clarity::util::request->new(
+      'content_type'        => 'application/json'
+    );
 
-  my $return_json = $request->post($mint_uri . '/barcodes/', to_json({
-    source => q{gclp}, body => $self->_barcode_prefix . q{:} . $container_id
-  }));
+    my $return_json = $request->post($mint_uri . '/barcodes/', to_json({
+      source => q{gclp}, body => $self->_barcode_prefix . q{:} . $container_id
+    }));
 
-  my $barcode_object = from_json($return_json);
+    my $barcode_object = from_json($return_json);
 
-  return $barcode_object->{'results'}[0]->{'barcode'};
+    my $barcode = $barcode_object->{'results'}[0]->{'barcode'};
+    return ($barcode, $barcode);
+  }
 }
 
 sub get_barcode_from_id {

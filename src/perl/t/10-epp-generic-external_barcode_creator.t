@@ -45,20 +45,38 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
     _new_containers       => ['27-5496', '27-5497'],
   );
 
-  my $expected_container_data = {
-    $base_uri . '/containers/27-5496' => {
-      'limsid'    => '27-5496',
-      'barcode'   => 'GCLP:SM:27-5496:0',
-      'num'       => 'GCLP:SM:27-5496:0',
-      'purpose'   => 'Stock Plate',
-    },
-    $base_uri . '/containers/27-5497' => {
-      'limsid'    => '27-5497',
-      'barcode'   => 'GCLP:SM:27-5497:0',
-      'num'       => 'GCLP:SM:27-5497:0',
-      'purpose'   => 'Stock Plate',
-    }
-  };
+  my $expected_container_data;
+  if ($config->barcode_mint->{'internal_generation'}) {
+    $expected_container_data = {
+      $base_uri . '/containers/27-5496' => {
+        'limsid'    => '27-5496',
+        'barcode'   => '5260275496792',
+        'num'       => 'SM-275496O',
+        'purpose'   => 'Stock Plate',
+      },
+      $base_uri . '/containers/27-5497' => {
+        'limsid'    => '27-5497',
+        'barcode'   => '5260275497805',
+        'num'       => 'SM-275497P',
+        'purpose'   => 'Stock Plate',
+      }
+    };
+  } else {
+    $expected_container_data = {
+      $base_uri . '/containers/27-5496' => {
+        'limsid'    => '27-5496',
+        'barcode'   => 'GCLP:SM:27-5496:0',
+        'num'       => 'GCLP:SM:27-5496:0',
+        'purpose'   => 'Stock Plate',
+      },
+      $base_uri . '/containers/27-5497' => {
+        'limsid'    => '27-5497',
+        'barcode'   => 'GCLP:SM:27-5497:0',
+        'num'       => 'GCLP:SM:27-5497:0',
+        'purpose'   => 'Stock Plate',
+      }
+    };
+  }
 
   is_deeply(
     $barcode_creator->_containers_data,
@@ -124,20 +142,38 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
     _new_containers       => ['27-5496', '27-5497'],
   );
 
-  my $expected_containers_data = {
-    $base_uri . '/containers/27-5496' => {
-      'limsid'    => '27-5496',
-      'barcode'   => 'GCLP:SM:27-5496:0',
-      'num'       => 'GCLP:SM:27-5496:0',
-      'purpose'   => 'Stock Plate',
-    },
-    $base_uri . '/containers/27-5497' => {
-      'limsid'    => '27-5497',
-      'barcode'   => 'GCLP:SM:27-5497:0',
-      'num'       => 'GCLP:SM:27-5497:0',
-      'purpose'   => 'Stock Plate',
-    }
-  };
+  my $expected_containers_data;
+  if ($config->barcode_mint->{'internal_generation'}) {
+    $expected_containers_data = {
+      $base_uri . '/containers/27-5496' => {
+        'limsid'    => '27-5496',
+        'barcode'   => '5260275496792',
+        'num'       => 'SM-275496O',
+        'purpose'   => 'Stock Plate',
+      },
+      $base_uri . '/containers/27-5497' => {
+        'limsid'    => '27-5497',
+        'barcode'   => '5260275497805',
+        'num'       => 'SM-275497P',
+        'purpose'   => 'Stock Plate',
+      }
+    };
+  } else {
+    $expected_containers_data = {
+      $base_uri . '/containers/27-5496' => {
+        'limsid'    => '27-5496',
+        'barcode'   => 'GCLP:SM:27-5496:0',
+        'num'       => 'GCLP:SM:27-5496:0',
+        'purpose'   => 'Stock Plate',
+      },
+      $base_uri . '/containers/27-5497' => {
+        'limsid'    => '27-5497',
+        'barcode'   => 'GCLP:SM:27-5497:0',
+        'num'       => 'GCLP:SM:27-5497:0',
+        'purpose'   => 'Stock Plate',
+      }
+    };
+  }
 
   my $expected_label_parameters = {
     'number'        => '1',
@@ -172,46 +208,82 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
     );
   });
 
-  my $expected_label_templates = {
-    'label_printer' => {
-      'footer_text' => {
-        'footer_text2' => 'Tue Mar 24 11:28:11 2015',
-        'footer_text1' => 'footer by Karel'
-      },
-      'header_text' => {
-        'header_text2' => 'Tue Mar 24 11:28:11 2015',
-        'header_text1' => 'header by Karel'
-      },
-      'labels' => [
-        {
-          'template' => 'clarity_plate',
-          'plate' => {
-            'ean13' => 'GCLP:SM:27-5496:0',
-            'label_text' => {
-              'signature' => undef,
-              'num' => 'GCLP:SM:27-5496:0',
-              'date_user' => '24-Mar-2015 ',
-              'purpose' => 'Stock Plate',
-              'sanger_barcode' => ''
-            }
-          }
+  my $expected_label_templates;
+  if ($config->barcode_mint->{'internal_generation'}) {
+    $expected_label_templates = {
+      'label_printer' => {
+        'footer_text' => {
+          'footer_text2' => 'Tue Mar 24 11:28:11 2015',
+          'footer_text1' => 'footer by Karel'
         },
-        {
-          'template' => 'clarity_plate',
-          'plate' => {
-            'ean13' => 'GCLP:SM:27-5497:0',
-            'label_text' => {
-              'signature' => undef,
-              'num' => 'GCLP:SM:27-5497:0',
-              'date_user' => '24-Mar-2015 ',
-              'purpose' => 'Stock Plate',
-              'sanger_barcode' => ''
+        'header_text' => {
+          'header_text2' => 'Tue Mar 24 11:28:11 2015',
+          'header_text1' => 'header by Karel'
+        },
+        'labels' => [
+          {
+            'template' => 'clarity_plate',
+            'plate' => {
+              'ean13' => '5260275496792',
+              'label_text' => {
+                'signature' => undef,
+                'num' => 'SM-275496O',
+                'date_user' => '24-Mar-2015 ',
+                'purpose' => 'Stock Plate',
+                'sanger_barcode' => ''
+              }
+            }
+          },
+          {
+            'template' => 'clarity_plate',
+            'plate' => {
+              'ean13' => '5260275497805',
+              'label_text' => {
+                'signature' => undef,
+                'num' => 'SM-275497P',
+                'date_user' => '24-Mar-2015 ',
+                'purpose' => 'Stock Plate',
+                'sanger_barcode' => ''
+              }
             }
           }
-        }
-      ]
-    }
-  };
+        ]
+      }
+    };
+  } else {
+    $expected_label_templates = {
+      'label_printer' => {
+        'footer_text' => {
+          'footer_text2' => 'Tue Mar 24 11:28:11 2015',
+          'footer_text1' => 'footer by Karel'
+        },
+        'header_text' => {
+          'header_text2' => 'Tue Mar 24 11:28:11 2015',
+          'header_text1' => 'header by Karel'
+        },
+        'labels' => [
+          {
+            'template' => 'clarity_data_matrix_plate',
+            'plate' => {
+              'barcode' => 'GCLP:SM:27-5496:0',
+                'signature' => undef,
+                'date_user' => '24-Mar-2015 ',
+                'purpose' => 'Stock Plate',
+            }
+          },
+          {
+            'template' => 'clarity_data_matrix_plate',
+            'plate' => {
+              'barcode' => 'GCLP:SM:27-5497:0',
+              'signature' => undef,
+              'date_user' => '24-Mar-2015 ',
+              'purpose' => 'Stock Plate',
+            }
+          }
+        ]
+      }
+    };
+  }
 
   is_deeply($barcode_creator->_label_templates, $expected_label_templates,
   'Got back the correct label templates');

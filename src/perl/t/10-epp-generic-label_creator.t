@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 72;
+use Test::More tests => 67;
 use Test::Exception;
 use Test::MockObject::Extends;
 use Cwd;
@@ -101,7 +101,6 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
   } 'container data set';
 
   @nodes = $doc->findnodes( q{ /con:container/name } );
-  is ($nodes[0]->textContent(), 'GCLP:SM:27-1204:0', 'new container name');
   my $xml = $doc->toString;
   like ($xml, qr/WTSI Container Purpose Name\">Stock Plate/, 'container purpose present');
   like ($xml, qr/Supplier Container Name\">ces_tester_101_/, 'container supplier present');
@@ -112,28 +111,60 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
   $xml = $doc->toString;
   like ($xml, qr/Supplier Container Name\">ces_tester_101_/, 'container supplier unchanged');
 
-  my $label = {
-    'label_printer' => { 'footer_text' => {
-      'footer_text2' => 'Wed May 21 15:04:23 2014',
-      'footer_text1' => 'footer by D. Brooks'
-    },
-    'header_text' => {
-      'header_text2' => 'Wed May 21 15:04:23 2014',
-      'header_text1' => 'header by D. Brooks'
-    },
-    'labels' => [
-      {
-        'template' => 'clarity_data_matrix_plate',
-        'plate' => {
-          'barcode' => 'GCLP:SM:27-1204:0',
-          'date_user'      => '21-May-2014 ',
-          'purpose'        => 'Stock Plate',
-          'signature'      => 'EL2LO',
-        }
-      },
-    ]
-    }
-  };
+  my $label;
+  if ($config->barcode_mint->{'internal_generation'}) {
+    $label = {
+      'label_printer' => {
+        'footer_text' => {
+          'footer_text2' => 'Wed May 21 15:04:23 2014',
+          'footer_text1' => 'footer by D. Brooks'
+        },
+        'header_text' => {
+          'header_text2' => 'Wed May 21 15:04:23 2014',
+          'header_text1' => 'header by D. Brooks'
+        },
+        'labels' => [
+          {
+            'template' => 'clarity_plate',
+            'plate' => {
+              'ean13' => '5260271204834',
+              'label_text' => {
+                'date_user'      => '21-May-2014 ',
+                'purpose'        => 'Stock Plate',
+                'num'            => 'SM-271204S',
+                'signature'      => 'EL2LO',
+                'sanger_barcode' => ''
+              }
+            }
+          }
+        ]
+      }
+    };
+  } else {
+    $label = {
+      'label_printer' => {
+        'footer_text' => {
+          'footer_text2' => 'Wed May 21 15:04:23 2014',
+          'footer_text1' => 'footer by D. Brooks'
+        },
+        'header_text' => {
+          'header_text2' => 'Wed May 21 15:04:23 2014',
+          'header_text1' => 'header by D. Brooks'
+        },
+        'labels' => [
+          {
+            'template' => 'clarity_data_matrix_plate',
+            'plate' => {
+              'barcode' => 'GCLP:SM:27-1204:0',
+              'date_user'      => '21-May-2014 ',
+              'purpose'        => 'Stock Plate',
+              'signature'      => 'EL2LO',
+            }
+          },
+        ]
+      }
+    };
+  }
   $label->{'label_printer'}->{'labels'}->[1] = $label->{'label_printer'}->{'labels'}->[0];
 
   is_deeply($l->_generate_labels(), $label, 'label hash representation');
@@ -170,44 +201,72 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
   } 'container data set';
 
   @nodes = $doc->findnodes( q{ /con:container/name } );
-  is ($nodes[0]->textContent(), 'GCLP:IC:27-7236:0', 'new container name');
-  my $xml = $doc->toString;
-  like ($xml, qr/WTSI Container Purpose Name\">ReArray/, 'container purpose present');
-  like ($xml, qr/Supplier Container Name\">2460277236805/, 'container supplier present');
 
   lives_ok {
     $l->_set_container_data
   } 'container data set is run again';
-  $xml = $doc->toString;
-  like ($xml, qr/Supplier Container Name\">2460277236805/, 'container supplier unchanged');
 
-  my $label = {
-    'label_printer' => {
-      'footer_text' => {
-        'footer_text2' => 'Wed May 21 15:04:23 2014',
-        'footer_text1' => 'footer by K. Erdos'
-      },
-      'header_text' => {
-        'header_text2' => 'Wed May 21 15:04:23 2014',
-        'header_text1' => 'header by K. Erdos'
-      },
-      'labels' => [
-        {
-          'template' => 'clarity_data_matrix_tube',
-          'tube' => {
-            'barcode' => 'GCLP:IC:27-7236:0',
-            'date'      => '21-May-2014',
-            'tube_signature_and_pooling_range' => 'A5EDT A9H10',
-            'original_plate_signature' => 'UTTF4',
-            'tube_lid' =>  {
-              'number' => "27-7236",
-              'prefix' => 'IC',
+  my $label;
+  if ($config->barcode_mint->{'internal_generation'}) {
+    $label = {
+      'label_printer' => {
+        'footer_text' => {
+          'footer_text2' => 'Wed May 21 15:04:23 2014',
+          'footer_text1' => 'footer by K. Erdos'
+        },
+        'header_text' => {
+          'header_text2' => 'Wed May 21 15:04:23 2014',
+          'header_text1' => 'header by K. Erdos'
+        },
+        'labels' => [
+          {
+            'template' => 'clarity_tube',
+            'tube' => {
+              'ean13' => '2460277236805',
+              'sanger_barcode' => {
+                'number' => '277236',
+                'prefix' => 'IC'
+              },
+              'label_text' => {
+                'date'      => '21-May-2014',
+                'tube_signature_and_pooling_range' => 'A5EDT A9H10',
+                'original_plate_signature' => 'UTTF4',
+                'tube_barcode' => "277236",
+              },
             }
           }
-        }
-      ]
-    }
-  };
+        ]
+      }
+    };
+  } else {
+    $label = {
+      'label_printer' => {
+        'footer_text' => {
+          'footer_text2' => 'Wed May 21 15:04:23 2014',
+          'footer_text1' => 'footer by K. Erdos'
+        },
+        'header_text' => {
+          'header_text2' => 'Wed May 21 15:04:23 2014',
+          'header_text1' => 'header by K. Erdos'
+        },
+        'labels' => [
+          {
+            'template' => 'clarity_data_matrix_tube',
+            'tube' => {
+              'barcode' => 'GCLP:IC:27-7236:0',
+              'date'      => '21-May-2014',
+              'tube_signature_and_pooling_range' => 'A5EDT A9H10',
+              'original_plate_signature' => 'UTTF4',
+              'tube_lid' =>  {
+                'number' => "27-7236",
+                'prefix' => 'IC',
+              }
+            }
+          }
+        ]
+      }
+    };
+  }
 
   is_deeply($l->_generate_labels(), $label, 'label hash representation');
 }
@@ -239,38 +298,82 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
     $l->_set_container_data
   } 'container data set';
 
-  my $label = {
-    'label_printer' => {
-      'footer_text' => {
-        'footer_text2' => 'Wed May 21 15:04:23 2014',
-        'footer_text1' => 'footer by D. Jones'
-      },
-      'header_text' => {
-        'header_text2' => 'Wed May 21 15:04:23 2014',
-        'header_text1' => 'header by D. Jones'
-      },
-      'labels' => [
-        {
-          'template' => 'clarity_data_matrix_plate',
-          'plate' => {
-            'barcode' => 'GCLP:SM:27-6710:0',
-            'date_user'      => '21-May-2014 D. Jones',
-            'purpose'        => 'Pico Assay A',
-            'signature'      => 'HP2MX',
-          }
+  my $label;
+  if ($config->barcode_mint->{'internal_generation'}) {
+    $label = {
+      'label_printer' => {
+        'footer_text' => {
+          'footer_text2' => 'Wed May 21 15:04:23 2014',
+          'footer_text1' => 'footer by D. Jones'
         },
-        {
-          'template' => 'clarity_data_matrix_plate',
-          'plate' => {
-            'barcode' => 'GCLP:SM:27-6711:0',
-            'date_user'      => '21-May-2014 D. Jones',
-            'purpose'        => 'Pico Assay',
-            'signature'      => 'HP2MX',
+        'header_text' => {
+          'header_text2' => 'Wed May 21 15:04:23 2014',
+          'header_text1' => 'header by D. Jones'
+        },
+        'labels' => [
+          {
+            'template' => 'clarity_plate',
+            'plate' => {
+              'ean13' => '5260276710705',
+              'label_text' => {
+                'date_user'      => '21-May-2014 D. Jones',
+                'purpose'        => 'Pico Assay A',
+                'num'            => 'SM-276710F',
+                'signature'      => 'HP2MX',
+                'sanger_barcode' => ''
+              }
+            }
+          },
+          {
+            'template' => 'clarity_plate',
+            'plate' => {
+              'ean13' => '5260276711719',
+              'label_text' => {
+                'date_user'      => '21-May-2014 D. Jones',
+                'purpose'        => 'Pico Assay',
+                'num'            => 'SM-276711G',
+                'signature'      => 'HP2MX',
+                'sanger_barcode' => '',
+              }
+            }
           }
-        }
-      ]
-    }
-  };
+        ]
+      }
+    };
+  } else {
+    $label = {
+      'label_printer' => {
+        'footer_text' => {
+          'footer_text2' => 'Wed May 21 15:04:23 2014',
+          'footer_text1' => 'footer by D. Jones'
+        },
+        'header_text' => {
+          'header_text2' => 'Wed May 21 15:04:23 2014',
+          'header_text1' => 'header by D. Jones'
+        },
+        'labels' => [
+          {
+            'template' => 'clarity_data_matrix_plate',
+            'plate' => {
+              'barcode' => 'GCLP:SM:27-6710:0',
+              'date_user'      => '21-May-2014 D. Jones',
+              'purpose'        => 'Pico Assay A',
+              'signature'      => 'HP2MX',
+            }
+          },
+          {
+            'template' => 'clarity_data_matrix_plate',
+            'plate' => {
+              'barcode' => 'GCLP:SM:27-6711:0',
+              'date_user'      => '21-May-2014 D. Jones',
+              'purpose'        => 'Pico Assay',
+              'signature'      => 'HP2MX',
+            }
+          }
+        ]
+      }
+    };
+  }
 
   is_deeply($l->_generate_labels(), $label, 'label hash representation');
 
@@ -287,7 +390,11 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
   } 'container data set';
 
   # increment_purpose flag is false
-  $label->{'label_printer'}->{'labels'}->[0]->{'plate'}->{'purpose'} = 'Pico Assay';
+  if ($config->barcode_mint->{'internal_generation'}) {
+    $label->{'label_printer'}->{'labels'}->[0]->{'plate'}->{'label_text'}->{'purpose'} = 'Pico Assay';
+  } else {
+    $label->{'label_printer'}->{'labels'}->[0]->{'plate'}->{'purpose'} = 'Pico Assay';
+  }
   is_deeply($l->_generate_labels(), $label, 'purpose is not incremented in the label');
 
   is($l->_barcode_prefix, 'SM', 'default barcode prefix');
