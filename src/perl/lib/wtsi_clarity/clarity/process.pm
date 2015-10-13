@@ -1,7 +1,5 @@
 package wtsi_clarity::clarity::process;
 
-use strict;
-use warnings;
 use Moose;
 use Readonly;
 use Carp;

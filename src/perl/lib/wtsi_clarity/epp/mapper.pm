@@ -1,7 +1,5 @@
 package wtsi_clarity::epp::mapper;
 
-use strict;
-use warnings;
 use Moose;
 use Carp;
 use Readonly;

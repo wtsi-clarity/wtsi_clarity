@@ -1,7 +1,5 @@
 package wtsi_clarity::epp::generic::workflow_assigner;
 
-use strict;
-use warnings;
 use Moose;
 use Carp;
 use XML::LibXML;

@@ -1,6 +1,6 @@
 package wtsi_clarity::epp::isc::analytes_unattacher;
-use strict;
-use warnings FATAL => 'all';use Moose;
+
+use Moose;
 use Carp;
 
 use wtsi_clarity::epp::generic::workflow_assigner;
