@@ -118,7 +118,7 @@ sub _build__containers {
   my $self = shift;
 
   if ($self->_has_process_url) {
-    return $self->step_doc->output_containers;
+    return $self->process_doc->input_containers;
   } elsif ($self->_has_container_id) {
     my @urls = map { $self->config->clarity_api->{'base_uri'} . '/containers/' . $_ } @{$self->container_id};
     return $self->request->batch_retrieve('containers', \@urls);

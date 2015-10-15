@@ -1,6 +1,6 @@
 <?xml version="1.0" standalone="yes"?>
-<file:file xmlns:file="http://genologics.com/ri/file" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/files/40-1414" limsid="40-1414">
-    <attached-to>http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/92-199558</attached-to>
+<file:file xmlns:file="http://genologics.com/ri/file" uri="http://testserver.com:1234/here/files/40-1414" limsid="40-1414">
+    <attached-to>http://testserver.com:1234/here/artifacts/92-199558</attached-to>
     <content-location>sftp://clarity.co/path/2015/02/24-27770/92-199558-40-1414.csv</content-location>
     <original-location>92-199370.csv</original-location>
     <is-published>false</is-published>
