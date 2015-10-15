@@ -48,13 +48,17 @@ sub generate_barcode {
       'content_type'        => 'application/json'
     );
 
+    # Remove "27-" from the start of the container id.
+    $container_id =~ s/27-//smmxg;
+    # Post a request to the barcode service.
     my $return_json = $request->post($mint_uri . '/barcodes/', to_json({
       source => q{gclp}, body => $self->_barcode_prefix . q{:} . $container_id
     }));
-
     my $barcode_object = from_json($return_json);
 
+    # Extract the barcode.
     my $barcode = $barcode_object->{'results'}[0]->{'barcode'};
+    # Return it twice for legacy reasons, once the internal generation config is removed, this can be refactored out.
     return ($barcode, $barcode);
   }
 }
