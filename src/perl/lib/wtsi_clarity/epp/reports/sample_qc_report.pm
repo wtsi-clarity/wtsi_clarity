@@ -1,4 +1,4 @@
-package wtsi_clarity::epp::reports::14mg_sample_qc_report;
+package wtsi_clarity::epp::reports::sample_qc_report;
 
 use Moose;
 use Readonly;
@@ -17,6 +17,7 @@ Readonly::Scalar my $ARTIFACTS_ARTIFACT_URI           => q{art:artifacts/artifac
 Readonly::Scalar my $ARTIFACT_PARENT_PROCESS_URI      => q{art:artifact/parent-process/@uri};
 Readonly::Scalar my $UDF_FIELD_REQUIRED_VOLUME        => q{prc:process/udf:field[@name="(1) Required Volume"]};
 Readonly::Scalar my $UDF_FIELD_REQUIRED_CONCENTRATION => q{prc:process/udf:field[@name="(1) Required Concentration"]};
+Readonly::Scalar my $BUFFER                           => 0.1;
 ## use critic
 
 Readonly::Scalar my $CHERRYPICK_STAMPING_PROCESS_NAME => q{Cherrypick Stamping (SM)};
@@ -150,12 +151,17 @@ sub _get_sample_uri {
 sub _build_row {
   my ($self, $sample) = @_;
 
+  my $sample_limsid           = $sample->findvalue($SAMPLE_LIMSID);
+  my $artifact                = $self->_get_cherrypick_sample_artifact($sample_limsid);
+  my $cherrypick_stamping_doc = $self->_get_cherrypick_stamping_process($artifact);
+  my $cherrypick_volume       = $self->_get_cherrypick_sample_volume($artifact);
+
   return {
     'Sample UUID'             => $sample->findvalue('./name') // q{},
     'Concentration'           => $sample->findvalue('./udf:field[@name="Sample Conc. (ng\/µL) (SM)"]') // q{},
-    'Sample volume'           => $sample->findvalue('./udf:field[@name="WTSI Working Volume (µL) (SM)"]') // q{},
+    'Sample volume'           => $cherrypick_volume // q{},
     'Library concentration'   => $sample->findvalue('./udf:field[@name="WTSI Library Concentration"]') // q{},
-    'DNA amount library prep' => $self->_get_dna_amount_library_prep($sample),
+    'DNA amount library prep' => $self->_get_dna_amount_library_prep($cherrypick_stamping_doc, $sample, $cherrypick_volume),
     'Status'                  => $self->_get_status($sample),
   }
 }
@@ -166,11 +172,20 @@ sub _get_status {
   return $status;
 }
 
-sub _get_dna_amount_library_prep {
-  my ($self, $sample_doc) = @_;
+sub _get_sample_concentration {
+  my ($self, $sample) = @_;
+  return $sample->findvalue('./udf:field[@name="Sample Conc. (ng\/µL) (SM)"]');
+}
+
+sub _get_cherrypick_stamping_process {
+  my ($self, $artifact_doc) = @_;
+  return $self->fetch_and_parse($artifact_doc->findvalue($ARTIFACT_PARENT_PROCESS_URI));
+}
+
+sub _get_cherrypick_sample_artifact {
+  my ($self, $sample_limsid) = @_;
 
   my $uri = $self->config->clarity_api->{'base_uri'} . '/artifacts?';
-  my $sample_limsid = $sample_doc->findvalue($SAMPLE_LIMSID);
 
   my $params = 'samplelimsid=' . $sample_limsid;
   $params .= '&process-type=' . uri_escape($CHERRYPICK_STAMPING_PROCESS_NAME);
@@ -184,18 +199,41 @@ sub _get_dna_amount_library_prep {
     croak 'Could not find a previous artifact for sample ' . $sample_limsid . " that has been through $CHERRYPICK_STAMPING_PROCESS_NAME";
   }
 
-  my $artifact_doc = $self->fetch_and_parse($artifact_list->pop()->value);
+  return $self->fetch_and_parse($artifact_list->pop()->value);
+}
 
-  my $cherrypick_stamping_process_doc = $self->fetch_and_parse($artifact_doc->findvalue($ARTIFACT_PARENT_PROCESS_URI));
+sub _get_cherrypick_sample_volume {
+  my ($self, $artifact_doc) = @_;
+  return $artifact_doc->findvalue('art:artifact/udf:field[@name="Cherrypick Sample Volume"]');
+}
 
-  my $volume = $cherrypick_stamping_process_doc->findvalue($UDF_FIELD_REQUIRED_VOLUME);
+sub _get_dna_amount_library_prep {
+  my ($self, $cherrypick_stamping_process_doc, $sample, $cherrypick_volume) = @_;
 
-  my $concentration = $cherrypick_stamping_process_doc->findvalue($UDF_FIELD_REQUIRED_CONCENTRATION);
+  my $volume_required = $cherrypick_stamping_process_doc->findvalue($UDF_FIELD_REQUIRED_VOLUME);
 
-  if ( $concentration eq q{} or $volume eq q{}) {
-    croak "The volume or concentration value is not defined on the sample: $sample_limsid";
+  my $concentration_required = $cherrypick_stamping_process_doc->findvalue($UDF_FIELD_REQUIRED_CONCENTRATION);
+
+  my $sample_limsid = $sample->findvalue($SAMPLE_LIMSID);
+
+  if ( $concentration_required eq q{} or $volume_required eq q{}) {
+    croak "The volume and concentration required have not been defined at Cherrypick Stamping for sample: $sample_limsid";
   }
-  return $volume * $concentration;
+
+  my $requirement = $volume_required * $concentration_required;
+
+  my $sample_concentration = $self->_get_sample_concentration($sample);
+
+  my $dna_amount = $sample_concentration * $cherrypick_volume;
+
+  # If the dna amount is not up to requirement, S.M. subtract 2ul from the cherrypick volume
+  # (to bring the concentration up). Added buffer as S.M. won't take off the 2 if the dna amount
+  # is close enough...
+  if ($dna_amount < ($requirement - $BUFFER)) {
+    $dna_amount = $sample_concentration * ($cherrypick_volume - 2);
+  }
+
+  return $dna_amount;
 }
 
 1;
@@ -204,15 +242,15 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::epp::reports::14mg_sample_qc_report
+wtsi_clarity::epp::reports::sample_qc_report
 
 =head1 SYNOPSIS
 
-wtsi_clarity::epp::reports::14mg_sample_qc_report->new( container_id => ['24-123', '24-567'])->run()
+wtsi_clarity::epp::reports::sample_qc_report->new( container_id => ['24-123', '24-567'])->run()
 
 =head1 DESCRIPTION
 
- An EPP for creating a "14mg_sample_qc_report report". The EPP can be supplied with either a process_url, an
+ An EPP for creating a "sample_qc_report report". The EPP can be supplied with either a process_url, an
  array of container_ids, or a wtsi_clarity::mq::message object (which would come for the report
  queue). The report will be built and currently saved locally with the filename of
  {sample_uuid}.{timestamp}.lab_sample_qc.txt.
