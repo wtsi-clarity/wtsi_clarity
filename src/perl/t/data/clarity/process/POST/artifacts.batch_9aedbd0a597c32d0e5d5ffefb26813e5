@@ -1,0 +1,111 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-375287?state=187930" limsid="2-375287">
+        <name>Dan 1249_Lib PCR XP QC_1</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63417" limsid="24-63417"/>
+        <qc-flag>PASSED</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11511" limsid="27-11511"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/AND660A2017" limsid="AND660A2017"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 1 (ATCACGTT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1173"/>
+            <workflow-stage status="IN_PROGRESS" name="Post Lib PCR QC GetData" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1174"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-375288?state=187931" limsid="2-375288">
+        <name>Dan 1249_Lib PCR XP QC_2</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63417" limsid="24-63417"/>
+        <qc-flag>PASSED</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11511" limsid="27-11511"/>
+            <value>B:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/AND660A2017" limsid="AND660A2017"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 1 (ATCACGTT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1173"/>
+            <workflow-stage status="IN_PROGRESS" name="Post Lib PCR QC GetData" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1174"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-375289?state=187932" limsid="2-375289">
+        <name>Dan 1250_Lib PCR XP QC_1</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63417" limsid="24-63417"/>
+        <qc-flag>PASSED</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11511" limsid="27-11511"/>
+            <value>C:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/AND660A2018" limsid="AND660A2018"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 2 (CGATGTTT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1173"/>
+            <workflow-stage status="IN_PROGRESS" name="Post Lib PCR QC GetData" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1174"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-375290?state=187933" limsid="2-375290">
+        <name>Dan 1250_Lib PCR XP QC_2</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63417" limsid="24-63417"/>
+        <qc-flag>PASSED</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11511" limsid="27-11511"/>
+            <value>D:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/AND660A2018" limsid="AND660A2018"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 2 (CGATGTTT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1173"/>
+            <workflow-stage status="IN_PROGRESS" name="Post Lib PCR QC GetData" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1174"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-375291?state=187934" limsid="2-375291">
+        <name>Dan 1251_Lib PCR XP QC_1</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63417" limsid="24-63417"/>
+        <qc-flag>PASSED</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11511" limsid="27-11511"/>
+            <value>E:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/AND660A2019" limsid="AND660A2019"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 3 (TTAGGCAT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1173"/>
+            <workflow-stage status="IN_PROGRESS" name="Post Lib PCR QC GetData" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1174"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-375292?state=187935" limsid="2-375292">
+        <name>Dan 1251_Lib PCR XP QC_2</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63417" limsid="24-63417"/>
+        <qc-flag>PASSED</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11511" limsid="27-11511"/>
+            <value>F:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/AND660A2019" limsid="AND660A2019"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 3 (TTAGGCAT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1173"/>
+            <workflow-stage status="IN_PROGRESS" name="Post Lib PCR QC GetData" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1174"/>
+        </workflow-stages>
+    </art:artifact>
+</art:details>

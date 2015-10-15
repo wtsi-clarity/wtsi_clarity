@@ -17,6 +17,7 @@ Readonly::Scalar my $PROCESS_LIMSID_PATH => q(/prc:processes/process/@limsid);
 Readonly::Scalar my $INPUT_ARTIFACT_URIS_PATH => q{/prc:process/input-output-map/input/@uri};
 Readonly::Scalar my $INPUT_OUTPUT_PATH   => q{prc:process/input-output-map};
 Readonly::Scalar my $ALL_ANALYTES        => q(prc:process/input-output-map/output[@output-type!="ResultFile"]/@uri | prc:process/input-output-map/input/@uri);
+Readonly::Scalar my $INPUT_ANALYTES      => q(prc:process/input-output-map/input/@uri);
 Readonly::Scalar my $ARTIFACT_BY_LIMSID  => q{art:details/art:artifact[@limsid="%s"]};
 Readonly::Scalar my $CONTAINER_BY_LIMSID => q{con:details/con:container[@limsid="%s"]};
 Readonly::Scalar my $INPUT_LIMSID        => q{./input/@limsid};
@@ -276,6 +277,17 @@ sub _build_containers {
   return $self->_request->batch_retrieve('containers', \@all_container_uris);
 }
 
+has 'input_containers' => (
+  is => 'ro',
+  isa => 'XML::LibXML::Document',
+  lazy_build => 1,
+);
+sub _build_input_containers {
+  my $self = shift;
+  my @all_container_uris = uniq($self->_input_analytes->findnodes($ALL_CONTAINERS)->to_literal_list);
+  return $self->_request->batch_retrieve('containers', \@all_container_uris);
+}
+
 has '_analytes' => (
   is => 'ro',
   isa => 'XML::LibXML::Document',
@@ -285,6 +297,18 @@ has '_analytes' => (
 sub _build__analytes {
   my $self = shift;
   my @all_analyte_uris = $self->findnodes($ALL_ANALYTES)->to_literal_list;
+  return $self->_request->batch_retrieve('artifacts', \@all_analyte_uris);
+}
+
+has '_input_analytes' => (
+  is => 'ro',
+  isa => 'XML::LibXML::Document',
+  lazy_build => 1,
+);
+
+sub _build__input_analytes {
+  my $self = shift;
+  my @all_analyte_uris = uniq($self->findnodes($INPUT_ANALYTES)->to_literal_list);
   return $self->_request->batch_retrieve('artifacts', \@all_analyte_uris);
 }
 
