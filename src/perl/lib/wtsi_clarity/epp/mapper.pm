@@ -22,6 +22,7 @@ Readonly::Hash my %ACTION2MODULE => (
     'cherrypick_stamp'               => 'generic::cherrypick_stamper',
     'queue_message'                  => 'generic::messenger',
     'store_plate'                    => 'generic::plate_storer',
+    'verify_control'                 => 'generic::control_verifier',
 
     'create_manifest'                => 'reports::manifest',
     'create_sample_qc_report'        => 'reports::sample_qc_report',
