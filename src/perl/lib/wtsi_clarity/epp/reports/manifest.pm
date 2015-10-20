@@ -115,7 +115,7 @@ sub file_content {
 sub irods_destination_path {
   my ($self) = @_;
 
-  return $self->config->irods->{'14m_manifest_path'} . q{/};
+  return $self->config->irods->{'manifest_path'} . q{/};
 }
 
 sub _build__containers {
@@ -174,8 +174,8 @@ sub _build_row {
     'Sample/Well Location'                => $well,
     'Container/Name'                      => $file_content->{$container_lims_id}{'container_name'},
     'Container/Type'                      => $file_content->{$container_lims_id}{'container_type'},
-    'Sample/Name'                         => $sample->findvalue('./name') // q{},
-    'UDF/WTSI Supplier'                   => $sample->findvalue('./udf:field[@name="WTSI Supplier Sample Name (SM)"]') // q{},
+    'Sample/Name'                         => $sample->findvalue('./udf:field[@name="WTSI Supplier Sample Name (SM)"]') // q{},
+    'UDF/WTSI Supplier'                   => $sample->findvalue('./udf:field[@name="WTSI Supplier"]') // q{},
     'UDF/WTSI Supplier Gender - (SM)'     => $sample->findvalue('./udf:field[@name="WTSI Supplier Gender - (SM)"]') // q{},
     'UDF/WTSI Supplier Volume'            => $sample->findvalue('./udf:field[@name="WTSI Supplier Volume"]') // q{},
     'UDF/WTSI Phenotype'                  => $sample->findvalue('./udf:field[@name="WTSI Phenotype"]') // q{},

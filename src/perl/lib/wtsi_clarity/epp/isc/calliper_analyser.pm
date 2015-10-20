@@ -14,10 +14,8 @@ use wtsi_clarity::util::calliper;
 Readonly::Scalar my $FIRST_ANALYTE_PATH               => q{/prc:process/input-output-map[1]/input/@uri};
 Readonly::Scalar my $PROCESS_INPUT_ARTIFACT_URI_PATH  => q{prc:process/input-output-map/input/@uri};
 Readonly::Scalar my $ARTIFACT_NODE_LIST_PATH          => q{art:details/art:artifact};
-Readonly::Scalar my $OUTPUT_ANALYTES                  => q{/prc:process/input-output-map/output[@output-type='Analyte']/@uri};
 Readonly::Scalar my $CONTAINER_PATH                   => q{/art:artifact/location/container/@uri};
 Readonly::Scalar my $CONTAINER_NAME                   => q{/con:container/name};
-Readonly::Scalar my $ARTIFACTS                        => q{/art:details/art:artifact};
 Readonly::Scalar my $ARTIFACTS_ARTIFACT_URI           => q{art:artifacts/artifact/@uri};
 Readonly::Scalar my $SAMPLE_PATH                      => q{smp:details/smp:sample[@uri="%s"]};
 Readonly::Scalar my $PARENT_PROCESS_URI               => q{art:artifact/parent-process/@uri};
@@ -26,11 +24,15 @@ Readonly::Scalar my $SAMPLE_URI_PATH                  => q{./sample/@uri};
 Readonly::Scalar my $ARTIFACT_SAMPLE_LIMSID_PATH      => q{art:artifact/sample/@limsid};
 ##use critic
 Readonly::Scalar my $LIBRARY_CONCENTRATION_UDF_NAME   => q{WTSI Library Concentration};
+Readonly::Scalar my $LIBRARY_MOLARITY_UDF_NAME        => q{WTSI Library Molarity};
 Readonly::Scalar my $POST_LIB_PCR_QC_STAMP_STEP       => q{Post Lib PCR QC Stamp};
 Readonly::Scalar my $TOTAL_CONCENTRATION_UDF_NAME     => q{Total Conc. (ng/ul)};
+Readonly::Scalar my $MOLARITY_LIKE_CALLIPER_REGEXP    => qr/Molarity/smx;
 Readonly::Scalar my $CONCENTRATION_KEY                => q{concentration};
+Readonly::Scalar my $MOLARITY_KEY                     => q{molarity};
 Readonly::Scalar my $LOCATION_KEY                     => q{location};
 Readonly::Scalar my $DILUTION_FACTOR                  => q{5};
+Readonly::Scalar my $HUNDRED                          => q{100};
 
 extends 'wtsi_clarity::epp';
 with 'wtsi_clarity::util::clarity_elements_fetcher_role_util';
@@ -39,12 +41,6 @@ with 'wtsi_clarity::util::clarity_elements';
 our $VERSION = '0.0';
 
 ### Attributes ###
-
-has 'calliper_file_name' => (
-  isa      => 'Str',
-  is       => 'ro',
-  required => 1,
-);
 
 has '_text_file' => (
   isa => 'wtsi_clarity::util::textfile',
@@ -105,11 +101,13 @@ override 'run' => sub {
 
   my $caliper_datum = $self->_create_collection_from_file($caliper_file);
 
-  my $average_concentration_by_wells = $self->_avarage_concentration_by_well(
-    $self->_get_concentration_by_wells($caliper_datum)
+  my $data_by_wells = $self->_get_data_by_wells($caliper_datum);
+
+  my $averaged_data_by_wells = $self->_avaraged_data_by_well(
+    $data_by_wells
   );
 
-  $self->_update_samples_by_location($average_concentration_by_wells);
+  $self->_update_samples_by_location($averaged_data_by_wells);
 
   return 1;
 };
@@ -133,57 +131,58 @@ sub _create_collection_from_file {
   return Mojo::Collection->new(@{$caliper_file});
 }
 
-sub _get_concentration_by_wells {
+sub _get_data_by_wells {
   my ($self, $caliper_datum) = @_;
 
-  my %concentration_by_wells;
+  my %data_by_wells;
   foreach my $caliper_data (@{$caliper_datum}) {
-    # print Dumper %{$caliper_data};
-    # print "\n";
     my ($well_name_letter, $well_name_number) = $caliper_data->{'Sample Name'} =~ /(^[A-H]{1})(\d{1,2})/smx;
 
     if ($well_name_letter && $well_name_number) {
-      push @{$concentration_by_wells{$well_name_letter . q{:} . $well_name_number}}, $caliper_data->{$TOTAL_CONCENTRATION_UDF_NAME};
+      push @{$data_by_wells{$well_name_letter . q{:} . $well_name_number}{$CONCENTRATION_KEY}},  $caliper_data->{$TOTAL_CONCENTRATION_UDF_NAME};
+      my ($calliper_molarity_key) = grep { $_ =~ $MOLARITY_LIKE_CALLIPER_REGEXP } keys %{$caliper_data};
+      push @{$data_by_wells{$well_name_letter . q{:} . $well_name_number}{$MOLARITY_KEY}},       $caliper_data->{$calliper_molarity_key};
     }
   }
 
-  return \%concentration_by_wells;
+  return \%data_by_wells;
 }
 
-sub _avarage_concentration_by_well {
-  my ($self, $concentration_by_wells) = @_;
+sub _avaraged_data_by_well {
+  my ($self, $data_by_wells) = @_;
 
-  my %average_concentration_by_wells;
-  while ( my ($well_name, $concentrations) = each %{$concentration_by_wells}) {
-    $average_concentration_by_wells{$well_name} = $self->_average_concentration_for_well($concentrations);
+  my %average_data_by_wells;
+  while ( my ($well_name, $data) = each %{$data_by_wells}) {
+    $average_data_by_wells{$well_name}{$CONCENTRATION_KEY} = $self->_averaged_and_diluted_data_for_well($data->{$CONCENTRATION_KEY});
+    $average_data_by_wells{$well_name}{$MOLARITY_KEY} =      $self->_averaged_and_diluted_data_for_well($data->{$MOLARITY_KEY});
   }
 
-  return \%average_concentration_by_wells;
+  return \%average_data_by_wells;
 }
 
-sub _average_concentration_for_well {
-  my ($self, $concentration_by_well) = @_;
+sub _averaged_and_diluted_data_for_well {
+  my ($self, $data_by_well) = @_;
 
-  return (sum(@{$concentration_by_well}) / scalar @{$concentration_by_well}) * $DILUTION_FACTOR;
+  return int((sum(@{$data_by_well}) / scalar @{$data_by_well}) * $DILUTION_FACTOR * $HUNDRED) / $HUNDRED;
 }
 
 sub _update_samples_by_location {
-  my ($self, $average_concentration_by_wells) = @_;
+  my ($self, $average_data_by_wells) = @_;
 
   my $parent_process_doc = $self->_parent_process_doc;
 
   my $artifacts_from_parent_process = $self->_artifacts_from_parent_process($parent_process_doc);
 
-  my $sample_data_by_uris = $self->_sample_data_by_uris($artifacts_from_parent_process, $average_concentration_by_wells);
+  my $sample_data_by_uris = $self->_sample_data_by_uris($artifacts_from_parent_process, $average_data_by_wells);
 
   $self->_set_sample_details($sample_data_by_uris);
 
   foreach my $sample_data (@{$sample_data_by_uris}) {
     my @samples_uri = keys $sample_data;
     my $sample_uri = pop @samples_uri;
-    $self->_update_sample_with_library_concentration(
+    $self->_update_sample_with_data(
       $sample_uri,
-      $sample_data->{$sample_uri}->{$CONCENTRATION_KEY}
+      $sample_data->{$sample_uri}
     );
   }
 
@@ -214,8 +213,8 @@ sub _set_sample_details {
   return 1;
 }
 
-sub _update_sample_with_library_concentration {
-  my ($self, $sample_uri, $concentration) = @_;
+sub _update_sample_with_data {
+  my ($self, $sample_uri, $sample_data) = @_;
 
   my $sample_list = $self->_sample_details->findnodes(sprintf $SAMPLE_PATH, $sample_uri);
 
@@ -224,9 +223,14 @@ sub _update_sample_with_library_concentration {
   }
 
   my $sample_xml        = $sample_list->pop();
+
+  my $concentration = $sample_data->{$CONCENTRATION_KEY};
+  my $molarity      = $sample_data->{$MOLARITY_KEY};
   my $concentration_udf = $self->create_udf_element($self->_sample_details, $LIBRARY_CONCENTRATION_UDF_NAME, $concentration);
+  my $molarity_udf      = $self->create_udf_element($self->_sample_details, $LIBRARY_MOLARITY_UDF_NAME, $molarity);
 
   $sample_xml->appendChild($concentration_udf);
+  $sample_xml->appendChild($molarity_udf);
 
   return 1;
 }
@@ -241,7 +245,7 @@ sub _artifacts_from_parent_process {
 }
 
 sub _sample_data_by_uris {
-  my ($self, $doc, $average_concentration_by_wells) = @_;
+  my ($self, $doc, $average_data_by_wells) = @_;
 
   my @sample_by_uris;
   my @artifacts = $doc->findnodes($ARTIFACT_NODE_LIST_PATH)->get_nodelist;
@@ -253,7 +257,8 @@ sub _sample_data_by_uris {
       {
         $sample_uri =>  {
                           $LOCATION_KEY       => $location,
-                          $CONCENTRATION_KEY  => $average_concentration_by_wells->{$location}
+                          $CONCENTRATION_KEY  => $average_data_by_wells->{$location}->{$CONCENTRATION_KEY},
+                          $MOLARITY_KEY       => $average_data_by_wells->{$location}->{$MOLARITY_KEY}
                         },
       };
   }
@@ -303,16 +308,14 @@ wtsi_clarity::epp::isc::calliper_analyser
   wtsi_clarity::epp::isc::calliper_analyser
     ->new(
       process_url        => 'http://clarity_url/processes/1234',
-      calliper_file_name => 'abcd_file',
     )
     ->run()
 
 =head1 DESCRIPTION
 
-  Finds a calliper file from a process. Extracts the duplicated concentration from that file and calculate the average of it.
-  Multiple the average concentration by 5 and update the related sample's UDF field (WTSI Library Concentration)
-  with that calculated value.
-  Saves the calliper file.
+  Finds a calliper file from a process. Extracts the duplicated concentration and molarity from that file and calculate the average of them.
+  Multiple the average concentration/molarity by 5 and update the related sample's UDF fields (WTSI Library Concentration and WTSI Library Molarity)
+  with that calculated values.
 
 =head1 SUBROUTINES/METHODS
 

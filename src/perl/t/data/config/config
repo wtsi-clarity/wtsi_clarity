@@ -51,7 +51,7 @@ api_key = 777
 ss_client_id= 888
 
 [irods]
-14m_manifest_path=/Sanger1-dev/home/glsai
+manifest_path=/Sanger1-dev/home/glsai
 lab_sample_qc_path=/Sanger1-dev/home/glsai
 
 [barcode_mint]

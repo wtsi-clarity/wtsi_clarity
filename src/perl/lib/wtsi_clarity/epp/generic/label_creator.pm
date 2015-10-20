@@ -1,7 +1,5 @@
 package wtsi_clarity::epp::generic::label_creator;
 
-use strict;
-use warnings;
 use Moose;
 use Carp;
 use Readonly;
