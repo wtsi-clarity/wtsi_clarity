@@ -3,14 +3,13 @@ package wtsi_clarity::epp::generic::roles::barcode_common;
 use Moose::Role;
 use Readonly;
 use Carp;
-use JSON;
+use List::Util qw(sum);
 
-local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+local $ENV{'WTSI_CLARITY_HOME'} = q[t/data/config];
 
 use wtsi_clarity::util::config;
 my $config = wtsi_clarity::util::config->new();
 my $base_uri = $config->clarity_api->{'base_uri'};
-my $mint_uri = $config->barcode_mint->{'barcode_mint_uri'};
 
 use wtsi_clarity::util::barcode qw/calculateBarcode/;
 
@@ -44,20 +43,27 @@ sub generate_barcode {
     $container_id =~ s/-//smxg;
     return calculateBarcode($self->_barcode_prefix, $container_id);
   } else {
-    my $request = wtsi_clarity::util::request->new(
-      'content_type'        => 'application/json'
-    );
-
     # Remove "27-" from the start of the container id.
-    $container_id =~ s/27-//smmxg;
-    # Post a request to the barcode service.
-    my $return_json = $request->post($mint_uri . '/barcodes/', to_json({
-      source => q{gclp}, body => $self->_barcode_prefix . q{:} . $container_id
-    }));
-    my $barcode_object = from_json($return_json);
+    $container_id =~ s/27-//smxg;
 
-    # Extract the barcode.
-    my $barcode = $barcode_object->{'results'}[0]->{'barcode'};
+    my $barcode = qw{GCLP:} . $self->_barcode_prefix . qw{:} . $container_id . qw{:};
+
+    # Generate checksum
+    my @chars = split qw{}, $barcode;
+    ## no critic(ValuesAndExpressions::ProhibitNoisyQuotes, BuiltinFunctions::ProhibitComplexMappings, ValuesAndExpressions::ProhibitMagicNumbers)
+    my @alphabet = ('0'..'9', 'A'..'Z', ':', '_', '-');
+
+    my $sum = sum(map {
+      my $c = $chars[$_];
+      my ($num) = grep {
+        $alphabet[$_] eq $c
+      } 0..$#alphabet;
+      (2 + $#chars - $_) * $num
+    } 0..$#chars);
+
+    $barcode = $barcode . @alphabet[(10 - $sum) % 10];
+    ## use critic
+
     # Return it twice for legacy reasons, once the internal generation config is removed, this can be refactored out.
     return ($barcode, $barcode);
   }

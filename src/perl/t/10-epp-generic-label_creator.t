@@ -155,7 +155,7 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
           {
             'template' => 'clarity_data_matrix_plate',
             'plate' => {
-              'barcode' => 'GCLP:SM:27-1204:0',
+              'barcode' => 'GCLP:SM:1204:3',
               'date_user'      => '21-May-2014 ',
               'purpose'        => 'Stock Plate',
               'signature'      => 'EL2LO',
@@ -253,12 +253,12 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
           {
             'template' => 'clarity_data_matrix_tube',
             'tube' => {
-              'barcode' => 'GCLP:IC:27-7236:0',
+              'barcode' => 'GCLP:IC:7236:9',
               'date'      => '21-May-2014',
               'tube_signature_and_pooling_range' => 'A5EDT A9H10',
               'original_plate_signature' => 'UTTF4',
               'tube_lid' =>  {
-                'number' => "27-7236",
+                'number' => "7236",
                 'prefix' => 'IC',
               }
             }
@@ -355,7 +355,7 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
           {
             'template' => 'clarity_data_matrix_plate',
             'plate' => {
-              'barcode' => 'GCLP:SM:27-6710:0',
+              'barcode' => 'GCLP:SM:6710:6',
               'date_user'      => '21-May-2014 D. Jones',
               'purpose'        => 'Pico Assay A',
               'signature'      => 'HP2MX',
@@ -364,7 +364,7 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
           {
             'template' => 'clarity_data_matrix_plate',
             'plate' => {
-              'barcode' => 'GCLP:SM:27-6711:0',
+              'barcode' => 'GCLP:SM:6711:3',
               'date_user'      => '21-May-2014 D. Jones',
               'purpose'        => 'Pico Assay',
               'signature'      => 'HP2MX',

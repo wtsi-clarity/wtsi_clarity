@@ -65,14 +65,14 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
     $expected_container_data = {
       $base_uri . '/containers/27-5496' => {
         'limsid'    => '27-5496',
-        'barcode'   => 'GCLP:SM:27-5496:0',
-        'num'       => 'GCLP:SM:27-5496:0',
+        'barcode'   => 'GCLP:SM:5496:7',
+        'num'       => 'GCLP:SM:5496:7',
         'purpose'   => 'Stock Plate',
       },
       $base_uri . '/containers/27-5497' => {
         'limsid'    => '27-5497',
-        'barcode'   => 'GCLP:SM:27-5497:0',
-        'num'       => 'GCLP:SM:27-5497:0',
+        'barcode'   => 'GCLP:SM:5497:4',
+        'num'       => 'GCLP:SM:5497:4',
         'purpose'   => 'Stock Plate',
       }
     };
@@ -162,14 +162,14 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
     $expected_containers_data = {
       $base_uri . '/containers/27-5496' => {
         'limsid'    => '27-5496',
-        'barcode'   => 'GCLP:SM:27-5496:0',
-        'num'       => 'GCLP:SM:27-5496:0',
+        'barcode'   => 'GCLP:SM:5496:7',
+        'num'       => 'GCLP:SM:5496:7',
         'purpose'   => 'Stock Plate',
       },
       $base_uri . '/containers/27-5497' => {
         'limsid'    => '27-5497',
-        'barcode'   => 'GCLP:SM:27-5497:0',
-        'num'       => 'GCLP:SM:27-5497:0',
+        'barcode'   => 'GCLP:SM:5497:4',
+        'num'       => 'GCLP:SM:5497:4',
         'purpose'   => 'Stock Plate',
       }
     };
@@ -265,7 +265,7 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
           {
             'template' => 'clarity_data_matrix_plate',
             'plate' => {
-              'barcode' => 'GCLP:SM:27-5496:0',
+              'barcode' => 'GCLP:SM:5496:7',
                 'signature' => undef,
                 'date_user' => '24-Mar-2015 ',
                 'purpose' => 'Stock Plate',
@@ -274,7 +274,7 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
           {
             'template' => 'clarity_data_matrix_plate',
             'plate' => {
-              'barcode' => 'GCLP:SM:27-5497:0',
+              'barcode' => 'GCLP:SM:5497:4',
               'signature' => undef,
               'date_user' => '24-Mar-2015 ',
               'purpose' => 'Stock Plate',
