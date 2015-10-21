@@ -111,8 +111,8 @@ has 'input_uris' => (
 sub _build_input_uris {
   my $self = shift;
 
-  my @input_states = @{$self->input_states};
-  my @input_uris = map {do{(my $tmp = $_) =~ s/[?]state=\d+/""/smx}} @input_states;
+  my @input_uris = @{$self->input_states};
+  map {$_ =~ s/[?]state=\d+//smx} @input_uris;
 
   return \@input_uris;
 }
