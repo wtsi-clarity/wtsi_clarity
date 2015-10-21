@@ -1,74 +1,74 @@
 <?xml version="1.0" standalone="yes"?>
 <art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
-    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/FOR953A68PA1?state=190272" limsid="FOR953A68PA1">
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/FOR953A68PA1?state=190272" limsid="FOR953A68PA1">
         <name>rf68</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-11698" limsid="27-11698"/>
+            <container uri="http://testserver.com:1234/here/containers/27-11698" limsid="27-11698"/>
             <value>D:9</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/FOR953A68" limsid="FOR953A68"/>
-        <artifact-group name="c146 - full" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifactgroups/752"/>
+        <sample uri="http://testserver.com:1234/here/samples/FOR953A68" limsid="FOR953A68"/>
+        <artifact-group name="c146 - full" uri="http://testserver.com:1234/here/artifactgroups/752"/>
         <workflow-stages>
             <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/653/stages/1275"/>
             <workflow-stage status="QUEUED" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/653/stages/1275"/>
             <workflow-stage status="REMOVED" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/653/stages/1275"/>
-            <workflow-stage status="COMPLETE" name="Cherrypick To Shear" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/652/stages/1264"/>
+            <workflow-stage status="COMPLETE" name="Cherrypick To Shear" uri="http://testserver.com:1234/here/configuration/workflows/652/stages/1264"/>
             <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/653/stages/1275"/>
-            <workflow-stage status="QUEUED" name="Pre Capture Lib QC" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/552/stages/1175"/>
-            <workflow-stage status="REMOVED" name="Pre Capture Lib QC" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/552/stages/1175"/>
+            <workflow-stage status="QUEUED" name="Pre Capture Lib QC" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1175"/>
+            <workflow-stage status="REMOVED" name="Pre Capture Lib QC" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1175"/>
             <workflow-stage status="REMOVED" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/653/stages/1275"/>
             <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/653/stages/1275"/>
             <workflow-stage status="QUEUED" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/653/stages/1275"/>
         </workflow-stages>
     </art:artifact>
-    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/FOR953A76PA1?state=190283" limsid="FOR953A76PA1">
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/FOR953A76PA1?state=190283" limsid="FOR953A76PA1">
         <name>rf76</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-11698" limsid="27-11698"/>
+            <container uri="http://testserver.com:1234/here/containers/27-11698" limsid="27-11698"/>
             <value>D:10</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/FOR953A76" limsid="FOR953A76"/>
-        <artifact-group name="c146 - full" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifactgroups/752"/>
+        <sample uri="http://testserver.com:1234/here/samples/FOR953A76" limsid="FOR953A76"/>
+        <artifact-group name="c146 - full" uri="http://testserver.com:1234/here/artifactgroups/752"/>
         <workflow-stages>
             <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/653/stages/1275"/>
             <workflow-stage status="QUEUED" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/653/stages/1275"/>
             <workflow-stage status="REMOVED" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/653/stages/1275"/>
-            <workflow-stage status="COMPLETE" name="Cherrypick To Shear" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/652/stages/1264"/>
+            <workflow-stage status="COMPLETE" name="Cherrypick To Shear" uri="http://testserver.com:1234/here/configuration/workflows/652/stages/1264"/>
             <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/653/stages/1275"/>
-            <workflow-stage status="QUEUED" name="Pre Capture Lib QC" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/552/stages/1175"/>
-            <workflow-stage status="REMOVED" name="Pre Capture Lib QC" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/552/stages/1175"/>
+            <workflow-stage status="QUEUED" name="Pre Capture Lib QC" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1175"/>
+            <workflow-stage status="REMOVED" name="Pre Capture Lib QC" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1175"/>
             <workflow-stage status="REMOVED" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/653/stages/1275"/>
             <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/653/stages/1275"/>
             <workflow-stage status="QUEUED" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/653/stages/1275"/>
         </workflow-stages>
     </art:artifact>
-    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/FOR953A60PA1?state=190296" limsid="FOR953A60PA1">
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/FOR953A60PA1?state=190296" limsid="FOR953A60PA1">
         <name>rf60</name>
         <type>Analyte</type>
         <output-type>Analyte</output-type>
         <qc-flag>UNKNOWN</qc-flag>
         <location>
-            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-11698" limsid="27-11698"/>
+            <container uri="http://testserver.com:1234/here/containers/27-11698" limsid="27-11698"/>
             <value>D:8</value>
         </location>
         <working-flag>true</working-flag>
-        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/FOR953A60" limsid="FOR953A60"/>
-        <artifact-group name="c146 - full" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifactgroups/752"/>
+        <sample uri="http://testserver.com:1234/here/samples/FOR953A60" limsid="FOR953A60"/>
+        <artifact-group name="c146 - full" uri="http://testserver.com:1234/here/artifactgroups/752"/>
         <workflow-stages>
             <workflow-stage status="QUEUED" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/653/stages/1275"/>
             <workflow-stage status="REMOVED" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/653/stages/1275"/>
-            <workflow-stage status="COMPLETE" name="Cherrypick To Shear" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/652/stages/1264"/>
+            <workflow-stage status="COMPLETE" name="Cherrypick To Shear" uri="http://testserver.com:1234/here/configuration/workflows/652/stages/1264"/>
             <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/653/stages/1275"/>
-            <workflow-stage status="QUEUED" name="Pre Capture Lib QC" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/552/stages/1175"/>
-            <workflow-stage status="REMOVED" name="Pre Capture Lib QC" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/552/stages/1175"/>
+            <workflow-stage status="QUEUED" name="Pre Capture Lib QC" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1175"/>
+            <workflow-stage status="REMOVED" name="Pre Capture Lib QC" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1175"/>
             <workflow-stage status="REMOVED" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/653/stages/1275"/>
             <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/653/stages/1275"/>
             <workflow-stage status="QUEUED" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/653/stages/1275"/>

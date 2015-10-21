@@ -1,1 +1,42 @@
-<?xml version="1.0" standalone="yes"?><prc:process xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-64185" limsid="24-64185"><type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processtypes/122">Post Lib PCR QC Stamp</type><date-run>2015-10-01</date-run><technician uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/555"><first-name>Ronan</first-name><last-name>Forman</last-name></technician><input-output-map><input post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/FOR953A76PA1?state=190283" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/FOR953A76PA1?state=190283" limsid="FOR953A76PA1"/><output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-382329?state=191812" output-generation-type="PerInput" output-type="Analyte" limsid="2-382329"/></input-output-map><input-output-map><input post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/FOR953A76PA1?state=190283" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/FOR953A76PA1?state=190283" limsid="FOR953A76PA1"/><output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-382330?state=191813" output-generation-type="PerInput" output-type="Analyte" limsid="2-382330"/></input-output-map><input-output-map><input post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/FOR953A60PA1?state=190296" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/FOR953A60PA1?state=190296" limsid="FOR953A60PA1"/><output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-382333?state=191816" output-generation-type="PerInput" output-type="Analyte" limsid="2-382333"/></input-output-map><input-output-map><input post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/FOR953A60PA1?state=190296" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/FOR953A60PA1?state=190296" limsid="FOR953A60PA1"/><output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-382334?state=191817" output-generation-type="PerInput" output-type="Analyte" limsid="2-382334"/></input-output-map><input-output-map><input post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/FOR953A68PA1?state=190272" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/FOR953A68PA1?state=190272" limsid="FOR953A68PA1"/><output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-382331?state=191814" output-generation-type="PerInput" output-type="Analyte" limsid="2-382331"/></input-output-map><input-output-map><input post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/FOR953A68PA1?state=190272" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/FOR953A68PA1?state=190272" limsid="FOR953A68PA1"/><output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-382332?state=191815" output-generation-type="PerInput" output-type="Analyte" limsid="2-382332"/></input-output-map><udf:field type="String" name="Workstation: Name">Beckman NX96_01</udf:field><udf:field type="String" name="Select Barcode Printer">g311bc2</udf:field><udf:field type="String" name="Barcode Copies">2</udf:field><udf:field type="String" name="Plate Purpose">Lib PCR XP QC</udf:field><udf:field type="String" name="Robot ID">123</udf:field><udf:field type="String" name="Barcode Prefix">IC</udf:field><udf:field type="String" name="Program Used">ISC GX QC Stamp 1:5</udf:field><udf:field type="String" name="Robot Tips Used (20ul):">1</udf:field><udf:field type="String" name="Robot Tips Used (250ul):">3</udf:field></prc:process>
+<?xml version="1.0" encoding="UTF-8"?>
+<prc:process xmlns:prc="http://genologics.com/ri/process" xmlns:file="http://genologics.com/ri/file" xmlns:udf="http://genologics.com/ri/userdefined" uri="http://testserver.com:1234/here/processes/24-64185" limsid="24-64185">
+   <type uri="http://testserver.com:1234/here/processtypes/122">Post Lib PCR QC Stamp</type>
+   <date-run>2015-10-01</date-run>
+   <technician uri="http://testserver.com:1234/here/researchers/555">
+      <first-name>Ronan</first-name>
+      <last-name>Forman</last-name>
+   </technician>
+   <input-output-map>
+      <input post-process-uri="http://testserver.com:1234/here/artifacts/FOR953A76PA1?state=190283" uri="http://testserver.com:1234/here/artifacts/FOR953A76PA1?state=190283" limsid="FOR953A76PA1" />
+      <output uri="http://testserver.com:1234/here/artifacts/2-382329?state=191812" output-generation-type="PerInput" output-type="Analyte" limsid="2-382329" />
+   </input-output-map>
+   <input-output-map>
+      <input post-process-uri="http://testserver.com:1234/here/artifacts/FOR953A76PA1?state=190283" uri="http://testserver.com:1234/here/artifacts/FOR953A76PA1?state=190283" limsid="FOR953A76PA1" />
+      <output uri="http://testserver.com:1234/here/artifacts/2-382330?state=191813" output-generation-type="PerInput" output-type="Analyte" limsid="2-382330" />
+   </input-output-map>
+   <input-output-map>
+      <input post-process-uri="http://testserver.com:1234/here/artifacts/FOR953A60PA1?state=190296" uri="http://testserver.com:1234/here/artifacts/FOR953A60PA1?state=190296" limsid="FOR953A60PA1" />
+      <output uri="http://testserver.com:1234/here/artifacts/2-382333?state=191816" output-generation-type="PerInput" output-type="Analyte" limsid="2-382333" />
+   </input-output-map>
+   <input-output-map>
+      <input post-process-uri="http://testserver.com:1234/here/artifacts/FOR953A60PA1?state=190296" uri="http://testserver.com:1234/here/artifacts/FOR953A60PA1?state=190296" limsid="FOR953A60PA1" />
+      <output uri="http://testserver.com:1234/here/artifacts/2-382334?state=191817" output-generation-type="PerInput" output-type="Analyte" limsid="2-382334" />
+   </input-output-map>
+   <input-output-map>
+      <input post-process-uri="http://testserver.com:1234/here/artifacts/FOR953A68PA1?state=190272" uri="http://testserver.com:1234/here/artifacts/FOR953A68PA1?state=190272" limsid="FOR953A68PA1" />
+      <output uri="http://testserver.com:1234/here/artifacts/2-382331?state=191814" output-generation-type="PerInput" output-type="Analyte" limsid="2-382331" />
+   </input-output-map>
+   <input-output-map>
+      <input post-process-uri="http://testserver.com:1234/here/artifacts/FOR953A68PA1?state=190272" uri="http://testserver.com:1234/here/artifacts/FOR953A68PA1?state=190272" limsid="FOR953A68PA1" />
+      <output uri="http://testserver.com:1234/here/artifacts/2-382332?state=191815" output-generation-type="PerInput" output-type="Analyte" limsid="2-382332" />
+   </input-output-map>
+   <udf:field type="String" name="Workstation: Name">Beckman NX96_01</udf:field>
+   <udf:field type="String" name="Select Barcode Printer">g311bc2</udf:field>
+   <udf:field type="String" name="Barcode Copies">2</udf:field>
+   <udf:field type="String" name="Plate Purpose">Lib PCR XP QC</udf:field>
+   <udf:field type="String" name="Robot ID">123</udf:field>
+   <udf:field type="String" name="Barcode Prefix">IC</udf:field>
+   <udf:field type="String" name="Program Used">ISC GX QC Stamp 1:5</udf:field>
+   <udf:field type="String" name="Robot Tips Used (20ul):">1</udf:field>
+   <udf:field type="String" name="Robot Tips Used (250ul):">3</udf:field>
+</prc:process>

@@ -1,33 +1,33 @@
 <?xml version="1.0" standalone="yes"?>
-<prc:process xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-64174" limsid="24-64174">
-    <type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processtypes/208">Post Lib PCR QC GetData</type>
-    <technician uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/555">
+<prc:process xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" uri="http://testserver.com:1234/here/processes/24-64174" limsid="24-64174">
+    <type uri="http://testserver.com:1234/here/processtypes/208">Post Lib PCR QC GetData</type>
+    <technician uri="http://testserver.com:1234/here/researchers/555">
         <first-name>Ronan</first-name>
         <last-name>Forman</last-name>
     </technician>
     <input-output-map>
-        <input post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-382219?state=191752" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-382219?state=191752" limsid="2-382219">
-            <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-64172" limsid="24-64172"/>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-382219?state=191752" uri="http://testserver.com:1234/here/artifacts/2-382219?state=191752" limsid="2-382219">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-64172" limsid="24-64172"/>
         </input>
-        <output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/92-382220?state=191753" output-generation-type="PerAllInputs" output-type="ResultFile" limsid="92-382220"/>
+        <output uri="http://testserver.com:1234/here/artifacts/92-382220?state=191753" output-generation-type="PerAllInputs" output-type="ResultFile" limsid="92-382220"/>
     </input-output-map>
     <input-output-map>
-        <input post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-382216?state=191749" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-382216?state=191749" limsid="2-382216">
-            <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-64172" limsid="24-64172"/>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-382216?state=191749" uri="http://testserver.com:1234/here/artifacts/2-382216?state=191749" limsid="2-382216">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-64172" limsid="24-64172"/>
         </input>
-        <output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/92-382220?state=191753" output-generation-type="PerAllInputs" output-type="ResultFile" limsid="92-382220"/>
+        <output uri="http://testserver.com:1234/here/artifacts/92-382220?state=191753" output-generation-type="PerAllInputs" output-type="ResultFile" limsid="92-382220"/>
     </input-output-map>
     <input-output-map>
-        <input post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-382218?state=191751" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-382218?state=191751" limsid="2-382218">
-            <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-64172" limsid="24-64172"/>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-382218?state=191751" uri="http://testserver.com:1234/here/artifacts/2-382218?state=191751" limsid="2-382218">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-64172" limsid="24-64172"/>
         </input>
-        <output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/92-382220?state=191753" output-generation-type="PerAllInputs" output-type="ResultFile" limsid="92-382220"/>
+        <output uri="http://testserver.com:1234/here/artifacts/92-382220?state=191753" output-generation-type="PerAllInputs" output-type="ResultFile" limsid="92-382220"/>
     </input-output-map>
     <input-output-map>
-        <input post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-382217?state=191750" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-382217?state=191750" limsid="2-382217">
-            <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-64172" limsid="24-64172"/>
+        <input post-process-uri="http://testserver.com:1234/here/artifacts/2-382217?state=191750" uri="http://testserver.com:1234/here/artifacts/2-382217?state=191750" limsid="2-382217">
+            <parent-process uri="http://testserver.com:1234/here/processes/24-64172" limsid="24-64172"/>
         </input>
-        <output uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/92-382220?state=191753" output-generation-type="PerAllInputs" output-type="ResultFile" limsid="92-382220"/>
+        <output uri="http://testserver.com:1234/here/artifacts/92-382220?state=191753" output-generation-type="PerAllInputs" output-type="ResultFile" limsid="92-382220"/>
     </input-output-map>
     <udf:field type="String" name="Minimum Volume">5</udf:field>
     <udf:field type="String" name="Maximum Volume">50</udf:field>

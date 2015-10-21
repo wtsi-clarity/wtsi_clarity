@@ -63,6 +63,10 @@ wtsi_clarity::epp::isc::analytes_unattacher
 
 =item Carp
 
+=item wtsi_clarity::epp
+
+=item wtsi_clarity::epp::generic::workflow_assigner
+
 =back
 
 =head1 AUTHOR

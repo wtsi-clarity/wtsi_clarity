@@ -85,10 +85,7 @@ has 'input_artifacts' => (
 );
 sub _build_input_artifacts {
   my $self = shift;
-
-  my @input_states = @{$self->input_states()};
-
-  return $self->_request->batch_retrieve('artifacts', \@input_states);
+  return $self->_request->batch_retrieve('artifacts', $self->input_states());
 }
 
 has 'input_states' => (
