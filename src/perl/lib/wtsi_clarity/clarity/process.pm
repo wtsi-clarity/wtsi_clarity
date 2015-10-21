@@ -28,6 +28,7 @@ Readonly::Scalar my $FILE_URL_PATH       => q(/art:artifact/file:file/@uri);
 Readonly::Scalar our $FILE_CONTENT_LOCATION   => q(/file:file/content-location);
 Readonly::Scalar my $CONTAINER_NAME_LOCATION  => q(/con:container/name);
 Readonly::Scalar my $OUTPUT_ANALYTES_URI_PATH => q{/prc:process/input-output-map/output/@uri};
+Readonly::Scalar my $WORKFLOW_STAGE_URI  => q{/art:details/art:artifact[1]/workflow-stages/workflow-stage[@status="IN_PROGRESS"]/@uri};
 ## use critic
 
 has '_parent' => (
@@ -84,11 +85,36 @@ has 'input_artifacts' => (
 );
 sub _build_input_artifacts {
   my $self = shift;
+  return $self->_request->batch_retrieve('artifacts', $self->input_states());
+}
+
+has 'input_states' => (
+  isa             => 'ArrayRef',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build_input_states {
+  my $self = shift;
 
   my $input_node_list = $self->findnodes($INPUT_ARTIFACT_URIS_PATH);
-  my @input_uris = uniq(map { $_->getValue } $input_node_list->get_nodelist);
+  my @input_states = uniq(map { $_->getValue } $input_node_list->get_nodelist);
 
-  return $self->_request->batch_retrieve('artifacts', \@input_uris);
+  return \@input_states;
+}
+has 'input_uris' => (
+  isa             => 'ArrayRef',
+  is              => 'rw',
+  required        => 0,
+  lazy_build      => 1,
+);
+sub _build_input_uris {
+  my $self = shift;
+
+  my @input_states = @{$self->input_states};
+  my @input_uris = map {do{(my $tmp = $_) =~ s/[?]state=\d+/""/smx}} @input_states;
+
+  return \@input_uris;
 }
 
 sub find_parent {
@@ -368,6 +394,16 @@ sub get_container_name_by_limsid {
   return $container_name;
 }
 
+sub get_current_workflow_uri {
+  my $self = shift;
+
+  my $artifacts_xml = $self->input_artifacts();
+  my $workflow_stage = $artifacts_xml->findnodes($WORKFLOW_STAGE_URI);
+
+  my ($workflow_uri) = $workflow_stage =~ /^(.*)\/stages\/\d+/smx;
+  return $workflow_uri;
+}
+
 1;
 
 __END__
@@ -426,6 +462,10 @@ wtsi_clarity::clarity::process
 =head2 get_container_name_by_limsid
 
   Returns the name of the container by its limsid.
+
+=head2 get_current_workflow_uri
+
+    Returns the uri for the workflow.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
