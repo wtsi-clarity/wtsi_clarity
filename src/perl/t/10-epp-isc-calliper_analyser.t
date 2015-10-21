@@ -101,11 +101,17 @@ my $base_uri = $config->clarity_api->{'base_uri'};
   ];
 
   my $expected_concentration_by_wells = {
-    "A:1" => [0.173425862265629, 0.147051987121658],
-    "B:1" => [0.182153780398987, 0.122153780398987],
+    "A:1" =>  {
+      "concentration" => [0.173425862265629, 0.147051987121658],
+      "molarity"      => [2.20151284050569, 2.23010180190948]
+    },
+    "B:1" => {
+      "concentration" => [0.182153780398987, 0.122153780398987],
+      "molarity"      => [2.53750708774114, 2.13750708774114]
+    },
   };
 
-  is_deeply($analyser->_get_concentration_by_wells($caliper_datum), $expected_concentration_by_wells,
+  is_deeply($analyser->_get_data_by_wells($caliper_datum), $expected_concentration_by_wells,
     'Returns the correct concentrations by well name');
 }
 
@@ -115,14 +121,12 @@ my $base_uri = $config->clarity_api->{'base_uri'};
     calliper_file_name => 'outputfile',
   );
 
-  my $well = "A:1";
-  my %concentration_by_wells = (
-    $well => [1.12, 1.22]
-  );
+  my $data_by_wells = [1.12, 1.22];
 
-  my $expected_avarage_concentration = 5.85;
+  my $expected_avarage_and_diluted_concentration = 5.85;
 
-  is($analyser->_average_concentration_for_well($concentration_by_wells{$well}), $expected_avarage_concentration,
+  is($analyser->_averaged_and_diluted_data_for_well($data_by_wells),
+    $expected_avarage_and_diluted_concentration,
     'Returns the correct average concentration');
 }
 
@@ -132,17 +136,29 @@ my $base_uri = $config->clarity_api->{'base_uri'};
     calliper_file_name => 'outputfile',
   );
 
-  my $concentration_by_wells = {
-    "A:1" => [0.173425862265629, 0.147051987121658],
-    "B:1" => [0.182153780398987, 0.122153780398987],
+  my $data_by_wells = {
+    "A:1" =>  {
+      "concentration" => [0.173425862265629, 0.147051987121658],
+      "molarity"      => [2.20151284050569, 2.23010180190948]
+    },
+    "B:1" => {
+      "concentration" => [0.182153780398987, 0.122153780398987],
+      "molarity"      => [2.53750708774114, 2.13750708774114]
+    },
   };
 
-  my $expected_average_concentration_by_wells = {
-    'A:1' => '0.801194623468218',
-    'B:1' => '0.760768901994935'
+  my $expected_average_data_by_wells = {
+    'A:1' => {
+      "concentration" => '0.8',
+      "molarity"      => '11.07'
+    },
+    'B:1' => {
+      "concentration" => '0.76',
+      "molarity"      => '11.68'
+    }
   };
 
-  is_deeply($analyser->_avarage_concentration_by_well($concentration_by_wells), $expected_average_concentration_by_wells,
+  is_deeply($analyser->_avaraged_data_by_well($data_by_wells), $expected_average_data_by_wells,
     'Returns the correct average concentrations by well name');
 }
 
@@ -154,29 +170,41 @@ my $base_uri = $config->clarity_api->{'base_uri'};
     calliper_file_name => 'outputfile',
   );
 
-  my $average_concentration_by_wells = {
-    'E:10'  => '0.160238924693644',
-    'F:10'  => '0.152153780398987',
-    'H:9'   => '1.643837939483848'
+  my $average_data_by_wells = {
+    'E:10'  => {
+      'concentration' => '0.16',
+      'molarity'      => '11.22'
+    },
+    'F:10'  => {
+      'concentration' => '0.15',
+      'molarity'      => '10.56'
+    },
+    'H:9'   => {
+      'concentration' => '1.64',
+      'molarity'      => '11.45'
+    }
   };
 
-  my $expected_sample_data_by_uris_with_location_and_concentration = [
+  my $expected_sample_data_by_uris_with_location = [
     {
       'http://testserver.com:1234/here/samples/SV2454A171' => {
         'location'      => 'E:10',
-        'concentration' => '0.160238924693644'
+        'concentration' => '0.16',
+        'molarity'      => '11.22'
       }
     },
     {
       'http://testserver.com:1234/here/samples/SV2454A172' => {
         'location' => 'F:10',
-        'concentration' => '0.152153780398987'
+        'concentration' => '0.15',
+        'molarity'      => '10.56'
       }
     },
     {
       'http://testserver.com:1234/here/samples/SV2454A166' => {
         'location' => 'H:9',
-        'concentration' => '1.643837939483848'
+        'concentration' => '1.64',
+        'molarity'      => '11.45'
       }
     }
   ];
@@ -187,7 +215,7 @@ my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $artifacts_from_parent_process = $analyser->_artifacts_from_parent_process($parent_process_doc);
 
-  is_deeply($analyser->_sample_data_by_uris($artifacts_from_parent_process, $average_concentration_by_wells), $expected_sample_data_by_uris_with_location_and_concentration,
+  is_deeply($analyser->_sample_data_by_uris($artifacts_from_parent_process, $average_data_by_wells), $expected_sample_data_by_uris_with_location,
     'Returns the correct sample data with location and concentration by URIs');
 }
 
@@ -204,9 +232,18 @@ my $base_uri = $config->clarity_api->{'base_uri'};
   );
 
   my $average_concentration_by_wells = {
-    'E:10'  => '0.160238924693644',
-    'F:10'  => '0.152153780398987',
-    'H:9'   => '1.643837939483848'
+    'E:10'  => {
+      'concentration' => '0.16',
+      'molarity'      => '11.22'
+    },
+    'F:10'  => {
+      'concentration' => '0.15',
+      'molarity'      => '10.56'
+    },
+    'H:9'   => {
+      'concentration' => '1.64',
+      'molarity'      => '11.45'
+    }
   };
 
   my $artifacts_from_parent_process = $analyser->_artifacts_from_parent_process($parent_process_doc);
@@ -215,10 +252,13 @@ my $base_uri = $config->clarity_api->{'base_uri'};
 
   $analyser->_set_sample_details($sample_data_by_uris);
 
-  my $concentration = '0.160238924693644';
+  my $sample_data = {
+    'concentration' => '0.16',
+    'molarity'      => '11.22'
+  };
   my $sample_uri = 'http://testserver.com:1234/here/samples/SV2454A171';
 
-  $analyser->_update_sample_with_library_concentration($sample_uri, $concentration);
+  $analyser->_update_sample_with_data($sample_uri, $sample_data);
 
   my $expected_sample_details = q{updated_sample_details.xml};
   my $testdata_dir  = q{/t/data/epp/isc/calliper_analyser/};
@@ -238,9 +278,18 @@ my $base_uri = $config->clarity_api->{'base_uri'};
   );
 
   my $average_concentration_by_wells = {
-    'E:10'  => '0.160238924693644',
-    'F:10'  => '0.152153780398987',
-    'H:9'   => '1.643837939483848'
+    'E:10'  => {
+      'concentration' => '0.16',
+      'molarity'      => '11.22'
+    },
+    'F:10'  => {
+      'concentration' => '0.15',
+      'molarity'      => '10.56'
+    },
+    'H:9'   => {
+      'concentration' => '1.64',
+      'molarity'      => '11.45'
+    }
   };
 
   $analyser->_update_samples_by_location($average_concentration_by_wells);

@@ -1,5 +1,8 @@
 CHANGES for wtsi_clarity Perl project
 
+Release 1.14.1
+ - Bugfix: Sample QC Report getting data from incorrect container.
+
 Release 1.14
  - The worksheet generated at pre capture pooling has been fixed (#357)
  - The workflow assigner script made insensible to versioned workflow names
@@ -10,7 +13,7 @@ Release 1.14
 
 Release 1.13
  - The calliper analyser is from now on updating the sample with the library concentration value.
- - Reports for 14MG now have ordered headers.
+ - Reports for customer now have ordered headers.
 
 Release 1.12
  - Added reports
