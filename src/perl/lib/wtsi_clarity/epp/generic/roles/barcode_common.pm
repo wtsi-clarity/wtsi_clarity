@@ -71,7 +71,6 @@ sub generate_barcode {
 
 sub get_barcode_from_id {
   my ($self, $container_id) = @_;
-  use Data::Dumper;
 
   my @containers = ($base_uri . '/containers/' . $container_id);
 
