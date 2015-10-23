@@ -5,11 +5,7 @@ use Readonly;
 use Carp;
 use List::Util qw(sum);
 
-local $ENV{'WTSI_CLARITY_HOME'} = q[t/data/config];
-
-use wtsi_clarity::util::config;
-my $config = wtsi_clarity::util::config->new();
-my $base_uri = $config->clarity_api->{'base_uri'};
+requires 'config';
 
 use wtsi_clarity::util::barcode qw/calculateBarcode/;
 
@@ -20,6 +16,9 @@ our $VERSION = '0.0';
 
 Readonly::Scalar my $BARCODE_PREFIX_UDF_NAME  => q{Barcode Prefix};
 Readonly::Scalar my $DEFAULT_BARCODE_PREFIX   => q{SM};
+Readonly::Scalar my $LIMS_NAME                => q{GCLP};
+Readonly::Scalar my $SEPARATOR                => q{:};
+Readonly::Scalar my $MOD_VALUE                => 10;
 
 has '_barcode_prefix' => (
   isa        => 'Str',
@@ -39,20 +38,21 @@ sub generate_barcode {
     croak 'Container id is not given';
   }
 
-  if ($config->barcode_mint->{'internal_generation'}) {
+  if ($self->config->barcode_mint->{'internal_generation'}) {
     $container_id =~ s/-//smxg;
     return calculateBarcode($self->_barcode_prefix, $container_id);
   } else {
     # Remove "27-" from the start of the container id.
     $container_id =~ s/27-//smxg;
 
-    my $barcode = qw{GCLP:} . $self->_barcode_prefix . qw{:} . $container_id . qw{:};
+    # GCLP:SM:12345:
+    my $barcode = $LIMS_NAME . $SEPARATOR . $self->_barcode_prefix . $SEPARATOR  . $container_id . $SEPARATOR ;
 
     # Generate checksum
     my @chars = split qw{}, $barcode;
-    ## no critic(ValuesAndExpressions::ProhibitNoisyQuotes, BuiltinFunctions::ProhibitComplexMappings, ValuesAndExpressions::ProhibitMagicNumbers)
-    my @alphabet = ('0'..'9', 'A'..'Z', ':', '_', '-');
+    my @alphabet = (q{0}..q{9}, q{A}..q{Z}, q{:}, q{_}, q{-});
 
+    ## no critic(BuiltinFunctions::ProhibitComplexMappings)
     my $sum = sum(map {
       my $c = $chars[$_];
       my ($num) = grep {
@@ -60,9 +60,9 @@ sub generate_barcode {
       } 0..$#alphabet;
       (2 + $#chars - $_) * $num
     } 0..$#chars);
-
-    $barcode = $barcode . @alphabet[(10 - $sum) % 10];
     ## use critic
+
+    $barcode = $barcode . @alphabet[($MOD_VALUE - $sum) % $MOD_VALUE];
 
     # Return it twice for legacy reasons, once the internal generation config is removed, this can be refactored out.
     return ($barcode, $barcode);
@@ -72,7 +72,7 @@ sub generate_barcode {
 sub get_barcode_from_id {
   my ($self, $container_id) = @_;
 
-  my @containers = ($base_uri . '/containers/' . $container_id);
+  my @containers = ($self->config->clarity_api->{'base_uri'} . '/containers/' . $container_id);
 
   my $container_xml = $self->batch_retrieve_containers_xml(\@containers);
   my $container = $self->get_container_data($container_xml);
