@@ -1,6 +1,6 @@
 use strict;
 use warnings FATAL => 'all';
-use Test::More tests => 6;
+use Test::More tests => 4;
 use Test::Exception;
 
 local $ENV{'WTSI_CLARITY_HOME'} = q[t/data/config];
@@ -18,37 +18,26 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
   use_ok ('wtsi_clarity::epp::generic::control_verifier');
 
   my $epp = wtsi_clarity::epp::generic::control_verifier->new(
-    process_url => $base_uri . '/processes/24-64190',
+    process_url => $base_uri . '/processes/24-67069',
+    step_url    => $base_uri . '/steps/24-67069',
   );
 
   lives_ok{
     $epp->_validate()
-  } "Passes with one control sample";
+  } "Passes with no control samples";
 }
 
 {
   use_ok ('wtsi_clarity::epp::generic::control_verifier');
 
   my $epp = wtsi_clarity::epp::generic::control_verifier->new(
-    process_url => $base_uri . '/processes/24-64198',
+    process_url => $base_uri . '/processes/24-67067',
+    step_url    => $base_uri . '/steps/24-67067',
   );
 
   throws_ok{
     $epp->_validate()
-  } qr/Multiple control samples found/, "Throws with multiple samples";
+  } qr/Control sample already added./, "Throws with control sample";
 }
-
-{
-  use_ok ('wtsi_clarity::epp::generic::control_verifier');
-
-  my $epp = wtsi_clarity::epp::generic::control_verifier->new(
-    process_url => $base_uri . '/processes/24-64200',
-  );
-
-  throws_ok{
-    $epp->_validate()
-  } qr/No control samples found/, "Throws with no samples";
-}
-
 
 
