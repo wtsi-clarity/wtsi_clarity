@@ -22,7 +22,7 @@ has 'analysis_file' => (
 );
 
 override 'run' => sub {
-  my $self= shift;
+  my $self = shift;
   super();
 
   my $results = ();
@@ -43,8 +43,13 @@ sub _input_table_data {
 
   my $input_table_data = ();
 
-  $input_table_data->{'Plate limsid'} = $self->process_doc->plate_io_map->[0]->{'source_plate'};
-  $input_table_data->{'Plate barcode'} = $self->process_doc->plate_io_map_barcodes->[0]->{'source_plate'};
+  my $plate_id = $self->process_doc->plate_io_map->[0]->{'source_plate'};
+  my $barcode = $self->process_doc->plate_io_map_barcodes->[0]->{'source_plate'};
+  my $signature = $self->process_doc->get_container_signature_by_limsid($plate_id);
+
+  $input_table_data->[0] = $plate_id;
+  $input_table_data->[1] = $barcode;
+  $input_table_data->[2] = $signature;
 
   return $input_table_data;
 }

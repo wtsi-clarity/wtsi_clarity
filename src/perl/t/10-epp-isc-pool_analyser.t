@@ -28,10 +28,11 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
       analysis_file => '122-22674',
       process_url => $base_uri . '/processes/122-22674',
     );
-  my $expected_input_table_data = {
-    'Plate limsid'  => '27-2213',
-    'Plate barcode' => '6250354579651'
-  };
+  my $expected_input_table_data = [
+    '27-2213',
+    '6250354579651',
+    'PJWVX'
+  ];
   is_deeply($pool_analyser->_input_table_data, $expected_input_table_data, 'Returns input table data correctly.');
 }
 

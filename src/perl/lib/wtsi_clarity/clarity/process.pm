@@ -27,6 +27,7 @@ Readonly::Scalar my $RESULT_FILE_URI     => q{(prc:process/input-output-map/outp
 Readonly::Scalar my $FILE_URL_PATH       => q(/art:artifact/file:file/@uri);
 Readonly::Scalar our $FILE_CONTENT_LOCATION   => q(/file:file/content-location);
 Readonly::Scalar my $CONTAINER_NAME_LOCATION  => q(/con:container/name);
+Readonly::Scalar my $CONTAINER_SIGNATURE_LOCATION  => q(/con:container/udf:field[@name="WTSI Container Signature"]);
 Readonly::Scalar my $OUTPUT_ANALYTES_URI_PATH => q{/prc:process/input-output-map/output/@uri};
 Readonly::Scalar my $WORKFLOW_STAGE_URI  => q{/art:details/art:artifact[1]/workflow-stages/workflow-stage[@status="IN_PROGRESS"]/@uri};
 ## use critic
@@ -98,7 +99,9 @@ sub _build_input_states {
   my $self = shift;
 
   my $input_node_list = $self->findnodes($INPUT_ARTIFACT_URIS_PATH);
-  my @input_states = uniq(map { $_->getValue } $input_node_list->get_nodelist);
+  my @input_states = uniq(map {
+    $_->getValue
+  } $input_node_list->get_nodelist);
 
   return \@input_states;
 }
@@ -112,9 +115,13 @@ sub _build_input_uris {
   my $self = shift;
 
   my @input_uris = @{$self->input_states};
-  map {$_ =~ s/[?]state=\d+//smx} @input_uris;
+  map {
+    do {
+      (my $tmp = $_) =~ s/[?]state=\d+//smx
+    }
+  } @input_uris;
 
-  return \@input_uris;
+  return \@input_uris
 }
 
 sub find_parent {
@@ -142,7 +149,9 @@ sub _find_parent {
     my $parent_uris = $current_process->findnodes($PARENT_PROCESS_PATH);
 
     if ($parent_uris->size() > 0) {
-      my @uniq_uris = uniq(map { $_->getValue() } $parent_uris->get_nodelist());
+      my @uniq_uris = uniq(map {
+        $_->getValue()
+      } $parent_uris->get_nodelist());
 
       foreach my $uri (@uniq_uris) {
         $self->_find_parent($needle_process_name, $uri, $found_processes);
@@ -195,7 +204,9 @@ has 'io_map' => (
 
 sub _build_io_map {
   my $self = shift;
-  my @mapping = map { $self->_build_mapping($_); } @{$self->_input_output_map};
+  my @mapping = map {
+    $self->_build_mapping($_);
+  } @{$self->_input_output_map};
 
   return \@mapping;
 }
@@ -227,7 +238,9 @@ sub _build_plate_io_map {
 sub _build_plate_io_map_barcodes {
   my $self = shift;
 
-  my @plate_io_map_barocodes = map { $self->_get_plate_barcode($_) } @{$self->plate_io_map};
+  my @plate_io_map_barocodes = map {
+    $self->_get_plate_barcode($_)
+  } @{$self->plate_io_map};
 
   return \@plate_io_map_barocodes;
 }
@@ -236,7 +249,7 @@ sub _get_plate_barcode {
   my ($self, $plate_io_map) = @_;
 
   my $source_plate = $self->containers->findnodes(sprintf $CONTAINER_BY_LIMSID, $plate_io_map->{'source_plate'})->pop();
-  my $dest_plate =   $self->containers->findnodes(sprintf $CONTAINER_BY_LIMSID, $plate_io_map->{'dest_plate'})->pop();
+  my $dest_plate = $self->containers->findnodes(sprintf $CONTAINER_BY_LIMSID, $plate_io_map->{'dest_plate'})->pop();
 
   return {
     'source_plate' => $source_plate->findvalue('./name'),
@@ -336,7 +349,9 @@ has 'output_analyte_uris' => (
 sub _build_output_analyte_uris {
   my $self = shift;
 
-  my @output_uris = map { $_->getValue } $self->findnodes($OUTPUT_ANALYTES_URI_PATH)->get_nodelist;
+  my @output_uris = map {
+    $_->getValue
+  } $self->findnodes($OUTPUT_ANALYTES_URI_PATH)->get_nodelist;
 
   return \@output_uris;
 }
@@ -373,7 +388,7 @@ sub get_result_file_location {
   my $result_file_xml = $self->_parent->fetch_and_parse($self->xml->findvalue($RESULT_FILE_URI));
   my $file_path = $result_file_xml->findvalue($FILE_URL_PATH);
 
-  if (! defined $file_path) {
+  if (!defined $file_path) {
     croak q{The result file could not been found!};
   }
 
@@ -392,6 +407,18 @@ sub get_container_name_by_limsid {
   croak qq{Could not find the name of container with the given limsid: $limsid} if (!defined $container_name || $container_name eq q{});
 
   return $container_name;
+}
+
+sub get_container_signature_by_limsid {
+  my ($self, $limsid) = @_;
+
+  my $uri = $self->_config->clarity_api->{'base_uri'} . '/containers/' . $limsid;
+  my $container_xml = $self->_parent->fetch_and_parse($uri);
+  my $container_signature = $container_xml->findvalue($CONTAINER_SIGNATURE_LOCATION);
+
+  croak qq{Could not find the signature of container with the given limsid: $limsid} if (!defined $container_signature || $container_signature eq q{});
+
+  return $container_signature;
 }
 
 sub get_current_workflow_uri {
@@ -462,6 +489,10 @@ wtsi_clarity::clarity::process
 =head2 get_container_name_by_limsid
 
   Returns the name of the container by its limsid.
+
+=head2 get_container_signature_by_limsid
+
+  Returns the signature of the container by its limsid.
 
 =head2 get_current_workflow_uri
 
