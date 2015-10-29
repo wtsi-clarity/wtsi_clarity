@@ -20,11 +20,11 @@ override 'run' => sub {
 sub _validate {
   my $self = shift;
 
-  my $analytes = $self->process_doc->input_artifacts();
-  my @control_types = $analytes->findnodes(q(art:details/art:artifact/control-type));
+  my $artifacts = $self->step_doc->output_artifacts();
 
-  croak "Multiple control samples found" if scalar @control_types > 1;
-  croak "No control samples found" if scalar @control_types == 0;
+  my @control_types = $artifacts->findnodes(q(art:details/art:artifact/control-type));
+
+  croak "Control sample already added." if scalar @control_types > 0;
 
   return 1;
 }

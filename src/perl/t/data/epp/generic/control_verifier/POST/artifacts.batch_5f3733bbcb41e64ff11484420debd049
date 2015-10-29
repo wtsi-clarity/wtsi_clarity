@@ -1,0 +1,547 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A149PA1?state=202335" limsid="MAN351A149PA1">
+        <name>28f5a988-7990-11e5-a114-b86be745edab</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A149" limsid="MAN351A149"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A150PA1?state=202321" limsid="MAN351A150PA1">
+        <name>2a1fc73a-7990-11e5-a114-d37e8d9ed7eb</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>B:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A150" limsid="MAN351A150"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A151PA1?state=202318" limsid="MAN351A151PA1">
+        <name>287b25c8-7990-11e5-a114-83114a71bde8</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>C:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A151" limsid="MAN351A151"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A152PA1?state=202328" limsid="MAN351A152PA1">
+        <name>2bef1c59-7990-11e5-a114-c4417fcbd586</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>D:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A152" limsid="MAN351A152"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A153PA1?state=202331" limsid="MAN351A153PA1">
+        <name>2c78f82f-7990-11e5-a114-a2ee327457bb</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>E:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A153" limsid="MAN351A153"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A154PA1?state=202311" limsid="MAN351A154PA1">
+        <name>277e0993-7990-11e5-a114-a52a0cd857c4</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>F:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A154" limsid="MAN351A154"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A155PA1?state=202327" limsid="MAN351A155PA1">
+        <name>280515fe-7990-11e5-a114-d43c8145f490</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>G:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A155" limsid="MAN351A155"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A156PA1?state=202320" limsid="MAN351A156PA1">
+        <name>2f13c3c2-7990-11e5-a114-ab638b29cdc3</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>H:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A156" limsid="MAN351A156"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A157PA1?state=202325" limsid="MAN351A157PA1">
+        <name>30932a80-7990-11e5-a114-bc57a78f0735</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>A:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A157" limsid="MAN351A157"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A158PA1?state=202314" limsid="MAN351A158PA1">
+        <name>301fbafa-7990-11e5-a114-f36ed523bd4c</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>B:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A158" limsid="MAN351A158"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A159PA1?state=202333" limsid="MAN351A159PA1">
+        <name>2d86a421-7990-11e5-a114-b15cfcbdd31e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>C:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A159" limsid="MAN351A159"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A160PA1?state=202313" limsid="MAN351A160PA1">
+        <name>2987850f-7990-11e5-a114-a85a635c6eec</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>D:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A160" limsid="MAN351A160"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A161PA1?state=202319" limsid="MAN351A161PA1">
+        <name>2b54d8b7-7990-11e5-a114-9550b43cee4b</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>E:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A161" limsid="MAN351A161"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A162PA1?state=202324" limsid="MAN351A162PA1">
+        <name>2ac6a208-7990-11e5-a114-fae932a13894</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>F:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A162" limsid="MAN351A162"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A163PA1?state=202316" limsid="MAN351A163PA1">
+        <name>2f9713b2-7990-11e5-a114-f205058b4a2d</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>G:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A163" limsid="MAN351A163"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A164PA1?state=202330" limsid="MAN351A164PA1">
+        <name>331b92c5-7990-11e5-a114-c7810379529e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>H:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A164" limsid="MAN351A164"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A165PA1?state=202306" limsid="MAN351A165PA1">
+        <name>34a26212-7990-11e5-a114-9d3474781b22</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>A:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A165" limsid="MAN351A165"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A166PA1?state=202305" limsid="MAN351A166PA1">
+        <name>3421d35d-7990-11e5-a114-d66c7827c3c2</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>B:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A166" limsid="MAN351A166"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A167PA1?state=202315" limsid="MAN351A167PA1">
+        <name>3199b5fc-7990-11e5-a114-f00dc4f45911</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>C:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A167" limsid="MAN351A167"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A168PA1?state=202326" limsid="MAN351A168PA1">
+        <name>2d0227d6-7990-11e5-a114-a5b52c39cad7</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>D:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A168" limsid="MAN351A168"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A169PA1?state=202323" limsid="MAN351A169PA1">
+        <name>2e8f6d21-7990-11e5-a114-ba640e0692af</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>E:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A169" limsid="MAN351A169"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A170PA1?state=202322" limsid="MAN351A170PA1">
+        <name>2e097031-7990-11e5-a114-bab6c9f00688</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>F:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A170" limsid="MAN351A170"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A171PA1?state=202336" limsid="MAN351A171PA1">
+        <name>339cca42-7990-11e5-a114-af94f151b15a</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>G:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A171" limsid="MAN351A171"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A172PA1?state=202307" limsid="MAN351A172PA1">
+        <name>363fc205-7990-11e5-a114-93a7cd5f5403</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>H:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A172" limsid="MAN351A172"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A173PA1?state=202329" limsid="MAN351A173PA1">
+        <name>36c7e30a-7990-11e5-a114-cb38053ea39f</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>A:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A173" limsid="MAN351A173"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A174PA1?state=202309" limsid="MAN351A174PA1">
+        <name>329c1418-7990-11e5-a114-cce39c1cc683</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>B:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A174" limsid="MAN351A174"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A175PA1?state=202312" limsid="MAN351A175PA1">
+        <name>321e3daf-7990-11e5-a114-d4bc924f8fcf</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>C:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A175" limsid="MAN351A175"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A176PA1?state=202332" limsid="MAN351A176PA1">
+        <name>35272f41-7990-11e5-a114-fc4c9b724d93</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>D:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A176" limsid="MAN351A176"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A177PA1?state=202310" limsid="MAN351A177PA1">
+        <name>35b05740-7990-11e5-a114-b0091263eae0</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>E:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A177" limsid="MAN351A177"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A178PA1?state=202317" limsid="MAN351A178PA1">
+        <name>375cdd01-7990-11e5-a114-84c4836df710</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>F:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A178" limsid="MAN351A178"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A179PA1?state=202308" limsid="MAN351A179PA1">
+        <name>37ebe27d-7990-11e5-a114-dde71491ba68</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>G:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A179" limsid="MAN351A179"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A180PA1?state=202334" limsid="MAN351A180PA1">
+        <name>311e06bd-7990-11e5-a114-e8ecd59af0cd</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13389" limsid="27-13389"/>
+            <value>H:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A180" limsid="MAN351A180"/>
+        <artifact-group name="GCLP Sample Management QC_20150604" uri="http://testserver.com:1234/here/artifactgroups/701"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211"/>
+            <workflow-stage status="QUEUED" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+        </workflow-stages>
+    </art:artifact>
+</art:details>
