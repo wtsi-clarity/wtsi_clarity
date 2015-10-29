@@ -1,0 +1,6 @@
+<?xml version="1.0" standalone="yes"?>
+<stg:stage xmlns:stg="http://genologics.com/ri/stage" index="5" name="Pico Assay Plate (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1216">
+    <workflow uri="http://testserver.com:1234/here/configuration/workflows/601"/>
+    <protocol uri="http://testserver.com:1234/here/configuration/protocols/4"/>
+    <step uri="http://testserver.com:1234/here/configuration/protocols/4/steps/7"/>
+</stg:stage>

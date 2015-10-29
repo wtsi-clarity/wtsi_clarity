@@ -39,7 +39,9 @@ sub _set_current_workflow {
 sub _get_workflow_names {
   my ($self) = @_;
 
-  my @workflow_names = map { $_->getValue } $self->_all_workflows_details->findnodes($WORKFLOW_NAME_PATH);
+  my @workflow_names = map {
+    $_->getValue
+  } $self->_all_workflows_details->findnodes($WORKFLOW_NAME_PATH);
 
   return \@workflow_names;
 }
@@ -49,7 +51,9 @@ sub _get_current_workflow_by_name {
 
   my $workflow_names = $self->_get_workflow_names;
 
-  my @filtered_wf_names = grep {/\Q$given_workflow_name\E/sxm} @{$workflow_names};
+  my @filtered_wf_names = grep {
+    /\Q$given_workflow_name\E/sxm
+  } @{$workflow_names};
 
   my $current_workflow_name = q{};
 
@@ -89,37 +93,37 @@ has 'new_protocol' => (
 # main methods
 
 override 'run' => sub {
-  my $self= shift;
+  my $self = shift;
   super();
   my $response = $self->_main_method();
 };
 
 
 sub _main_method {
-  my $self= shift;
+  my $self = shift;
 
-  my $post_uri = $self->config->clarity_api->{'base_uri'}.'/route/artifacts' ;
+  my $post_uri = $self->config->clarity_api->{'base_uri'}.'/route/artifacts';
 
-  my $req = $self->_make_request();
-  my $response = $self->request->post($post_uri, $req) or croak qq{Could not send successful request for rerouting. ($post_uri)};
+  my $req_doc = $self->_make_request();
+  my $response = $self->request->post($post_uri, $req_doc) or croak qq{Could not send successful request for rerouting. ($post_uri)};
   return $response;
 };
 
 
 sub _make_request {
-  my $self= shift;
-  my $req ;
+  my $self = shift;
+  my $req_doc;
   if (defined $self->new_step && defined $self->new_protocol) {
     my $new_uri = $self->_new_step_uri;
-    $req = make_step_rerouting_request($new_uri, $self->_input_uris())->toString();
+    $req_doc = make_step_rerouting_request($new_uri, $self->_input_uris())->toString();
   }
   else {
     my $new_workflow_id = _get_id_from_uri($self->_new_workflow_uri);
     my $new_uri = $self->_workflow_base_uri . q{/} . $new_workflow_id;
 
-    $req = make_workflow_rerouting_request($new_uri, $self->_input_uris())->toString();
+    $req_doc = make_workflow_rerouting_request($new_uri, $self->_input_uris())->toString();
   }
-  return $req;
+  return $req_doc;
 }
 
 
@@ -142,9 +146,9 @@ sub _get_id_from_uri {
   croak qq{Cannot find an id from the uri $uri};
 }
 
-sub _get_step_uri {
+sub get_step_uri {
   # returns the uri of the step searched for, going through the protocol specified by the user.
-  my ($self) = @_;
+  my ($self, $step_name) = @_;
 
   if (!defined $self->new_step) {
     croak qq{One cannot search for a step if the its name has not been defined!};
@@ -156,9 +160,11 @@ sub _get_step_uri {
     croak qq{The 'workflows details' object cannot be null!};
   }
 
-  my $step_name = $self->new_step;
+  # my $step_name = $self->new_step;
   my $step_uri = c->new($self->_new_workflow_details->findnodes(qq{/wkfcnf:workflow/stages/stage[\@name="$step_name"]/\@uri})->get_nodelist())
-    ->map( sub { $_->getValue(); })
+    ->map( sub {
+    $_->getValue();
+  })
     ->first( sub {
     $self->_is_step_in_correct_protocol($_, $self->_new_protocol_uri);
   });
@@ -182,16 +188,12 @@ sub _is_step_in_correct_protocol {
 ### creation of routing requests
 
 =head2 make_workflow_rerouting_request()
-
 Assign analytes to the given workflow
-
 Input:
   $new_uri - Uri for the new workflow.
   $artifact_uris - Uris for the analytes.
-
 Output:
   XmlDocument payload for the POST request.
-
 =cut
 
 sub make_workflow_rerouting_request {
@@ -221,9 +223,9 @@ sub make_step_rerouting_request {
 
 =head2 make_workflow_unassign_request()
 
-Unassign the given analytes from the given workflow
+  Unassign the given analytes from the given workflow
 
-Input:
+  Input:
   $new_uri - Uri for the workflow.
   $artifact_uris - Uris for the analytes.
 
@@ -279,7 +281,7 @@ has '_workflow_base_uri' => (
 );
 
 sub _build__workflow_base_uri {
-  my $self= shift;
+  my $self = shift;
   return $self->config->clarity_api->{'base_uri'}.'/configuration/workflows';
 }
 
@@ -290,7 +292,7 @@ has '_new_workflow_uri' => (
 );
 
 sub _build__new_workflow_uri {
-  my $self= shift;
+  my $self = shift;
   return _get_workflow_uri($self->new_filtered_wf, $self->_all_workflows_details());
 }
 
@@ -305,7 +307,7 @@ sub _build__new_protocol_uri {
   my $self = shift;
   my $protocol_name = $self->new_protocol;
 
-  my @uris = c->new($self->_new_workflow_details->findnodes(qq{/wkfcnf:workflow/protocols/protocol[\@name="$protocol_name"]/\@uri})->get_nodelist())
+  my @uris = c->new($self->_new_workflow_details->findnodes(qq{ / wkfcnf:workflow / protocols / protocol[\@name = "$protocol_name"] / \@uri})->get_nodelist())
     ->map(sub {
     return $_->getValue();
   })
@@ -315,7 +317,7 @@ sub _build__new_protocol_uri {
     croak q{There can only be one protocol name };
   }
   if (scalar @uris < 1) {
-    croak qq{The protocol '$protocol_name' requested could not be found! };
+    croak qq{The protocol '$protocol_name' requested could not be found!};
   }
   return $uris[0];
 }
@@ -327,8 +329,8 @@ has '_new_step_uri' => (
 );
 
 sub _build__new_step_uri {
-  my $self= shift;
-  return $self->_get_step_uri();
+  my $self = shift;
+  return $self->get_step_uri($self->new_step);
 }
 
 has '_all_workflows_details' => (
@@ -339,7 +341,7 @@ has '_all_workflows_details' => (
 );
 
 sub _build__all_workflows_details {
-  my $self= shift;
+  my $self = shift;
   my $workflows_uri = $self->_workflow_base_uri;
   my $workflows_raw = $self->request->get($workflows_uri) or croak qq{Could not get the list of workflows. ($workflows_uri)};
   return XML::LibXML->load_xml(string => $workflows_raw );
@@ -353,7 +355,7 @@ has '_new_workflow_details' => (
 );
 
 sub _build__new_workflow_details {
-  my $self= shift;
+  my $self = shift;
   my $workflows_uri = $self->_new_workflow_uri();
   my $workflows_raw = $self->request->get($workflows_uri) or croak qq{Could not get the new workflow. ($workflows_uri)};
   return XML::LibXML->load_xml(string => $workflows_raw );
@@ -389,6 +391,15 @@ wtsi_clarity::epp::generic::workflow_assigner
 =head1 SUBROUTINES/METHODS
 
 =head2 run - executes the callback
+
+=head2 get_step_uri
+
+  The input parameter is the name of a step.
+  Returns the uri of the step searched for, going through the protocol specified by the user.
+
+=head2 make_step_rerouting_request_doc
+
+  Create an XML document for rerouting samples to be assigned to another step.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

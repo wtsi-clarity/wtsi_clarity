@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/2-376080?state=188418" limsid="2-376080">
+    <name>4</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://testserver.com:1234/here/processes/24-63423" limsid="24-63423"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-11514" limsid="27-11514"/>
+        <value>D:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/DEA103A525" limsid="DEA103A525"/>
+    <udf:field type="Numeric" name="Concentration">-0.293398460247684</udf:field>
+    <workflow-stages/>
+</art:artifact>

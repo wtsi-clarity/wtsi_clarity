@@ -10,7 +10,6 @@ with 'MooseX::Getopt';
 our $VERSION = '0.0';
 
 Readonly::Hash my %ACTION2MODULE => (
-
   'create_label'                   => 'generic::label_creator',
   'print_barcodes'                 => 'generic::external_barcode_creator',
   'update_plate_purpose'           => 'generic::plate_purpose_updater',
@@ -37,6 +36,7 @@ Readonly::Hash my %ACTION2MODULE => (
   'reactivate_stock_plate'         => 'sm::stock_plate_reactivator',
   'attach_dtx_file'                => 'sm::dtx_file_attacher',
   'analyse_pico'                   => 'sm::pico_analyser',
+  'reroute_plate'                  => 'sm::plate_rerouter',
   'analyse_fluidigm'               => 'sm::fluidigm_analyser',
   'create_fluidigm_file'           => 'sm::fluidigm_analysis_file_creator',
   'update_sample_to_proceed'       => 'sm::proceed_sample_updater',
