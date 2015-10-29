@@ -1,0 +1,35 @@
+<?xml version="1.0" standalone="yes"?>
+<stp:placements xmlns:stp="http://genologics.com/ri/step" uri="http://testserver.com:1234/clarity/api/steps/24-65189/placements">
+    <step uri="http://testserver.com:1234/clarity/api/steps/24-65189" rel="steps"/>
+    <configuration uri="http://testserver.com:1234/clarity/api/configuration/protocols/103/steps/278">Pico: Run Standard and Control Plate</configuration>
+    <selected-containers>
+        <container uri="http://testserver.com:1234/clarity/api/containers/27-11766"/>
+        <container uri="http://testserver.com:1234/clarity/api/containers/27-11767"/>
+    </selected-containers>
+    <output-placements>
+        <output-placement uri="http://testserver.com:1234/clarity/api/artifacts/2-384930">
+            <location>
+                <container uri="http://testserver.com:1234/clarity/api/containers/27-11766" limsid="27-11766"/>
+                <value>A:1</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/clarity/api/artifacts/2-384929">
+            <location>
+                <container uri="http://testserver.com:1234/clarity/api/containers/27-11767" limsid="27-11767"/>
+                <value>B:1</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/clarity/api/artifacts/2-384928">
+            <location>
+                <container uri="http://testserver.com:1234/clarity/api/containers/27-11767" limsid="27-11767"/>
+                <value>A:1</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/clarity/api/artifacts/2-384931">
+            <location>
+                <container uri="http://testserver.com:1234/clarity/api/containers/27-11766" limsid="27-11766"/>
+                <value>B:1</value>
+            </location>
+        </output-placement>
+    </output-placements>
+</stp:placements>

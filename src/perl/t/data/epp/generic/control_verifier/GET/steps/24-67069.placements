@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="yes"?>
+<stp:placements xmlns:stp="http://genologics.com/ri/step" uri="http://testserver.com:1234/here/steps/24-67069/placements">
+    <step uri="http://testserver.com:1234/here/steps/24-67069" rel="steps"/>
+    <configuration uri="http://testserver.com:1234/here/configuration/protocols/2/steps/3">Add Control Sample (SM)</configuration>
+    <selected-containers>
+        <container uri="http://testserver.com:1234/here/containers/27-13389"/>
+    </selected-containers>
+    <output-placements>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-399001"/>
+    </output-placements>
+</stp:placements>

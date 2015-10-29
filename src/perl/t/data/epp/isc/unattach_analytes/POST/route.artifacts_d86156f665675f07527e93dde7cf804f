@@ -1,0 +1,8 @@
+<?xml version="1.0" standalone="yes"?>
+<rt:routing xmlns:rt="http://genologics.com/ri/routing">
+    <unassign workflow-uri="http://testserver.com:1234/here/configuration/workflows/653">
+        <artifact uri="http://testserver.com:1234/here/artifacts/FOR953A76PA1"/>
+        <artifact uri="http://testserver.com:1234/here/artifacts/FOR953A68PA1"/>
+        <artifact uri="http://testserver.com:1234/here/artifacts/FOR953A60PA1"/>
+    </unassign>
+</rt:routing>

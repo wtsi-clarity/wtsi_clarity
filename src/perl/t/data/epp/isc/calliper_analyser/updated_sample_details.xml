@@ -17,7 +17,8 @@
         <udf:field type="String" name="WTSI Supplier Sample Name (SM)">FR03970451</udf:field>
         <udf:field type="String" name="WTSI Working Volume (µL) (SM)">1.0613</udf:field>
         <udf:field type="String" name="Sample Conc. (ng\/µL) (SM)">0.0747441523224134</udf:field>
-        <field xmlns="http://genologics.com/ri/userdefined" name="WTSI Library Concentration">0.160238924693644</field>
+        <field xmlns="http://genologics.com/ri/userdefined" name="WTSI Library Concentration">0.16</field>
+        <field xmlns="http://genologics.com/ri/userdefined" name="WTSI Library Molarity">11.22</field>
     </smp:sample>
     <smp:sample uri="http://testserver.com:1234/here/samples/SV2454A172" limsid="SV2454A172">
         <name>2ea49762-bcd6-11e4-b42e-68b59977951e</name>

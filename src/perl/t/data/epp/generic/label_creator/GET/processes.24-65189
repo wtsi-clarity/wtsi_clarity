@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prc:process xmlns:prc="http://genologics.com/ri/process" xmlns:file="http://genologics.com/ri/file" xmlns:udf="http://genologics.com/ri/userdefined" uri="http://testserver.com:1234/clarity/api/processes/24-65189" limsid="24-65189">
+   <type uri="http://testserver.com:1234/clarity/api/processtypes/206">Pico: Run Standard and Control Plate</type>
+   <technician uri="http://testserver.com:1234/clarity/api/researchers/555">
+      <first-name>Ronan</first-name>
+      <last-name>Forman</last-name>
+   </technician>
+   <input-output-map>
+      <input post-process-uri="http://testserver.com:1234/clarity/api/artifacts/2-196269?state=95127" uri="http://testserver.com:1234/clarity/api/artifacts/2-196269?state=95127" limsid="2-196269">
+         <parent-process uri="http://testserver.com:1234/clarity/api/processes/24-27295" limsid="24-27295" />
+      </input>
+      <output uri="http://testserver.com:1234/clarity/api/artifacts/2-384928?state=193111" output-generation-type="PerInput" output-type="Analyte" limsid="2-384928" />
+   </input-output-map>
+   <input-output-map>
+      <input post-process-uri="http://testserver.com:1234/clarity/api/artifacts/2-196587?state=95295" uri="http://testserver.com:1234/clarity/api/artifacts/2-196587?state=95295" limsid="2-196587">
+         <parent-process uri="http://testserver.com:1234/clarity/api/processes/24-27295" limsid="24-27295" />
+      </input>
+      <output uri="http://testserver.com:1234/clarity/api/artifacts/2-384930?state=193113" output-generation-type="PerInput" output-type="Analyte" limsid="2-384930" />
+   </input-output-map>
+   <input-output-map>
+      <input post-process-uri="http://testserver.com:1234/clarity/api/artifacts/2-196371?state=95179" uri="http://testserver.com:1234/clarity/api/artifacts/2-196371?state=95179" limsid="2-196371">
+         <parent-process uri="http://testserver.com:1234/clarity/api/processes/24-27295" limsid="24-27295" />
+      </input>
+      <output uri="http://testserver.com:1234/clarity/api/artifacts/2-384929?state=193112" output-generation-type="PerInput" output-type="Analyte" limsid="2-384929" />
+   </input-output-map>
+   <input-output-map>
+      <input post-process-uri="http://testserver.com:1234/clarity/api/artifacts/2-196755?state=95363" uri="http://testserver.com:1234/clarity/api/artifacts/2-196755?state=95363" limsid="2-196755">
+         <parent-process uri="http://testserver.com:1234/clarity/api/processes/24-27295" limsid="24-27295" />
+      </input>
+      <output uri="http://testserver.com:1234/clarity/api/artifacts/2-384931?state=193114" output-generation-type="PerInput" output-type="Analyte" limsid="2-384931" />
+   </input-output-map>
+   <udf:field type="String" name="Select Barcode Printer">g214bc</udf:field>
+   <process-parameter name="3 - Stamping " />
+</prc:process>

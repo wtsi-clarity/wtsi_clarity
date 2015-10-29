@@ -7,7 +7,7 @@ our $VERSION = '0.0';
 
 extends 'wtsi_clarity::mq::message';
 
-enum 'WtsiClarityMqReportPurpose', [qw( 14MG_sample_manifest 14MG_sample_report )];
+enum 'WtsiClarityMqReportPurpose', [qw( sample_manifest sample_report )];
 
 has 'purpose' => (
   isa       => 'WtsiClarityMqReportPurpose',
@@ -37,7 +37,7 @@ wtsi_clarity::mq::message_types::report_message
       step_url    => 'other',
       step_start  => 1,
       timestamp   => DateTime->now(),
-      purpose     => '14MG_sample_manifest'
+      purpose     => 'sample_manifest'
   );
   print $m->timestamp; # prints a formatted string
 

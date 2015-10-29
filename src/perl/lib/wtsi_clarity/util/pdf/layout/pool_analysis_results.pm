@@ -3,8 +3,8 @@ package wtsi_clarity::util::pdf::layout::pool_analysis_results;
 use Moose;
 use Readonly;
 
-Readonly::Scalar my $SOURCE_TABLE_HEIGHT      => 510;
-Readonly::Scalar my $BUFFER_TABLE_Y_POSITION  => 430;
+Readonly::Scalar my $SOURCE_TABLE_HEIGHT      => 520;
+Readonly::Scalar my $BUFFER_TABLE_Y_POSITION  => 440;
 Readonly::Scalar my $A4_LANDSCAPE_HEIGHT      => 8.27;
 Readonly::Scalar my $A4_LANDSCAPE_WIDTH       => 11.7;
 Readonly::Scalar my $DPI_RESOLUTION           => 72;
@@ -14,7 +14,7 @@ extends 'wtsi_clarity::util::pdf::pdf_generator';
 our $VERSION = '0.0';
 
 sub A4_LANDSCAPE {
-  return (0, 0, $A4_LANDSCAPE_WIDTH*$DPI_RESOLUTION, $A4_LANDSCAPE_HEIGHT*$DPI_RESOLUTION);
+  return (0, 0, $A4_LANDSCAPE_WIDTH * $DPI_RESOLUTION, $A4_LANDSCAPE_HEIGHT * $DPI_RESOLUTION);
 }
 
 sub create {
@@ -23,7 +23,7 @@ sub create {
   my $font_bold = $self->pdf->corefont('Helvetica-Bold');
   my $font = $self->pdf->corefont('Helvetica');
 
-  my $pdf_generator = wtsi_clarity::util::pdf::pdf_generator->new(cell_font_size => 5);
+  my $pdf_generator = wtsi_clarity::util::pdf::pdf_generator->new(cell_font_size => 5, col_width => 60, stamp_height => 570);
 
   # for each output container, we produce a new page...
   foreach my $page_data (@{$self->pdf_data->{'pages'}}) {

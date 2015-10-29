@@ -1,0 +1,587 @@
+<?xml version="1.0" standalone="yes"?>
+<con:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container">
+    <con:container uri="http://testserver.com:1234/here/containers/27-11511" limsid="27-11511">
+        <name>2462711511868</name>
+        <type uri="http://testserver.com:1234/here/containertypes/5" name="384 Well Plate"/>
+        <occupied-wells>192</occupied-wells>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375577" limsid="2-375577">
+            <value>M:17</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375583" limsid="2-375583">
+            <value>C:19</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375597" limsid="2-375597">
+            <value>A:21</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375654" limsid="2-375654">
+            <value>H:21</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375657" limsid="2-375657">
+            <value>K:21</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375658" limsid="2-375658">
+            <value>L:21</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375660" limsid="2-375660">
+            <value>N:21</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375671" limsid="2-375671">
+            <value>I:23</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375675" limsid="2-375675">
+            <value>M:23</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375295" limsid="2-375295">
+            <value>I:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375358" limsid="2-375358">
+            <value>F:3</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375398" limsid="2-375398">
+            <value>N:7</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375399" limsid="2-375399">
+            <value>O:7</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375452" limsid="2-375452">
+            <value>B:9</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375471" limsid="2-375471">
+            <value>E:11</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375472" limsid="2-375472">
+            <value>F:11</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375479" limsid="2-375479">
+            <value>M:11</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375490" limsid="2-375490">
+            <value>H:13</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375492" limsid="2-375492">
+            <value>J:13</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375498" limsid="2-375498">
+            <value>P:13</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375552" limsid="2-375552">
+            <value>D:15</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375559" limsid="2-375559">
+            <value>K:15</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375561" limsid="2-375561">
+            <value>M:15</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375575" limsid="2-375575">
+            <value>K:17</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375584" limsid="2-375584">
+            <value>D:19</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375588" limsid="2-375588">
+            <value>H:19</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375593" limsid="2-375593">
+            <value>M:19</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375664" limsid="2-375664">
+            <value>B:23</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375668" limsid="2-375668">
+            <value>F:23</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375670" limsid="2-375670">
+            <value>H:23</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375673" limsid="2-375673">
+            <value>K:23</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375678" limsid="2-375678">
+            <value>P:23</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375291" limsid="2-375291">
+            <value>E:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375299" limsid="2-375299">
+            <value>M:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375351" limsid="2-375351">
+            <value>O:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375355" limsid="2-375355">
+            <value>C:3</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375378" limsid="2-375378">
+            <value>J:5</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375383" limsid="2-375383">
+            <value>O:5</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375389" limsid="2-375389">
+            <value>E:7</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375395" limsid="2-375395">
+            <value>K:7</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375464" limsid="2-375464">
+            <value>N:9</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375465" limsid="2-375465">
+            <value>O:9</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375466" limsid="2-375466">
+            <value>P:9</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375467" limsid="2-375467">
+            <value>A:11</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375473" limsid="2-375473">
+            <value>G:11</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375484" limsid="2-375484">
+            <value>B:13</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375487" limsid="2-375487">
+            <value>E:13</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375579" limsid="2-375579">
+            <value>O:17</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375580" limsid="2-375580">
+            <value>P:17</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375591" limsid="2-375591">
+            <value>K:19</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375599" limsid="2-375599">
+            <value>C:21</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375288" limsid="2-375288">
+            <value>B:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375290" limsid="2-375290">
+            <value>D:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375296" limsid="2-375296">
+            <value>J:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375353" limsid="2-375353">
+            <value>A:3</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375359" limsid="2-375359">
+            <value>G:3</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375368" limsid="2-375368">
+            <value>P:3</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375370" limsid="2-375370">
+            <value>B:5</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375372" limsid="2-375372">
+            <value>D:5</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375390" limsid="2-375390">
+            <value>F:7</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375394" limsid="2-375394">
+            <value>J:7</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375396" limsid="2-375396">
+            <value>L:7</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375397" limsid="2-375397">
+            <value>M:7</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375462" limsid="2-375462">
+            <value>L:9</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375475" limsid="2-375475">
+            <value>I:11</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375477" limsid="2-375477">
+            <value>K:11</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375491" limsid="2-375491">
+            <value>I:13</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375494" limsid="2-375494">
+            <value>L:13</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375554" limsid="2-375554">
+            <value>F:15</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375556" limsid="2-375556">
+            <value>H:15</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375574" limsid="2-375574">
+            <value>J:17</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375581" limsid="2-375581">
+            <value>A:19</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375582" limsid="2-375582">
+            <value>B:19</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375586" limsid="2-375586">
+            <value>F:19</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375587" limsid="2-375587">
+            <value>G:19</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375590" limsid="2-375590">
+            <value>J:19</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375594" limsid="2-375594">
+            <value>N:19</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375595" limsid="2-375595">
+            <value>O:19</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375596" limsid="2-375596">
+            <value>P:19</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375656" limsid="2-375656">
+            <value>J:21</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375659" limsid="2-375659">
+            <value>M:21</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375674" limsid="2-375674">
+            <value>L:23</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375676" limsid="2-375676">
+            <value>N:23</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375294" limsid="2-375294">
+            <value>H:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375300" limsid="2-375300">
+            <value>N:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375354" limsid="2-375354">
+            <value>B:3</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375360" limsid="2-375360">
+            <value>H:3</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375366" limsid="2-375366">
+            <value>N:3</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375384" limsid="2-375384">
+            <value>P:5</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375388" limsid="2-375388">
+            <value>D:7</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375393" limsid="2-375393">
+            <value>I:7</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375453" limsid="2-375453">
+            <value>C:9</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375458" limsid="2-375458">
+            <value>H:9</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375459" limsid="2-375459">
+            <value>I:9</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375468" limsid="2-375468">
+            <value>B:11</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375474" limsid="2-375474">
+            <value>H:11</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375486" limsid="2-375486">
+            <value>D:13</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375488" limsid="2-375488">
+            <value>F:13</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375489" limsid="2-375489">
+            <value>G:13</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375497" limsid="2-375497">
+            <value>O:13</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375565" limsid="2-375565">
+            <value>A:17</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375569" limsid="2-375569">
+            <value>E:17</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375589" limsid="2-375589">
+            <value>I:19</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375600" limsid="2-375600">
+            <value>D:21</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375651" limsid="2-375651">
+            <value>E:21</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375653" limsid="2-375653">
+            <value>G:21</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375665" limsid="2-375665">
+            <value>C:23</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375677" limsid="2-375677">
+            <value>O:23</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375298" limsid="2-375298">
+            <value>L:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375362" limsid="2-375362">
+            <value>J:3</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375363" limsid="2-375363">
+            <value>K:3</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375379" limsid="2-375379">
+            <value>K:5</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375380" limsid="2-375380">
+            <value>L:5</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375382" limsid="2-375382">
+            <value>N:5</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375387" limsid="2-375387">
+            <value>C:7</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375392" limsid="2-375392">
+            <value>H:7</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375451" limsid="2-375451">
+            <value>A:9</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375454" limsid="2-375454">
+            <value>D:9</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375457" limsid="2-375457">
+            <value>G:9</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375463" limsid="2-375463">
+            <value>M:9</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375478" limsid="2-375478">
+            <value>L:11</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375481" limsid="2-375481">
+            <value>O:11</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375482" limsid="2-375482">
+            <value>P:11</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375485" limsid="2-375485">
+            <value>C:13</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375495" limsid="2-375495">
+            <value>M:13</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375500" limsid="2-375500">
+            <value>B:15</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375553" limsid="2-375553">
+            <value>E:15</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375555" limsid="2-375555">
+            <value>G:15</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375560" limsid="2-375560">
+            <value>L:15</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375563" limsid="2-375563">
+            <value>O:15</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375566" limsid="2-375566">
+            <value>B:17</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375571" limsid="2-375571">
+            <value>G:17</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375652" limsid="2-375652">
+            <value>F:21</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375662" limsid="2-375662">
+            <value>P:21</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375666" limsid="2-375666">
+            <value>D:23</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375667" limsid="2-375667">
+            <value>E:23</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375672" limsid="2-375672">
+            <value>J:23</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375364" limsid="2-375364">
+            <value>L:3</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375373" limsid="2-375373">
+            <value>E:5</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375376" limsid="2-375376">
+            <value>H:5</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375385" limsid="2-375385">
+            <value>A:7</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375391" limsid="2-375391">
+            <value>G:7</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375469" limsid="2-375469">
+            <value>C:11</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375480" limsid="2-375480">
+            <value>N:11</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375499" limsid="2-375499">
+            <value>A:15</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375558" limsid="2-375558">
+            <value>J:15</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375562" limsid="2-375562">
+            <value>N:15</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375567" limsid="2-375567">
+            <value>C:17</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375568" limsid="2-375568">
+            <value>D:17</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375578" limsid="2-375578">
+            <value>N:17</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375592" limsid="2-375592">
+            <value>L:19</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375289" limsid="2-375289">
+            <value>C:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375292" limsid="2-375292">
+            <value>F:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375356" limsid="2-375356">
+            <value>D:3</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375365" limsid="2-375365">
+            <value>M:3</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375367" limsid="2-375367">
+            <value>O:3</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375371" limsid="2-375371">
+            <value>C:5</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375374" limsid="2-375374">
+            <value>F:5</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375375" limsid="2-375375">
+            <value>G:5</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375381" limsid="2-375381">
+            <value>M:5</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375455" limsid="2-375455">
+            <value>E:9</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375456" limsid="2-375456">
+            <value>F:9</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375470" limsid="2-375470">
+            <value>D:11</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375493" limsid="2-375493">
+            <value>K:13</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375496" limsid="2-375496">
+            <value>N:13</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375570" limsid="2-375570">
+            <value>F:17</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375573" limsid="2-375573">
+            <value>I:17</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375576" limsid="2-375576">
+            <value>L:17</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375585" limsid="2-375585">
+            <value>E:19</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375598" limsid="2-375598">
+            <value>B:21</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375655" limsid="2-375655">
+            <value>I:21</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375661" limsid="2-375661">
+            <value>O:21</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375663" limsid="2-375663">
+            <value>A:23</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375669" limsid="2-375669">
+            <value>G:23</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375287" limsid="2-375287">
+            <value>A:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375293" limsid="2-375293">
+            <value>G:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375297" limsid="2-375297">
+            <value>K:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375352" limsid="2-375352">
+            <value>P:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375357" limsid="2-375357">
+            <value>E:3</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375361" limsid="2-375361">
+            <value>I:3</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375369" limsid="2-375369">
+            <value>A:5</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375377" limsid="2-375377">
+            <value>I:5</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375386" limsid="2-375386">
+            <value>B:7</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375400" limsid="2-375400">
+            <value>P:7</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375460" limsid="2-375460">
+            <value>J:9</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375461" limsid="2-375461">
+            <value>K:9</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375476" limsid="2-375476">
+            <value>J:11</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375483" limsid="2-375483">
+            <value>A:13</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375551" limsid="2-375551">
+            <value>C:15</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375557" limsid="2-375557">
+            <value>I:15</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375564" limsid="2-375564">
+            <value>P:15</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-375572" limsid="2-375572">
+            <value>H:17</value>
+        </placement>
+        <udf:field type="String" name="WTSI Container Purpose Name">Lib PCR XP QC</udf:field>
+        <udf:field type="String" name="WTSI Container Signature">/B8RQ</udf:field>
+        <state>Populated</state>
+    </con:container>
+</con:details>
