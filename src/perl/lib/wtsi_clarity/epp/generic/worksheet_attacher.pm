@@ -14,21 +14,18 @@ use wtsi_clarity::util::well_mapper;
 
 extends 'wtsi_clarity::epp';
 with qw/ wtsi_clarity::util::clarity_elements_fetcher_role_util
-         wtsi_clarity::util::clarity_elements
-         wtsi_clarity::util::uploader_role
-      /;
+  wtsi_clarity::util::clarity_elements
+  wtsi_clarity::util::uploader_role
+  /;
 
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $ARTIFACT_PATH             => q(/prc:process/input-output-map/input/@post-process-uri);
 Readonly::Scalar my $PREVIOUS_PROC             => q(/prc:process/input-output-map/input/parent-process/@uri);
-Readonly::Scalar my $OUTPUT_FILES              => q(/prc:process/input-output-map/output[@output-type='ResultFile']/@uri);
 Readonly::Scalar my $PROCESS_ID_PATH           => q(/prc:process/@limsid);
 Readonly::Scalar my $TECHNICIAN_FIRSTNAME_PATH => q(/prc:process/technician/first-name/text());
 Readonly::Scalar my $TECHNICIAN_LASTNAME_PATH  => q(/prc:process/technician/last-name/text());
-
-Readonly::Scalar my $SAMPLE_PATH               => q(/art:artifact/sample/@uri);
 Readonly::Scalar my $LOCATION_PATH             => q(/art:artifact/location/value);
 Readonly::Scalar my $CONTAINER_URI_PATH        => q(/art:artifact/location/container/@uri);
 Readonly::Scalar my $CONTAINER_ID_PATH         => q(/art:artifact/location/container/@limsid);
@@ -47,23 +44,22 @@ Readonly::Scalar my $TRAY_PATH                 => q{WTSI Tray};
 Readonly::Scalar my $RACK_PATH                 => q{WTSI Rack};
 ## use critic
 
-Readonly::Scalar my $nb_col                   => 12;
-Readonly::Scalar my $nb_row                   => 8;
+Readonly::Scalar my $NUMBER_OF_COLUMNS        => 12;
+Readonly::Scalar my $NUMBER_OF_ROWS           => 8;
 Readonly::Scalar my $A_CHAR_CODE              => 64;
 Readonly::Scalar my $PLATE_NAME_START_INDEX   => 4;
 Readonly::Scalar my $PLATE_NAME_START_LENGTH  => 6;
 Readonly::Scalar my $EAN13_BARCODE_LENGTH     => 13;
 
 override 'run' => sub {
-  my $self= shift;
+  my $self = shift;
   super();
 
   my $containers_data = $self->_get_containers_data();
-  my $type_data = $self->_get_type_data();
   my $stamp = _get_stamp($containers_data, $self->request->user);
 
   # pdf generation
-  my $pdf_data = _get_pdf_data($containers_data, $stamp, $type_data);
+  my $pdf_data = _get_pdf_data($containers_data, $stamp);
   my $pdf_generator = wtsi_clarity::util::pdf::layout::worksheet->new( 'pdf_data' => $pdf_data );
   my $worksheet_file = $pdf_generator->create() or croak q{Impossible to create the pdf version of the worksheet!};
 
@@ -90,47 +86,12 @@ has 'tecan_filename' => (
   required => 1,
 );
 
-
-has 'worksheet_type' => (
-  isa => 'Str',
-  is => 'ro',
-  required => 1,
-  trigger => \&_set_action_title,
-);
-
-has 'action_title' => ( isa => 'Str', is => 'rw', );
-
-sub _set_action_title {
-  my ($self, $type, $old_type) = @_;
-
-  if ($type =~ /fluidigm/xms )
-  {
-    $self->action_title(q{Fluidigm});
-    return;
-  }
-
-  if ($type =~ /cherrypicking/xms )
-  {
-    $self->action_title(q{Cherrypicking});
-    return ;
-  }
-
-  croak qq{Unknown worksheet type! $type.};
-}
-
-sub _get_type_data {
-  my ($self) = @_;
-  return {
-    'action_title' => $self->action_title ,
-  };
-}
-
 ################# date & username ############
 
 sub _get_username {
   my ($data, $realuser) = @_;
   my $firstname = $data->{'user_first_name'};
-  my $lastname  = $data->{'user_last_name'};
+  my $lastname = $data->{'user_last_name'};
   return qq{$firstname $lastname (via $realuser)};
 }
 
@@ -153,7 +114,7 @@ sub _create_tecan_file {
     or croak qq{Could not create/open file '$full_filename'.};
   foreach my $line (@{$file_content})
   {
-      print {$fh} qq{$line\n} or croak qq[Failed to write to the file: $fh]; # Print each entry in our array to the file
+    print {$fh} qq{$line\n} or croak qq[Failed to write to the file: $fh]; # Print each entry in our array to the file
   }
   close $fh
     or croak qq{ Unable to close $full_filename.};
@@ -168,13 +129,13 @@ sub _get_TECAN_file_content {
 
   # creating the comments at the top of the file
 
-  push @content_output, 'C;' ;
-  push @content_output, 'C; '.$stamp ;
-  push @content_output, 'C;' ;
+  push @content_output, 'C;';
+  push @content_output, 'C; '.$stamp;
+  push @content_output, 'C;';
 
   # creating main content
 
-  foreach my $uri (sort keys %{$containers_data->{'output_container_info'}} ) {
+  foreach my $uri (sort keys %{$containers_data->{'output_container_info'}}) {
     my ($samples, $buffers) = $self->_get_TECAN_file_content_per_URI($containers_data, $uri);
     push @content_output, @{$samples};
     push @buffer_output, @{$buffers};
@@ -184,27 +145,27 @@ sub _get_TECAN_file_content {
 
   # creating the comments in the end of the file
 
-  push @content_output, 'C;' ;
+  push @content_output, 'C;';
   my $n = 1;
-  foreach my $input (sort keys %{$containers_data->{'input_container_info'}} ) {
+  foreach my $input (sort keys %{$containers_data->{'input_container_info'}}) {
     my $barcode = $containers_data->{'input_container_info'}->{$input}->{'barcode'};
     push @content_output, qq{C; SRC$n = $barcode};
     $n++;
   }
-  push @content_output, 'C;' ;
+  push @content_output, 'C;';
   $n = 1;
-  foreach my $output (sort keys %{$containers_data->{'output_container_info'}} ) {
+  foreach my $output (sort keys %{$containers_data->{'output_container_info'}}) {
     my $barcode = $containers_data->{'output_container_info'}->{$output}->{'barcode'};
-    push @content_output, qq{C; DEST$n = $barcode} ;
+    push @content_output, qq{C; DEST$n = $barcode};
     $n++;
   }
-  push @content_output, 'C;' ;
+  push @content_output, 'C;';
   return \@content_output;
 }
 
 sub _get_well_position {
-  my ($self, $well_position, $nb_rows, $nb_columns) = @_;
-  return wtsi_clarity::util::well_mapper->well_location_index($well_position, $nb_rows, $nb_columns);
+  my ($self, $well_position) = @_;
+  return wtsi_clarity::util::well_mapper->well_location_index($well_position, $NUMBER_OF_ROWS, $NUMBER_OF_COLUMNS);
 }
 
 sub _is_integer {
@@ -217,20 +178,19 @@ sub _get_TECAN_file_content_per_URI {
   my @sample_output = ();
   my @buffer_output = ();
   my $output_container = $data->{'output_container_info'}->{$uri};
-  my $output_type   = $data->{'output_container_info'}->{$uri}->{'type'};
-  my $output_barcode= $data->{'output_container_info'}->{$uri}->{'barcode'};
+  my $output_type = $data->{'output_container_info'}->{$uri}->{'type'};
+  my $output_barcode = $data->{'output_container_info'}->{$uri}->{'barcode'};
   # keys are sorted to facilitate testing!
-  foreach my $out_loc (sort keys %{$output_container->{'container_details'}} ) {
-    my $in_details  = $output_container->{'container_details'}->{$out_loc};
-    if ( scalar keys %{$in_details}  ) {
-      my $out_loc_dec = $self->_get_well_position($out_loc, $nb_row, $nb_col);
-
+  foreach my $out_loc (sort keys %{$output_container->{'container_details'}}) {
+    my $in_details = $output_container->{'container_details'}->{$out_loc};
+    if (scalar keys %{$in_details}) {
+      my $out_loc_dec = $self->_get_well_position($out_loc);
 
       if (!_is_integer($out_loc_dec)) {
         croak "Output location is not an integer: " . $out_loc_dec;
       }
 
-      my $inp_loc_dec = $self->_get_well_position($in_details->{'input_location'}, $nb_row, $nb_col);
+      my $inp_loc_dec = $self->_get_well_position($in_details->{'input_location'});
 
       if (!_is_integer($inp_loc_dec)) {
         croak "Input location is not an integer: " . $inp_loc_dec;
@@ -239,10 +199,10 @@ sub _get_TECAN_file_content_per_URI {
       my $sample_volume = $in_details->{'sample_volume'};
       my $buffer_volume = $in_details->{'buffer_volume'};
       my $input_uri = $in_details->{'input_uri'};
-      my $input_type    = $data->{'input_container_info'}->{$input_uri}->{'type'};
+      my $input_type = $data->{'input_container_info'}->{$input_uri}->{'type'};
       my $input_barcode = $data->{'input_container_info'}->{$input_uri}->{'barcode'};
 
-      my $input_sample_string  = qq{A;$input_barcode;;$input_type;$inp_loc_dec;;$sample_volume};
+      my $input_sample_string = qq{A;$input_barcode;;$input_type;$inp_loc_dec;;$sample_volume};
       my $output_sample_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$sample_volume};
       my $w_string = q{W;};
 
@@ -252,7 +212,7 @@ sub _get_TECAN_file_content_per_URI {
       };
 
       if ($buffer_volume != 0) {
-        my $input_buffer_string  = qq{A;BUFF;;96-TROUGH;$inp_loc_dec;;$buffer_volume};
+        my $input_buffer_string = qq{A;BUFF;;96-TROUGH;$inp_loc_dec;;$buffer_volume};
         my $output_buffer_string = qq{D;$output_barcode;;$output_type;$out_loc_dec;;$buffer_volume};
 
         push @buffer_output, {
@@ -263,11 +223,15 @@ sub _get_TECAN_file_content_per_URI {
     }
   }
 
-  @sample_output = map { $_->{'output'} } sort {
+  @sample_output = map {
+    $_->{'output'}
+  } sort {
     $a->{'output_location'} <=> $b->{'output_location'}
   } @sample_output;
 
-  @buffer_output = map { $_->{'output'} } sort {
+  @buffer_output = map {
+    $_->{'output'}
+  } sort {
     $a->{'output_location'} <=> $b->{'output_location'}
   } @buffer_output;
 
@@ -278,21 +242,21 @@ sub _get_TECAN_file_content_per_URI {
 
 
 sub _get_pdf_data {
-  my ($containers_data, $stamp, $type_data) = @_;
+  my ($containers_data, $stamp) = @_;
   my $pdf_data = {};
   $pdf_data->{'stamp'} = $stamp;
   $pdf_data->{'pages'} = [];
 
   while (my ($uri, $data) = each %{$containers_data->{'output_container_info'}} ) {
     my $page = {};
-    $page->{'title'} = _get_title($containers_data, $uri, $type_data->{'action_title'});
+    $page->{'title'} = _get_title($containers_data, $uri);
     $page->{'input_table_title'} = q{Source plates};
     $page->{'input_table'} = _get_source_plate_data($containers_data, $uri);
 
     $page->{'output_table_title'} = q{Destination plates};
     $page->{'output_table'} = _get_destination_plate_data($containers_data, $uri);
 
-    my ($table_data, $table_properties) = _get_table_data($data->{'container_details'}, $nb_col, $nb_row);
+    my ($table_data, $table_properties) = _get_table_data($data->{'container_details'});
 
     $page->{'plate_table_title'} = q{Required buffer};
     $page->{'plate_table'} = $table_data;
@@ -305,18 +269,22 @@ sub _get_pdf_data {
 }
 
 sub _get_title {
-  my ($data, $out_uri, $action) = @_;
+  my ($data, $out_uri) = @_;
 
   my $out_purpose = $data->{ q{output_container_info} }->{$out_uri}->{ q{purpose} };
 
   # we get all the wells concerned by this output.
   my $wells = Mojo::Collection->new( values %{$data->{ q{output_container_info} }->{$out_uri}->{ q{container_details} }} );
   # we assume that all input plate have the same purpose !!
-  my $an_input_id = $wells->grep ( sub { return defined $_->{'input_id'}; } ) # we filter on the presence of an input_id
-                          ->map  ( sub { return         $_->{'input_id'}; } ) # we pluck the input_ids
-                          ->first;                                            # we only take the first one
+  my $an_input_id = $wells->grep ( sub {
+    return defined $_->{'input_id'};
+  } ) # we filter on the presence of an input_id
+    ->map  ( sub {
+    return         $_->{'input_id'};
+  } ) # we pluck the input_ids
+    ->first;                                            # we only take the first one
 
-  my $in_purpose  = $data->{ q{input_container_info} }->{$an_input_id}->{ q{purpose} };
+  my $in_purpose = $data->{ q{input_container_info} }->{$an_input_id}->{ q{purpose} };
 
   my $process = $data->{ q{process_id} };
   return qq{Process $process - $in_purpose -> $out_purpose};
@@ -327,17 +295,17 @@ sub _get_source_plate_data {
   my $input_plates = {};
 
   while (my ($pos, $info) = each %{$data->{'output_container_info'}
-                                         ->{$uri}
-                                         ->{'container_details'}    } ) {
+    ->{$uri}
+    ->{'container_details'}    } ) {
     if (defined $info->{'input_uri'}) {
       $input_plates->{$info->{'input_uri'}} = 1;
     }
   }
   my @table_data = ();
 
-  push @table_data , ['Plate name', 'Barcode', 'Freezer', 'Shelf', 'Rack', 'Tray'];
+  push @table_data, ['Plate name', 'Barcode', 'Freezer', 'Shelf', 'Rack', 'Tray'];
 
-  foreach my $key (sort keys %{$input_plates} ) {
+  foreach my $key (sort keys %{$input_plates}) {
     my $plate_name = $data->{'input_container_info'}->{$key}->{'plate_name'};
     my $barcode = $data->{'input_container_info'}->{$key}->{'barcode'};
     my $freezer = $data->{'input_container_info'}->{$key}->{'freezer'};
@@ -353,7 +321,7 @@ sub _get_destination_plate_data {
   my ($data, $uri) = @_;
 
   my @table_data = ();
-  push @table_data , ['Plate name', 'Barcode', 'Wells'];
+  push @table_data, ['Plate name', 'Barcode', 'Wells'];
 
   my $plate_name = $data->{'output_container_info'}->{$uri}->{'plate_name'};
   my $barcode = $data->{'output_container_info'}->{$uri}->{'barcode'};
@@ -363,19 +331,18 @@ sub _get_destination_plate_data {
 }
 
 sub _get_table_data {
-  my ($data, $nb_col, $nb_row) = @_;
+  my ($data) = @_;
 
   my @table_data = ();
   my @table_properties = ();
-  my @list_of_colours = ('#F5BA7F', '#F5E77D', '#7DD3F5', '#DB7DF5');
 
   my $colour_indexes = _get_colour_indexes($data);
 
-  foreach my $j (0..$nb_row+1) {
+  foreach my $j (0..$NUMBER_OF_ROWS + 1) {
     my @row = ();
     my @row_properties = ();
-    foreach my $i (0..$nb_col+1) {
-      my ($content, $properties) = _get_cell($data, $colour_indexes, $i, $j, $nb_col, $nb_row);
+    foreach my $i (0..$NUMBER_OF_COLUMNS + 1) {
+      my ($content, $properties) = _get_cell($data, $colour_indexes, $i, $j);
       push @row, $content;
       push @row_properties, $properties;
     }
@@ -388,18 +355,18 @@ sub _get_table_data {
 
 ## no critic(Subroutines::ProhibitManyArgs)
 sub _get_cell {
-  my ($data, $colour_indexes, $i, $j, $nb_col, $nb_row) = @_;
+  my ($data, $colour_indexes, $i, $j) = @_;
 
   my $content;
   my $properties;
 
-  if (my $pos = _get_location($i,$j, $nb_col, $nb_row)) {
-    $content    = _get_cell_content($data, $pos);
+  if (my $pos = _get_location($i, $j)) {
+    $content = _get_cell_content($data, $pos);
     $properties = _get_cell_properties($data, $colour_indexes, $pos);
 
   } else {
-    $content    = _get_legend_content($i,$j, $nb_col, $nb_row);
-    $properties = _get_legend_properties($i,$j, $nb_col, $nb_row);
+    $content = _get_legend_content($i, $j);
+    $properties = _get_legend_properties();
   }
   return ($content, $properties);
 }
@@ -414,23 +381,23 @@ sub _get_cell_content {
 
     my $id = $container_id;
     my $loc = $cell->{'input_location'};
-    my $v = $cell->{'sample_volume'};
-    my $b = $cell->{'buffer_volume'};
-    return $loc."\n".$id."\nv".(ceil($v)).' b'.(ceil($b));
+    my $sample_volume = $cell->{'sample_volume'};
+    my $buffer_volume = $cell->{'buffer_volume'};
+    return $loc."\n".$id."\nv".(ceil($sample_volume)).' b'.(ceil($buffer_volume));
   }
 
   return q{};
 }
 
 sub _get_legend_content {
-  my ($i, $j, $nb_col, $nb_row) = @_;
-  if (0 == $i || $nb_col < $i ){
-    if (0 == $j || $nb_row < $j ){
+  my ($i, $j) = @_;
+  if ($i == 0 || $i > $NUMBER_OF_COLUMNS) {
+    if ($j == 0 || $j > $NUMBER_OF_ROWS) {
       return q{};
     }
-    return ".\n".chr($A_CHAR_CODE+$j)."\n.";
+    return ".\n".chr($A_CHAR_CODE + $j)."\n.";
   }
-  if (0 == $j || $nb_row < $j ){
+  if ($j == 0 || $j > $NUMBER_OF_ROWS) {
     return $i;
   }
   return;
@@ -439,7 +406,7 @@ sub _get_legend_content {
 sub _get_cell_properties {
   my ($data, $colour_indexes, $pos) = @_;
   my $id = $data->{$pos}->{'input_id'};
-  if (defined $id){
+  if (defined $id) {
     my $col = $colour_indexes->{$id};
     return "COLOUR_$col";
   } else {
@@ -448,8 +415,6 @@ sub _get_cell_properties {
 }
 
 sub _get_legend_properties {
-  my ($i, $j, $nb_col, $nb_row) = @_;
-
   return 'HEADER_STYLE';
 }
 
@@ -459,7 +424,7 @@ sub _get_colour_indexes {
   my $colour_index = 0;
   foreach my $key (sort keys %{$data}) {
     my $id = $data->{$key}->{'input_id'};
-    if (defined $id && !defined $hash_colour->{$id}){
+    if (defined $id && !defined $hash_colour->{$id}) {
       $hash_colour->{$id} = $colour_index++;
     }
   }
@@ -467,30 +432,30 @@ sub _get_colour_indexes {
 }
 
 sub _get_location {
-  my ($i, $j, $nb_col, $nb_row) = @_;
-  if (0 == $i || $nb_col < $i ){
+  my ($i, $j) = @_;
+  if ($i == 0 || $i > $NUMBER_OF_COLUMNS) {
     # top or bottom row
     return;
   }
-  if (0 == $j || $nb_row < $j ){
+  if ($j == 0 || $j > $NUMBER_OF_ROWS) {
     # top or bottom row
     return;
   }
-  return (chr $A_CHAR_CODE+$j).q{:}.$i;
+  return (chr $A_CHAR_CODE + $j).q{:}.$i;
 }
 
 
 sub _get_containers_data {
   my ($self) = @_;
 
-  my $artifacts_tmp       = $self->fetch_targets_hash($ARTIFACT_PATH);
-  my $previous_processes  = $self->fetch_targets_hash($PREVIOUS_PROC);
-  my $previous_artifacts  = $self->fetch_targets_hash($PREVIOUS_PROC, $ARTIFACT_PATH);
+  my $artifacts_tmp = $self->fetch_targets_hash($ARTIFACT_PATH);
+  my $previous_processes = $self->fetch_targets_hash($PREVIOUS_PROC);
+  my $previous_artifacts = $self->fetch_targets_hash($PREVIOUS_PROC, $ARTIFACT_PATH);
 
   my $oi_map = $self->_get_oi_map($previous_processes);
 
   my $all_data = {};
-  my $process_id  = $self->find_elements_first_value($self->process_doc->xml, $PROCESS_ID_PATH);
+  my $process_id = $self->find_elements_first_value($self->process_doc->xml, $PROCESS_ID_PATH);
   $process_id =~ s/\-//xms;
   $all_data->{ q{process_id} } = $process_id;
 
@@ -498,54 +463,54 @@ sub _get_containers_data {
   $all_data->{ q{user_last_name}  } = $self->find_elements_first_value($self->process_doc->xml, $TECHNICIAN_LASTNAME_PATH);
 
   while (my ($uri, $out_artifact) = each %{$artifacts_tmp} ) {
-    if ($uri =~ /(.*)[?].*/xms){
+    if ($uri =~ /(.*)[?].*/xms) {
       my $in_artifact = $previous_artifacts->{$oi_map->{$uri}};
 
-      my $out_location      = $self->find_elements_first_textContent( $out_artifact, $LOCATION_PATH         );
+      my $out_location = $self->find_elements_first_textContent( $out_artifact, $LOCATION_PATH         );
       my $out_container_uri = $self->find_elements_first_value      ( $out_artifact, $CONTAINER_URI_PATH    );
-      my $out_container_id  = $self->find_elements_first_value      ( $out_artifact, $CONTAINER_ID_PATH     );
-      my $sample_volume     = $self->find_udf_element_textContent   ( $out_artifact, $SAMPLE_VOLUME_PATH, 0 );
-      my $buffer_volume     = $self->find_udf_element_textContent   ( $out_artifact, $BUFFER_VOLUME_PATH, 0 );
-      my $in_location       = $self->find_elements_first_textContent( $in_artifact,  $LOCATION_PATH         );
-      my $in_container_uri  = $self->find_elements_first_value      ( $in_artifact,  $CONTAINER_URI_PATH    );
-      my $in_container_id   = $self->find_elements_first_value      ( $in_artifact,  $CONTAINER_ID_PATH     );
+      my $out_container_id = $self->find_elements_first_value      ( $out_artifact, $CONTAINER_ID_PATH     );
+      my $sample_volume = $self->find_udf_element_textContent   ( $out_artifact, $SAMPLE_VOLUME_PATH, 0 );
+      my $buffer_volume = $self->find_udf_element_textContent   ( $out_artifact, $BUFFER_VOLUME_PATH, 0 );
+      my $in_location = $self->find_elements_first_textContent( $in_artifact, $LOCATION_PATH         );
+      my $in_container_uri = $self->find_elements_first_value      ( $in_artifact, $CONTAINER_URI_PATH    );
+      my $in_container_id = $self->find_elements_first_value      ( $in_artifact, $CONTAINER_ID_PATH     );
 
       # we only do this part when it's a container that we don't know yet...
       if (!defined $all_data->{'output_container_info'}->{$out_container_uri})
       {
         my $out_container = $self->fetch_and_parse($out_container_uri);
 
-        my $barcode       = $self->find_clarity_element_textContent($out_container, q{name}                   );
-        my $purpose       = $self->find_udf_element_textContent    ($out_container, $PURPOSE_PATH, q{Unknown} );
-        my $name          = $out_container_id;
+        my $barcode = $self->find_clarity_element_textContent($out_container, q{name}                   );
+        my $purpose = $self->find_udf_element_textContent    ($out_container, $PURPOSE_PATH, q{Unknown} );
+        my $name = $out_container_id;
         $name =~ s/\-//xms;
 
         # to get the wells
-        my $out_container_type_uri  = $self->find_elements_first_value($out_container, $CONTAINER_TYPE_URI ) ;
-        my $out_container_type_name = $self->find_elements_first_value($out_container, $CONTAINER_TYPE_NAME) ;
-        my $out_container_type      = $self->fetch_and_parse($out_container_type_uri);
-        my $x  = $self->find_elements_first_textContent($out_container_type,    $CONTAINER_TYPE_X) ;
-        my $y  = $self->find_elements_first_textContent($out_container_type,    $CONTAINER_TYPE_Y) ;
+        my $out_container_type_uri = $self->find_elements_first_value($out_container, $CONTAINER_TYPE_URI );
+        my $out_container_type_name = $self->find_elements_first_value($out_container, $CONTAINER_TYPE_NAME);
+        my $out_container_type = $self->fetch_and_parse($out_container_type_uri);
+        my $x = $self->find_elements_first_textContent($out_container_type, $CONTAINER_TYPE_X);
+        my $y = $self->find_elements_first_textContent($out_container_type, $CONTAINER_TYPE_Y);
 
         $all_data->{ q{output_container_info} }->{ $out_container_uri }->{ q{purpose}    } = $purpose;
         $all_data->{ q{output_container_info} }->{ $out_container_uri }->{ q{plate_name} } = $name;
         $all_data->{ q{output_container_info} }->{ $out_container_uri }->{ q{barcode}    } = $barcode;
         $all_data->{ q{output_container_info} }->{ $out_container_uri }->{ q{type}       } = $out_container_type_name;
-        $all_data->{ q{output_container_info} }->{ $out_container_uri }->{ q{wells}      } = $x*$y;
+        $all_data->{ q{output_container_info} }->{ $out_container_uri }->{ q{wells}      } = $x * $y;
       }
 
       # we only do this part when it's a container that we don't know yet...
       if (!defined $all_data->{'input_container_info'}->{$in_container_uri})
       {
-        my $in_container= $self->fetch_and_parse($in_container_uri);
+        my $in_container = $self->fetch_and_parse($in_container_uri);
 
-        my $freezer  = $self->find_udf_element_textContent( $in_container, $FREEZER_PATH, q{Unknown} ) ;
-        my $shelf    = $self->find_udf_element_textContent( $in_container, $SHELF_PATH  , q{Unknown} );
-        my $tray     = $self->find_udf_element_textContent( $in_container, $TRAY_PATH   , q{Unknown} );
-        my $rack     = $self->find_udf_element_textContent( $in_container, $RACK_PATH   , q{Unknown} );
-        my $purpose  = $self->find_udf_element_textContent( $in_container, $PURPOSE_PATH, q{Unknown} );
+        my $freezer = $self->find_udf_element_textContent( $in_container, $FREEZER_PATH, q{Unknown} );
+        my $shelf = $self->find_udf_element_textContent( $in_container, $SHELF_PATH, q{Unknown} );
+        my $tray = $self->find_udf_element_textContent( $in_container, $TRAY_PATH, q{Unknown} );
+        my $rack = $self->find_udf_element_textContent( $in_container, $RACK_PATH, q{Unknown} );
+        my $purpose = $self->find_udf_element_textContent( $in_container, $PURPOSE_PATH, q{Unknown} );
 
-        my $barcode   = $self->find_clarity_element_textContent($in_container, q{name});
+        my $barcode = $self->find_clarity_element_textContent($in_container, q{name});
         my $type_name = $self->find_elements_first_value($in_container, $CONTAINER_TYPE_NAME);
 
         my $plate_name;
@@ -567,12 +532,12 @@ sub _get_containers_data {
       }
 
       $all_data->{ q{output_container_info} }->{$out_container_uri}->{ q{container_details} }->{$out_location} = {
-                            q{input_id}             => $in_container_id,
-                            q{input_location}       => $in_location,
-                            q{sample_volume}        => $sample_volume,
-                            q{buffer_volume}        => $buffer_volume,
-                            q{input_uri}            => $in_container_uri,
-                          };
+        q{input_id}             => $in_container_id,
+        q{input_location}       => $in_location,
+        q{sample_volume}        => $sample_volume,
+        q{buffer_volume}        => $buffer_volume,
+        q{input_uri}            => $in_container_uri,
+      };
     }
   }
 
@@ -587,7 +552,9 @@ has '_oi_map' => (
   isa        => 'HashRef',
   is         => 'rw',
   required   => 0,
-  default => sub { {} },
+  default => sub {
+    {}
+  },
 );
 
 sub _get_oi_map {
@@ -600,8 +567,8 @@ sub _get_oi_map {
   ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
   while (my ($uri, $proc) = each %{$previous_processes} ) {
     my $proc_io_maps = $self->find_elements($proc, q{./input-output-map});
-    foreach my $proc_io_map (@{$proc_io_maps}){
-      my $in  = $proc_io_map->findnodes( q{./input/@uri}  );
+    foreach my $proc_io_map (@{$proc_io_maps}) {
+      my $in = $proc_io_map->findnodes( q{./input/@uri}  );
       my $out = $proc_io_map->findnodes( q{./output/@uri} );
       $oi_map->{$out} = $in;
     }
