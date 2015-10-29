@@ -1,13 +1,13 @@
 <?xml version="1.0" standalone="yes"?>
-<smp:sample xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/DEA103A1129" limsid="DEA103A1129">
+<smp:sample xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample" uri="http://testserver.com:1234/here/samples/DEA103A1129" limsid="DEA103A1129">
     <name>sample_name29</name>
     <date-received>2014-10-30</date-received>
-    <project limsid="DEA103" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA103"/>
-    <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/8">
+    <project limsid="DEA103" uri="http://testserver.com:1234/here/projects/DEA103"/>
+    <submitter uri="http://testserver.com:1234/here/researchers/8">
         <first-name>Lucy</first-name>
         <last-name>Hildyard</last-name>
     </submitter>
-    <artifact limsid="DEA103A1129PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/DEA103A1129PA1?state=25984"/>
+    <artifact limsid="DEA103A1129PA1" uri="http://testserver.com:1234/here/artifacts/DEA103A1129PA1?state=25984"/>
     <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
 	<udf:field type="String" name="WTSI Bait Library Name">DDD_V5_plus</udf:field>
     <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>

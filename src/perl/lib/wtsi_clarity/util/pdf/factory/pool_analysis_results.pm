@@ -41,7 +41,7 @@ has 'plate_style_table' => (
       header_row => \&headers_row,
       row_first_column => \&style_row_first_column,
       format_cell => \&format_style_table_cell,
-     footer_row => \&headers_row,
+      footer_row => \&headers_row,
     }
   },
 );
@@ -73,12 +73,11 @@ sub _get_input_table_data {
   my $input_table_data = shift;
 
   my @input_table = ();
-  push @input_table , ['Plate name', 'Barcode'];
+  push @input_table, ['Plate name', 'Barcode', 'Signature'];
 
   my @input_table_data = ();
-  foreach my $table_row_name ( keys %{$input_table_data} )
-  {
-    push @input_table_data, $input_table_data->{$table_row_name};
+  foreach my $table_row_data (@{$input_table_data}) {
+    push @input_table_data, $table_row_data;
   }
 
   push @input_table, \@input_table_data;
