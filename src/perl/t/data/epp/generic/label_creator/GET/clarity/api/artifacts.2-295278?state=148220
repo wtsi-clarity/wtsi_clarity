@@ -1,0 +1,56 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/clarity/api/artifacts/2-295278?state=148220" limsid="2-295278">
+    <name>2460277165822 A9:H10 (G:3)</name>
+    <type>Analyte</type>
+    <output-type>Pool</output-type>
+    <parent-process uri="http://testserver.com:1234/clarity/api/processes/122-41512" limsid="122-41512"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/clarity/api/containers/27-7236" limsid="27-7236"/>
+        <value>G:3</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/clarity/api/samples/LAB106A260" limsid="LAB106A260"/>
+    <sample uri="http://testserver.com:1234/clarity/api/samples/LAB106A261" limsid="LAB106A261"/>
+    <sample uri="http://testserver.com:1234/clarity/api/samples/LAB106A262" limsid="LAB106A262"/>
+    <sample uri="http://testserver.com:1234/clarity/api/samples/LAB106A263" limsid="LAB106A263"/>
+    <sample uri="http://testserver.com:1234/clarity/api/samples/LAB106A257" limsid="LAB106A257"/>
+    <sample uri="http://testserver.com:1234/clarity/api/samples/LAB106A258" limsid="LAB106A258"/>
+    <sample uri="http://testserver.com:1234/clarity/api/samples/LAB106A259" limsid="LAB106A259"/>
+    <sample uri="http://testserver.com:1234/clarity/api/samples/LAB106A269" limsid="LAB106A269"/>
+    <sample uri="http://testserver.com:1234/clarity/api/samples/LAB106A268" limsid="LAB106A268"/>
+    <sample uri="http://testserver.com:1234/clarity/api/samples/LAB106A271" limsid="LAB106A271"/>
+    <sample uri="http://testserver.com:1234/clarity/api/samples/LAB106A270" limsid="LAB106A270"/>
+    <sample uri="http://testserver.com:1234/clarity/api/samples/LAB106A265" limsid="LAB106A265"/>
+    <sample uri="http://testserver.com:1234/clarity/api/samples/LAB106A264" limsid="LAB106A264"/>
+    <sample uri="http://testserver.com:1234/clarity/api/samples/LAB106A267" limsid="LAB106A267"/>
+    <sample uri="http://testserver.com:1234/clarity/api/samples/LAB106A266" limsid="LAB106A266"/>
+    <sample uri="http://testserver.com:1234/clarity/api/samples/LAB106A272" limsid="LAB106A272"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 74 (GGTCGTGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 73 (GCAACATT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 76 (GTACATCT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 75 (GAATCTGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 78 (GCATGGCT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 77 (GAGGTGCT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 80 (GTCGCTAT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 79 (GTTAGCCT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 66 (TGAAGCCA)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 65 (TTGTTCCA)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 68 (TGCGTGAA)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 67 (TACCACCA)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 70 (GATCTCTT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 69 (GGTGAGTT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 72 (GACGGATT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 71 (GTGTCCTT)"/>
+    <workflow-stages>
+        <workflow-stage status="SKIPPED" name="Pre CaptureLib Pool QC" uri="http://testserver.com:1234/clarity/api/configuration/workflows/53/stages/901"/>
+        <workflow-stage status="SKIPPED" name="Pre Hyb Pool Normalisation" uri="http://testserver.com:1234/clarity/api/configuration/workflows/53/stages/375"/>
+        <workflow-stage status="SKIPPED" name="Hybridization set up" uri="http://testserver.com:1234/clarity/api/configuration/workflows/53/stages/377"/>
+        <workflow-stage status="SKIPPED" name="Capture Wash" uri="http://testserver.com:1234/clarity/api/configuration/workflows/53/stages/379"/>
+        <workflow-stage status="SKIPPED" name="Post Capture PCR set up" uri="http://testserver.com:1234/clarity/api/configuration/workflows/53/stages/380"/>
+        <workflow-stage status="SKIPPED" name="Post Capture PCR" uri="http://testserver.com:1234/clarity/api/configuration/workflows/53/stages/381"/>
+        <workflow-stage status="SKIPPED" name="Post Capture PCR Purification" uri="http://testserver.com:1234/clarity/api/configuration/workflows/53/stages/382"/>
+        <workflow-stage status="SKIPPED" name="Cap Lib Pool QC 3" uri="http://testserver.com:1234/clarity/api/configuration/workflows/53/stages/707"/>
+        <workflow-stage status="IN_PROGRESS" name="Post Capture Library Pooling" uri="http://testserver.com:1234/clarity/api/configuration/workflows/53/stages/385"/>
+    </workflow-stages>
+</art:artifact>

@@ -53,3 +53,6 @@ ss_client_id= 888
 [irods]
 manifest_path=/Sanger1-dev/home/glsai
 lab_sample_qc_path=/Sanger1-dev/home/glsai
+
+[barcode_mint]
+internal_generation=1

@@ -23,6 +23,7 @@ Readonly::Array  my @CONF_ITEMS      => qw/ clarity_api
                                             warehouse_consumer
                                             report_consumer
                                             irods
+                                            barcode_mint
                                           /;
 
 has 'dir_path'  => (

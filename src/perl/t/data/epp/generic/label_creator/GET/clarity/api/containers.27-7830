@@ -1,0 +1,297 @@
+<?xml version="1.0" standalone="yes"?>
+<con:container xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container" uri="http://testserver.com:1234/clarity/api/containers/27-7830" limsid="27-7830">
+    <name>2460277830690</name>
+    <type uri="http://testserver.com:1234/clarity/api/containertypes/4" name="96 Well Plate"/>
+    <occupied-wells>96</occupied-wells>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334601" limsid="2-334601">
+        <value>D:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334604" limsid="2-334604">
+        <value>E:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334617" limsid="2-334617">
+        <value>A:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334623" limsid="2-334623">
+        <value>C:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334627" limsid="2-334627">
+        <value>G:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334643" limsid="2-334643">
+        <value>H:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334645" limsid="2-334645">
+        <value>F:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334714" limsid="2-334714">
+        <value>C:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334719" limsid="2-334719">
+        <value>F:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334728" limsid="2-334728">
+        <value>E:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334541" limsid="2-334541">
+        <value>A:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334602" limsid="2-334602">
+        <value>C:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334619" limsid="2-334619">
+        <value>G:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334628" limsid="2-334628">
+        <value>H:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334640" limsid="2-334640">
+        <value>C:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334703" limsid="2-334703">
+        <value>E:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334706" limsid="2-334706">
+        <value>D:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334708" limsid="2-334708">
+        <value>B:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334720" limsid="2-334720">
+        <value>E:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334606" limsid="2-334606">
+        <value>G:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334607" limsid="2-334607">
+        <value>B:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334610" limsid="2-334610">
+        <value>C:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334620" limsid="2-334620">
+        <value>H:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334625" limsid="2-334625">
+        <value>A:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334634" limsid="2-334634">
+        <value>A:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334637" limsid="2-334637">
+        <value>F:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334641" limsid="2-334641">
+        <value>B:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334647" limsid="2-334647">
+        <value>C:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334702" limsid="2-334702">
+        <value>H:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334711" limsid="2-334711">
+        <value>E:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334715" limsid="2-334715">
+        <value>B:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334718" limsid="2-334718">
+        <value>G:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334721" limsid="2-334721">
+        <value>D:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334725" limsid="2-334725">
+        <value>H:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334534" limsid="2-334534">
+        <value>B:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334547" limsid="2-334547">
+        <value>G:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334550" limsid="2-334550">
+        <value>A:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334613" limsid="2-334613">
+        <value>H:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334622" limsid="2-334622">
+        <value>F:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334630" limsid="2-334630">
+        <value>F:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334644" limsid="2-334644">
+        <value>G:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334646" limsid="2-334646">
+        <value>E:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334649" limsid="2-334649">
+        <value>A:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334650" limsid="2-334650">
+        <value>B:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334713" limsid="2-334713">
+        <value>D:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334717" limsid="2-334717">
+        <value>H:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334723" limsid="2-334723">
+        <value>B:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334538" limsid="2-334538">
+        <value>F:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334543" limsid="2-334543">
+        <value>C:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334545" limsid="2-334545">
+        <value>E:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334548" limsid="2-334548">
+        <value>H:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334616" limsid="2-334616">
+        <value>D:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334618" limsid="2-334618">
+        <value>B:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334626" limsid="2-334626">
+        <value>B:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334636" limsid="2-334636">
+        <value>G:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334701" limsid="2-334701">
+        <value>G:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334709" limsid="2-334709">
+        <value>G:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334716" limsid="2-334716">
+        <value>A:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334726" limsid="2-334726">
+        <value>G:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334535" limsid="2-334535">
+        <value>C:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334536" limsid="2-334536">
+        <value>D:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334542" limsid="2-334542">
+        <value>B:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334544" limsid="2-334544">
+        <value>D:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334603" limsid="2-334603">
+        <value>F:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334605" limsid="2-334605">
+        <value>H:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334609" limsid="2-334609">
+        <value>D:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334611" limsid="2-334611">
+        <value>F:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334615" limsid="2-334615">
+        <value>C:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334629" limsid="2-334629">
+        <value>E:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334631" limsid="2-334631">
+        <value>D:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334639" limsid="2-334639">
+        <value>D:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334642" limsid="2-334642">
+        <value>A:8</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334707" limsid="2-334707">
+        <value>A:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334712" limsid="2-334712">
+        <value>F:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334722" limsid="2-334722">
+        <value>C:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334727" limsid="2-334727">
+        <value>F:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334537" limsid="2-334537">
+        <value>E:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334549" limsid="2-334549">
+        <value>B:11</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334624" limsid="2-334624">
+        <value>D:6</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334632" limsid="2-334632">
+        <value>C:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334633" limsid="2-334633">
+        <value>B:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334638" limsid="2-334638">
+        <value>E:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334648" limsid="2-334648">
+        <value>D:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334533" limsid="2-334533">
+        <value>A:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334539" limsid="2-334539">
+        <value>G:9</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334546" limsid="2-334546">
+        <value>F:10</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334608" limsid="2-334608">
+        <value>A:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334612" limsid="2-334612">
+        <value>E:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334614" limsid="2-334614">
+        <value>G:12</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334621" limsid="2-334621">
+        <value>E:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334635" limsid="2-334635">
+        <value>H:7</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334704" limsid="2-334704">
+        <value>F:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334705" limsid="2-334705">
+        <value>C:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334710" limsid="2-334710">
+        <value>H:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334724" limsid="2-334724">
+        <value>A:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/clarity/api/artifacts/2-334540" limsid="2-334540">
+        <value>H:9</value>
+    </placement>
+    <udf:field type="String" name="WTSI Container Purpose Name">Lib PCR XP</udf:field>
+    <udf:field type="String" name="WTSI Container Signature">9EZH1</udf:field>
+    <state>Populated</state>
+</con:container>
