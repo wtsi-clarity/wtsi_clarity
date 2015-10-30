@@ -430,9 +430,13 @@ sub _fetch_sanger_barcode {
     my $container_search_xml = $self->fetch_and_parse($container_search_uri);
     my $container_search_xml_limsid = $container_search_xml->findvalue($FIRST_CONTAINER);
 
-    my $num = $self->get_barcode_from_id($container_search_xml_limsid);
+    my $barcode = $self->get_barcode_from_id($container_search_xml_limsid);
 
-    $limsid_to_num{$container_limsid} = $num;
+    if ($barcode =~ /[0-9]{13}/) {
+      $barcode = $self->generate_barcode($container_from_step_xml);
+    }
+
+    $limsid_to_num{$container_limsid} = $barcode;
   }
   return \%limsid_to_num;
 }
