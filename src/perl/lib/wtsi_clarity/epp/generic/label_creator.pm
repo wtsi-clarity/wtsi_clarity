@@ -433,7 +433,7 @@ sub _fetch_sanger_barcode {
     my $barcode = $self->get_barcode_from_id($container_search_xml_limsid);
 
     if ($barcode =~ /[0-9]{13}/) {
-      $barcode = $self->generate_barcode($container_from_step_xml);
+      $barcode = $self->generate_barcode($container_search_xml_limsid);
     }
 
     $limsid_to_num{$container_limsid} = $barcode;
