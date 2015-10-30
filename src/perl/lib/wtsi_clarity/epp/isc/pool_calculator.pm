@@ -15,14 +15,9 @@ our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $INPUT_ARTIFACT_URIS => q{prc:process/input-output-map/input/@uri};
-Readonly::Scalar my $FIRST_INPUT_LIMSID  => q(prc:process/input-output-map[1]/input/@limsid);
 Readonly::Scalar my $FIRST_INPUT_URI     => q(prc:process/input-output-map[1]/input/@uri);
-Readonly::Scalar my $FIRST_OUTPUT_LIMSID => q(prc:process/input-output-map[1]/output/@limsid);
-Readonly::Scalar my $OUTPUT_ANALYTE_URIS => q(prc:process/input-output-map/output[@output-type="Analyte"]/@uri);
 Readonly::Scalar my $CONTAINER_LIMSID    => q{/art:artifact/location/container/@limsid};
 Readonly::Scalar my $MOLARITY_UDF_PATH   => q{/art:details/art:artifact/udf:field[@name="Molarity"]};
-Readonly::Scalar my $PLATE_ROW_NUMBER    => 8;
-Readonly::Scalar my $PLATE_COLUMN_NUMBER => 12;
 ## use critic
 
 sub get_volume_calculations_and_warnings {
@@ -118,12 +113,12 @@ sub _fetch_molarities {
   my $sample_id = $artifact_element->findvalue('./sample/@limsid');
 
   my $artifact_list = $self->request->query_resources(
-        q{artifacts},
-        {
-          sample_id => $sample_id,
-          udf       => 'udf.Molarity.min=0',
-          type      => 'Analyte',
-        }
+    q{artifacts},
+    {
+      sample_id => $sample_id,
+      udf       => 'udf.Molarity.min=0',
+      type      => 'Analyte',
+    }
   );
 
   my @nodelist = $artifact_list->findnodes('art:artifacts/artifact/@uri')->to_literal_list;
@@ -145,7 +140,7 @@ sub _fetch_molarities {
   my $total = sum(@molarities);
   my $no_of_molarities = scalar @molarities;
 
-  my $average =  $total / $no_of_molarities;
+  my $average = $total / $no_of_molarities;
 
   return $average;
 }

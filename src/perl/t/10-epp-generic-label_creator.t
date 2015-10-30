@@ -678,14 +678,13 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
 
 {
   my $lc = wtsi_clarity::epp::generic::label_creator->new(
-    process_url             => $base_uri . '/processes/24-65189',
-    step_url                => $base_uri . '/steps/24-65189',
+    process_url             => $base_uri . '/processes/24-49810',
+    step_url                => $base_uri . '/steps/24-49810',
+    get_sanger_barcode_from => 'Volume Check (SM)',
   );
-  is_deeply($lc->_fetch_sanger_barcode(), {
-    '27-11766' => 'GCLP:SM:27-11766:0',
-    '27-11767' => 'GCLP:SM:27-11767:0'
-  },
-  'Fetches and creates the Sanger barcodes correctly');
+  is_deeply($lc->_fetch_sanger_barcode('Volume Check (SM)'),{
+    '27-7833' => 'GCLP:SM:27-11767:0'
+  }, 'Fetches and creates the Sanger barcodes correctly');
 }
 
 1;

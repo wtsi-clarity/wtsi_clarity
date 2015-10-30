@@ -49,6 +49,14 @@ Readonly::Scalar my $ARTIFACT_URI_PATH             => q{ /art:artifacts/artifact
 Readonly::Scalar my $CONTAINER_SIGNATURE_PATH      => q{ /con:container/udf:field[@name='} . $CONTAINER_SIGNATURE_FIELD_NAME . q{']/text()};
 Readonly::Scalar my $STEP_OUTPUT_CONTAINERS        => q{ stp:placements/selected-containers/container/@uri };
 Readonly::Scalar my $EACH_CONTAINER_LIMS_ID        => q{ con:details/con:container/@limsid };
+
+Readonly::Scalar my $FIRST_ANALYTE_URI        => q{ con:details/con:container/placement[1]/@uri };
+Readonly::Scalar my $EACH_ARTIFACT            => q{ art:details/art:artifact };
+Readonly::Scalar my $ANALYTE_CONTAINER_LIMSID => q{ ./location/container/@limsid };
+Readonly::Scalar my $ANALYTE_SAMPLE_LIMSID    => q{ ./sample/@limsid };
+Readonly::Scalar my $LAST_ARTIFACT            => q{ art:artifacts/artifact[last()]/@uri };
+Readonly::Scalar my $FIRST_CONTAINER          => q{ con:containers/container[1]/@limsid };
+
 ##use critic
 
 Readonly::Scalar my $SIGNATURE_LENGTH              => 5;
@@ -380,17 +388,51 @@ sub _check_options {
 }
 
 sub _fetch_sanger_barcode {
-  my ($self) = @_;
+  my ($self, $step_name) = @_;
 
   # Fetch the output containers
   my $placements = $self->fetch_and_parse($self->step_url . q{/placements});
   my @output_containers = $placements->findnodes($STEP_OUTPUT_CONTAINERS)->to_literal_list;
   my $container_xml = $self->request->batch_retrieve('containers', \@output_containers);
-  my @container_ids = $container_xml->findnodes($EACH_CONTAINER_LIMS_ID)->to_literal_list;
+  # Fetch the first analyte from each container
+  my @analyte_uris = $container_xml->findnodes($FIRST_ANALYTE_URI)->to_literal_list;
+  my $analytes_xml = $self->request->batch_retrieve('artifacts', \@analyte_uris);
 
   my %limsid_to_num = ();
-  foreach my $container_lims_id (@container_ids) {
-    $limsid_to_num{$container_lims_id} = $self->get_barcode_from_id($container_lims_id);
+
+  foreach my $analyte ($analytes_xml->findnodes($EACH_ARTIFACT)) {
+
+    my $container_limsid = $analyte->findvalue($ANALYTE_CONTAINER_LIMSID);
+    my $sample_limsid = $analyte->findvalue($ANALYTE_SAMPLE_LIMSID);
+
+    my $artifacts_uri = $self->config->clarity_api->{'base_uri'}
+      . q{/artifacts?type=Analyte&process-type=}
+      . uri_escape($step_name)
+      . q{&samplelimsid=} . $sample_limsid;
+
+    my $artifacts_xml = $self->fetch_and_parse($artifacts_uri);
+
+    my $artifact_uri = $artifacts_xml->findvalue($LAST_ARTIFACT);
+
+    if ($artifact_uri eq q{}) {
+      $self->epp_log('No parent plate of plate ' . $container_limsid . ' has been through step ' . $step_name);
+      next;
+    }
+
+    my $artifact_xml = $self->fetch_and_parse($artifact_uri);
+    my $container_uri = $artifact_xml->findvalue($CONTAINER_URI_PATH);
+    my $container_from_step_xml = $self->fetch_and_parse($container_uri);
+    my $container_name = $container_from_step_xml->findvalue($CONTAINER_NAME_PATH);
+
+    my $container_search_uri = $self->config->clarity_api->{'base_uri'}
+      . q{/containers?name=} . $container_name;
+
+    my $container_search_xml = $self->fetch_and_parse($container_search_uri);
+    my $container_search_xml_limsid = $container_search_xml->findvalue($FIRST_CONTAINER);
+
+    my $num = $self->get_barcode_from_id($container_search_xml_limsid);
+
+    $limsid_to_num{$container_limsid} = $num;
   }
   return \%limsid_to_num;
 }
