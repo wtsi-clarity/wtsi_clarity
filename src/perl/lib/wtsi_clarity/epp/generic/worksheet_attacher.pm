@@ -353,7 +353,6 @@ sub _get_table_data {
   return (\@table_data, \@table_properties);
 }
 
-## no critic(Subroutines::ProhibitManyArgs)
 sub _get_cell {
   my ($data, $colour_indexes, $i, $j) = @_;
 
@@ -370,7 +369,6 @@ sub _get_cell {
   }
   return ($content, $properties);
 }
-## use critic
 
 sub _get_cell_content {
   my ($data, $pos) = @_;
@@ -500,8 +498,7 @@ sub _get_containers_data {
       }
 
       # we only do this part when it's a container that we don't know yet...
-      if (!defined $all_data->{'input_container_info'}->{$in_container_uri})
-      {
+      if (!defined $all_data->{'input_container_info'}->{$in_container_uri}) {
         my $in_container = $self->fetch_and_parse($in_container_uri);
 
         my $freezer = $self->find_udf_element_textContent( $in_container, $FREEZER_PATH, q{Unknown} );
@@ -531,8 +528,9 @@ sub _get_containers_data {
         $all_data->{ q{input_container_info} }->{ $in_container_uri }->{ q{purpose}    } = $purpose;
       }
 
+      my $plate_name = $all_data->{q{input_container_info}}->{ $in_container_uri }->{q{plate_name}};
       $all_data->{ q{output_container_info} }->{$out_container_uri}->{ q{container_details} }->{$out_location} = {
-        q{input_id}             => $in_container_id,
+        q{input_id}             => $plate_name,
         q{input_location}       => $in_location,
         q{sample_volume}        => $sample_volume,
         q{buffer_volume}        => $buffer_volume,

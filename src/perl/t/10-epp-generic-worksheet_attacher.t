@@ -12,6 +12,10 @@ use Data::Dumper;
 
 local $ENV{'WTSI_CLARITY_HOME'} = q[t/data/config];
 
+use wtsi_clarity::util::config;
+my $config = wtsi_clarity::util::config->new();
+my $base_uri = $config->clarity_api->{'base_uri'};
+
 use_ok('wtsi_clarity::epp::generic::worksheet_attacher', 'can use wtsi_clarity::epp::generic::worksheet_attacher' );
 use_ok('util::xml', 'can use wtsi_clarity::t::util::xml' );
 
@@ -400,7 +404,7 @@ my $TEST_DATA4 = {
   );
 
   my $worksheet_attacher = wtsi_clarity::epp::generic::worksheet_attacher->new(
-    process_url => 'http://testserver.com:1234/here/processes/24-102407',
+    process_url => $base_uri . '/processes/24-102407',
     worksheet_type => 'cherrypicking',
     worksheet_filename => 'xxxxx_worksheet.pdf',
     tecan_filename => 'xxxxx_tecan.gwl',
@@ -444,7 +448,7 @@ my $TEST_DATA4 = {
   );
 
   my $worksheet_attacher = wtsi_clarity::epp::generic::worksheet_attacher->new(
-    process_url => 'http://testserver.com:1234/here/processes/24-102407',
+    process_url => $base_uri . '/processes/24-102407',
     worksheet_type => 'cherrypicking',
     worksheet_filename => 'xxxxx_worksheet.pdf',
     tecan_filename => 'xxxxx_tecan.gwl',
@@ -547,7 +551,7 @@ my $TEST_DATA4 = {
   # _get_containers_data
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/worksheet_attacher';
   my $step = wtsi_clarity::epp::generic::worksheet_attacher->new(
-    process_url => 'http://testserver.com:1234/here/processes/24-102407',
+    process_url => $base_uri . '/processes/24-102407',
     worksheet_type => 'cherrypicking',
     worksheet_filename => 'xxxxx_worksheet.pdf',
     tecan_filename => 'xxxxx_tecan.gwl',
@@ -565,21 +569,21 @@ my $TEST_DATA4 = {
     'exp_location' => "B:2",
     'exp_sample_volume' => "1.2",
     'exp_buffer_volume' => "8.8",
-    'exp_id' => "27-23",
+    'exp_id' => "7020",
     'exp_type' => "ABgene 0800",
     },
     { 'param' => 'D:3',
     'exp_location' => "B:1",
     'exp_sample_volume' => "1.2",
     'exp_buffer_volume' => "8.8",
-    'exp_id' => "27-27",
+    'exp_id' => "273251",
     'exp_type' => "ABgene 0800",
     },
   );
   my $expected_plate_purpose = q{PLATE_PURPOSE_TEST};
   my %expected_plate_name = (
-    'http://testserver.com:1234/here/containers/27-23' => '7020',
-    'http://testserver.com:1234/here/containers/27-27' => '273251',
+    $base_uri . '/containers/27-23' => '7020',
+    $base_uri . '/containers/27-27' => '273251',
   );
 
   foreach my $datum (@expected_out_data) {
@@ -667,7 +671,7 @@ my $TEST_DATA4 = {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/worksheet_attacher';
   # local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 1;
   my $step = wtsi_clarity::epp::generic::worksheet_attacher->new(
-    process_url => 'http://testserver.com:1234/here/processes/24-102407',
+    process_url => $base_uri . '/processes/24-102407',
     worksheet_type => 'cherrypicking',
     worksheet_filename => 'xxxxx_worksheet.pdf',
     tecan_filename => 'xxxxx_tecan.gwl',
@@ -883,7 +887,7 @@ my $TEST_DATA4 = {
 
 {
   my $worksheet_attacher = Test::MockObject::Extends->new( wtsi_clarity::epp::generic::worksheet_attacher->new(
-    process_url => 'http://testserver.com:1234/here/processes/24-102407',
+    process_url => $base_uri . '/processes/24-102407',
     worksheet_type => 'cherrypicking',
     worksheet_filename => 'xxxxx_worksheet.pdf',
     tecan_filename => 'xxxxx_tecan.gwl',
@@ -903,7 +907,7 @@ my $TEST_DATA4 = {
 {
 
   my $worksheet_attacher = Test::MockObject::Extends->new( wtsi_clarity::epp::generic::worksheet_attacher->new(
-    process_url => 'http://testserver.com:1234/here/processes/24-102407',
+    process_url => $base_uri . '/processes/24-102407',
     worksheet_type => 'cherrypicking',
     worksheet_filename => 'xxxxx_worksheet.pdf',
     tecan_filename => 'xxxxx_tecan.gwl',
@@ -931,7 +935,7 @@ my $TEST_DATA4 = {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/worksheet_attacher/no_buffers';
 
   my $worksheet_attacher = wtsi_clarity::epp::generic::worksheet_attacher->new(
-    process_url => 'http://testserver.com:1234/here/processes/24-26963',
+    process_url => $base_uri . '/processes/24-26963',
     worksheet_filename => 'blah.pdf',
     worksheet_type => 'fluidigm',
     tecan_filename => 'blah.gwl',
@@ -941,147 +945,147 @@ my $TEST_DATA4 = {
     'user_first_name' => 'Christopher',
     'process_id' => '2426963',
     'output_container_info' => {
-      'http://testserver.com:1234/here/containers/27-4345' => {
+      $base_uri . '/containers/27-4345' => {
         'container_details' => {
           'A:2' => {
             'input_location' => 'B:1',
             'sample_volume' => '1.25',
             'buffer_volume' => 0,
             'input_id' => '27-4304',
-            'input_uri' => 'http://testserver.com:1234/here/containers/27-4304'
+            'input_uri' => $base_uri . '/containers/27-4304'
           },
           'C:1' => {
             'input_location' => 'C:1',
             'sample_volume' => '1.25',
             'buffer_volume' => 0,
             'input_id' => '27-4304',
-            'input_uri' => 'http://testserver.com:1234/here/containers/27-4304'
+            'input_uri' => $base_uri . '/containers/27-4304'
           },
           'G:1' => {
             'input_location' => 'F:1',
             'sample_volume' => '1.25',
             'buffer_volume' => 0,
             'input_id' => '27-4304',
-            'input_uri' => 'http://testserver.com:1234/here/containers/27-4304'
+            'input_uri' => $base_uri . '/containers/27-4304'
           },
           'G:2' => {
             'input_location' => 'D:1',
             'sample_volume' => '1.25',
             'buffer_volume' => 0,
             'input_id' => '27-4330',
-            'input_uri' => 'http://testserver.com:1234/here/containers/27-4330'
+            'input_uri' => $base_uri . '/containers/27-4330'
           },
           'A:1' => {
             'input_location' => 'H:1',
             'sample_volume' => '1.25',
             'buffer_volume' => 0,
             'input_id' => '27-4304',
-            'input_uri' => 'http://testserver.com:1234/here/containers/27-4304'
+            'input_uri' => $base_uri . '/containers/27-4304'
           },
           'H:1' => {
             'input_location' => 'G:1',
             'sample_volume' => '1.25',
             'buffer_volume' => 0,
             'input_id' => '27-4304',
-            'input_uri' => 'http://testserver.com:1234/here/containers/27-4304'
+            'input_uri' => $base_uri . '/containers/27-4304'
           },
           'C:2' => {
             'input_location' => 'A:2',
             'sample_volume' => '1.25',
             'buffer_volume' => 0,
             'input_id' => '27-4330',
-            'input_uri' => 'http://testserver.com:1234/here/containers/27-4330'
+            'input_uri' => $base_uri . '/containers/27-4330'
           },
           'A:3' => {
             'input_location' => 'H:1',
             'sample_volume' => '1.25',
             'buffer_volume' => 0,
             'input_id' => '27-4330',
-            'input_uri' => 'http://testserver.com:1234/here/containers/27-4330'
+            'input_uri' => $base_uri . '/containers/27-4330'
           },
           'E:1' => {
             'input_location' => 'B:2',
             'sample_volume' => '1.25',
             'buffer_volume' => 0,
             'input_id' => '27-4304',
-            'input_uri' => 'http://testserver.com:1234/here/containers/27-4304'
+            'input_uri' => $base_uri . '/containers/27-4304'
           },
           'D:2' => {
             'input_location' => 'A:1',
             'sample_volume' => '1.25',
             'buffer_volume' => 0,
             'input_id' => '27-4330',
-            'input_uri' => 'http://testserver.com:1234/here/containers/27-4330'
+            'input_uri' => $base_uri . '/containers/27-4330'
           },
           'B:2' => {
             'input_location' => 'A:2',
             'sample_volume' => '1.25',
             'buffer_volume' => 0,
             'input_id' => '27-4304',
-            'input_uri' => 'http://testserver.com:1234/here/containers/27-4304'
+            'input_uri' => $base_uri . '/containers/27-4304'
           },
           'B:1' => {
             'input_location' => 'A:1',
             'sample_volume' => '1.25',
             'buffer_volume' => 0,
             'input_id' => '27-4304',
-            'input_uri' => 'http://testserver.com:1234/here/containers/27-4304'
+            'input_uri' => $base_uri . '/containers/27-4304'
           },
           'F:2' => {
             'input_location' => 'F:1',
             'sample_volume' => '1.25',
             'buffer_volume' => 0,
             'input_id' => '27-4330',
-            'input_uri' => 'http://testserver.com:1234/here/containers/27-4330'
+            'input_uri' => $base_uri . '/containers/27-4330'
           },
           'D:1' => {
             'input_location' => 'E:1',
             'sample_volume' => '1.25',
             'buffer_volume' => 0,
             'input_id' => '27-4304',
-            'input_uri' => 'http://testserver.com:1234/here/containers/27-4304'
+            'input_uri' => $base_uri . '/containers/27-4304'
           },
           'C:3' => {
             'input_location' => 'C:1',
             'sample_volume' => '1.25',
             'buffer_volume' => 0,
             'input_id' => '27-4330',
-            'input_uri' => 'http://testserver.com:1234/here/containers/27-4330'
+            'input_uri' => $base_uri . '/containers/27-4330'
           },
           'H:2' => {
             'input_location' => 'B:2',
             'sample_volume' => '1.25',
             'buffer_volume' => 0,
             'input_id' => '27-4330',
-            'input_uri' => 'http://testserver.com:1234/here/containers/27-4330'
+            'input_uri' => $base_uri . '/containers/27-4330'
           },
           'F:1' => {
             'input_location' => 'D:1',
             'sample_volume' => '1.25',
             'buffer_volume' => 0,
             'input_id' => '27-4304',
-            'input_uri' => 'http://testserver.com:1234/here/containers/27-4304'
+            'input_uri' => $base_uri . '/containers/27-4304'
           },
           'E:2' => {
             'input_location' => 'E:1',
             'sample_volume' => '1.25',
             'buffer_volume' => 0,
             'input_id' => '27-4330',
-            'input_uri' => 'http://testserver.com:1234/here/containers/27-4330'
+            'input_uri' => $base_uri . '/containers/27-4330'
           },
           'B:3' => {
             'input_location' => 'G:1',
             'sample_volume' => '1.25',
             'buffer_volume' => 0,
             'input_id' => '27-4330',
-            'input_uri' => 'http://testserver.com:1234/here/containers/27-4330'
+            'input_uri' => $base_uri . '/containers/27-4330'
           },
           'D:3' => {
             'input_location' => 'B:1',
             'sample_volume' => '1.25',
             'buffer_volume' => 0,
             'input_id' => '27-4330',
-            'input_uri' => 'http://testserver.com:1234/here/containers/27-4330'
+            'input_uri' => $base_uri . '/containers/27-4330'
           }
         },
         'plate_name' => '274345',
@@ -1094,7 +1098,7 @@ my $TEST_DATA4 = {
     },
     'user_last_name' => 'Smith',
     'input_container_info' => {
-      'http://testserver.com:1234/here/containers/27-4330' => {
+      $base_uri . '/containers/27-4330' => {
         'freezer' => 'Unknown',
         'purpose' => 'Working Dilution',
         'tray' => 'Unknown',
@@ -1104,7 +1108,7 @@ my $TEST_DATA4 = {
         'plate_name' => '274330',
         'type' => 'ABgene 0800'
       },
-      'http://testserver.com:1234/here/containers/27-4304' => {
+      $base_uri . '/containers/27-4304' => {
         'freezer' => 'Unknown',
         'purpose' => 'Working Dilution',
         'tray' => 'Unknown',
@@ -1116,7 +1120,7 @@ my $TEST_DATA4 = {
       }
     }
   };
-  my ($sample_output, $buffer_output) = $worksheet_attacher->_get_TECAN_file_content_per_URI($containers_data, 'http://testserver.com:1234/here/containers/27-4345');
+  my ($sample_output, $buffer_output) = $worksheet_attacher->_get_TECAN_file_content_per_URI($containers_data, $base_uri . '/containers/27-4345');
 
   is_deeply($buffer_output, [], 'Buffer output is empty array when buffer volume is 0');
 }
