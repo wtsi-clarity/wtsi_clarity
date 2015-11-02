@@ -49,20 +49,24 @@ has 'plate_style_table' => (
 sub build {
   my ($self, $parameters) = @_;
 
-  my ($plate_table, $plate_table_cell_styles) = $self->format_tables($parameters->{'plate_table_data'});
+  my @pages = ();
+
+  for my $parameter (@{$parameters}) {
+    my ($plate_table, $plate_table_cell_styles) = $self->format_tables($parameter->{'plate_table_data'});
+
+    push @pages, {
+      'title' => 'Pooling worksheets',
+      'input_table_title' => 'Source Plate',
+      'input_table' => _get_input_table_data($parameter->{'input_table_data'}),
+      'plate_table_title' => 'Results',
+      'plate_table' => $plate_table,
+      'plate_table_cell_styles' => $plate_table_cell_styles,
+    };
+  }
 
   my $pdf_data = {
     'stamp' => 'Created: ' . DateTime->now->strftime('%A %d-%B-%Y at %H:%M:%S'),
-    'pages' => [
-      {
-        'title' => 'Pooling worksheets',
-        'input_table_title' => 'Source Plate',
-        'input_table' => _get_input_table_data($parameters->{'input_table_data'}),
-        'plate_table_title' => 'Results',
-        'plate_table' => $plate_table,
-        'plate_table_cell_styles' => $plate_table_cell_styles,
-      }
-    ]
+    'pages' => \@pages,
   };
 
   my $pool_pdf_generator = wtsi_clarity::util::pdf::layout::pool_analysis_results->new(pdf_data => $pdf_data);
