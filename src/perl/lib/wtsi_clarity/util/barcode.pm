@@ -39,8 +39,12 @@ sub numberPrefix {
 
   $i = ord($i) - 64;
   $j = ord($j) - 64;
-    if($i < 1){$i = 0;}
-    if($j < 1){$j = 0;}
+  if ($i < 1) {
+    $i = 0;
+  }
+  if ($j < 1) {
+    $j = 0;
+  }
 
   $prefix = (($i * 27) + $j) * 1000000000;
 
@@ -71,8 +75,10 @@ sub calculateBarcode {
 
   my $bc = numberPrefix($type) + ($number * 100);
   $bc += ord(substr($cl, length($cl) - 1));
-    if(length($bc) == 11){$bc ="0$bc";}
-  
+  if (length($bc) == 11) {
+    $bc = "0$bc";
+  }
+
   my $check = checkDigit($bc);
   $bc .= $check;
 
