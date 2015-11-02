@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import urllib.request as request
 from urllib.parse import urljoin
 from xml.etree import ElementTree
@@ -6,7 +8,7 @@ import getpass
 
 __author__ = 'rf9'
 
-SEP = "\t"
+SEP = ", "
 
 
 def setup_urllib():

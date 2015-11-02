@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import getpass
 import os
 import urllib.request as request
