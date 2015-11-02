@@ -1,0 +1,40 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/2-373230?state=186640" limsid="2-373230">
+    <name>2462711130779 A3:H4 (B:1)</name>
+    <type>Analyte</type>
+    <output-type>Pool</output-type>
+    <parent-process uri="http://testserver.com:1234/here/processes/122-63210" limsid="122-63210"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-11099" limsid="27-11099"/>
+        <value>B:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A112" limsid="SV2454A112"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A114" limsid="SV2454A114"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A115" limsid="SV2454A115"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A111" limsid="SV2454A111"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A121" limsid="SV2454A121"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A123" limsid="SV2454A123"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A117" limsid="SV2454A117"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A119" limsid="SV2454A119"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A125" limsid="SV2454A125"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV2454A124" limsid="SV2454A124"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 20 (TTGGAGGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 17 (TGTACCTT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 18 (TTCTGTGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 27 (TAGTGACT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 25 (TGCGATCT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 23 (TGCATAGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 21 (TCGAGCGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 31 (TAGTCTTG)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 30 (TGTGGTTG)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 29 (TCCTCAAT)"/>
+    <udf:field type="Numeric" name="Average Molarity">223.07745</udf:field>
+    <udf:field type="Numeric" name="Concentration">12345</udf:field>
+    <udf:field type="Numeric" name="Croaker">Only set here</udf:field>
+    <workflow-stages>
+        <workflow-stage status="COMPLETE" name="Pre CaptureLib Pool QC" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1177"/>
+        <workflow-stage status="COMPLETE" name="Pre Hyb Pool Normalisation" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1178"/>
+    </workflow-stages>
+</art:artifact>

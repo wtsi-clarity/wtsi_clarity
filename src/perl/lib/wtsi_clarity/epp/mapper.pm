@@ -23,6 +23,7 @@ Readonly::Hash my %ACTION2MODULE => (
   'queue_message'                  => 'generic::messenger',
   'store_plate'                    => 'generic::plate_storer',
   'verify_control'                 => 'generic::control_verifier',
+  'copy_udfs'                      => 'generic::udf_copier',
 
   'create_manifest'                => 'reports::manifest',
   'create_sample_qc_report'        => 'reports::sample_qc_report',

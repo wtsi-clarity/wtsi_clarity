@@ -1,0 +1,63 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-399120?state=202959" limsid="2-399120">
+        <name>Pool #2</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-67079" limsid="24-67079"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-13412" limsid="27-13412"/>
+            <value>1:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/SV2454A112" limsid="SV2454A112"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/SV2454A114" limsid="SV2454A114"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/SV2454A115" limsid="SV2454A115"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 20 (TTGGAGGT)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 17 (TGTACCTT)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 18 (TTCTGTGT)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 27 (TAGTGACT)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 25 (TGCGATCT)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 23 (TGCATAGT)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 21 (TCGAGCGT)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 31 (TAGTCTTG)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 30 (TGTGGTTG)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 29 (TCCTCAAT)"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="Illumina Sequencing" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/552/stages/1189"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-399123?state=202962" limsid="2-399123">
+        <name>Pool #3</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-67079" limsid="24-67079"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-13412" limsid="27-13412"/>
+            <value>2:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/SV2454A131" limsid="SV2454A131"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/SV2454A130" limsid="SV2454A130"/>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/SV2454A129" limsid="SV2454A129"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 37 (TACTTCGG)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 38 (TCTCACGG)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 39 (TCAGGAGG)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 40 (TAAGTTCG)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 41 (TCCAGTCG)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 48 (TTCAGCTC)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 47 (TACTAGTC)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 46 (TCAGATTC)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 44 (TGGCTCAG)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 42 (TGTATGCG)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 36 (TGAACTGG)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 35 (TTGGTATG)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 34 (TAACGCTG)"/>
+        <reagent-label name="Sanger_168tags - 10 mer tags: tag 33 (TCGAAGTG)"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="Illumina Sequencing" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/552/stages/1189"/>
+        </workflow-stages>
+    </art:artifact>
+</art:details>
