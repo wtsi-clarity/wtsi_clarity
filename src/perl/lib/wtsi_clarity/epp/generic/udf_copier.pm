@@ -12,6 +12,7 @@ our $VERSION = '0.0';
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $ARTIFACTS_PATH => q(art:details/art:artifact);
 Readonly::Scalar my $SAMPLE_LIMSIDS => q(./sample/@limsid);
+## use critic
 
 has 'from_process' => ( is => 'ro', isa => 'Str', required => 1 );
 
