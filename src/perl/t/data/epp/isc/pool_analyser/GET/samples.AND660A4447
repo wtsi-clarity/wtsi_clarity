@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:sample xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/AND660A4447" limsid="AND660A4447">
+    <name>223</name>
+    <date-received>2015-10-05</date-received>
+    <project limsid="AND660" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/AND660"/>
+    <submitter uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/56">
+        <first-name>Dan</first-name>
+        <last-name>Andrews</last-name>
+    </submitter>
+    <artifact limsid="AND660A4447PA1" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/AND660A4447PA1?state=192083"/>
+    <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    <udf:field type="Numeric" name="WTSI Supplier Volume">120</udf:field>
+    <udf:field type="Numeric" name="WTSI Library Molarity">154.25</udf:field>
+    <udf:field type="String" name="WTSI Bait Library Name">14M_0670551</udf:field>
+    <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+    <udf:field type="String" name="WTSI Phenotype">Not Applicable</udf:field>
+    <udf:field type="String" name="WTSI Supplier Gender - (SM)">Unknown</udf:field>
+    <udf:field type="String" name="WTSI Library Concentration">7.89</udf:field>
+</smp:sample>

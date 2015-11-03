@@ -39,13 +39,14 @@ sub _build_query
   my ($criteria) = @_;
 
   my $map_key = {
-    sample_id   => 'samplelimsid',
-    artifact_id => 'inputartifactlimsid',
-    step        => 'process-type',
-    type        => 'type',
-    udf         => 'udf',
-    name        => 'name',
-    start_index => 'start-index',
+    sample_id    => 'samplelimsid',
+    artifact_id  => 'inputartifactlimsid',
+    step         => 'process-type',
+    type         => 'type',
+    udf          => 'udf',
+    name         => 'name',
+    start_index  => 'start-index',
+    process_type => 'process-type',
   };
   my $query = q{};
 
