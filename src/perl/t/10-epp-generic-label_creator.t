@@ -159,6 +159,7 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
               'date_user'      => '21-May-2014 ',
               'purpose'        => 'Stock Plate',
               'signature'      => 'EL2LO',
+              'stock_barcode'  => '',
             }
           },
         ]
@@ -359,6 +360,7 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
               'date_user'      => '21-May-2014 D. Jones',
               'purpose'        => 'Pico Assay A',
               'signature'      => 'HP2MX',
+              'stock_barcode'  => '',
             }
           },
           {
@@ -368,6 +370,7 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
               'date_user'      => '21-May-2014 D. Jones',
               'purpose'        => 'Pico Assay',
               'signature'      => 'HP2MX',
+              'stock_barcode'  => '',
             }
           }
         ]
@@ -682,7 +685,7 @@ use_ok('wtsi_clarity::epp::generic::label_creator');
     step_url                => $base_uri . '/steps/24-49810',
     get_sanger_barcode_from => 'Volume Check (SM)',
   );
-  is_deeply($lc->_fetch_sanger_barcode('Volume Check (SM)'),{
+  is_deeply($lc->_fetch_sanger_barcode('Volume Check (SM)'), {
     '27-7833' => 'GCLP:SM:27-11767:0'
   }, 'Fetches and creates the Sanger barcodes correctly');
 }
