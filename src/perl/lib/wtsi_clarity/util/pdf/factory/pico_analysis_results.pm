@@ -3,14 +3,14 @@ package wtsi_clarity::util::pdf::factory::pico_analysis_results;
 use Moose;
 use Carp;
 use Readonly;
-use DateTime;
 
-use wtsi_clarity::util::pdf::layout::pico_analysis_results;
 
 with 'wtsi_clarity::util::pdf::factory::analysis_results';
+extends 'wtsi_clarity::util::pdf::pdf_generator';
 
-Readonly::Scalar our $HEADER_STYLE => q(HEADER_STYLE);
 Readonly::Scalar our $NUMBER_OF_COLUMNS => 12;
+
+Readonly::Scalar my $buffer_table_y_position => 100;
 
 our $VERSION = '0.0';
 
@@ -51,20 +51,17 @@ sub build {
 
   my ($plate_table, $plate_table_cell_styles) = $self->format_tables($parameters);
 
-  my $pdf_data = {
-    'stamp' => 'Created: ' . DateTime->now->strftime('%A %d-%B-%Y at %H:%M:%S'),
-    'pages' => [
-      {
-        'title' => 'Picogreen Analysis',
-        'plate_table_title' => 'Results',
-        'plate_table' => $plate_table,
-        'plate_table_cell_styles' => $plate_table_cell_styles,
-      }
-    ]
-  };
+  my $pdf_generator = wtsi_clarity::util::pdf::pdf_generator->new();
 
-  my $pico_pdf_generator = wtsi_clarity::util::pdf::layout::pico_analysis_results->new(pdf_data => $pdf_data);
-  return $pico_pdf_generator->create();
+  my $page = $self->pdf->page();
+  $page->mediabox('A4');
+
+  $pdf_generator->add_title_to_page($page, 'Picogreen Analysis');
+  $pdf_generator->add_timestamp($page);
+
+  $pdf_generator->add_buffer_block_to_page($self->pdf, $page, $plate_table, 'Results', $plate_table_cell_styles, $buffer_table_y_position);
+
+  return $self->pdf;
 }
 
 sub table_header_row {

@@ -1380,7 +1380,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
   is_deeply(\@plate_table_data, $expected_plate_table_data, 'Returns plate table data correctly.');
 
   lives_ok {
-    wtsi_clarity::util::pdf::factory->createPDF('pool_analysis_results', $parameters)
+     wtsi_clarity::util::pdf::factory::pool_analysis_results->new()->build($parameters)
   } 'Creates a PDF file for the pool analysis.';
 }
 
