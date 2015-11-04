@@ -266,9 +266,10 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
             'template' => 'clarity_data_matrix_plate',
             'plate' => {
               'barcode' => 'GCLP:SM:5496:7',
-                'signature' => undef,
-                'date_user' => '24-Mar-2015 ',
-                'purpose' => 'Stock Plate',
+              'signature' => undef,
+              'date_user' => '24-Mar-2015 ',
+              'purpose' => 'Stock Plate',
+              'stock_barcode'  => '',
             }
           },
           {
@@ -278,6 +279,7 @@ use_ok('wtsi_clarity::epp::generic::external_barcode_creator');
               'signature' => undef,
               'date_user' => '24-Mar-2015 ',
               'purpose' => 'Stock Plate',
+              'stock_barcode'  => '',
             }
           }
         ]
