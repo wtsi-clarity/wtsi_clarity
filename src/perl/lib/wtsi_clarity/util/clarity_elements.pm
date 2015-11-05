@@ -6,11 +6,13 @@ use Readonly;
 use XML::LibXML;
 use Try::Tiny;
 use Mojo::Collection 'c';
+use List::MoreUtils qw(uniq);
 
 our $VERSION = '0.0';
 
 ##no critic ValuesAndExpressions::RequireInterpolationOfMetachars
 Readonly::Scalar my $INPUT_PARAMETER_PATH => q{ /prc:process/udf:field[contains(@name, '%s')] };
+Readonly::Scalar my $USER_DEFINED_URL     => q{http://genologics.com/ri/userdefined};
 ##use critic
 
 sub _set_clarity_element {
@@ -26,14 +28,14 @@ sub _set_udf_element {
 ## no critic(Subroutines::ProhibitManyArgs)
 sub _set_any_element {
   my ($self, $xml, $name, $value, $override, $is_udf) = @_;
-## use critic
+  ## use critic
   croak q/Missing argument: is_udf flag must be set/ if !defined $is_udf;
   # find if the element already exists...
-  my $oldElement = $is_udf ?  $self->find_udf_element($xml, $name):
-                              $self->find_clarity_element($xml, $name);
+  my $oldElement = $is_udf ? $self->find_udf_element($xml, $name):
+    $self->find_clarity_element($xml, $name);
 
-  if ( $oldElement ) {
-    if ($override ) {
+  if ($oldElement) {
+    if ($override) {
       # if node exists and should be overriden...
       return $self->_overwrite_element($oldElement, $value);
     } else {
@@ -43,8 +45,8 @@ sub _set_any_element {
   }
 
   # node does not exists...
-  my $newNode = $is_udf ? $self->create_udf_element    ($xml, $name, $value):
-                          $self->create_clarity_element($xml, $name, $value);
+  my $newNode = $is_udf ? $self->create_udf_element($xml, $name, $value) :
+    $self->create_clarity_element($xml, $name, $value);
   my $root = $xml->getDocumentElement();
   $root->addChild($newNode);
 
@@ -157,59 +159,42 @@ sub find_elements {
 
 sub update_nodes {
   my ($self, %args) = @_;
-  my $document       = $args{'document'} || croak qq{Requires an XML document!};
-  my $xpath_location = $args{'xpath'}    || croak qq{Requires an XPath!};
-  my $type           = $args{'type'}     || croak qq{Requires a type of xml element to be updated!};
-  my $name           = $args{'udf_name'} || $args{'element_name'}  || croak qq{Requires the name of the xml element to be updated!};
+
+  my $document = $args{'document'} or croak qq{Requires an XML document!};
+  my $xpath_location = $args{'xpath'} or croak qq{Requires an XPath!};
+  my $name = $args{'udf_name'} || $args{'element_name'} or croak qq{Requires the name of the xml element to be updated!};
   if ($args{'udf_name'} && $args{'element_name'}) {
-    confess qq{Only one type of 'name' can be given at the same time!};
+    croak qq{Only one type of 'name' can be given at the same time!};
   }
-  if ($args{'type'} ne qq{Text}) {
-    croak qq{Only the text value of a node can be updated for now! Other options (such as attribute) are not implemented yet!};
-  }
-
-  my $value = q{};
-  if (defined $args{'value'}) {
-    $value = $args{'value'};
-  }
-
+  my $value = $args{'value'} || q{};
   my $is_udf = defined $args{'udf_name'};
+  my $xpath_element = $is_udf ? qq{./udf:field[\@name='$name']} : qq{./$name};
 
-  my $xpath_element;
-  if ($is_udf) {
-    $xpath_element  = qq{./udf:field[\@name='$name']};
-  }
-  else
-  {
-    $xpath_element = qq{./$name};
-  }
-  c->new($document->findnodes( $xpath_location )->get_nodelist())
-    ->each(sub {
-      my @elements = $_->findnodes($xpath_element)->get_nodelist();
-      if (@elements > 0) {
-        c->new(@elements)->each(sub {
-          $self->update_text($_, $value);
-        });
-      } else {
-        my $el;
-        if ($is_udf) {
-          $el = $self->create_udf_element($document, $name, $value);
-        } else {
-          $el = $self->create_clarity_element($document, $name, $value);
-        }
-        $_->appendChild($el);
+  for my $node ($document->findnodes( $xpath_location )->get_nodelist()) {
+    my @elements = $node->findnodes($xpath_element)->get_nodelist();
+    if (@elements > 0) {
+      for my $element (@elements) {
+        $self->update_text($element, $value);
       }
-    });
+    } else {
+      $node->appendChild($is_udf ?
+        $self->create_udf_element($document, $name, $value)
+        :
+        $self->create_clarity_element($document, $name, $value)
+      );
+    }
+  }
 
   return $document;
 }
 
 sub create_udf_element {
   my ($self, $xml_el, $udf_name, $udf_value) = @_;
-  my $url = 'http://genologics.com/ri/userdefined';
+
   my $docElem = $xml_el->getDocumentElement();
-  $docElem->setNamespace($url, 'udf', 0);
-  my $node = $xml_el->createElementNS($url, 'field');
+  $docElem->setNamespace($USER_DEFINED_URL, 'udf', 0);
+
+  my $node = $xml_el->createElementNS($USER_DEFINED_URL, 'field');
   $node->setAttribute('name', $udf_name);
   if (defined $udf_value) {
     $node->appendTextNode($udf_value);
@@ -219,6 +204,7 @@ sub create_udf_element {
 
 sub create_clarity_element {
   my ($self, $xml_el, $udf_name, $udf_value) = @_;
+
   my $node = $xml_el->createElement($udf_name);
   $node->appendTextNode($udf_value);
   return $node;
@@ -251,40 +237,41 @@ sub grab_values {
     @nodes = $xml_doc->findnodes($xpath)->get_nodelist();
   };
 
-  my @ids = c ->new(@nodes)
-              ->map( sub { $_->getValue(); } )
-              ->each();
+  my @ids = map {
+    $_->getValue();
+  } @nodes;
+
   return \@ids;
 }
 
 sub find_elements_first_value {
   my ($self, $doc, $xpath, $default) = @_;
-  return $self->_find_elements_first_result($doc, $xpath, 'other', 0,  $default);
+  return $self->_find_elements_first_result($doc, $xpath, 'other', 0, $default);
 }
 
 sub find_elements_first_textContent {
   my ($self, $doc, $xpath, $default) = @_;
-  return $self->_find_elements_first_result($doc, $xpath, 'other', 1,  $default);
+  return $self->_find_elements_first_result($doc, $xpath, 'other', 1, $default);
 }
 
 sub find_udf_element_value {
   my ($self, $doc, $xpath, $default) = @_;
-  return $self->_find_elements_first_result($doc, $xpath, 'udf', 0,  $default);
+  return $self->_find_elements_first_result($doc, $xpath, 'udf', 0, $default);
 }
 
 sub find_udf_element_textContent {
   my ($self, $doc, $xpath, $default) = @_;
-  return $self->_find_elements_first_result($doc, $xpath, 'udf', 1,  $default);
+  return $self->_find_elements_first_result($doc, $xpath, 'udf', 1, $default);
 }
 
 sub find_clarity_element_value {
   my ($self, $doc, $xpath, $default) = @_;
-  return $self->_find_elements_first_result($doc, $xpath, 'clarity', 0,  $default);
+  return $self->_find_elements_first_result($doc, $xpath, 'clarity', 0, $default);
 }
 
 sub find_clarity_element_textContent {
   my ($self, $doc, $xpath, $default) = @_;
-  return $self->_find_elements_first_result($doc, $xpath, 'clarity', 1,  $default);
+  return $self->_find_elements_first_result($doc, $xpath, 'clarity', 1, $default);
 }
 
 sub _find_elements_first_result {
@@ -303,8 +290,8 @@ sub _find_elements_first_result {
   }
 
   if (!$element) {
-    return $default if (defined $default) ;
-    croak qq{Empty result when applying xpath : '$xpath'.} ;
+    return $default if (defined $default);
+    croak qq{Empty result when applying xpath : '$xpath'.};
   }
 
   return $isText ? $element->textContent : $element->getValue();
@@ -312,14 +299,14 @@ sub _find_elements_first_result {
 
 sub build_details {
   my ($self, $source, $type, $xpath) = @_;
+
   my $base_url = $self->config->clarity_api->{'base_uri'};
   my $ids = $self->grab_values($source, $xpath);
-  my @uris = c->new(@{$ids})
-              ->uniq()
-              ->map( sub {
-                  return qq{$base_url/$type/$_};
-                } )
-              ->each;
+
+  my @uris = map {
+    qq{$base_url/$type/$_};
+  } uniq @{$ids};
+
   return $self->request->batch_retrieve($type, \@uris );
 }
 
