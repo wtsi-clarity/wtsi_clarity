@@ -10,11 +10,6 @@ use wtsi_clarity::util::string qw/trim/;
 
 our $VERSION = '0.0';
 
-Readonly::Scalar my $HEADER_BARCODE_ROW => 0;
-Readonly::Scalar my $HEADER_BARCODE_COL => 2;
-
-Readonly::Scalar my $HEADER_CONF_THRESHOLD_ROW => 5;
-Readonly::Scalar my $HEADER_CONF_THRESHOLD_COL => 1;
 Readonly::Scalar my $EXPECTED_NUM_COLUMNS => 12;
 
 has 'file_name' => (
@@ -46,17 +41,22 @@ has 'fluidigm_barcode' => (
 has 'content' => (
   is      => 'ro',
   isa     => 'HashRef',
-  default => sub { return {} },
+  default => sub {
+    return {
+    }
+  },
   writer  => '_write_content',
 );
 
 sub BUILD {
-  my ($self) = @_;
+  my $self = shift;
 
   open my $in, '<:encoding(utf8)', $self->file_name
     or croak "Failed to open Fluidigm export file '",
-                     $self->file_name, "': $OS_ERROR";
+  $self->file_name, "': $OS_ERROR";
+
   my ($header, $column_names, $sample_data) = $self->_parse_fluidigm_table($in);
+
   close $in or croak "Unable to close Fluidigm export file";
 
   $self->_write_header($header);
@@ -70,110 +70,112 @@ sub _parse_fluidigm_table {
   my ($self, $fh) = @_;
   binmode $fh, ':encoding(utf8)';
 
-  # True if we are in the header lines from 'Chip Run Info' to 'Allele
-  # Axis Mapping' inclusive
-  my $in_header = 0;
-  # True if we are in the unique column names row above the sample
-  # block
-  my $in_column_names = 0;
-  # True if we are past the header and into a data block
-  my $in_sample_block = 0;
+  my @header = _read_header($fh);
+  my @column_names = _read_column_names($fh);
+  my %sample_data = _read_sample_data($fh);
 
-  # Arrays of sample data lines keyed on Chamber IDs
-  my %sample_data;
+  return (\@header, \@column_names, \%sample_data);
+}
 
-  # For error reporting
-  my $line_num = 0;
-  my $num_sample_rows = 0;
+sub _read_header {
+  my $file = shift;
 
   my @header;
-  my @column_names;
-
-  while (my $line = <$fh>) {
-    ++$line_num;
+  while (my $line = <$file>) {
     chomp $line;
-    next if $line =~ m/^\s*$/sxm;
 
-    ## no critic ()
-    if ($line =~ /^Chip Run Info/sm) { $in_header = 1 }
-    if ($line =~ /^Experiment/sm)    { $in_header = 0 }
-    if ($line =~ /^ID/sxm)            { $in_column_names = 1 }
-    if ($line =~ /^S\d+\-[A-Z]\d+/sm) {
-      $in_column_names = 0;
-      $in_sample_block = 1;
-    }
-
-    if ($in_header) {
-      push @header, $line;
+    if ($line =~ m/^\s*$/sxm) {
       next;
+    } elsif ($line =~ /^Experiment/smx) {
+      last;
+    } else {
+      push @header, $line;
     }
+  }
+  if (!@header) {
+    croak "Parse error: no header rows found";
+  }
 
-    if ($in_column_names) {
-      @column_names = map { trim $_ } split /,/sxm, $line;
+  return @header;
+}
+
+sub _read_column_names {
+  my $file = shift;
+
+  my @column_names;
+  while (my $line = <$file>) {
+    chomp $line;
+
+    if ($line =~ /^ID/sxm) {
+      @column_names = map {
+        trim $_
+      } split /,/sxm, $line;
       my $num_columns = scalar @column_names;
       if ($num_columns != $EXPECTED_NUM_COLUMNS) {
-        croak "Parse error: expected $EXPECTED_NUM_COLUMNS ",
-                          "columns, but found $num_columns at line $line_num";
+        croak "Parse error: expected $EXPECTED_NUM_COLUMNS columns, but found $num_columns atr line $.";
       }
-      next;
+      last;
     }
+  }
+  if (!@column_names) {
+    croak "Parse error: no column names found";
+  }
 
-    if ($in_sample_block) {
-      my @columns = map { trim $_ } split /,/sxm, $line;
+  return @column_names;
+}
+
+sub _read_sample_data {
+  my $file = shift;
+
+  my %sample_data;
+  my $num_sample_rows = 0;
+
+  while (my $line = <$file>) {
+    chomp $line;
+
+    if ($line =~ /^S\d+\-[A-Z]\d+/smx) {
+      my @columns = map {
+        trim $_
+      } split /,/sxm, $line;
       my $num_columns = scalar @columns;
       if ($num_columns != $EXPECTED_NUM_COLUMNS) {
-        croak "Parse error: expected $EXPECTED_NUM_COLUMNS ",
-                          "columns, but found $num_columns at line $line_num";
+        croak "Parse error: expected $EXPECTED_NUM_COLUMNS columns, but found $num_columns at line $.";
       }
 
       my $id = $columns[0];
       my ($sample_address, $assay_num) = split /-/sxm, $id;
 
       if (!$sample_address) {
-        croak "Parse error: no sample address in '$id' ",
-                          "at line $line_num";
+        croak "Parse error: no sample address in '$id' at line $.";
       }
       if (!$assay_num) {
-        croak "Parse error: no assay number in '$id' ",
-                          "at line $line_num";
+        croak "Parse error: no assay number in '$id' at line $.";
       }
 
-      if (! exists $sample_data{$sample_address}) {
+      if (!exists $sample_data{$sample_address}) {
         $sample_data{$sample_address} = [];
       }
 
       push @{$sample_data{$sample_address}}, \@columns;
       $num_sample_rows++;
-      next;
     }
-  }
-
-  if (!@header) {
-    croak "Parse error: no header rows found";
-  }
-  if (!@column_names) {
-    croak "Parse error: no column names found";
   }
 
   ## no critic (MagicNumbers)
   if ($num_sample_rows == (96 * 96)) {
     if (scalar keys %sample_data != 96) {
-      croak "Parse error: expected data for 96 samples, found ",
-                        scalar keys %sample_data;
+      croak "Parse error: expected data for 96 samples, found ", scalar keys %sample_data;
     }
-  }
-  elsif ($num_sample_rows == (192 * 24)) {
+  } elsif ($num_sample_rows == (192 * 24)) {
     if (scalar keys %sample_data != 192) {
-      croak "Parse error: expected data for 192 samples, found ",
-                        scalar keys %sample_data;
+      croak "Parse error: expected data for 192 samples, found ", scalar keys %sample_data;
     }
+  } else {
+    croak "Parse error: expected ", 96 * 96, " or ", 192 * 24, " sample data rows, found $num_sample_rows";
   }
-  else {
-    croak "Parse error: expected ", 96 * 96, " or ", 192 * 24,
-                      " sample data rows, found $num_sample_rows";
-  }
+  ## use critic
 
-  return (\@header, \@column_names, \%sample_data);
+  return %sample_data;
 }
 
 __PACKAGE__->meta->make_immutable;
