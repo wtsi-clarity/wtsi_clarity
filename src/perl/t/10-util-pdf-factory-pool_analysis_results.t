@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 13;
+use Test::More tests => 14;
 
 use_ok('wtsi_clarity::util::pdf::factory::pool_analysis_results');
 
@@ -1248,7 +1248,10 @@ DDD_V5_plus'
   is_deeply($factory->_format($factory->plate_style_table, $table_info->[0]->{'plate_table_data'}), $table_style);
 
   ok($file, 'does create a file object');
-  # $file->saveas('./test_pool_analysis.pdf');
+  $file->saveas('./test_pool_worksheet.pdf');
+  my $pdf = PDF::API2->open('./test_pool_worksheet.pdf');
+  ok($pdf, 'Created file could be opened.');
+  unlink './test_pool_worksheet.pdf';
 }
 
 {

@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 170;
+use Test::More tests => 171;
 use Test::Exception;
 use Test::MockObject::Extends;
 use DateTime;
@@ -466,20 +466,20 @@ my $TEST_DATA4 = {
 {
   # testing _get_location
   my @test_data = (
-    { 'in' => [ 0,  0], 'out' => undef, },
+    { 'in' => [ 0, 0], 'out' => undef, },
     { 'in' => [ 0, 11], 'out' => undef, },
-    { 'in' => [11,  0], 'out' => undef, },
+    { 'in' => [11, 0], 'out' => undef, },
     { 'in' => [11, 11], 'out' => undef, },
-    { 'in' => [ 0,  1], 'out' => undef, },
-    { 'in' => [ 0,  2], 'out' => undef, },
+    { 'in' => [ 0, 1], 'out' => undef, },
+    { 'in' => [ 0, 2], 'out' => undef, },
     { 'in' => [ 0, 10], 'out' => undef, },
-    { 'in' => [ 1,  0], 'out' => undef, },
-    { 'in' => [ 2,  0], 'out' => undef, },
-    { 'in' => [10,  0], 'out' => undef, },
-    { 'in' => [ 1,  1], 'out' => "A:1", },
-    { 'in' => [ 2,  2], 'out' => "B:2", },
-    { 'in' => [ 3,  5], 'out' => "E:3", },
-    { 'in' => [ 5,  5], 'out' => "E:5", },
+    { 'in' => [ 1, 0], 'out' => undef, },
+    { 'in' => [ 2, 0], 'out' => undef, },
+    { 'in' => [10, 0], 'out' => undef, },
+    { 'in' => [ 1, 1], 'out' => "A:1", },
+    { 'in' => [ 2, 2], 'out' => "B:2", },
+    { 'in' => [ 3, 5], 'out' => "E:3", },
+    { 'in' => [ 5, 5], 'out' => "E:5", },
   );
   foreach my $datum (@test_data) {
     my ($i, $j, $c, $r) = @{$datum->{'in'}};
@@ -496,18 +496,18 @@ my $TEST_DATA4 = {
 {
   # _get_legend_content
   my @test_data = (
-    { 'in' => [ 0,  0], 'out' => "", },
+    { 'in' => [ 0, 0], 'out' => "", },
     { 'in' => [ 0, 11], 'out' => "", },
-    { 'in' => [15,  0], 'out' => "", },
+    { 'in' => [15, 0], 'out' => "", },
     { 'in' => [15, 15], 'out' => "", },
-    { 'in' => [ 0,  1], 'out' => ".\nA\n.", },
-    { 'in' => [ 0,  2], 'out' => ".\nB\n.", },
-    { 'in' => [ 0,  5], 'out' => ".\nE\n.", },
-    { 'in' => [ 1,  0], 'out' => "1", },
-    { 'in' => [ 2,  0], 'out' => "2", },
-    { 'in' => [10,  0], 'out' => "10", },
-    { 'in' => [ 1,  1], 'out' => undef, },
-    { 'in' => [12,  8], 'out' => undef, },
+    { 'in' => [ 0, 1], 'out' => ".\nA\n.", },
+    { 'in' => [ 0, 2], 'out' => ".\nB\n.", },
+    { 'in' => [ 0, 5], 'out' => ".\nE\n.", },
+    { 'in' => [ 1, 0], 'out' => "1", },
+    { 'in' => [ 2, 0], 'out' => "2", },
+    { 'in' => [10, 0], 'out' => "10", },
+    { 'in' => [ 1, 1], 'out' => undef, },
+    { 'in' => [12, 8], 'out' => undef, },
   );
   foreach my $datum (@test_data) {
     my ($i, $j, $c, $r) = @{$datum->{'in'}};
@@ -612,6 +612,9 @@ my $TEST_DATA4 = {
     cmp_ok($data->{'input_container_info'}->{$input_uri}->{'purpose'}, 'eq', $expected_plate_purpose, "_get_containers_data(...) should give the correct plate purpose");
     cmp_ok($data->{'input_container_info'}->{$input_uri}->{'plate_name'}, 'eq', $expected_plate_name{$input_uri}, "_get_containers_data(...) should give the correct barcode of the plate");
   }
+
+  my $file = $step->_create_worksheet_file($data);
+  ok($file, 'create_worksheet_file should produce a file.');
 }
 
 {
@@ -846,7 +849,7 @@ my $TEST_DATA4 = {
     ]
   };
 
-  my $pdf_data = wtsi_clarity::epp::generic::worksheet_attacher::_get_pdf_data($TEST_DATA4, 'my stamp', {'action_title' => 'Cherrypicking'} );
+  my $pdf_data = wtsi_clarity::epp::generic::worksheet_attacher::_get_pdf_data($TEST_DATA4, 'my stamp');
 
   cmp_ok( $pdf_data->{'stamp'}, 'eq', $expected->{'stamp'}, "_get_pdf_data() should give the correct stamp.");
   cmp_ok( scalar @{$pdf_data->{'pages'}}, '==', 2, "_get_pdf_data() should give the correct number of pages.");

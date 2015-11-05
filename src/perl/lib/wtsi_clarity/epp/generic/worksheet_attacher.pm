@@ -56,43 +56,6 @@ Readonly::Scalar my $source_table_height      => 100;
 Readonly::Scalar my $destination_table_height => 300;
 Readonly::Scalar my $buffer_table_height      => 450;
 
-override 'run' => sub {
-  my $self = shift;
-  super();
-
-  my $containers_data = $self->_get_containers_data();
-  my $stamp = _get_stamp($containers_data, $self->request->user);
-
-  # pdf generation
-  my $pdf_data = _get_pdf_data($containers_data, $stamp);
-
-  my $pdf_generator = wtsi_clarity::util::pdf::pdf_generator->new();
-
-  # for each output container, we produce a new page...
-  foreach my $page_data (@{$pdf_data->{'pages'}}) {
-    my $page = $self->pdf->page();
-    $page->mediabox('A4');
-
-    $pdf_generator->add_title_to_page($page, $page_data->{'title'});
-    $pdf_generator->add_timestamp($page);
-
-    $pdf_generator->add_io_block_to_page($self->pdf, $page, $page_data->{'input_table'}, $page_data->{'input_table_title'}, $source_table_height);
-    $pdf_generator->add_io_block_to_page($self->pdf, $page, $page_data->{'output_table'}, $page_data->{'output_table_title'}, $destination_table_height);
-
-    $pdf_generator->add_buffer_block_to_page($self->pdf, $page, $page_data->{'plate_table'}, $page_data->{'plate_table_title'}, $page_data->{'plate_table_cell_styles'}, $buffer_table_height);
-  }
-
-  $self->pdf->saveas(q{./}.$self->worksheet_filename);
-
-  # tecan file generation
-  # temp way to only create the worksheet
-  if ($self->tecan_filename) {
-    $self->_create_tecan_file($containers_data, $stamp, $self->tecan_filename);
-  }
-
-  return 1;
-};
-
 has 'worksheet_filename' => (
   isa => 'Str',
   is => 'ro',
@@ -104,6 +67,27 @@ has 'tecan_filename' => (
   is => 'ro',
   required => 1,
 );
+
+override 'run' => sub {
+  my $self = shift;
+  super();
+
+  my $containers_data = $self->_get_containers_data();
+  my $stamp = _get_stamp($containers_data, $self->request->user);
+
+  # pdf generation
+  my $pdf_data = _get_pdf_data($containers_data, $stamp);
+
+  $self->_create_worksheet_file($pdf_data)->saveas(q{./}.$self->worksheet_filename);
+
+  # tecan file generation
+  # temp way to only create the worksheet
+  if ($self->tecan_filename) {
+    $self->_create_tecan_file($containers_data, $stamp, $self->tecan_filename);
+  }
+
+  return 1;
+};
 
 ################# date & username ############
 
@@ -259,6 +243,27 @@ sub _get_TECAN_file_content_per_URI {
 
 ################# worksheet #################
 
+sub _create_worksheet_file {
+  my ($self, $pdf_data) = @_;
+
+  my $pdf_generator = wtsi_clarity::util::pdf::pdf_generator->new();
+
+  # for each output container, we produce a new page...
+  foreach my $page_data (@{$pdf_data->{'pages'}}) {
+    my $page = $self->pdf->page();
+    $page->mediabox('A4');
+
+    $pdf_generator->add_title_to_page($page, $page_data->{'title'});
+    $pdf_generator->add_timestamp($page);
+
+    $pdf_generator->add_io_block_to_page($self->pdf, $page, $page_data->{'input_table'}, $page_data->{'input_table_title'}, $source_table_height);
+    $pdf_generator->add_io_block_to_page($self->pdf, $page, $page_data->{'output_table'}, $page_data->{'output_table_title'}, $destination_table_height);
+
+    $pdf_generator->add_buffer_block_to_page($self->pdf, $page, $page_data->{'plate_table'}, $page_data->{'plate_table_title'}, $page_data->{'plate_table_cell_styles'}, $buffer_table_height);
+  }
+
+  return $self->pdf;
+}
 
 sub _get_pdf_data {
   my ($containers_data, $stamp) = @_;
