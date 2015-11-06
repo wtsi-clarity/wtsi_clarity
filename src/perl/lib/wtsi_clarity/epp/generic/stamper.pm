@@ -8,6 +8,7 @@ use URI::Escape;
 use XML::LibXML;
 use Mojo::Collection 'c';
 use Try::Tiny;
+use List::MoreUtils qw(uniq);
 
 extends 'wtsi_clarity::epp';
 with 'wtsi_clarity::util::clarity_elements';
@@ -17,10 +18,13 @@ Readonly::Scalar my $IO_MAP_PATH              => q{ /prc:process/input-output-ma
 Readonly::Scalar my $OUTPUT_IDS_PATH          => q{ /prc:process/input-output-map/output[@output-type='Analyte']/@limsid};
 Readonly::Scalar my $CONTAINER_PATH           => q{ /art:artifact/location/container/@uri };
 Readonly::Scalar my $BATCH_CONTAINER_PATH     => q{ /art:details/art:artifact/location/container/@limsid };
+Readonly::Scalar my $ARTIFACT_PATH            => q{ /art:details/art:artifact };
 Readonly::Scalar my $WELL_PATH                => q{ /art:artifact/location/value };
 Readonly::Scalar my $CONTAINER_TYPE_NAME_PATH => q{ /con:container/type/@name[1] };
 Readonly::Scalar my $CONTAINER_NAME_PATH      => q{ /con:container/name/text() };
 Readonly::Scalar my $CONTROL_PATH             => q{ /art:artifact/control-type };
+Readonly::Scalar my $INPUT_URI                => q{ ./input/@uri };
+Readonly::Scalar my $OUTPUT_URI               => q{ ./output/@uri };
 ##use critic
 
 our $VERSION = '0.0';
@@ -33,7 +37,8 @@ has 'step_url' => (
 
 override 'run' => sub {
   my $self = shift;
-  super(); #call parent's run method
+  super();
+
   $self->epp_log('Step url is ' . $self->step_url);
 
   $self->_check_options();
@@ -63,7 +68,7 @@ override 'run' => sub {
 sub _check_options {
   my $self = shift;
 
-  if ($self->shadow_plate && $self->copy_on_target ) {
+  if ($self->shadow_plate && $self->copy_on_target) {
     croak qq{One cannot use the shadow plate stamping with the copy_on_target option!};
   }
 
@@ -77,7 +82,7 @@ sub _check_options {
   }
 
   ##no critic ValuesAndExpressions::ProhibitMagicNumbers
-  if ($self->group && $self->process_doc->input_artifacts->findnodes('/art:details/art:artifact')->size() > 96) {
+  if ($self->group && $self->process_doc->input_artifacts->findnodes($ARTIFACT_PATH)->size() > 96) {
     croak q{Can not do a group stamp for more than 96 inputs!};
   }
   ##use critic
@@ -118,6 +123,7 @@ has 'container_type_name' => (
 );
 sub _build_container_type_name {
   my $self = shift;
+
   my @container_urls = keys %{$self->_analytes};
   my $doc = $self->_analytes->{$container_urls[0]}->{'doc'};
   $self->_set_validate_container_type(0);
@@ -132,11 +138,9 @@ has 'shadow_plate' => (
   trigger  => \&_set_controls,
 );
 
-# If it's a shadow_plate and controls haven't been set, we always want to stamp controls too,
-# so we set controls to 1
+# If it's a shadow_plate and controls haven't been set, we always want to stamp controls too, so we set controls to 1
 sub _set_controls {
-  my $self = shift;
-  my $shadow_plate = shift;
+  my ($self, $shadow_plate) = @_;
 
   if (!$self->has_controls && $shadow_plate == 1) {
     $self->set_controls(1);
@@ -162,13 +166,14 @@ has '_container_type' => (
 
 sub _build__container_type {
   my $self = shift;
+
   my $names = $self->container_type_name;
   my @types = ();
   if ($self->_validate_container_type) {
-    foreach my $name (@{$names}) {
+    for my $name (@{$names}) {
       my $ename = uri_escape($name);
-      my $url   = $self->config->clarity_api->{'base_uri'} . q{/containertypes?name=} . $ename;
-      my $doc   = $self->fetch_and_parse($url);
+      my $url = $self->config->clarity_api->{'base_uri'} . q{/containertypes?name=} . $ename;
+      my $doc = $self->fetch_and_parse($url);
       my @nodes = $doc->findnodes(q{/ctp:container-types/container-type});
       if (!@nodes) {
         croak qq[Did not find container type entry at $url];
@@ -179,7 +184,7 @@ sub _build__container_type {
     }
   } else {
     my @container_urls = keys %{$self->_analytes};
-    my $doc   = $self->_analytes->{$container_urls[0]}->{'doc'};
+    my $doc = $self->_analytes->{$container_urls[0]}->{'doc'};
     my @nodes = $doc->findnodes(q{ /con:container/type });
     push @types, $nodes[0]->toString();
   }
@@ -202,11 +207,9 @@ sub _build__analytes {
   }
 
   my $containers = {};
-  foreach my $anode (@nodes) {
-    ##no critic (RequireInterpolationOfMetachars)
-    my $url = $anode->findvalue(q{./input/@uri});
-    ##use critic
-    my $analyte_dom   = $self->fetch_and_parse($url);
+  for my $anode (@nodes) {
+    my $url = $anode->findvalue($INPUT_URI);
+    my $analyte_dom = $self->fetch_and_parse($url);
     my $container_url = $analyte_dom->findvalue($CONTAINER_PATH);
 
     if (!$container_url) {
@@ -232,14 +235,11 @@ sub _build__analytes {
     }
 
     $containers->{$container_url}->{$url}->{'well'} = $well;
-    ##no critic (RequireInterpolationOfMetachars)
-    my $uri = $anode->findvalue(q{./output/@uri}); # ideally, we have to check that this output is
-                                                   # of type 'Analyte'
-    ##use critic
+    my $uri = $anode->findvalue($OUTPUT_URI); # ideally, we have to check that this output is of type 'Analyte'
     if (!$uri) {
       croak qq[Target analyte uri not defined for container $container_url input analyte $url];
     }
-    ($uri) = $uri =~ /\A([^?]*)/smx; #drop part of the uri starting with ? (state)
+    $uri =~ s/\?\w*//smx; #drop part of the uri starting with ? (state)
     push @{$containers->{$container_url}->{$url}->{'target_analyte_uri'}}, $uri;
   }
   if (scalar keys %{$containers} == 0) {
@@ -260,21 +260,17 @@ sub _build__output_container_details {
   my $base_url = $self->config->clarity_api->{'base_uri'};
 
   my $output_ids = $self->grab_values($self->process_doc->xml, $OUTPUT_IDS_PATH);
-  my @output_uris = c ->new(@{$output_ids})
-                      ->uniq()
-                      ->map( sub {
-                          return $base_url.'/artifacts/'.$_;
-                        } )
-                      ->each;
+  my @output_uris = map {
+    $base_url.'/artifacts/'.$_;
+  } uniq @{$output_ids};
+
   my $output_details = $self->request->batch_retrieve('artifacts', \@output_uris );
 
   my $container_ids = $self->grab_values($output_details, $BATCH_CONTAINER_PATH);
-  my @container_uris = c->new(@{$container_ids})
-                        ->uniq()
-                        ->map( sub {
-                            return $base_url.'/containers/'.$_;
-                          } )
-                        ->each;
+  my @container_uris = map {
+    $base_url.'/containers/'.$_;
+  } uniq @{$container_ids};
+
   return $self->request->batch_retrieve('containers', \@container_uris );
 };
 
@@ -291,25 +287,24 @@ sub _update_plate_name_with_previous_name {
   while (my ($in_container_uri, $in_container_map) = each %{$self->_analytes} ) {
     my $names = $self->grab_values($in_container_map->{'doc'}, $CONTAINER_NAME_PATH);
 
-    if ( @{$names} < 1 ) {
+    if (@{$names} < 1) {
       croak qq{One input container ($in_container_uri) has no name!};
     }
 
     my @output_containers = @{$in_container_map->{'output_containers'}};
 
-    if ( @output_containers < 1 ) {
+    if (@output_containers < 1) {
       croak qq{There is no output container for this input ($in_container_uri)! The shadow stamping cannot be applied!};
     }
-    if ( @output_containers > 1 ) {
+    if (@output_containers > 1) {
       croak qq{There are more than one output container for this input ($in_container_uri)! The shadow stamping cannot be applied!};
     }
 
     my $output_container_id = $output_containers[0]->{'limsid'};
 
-    my @containers = c->new($self->_output_container_details->findnodes( qq{/con:details/con:container[\@limsid="$output_container_id"]/name} )->get_nodelist())
-                      ->each(sub{
-                          $self->update_text($_, @{$names}[0] );
-                        } ) ;
+    for my $node ($self->_output_container_details->findnodes(qq{/con:details/con:container[\@limsid="$output_container_id"]/name} )->get_nodelist()) {
+      $self->update_text($node, @{$names}[0]);
+    }
   }
 
   return $self->_output_container_details;
@@ -319,7 +314,7 @@ sub _create_containers {
   my $self = shift;
 
   if ((scalar @{$self->container_type_name} > 1) &&
-      (scalar keys %{$self->_analytes} > 1)) {
+    (scalar keys %{$self->_analytes} > 1)) {
     croak 'Multiple container type names are not compatible with multiple input containers';
   }
 
@@ -327,15 +322,15 @@ sub _create_containers {
   if ($self->group) {
     my $container_doc = $self->_create_container($self->_container_type->[0]);
 
-    foreach my $input_container ( keys %{$self->_analytes} ) {
+    for my $input_container (keys %{$self->_analytes}) {
       push@{$self->_analytes->{$input_container}->{'output_containers'}}, $self->_build_container_info($container_doc);
     }
 
     return;
   }
 
-  foreach my $input_container ( keys %{$self->_analytes}) {
-    foreach my $output_container_type_xml (@{$self->_container_type}) {
+  for my $input_container (keys %{$self->_analytes}) {
+    for my $output_container_type_xml (@{$self->_container_type}) {
 
       my $container_doc = $self->_create_container($output_container_type_xml);
       push @{$self->_analytes->{$input_container}->{'output_containers'}}, $self->_build_container_info($container_doc);
@@ -348,21 +343,23 @@ sub _build_container_info {
   my ($self, $container_doc) = @_;
 
   ##no critic (RequireInterpolationOfMetachars)
-  return { 'limsid' => $container_doc->findvalue(q{ /con:container/@limsid }),
-           'uri'    => $container_doc->findvalue(q{ /con:container/@uri    }),
-           'doc'    => $container_doc,                                     };
+  return {
+    'limsid' => $container_doc->findvalue(q{ /con:container/@limsid }),
+    'uri'    => $container_doc->findvalue(q{ /con:container/@uri    }),
+    'doc'    => $container_doc,
+  };
 }
 
 sub _create_container {
   my ($self, $output_container_type_xml) = @_;
 
   my $xml_header = '<?xml version="1.0" encoding="UTF-8"?>';
-  $xml_header   .= '<con:container xmlns:con="http://genologics.com/ri/container">';
+  $xml_header .= '<con:container xmlns:con="http://genologics.com/ri/container">';
   my $xml_footer = '</con:container>';
 
   my $xml = $xml_header;
-  $xml   .= $output_container_type_xml;
-  $xml   .= $xml_footer;
+  $xml .= $output_container_type_xml;
+  $xml .= $xml_footer;
 
   my $url = $self->config->clarity_api->{'base_uri'} . '/containers';
   my $container_doc = XML::LibXML->load_xml(string => $self->request->post($url, $xml));
@@ -374,23 +371,21 @@ sub _create_placements_doc {
   my $self = shift;
 
   my $pXML = '<?xml version="1.0" encoding="UTF-8"?>';
-  $pXML   .= '<stp:placements xmlns:stp="http://genologics.com/ri/step" uri="' . $self->process_url . '/placements">';
-  $pXML   .= '<step uri="' . $self->step_url . '"/>';
-  $pXML   .= '<selected-containers>';
+  $pXML .= '<stp:placements xmlns:stp="http://genologics.com/ri/step" uri="' . $self->process_url . '/placements">';
+  $pXML .= '<step uri="' . $self->step_url . '"/>';
+  $pXML .= '<selected-containers>';
 
   my %containers = ();
 
-  foreach my $input_container ( keys %{$self->_analytes}) {
-    foreach my $output_container (@{$self->_analytes->{$input_container}->{'output_containers'}}) {
-      my $container_url = $output_container->{'uri'} ;
+  for my $input_container (keys %{$self->_analytes}) {
+    for my $output_container (@{$self->_analytes->{$input_container}->{'output_containers'}}) {
+      my $container_url = $output_container->{'uri'};
 
-      if (exists $containers{$container_url}) {
-        next;
+      if (!exists $containers{$container_url}) {
+        $containers{$container_url} = 1;
+
+        $pXML .= '<container uri="' . $container_url . '"/>';
       }
-
-      $containers{$container_url} = 1;
-
-      $pXML .= '<container uri="' . $container_url . '"/>';
     }
   }
   $pXML .= '</selected-containers>';
@@ -402,12 +397,12 @@ sub _create_placements_doc {
 sub _stamping {
   my ($self, $doc, $stamping_callback, $well_callback) = @_;
 
-  my @wells = (); # Ordered list of wells
+  my @wells = ();
   my $well;
   if (!defined $well_callback) {
     ##no critic ValuesAndExpressions::ProhibitMagicNumbers
     for (1..12) {
-      foreach my $column ('A'..'H') {
+      for my $column ('A'..'H') {
         push @wells, $column . ':' . $_;
       }
     }
@@ -420,9 +415,9 @@ sub _stamping {
     croak 'Placements element not found';
   }
 
-  foreach my $input_container (keys %{$self->_analytes}) {
-    foreach my $input_analyte ( keys %{$self->_analytes->{$input_container} } ) {
-      if ( $input_analyte eq 'output_containers' || $input_analyte eq 'doc' ) {
+  for my $input_container (keys %{$self->_analytes}) {
+    for my $input_analyte (keys %{$self->_analytes->{$input_container} }) {
+      if ($input_analyte eq 'output_containers' || $input_analyte eq 'doc') {
         next;
       }
       if (defined $well_callback) {
@@ -431,7 +426,7 @@ sub _stamping {
         $well = shift @wells;
       }
       ($doc, my @new_placements) = $stamping_callback->($self, $doc, $input_container, $input_analyte, $well);
-      foreach my $placement (@new_placements) {
+      for my $placement (@new_placements) {
         $placements[0]->addChild($placement);
       }
     }
@@ -451,7 +446,7 @@ sub _direct_stamp {
 
   my @new_placements = ();
   my $container_index = 0;
-  foreach my $output_container ( @{$self->_analytes->{$input_container}->{'output_containers'}} ) {
+  for my $output_container (@{$self->_analytes->{$input_container}->{'output_containers'}}) {
     my $uri = $self->_analytes->{$input_container}->{$input_analyte}->{'target_analyte_uri'}->[$container_index];
     if (!$uri) {
       croak qq[No target analyte uri for container index $container_index];
