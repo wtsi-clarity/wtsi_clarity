@@ -9,24 +9,34 @@ use List::Util   qw/reduce/;
 use Readonly;
 use Exporter 'import';
 
-our @EXPORT_OK = qw/flgen_bc ean13_bc/;
+our @EXPORT_OK = qw/flgen_bc ean13_bc flowcell_bc/;
 
 our $VERSION = '0.0';
 
 Readonly::Scalar my $FLUIDIGM_BC_LENGTH => 10;
 Readonly::Scalar my $EAN_BC_LENGTH      => 13;
+Readonly::Scalar my $FLOWCELL_BC_LENGTH => 10;
 
 sub flgen_bc {
   return _validate(shift)
-           ->has_length($FLUIDIGM_BC_LENGTH)
-           ->is_integer()
-           ->result();
+    ->has_length($FLUIDIGM_BC_LENGTH)
+    ->is_integer()
+    ->has_no_whitespace()
+    ->result();
 }
 sub ean13_bc {
   return _validate(shift)
-           ->has_length($EAN_BC_LENGTH)
-           ->is_integer()
-           ->result();
+    ->has_length($EAN_BC_LENGTH)
+    ->is_integer()
+    ->has_no_whitespace()
+    ->result();
+}
+
+sub flowcell_bc {
+  return _validate(shift)
+    ->has_length($FLOWCELL_BC_LENGTH)
+    ->has_no_whitespace()
+    ->result();
 }
 
 sub _validate {
@@ -60,10 +70,13 @@ object with 2 methods on: failed and error_message.
 =head1 SUBROUTINES/METHODS
 
 =head2 flgen_bc
-  Tests to see if a given value has a length of 10, and is numeric.
+  Tests to see if a given value has a length of 10, is numeric, and doesn't contain whitespace.
 
 =head2 ean13_bc
-  Tests to see if a given value has a length of 13, and is numeric.
+  Tests to see if a given value has a length of 13, is numeric, and doesn't contain whitespace.
+
+=head2 flowcell_bc
+  Tests to see if a given value has a length of 10, and doesn't contain whitespace.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

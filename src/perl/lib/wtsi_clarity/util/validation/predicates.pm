@@ -6,7 +6,7 @@ use warnings;
 use Exporter     qw/import/;
 
 our $VERSION   = '0.0';
-our @EXPORT_OK = qw/has_length_of is_integer/;
+our @EXPORT_OK = qw/has_length_of is_integer has_no_whitespace/;
 
 sub has_length_of {
   my ($length) = @_;
@@ -18,7 +18,13 @@ sub has_length_of {
 
 sub is_integer {
   return sub {
-    $_[0] =~ /^\s*[+-]?\d+\s*$/sxm;
+    return ($_[0] =~ /^\s*[+-]?\d+\s*$/sxm);
+  }
+}
+
+sub has_no_whitespace {
+  return sub {
+    return not ($_[0] =~ /\s/sxm);
   }
 }
 
@@ -46,6 +52,8 @@ A module providing a subroutines for generating validation subroutines
 =head2 has_length_of
 
 =head2 is_integer
+
+=head2 has_no_whitespace
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
