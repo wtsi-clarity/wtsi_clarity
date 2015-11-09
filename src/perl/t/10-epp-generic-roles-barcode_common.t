@@ -1,8 +1,8 @@
 use strict;
 use warnings;
-use Test::More tests => 208;
+use Test::More tests => 285;
 use Test::Exception;
-use List::Util qw(sum);
+use List::Util qw(sum max);
 
 use Moose::Meta::Class;
 
@@ -82,10 +82,67 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
         my ($num) = grep {
           $alphabet[$_] eq $c
         } 0..$#alphabet;
-        (1 + $#chars - $_) * $num
+        (1 + $#chars - $_) ^ $num
       } 0..$#chars);
 
-      is($sum % 10, 0, "Checksum correct");
+      is($sum % 10, 0, "Checksum correct for: $barcode");
     }
+  }
+}
+
+{
+  # Checksum tests
+
+  my $barcode_service = Moose::Meta::Class->create(
+    'New::Class',
+    superclasses => [qw/wtsi_clarity::epp/],
+    roles => [qw/wtsi_clarity::epp::generic::roles::barcode_common/],
+  )->new_object(process_url => $base_uri . '/processes/24-64190');
+
+  my $barcode = "123456789ABCDEFGHIJKLMNOPQ";
+
+  for my $i (0..length($barcode) - 1) {
+    my @changes = ();
+
+    for my $c ("0".."9", "A".."Z") {
+      my $new_barcode = $barcode;
+      substr($new_barcode, $i, 1) = $c;
+      my $new_checksum = substr($barcode_service->add_checksum($new_barcode), length($new_barcode), 1);
+
+      $changes[$new_checksum]++;
+    }
+
+    cmp_ok((max @changes), '<', 10, "Checksum is well distributed when position $i is changed.");
+  }
+
+  for my $i (0..length($barcode) - 1) {
+    my $changes = 0;
+    my $old_checksum = substr($barcode_service->add_checksum($barcode), length($barcode), 1);
+    for my $c ("0".."9", "A".."Z") {
+      my $new_barcode = $barcode;
+      substr($new_barcode, $i, 1) = $c;
+      my $new_checksum = substr($barcode_service->add_checksum($new_barcode), length($new_barcode), 1);
+
+      if ($old_checksum ne $new_checksum) {
+        $changes++;
+      }
+      $old_checksum = $new_checksum;
+    }
+
+    cmp_ok($changes, '>', 30, "Sequential characters make different checksums at pos $i.");
+  }
+
+  for my $i (0..length($barcode) - 2) {
+    my $new_barcode = $barcode;
+    my $old_checksum = substr($barcode_service->add_checksum($barcode), length($barcode), 1);
+
+    # Swap two adjacent characters.
+    my $temp = substr($new_barcode, $i, 1);
+    substr($new_barcode, $i, 1) = substr($new_barcode, $i + 1, 1);
+    substr($new_barcode, $i + 1, 1) = $temp;
+
+    my $new_checksum = substr($barcode_service->add_checksum($new_barcode), length($new_barcode), 1);
+
+    isnt($old_checksum, $new_checksum, "Swapped characters make different checksums at pos $i.");
   }
 }
