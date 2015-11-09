@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 12;
+use Test::More tests => 11;
 use Test::Exception;
 
 use_ok 'wtsi_clarity::epp::generic::udf_copier';
@@ -65,19 +65,6 @@ local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/udf_copier/';
 
   is($concentration, '12345', 'Copies the concentration to the first input analyte');
   is($concentration2, '78945', 'Copies the concentration to the second input analyte');
-}
-
-{
-  # Make sure it croaks when not all fields are set for the "from_process"
-  my $process = wtsi_clarity::epp::generic::udf_copier->new(
-    process_url  => 'http://testserver.com:1234/here/processes/24-67093',
-    from_process => 'Pre Capture Lib Pooling',
-    fields       => ['Average Molarity', 'Concentration', 'Croaker'],
-  );
-
-  throws_ok { $process->_copy_fields() }
-    qr/Field Croaker has not been set on all artifacts at Pre Capture Lib Pooling/,
-    'Throws an error when not all artifacts have all fields set';
 }
 
 1;
