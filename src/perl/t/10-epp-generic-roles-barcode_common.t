@@ -107,7 +107,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
     for my $c ("0".."9", "A".."Z") {
       my $new_barcode = $barcode;
       substr($new_barcode, $i, 1) = $c;
-      my $new_checksum = substr($barcode_service->add_checksum($new_barcode), length($new_barcode), 1);
+      my $new_checksum = substr($barcode_service->_add_checksum($new_barcode), length($new_barcode), 1);
 
       $changes[$new_checksum]++;
     }
@@ -117,11 +117,11 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
   for my $i (0..length($barcode) - 1) {
     my $changes = 0;
-    my $old_checksum = substr($barcode_service->add_checksum($barcode), length($barcode), 1);
+    my $old_checksum = substr($barcode_service->_add_checksum($barcode), length($barcode), 1);
     for my $c ("0".."9", "A".."Z") {
       my $new_barcode = $barcode;
       substr($new_barcode, $i, 1) = $c;
-      my $new_checksum = substr($barcode_service->add_checksum($new_barcode), length($new_barcode), 1);
+      my $new_checksum = substr($barcode_service->_add_checksum($new_barcode), length($new_barcode), 1);
 
       if ($old_checksum ne $new_checksum) {
         $changes++;
@@ -134,14 +134,14 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
   for my $i (0..length($barcode) - 2) {
     my $new_barcode = $barcode;
-    my $old_checksum = substr($barcode_service->add_checksum($barcode), length($barcode), 1);
+    my $old_checksum = substr($barcode_service->_add_checksum($barcode), length($barcode), 1);
 
     # Swap two adjacent characters.
     my $temp = substr($new_barcode, $i, 1);
     substr($new_barcode, $i, 1) = substr($new_barcode, $i + 1, 1);
     substr($new_barcode, $i + 1, 1) = $temp;
 
-    my $new_checksum = substr($barcode_service->add_checksum($new_barcode), length($new_barcode), 1);
+    my $new_checksum = substr($barcode_service->_add_checksum($new_barcode), length($new_barcode), 1);
 
     isnt($old_checksum, $new_checksum, "Swapped characters make different checksums at pos $i.");
   }

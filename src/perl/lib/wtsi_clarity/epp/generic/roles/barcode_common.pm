@@ -48,14 +48,14 @@ sub generate_barcode {
     # GCLP:SM:12345:
     my $barcode = $LIMS_NAME . $SEPARATOR . $self->_barcode_prefix . $SEPARATOR  . $container_id . $SEPARATOR ;
 
-    $barcode = $self->add_checksum($barcode);
+    $barcode = $self->_add_checksum($barcode);
 
     # Return it twice for legacy reasons, once the internal generation config is removed, this can be refactored out.
     return ($barcode, $barcode);
   }
 }
 
-sub add_checksum {
+sub _add_checksum {
   my ($self, $barcode) = @_;
 
   # Generate checksum
