@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/clarity/api/artifacts/2-196755?state=95363" limsid="2-196755">
+    <name> 5ng Human Genomic DNA-STD-5</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://testserver.com:1234/clarity/api/processes/24-27295" limsid="24-27295"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/clarity/api/containers/27-4582" limsid="27-4582"/>
+        <value>B:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/clarity/api/samples/51C-507" limsid="51C-507"/>
+    <control-type uri="http://testserver.com:1234/clarity/api/controltypes/51"/>
+    <workflow-stages>
+        <workflow-stage status="IN_PROGRESS" name="Pico: Run Standard and Control Plate" uri="http://testserver.com:1234/clarity/api/configuration/workflows/51/stages/315"/>
+    </workflow-stages>
+</art:artifact>

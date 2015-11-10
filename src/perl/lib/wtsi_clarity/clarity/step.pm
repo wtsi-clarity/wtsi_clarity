@@ -11,7 +11,7 @@ our $VERSION = '0.0';
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $PLACEMENTS_URI_PATH      => q( /stp:step/placements/@uri );
 Readonly::Scalar my $SELECTED_CONTAINERS_PATH => q( /stp:placements/selected-containers/container/@uri );
-Readonly::Scalar my $CONTAINER_NAME_LOCATION  => q(/con:container/name);
+Readonly::Scalar my $PLACEMENT_URIS           => q( /con:details/con:container/placement/@uri );
 ## use critic
 
 has '_parent' => (
@@ -89,6 +89,20 @@ sub _build_output_container_count {
   my $self = shift;
 
   return scalar @{$self->_output_containers_uri};
+}
+
+has 'output_artifacts' => (
+  is => 'ro',
+  isa => 'XML::LibXML::Document',
+  lazy_build => 1,
+);
+sub _build_output_artifacts {
+  my $self = shift;
+
+  my @uris = $self->output_containers->findnodes($PLACEMENT_URIS)->to_literal_list;
+  my $artifacts = $self->_request->batch_retrieve('artifacts', \@uris);
+
+  return $artifacts;
 }
 
 1;

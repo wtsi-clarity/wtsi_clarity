@@ -25,7 +25,7 @@ my %args      = ( process_url => 'http://clarity.com/processes/1',
 
 {
   my $message = wtsi_clarity::mq::message->create('report',
-    purpose => '14MG_sample_manifest',
+    purpose => 'sample_manifest',
     %args,
   );
 
@@ -38,7 +38,7 @@ my %args      = ( process_url => 'http://clarity.com/processes/1',
 }
 
 {
-  my $message_as_json_str = '{"__CLASS__":"wtsi_clarity::mq::message_types::report_message","process_url":"http://clarity.com/processes/1","purpose":"14MG_sample_manifest","step_url":"http://clarity.com/steps/1","timestamp":"Thu Jul 16 2015 13:06:55"}';
+  my $message_as_json_str = '{"__CLASS__":"wtsi_clarity::mq::message_types::report_message","process_url":"http://clarity.com/processes/1","purpose":"sample_manifest","step_url":"http://clarity.com/steps/1","timestamp":"Thu Jul 16 2015 13:06:55"}';
   isa_ok(wtsi_clarity::mq::message->defrost('report', $message_as_json_str), 'wtsi_clarity::mq::message_types::report_message');
 }
 

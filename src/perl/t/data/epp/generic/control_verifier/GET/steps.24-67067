@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="yes"?>
+<stp:step xmlns:stp="http://genologics.com/ri/step" current-state="Placement" limsid="24-67067" uri="http://testserver.com:1234/here/steps/24-67067">
+    <configuration uri="http://testserver.com:1234/here/configuration/protocols/2/steps/3">Add Control Sample (SM)</configuration>
+    <actions uri="http://testserver.com:1234/here/steps/24-67067/actions"/>
+    <placements uri="http://testserver.com:1234/here/steps/24-67067/placements"/>
+    <reagent-lots uri="http://testserver.com:1234/here/steps/24-67067/reagentlots"/>
+    <details uri="http://testserver.com:1234/here/steps/24-67067/details"/>
+    <available-programs/>
+</stp:step>

@@ -1,0 +1,35 @@
+<?xml version="1.0" standalone="yes"?>
+<con:container xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container" uri="http://testserver.com:1234/here/containers/27-2495" limsid="27-2495">
+    <name>5260272495668</name>
+    <type uri="http://testserver.com:1234/here/containertypes/15" name="ABgene 0800"/>
+    <occupied-wells>9</occupied-wells>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-101448" limsid="2-101448">
+        <value>A:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-101505" limsid="2-101505">
+        <value>H:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-101450" limsid="2-101450">
+        <value>C:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-101501" limsid="2-101501">
+        <value>D:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-101504" limsid="2-101504">
+        <value>G:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-101449" limsid="2-101449">
+        <value>B:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-101502" limsid="2-101502">
+        <value>E:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-101503" limsid="2-101503">
+        <value>F:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-101506" limsid="2-101506">
+        <value>H:2</value>
+    </placement>
+    <udf:field type="String" name="WTSI Container Purpose Name">Pico Dilution</udf:field>
+    <state>Populated</state>
+</con:container>

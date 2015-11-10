@@ -8,11 +8,9 @@ use PDF::Table;
 
 our $VERSION = '0.0';
 
-Readonly::Scalar my $col_width                => 30;
 Readonly::Scalar my $left_margin              => 20;
 Readonly::Scalar my $title_height             => 555;
 Readonly::Scalar my $title_size               => 15;
-Readonly::Scalar my $stamp_height             => 760;
 Readonly::Scalar my $stamp_size               => 8;
 Readonly::Scalar my $subtitle_shift           => 20;
 Readonly::Scalar my $subtitle_size            => 10;
@@ -27,7 +25,9 @@ has 'pdf_data' => (
 has 'pdf' => (
   isa      => 'PDF::API2',
   is       => 'ro',
-  default   => sub { return PDF::API2->new(); },
+  default   => sub {
+    return PDF::API2->new();
+  },
   required => 0,
 );
 
@@ -35,6 +35,18 @@ has 'cell_font_size' => (
   isa       => 'Int',
   is        => 'rw',
   default   => 7,
+);
+
+has 'col_width' => (
+  isa       => 'Int',
+  is        => 'rw',
+  default   => 30,
+);
+
+has 'stamp_height' => (
+  isa       => 'Int',
+  is        => 'rw',
+  default   => 760,
 );
 
 sub get_nb_row {
@@ -50,16 +62,16 @@ sub get_nb_col {
 ## no critic (Subroutines::ProhibitManyArgs)
 sub add_io_block_to_page {
   my ($self, $pdf, $page, $font, $table_data, $table_title, $y_pos) = @_;
-  $self->add_text_to_page($page, $font, $table_title, $left_margin, $y_pos+$subtitle_shift, $subtitle_size);
-  $self->add_table_to_page($pdf, $page, $table_data,  $left_margin, $y_pos);
+  $self->add_text_to_page($page, $font, $table_title, $left_margin, $y_pos + $subtitle_shift, $subtitle_size);
+  $self->add_table_to_page($pdf, $page, $table_data, $left_margin, $y_pos);
   return;
 }
 
 sub add_buffer_block_to_page {
   my ($self, $pdf, $page, $font, $table_data, $table_title, $table_cell_styles, $y_pos) = @_;
-  $self->add_text_to_page($page, $font, $table_title, $left_margin, $y_pos+$subtitle_shift, $subtitle_size);
+  $self->add_text_to_page($page, $font, $table_title, $left_margin, $y_pos + $subtitle_shift, $subtitle_size);
   my $properties = $self->transform_all_properties($table_cell_styles);
-  $self->add_buffer_table_to_page($pdf, $page, $table_data, $properties , $y_pos);
+  $self->add_buffer_table_to_page($pdf, $page, $table_data, $properties, $y_pos);
   return;
 }
 
@@ -69,7 +81,7 @@ sub transform_all_properties {
   foreach my $j (0 .. $self->get_nb_row($data) - 1) {
     my $row_properties = [];
     foreach my $i (0 .. $self->get_nb_col($data) - 1) {
-       push $row_properties, $self->transform_property($data->[$j]->[$i]);
+      push $row_properties, $self->transform_property($data->[$j]->[$i]);
     }
     push $table_properties, $row_properties;
   }
@@ -81,26 +93,26 @@ sub transform_property {
   my ($self, $property) = @_;
   # orange, yellow, blue, magenta, pink, a different shade of magenta, a different shade of pink, cyan, light green, red, green2, green3
   my @list_of_colours = ('#F5BA7F', '#F5E77D', '#7DD3F5', '#DB7DF5', '#F57FBA', '#F57DE7', '#F57DD3', '#7DF5DB', '#1FB714', '#DD0806', '#339966', '#99CC00');
-  my $pdf_property ;
+  my $pdf_property;
 
   for ($property) {
     /HEADER_STYLE|EMPTY_STYLE/xms and do {
-        $pdf_property = {
-          background_color => 'white',
-          font_size=> $self->cell_font_size(),
-          justify => 'center',
-        };
-        last;
+      $pdf_property = {
+        background_color => 'white',
+        font_size => $self->cell_font_size(),
+        justify => 'center',
       };
+      last;
+    };
 
     /COLOUR_(\d+)/xms and do {
-        $pdf_property = {
-          background_color => $list_of_colours[$1],
-          font_size=> $self->cell_font_size(),
-          justify => 'center',
-        };
-        last;
+      $pdf_property = {
+        background_color => $list_of_colours[$1],
+        font_size => $self->cell_font_size(),
+        justify => 'center',
       };
+      last;
+    };
 
     /PASSED/xms and do {
       $pdf_property = {
@@ -133,7 +145,7 @@ sub add_title_to_page {
 
 sub add_timestamp {
   my ($self, $page, $font, $stamp) = @_;
-  $self->add_text_to_page($page, $font, $stamp, $left_margin, $stamp_height, $stamp_size);
+  $self->add_text_to_page($page, $font, $stamp, $left_margin, $self->stamp_height(), $stamp_size);
   return;
 }
 
@@ -150,27 +162,27 @@ sub add_buffer_table_to_page {
     $pdf, $page, \@table_data,
 
     x => $left_margin,
-    w => ($nb_core_col + 1)*$col_width,
+    w => ($nb_core_col + 1) * $self->col_width(),
     start_y => $y,
-    start_h => 500,
+    start_h => 600,
     padding => 1,
     font  =>      $pdf->corefont('Courier-Bold', -encoding => 'latin1'),
     cell_props => $table_properties,
     column_props => [
-      { min_w => $col_width/2, max_w => $col_width/2, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width/2, max_w => $col_width/2, },
+      { min_w => 0, max_w => $self->col_width() / 2, },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => 0, max_w => $self->col_width() / 2, },
     ]
   );
   return;

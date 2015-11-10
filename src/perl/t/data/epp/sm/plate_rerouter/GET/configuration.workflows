@@ -1,0 +1,69 @@
+<?xml version="1.0" standalone="yes"?>
+<wkfcnf:workflows xmlns:wkfcnf="http://genologics.com/ri/workflowconfiguration">
+    <workflow status="PENDING" uri="http://testserver.com:1234/here/configuration/workflows/1" name="192.24 Fluidigm Test"/>
+    <workflow status="PENDING" uri="http://testserver.com:1234/here/configuration/workflows/2" name="API Automation Examples"/>
+    <workflow status="PENDING" uri="http://testserver.com:1234/here/configuration/workflows/3" name="API barcode printing test2"/>
+    <workflow status="PENDING" uri="http://testserver.com:1234/here/configuration/workflows/4" name="API ILLB pooling test"/>
+    <workflow status="ARCHIVED" uri="http://testserver.com:1234/here/configuration/workflows/5" name="Betty's First Workflow"/>
+    <workflow status="PENDING" uri="http://testserver.com:1234/here/configuration/workflows/6" name="Betty's Fourth Workflow"/>
+    <workflow status="ARCHIVED" uri="http://testserver.com:1234/here/configuration/workflows/7" name="Betty's Second Workflow"/>
+    <workflow status="ARCHIVED" uri="http://testserver.com:1234/here/configuration/workflows/8" name="Betty's Third Workflow"/>
+    <workflow status="ARCHIVED" uri="http://testserver.com:1234/here/configuration/workflows/9" name="C44"/>
+    <workflow status="PENDING" uri="http://testserver.com:1234/here/configuration/workflows/10" name="C44 workflow"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/11" name="C44 workflow not QC"/>
+    <workflow status="PENDING" uri="http://testserver.com:1234/here/configuration/workflows/12" name="CES test 2"/>
+    <workflow status="PENDING" uri="http://testserver.com:1234/here/configuration/workflows/13" name="Cherrypick Test"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/302" name="Chris PCR Whatever"/>
+    <workflow status="ARCHIVED" uri="http://testserver.com:1234/here/configuration/workflows/15" name="CS24 Workflow"/>
+    <workflow status="PENDING" uri="http://testserver.com:1234/here/configuration/workflows/16" name="Demo 1.0"/>
+    <workflow status="ARCHIVED" uri="http://testserver.com:1234/here/configuration/workflows/17" name="DJ8 workflow test"/>
+    <workflow status="ARCHIVED" uri="http://testserver.com:1234/here/configuration/workflows/18" name="dummy workflow ces 2"/>
+    <workflow status="ARCHIVED" uri="http://testserver.com:1234/here/configuration/workflows/19" name="dummy workflow ces 3"/>
+    <workflow status="ARCHIVED" uri="http://testserver.com:1234/here/configuration/workflows/20" name="dummy workflow ces1"/>
+    <workflow status="PENDING" uri="http://testserver.com:1234/here/configuration/workflows/21" name="Fluidigm 96.96 Test"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/101" name="Fluidigm Analysis Only"/>
+    <workflow status="PENDING" uri="http://testserver.com:1234/here/configuration/workflows/22" name="Fluidigm Bed Verification"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/23" name="GCLP Cherrypick"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/551" name="GCLP Cherrypick_20150528"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/24" name="GCLP Fluidigm 96.96"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/53" name="GCLP ISC Sequencing"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/552" name="GCLP ISC Sequencing_20150528"/>
+    <workflow status="PENDING" uri="http://testserver.com:1234/here/configuration/workflows/25" name="GCLP Plate Delivery"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/502" name="GCLP Sample Management QC"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/601" name="GCLP Sample Management QC_20150604"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/52" name="GCLP Sequencing Only Sanger 168 Tag Index Addition"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/26" name="GCLP Sequencing QC"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/304" name="GCLP TEST"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/303" name="gclp test"/>
+    <workflow status="ARCHIVED" uri="http://testserver.com:1234/here/configuration/workflows/27" name="Gung-Ho MiSeq"/>
+    <workflow status="ARCHIVED" uri="http://testserver.com:1234/here/configuration/workflows/28" name="John Caliper test"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/151" name="Karoly Workflow"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/351" name="Karoly's Post Capture Lib Pooling WF"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/405" name="Karoly's SM Cherrypick WF"/>
+    <workflow status="ARCHIVED" uri="http://testserver.com:1234/here/configuration/workflows/401" name="Lucy Test"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/403" name="Lucy UAT"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/29" name="Marina's Virtual Sequencing"/>
+    <workflow status="PENDING" uri="http://testserver.com:1234/here/configuration/workflows/30" name="Pico Assay Bed Verification"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/51" name="Pico Control Validation"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/301" name="Plate Delivery"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/203" name="Pooling"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/14" name="QC Report Test"/>
+    <workflow status="ARCHIVED" uri="http://testserver.com:1234/here/configuration/workflows/31" name="Sample Management GCLP QC"/>
+    <workflow status="ARCHIVED" uri="http://testserver.com:1234/here/configuration/workflows/404" name="SCG Library Preparation"/>
+    <workflow status="ARCHIVED" uri="http://testserver.com:1234/here/configuration/workflows/452" name="SCG Library Preparation v0.1"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/455" name="SCG Library Preparation v0.2"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/454" name="SCG Pre-Amplification SmartSeq2 v0.1"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/453" name="SCG Sample Receipt v0.1"/>
+    <workflow status="ARCHIVED" uri="http://testserver.com:1234/here/configuration/workflows/406" name="SCG Test Pooling Workflow"/>
+    <workflow status="ARCHIVED" uri="http://testserver.com:1234/here/configuration/workflows/407" name="SCG Test Sample Receipt"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/451" name="SCG Test WF1"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/501" name="SCG Test WF2"/>
+    <workflow status="ARCHIVED" uri="http://testserver.com:1234/here/configuration/workflows/32" name="Sequencing QC Test"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/33" name="SM Cherrypick Test"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/402" name="TEST"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/202" name="Test workflow for Tube 2"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/201" name="Tube Label Test Workflow"/>
+    <workflow status="PENDING" uri="http://testserver.com:1234/here/configuration/workflows/34" name="WGS"/>
+    <workflow status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/251" name="X Ten"/>
+    <workflow status="ARCHIVED" uri="http://testserver.com:1234/here/configuration/workflows/553" name="ZZZ Test 2"/>
+</wkfcnf:workflows>
