@@ -15,15 +15,15 @@ local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/sm/fluidigm_bc_validator';
   );
   isa_ok($fluidigm_bc_validator, 'wtsi_clarity::epp::sm::fluidigm_barcode_validator');
 
-  throws_ok { $fluidigm_bc_validator->run } qr/Validation for value 123456 failed. The barcode must have a length of 10./,
+  throws_ok { $fluidigm_bc_validator->run } qr/Validation for value 123456 failed. The input must have a length of 10./,
     'Throws an error when the barcode is too short';
 }
 
 {
   my %tests = (
-    'abcdefgasd'   => 'Validation for value abcdefgasd failed. The barcode must be numeric.',
-    '123456789123' => 'Validation for value 123456789123 failed. The barcode must have a length of 10.',
-    'abc1234'      => 'Validation for value abc1234 failed. The barcode must have a length of 10. The barcode must be numeric',
+    'abcdefgasd'   => 'Validation for value abcdefgasd failed. The input must be numeric.',
+    '123456789123' => 'Validation for value 123456789123 failed. The input must have a length of 10.',
+    'abc1234'      => 'Validation for value abc1234 failed. The input must have a length of 10. The input must be numeric',
   );
 
   while (my ($barcode, $error_message) = each %tests) {

@@ -14,7 +14,9 @@ sub build {
   my $csv_parser = Text::CSV->new();
   my $header_line = shift $file_content;
   $csv_parser->parse($header_line);
-  my @headers = map { _cleanup_key($_) } $csv_parser->fields();
+  my @headers = map {
+    _cleanup_key($_)
+  } $csv_parser->fields();
 
   my $output = [];
 
@@ -23,7 +25,9 @@ sub build {
     $csv_parser->parse($line);
     my @values = $csv_parser->fields();
     my %hash;
-    @hash{ @headers } = map { _cleanup_key($_) } @values;
+    @hash{ @headers } = map {
+      _cleanup_key($_)
+    } @values;
     push @{$output}, \%hash;
   }
   return $output;
@@ -31,7 +35,7 @@ sub build {
 
 sub _cleanup_key {
   my $key = shift;
-  $key =~ s/^\s+|\s+$//xmsg ;
+  $key =~ s/^\s+|\s+$//xmsg;
   return $key;
 }
 
