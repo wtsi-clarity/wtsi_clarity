@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 use Test::MockObject::Extends;
-use Test::More tests => 11;
+use Test::More tests => 12;
 
 use wtsi_clarity::clarity::step;
 use wtsi_clarity::epp;
@@ -17,9 +17,10 @@ local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/clarity/step';
 {
   my $xml = XML::LibXML->load_xml(location => $ENV{'WTSICLARITY_WEBCACHE_DIR'} . '/GET/steps/24-30034.programstatus');
   my $step = get_step();
-  my $step_programstatus = wtsi_clarity::clarity::step::programstatus->new(step => $step);
+  my $step_programstatus = $step->programstatus;
 
   can_ok($step_programstatus, qw/uri send_warning send_error send_ok/);
+  can_ok($step, qw/send_warning send_error send_ok/);
 
   is($step_programstatus->uri, 'http://testserver.com:1234/here/steps/24-30034/programstatus', 'Creates its uri correctly');
 
@@ -30,7 +31,7 @@ local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/clarity/step';
 }
 
 {
-  my $step_programstatus = wtsi_clarity::clarity::step::programstatus->new(step => get_step());
+  my $step_programstatus = get_step()->programstatus;
 
   $step_programstatus = Test::MockObject::Extends->new($step_programstatus);
 
