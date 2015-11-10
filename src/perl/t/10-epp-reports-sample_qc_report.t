@@ -94,8 +94,6 @@ my $EXPECTED_FILE_CONTENT = [
 
   my $sample_doc = $samples->[0];
 
-  my $expected_dna_amount_library_prep = 115.339134753689;
-
   my $sample_limsid           = $sample_doc->findvalue('./@limsid');
   my $artifact                = $report->_get_cherrypick_sample_artifact($sample_limsid);
   my $cherrypick_stamping_doc = $report->_get_cherrypick_stamping_process($artifact);

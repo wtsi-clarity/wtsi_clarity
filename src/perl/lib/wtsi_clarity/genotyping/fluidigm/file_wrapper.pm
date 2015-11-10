@@ -10,37 +10,22 @@ use wtsi_clarity::util::string qw/trim/;
 
 our $VERSION = '0.0';
 
-Readonly::Scalar my $HEADER_BARCODE_ROW => 0;
-Readonly::Scalar my $HEADER_BARCODE_COL => 2;
+Readonly::Scalar my $HEADER_BARCODE_ROW             => 0;
+Readonly::Scalar my $HEADER_BARCODE_COL             => 2;
 
-Readonly::Scalar my $HEADER_CONF_THRESHOLD_ROW => 5;
-Readonly::Scalar my $HEADER_CONF_THRESHOLD_COL => 1;
-Readonly::Scalar my $EXPECTED_NUM_COLUMNS => 12;
+Readonly::Scalar my $HEADER_CONF_THRESHOLD_ROW      => 5;
+Readonly::Scalar my $HEADER_CONF_THRESHOLD_COL      => 1;
+Readonly::Scalar my $EXPECTED_NUM_COLUMNS           => 12;
+
+Readonly::Scalar my $FLUIDIGM_96_WELL_COUNT         => 96;
+Readonly::Scalar my $FLUIDIGM_192_WELL_COUNT        => 192;
+Readonly::Scalar my $FLUIDIGM_96_SAMPLE_DATA_COUNT  => 96 * 96;
+Readonly::Scalar my $FLUIDIGM_192_SAMPLE_DATA_COUNT => 192 * 24;
 
 has 'file_name' => (
   is       => 'ro',
   isa      => 'WtsiClarityReadableFile',
   required => 1,
-);
-
-has 'header' => (
-  is     => 'ro',
-  isa    => 'ArrayRef[Str]',
-  writer => '_write_header',
-);
-
-has 'column_names' => (
-  is     => 'ro',
-  isa    => 'ArrayRef[Str]',
-  writer => '_write_column_names',
-);
-
-has 'fluidigm_barcode' => (
-  is       => 'ro',
-  isa      => 'Str',
-  required => 1,
-  lazy     => 1,
-  builder  => '_build_fluidigm_barcode',
 );
 
 has 'content' => (
@@ -56,28 +41,17 @@ sub BUILD {
   open my $in, '<:encoding(utf8)', $self->file_name
     or croak "Failed to open Fluidigm export file '",
                      $self->file_name, "': $OS_ERROR";
-  my ($header, $column_names, $sample_data) = $self->_parse_fluidigm_table($in);
+  my $sample_data = $self->_sample_data_from_fluidigm_table($in);
   close $in or croak "Unable to close Fluidigm export file";
 
-  $self->_write_header($header);
-  $self->_write_column_names($column_names);
   $self->_write_content($sample_data);
 
   return;
 }
 
-sub _parse_fluidigm_table {
+sub _sample_data_from_fluidigm_table {
   my ($self, $fh) = @_;
   binmode $fh, ':encoding(utf8)';
-
-  # True if we are in the header lines from 'Chip Run Info' to 'Allele
-  # Axis Mapping' inclusive
-  my $in_header = 0;
-  # True if we are in the unique column names row above the sample
-  # block
-  my $in_column_names = 0;
-  # True if we are past the header and into a data block
-  my $in_sample_block = 0;
 
   # Arrays of sample data lines keyed on Chamber IDs
   my %sample_data;
@@ -86,39 +60,12 @@ sub _parse_fluidigm_table {
   my $line_num = 0;
   my $num_sample_rows = 0;
 
-  my @header;
-  my @column_names;
-
   while (my $line = <$fh>) {
     ++$line_num;
     chomp $line;
     next if $line =~ m/^\s*$/sxm;
 
-    ## no critic ()
-    if ($line =~ /^Chip Run Info/sm) { $in_header = 1 }
-    if ($line =~ /^Experiment/sm)    { $in_header = 0 }
-    if ($line =~ /^ID/sxm)            { $in_column_names = 1 }
-    if ($line =~ /^S\d+\-[A-Z]\d+/sm) {
-      $in_column_names = 0;
-      $in_sample_block = 1;
-    }
-
-    if ($in_header) {
-      push @header, $line;
-      next;
-    }
-
-    if ($in_column_names) {
-      @column_names = map { trim $_ } split /,/sxm, $line;
-      my $num_columns = scalar @column_names;
-      if ($num_columns != $EXPECTED_NUM_COLUMNS) {
-        croak "Parse error: expected $EXPECTED_NUM_COLUMNS ",
-                          "columns, but found $num_columns at line $line_num";
-      }
-      next;
-    }
-
-    if ($in_sample_block) {
+    if ($line =~ /^S\d+\-[[:upper:]]\d+/sxm) {
       my @columns = map { trim $_ } split /,/sxm, $line;
       my $num_columns = scalar @columns;
       if ($num_columns != $EXPECTED_NUM_COLUMNS) {
@@ -138,42 +85,36 @@ sub _parse_fluidigm_table {
                           "at line $line_num";
       }
 
-      if (! exists $sample_data{$sample_address}) {
-        $sample_data{$sample_address} = [];
-      }
-
+      $sample_data{$sample_address} ||= [];
       push @{$sample_data{$sample_address}}, \@columns;
       $num_sample_rows++;
-      next;
     }
   }
 
-  if (!@header) {
-    croak "Parse error: no header rows found";
-  }
-  if (!@column_names) {
-    croak "Parse error: no column names found";
-  }
+  $self->_validate_data_count(\%sample_data, $num_sample_rows);
 
-  ## no critic (MagicNumbers)
-  if ($num_sample_rows == (96 * 96)) {
-    if (scalar keys %sample_data != 96) {
-      croak "Parse error: expected data for 96 samples, found ",
-                        scalar keys %sample_data;
+  return \%sample_data;
+}
+
+sub _validate_data_count {
+  my ($self, $sample_data, $num_sample_rows) = @_;
+
+  my $well_count = scalar keys %{$sample_data};
+  if ($num_sample_rows == $FLUIDIGM_96_SAMPLE_DATA_COUNT) {
+    if ($well_count != $FLUIDIGM_96_WELL_COUNT) {
+      croak "Parse error: expected data for 96 samples, found ", $well_count;
     }
   }
-  elsif ($num_sample_rows == (192 * 24)) {
-    if (scalar keys %sample_data != 192) {
-      croak "Parse error: expected data for 192 samples, found ",
-                        scalar keys %sample_data;
+  elsif ($num_sample_rows == $FLUIDIGM_192_SAMPLE_DATA_COUNT) {
+    if ($well_count != $FLUIDIGM_192_WELL_COUNT) {
+      croak "Parse error: expected data for 192 samples, found ", $well_count;
     }
   }
   else {
-    croak "Parse error: expected ", 96 * 96, " or ", 192 * 24,
-                      " sample data rows, found $num_sample_rows";
+    croak "Parse error: expected ", $FLUIDIGM_96_SAMPLE_DATA_COUNT,
+          " or ", $FLUIDIGM_192_SAMPLE_DATA_COUNT,
+          " sample data rows, found $num_sample_rows";
   }
-
-  return (\@header, \@column_names, \%sample_data);
 }
 
 __PACKAGE__->meta->make_immutable;
