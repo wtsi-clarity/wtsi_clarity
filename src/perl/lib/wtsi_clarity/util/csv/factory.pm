@@ -1,7 +1,5 @@
 package wtsi_clarity::util::csv::factory;
 
-use strict;
-use warnings;
 use Moose;
 use Carp;
 use Readonly;

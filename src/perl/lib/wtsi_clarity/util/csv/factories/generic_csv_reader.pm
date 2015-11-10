@@ -1,7 +1,5 @@
 package wtsi_clarity::util::csv::factories::generic_csv_reader;
 
-use strict;
-use warnings;
 use Moose;
 use Carp;
 use Text::CSV;

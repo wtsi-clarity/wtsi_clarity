@@ -1,7 +1,5 @@
 package wtsi_clarity::util::csv::factories::generic_csv_writer;
 
-use strict;
-use warnings;
 use Moose;
 use Carp;
 use wtsi_clarity::util::textfile;

@@ -1,7 +1,5 @@
 package wtsi_clarity::dao::flgen_plate_dao;
 
-use strict;
-use warnings;
 use Moose;
 use Readonly;
 use Carp;
