@@ -19,15 +19,15 @@ sub create {
   my $csv_factory;
 
   ##no critic ControlStructures::ProhibitCascadingIfElse
-  if ( $csv_type eq 'beckman_writer') {
+  if ($csv_type eq 'beckman_writer') {
     $csv_factory = wtsi_clarity::util::csv::factories::generic_csv_writer->new();
-  } elsif ( $csv_type eq 'report_writer') {
+  } elsif ($csv_type eq 'report_writer') {
     $csv_factory = wtsi_clarity::util::csv::factories::generic_csv_writer->new();
-  } elsif ( $csv_type eq 'generic_reader') {
+  } elsif ($csv_type eq 'generic_reader') {
     $csv_factory = wtsi_clarity::util::csv::factories::generic_csv_reader->new();
-  } elsif ( $csv_type eq 'calliper_reader') {
+  } elsif ($csv_type eq 'calliper_reader') {
     $csv_factory = wtsi_clarity::util::csv::factories::calliper_csv_reader->new();
-  } elsif ( $csv_type eq 'fluidigm_writer') {
+  } elsif ($csv_type eq 'fluidigm_writer') {
     $csv_factory = wtsi_clarity::util::csv::factories::generic_csv_writer->new();
   } else {
     croak "CSV file of type $csv_type cannot be created";

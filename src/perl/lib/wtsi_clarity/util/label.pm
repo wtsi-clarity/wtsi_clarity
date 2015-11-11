@@ -5,8 +5,7 @@ use Carp;
 use Readonly;
 use DateTime;
 
-use wtsi_clarity::util::config;
-my $config = wtsi_clarity::util::config->new();
+requires 'config';
 
 our $VERSION = '0.0';
 
@@ -88,7 +87,7 @@ sub _format_label {
 
   if ($type eq 'plate') {
 
-    if ($config->barcode_mint->{"internal_generation"}) {
+    if ($self->config->barcode_mint->{"internal_generation"}) {
       $label = {
         'template'  => 'clarity_plate',
         'plate' => {
@@ -110,12 +109,13 @@ sub _format_label {
           'date_user'      => join(q[ ], $date, $user),
           'purpose'        => $container->{'purpose'},
           'signature'      => $container->{'signature'},
+          'stock_barcode'  => $container->{'sanger_barcode'} // q{},
         }
       };
     }
 
   } elsif ($type eq 'tube') {
-    if ($config->barcode_mint->{"internal_generation"}) {
+    if ($self->config->barcode_mint->{"internal_generation"}) {
       my ($prefix, $sanger_barcode_number) = split /-/sxm, $container->{'num'};
       chop $sanger_barcode_number;
 

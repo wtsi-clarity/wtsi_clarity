@@ -2,13 +2,13 @@ use strict;
 use warnings;
 
 use Moose;
-use Test::More tests => 22;
+use Test::More tests => 25;
 use Test::MockObject::Extends;
 use Test::Exception;
 use XML::LibXML;
 
 use_ok('wtsi_clarity::dao::flgen_plate_dao');
-local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+local $ENV{'WTSI_CLARITY_HOME'} = q[t/data/config];
 
 {
   my $lims_id = '27-3314';
@@ -45,8 +45,10 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
     plate_size => 3131313131,
   );
 
-  throws_ok { $crazy_flgen_plate_dao->flgen_well_position('A:1', 16, 12); } qr/Unknown well format for 3131313131 size plate/,
-    "Throws an error when it doesn't know how to format a plate that's not 96 or 192";
+  throws_ok {
+    $crazy_flgen_plate_dao->flgen_well_position('A:1', 16, 12);
+  } qr/Unknown well format for 3131313131 size plate/,
+  "Throws an error when it doesn't know how to format a plate that's not 96 or 192";
 }
 
 {
@@ -58,7 +60,9 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
   my $flgen_plate_dao = wtsi_clarity::dao::flgen_plate_dao->new(lims_id => $lims_id);
 
   my $_xml;
-  lives_ok { $_xml = $flgen_plate_dao->_artifact_xml} 'got container xml';
+  lives_ok {
+    $_xml = $flgen_plate_dao->_artifact_xml
+  } 'got container xml';
   isa_ok($_xml, 'XML::LibXML::Document');
 
   is($flgen_plate_dao->id_flgen_plate_lims, q{27-3314}, 'Extracts id_flgen_plate_lims');
@@ -90,8 +94,26 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 
   my $flgen_plate_dao = wtsi_clarity::dao::flgen_plate_dao->new(lims_id => $lims_id);
 
-  throws_ok { $flgen_plate_dao->init } qr/Validation for value 132 failed. The barcode must have a length of 10./,
-    'Throws an error when the plate barcode is not a valid Fluidigm one';
+  throws_ok {
+    $flgen_plate_dao->init
+  } qr/Validation for value 132 failed. The input must have a length of 10./,
+  'Throws an error when the plate barcode is not a valid Fluidigm one';
+}
+
+{
+  my $lims_id = '27-3315';
+
+  my $flgen_plate_dao = wtsi_clarity::dao::flgen_plate_dao->new(lims_id => $lims_id);
+
+  throws_ok {
+    $flgen_plate_dao->flgen_well_position("A:G", 5, 5)
+  } qr/Well location format .{5} is not recognised/, "Letter:letter fails";
+  throws_ok {
+    $flgen_plate_dao->flgen_well_position("1:2", 5, 5)
+  } qr/Well location format .{5} is not recognised/, "Number:number fails";
+  throws_ok {
+    $flgen_plate_dao->flgen_well_position("4:G", 5, 5)
+  } qr/Well location format .{5} is not recognised/, "Number:letter fails";
 }
 
 1;

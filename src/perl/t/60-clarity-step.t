@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use XML::LibXML;
 
-use Test::More tests => 5;
+use Test::More tests => 7;
 use Test::MockObject::Extends;
 use Test::Exception;
 
@@ -36,6 +36,10 @@ use_ok 'wtsi_clarity::clarity::step';
   );
 
   isa_ok($step, 'wtsi_clarity::clarity::step', 'Builds the object correctly');
+
+  isa_ok($step->programstatus, 'wtsi_clarity::clarity::step::programstatus', 'Builds a `programstatus` correctly');
+
+  can_ok($step, qw/send_warning send_error send_ok/);
 }
 
 # Gets the URIs of the input containers and their count
