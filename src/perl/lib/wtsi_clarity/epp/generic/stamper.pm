@@ -1,13 +1,10 @@
 package wtsi_clarity::epp::generic::stamper;
 
 use Moose;
-use namespace::autoclean;
 use Readonly;
 use Carp;
 use URI::Escape;
 use XML::LibXML;
-use Mojo::Collection 'c';
-use Try::Tiny;
 use List::MoreUtils qw(uniq);
 
 extends 'wtsi_clarity::epp';
@@ -650,23 +647,17 @@ wtsi_clarity::epp::generic::stamper
 
 =item Carp
 
-=item namespace::autoclean
-
 =item Readonly
 
 =item URI::Escape
 
 =item XML::LibXML
 
-=item Mojo::Collection 'c'
-
-=item Try::Tiny
+=item List::MoreUtils
 
 =item wtsi_clarity::epp
 
 =item wtsi_clarity::util::clarity_elements
-
-=item wtsi_clarity::util::roles::clarity_process_base
 
 =back
 

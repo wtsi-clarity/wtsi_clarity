@@ -388,11 +388,21 @@ wtsi_clarity::epp::sm::pico_analyser
 
 =item Readonly
 
-=item List::MoreUtils;
-
-=item wtsi_clarity::util::batch
-
 =item wtsi_clarity::util::clarity_elements
+
+=item File::Temp
+
+=item wtsi_clarity::file_parsing::dtx_concentration_calculator
+
+=item wtsi_clarity::file_parsing::dtx_parser
+
+=item wtsi_clarity::util::pdf::factory::pico_analysis_results
+
+=item Mojo::Collection
+
+=item wtsi_clarity::epp
+
+=item wtsi_clarity::util::clarity_elements_fetcher_role_util
 
 =back
 

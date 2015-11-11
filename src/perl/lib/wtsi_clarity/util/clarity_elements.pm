@@ -5,7 +5,6 @@ use Carp;
 use Readonly;
 use XML::LibXML;
 use Try::Tiny;
-use Mojo::Collection 'c';
 use List::MoreUtils qw(uniq);
 
 our $VERSION = '0.0';
@@ -13,6 +12,7 @@ our $VERSION = '0.0';
 ##no critic ValuesAndExpressions::RequireInterpolationOfMetachars
 Readonly::Scalar my $INPUT_PARAMETER_PATH => q{ /prc:process/udf:field[contains(@name, '%s')] };
 Readonly::Scalar my $USER_DEFINED_URL     => q{http://genologics.com/ri/userdefined};
+Readonly::Scalar my $UDF_NAME_PATH        => qq{./udf:field[\@name='%s']};
 ##use critic
 
 sub _set_clarity_element {
@@ -168,7 +168,7 @@ sub update_nodes {
   }
   my $value = $args{'value'} || q{};
   my $is_udf = defined $args{'udf_name'};
-  my $xpath_element = $is_udf ? qq{./udf:field[\@name='$name']} : qq{./$name};
+  my $xpath_element = $is_udf ? sprintf $UDF_NAME_PATH, $name : qq{./$name};
 
   for my $node ($document->findnodes( $xpath_location )->get_nodelist()) {
     my @elements = $node->findnodes($xpath_element)->get_nodelist();
@@ -436,6 +436,10 @@ find_udf_element_value - takes some XML, an element name and an optional default
 =item Readonly
 
 =item XML::LibXML
+
+=item List::MoreUtils
+
+=item Try::Tiny
 
 =back
 

@@ -17,6 +17,10 @@ Readonly::Scalar our $ASSET_NUMBER_OF_COLUMNS => 12;
 Readonly::Scalar my $SOURCE_TABLE_HEIGHT      => 100;
 Readonly::Scalar my $BUFFER_TABLE_Y_POSITION  => 200;
 
+Readonly::Scalar my $PAGE_HEIGHT => 595;
+Readonly::Scalar my $COLUMN_WIDTH => 60;
+Readonly::Scalar my $CELL_FONT_SIZE => 5;
+
 has 'plate_table' => (
   isa => 'HashRef',
   is  => 'ro',
@@ -52,7 +56,7 @@ has 'plate_style_table' => (
 sub build {
   my ($self, $parameters) = @_;
 
-  my $pdf_generator = wtsi_clarity::util::pdf::pdf_generator->new(cell_font_size => 5, col_width => 60, page_height => 595);
+  my $pdf_generator = wtsi_clarity::util::pdf::pdf_generator->new(cell_font_size => $CELL_FONT_SIZE, col_width => $COLUMN_WIDTH, page_height => $PAGE_HEIGHT);
 
   for my $parameter (@{$parameters}) {
     my ($plate_table, $plate_table_cell_styles) = $self->format_tables($parameter->{'plate_table_data'});

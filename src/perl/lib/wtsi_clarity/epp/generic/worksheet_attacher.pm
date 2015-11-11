@@ -3,8 +3,6 @@ package wtsi_clarity::epp::generic::worksheet_attacher;
 use Moose;
 use Carp;
 use Readonly;
-use PDF::API2;
-use PDF::Table;
 use DateTime;
 use POSIX;
 use Mojo::Collection;
@@ -48,8 +46,8 @@ Readonly::Scalar my $RACK_PATH                 => q{WTSI Rack};
 Readonly::Scalar my $NUMBER_OF_COLUMNS        => 12;
 Readonly::Scalar my $NUMBER_OF_ROWS           => 8;
 Readonly::Scalar my $A_CHAR_CODE              => 64;
-Readonly::Scalar my $PLATE_NAME_START_INDEX   => 4;
-Readonly::Scalar my $PLATE_NAME_START_LENGTH  => 6;
+Readonly::Scalar my $PLATE_NAME_START_INDEX   => 3;
+Readonly::Scalar my $PLATE_NAME_START_LENGTH  => 7;
 Readonly::Scalar my $EAN13_BARCODE_LENGTH     => 13;
 
 Readonly::Scalar my $source_table_height      => 100;
@@ -246,7 +244,7 @@ sub _get_TECAN_file_content_per_URI {
 sub _create_worksheet_file {
   my ($self, $pdf_data) = @_;
 
-  my $pdf_generator = wtsi_clarity::util::pdf::pdf_generator->new();
+  my $pdf_generator = wtsi_clarity::util::pdf::pdf_generator->new(stamp => $pdf_data->{'stamp'});
 
   # for each output container, we produce a new page...
   foreach my $page_data (@{$pdf_data->{'pages'}}) {
@@ -633,15 +631,27 @@ wtsi_clarity::epp::generic::worksheet_attacher
 
 =item Readonly
 
-=item PDF::API2
-
-=item PDF::Table
-
 =item DateTime
 
 =item Mojo::Collection
 
 =item POSIX
+
+=item Mojo::Collection
+
+=item wtsi_clarity::util::request;
+
+=item wtsi_clarity::util::well_mapper;
+
+=item wtsi_clarity::epp
+
+=item wtsi_clarity::util::pdf::pdf_generator
+
+=item wtsi_clarity::util::clarity_elements_fetcher_role_util
+
+=item wtsi_clarity::util::clarity_elements
+
+=item wtsi_clarity::util::uploader_role
 
 =back
 

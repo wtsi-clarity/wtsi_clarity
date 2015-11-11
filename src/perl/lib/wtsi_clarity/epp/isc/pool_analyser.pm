@@ -105,9 +105,7 @@ wtsi_clarity::epp::isc::pool_analyser
 
 =item wtsi_clarity::dao::study_dao;
 
-=item wtsi_clarity::util::roles::clarity_process_io
-
-=item wtsi_clarity::epp
+=item wtsi_clarity::util::pdf::factory::pool_analysis_results
 
 =back
 
