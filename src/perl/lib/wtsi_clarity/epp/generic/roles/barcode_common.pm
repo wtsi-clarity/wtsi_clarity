@@ -48,25 +48,33 @@ sub generate_barcode {
     # GCLP:SM:12345:
     my $barcode = $LIMS_NAME . $SEPARATOR . $self->_barcode_prefix . $SEPARATOR  . $container_id . $SEPARATOR ;
 
-    # Generate checksum
-    my @chars = split qw{}, $barcode;
-    my @alphabet = (q{0}..q{9}, q{A}..q{Z}, q{:}, q{_}, q{-});
-
-    ## no critic(BuiltinFunctions::ProhibitComplexMappings)
-    my $sum = sum(map {
-      my $c = $chars[$_];
-      my ($num) = grep {
-        $alphabet[$_] eq $c
-      } 0..$#alphabet;
-      (2 + $#chars - $_) * $num
-    } 0..$#chars);
-    ## use critic
-
-    $barcode = $barcode . @alphabet[($MOD_VALUE - $sum) % $MOD_VALUE];
+    $barcode = $self->_add_checksum($barcode);
 
     # Return it twice for legacy reasons, once the internal generation config is removed, this can be refactored out.
     return ($barcode, $barcode);
   }
+}
+
+sub _add_checksum {
+  my ($self, $barcode) = @_;
+
+  # Generate checksum
+  my @chars = split qw{}, $barcode;
+  my @alphabet = (q{0}..q{9}, q{A}..q{Z}, q{:}, q{_}, q{-});
+
+  ## no critic(BuiltinFunctions::ProhibitComplexMappings)
+  my $sum = sum(map {
+    my $c = $chars[$_];
+    my ($num) = grep {
+      $alphabet[$_] eq $c
+    } 0..$#alphabet;
+    (2 + $#chars - $_) ^ $num
+  } 0..$#chars);
+  ## use critic
+
+  $barcode = $barcode . @alphabet[($MOD_VALUE - $sum) % $MOD_VALUE ^ 1];
+
+  return $barcode;
 }
 
 sub get_barcode_from_id {
