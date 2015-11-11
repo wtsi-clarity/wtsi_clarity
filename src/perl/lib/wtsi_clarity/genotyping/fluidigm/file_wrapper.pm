@@ -31,7 +31,10 @@ has 'file_name' => (
 has 'content' => (
   is      => 'ro',
   isa     => 'HashRef',
-  default => sub { return {} },
+  default => sub {
+    return {
+    }
+  },
   writer  => '_write_content',
 );
 
@@ -40,7 +43,7 @@ sub BUILD {
 
   open my $in, '<:encoding(utf8)', $self->file_name
     or croak "Failed to open Fluidigm export file '",
-                     $self->file_name, "': $OS_ERROR";
+  $self->file_name, "': $OS_ERROR";
   my $sample_data = $self->_sample_data_from_fluidigm_table($in);
   close $in or croak "Unable to close Fluidigm export file";
 
@@ -66,11 +69,13 @@ sub _sample_data_from_fluidigm_table {
     next if $line =~ m/^\s*$/sxm;
 
     if ($line =~ /^S\d+\-[[:upper:]]\d+/sxm) {
-      my @columns = map { trim $_ } split /,/sxm, $line;
+      my @columns = map {
+        trim $_
+      } split /,/sxm, $line;
       my $num_columns = scalar @columns;
       if ($num_columns != $EXPECTED_NUM_COLUMNS) {
         croak "Parse error: expected $EXPECTED_NUM_COLUMNS ",
-                          "columns, but found $num_columns at line $line_num";
+        "columns, but found $num_columns at line $line_num";
       }
 
       my $id = $columns[0];
@@ -78,11 +83,11 @@ sub _sample_data_from_fluidigm_table {
 
       if (!$sample_address) {
         croak "Parse error: no sample address in '$id' ",
-                          "at line $line_num";
+        "at line $line_num";
       }
       if (!$assay_num) {
         croak "Parse error: no assay number in '$id' ",
-                          "at line $line_num";
+        "at line $line_num";
       }
 
       $sample_data{$sample_address} ||= [];
@@ -112,8 +117,8 @@ sub _validate_data_count {
   }
   else {
     croak "Parse error: expected ", $FLUIDIGM_96_SAMPLE_DATA_COUNT,
-          " or ", $FLUIDIGM_192_SAMPLE_DATA_COUNT,
-          " sample data rows, found $num_sample_rows";
+    " or ", $FLUIDIGM_192_SAMPLE_DATA_COUNT,
+    " sample data rows, found $num_sample_rows";
   }
 }
 

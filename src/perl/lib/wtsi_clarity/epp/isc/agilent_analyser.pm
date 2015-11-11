@@ -9,14 +9,12 @@ use wtsi_clarity::isc::agilent::analyser;
 use wtsi_clarity::isc::agilent::file_validator;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $INPUT_IDS                      => q{ /prc:process/input-output-map/input/@limsid };
 Readonly::Scalar my $BATCH_CONTAINER_PATH           => q{ /art:details/art:artifact/location/container/@limsid };
 Readonly::Scalar my $BATCH_ARTIFACTS_SAMPLE_ID_PATH => q{ /art:details/art:artifact/sample/@limsid };
 Readonly::Scalar my $BATCH_ARTIFACTS_PATH           => q{ /art:details/art:artifact };
 Readonly::Scalar my $BATCH_SAMPLES_PATH             => q{ /smp:details/smp:sample };
 Readonly::Scalar my $CONTAINER_NAMES_PATH           => q{ /con:details/con:container/name/text() };
 Readonly::Scalar my $OUTPUT_IDS_PATH                => q{ /prc:process/input-output-map/output[@output-type='Analyte']/@limsid};
-Readonly::Scalar my $CONTAINER_PATH                 => q{ /art:artifact/location/container/@uri };
 Readonly::Scalar my $BATCH_CONTAINER_PLACEMENT_PATH => q{ /con:details/con:container/placement };
 
 Readonly::Scalar my $CONCENTRATION_UDF         => q{Concentration};
@@ -32,7 +30,6 @@ Readonly::Scalar my $SIZE_MIN_PATH             => q{./udf:field[@name='WTSI Pre 
 Readonly::Scalar my $DEFAULT_CONCENTRATION_MAX => 250.00;
 Readonly::Scalar my $DEFAULT_CONCENTRATION_MIN => 310.00;
 Readonly::Scalar my $DEFAULT_SIZE_MAX          => 0.0;
-Readonly::Scalar my $DEFAULT_SIZE_MIN          => 1_000_000;
 Readonly::Scalar my $DEFAULT_MOLARITY_MAX      => 0.0;
 Readonly::Scalar my $DEFAULT_MOLARITY_MIN      => 1_000_000;
 ## use critic

@@ -3,17 +3,13 @@ package wtsi_clarity::epp::isc::pool_analyser;
 use Moose;
 use Carp;
 use Readonly;
-use wtsi_clarity::util::pdf::factory;
+use wtsi_clarity::util::pdf::factory::pool_analysis_results;
 use wtsi_clarity::dao::sample_dao;
 use wtsi_clarity::dao::study_dao;
 
 our $VERSION = '0.0';
 
 extends 'wtsi_clarity::epp';
-
-## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $PROCESS_ID_PATH => q(/prc:process/@limsid);
-## use critic
 
 has 'analysis_file' => (
   isa => 'Str',
@@ -26,7 +22,7 @@ override 'run' => sub {
   super();
 
   # Pass the results to the PDF generator
-  my $pdf = wtsi_clarity::util::pdf::factory->createPDF('pool_analysis_results', $self->_get_parameters());
+  my $pdf = wtsi_clarity::util::pdf::factory::pool_analysis_results->new()->build($self->_get_parameters());
 
   # Attach PDF to process
   $pdf->saveas(q{./} . $self->analysis_file);
@@ -105,15 +101,11 @@ wtsi_clarity::epp::isc::pool_analyser
 
 =item Readonly
 
-=item wtsi_clarity::util::pdf::factory;
-
 =item wtsi_clarity::dao::sample_dao;
 
 =item wtsi_clarity::dao::study_dao;
 
-=item wtsi_clarity::util::roles::clarity_process_io
-
-=item wtsi_clarity::epp
+=item wtsi_clarity::util::pdf::factory::pool_analysis_results
 
 =back
 

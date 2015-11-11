@@ -3,16 +3,15 @@ package wtsi_clarity::epp::generic::worksheet_attacher;
 use Moose;
 use Carp;
 use Readonly;
-use PDF::API2;
-use PDF::Table;
 use DateTime;
 use POSIX;
 use Mojo::Collection;
 use wtsi_clarity::util::request;
-use wtsi_clarity::util::pdf::layout::worksheet;
 use wtsi_clarity::util::well_mapper;
 
-extends 'wtsi_clarity::epp';
+extends qw/ wtsi_clarity::epp
+  wtsi_clarity::util::pdf::pdf_generator
+  /;
 with qw/ wtsi_clarity::util::clarity_elements_fetcher_role_util
   wtsi_clarity::util::clarity_elements
   wtsi_clarity::util::uploader_role
@@ -47,32 +46,13 @@ Readonly::Scalar my $RACK_PATH                 => q{WTSI Rack};
 Readonly::Scalar my $NUMBER_OF_COLUMNS        => 12;
 Readonly::Scalar my $NUMBER_OF_ROWS           => 8;
 Readonly::Scalar my $A_CHAR_CODE              => 64;
-Readonly::Scalar my $PLATE_NAME_START_INDEX   => 4;
-Readonly::Scalar my $PLATE_NAME_START_LENGTH  => 6;
+Readonly::Scalar my $PLATE_NAME_START_INDEX   => 3;
+Readonly::Scalar my $PLATE_NAME_START_LENGTH  => 7;
 Readonly::Scalar my $EAN13_BARCODE_LENGTH     => 13;
 
-override 'run' => sub {
-  my $self = shift;
-  super();
-
-  my $containers_data = $self->_get_containers_data();
-  my $stamp = _get_stamp($containers_data, $self->request->user);
-
-  # pdf generation
-  my $pdf_data = _get_pdf_data($containers_data, $stamp);
-  my $pdf_generator = wtsi_clarity::util::pdf::layout::worksheet->new( 'pdf_data' => $pdf_data );
-  my $worksheet_file = $pdf_generator->create() or croak q{Impossible to create the pdf version of the worksheet!};
-
-  $worksheet_file->saveas(q{./}.$self->worksheet_filename);
-
-  # tecan file generation
-  # temp way to only create the worksheet
-  if ($self->tecan_filename) {
-    $self->_create_tecan_file($containers_data, $stamp, $self->tecan_filename);
-  }
-
-  return 1;
-};
+Readonly::Scalar my $source_table_height      => 100;
+Readonly::Scalar my $destination_table_height => 300;
+Readonly::Scalar my $buffer_table_height      => 450;
 
 has 'worksheet_filename' => (
   isa => 'Str',
@@ -85,6 +65,27 @@ has 'tecan_filename' => (
   is => 'ro',
   required => 1,
 );
+
+override 'run' => sub {
+  my $self = shift;
+  super();
+
+  my $containers_data = $self->_get_containers_data();
+  my $stamp = _get_stamp($containers_data, $self->request->user);
+
+  # pdf generation
+  my $pdf_data = _get_pdf_data($containers_data, $stamp);
+
+  $self->_create_worksheet_file($pdf_data)->saveas(q{./}.$self->worksheet_filename);
+
+  # tecan file generation
+  # temp way to only create the worksheet
+  if ($self->tecan_filename) {
+    $self->_create_tecan_file($containers_data, $stamp, $self->tecan_filename);
+  }
+
+  return 1;
+};
 
 ################# date & username ############
 
@@ -240,6 +241,27 @@ sub _get_TECAN_file_content_per_URI {
 
 ################# worksheet #################
 
+sub _create_worksheet_file {
+  my ($self, $pdf_data) = @_;
+
+  my $pdf_generator = wtsi_clarity::util::pdf::pdf_generator->new(stamp => $pdf_data->{'stamp'});
+
+  # for each output container, we produce a new page...
+  foreach my $page_data (@{$pdf_data->{'pages'}}) {
+    my $page = $self->pdf->page();
+    $page->mediabox('A4');
+
+    $pdf_generator->add_title_to_page($page, $page_data->{'title'});
+    $pdf_generator->add_timestamp($page);
+
+    $pdf_generator->add_io_block_to_page($self->pdf, $page, $page_data->{'input_table'}, $page_data->{'input_table_title'}, $source_table_height);
+    $pdf_generator->add_io_block_to_page($self->pdf, $page, $page_data->{'output_table'}, $page_data->{'output_table_title'}, $destination_table_height);
+
+    $pdf_generator->add_buffer_block_to_page($self->pdf, $page, $page_data->{'plate_table'}, $page_data->{'plate_table_title'}, $page_data->{'plate_table_cell_styles'}, $buffer_table_height);
+  }
+
+  return $self->pdf;
+}
 
 sub _get_pdf_data {
   my ($containers_data, $stamp) = @_;
@@ -471,7 +493,6 @@ sub _get_containers_data {
       my $buffer_volume = $self->find_udf_element_textContent   ( $out_artifact, $BUFFER_VOLUME_PATH, 0 );
       my $in_location = $self->find_elements_first_textContent( $in_artifact, $LOCATION_PATH         );
       my $in_container_uri = $self->find_elements_first_value      ( $in_artifact, $CONTAINER_URI_PATH    );
-      my $in_container_id = $self->find_elements_first_value      ( $in_artifact, $CONTAINER_ID_PATH     );
 
       # we only do this part when it's a container that we don't know yet...
       if (!defined $all_data->{'output_container_info'}->{$out_container_uri})
@@ -610,15 +631,27 @@ wtsi_clarity::epp::generic::worksheet_attacher
 
 =item Readonly
 
-=item PDF::API2
-
-=item PDF::Table
-
 =item DateTime
 
 =item Mojo::Collection
 
 =item POSIX
+
+=item Mojo::Collection
+
+=item wtsi_clarity::util::request;
+
+=item wtsi_clarity::util::well_mapper;
+
+=item wtsi_clarity::epp
+
+=item wtsi_clarity::util::pdf::pdf_generator
+
+=item wtsi_clarity::util::clarity_elements_fetcher_role_util
+
+=item wtsi_clarity::util::clarity_elements
+
+=item wtsi_clarity::util::uploader_role
 
 =back
 

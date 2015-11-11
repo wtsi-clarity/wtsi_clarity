@@ -3,7 +3,6 @@ package wtsi_clarity::util::pdf::factory::analysis_results;
 use Moose::Role;
 use Carp;
 use Readonly;
-use DateTime;
 
 Readonly::Scalar our $HEADER_STYLE => q(HEADER_STYLE);
 Readonly::Scalar my $NUMBER_OF_COLUMNS => 12;
