@@ -1,0 +1,451 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406875?state=207363" limsid="2-406875">
+        <name>2c78f82f-7990-11e5-a114-a2ee327457bb</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>E:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A153" limsid="MAN351A153"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406876?state=207364" limsid="2-406876">
+        <name>2bef1c59-7990-11e5-a114-c4417fcbd586</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>D:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A152" limsid="MAN351A152"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406877?state=207365" limsid="2-406877">
+        <name>280515fe-7990-11e5-a114-d43c8145f490</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>G:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A155" limsid="MAN351A155"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406878?state=207366" limsid="2-406878">
+        <name>277e0993-7990-11e5-a114-a52a0cd857c4</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>F:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A154" limsid="MAN351A154"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406879?state=207367" limsid="2-406879">
+        <name>28f5a988-7990-11e5-a114-b86be745edab</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A149" limsid="MAN351A149"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406880?state=207368" limsid="2-406880">
+        <name>287b25c8-7990-11e5-a114-83114a71bde8</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>C:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A151" limsid="MAN351A151"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406881?state=207369" limsid="2-406881">
+        <name>2a1fc73a-7990-11e5-a114-d37e8d9ed7eb</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>B:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A150" limsid="MAN351A150"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406882?state=207370" limsid="2-406882">
+        <name>2987850f-7990-11e5-a114-a85a635c6eec</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>D:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A160" limsid="MAN351A160"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406883?state=207371" limsid="2-406883">
+        <name>2b54d8b7-7990-11e5-a114-9550b43cee4b</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>E:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A161" limsid="MAN351A161"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406884?state=207372" limsid="2-406884">
+        <name>2ac6a208-7990-11e5-a114-fae932a13894</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>F:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A162" limsid="MAN351A162"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406885?state=207373" limsid="2-406885">
+        <name>2f9713b2-7990-11e5-a114-f205058b4a2d</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>G:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A163" limsid="MAN351A163"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406886?state=207374" limsid="2-406886">
+        <name>2f13c3c2-7990-11e5-a114-ab638b29cdc3</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>H:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A156" limsid="MAN351A156"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406887?state=207375" limsid="2-406887">
+        <name>30932a80-7990-11e5-a114-bc57a78f0735</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>A:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A157" limsid="MAN351A157"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406888?state=207376" limsid="2-406888">
+        <name>301fbafa-7990-11e5-a114-f36ed523bd4c</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>B:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A158" limsid="MAN351A158"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406889?state=207377" limsid="2-406889">
+        <name>2d86a421-7990-11e5-a114-b15cfcbdd31e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>C:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A159" limsid="MAN351A159"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406890?state=207378" limsid="2-406890">
+        <name>2d0227d6-7990-11e5-a114-a5b52c39cad7</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>D:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A168" limsid="MAN351A168"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406891?state=207379" limsid="2-406891">
+        <name>2e8f6d21-7990-11e5-a114-ba640e0692af</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>E:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A169" limsid="MAN351A169"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406892?state=207380" limsid="2-406892">
+        <name>2e097031-7990-11e5-a114-bab6c9f00688</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>F:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A170" limsid="MAN351A170"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406893?state=207381" limsid="2-406893">
+        <name>339cca42-7990-11e5-a114-af94f151b15a</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>G:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A171" limsid="MAN351A171"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406894?state=207382" limsid="2-406894">
+        <name>331b92c5-7990-11e5-a114-c7810379529e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>H:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A164" limsid="MAN351A164"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406895?state=207383" limsid="2-406895">
+        <name>34a26212-7990-11e5-a114-9d3474781b22</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>A:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A165" limsid="MAN351A165"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406896?state=207384" limsid="2-406896">
+        <name>3421d35d-7990-11e5-a114-d66c7827c3c2</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>B:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A166" limsid="MAN351A166"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406897?state=207385" limsid="2-406897">
+        <name>3199b5fc-7990-11e5-a114-f00dc4f45911</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>C:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A167" limsid="MAN351A167"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406898?state=207386" limsid="2-406898">
+        <name>311e06bd-7990-11e5-a114-e8ecd59af0cd</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>H:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A180" limsid="MAN351A180"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406899?state=207387" limsid="2-406899">
+        <name>329c1418-7990-11e5-a114-cce39c1cc683</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>B:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A174" limsid="MAN351A174"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406900?state=207388" limsid="2-406900">
+        <name>321e3daf-7990-11e5-a114-d4bc924f8fcf</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>C:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A175" limsid="MAN351A175"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406951?state=207389" limsid="2-406951">
+        <name>363fc205-7990-11e5-a114-93a7cd5f5403</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>H:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A172" limsid="MAN351A172"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406952?state=207390" limsid="2-406952">
+        <name>36c7e30a-7990-11e5-a114-cb38053ea39f</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>A:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A173" limsid="MAN351A173"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406953?state=207391" limsid="2-406953">
+        <name>375cdd01-7990-11e5-a114-84c4836df710</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>F:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A178" limsid="MAN351A178"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406954?state=207392" limsid="2-406954">
+        <name>37ebe27d-7990-11e5-a114-dde71491ba68</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>G:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A179" limsid="MAN351A179"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406955?state=207393" limsid="2-406955">
+        <name>35272f41-7990-11e5-a114-fc4c9b724d93</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>D:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A176" limsid="MAN351A176"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-406956?state=207394" limsid="2-406956">
+        <name>35b05740-7990-11e5-a114-b0091263eae0</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67945" limsid="24-67945"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13703" limsid="27-13703"/>
+            <value>E:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A177" limsid="MAN351A177"/>
+        <workflow-stages/>
+    </art:artifact>
+</art:details>
