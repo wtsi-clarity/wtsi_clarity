@@ -74,6 +74,27 @@ sub has_no_whitespace {
   return $self;
 }
 
+sub is_digits_or_uppercase {
+  my $self = shift;
+  my $message = shift // 'The input must only contain digits or uppercase letters';
+  $self->_add_validator(wtsi_clarity::util::validation::predicates::is_digits_or_uppercase(), $message);
+  return $self;
+}
+
+sub starts_with {
+  my ($self, $string, $message) = @_;
+  $message = $message // 'The input must start with ' . $string;
+  $self->_add_validator(wtsi_clarity::util::validation::predicates::starts_with($string), $message);
+  return $self;
+}
+
+sub ends_with {
+  my ($self, $string, $message) = @_;
+  $message = $message // 'The input must end with ' . $string;
+  $self->_add_validator(wtsi_clarity::util::validation::predicates::ends_with($string), $message);
+  return $self;
+}
+
 sub _validation_object {
   my ($check, $message) = @_;
   return {
@@ -133,6 +154,15 @@ Get back a wtsi_clarity::util::validations::result object
 
 =head2 has_no_whitespace
   Tests to see if the given value does not contain any whitespace.
+
+=head2 is_digits_or_uppercase
+  Tests to see if the given value only contains uppercase letters or digits.
+
+=head2 starts_with
+  Tests to see if the given value starts with the string $string.
+
+=head2 ends_with
+  Tests to see if the given value ends with the string $string.
 
 =head2 result
   Gives back the result of the tests (using a wtsi_clarity::util::validations::result object)
