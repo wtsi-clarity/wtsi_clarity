@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/2-400024?state=206987" limsid="2-400024">
+    <name>339cca42-7990-11e5-a114-af94f151b15a</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://testserver.com:1234/here/processes/24-67209" limsid="24-67209"/>
+    <qc-flag>PASSED</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-12839" limsid="27-12839"/>
+        <value>G:3</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/MAN351A171" limsid="MAN351A171"/>
+    <udf:field type="Numeric" name="Volume">21.8306</udf:field>
+    <workflow-stages>
+        <workflow-stage status="COMPLETE" name="Working Dilution (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1214"/>
+        <workflow-stage status="COMPLETE" name="QC Report" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1220"/>
+        <workflow-stage status="COMPLETE" name="Cherrypick Submission (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1131"/>
+        <workflow-stage status="COMPLETE" name="QC Report" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1220"/>
+        <workflow-stage status="IN_PROGRESS" name="Cherrypick Submission (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1131"/>
+    </workflow-stages>
+</art:artifact>

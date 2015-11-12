@@ -236,7 +236,7 @@ sub _build__analytes {
     if (!$uri) {
       croak qq[Target analyte uri not defined for container $container_url input analyte $url];
     }
-    $uri =~ s/[?]\w*//smx; #drop part of the uri starting with ? (state)
+    $uri =~ s/[?]\S*//smx; #drop part of the uri starting with ? (state)
     push @{$containers->{$container_url}->{$url}->{'target_analyte_uri'}}, $uri;
   }
   if (scalar keys %{$containers} == 0) {
