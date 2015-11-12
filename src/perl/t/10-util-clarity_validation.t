@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 26;
+use Test::More tests => 32;
 
 use_ok('wtsi_clarity::util::clarity_validation', (qw/flgen_bc ean13_bc flowcell_bc/));
 
@@ -46,15 +46,22 @@ use_ok('wtsi_clarity::util::clarity_validation', (qw/flgen_bc ean13_bc flowcell_
 }
 
 {
-  is(flowcell_bc("123456789")->failed, 0, 'Returns 1 for a valid flowcell input.');
-  is(flowcell_bc("1234567AB")->failed, 0, 'Returns 1 for a valid flowcell input.');
-  is(flowcell_bc("ABCDEFGHI")->failed, 0, 'Returns 1 for a valid flowcell input.');
+  is(flowcell_bc("H234567XX")->failed, 0, 'Returns 1 for a valid flowcell input.');
+  is(flowcell_bc("HAB4567XX")->failed, 0, 'Returns 1 for a valid flowcell input.');
+  is(flowcell_bc("HBCDEFGXX")->failed, 0, 'Returns 1 for a valid flowcell input.');
 
-  is(flowcell_bc("1234567")->error_message, 'Validation for value 1234567 failed. The input must have a length of 9.');
-  is(flowcell_bc("12ABC")->error_message, 'Validation for value 12ABC failed. The input must have a length of 9.');
-  is(flowcell_bc("1234567890ABC")->error_message, 'Validation for value 1234567890ABC failed. The input must have a length of 9.');
-  is(flowcell_bc("123456789012")->error_message, 'Validation for value 123456789012 failed. The input must have a length of 9.');
-  is(flowcell_bc("12345678 ")->error_message, 'Validation for value 12345678  failed. The input must not contain spaces.');
+  is(flowcell_bc("1234567")->error_message, 'Validation for value 1234567 failed. The input must have a length of 9. The input must start with H. The input must end with XX.');
+  is(flowcell_bc("12ABC")->error_message, 'Validation for value 12ABC failed. The input must have a length of 9. The input must start with H. The input must end with XX.');
+  is(flowcell_bc("1234567890ABC")->error_message, 'Validation for value 1234567890ABC failed. The input must have a length of 9. The input must start with H. The input must end with XX.');
+  is(flowcell_bc("123456789012")->error_message, 'Validation for value 123456789012 failed. The input must have a length of 9. The input must start with H. The input must end with XX.');
+  is(flowcell_bc("12345678 ")->error_message, 'Validation for value 12345678  failed. The input must not contain spaces. The input must start with H. The input must end with XX.');
+
+  is(flowcell_bc("123456789")->error_message, 'Validation for value 123456789 failed. The input must start with H. The input must end with XX.');
+  is(flowcell_bc("123H56789")->error_message, 'Validation for value 123H56789 failed. The input must start with H. The input must end with XX.');
+  is(flowcell_bc("1234XX789")->error_message, 'Validation for value 1234XX789 failed. The input must start with H. The input must end with XX.');
+  is(flowcell_bc("H23456789")->error_message, 'Validation for value H23456789 failed. The input must end with XX.');
+  is(flowcell_bc("H2345678X")->error_message, 'Validation for value H2345678X failed. The input must end with XX.');
+  is(flowcell_bc("1234567XX")->error_message, 'Validation for value 1234567XX failed. The input must start with H.');
 }
 
 1;

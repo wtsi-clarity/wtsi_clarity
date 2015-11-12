@@ -16,6 +16,8 @@ our $VERSION = '0.0';
 Readonly::Scalar my $FLUIDIGM_BC_LENGTH => 10;
 Readonly::Scalar my $EAN_BC_LENGTH      => 13;
 Readonly::Scalar my $FLOWCELL_BC_LENGTH => 9;
+Readonly::Scalar my $FLOWCELL_START     => 'H';
+Readonly::Scalar my $FLOWCELL_END       => 'XX';
 
 sub flgen_bc {
   return _validate(shift)
@@ -36,6 +38,9 @@ sub flowcell_bc {
   return _validate(shift)
     ->has_length($FLOWCELL_BC_LENGTH)
     ->has_no_whitespace()
+    ->is_digits_or_uppercase()
+    ->starts_with($FLOWCELL_START)
+    ->ends_with($FLOWCELL_END)
     ->result();
 }
 
@@ -76,7 +81,7 @@ object with 2 methods on: failed and error_message.
   Tests to see if a given value has a length of 13, is numeric, and doesn't contain whitespace.
 
 =head2 flowcell_bc
-  Tests to see if a given value has a length of 10, and doesn't contain whitespace.
+  Tests to see if a given value has a length of 10, doesn't contain whitespace, only contains uppercase letters or digits, starts with a 'H', and ends in 'XX'.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
