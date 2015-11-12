@@ -47,7 +47,7 @@
         <output uri="http://testserver.com:1234/here/artifacts/2-401267?state=204217"
                 output-generation-type="PerInput" output-type="Analyte" limsid="2-401267"/>
     </input-output-map>
-    <udf:field type="String" name="Flow Cell ID">123456ABCD</udf:field>
+    <udf:field type="String" name="Flow Cell ID">123456ABC</udf:field>
     <udf:field type="String" name="Pipette Used:">1</udf:field>
     <udf:field type="String" name="Plate Purpose">Cluster Generation</udf:field>
 </prc:process>

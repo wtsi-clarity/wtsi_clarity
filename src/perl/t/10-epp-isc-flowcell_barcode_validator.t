@@ -29,7 +29,7 @@ my $base_uri = $config->clarity_api->{'base_uri'};
   );
   isa_ok($flowcell_bc_validator, 'wtsi_clarity::epp::isc::flowcell_barcode_validator');
 
-  throws_ok { $flowcell_bc_validator->run } qr/Validation for value 123456 failed. The input must have a length of 10./,
+  throws_ok { $flowcell_bc_validator->run } qr/Validation for value 123456 failed. The input must have a length of 9./,
     'Throws an error when the barcode is too short';
 }
 

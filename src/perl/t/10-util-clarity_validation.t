@@ -46,15 +46,15 @@ use_ok('wtsi_clarity::util::clarity_validation', (qw/flgen_bc ean13_bc flowcell_
 }
 
 {
-  is(flowcell_bc("1234567890")->failed, 0, 'Returns 1 for a valid flowcell input.');
-  is(flowcell_bc("1234567ABC")->failed, 0, 'Returns 1 for a valid flowcell input.');
-  is(flowcell_bc("ABCDEFGHIJ")->failed, 0, 'Returns 1 for a valid flowcell input.');
+  is(flowcell_bc("123456789")->failed, 0, 'Returns 1 for a valid flowcell input.');
+  is(flowcell_bc("1234567AB")->failed, 0, 'Returns 1 for a valid flowcell input.');
+  is(flowcell_bc("ABCDEFGHI")->failed, 0, 'Returns 1 for a valid flowcell input.');
 
-  is(flowcell_bc("1234567")->error_message, 'Validation for value 1234567 failed. The input must have a length of 10.');
-  is(flowcell_bc("12ABC")->error_message, 'Validation for value 12ABC failed. The input must have a length of 10.');
-  is(flowcell_bc("1234567890ABC")->error_message, 'Validation for value 1234567890ABC failed. The input must have a length of 10.');
-  is(flowcell_bc("123456789012")->error_message, 'Validation for value 123456789012 failed. The input must have a length of 10.');
-  is(flowcell_bc("123456789 ")->error_message, 'Validation for value 123456789  failed. The input must not contain spaces.');
+  is(flowcell_bc("1234567")->error_message, 'Validation for value 1234567 failed. The input must have a length of 9.');
+  is(flowcell_bc("12ABC")->error_message, 'Validation for value 12ABC failed. The input must have a length of 9.');
+  is(flowcell_bc("1234567890ABC")->error_message, 'Validation for value 1234567890ABC failed. The input must have a length of 9.');
+  is(flowcell_bc("123456789012")->error_message, 'Validation for value 123456789012 failed. The input must have a length of 9.');
+  is(flowcell_bc("12345678 ")->error_message, 'Validation for value 12345678  failed. The input must not contain spaces.');
 }
 
 1;

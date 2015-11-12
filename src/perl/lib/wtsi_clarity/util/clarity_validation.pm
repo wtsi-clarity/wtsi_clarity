@@ -15,7 +15,7 @@ our $VERSION = '0.0';
 
 Readonly::Scalar my $FLUIDIGM_BC_LENGTH => 10;
 Readonly::Scalar my $EAN_BC_LENGTH      => 13;
-Readonly::Scalar my $FLOWCELL_BC_LENGTH => 10;
+Readonly::Scalar my $FLOWCELL_BC_LENGTH => 9;
 
 sub flgen_bc {
   return _validate(shift)
