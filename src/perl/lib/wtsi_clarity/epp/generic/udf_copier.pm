@@ -80,7 +80,7 @@ sub _copy {
   foreach my $field (@{$fields}) {
     my $field_value = $self->find_udf_element_textContent($analytes{'from'}, $field, q{});
 
-    return if $field_value eq q{};
+    next if $field_value eq q{};
 
     my $udf = $self->create_udf_element($self->_input_artifacts, $field);
     $udf->appendTextNode($field_value);
