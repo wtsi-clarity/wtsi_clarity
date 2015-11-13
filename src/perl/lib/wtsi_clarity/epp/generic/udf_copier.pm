@@ -45,10 +45,9 @@ sub _copy_fields {
 
     my $search_results = $self->_find_analytes_by_process_and_samples($self->from_process, \@samples);
 
-    if ( $search_results->size == 0 ) {
-      $self->step_doc->send_warning("Could not find any analytes from process " . $self->from_process);
-      return;
-    }
+    # Could not find any analytes from process
+    # Unfortunately can't inform the user
+    return if $search_results->size == 0;
 
     my $parent_analyte = $self->fetch_and_parse($search_results->pop->findvalue('@uri'));
 
@@ -81,9 +80,7 @@ sub _copy {
   foreach my $field (@{$fields}) {
     my $field_value = $self->find_udf_element_textContent($analytes{'from'}, $field, q{});
 
-    if ($field_value eq q{}) {
-      $self->step_doc->send_warning("Field $field has not been set on all artifacts at " . $self->from_process);
-    }
+    next if $field_value eq q{};
 
     my $udf = $self->create_udf_element($self->_input_artifacts, $field);
     $udf->appendTextNode($field_value);
