@@ -38,7 +38,7 @@ use_ok('wtsi_clarity::epp::generic::stamper');
 
 {
   my $s = wtsi_clarity::epp::generic::stamper->new(
-    process_url => 'http://testserver.com:1234/here/processes/24-98502',
+    process_url => $base_uri . '/processes/24-68040',
     step_url => 'some');
   lives_ok {
     $s->_analytes
@@ -50,20 +50,20 @@ use_ok('wtsi_clarity::epp::generic::stamper');
   is ($s->container_type_name->[0], 'ABgene 0800', 'container name retrieved correctly');
   is ($s->_validate_container_type, 0, 'container type validation flag unset');
   is ($s->_container_type->[0],
-  '<type uri="http://testserver.com:1234/here/containertypes/105" name="ABgene 0800"/>',
+  '<type uri="' . $base_uri . '/containertypes/15" name="ABgene 0800"/>',
   'container type value');
 
   delete $s->_analytes->{$containers[0]}->{'doc'};
   my @wells = sort map {
     $s->_analytes->{$containers[0]}->{$_}->{'well'}
   } (keys %{$s->_analytes->{$containers[0]}});
-  is (join(q[ ], @wells), 'B:11 D:11 E:11 G:9 H:9', 'sorted wells');
+  is (join(q[ ], @wells), 'A:1 A:8 C:3 C:9 F:10', 'sorted wells');
 
 }
 
 {
   my $s = wtsi_clarity::epp::generic::stamper->new(
-    process_url => $base_uri . '/processes/24-98502',
+    process_url => $base_uri . '/processes/24-68040',
     step_url    => 'some'
   );
   lives_ok {
@@ -90,7 +90,7 @@ use_ok('wtsi_clarity::epp::generic::stamper');
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/stamper/stamp_with_control';
   my $s = wtsi_clarity::epp::generic::stamper->new(
-    process_url => $base_uri . '/processes/24-99904',
+    process_url => $base_uri . '/processes/24-68043',
     step_url => 'some');
   lives_ok {
     $s->_analytes
@@ -102,7 +102,7 @@ use_ok('wtsi_clarity::epp::generic::stamper');
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/stamper/stamp_with_control';
   my $s = wtsi_clarity::epp::generic::stamper->new(
-    process_url => $base_uri . '/processes/24-99904',
+    process_url => $base_uri . '/processes/24-68043',
     step_url => 'some',
     container_type_name => ['ABgene 0800'],
     controls => 0);
@@ -113,14 +113,14 @@ use_ok('wtsi_clarity::epp::generic::stamper');
   is (scalar @containers, 1, 'one input container, control tube is skipped');
   ok ($s->_validate_container_type, 'validate container flag is true');
   is ($s->_container_type->[0],
-  '<type uri="' . $base_uri . '/containertypes/105" name="ABgene 0800"/>',
+  '<type uri="' . $base_uri . '/containertypes/15" name="ABgene 0800"/>',
   'container type derived correctly from name');
 }
 
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/stamper/stamp_with_control';
   my $s = wtsi_clarity::epp::generic::stamper->new(
-    process_url => $base_uri . '/processes/24-99904',
+    process_url => $base_uri . '/processes/24-68043',
     step_url => 'some',
     container_type_name => ['ABgene 0765', 'ABgene 0800'],
     controls => 0);
@@ -132,74 +132,50 @@ use_ok('wtsi_clarity::epp::generic::stamper');
   is (scalar @containers, 1, 'one input container, control tube is skipped');
   is (scalar(map {
     $_ =~ /\Ahttp/
-  } keys %{$s->_analytes->{$containers[0]}}), 4, 'control will not be stamped');
+  } keys %{$s->_analytes->{$containers[0]}}), 3, 'control will not be stamped');
 
   ok ($s->_validate_container_type, 'validate container flag is true');
   is (scalar @{$s->_container_type}, 2, 'two container types retrieved');
   is ($s->_container_type->[0],
-  '<type uri="' . $base_uri . '/containertypes/106" name="ABgene 0765"/>',
+  '<type uri="' . $base_uri . '/containertypes/16" name="ABgene 0765"/>',
   'first container type derived correctly from name');
   is ($s->_container_type->[1],
-  '<type uri="' . $base_uri . '/containertypes/105" name="ABgene 0800"/>',
+  '<type uri="' . $base_uri . '/containertypes/15" name="ABgene 0800"/>',
   'second container type derived correctly from name');
 
 }
 
 {
-  my $dir = tempdir(CLEANUP => 1);
-  `cp -R t/data/epp/generic/stamper/stamp_with_control $dir`;
-  #remove tube container from test data
-  `rm $dir/stamp_with_control/GET/containers.27-7555`;
-  my $control = "$dir/stamp_with_control/GET/artifacts.151C-801PA1?state=359614";
-  my $control_xml = read_file $control;
-  $control_xml =~ s/27-7555/27-7103/g;  #place control on the input plate
-  $control_xml =~ s/1:1/H:12/g;         #in well H:12
-  open my $fh, '>', $control or die "cannot open filehandle to write to $control";
-  print $fh $control_xml or die "cannot write to $control";
-  close $fh;
-
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = "$dir/stamp_with_control";
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = "t/data/epp/generic/stamper/stamp_with_control";
   my $s = wtsi_clarity::epp::generic::stamper->new(
-    process_url => $base_uri . '/processes/24-99904',
+    process_url => $base_uri . '/processes/24-68043',
     step_url => 'some',
     controls => 1);
   lives_ok {
     $s->_analytes
   } 'got all info from clarity';
   my @containers = keys %{$s->_analytes};
-  is (scalar @containers, 1, 'one input container');
+  is (scalar @containers, 2, 'two input containers');
   is (scalar(map {
     $_ =~ /\Ahttp/
-  } keys %{$s->_analytes->{$containers[0]}}), 5,
+  } keys %{$s->_analytes->{$containers[0]}}), 3,
   'control will be stamped when controls flag is true');
 }
 
 {
-  my $dir = tempdir(CLEANUP => 1);
-  `cp -R t/data/epp/generic/stamper/stamp_with_control $dir`;
-  #remove tube container from test data
-  `rm $dir/stamp_with_control/GET/containers.27-7555`;
-  my $control = "$dir/stamp_with_control/GET/artifacts.151C-801PA1?state=359614";
-  my $control_xml = read_file $control;
-  $control_xml =~ s/27-7555/27-7103/g;  #place control on the input plate
-  $control_xml =~ s/1:1/H:12/g;         #in well H:12
-  open my $fh, '>', $control or die "cannot open filehandle to write to $control";
-  print $fh $control_xml or die "cannot write to $control";
-  close $fh;
-
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = "$dir/stamp_with_control";
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = "t/data/epp/generic/stamper/stamp_with_control";
   my $s = wtsi_clarity::epp::generic::stamper->new(
-    process_url => $base_uri . '/processes/24-99904',
+    process_url => $base_uri . '/processes/24-68043',
     step_url => 'some',
     shadow_plate => 1);
   lives_ok {
     $s->_analytes
   } 'got all info from clarity';
   my @containers = keys %{$s->_analytes};
-  is (scalar @containers, 1, 'one input container');
+  is (scalar @containers, 2, 'two input containers');
   is (scalar(map {
     $_ =~ /\Ahttp/
-  } keys %{$s->_analytes->{$containers[0]}}), 5,
+  } keys %{$s->_analytes->{$containers[0]}}), 3,
   'control will be stamped when it is a shadow plate');
 }
 
@@ -234,7 +210,7 @@ use_ok('wtsi_clarity::epp::generic::stamper');
 
 {
   my $s = wtsi_clarity::epp::generic::stamper->new(
-    process_url => 'http://testserver.com:1234/here/processes/24-16122',
+    process_url => $base_uri . '/processes/24-16122',
     step_url => 'some',
     copy_on_target => 0
   );
@@ -269,9 +245,9 @@ use_ok('wtsi_clarity::epp::generic::stamper');
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/stamper/stamp_shadow';
   use Mojo::Collection 'c';
 
-  my $expected = { '27-2001' => 'barcode-00001-0002'};
+  my $expected = {'27-791' => '27-791'};
   my $s = wtsi_clarity::epp::generic::stamper->new(
-    process_url => 'http://testserver.com:1234/here/processes/24-16122',
+    process_url => $base_uri . '/processes/24-16122',
     step_url => 'some',
     shadow_plate => 1
   );
@@ -328,8 +304,8 @@ use_ok('wtsi_clarity::epp::generic::stamper');
   };
 
   my $s = wtsi_clarity::epp::generic::stamper->new(
-    process_url => 'http://testserver.com:1234/here/processes/24-25701',
-    step_url => 'http://testserver.com:1234/here/steps/24-25350',
+    process_url => $base_uri . '/processes/24-25701',
+    step_url => $base_uri . '/steps/24-25350',
     group => 1,
     _analytes => $analytes,
   );
@@ -349,8 +325,8 @@ use_ok('wtsi_clarity::epp::generic::stamper');
 
 {
   my $s = wtsi_clarity::epp::generic::stamper->new(
-    process_url => $base_uri . '/processes/24-67945',
-    step_url => $base_uri . '/steps/24-67945',
+    process_url => $base_uri . '/processes/24-68040',
+    step_url => $base_uri . '/steps/24-68040',
     shadow_plate => 1,
   );
 
