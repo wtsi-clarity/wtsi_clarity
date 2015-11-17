@@ -3,31 +3,32 @@ package wtsi_clarity::epp::sm::report_maker;
 use Moose;
 use Carp;
 use Readonly;
-use Mojo::Collection 'c';
-use URI::Escape;
-use List::Compare;
 use Try::Tiny;
 use Scalar::Util qw/looks_like_number/;
-use wtsi_clarity::util::textfile;
 use wtsi_clarity::util::report;
+use List::MoreUtils qw( uniq );
 
 our $VERSION = '0.0';
 
 extends 'wtsi_clarity::epp';
 
 with qw/
-        wtsi_clarity::util::clarity_elements
-        wtsi_clarity::util::csv::report_common
-       /;
+  wtsi_clarity::util::clarity_elements
+  wtsi_clarity::util::csv::report_common
+  /;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $PROCESS_ID_PATH                        => q(/prc:process/@limsid);
 Readonly::Scalar my $INPUT_ARTIFACTS_IDS_PATH               => q(/prc:process/input-output-map/input/@limsid);
 Readonly::Scalar my $ART_DETAIL_SAMPLE_IDS_PATH             => q{/art:details/art:artifact/sample/@limsid};
 Readonly::Scalar my $SAMPLE_PATH                            => q{smp:details/smp:sample[@limsid="%s"]};
 Readonly::Scalar my $SMP_DETAIL_ARTIFACTS_IDS_PATH          => q{/smp:details/smp:sample/artifact/@limsid};
-Readonly::Scalar my $ARTEFACTS_ARTEFACT_CONTAINTER_IDS_PATH => q{/art:details/art:artifact/location/container/@limsid};
-Readonly::Scalar my $ARTEFACTS_ARTEFACT_URIS_PATH           => q{/art:artifacts/artifact/@uri};
+Readonly::Scalar my $ARTIFACTS_ARTIFACT_CONTAINTER_IDS_PATH => q{/art:details/art:artifact/location/container/@limsid};
+Readonly::Scalar my $ARTIFACTS_ARTIFACT_URIS_PATH           => q{/art:artifacts/artifact/@uri};
+Readonly::Scalar my $SAMPLE_LIMS_ID                         => q{./sample/@limsid};
+Readonly::Scalar my $CONTAINER_LIMSID_FROM_SAMPLE           => qq{/art:details/art:artifact/sample[\@limsid='%s']/../location/container/\@limsid};
+Readonly::Scalar my $LOCATION_FROM_SAMPLE                   => qq{/art:details/art:artifact/sample[\@limsid='%s']/../location/value/text()};
+Readonly::Scalar my $CONTAINER_NAME_BY_ID                   => qq{/con:details/con:container[\@limsid='%s']/name/text()};
+Readonly::Scalar my $UDF_FIELD_BY_NAME                      => qq{./udf:field[\@name="%s"]};
 Readonly::Scalar my $THOUSANDTH                             => 0.001;
 Readonly::Scalar my $LABORATORY_VOLUME_SUBTRACTION          => 2;
 
@@ -38,11 +39,10 @@ Readonly::Scalar my $PRC_CONCENTRATION  => qq{Picogreen Analysis (SM)};
 Readonly::Scalar my $CALL_RATE          => qq{WTSI Fluidigm Call Rate (SM)};
 Readonly::Scalar my $PRC_CALL_RATE      => qq{Fluidigm 96.96 IFC Analysis (SM)};
 Readonly::Scalar my $FLUIDIGM_GENDER    => qq{WTSI Fluidigm Gender (SM)};
-Readonly::Scalar my $PRC_FLUIDIGM_GENDER=> qq{Fluidigm 96.96 IFC Analysis (SM)};
+Readonly::Scalar my $PRC_FLUIDIGM_GENDER => qq{Fluidigm 96.96 IFC Analysis (SM)};
 
 Readonly::Scalar my $CONCENTRATION_UDF_NAME => q{Sample Conc. (ng\/µL) (SM)};
 
-Readonly::Scalar my $NEXT_PAGE_URI => q{/art:artifacts/next-page/@uri};
 Readonly::Scalar my $PAGE_SIZE     => 50;
 
 ## use critic
@@ -63,7 +63,6 @@ has 'report_file' => (
 
 sub _build_report_file {
   my ($self) = @_;
-  my $files = [];
   return wtsi_clarity::util::report->new()->get_file($self->internal_csv_output);
 }
 
@@ -81,13 +80,13 @@ has 'qc_report_file_name' => (
 );
 
 override 'run' => sub {
-  my $self= shift;
+  my $self = shift;
   super();
   $self->_main_method();
   return;
 };
 
-sub _main_method{
+sub _main_method {
   my ($self) = @_;
 
   my $missing_data = $self->_get_first_missing_necessary_data();
@@ -105,18 +104,19 @@ sub _main_method{
 sub _build_internal_csv_output {
   my ($self) = @_;
   my $report = wtsi_clarity::util::report->new();
-  my @content =c->new(@{$self->_sample_ids})
-                ->map( sub {
-                  my $sample_id = $_;
-                  return c->new(@{$report->headers})
-                          ->reduce( sub {
-                            my $method = $self->get_method_from_header($b);
-                            my $value = $self->$method($sample_id);
-                            $a->{$b} = $value;
-                            $a;
-                          }, {});
-                })
-                ->each();
+
+  ## no critic(BuiltinFunctions::ProhibitComplexMappings
+  my @content = map {
+    my $sample_id = $_;
+    my %hash = map {
+      my $method = $self->get_method_from_header($_);
+      $_ => $self->$method($sample_id);
+    } @{$report->headers};
+
+    \%hash;
+  } @{$self->_sample_ids};
+  ## use critic
+
   return \@content;
 }
 
@@ -183,7 +183,7 @@ sub _get_concentration {
 
 sub _get_measured_volume {
   my ($self, $sample_id) = @_;
-  return $self->_get_value_from_data($UDF_VOLUME, $sample_id) ;
+  return $self->_get_value_from_data($UDF_VOLUME, $sample_id);
 }
 
 sub _get_total_micrograms {
@@ -195,7 +195,7 @@ sub _get_total_micrograms {
 
   # Ocasionaly have seen concentration set to something other than a number, hence the check
   if (looks_like_number($concentration) && looks_like_number($measured_volume)) {
-    $total_micrograms = $concentration * ($measured_volume -  $LABORATORY_VOLUME_SUBTRACTION) * $THOUSANDTH;
+    $total_micrograms = $concentration * ($measured_volume - $LABORATORY_VOLUME_SUBTRACTION) * $THOUSANDTH;
   }
 
   return $total_micrograms;
@@ -238,7 +238,7 @@ sub _get_genotyping_well_cohort {
 
 sub _get_not_implemented_yet {
   my ($self, $sample_id) = @_;
-  return qq{*} ; #qq{Not implemented yet};
+  return qq{*}; #qq{Not implemented yet};
 }
 
 ## use critic
@@ -253,12 +253,12 @@ sub _get_value_from_data {
   my $data = $self->_all_udf_values->{$sample_id};
 
   if (!defined $data) {
-    return qq{[Sample id not present ($sample_id)]} ;
+    return qq{[Sample id not present ($sample_id)]};
   }
   if (!defined $data->{$udf_name} || !$data->{$udf_name}) {
     return q{};
   }
-  return $data->{$udf_name} ;
+  return $data->{$udf_name};
 }
 
 ########################################################
@@ -288,11 +288,10 @@ sub _build__input_artifacts_details {
   my $self = shift;
   my $base_url = $self->config->clarity_api->{'base_uri'};
 
-  my @uris = c->new(@{$self->_input_artifacts_ids})
-              ->map( sub {
-                  return $base_url.'/artifacts/'.$_;
-                } )
-              ->each;
+  my @uris = map {
+    $base_url . '/artifacts/' . $_;
+  } @{$self->_input_artifacts_ids};
+
   return $self->request->batch_retrieve('artifacts', \@uris );
 };
 
@@ -319,11 +318,9 @@ sub _build__sample_details {
   my $self = shift;
   my $base_url = $self->config->clarity_api->{'base_uri'};
 
-  my @uris = c->new(@{$self->_sample_ids})
-              ->map( sub {
-                  return $base_url.'/samples/'.$_;
-                } )
-              ->each;
+  my @uris = map {
+    $base_url . '/samples/' . $_;
+  } @{$self->_sample_ids};
 
   return $self->request->batch_retrieve('samples', \@uris );
 };
@@ -337,7 +334,7 @@ sub _update_sample_concentration {
     croak sprintf 'Found %i samples for sample %s', $sample_list->size(), $sample_limsid;
   }
 
-  my $sample_xml        = $sample_list->pop();
+  my $sample_xml = $sample_list->pop();
   my $concentration_udf = $self->create_udf_element($self->_sample_details, $CONCENTRATION_UDF_NAME, $concentration);
 
   $sample_xml->appendChild($concentration_udf);
@@ -350,25 +347,25 @@ has '_required_sources' => (
   is  => 'ro',
   required => 0,
   default => sub {
-      return {
-        q{concentration} => {
-          src_process => $PRC_CONCENTRATION,
-          src_udf_name=> $UDF_CONCENTRATION,
-        },
-        q{call_rate} => {
-          src_process => $PRC_CALL_RATE,
-          src_udf_name=> $CALL_RATE,
-        },
-        q{fluidigm_gender} => {
-          src_process => $PRC_FLUIDIGM_GENDER,
-          src_udf_name=> $FLUIDIGM_GENDER,
-        },
-        q{cherry_volume} => {
-          src_process => $PRC_VOLUME,
-          src_udf_name=> $UDF_VOLUME,
-        },
-      };
-    },
+    return {
+      q{concentration} => {
+        src_process => $PRC_CONCENTRATION,
+        src_udf_name => $UDF_CONCENTRATION,
+      },
+      q{call_rate} => {
+        src_process => $PRC_CALL_RATE,
+        src_udf_name => $CALL_RATE,
+      },
+      q{fluidigm_gender} => {
+        src_process => $PRC_FLUIDIGM_GENDER,
+        src_udf_name => $FLUIDIGM_GENDER,
+      },
+      q{cherry_volume} => {
+        src_process => $PRC_VOLUME,
+        src_udf_name => $UDF_VOLUME,
+      },
+    };
+  },
 );
 
 has '_extra_sources' => (
@@ -376,8 +373,9 @@ has '_extra_sources' => (
   is  => 'ro',
   required => 0,
   default => sub {
-      return { };
-    },
+    return {
+    };
+  },
 );
 
 has '_all_udf_values' => (
@@ -388,19 +386,20 @@ has '_all_udf_values' => (
 );
 
 sub _get_first_missing_necessary_data {
-  my($self) = @_;
-  my $c_udfs = c->new( keys $self->_required_sources )
-                ->map( sub { $self->_required_sources->{$_}->{'src_udf_name'}; });
+  my ($self) = @_;
 
-  my $notfound = $c_udfs->first(sub {
-                    my $udf_name = $_;
-                    return c->new( @{$self->_sample_ids} )
-                            ->first(sub {
-                                my $sample_id = $_;
-                                return !defined $self->_all_udf_values->{$sample_id}->{$udf_name};
-                            });
-                  });
-  return $notfound;
+  my @c_udfs = map {
+    $self->_required_sources->{$_}->{'src_udf_name'};
+  } keys $self->_required_sources;
+
+  my @missing_data = grep {
+    my $udf_name = $_;
+    grep {
+      !defined $self->_all_udf_values->{$_}->{$udf_name};
+    } @{$self->_sample_ids}
+  } @c_udfs;
+
+  return $missing_data[0];
 }
 
 sub _build__all_udf_values {
@@ -432,18 +431,18 @@ sub _search_artifacts {
   my ($self, $step, $udf_name, $sample_ids, @artifact_uris) = @_;
 
   my @samples_to_find = splice @{$sample_ids}, 0, $PAGE_SIZE;
-  my $artifacts_doc   = $self->request->query_resources(
-        q{artifacts},
-        {
-          udf         => qq{udf.$udf_name.min=0},
-          type        => qq{Analyte},
-          step        => $step,
-          sample_id   => \@samples_to_find,
-          start_index => 0,
-        }
+  my $artifacts_doc = $self->request->query_resources(
+    q{artifacts},
+    {
+      udf         => qq{udf.$udf_name.min=0},
+      type        => qq{Analyte},
+      step        => $step,
+      sample_id   => \@samples_to_find,
+      start_index => 0,
+    }
   );
 
-  push @artifact_uris, @{$self->grab_values($artifacts_doc, $ARTEFACTS_ARTEFACT_URIS_PATH)};
+  push @artifact_uris, @{$self->grab_values($artifacts_doc, $ARTIFACTS_ARTIFACT_URIS_PATH)};
 
   if (@{$sample_ids}) {
     return $self->_search_artifacts($step, $udf_name, $sample_ids, @artifact_uris);
@@ -456,7 +455,7 @@ sub _get_udf_values {
   my ($self, $step, $udf_name) = @_;
 
   # We need to make a copy of _sample_ids as _search_artifacts splices away at it
-  my @sample_ids    = @{$self->_sample_ids};
+  my @sample_ids = @{$self->_sample_ids};
   my @artifact_uris = $self->_search_artifacts($step, $udf_name, \@sample_ids);
 
   my $artifacts = $self->request->batch_retrieve('artifacts', \@artifact_uris);
@@ -469,38 +468,13 @@ sub _get_udf_values {
     @nodes = ();
   };
 
-  use Encode qw/encode decode/;
+  my %res = map {
+    $_->findvalue($SAMPLE_LIMS_ID) => {
+      $udf_name => $_->findvalue(sprintf $UDF_FIELD_BY_NAME, $udf_name)
+    };
+  } @nodes;
 
-  my $res = c->new(@nodes)
-              ->reduce( sub {
-                ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-                my $artifact_limsid     = $b->findvalue( q{@limsid});
-                ($artifact_limsid ) = $artifact_limsid =~ /(\d+)$/smxg;
-                my $found_sample_id     = $b->findvalue( q{./sample/@limsid}                 );
-                my $udf_value           = $b->findvalue( qq{./udf:field[\@name="$udf_name"]} );
-                # use critic
-
-                if (defined $a->{$found_sample_id} && defined $a->{$found_sample_id}->{$udf_name} ) {
-                  # if the sample has been run more than once through the step producing this udf,
-                  # then we will use the latest value
-                  if ($a->{$found_sample_id}->{'art_lims_id'} < $artifact_limsid ) {
-
-                    $a->{ $found_sample_id }->{$udf_name} = $udf_value;
-                    $a->{ $found_sample_id }->{'art_lims_id'} = $artifact_limsid;
-                  }
-                } else {
-
-                  $a->{ $found_sample_id } = { $udf_name => $udf_value };
-                  $a->{$found_sample_id}->{'art_lims_id'} = $artifact_limsid;
-                }
-                $a; } , {});
-
-  # removing the temporary helper 'art_lims_id' entry from the hash
-  while (my ($sample_id, $params) = each %{$res} ) {
-    delete $params->{'art_lims_id'};
-  }
-
-  return $res;
+  return \%res;
 }
 
 has '_original_artifact_ids' => (
@@ -526,9 +500,9 @@ sub _build__original_artifact_details {
   my $self = shift;
   my $base_url = $self->config->clarity_api->{'base_uri'};
 
-  my @uris =  c->new(@{$self->_original_artifact_ids})
-              ->map( sub { return $base_url . '/artifacts/' . $_; } )
-              ->each();
+  my @uris = map {
+    $base_url . '/artifacts/' . $_;
+  } @{$self->_original_artifact_ids};
 
   return $self->request->batch_retrieve('artifacts', \@uris );
 };
@@ -542,7 +516,7 @@ has '_original_container_ids' => (
 
 sub _build__original_container_ids {
   my $self = shift;
-  return $self->grab_values($self->_original_artifact_details, $ARTEFACTS_ARTEFACT_CONTAINTER_IDS_PATH);
+  return $self->grab_values($self->_original_artifact_details, $ARTIFACTS_ARTIFACT_CONTAINTER_IDS_PATH);
 }
 
 has '_original_container_details' => (
@@ -556,10 +530,10 @@ sub _build__original_container_details {
   my $self = shift;
   my $base_url = $self->config->clarity_api->{'base_uri'};
 
-  my @uris =  c->new(@{$self->_original_container_ids})
-              ->uniq()
-              ->map( sub { $base_url . '/containers/' . $_; } )
-              ->each();
+  my @uris = map {
+    $base_url . '/containers/' . $_;
+  } uniq @{$self->_original_container_ids};
+
   return $self->request->batch_retrieve('containers', \@uris );
 };
 
@@ -572,13 +546,12 @@ has '_original_container_map' => (
 
 sub _build__original_container_map {
   my $self = shift;
-  return  c->new(@{$self->_original_container_ids})
-            ->reduce( sub {
-                  my $container_id = $b;
-                  $a->{$container_id} = $self->find_elements_first_value($self->_original_container_details,
-                                            qq{/con:details/con:container[\@limsid='$container_id']/name/text()}, qq{});
-                  $a;
-                }, {});
+
+  my %hash = map {
+    $_ => $self->find_elements_first_value($self->_original_container_details, sprintf($CONTAINER_NAME_BY_ID, $_), qq{})
+  } @{$self->_original_container_ids};
+
+  return \%hash;
 };
 
 has '_location_of_samples' => (
@@ -590,15 +563,17 @@ has '_location_of_samples' => (
 
 sub _build__location_of_samples {
   my $self = shift;
-  return c->new(@{$self->_sample_ids})
-            ->reduce( sub {
-                  my $sample_id = $b;
-                  my $container_id = $self->find_elements_first_value($self->_original_artifact_details,
-                                            qq{/art:details/art:artifact/sample[\@limsid='$sample_id']/../location/container/\@limsid}, qq{});
-                  $a->{$sample_id}->{'plate'} = $self->_original_container_map->{$container_id};
-                  $a->{$sample_id}->{'well'} = $self->find_elements_first_value($self->_original_artifact_details, qq{/art:details/art:artifact/sample[\@limsid='$sample_id']/../location/value/text()}, qq{});
-                  $a;
-                }, {});
+
+  my %hash = map {
+    $_ => {
+      'plate' => $self
+        ->_original_container_map
+        ->{$self->find_elements_first_value($self->_original_artifact_details, sprintf($CONTAINER_LIMSID_FROM_SAMPLE, $_), qq{})},
+      'well'  => $self->find_elements_first_value($self->_original_artifact_details, sprintf($LOCATION_FROM_SAMPLE, $_), qq{}),
+    }
+  } @{$self->_sample_ids};
+
+  return \%hash;
 }
 
 1;
@@ -636,19 +611,11 @@ wtsi_clarity::epp::sm::report_maker
 
 =item Readonly
 
-=item Mojo::Collection
-
-=item Data::Dumper
-
-=item URI::Escape
-
-=item List::Compare
-
 =item Try::Tiny
 
 =item Scalar::Util
 
-=item wtsi_clarity::util::textfile
+=item List::MoreUtils
 
 =item wtsi_clarity::util::report
 
