@@ -5,7 +5,6 @@ use Carp;
 use JSON;
 use Encode;
 
-use wtsi_clarity::mq::message;
 use wtsi_clarity::mq::warehouse_client;
 
 with 'wtsi_clarity::mq::message_handler_interface';

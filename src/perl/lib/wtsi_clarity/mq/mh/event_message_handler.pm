@@ -2,20 +2,23 @@ package wtsi_clarity::mq::mh::event_message_handler;
 
 use Moose;
 use Carp;
+use JSON;
+use Encode;
+
 use wtsi_clarity::mq::warehouse_client;
 
 with 'wtsi_clarity::mq::message_handler_interface';
 
 our $VERSION = '0.0';
 
-# has '_wh_client' => (
-#   isa         => 'wtsi_clarity::mq::warehouse_client',
-#   is          => 'ro',
-#   required    => 0,
-#   default     => sub {
-#     return wtsi_clarity::mq::warehouse_client->new(warehouse => 'event');
-#   },
-# );
+has '_wh_client' => (
+  isa         => 'wtsi_clarity::mq::warehouse_client',
+  is          => 'ro',
+  required    => 0,
+  default     => sub {
+    return wtsi_clarity::mq::warehouse_client->new(warehouse => 'event');
+  },
+);
 
 #TODO DRY it
 sub process {
@@ -23,9 +26,18 @@ sub process {
 
   my $messages = $self->prepare_messages($message, $package);
 
-  #TODO sending the message to the event warehouse
+  foreach my $message_to_wh (@{$messages}) {
+    $self->_send_message(encode_utf8(to_json($message_to_wh)), $message->purpose);
+  }
 
   return 1;
+}
+
+sub _send_message {
+  my ($self, $message, $purpose) = @_;
+  print $purpose . ": " . $message . "\n" or carp "Can't write to the log file"; # So it goes into the log
+  $self->_wh_client->send_message($message, $purpose);
+  return;
 }
 
 sub prepare_messages {

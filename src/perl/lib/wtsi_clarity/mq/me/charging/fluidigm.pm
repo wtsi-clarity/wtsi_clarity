@@ -2,7 +2,6 @@ package wtsi_clarity::mq::me::charging::fluidigm;
 
 use Moose;
 use Readonly;
-use POSIX qw(strftime);
 
 use wtsi_clarity::dao::study_dao;
 use wtsi_clarity::util::uuid_generator qw/new_uuid/;
@@ -138,9 +137,16 @@ wtsi_clarity::mq::me::charging::fluidigm
 
 =head1 SYNOPSIS
 
-
+  my $me = wtsi_clarity::mq::me::charging::fluidigm
+             ->new(
+               process_url => 'http://process',
+               step_url    => 'http://step',
+               timestamp   => '123456789',
+             )->prepare_messages;
 
 =head1 DESCRIPTION
+
+  Gathers the data to prepare a charging message for fluidigm to be sent to the event warehouse queue.
 
 =head1 SUBROUTINES/METHODS
 
@@ -161,7 +167,13 @@ wtsi_clarity::mq::me::charging::fluidigm
 
 =item Moose
 
-=item Carp
+=item Readonly
+
+=item wtsi_clarity::dao::study_dao
+
+=item wtsi_clarity::util::uuid_generator
+
+=item wtsi_clarity::mq::message_enhancer
 
 =back
 
