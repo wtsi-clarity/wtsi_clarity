@@ -59,6 +59,13 @@ wtsi_clarity::mq::mh::event_message_handler
 
 =head2 process
 
+  Takes in JSON string. Converts to mq::message, and dispatches to relevant message enhancer.
+
+=head2 prepare_messages
+
+  Receives the message from the local queue, finds the relevant enhancer, and then runs
+  prepare_messages on that enhancer, returning the result.
+
 =head1 CONFIGURATION AND ENVIRONMENT
 
 =head1 DEPENDENCIES

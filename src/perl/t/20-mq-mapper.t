@@ -30,7 +30,7 @@ use_ok('wtsi_clarity::mq::mapper');
 
 {
   my $mq_mapper = wtsi_clarity::mq::mapper->new();
-  is($mq_mapper->package_name('charging_fluidigm'), 'wtsi_clarity::epp::charging::fluidigm',
+  is($mq_mapper->package_name('charging_fluidigm'), 'wtsi_clarity::mq::me::charging::fluidigm',
     'Creates the correct package name for a fluidigm charging report');
 }
 

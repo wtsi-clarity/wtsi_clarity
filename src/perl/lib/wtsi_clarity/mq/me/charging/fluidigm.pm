@@ -16,6 +16,11 @@ Readonly::Scalar my $CLARITY_PROJECT_ROLE_TYPE  => q{Clarity_charge_project};
 Readonly::Scalar my $PROJECT_SUBJECT_TYPE       => q{Clarity_project};
 Readonly::Scalar my $PRODUCT_TYPE               => q{Human QC 96:96};
 Readonly::Scalar my $PIPELINE                   => q{SM};
+Readonly::Scalar my $RESEARCHER_EMAIL           => q{res:researcher/email};
+
+## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+Readonly::Scalar my $PROJECT_LIMSID             => q{prj:project/@limsid};
+## use critic
 
 sub type {
   return 'event'
@@ -23,7 +28,7 @@ sub type {
 
 sub _build__lims_ids {
   # It has not got any lims_id.
-  return 1; 
+  return 1;
 };
 
 # @Override
@@ -60,7 +65,7 @@ sub _get_uuid {
 sub _study_limsid {
   my $self = shift;
 
-  return $self->process->project_doc->findvalue(q{prj:project/@limsid});
+  return $self->process->project_doc->findvalue($PROJECT_LIMSID);
 }
 
 has '_study_dao' => (
@@ -76,7 +81,7 @@ sub _build__study_dao {
 sub _user_identifier {
   my $self = shift;
 
-  return $self->process->technician_doc->findvalue(q{res:researcher/email});;
+  return $self->process->technician_doc->findvalue($RESEARCHER_EMAIL);
 }
 
 sub _cost_code {
@@ -113,7 +118,7 @@ sub _subjects {
 
 sub _metadata {
   my $self = shift;
-  
+
   my %metadata = ();
   $metadata{'product_type'}       = $PRODUCT_TYPE;
   $metadata{'pipeline'}           = $PIPELINE;
@@ -137,6 +142,16 @@ wtsi_clarity::mq::me::charging::fluidigm
 
 =head1 DESCRIPTION
 
+=head1 SUBROUTINES/METHODS
+
+=head2 prepare_messages
+
+  @Override
+  Creates the message for the fluidigm charging event.
+
+=head2 type
+
+  Returns the type of the message.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
