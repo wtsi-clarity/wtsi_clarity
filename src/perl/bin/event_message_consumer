@@ -1,0 +1,23 @@
+#! /usr/bin/env perl
+
+use strict;
+use warnings;
+use FindBin qw($Bin);
+use lib ( -d "$Bin/../lib/perl5" ? "$Bin/../lib/perl5" : "$Bin/../lib" );
+
+use wtsi_clarity::mq::mh::event_message_handler;
+use wtsi_clarity::util::config;
+use wtsi_clarity::mq::consumer;
+
+my $config = wtsi_clarity::util::config->new();
+
+wtsi_clarity::mq::consumer->new(
+  name            => 'Event Message Consumer',
+  pid_file        => $config->dir_path . '/event_pid',
+  stderr_file     => $config->dir_path . '/event_message_consumer.err',
+  stdout_file     => $config->dir_path . '/event_message_consumer.log',
+  queue           => $config->event_consumer->{'queue'},
+  message_handler => wtsi_clarity::mq::mh::event_message_handler->new(),
+)->run();
+
+1;
