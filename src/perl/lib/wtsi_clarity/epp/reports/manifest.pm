@@ -115,7 +115,7 @@ sub file_content {
 sub irods_destination_path {
   my ($self) = @_;
 
-  return $self->config->irods->{'14m_manifest_path'} . q{/};
+  return $self->config->irods->{'manifest_path'} . q{/};
 }
 
 sub _build__containers {

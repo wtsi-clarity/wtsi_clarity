@@ -22,7 +22,7 @@ local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/sample_qc_report';
 
 my $EXPECTED_FILE_CONTENT = [
   {
-    'DNA amount library prep' => '115.339134753689',
+    'DNA amount library prep' => '192',
     'Library concentration' => '138.3304326231556',
     'Status' => 'Passed',
     'Sample volume' => '5.00907469236368',
@@ -105,7 +105,7 @@ my $EXPECTED_FILE_CONTENT = [
 
   is($cherrypick_volume, '5.00907469236368', 'Returns the correct value for the cherrypick volume');
 
-  my $expected_dna_amount_library_prep = 115.339134753689;
+  my $expected_dna_amount_library_prep = 192;
 
   is($report->_get_dna_amount_library_prep($cherrypick_stamping_doc, $sample_doc, $cherrypick_volume), $expected_dna_amount_library_prep,
     'Returns the correct DNA amount library prep value.');

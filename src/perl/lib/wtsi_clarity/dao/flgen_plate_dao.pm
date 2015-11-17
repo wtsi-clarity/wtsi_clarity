@@ -38,7 +38,9 @@ has '+resource_type' => (
 );
 
 has '+attributes' => (
-  default     => sub { return \%ATTRIBUTES; },
+  default     => sub {
+    return \%ATTRIBUTES;
+  },
 );
 
 has 'type' => (
@@ -104,7 +106,7 @@ sub flgen_well_position {
   );
 
   my $format = $well_formats{$self->plate_size}
-                or croak "Unknown well format for " . $self->plate_size . " size plate";
+    or croak "Unknown well format for " . $self->plate_size . " size plate";
 
   return 'S' . sprintf $format, ($letter_as_number * $nb_cols) + $number;
 }
@@ -118,7 +120,9 @@ has 'wells' => (
 sub _build_wells {
   my $self = shift;
   my @artifact_ids = $self->findnodes($ARTIFACT_PATH)->to_literal_list();
-  my @wells = map { $self->_build_well($_) } @artifact_ids;
+  my @wells = map {
+    $self->_build_well($_)
+  } @artifact_ids;
   return \@wells;
 }
 
@@ -134,13 +138,13 @@ sub _build_well {
   $well{'well_label'} = $self->flgen_well_position($location, $self->type->y_dimension_size, $self->type->x_dimension_size);
 
   # cost_code and sample_uuid
-  my $sample_limsid    = $artifact_doc->findvalue($SAMPLE_LIMSID_PATH);
-  my $sample           = $self->_get_sample($sample_limsid);
+  my $sample_limsid = $artifact_doc->findvalue($SAMPLE_LIMSID_PATH);
+  my $sample = $self->_get_sample($sample_limsid);
   $well{'sample_uuid'} = $sample->name;
 
   # study
   my $study = $self->_get_study($sample->project_limsid);
-  $well{'study_id'}  = $study->id;
+  $well{'study_id'} = $study->id;
   $well{'cost_code'} = $study->cost_code;
 
   return \%well;
@@ -159,6 +163,17 @@ sub _get_sample {
 sub _get_study {
   my ($self, $limsid) = @_;
   return wtsi_clarity::dao::study_dao->new(lims_id => $limsid);
+}
+
+has 'plate_size_occupied' => (
+  is => 'ro',
+  isa => 'Int',
+  lazy_build => 1,
+);
+
+sub _build_plate_size_occupied {
+  my $self = shift;
+  return scalar @{$self->wells};
 }
 
 sub _validate_plate_barcode {
@@ -180,6 +195,7 @@ around 'init' => sub {
   $self->$next();
   $self->wells;
   $self->plate_size;
+  $self->plate_size_occupied;
 
   $self->_validate_plate_barcode($self->plate_barcode);
 

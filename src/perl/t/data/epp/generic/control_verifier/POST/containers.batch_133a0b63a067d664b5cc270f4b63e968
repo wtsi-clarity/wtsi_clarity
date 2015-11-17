@@ -1,0 +1,38 @@
+<?xml version="1.0" standalone="yes"?>
+<con:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container">
+    <con:container uri="http://testserver.com:1234/here/containers/27-6349" limsid="27-6349">
+        <name>5260276349738</name>
+        <type uri="http://testserver.com:1234/here/containertypes/15" name="ABgene 0800"/>
+        <occupied-wells>9</occupied-wells>
+        <placement uri="http://testserver.com:1234/here/artifacts/DEA103A2673PA1" limsid="DEA103A2673PA1">
+            <value>G:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/DEA103A2671PA1" limsid="DEA103A2671PA1">
+            <value>E:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/DEA103A2668PA1" limsid="DEA103A2668PA1">
+            <value>B:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/DEA103A2670PA1" limsid="DEA103A2670PA1">
+            <value>D:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/DEA103A2669PA1" limsid="DEA103A2669PA1">
+            <value>C:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/DEA103A2674PA1" limsid="DEA103A2674PA1">
+            <value>H:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/DEA103A2667PA1" limsid="DEA103A2667PA1">
+            <value>A:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/DEA103A2672PA1" limsid="DEA103A2672PA1">
+            <value>F:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-398947" limsid="2-398947">
+            <value>A:2</value>
+        </placement>
+        <udf:field type="String" name="Supplier Container Name">1</udf:field>
+        <udf:field type="String" name="WTSI Container Purpose Name">Stock Plate</udf:field>
+        <state>Populated</state>
+    </con:container>
+</con:details>

@@ -15,8 +15,9 @@ Readonly::Scalar my $CONTAINERTYPES_URI_PATH          => q{containertypes};
 ##no critic ValuesAndExpressions::RequireInterpolationOfMetachars
 Readonly::Scalar my $CONTAINER_TYPE_URI_PATH  => q{/ctp:container-types/container-type/@uri[1]};
 Readonly::Scalar my $CONTAINER_NAME_URI_PATH  => q{/ctp:container-types/container-type/@name[1]};
-Readonly::Scalar my $CONTAINER_URI_PATH       => q{/con:container/@uri};
-Readonly::Scalar my $CONTAINER_LIMSID_PATH    => q{/con:container/@limsid};
+Readonly::Scalar my $CONTAINER_URI_PATH       => q{//con:container/@uri};
+Readonly::Scalar my $CONTAINER_LIMSID_PATH    => q{//con:container/@limsid};
+Readonly::Scalar my $CONTAINER_BARCODE_PATH   => q{//con:container/name};
 ##use critic
 
 Readonly::Scalar our $PLATE_96_WELL_CONTAINER_NAME  => q{96 Well Plate};
@@ -24,7 +25,6 @@ Readonly::Scalar our $ABGENE_800_CONTAINER_NAME     => q{ABgene 0800};
 Readonly::Scalar our $ABGENE_765_CONTAINER_NAME     => q{ABgene 0765};
 Readonly::Scalar our $FLUIDX_075_CONTAINER_NAME     => q{FluidX075};
 Readonly::Scalar our $STOCK_PLATE_PURPOSE           => q{Stock Plate};
-Readonly::Scalar our $DEFAULT_CONTAINER_TYPE        => $FLUIDX_075_CONTAINER_NAME;
 
 Readonly::Hash    my %CONTAINER_PURPOSES        => {
   $PLATE_96_WELL_CONTAINER_NAME => $STOCK_PLATE_PURPOSE,
@@ -55,7 +55,7 @@ sub create_new_container {
   my ($self, $output_container_type_name) = @_;
 
   my $xml_header = $XML_HEADER_STR;
-  $xml_header   .= $CONTAINER_HEADER_START_STR;
+  $xml_header .= $CONTAINER_HEADER_START_STR;
   my $xml_footer = $CONTAINER_HEADER_END_STR;
 
   my $xml = $xml_header;
@@ -63,8 +63,8 @@ sub create_new_container {
   my $container_type_data = $self->_get_new_container_type_data_by_name($output_container_type_name);
   my $output_container_type_xml_str = "<type uri='$container_type_data->{'uri'}' name='$container_type_data->{'name'}' />";
 
-  $xml   .= $output_container_type_xml_str;
-  $xml   .= $xml_footer;
+  $xml .= $output_container_type_xml_str;
+  $xml .= $xml_footer;
 
   my $url = $self->config->clarity_api->{'base_uri'} . '/containers';
   my $container_doc = XML::LibXML->load_xml(string => $self->request->post($url, $xml));
@@ -86,7 +86,7 @@ sub _get_new_container_type_data_by_name {
     croak qq{Container type can not be found by this name: $container_type_name};
   }
   my $container_type_data = ();
-  $container_type_data->{'uri'}  = $container_type_xml->findvalue($CONTAINER_TYPE_URI_PATH);
+  $container_type_data->{'uri'} = $container_type_xml->findvalue($CONTAINER_TYPE_URI_PATH);
   $container_type_data->{'name'} = $container_type_xml->findvalue($CONTAINER_NAME_URI_PATH);
 
   return $container_type_data;
@@ -97,10 +97,12 @@ sub get_container_data {
 
   my $uri = $container_xml->findvalue($CONTAINER_URI_PATH);
   my $limsid = $container_xml->findvalue($CONTAINER_LIMSID_PATH);
+  my $barcode = $container_xml->findvalue($CONTAINER_BARCODE_PATH);
 
   return {
     'limsid'  => $limsid,
-    'uri'     => $uri
+    'uri'     => $uri,
+    'barcode' => $barcode
   }
 }
 

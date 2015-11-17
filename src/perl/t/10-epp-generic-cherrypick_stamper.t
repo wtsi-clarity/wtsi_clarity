@@ -40,7 +40,6 @@ use_ok('wtsi_clarity::epp::generic::cherrypick_stamper');
     process_url => $base_uri . '/processes/24-29592',
     step_url    => $base_uri . '/steps/24-29592');
 
-  my $placement_xml = $stamper->_base_placement_doc;
   my $expected_basic_container_data = {
     'limsid' => '27-5504',
     'uri' => 'http://testserver.com:1234/here/containers/27-5504'
@@ -81,7 +80,8 @@ use_ok('wtsi_clarity::epp::generic::cherrypick_stamper');
   my $container_xml = $stamper->create_new_container('96 Well Plate');
   my $expected_container_data = {
     'limsid' => '27-5481',
-    'uri' => 'http://testserver.com:1234/here/containers/27-5481'
+    'uri' => 'http://testserver.com:1234/here/containers/27-5481',
+    'barcode' => '27-5481'
   };
   is_deeply($stamper->get_container_data($container_xml), $expected_container_data, 'Got back the correct data of a new container');
 }

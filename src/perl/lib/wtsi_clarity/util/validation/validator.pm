@@ -9,10 +9,10 @@ use wtsi_clarity::util::validation::result;
 our $VERSION = '0.0';
 
 subtype 'ValidationObject'
-  => as 'HashRef'
-  => where {
-    exists $_->{'check'} && ref $_->{'check'} eq 'CODE' && exists $_->{'message'};
-  };
+=> as 'HashRef'
+=> where {
+  exists $_->{'check'} && ref $_->{'check'} eq 'CODE' && exists $_->{'message'};
+};
 
 has '_value' => (
   is       => 'ro',
@@ -27,7 +27,9 @@ has '_validators' => (
   traits   => [qw/Array/],
   init_arg => undef,
   lazy     => 1,
-  default  => sub { [] },
+  default  => sub {
+    []
+  },
   handles  => {
     _add_validator => 'push',
   },
@@ -53,21 +55,51 @@ sub result {
 
 sub has_length {
   my ($self, $length, $message) = @_;
-  $message = $message // 'The barcode must have a length of ' . $length;
+  $message = $message // 'The input must have a length of ' . $length;
   $self->_add_validator(wtsi_clarity::util::validation::predicates::has_length_of($length), $message);
   return $self;
 }
 
 sub is_integer {
-  my $self    = shift;
-  my $message = shift // 'The barcode must be numeric';
+  my $self = shift;
+  my $message = shift // 'The input must be numeric';
   $self->_add_validator(wtsi_clarity::util::validation::predicates::is_integer(), $message);
+  return $self;
+}
+
+sub has_no_whitespace {
+  my $self = shift;
+  my $message = shift // 'The input must not contain spaces';
+  $self->_add_validator(wtsi_clarity::util::validation::predicates::has_no_whitespace(), $message);
+  return $self;
+}
+
+sub is_digits_or_uppercase {
+  my $self = shift;
+  my $message = shift // 'The input must only contain digits or uppercase letters';
+  $self->_add_validator(wtsi_clarity::util::validation::predicates::is_digits_or_uppercase(), $message);
+  return $self;
+}
+
+sub starts_with {
+  my ($self, $string, $message) = @_;
+  $message = $message // 'The input must start with ' . $string;
+  $self->_add_validator(wtsi_clarity::util::validation::predicates::starts_with($string), $message);
+  return $self;
+}
+
+sub ends_with {
+  my ($self, $string, $message) = @_;
+  $message = $message // 'The input must end with ' . $string;
+  $self->_add_validator(wtsi_clarity::util::validation::predicates::ends_with($string), $message);
   return $self;
 }
 
 sub _validation_object {
   my ($check, $message) = @_;
-  return { check => $check, message => $message, };
+  return {
+    check => $check, message => $message,
+  };
 }
 
 sub _errors {
@@ -119,6 +151,18 @@ Get back a wtsi_clarity::util::validations::result object
 
 =head2 has_length($length)
   Tests to see if the given value has a length of $length
+
+=head2 has_no_whitespace
+  Tests to see if the given value does not contain any whitespace.
+
+=head2 is_digits_or_uppercase
+  Tests to see if the given value only contains uppercase letters or digits.
+
+=head2 starts_with
+  Tests to see if the given value starts with the string $string.
+
+=head2 ends_with
+  Tests to see if the given value ends with the string $string.
 
 =head2 result
   Gives back the result of the tests (using a wtsi_clarity::util::validations::result object)

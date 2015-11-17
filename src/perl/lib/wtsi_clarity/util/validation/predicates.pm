@@ -6,7 +6,7 @@ use warnings;
 use Exporter     qw/import/;
 
 our $VERSION   = '0.0';
-our @EXPORT_OK = qw/has_length_of is_integer/;
+our @EXPORT_OK = qw/has_length_of is_integer has_no_whitespace is_digits_or_uppercase starts_with ends_with/;
 
 sub has_length_of {
   my ($length) = @_;
@@ -17,8 +17,38 @@ sub has_length_of {
 }
 
 sub is_integer {
+  return _matches_regex('^\s*[+-]?\d+\s*$');
+}
+
+sub has_no_whitespace {
+  return _doesnt_match_regex('\s');
+}
+
+sub is_digits_or_uppercase {
+  return _matches_regex('^\s*[[:upper:]\d]+\s*$');
+}
+
+sub starts_with {
+  my $string = shift;
+  return _matches_regex("^\s*$string");
+}
+
+sub ends_with {
+  my $string = shift;
+  return _matches_regex("$string\s*\$");
+}
+
+sub _matches_regex {
+  my $regex = shift;
   return sub {
-    $_[0] =~ /^\s*[+-]?\d+\s*$/sxm;
+    return ($_[0] =~ /$regex/sxm);
+  }
+}
+
+sub _doesnt_match_regex {
+  my $regex = shift;
+  return sub {
+    return not ($_[0] =~ /$regex/sxm);
   }
 }
 
@@ -46,6 +76,14 @@ A module providing a subroutines for generating validation subroutines
 =head2 has_length_of
 
 =head2 is_integer
+
+=head2 has_no_whitespace
+
+=head2 is_digits_or_uppercase
+
+=head2 starts_with
+
+=head2 ends_with
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

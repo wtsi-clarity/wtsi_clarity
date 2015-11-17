@@ -3,16 +3,23 @@ package wtsi_clarity::util::pdf::factory::pool_analysis_results;
 use Moose;
 use Readonly;
 
-use wtsi_clarity::util::pdf::layout::pool_analysis_results;
 use wtsi_clarity::util::well_mapper;
 
 with 'wtsi_clarity::util::pdf::factory::analysis_results';
+extends 'wtsi_clarity::util::pdf::pdf_generator';
 
 our $VERSION = '0.0';
 
 Readonly::Scalar our $NUMBER_OF_COLUMNS => 12;
 Readonly::Scalar our $ASSET_NUMBER_OF_ROWS => 8;
 Readonly::Scalar our $ASSET_NUMBER_OF_COLUMNS => 12;
+
+Readonly::Scalar my $SOURCE_TABLE_HEIGHT      => 100;
+Readonly::Scalar my $BUFFER_TABLE_Y_POSITION  => 200;
+
+Readonly::Scalar my $PAGE_HEIGHT => 595;
+Readonly::Scalar my $COLUMN_WIDTH => 60;
+Readonly::Scalar my $CELL_FONT_SIZE => 5;
 
 has 'plate_table' => (
   isa => 'HashRef',
@@ -41,7 +48,7 @@ has 'plate_style_table' => (
       header_row => \&headers_row,
       row_first_column => \&style_row_first_column,
       format_cell => \&format_style_table_cell,
-     footer_row => \&headers_row,
+      footer_row => \&headers_row,
     }
   },
 );
@@ -49,36 +56,34 @@ has 'plate_style_table' => (
 sub build {
   my ($self, $parameters) = @_;
 
-  my ($plate_table, $plate_table_cell_styles) = $self->format_tables($parameters->{'plate_table_data'});
+  my $pdf_generator = wtsi_clarity::util::pdf::pdf_generator->new(cell_font_size => $CELL_FONT_SIZE, col_width => $COLUMN_WIDTH, page_height => $PAGE_HEIGHT);
 
-  my $pdf_data = {
-    'stamp' => 'Created: ' . DateTime->now->strftime('%A %d-%B-%Y at %H:%M:%S'),
-    'pages' => [
-      {
-        'title' => 'Pooling worksheets',
-        'input_table_title' => 'Source Plate',
-        'input_table' => _get_input_table_data($parameters->{'input_table_data'}),
-        'plate_table_title' => 'Results',
-        'plate_table' => $plate_table,
-        'plate_table_cell_styles' => $plate_table_cell_styles,
-      }
-    ]
-  };
+  for my $parameter (@{$parameters}) {
+    my ($plate_table, $plate_table_cell_styles) = $self->format_tables($parameter->{'plate_table_data'});
 
-  my $pool_pdf_generator = wtsi_clarity::util::pdf::layout::pool_analysis_results->new(pdf_data => $pdf_data);
-  return $pool_pdf_generator->create();
+    my $page = $self->pdf->page();
+    $page->mediabox($self->A4_LANDSCAPE);
+
+    $pdf_generator->add_title_to_page($page, 'Pooling worksheets');
+    $pdf_generator->add_timestamp($page);
+
+    $pdf_generator->add_io_block_to_page($self->pdf, $page, _get_input_table_data($parameter->{'input_table_data'}), 'Source Plate', $SOURCE_TABLE_HEIGHT);
+
+    $pdf_generator->add_buffer_block_to_page($self->pdf, $page, $plate_table, 'Results', $plate_table_cell_styles, $BUFFER_TABLE_Y_POSITION);
+  }
+
+  return $self->pdf;
 }
 
 sub _get_input_table_data {
   my $input_table_data = shift;
 
   my @input_table = ();
-  push @input_table , ['Plate name', 'Barcode'];
+  push @input_table, ['Plate name', 'Barcode', 'Signature'];
 
   my @input_table_data = ();
-  foreach my $table_row_name ( keys %{$input_table_data} )
-  {
-    push @input_table_data, $input_table_data->{$table_row_name};
+  foreach my $table_row_data (@{$input_table_data}) {
+    push @input_table_data, $table_row_data;
   }
 
   push @input_table, \@input_table_data;

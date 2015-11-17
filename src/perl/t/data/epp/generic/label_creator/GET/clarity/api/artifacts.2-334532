@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/clarity/api/artifacts/2-334532?state=168724" limsid="2-334532">
+    <name>86004278-c266-11e4-b42e-68b59977951e-Lib PCR XP</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://testserver.com:1234/clarity/api/processes/24-49806" limsid="24-49806"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/clarity/api/containers/27-7829" limsid="27-7829"/>
+        <value>A:6</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/clarity/api/samples/LAB106A41" limsid="LAB106A41"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 41 (TCCAGTCG)"/>
+    <workflow-stages>
+        <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://testserver.com:1234/clarity/api/configuration/workflows/203/stages/583"/>
+    </workflow-stages>
+</art:artifact>

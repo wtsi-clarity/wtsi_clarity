@@ -22,6 +22,9 @@
     <udf:field type="String" name="WTSI Library Construction Protocol">GCLP-ISC Standard</udf:field>
     <udf:field type="String" name="WTSI Instrument Model">Illumina HiSeq Rapid</udf:field>
     <udf:field type="String" name="WTSI Run Length">75 PE</udf:field>
+    <udf:field type="String" name="WTSI Requested Size Range From">100</udf:field>
+    <udf:field type="String" name="WTSI Requested Size Range">100</udf:field>
+    <udf:field type="String" name="WTSI Read Length">123</udf:field>
     <file:file limsid="TES156-40-218" uri="http://testserver.com:1234/files/TES156-40-218"/>
     <file:file limsid="TES156-40-221" uri="http://testserver.com:1234/files/TES156-40-221"/>
     <file:file limsid="TES156-40-462" uri="http://testserver.com:1234/files/TES156-40-462"/>

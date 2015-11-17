@@ -3,17 +3,13 @@ package wtsi_clarity::epp::isc::pool_analyser;
 use Moose;
 use Carp;
 use Readonly;
-use wtsi_clarity::util::pdf::factory;
+use wtsi_clarity::util::pdf::factory::pool_analysis_results;
 use wtsi_clarity::dao::sample_dao;
 use wtsi_clarity::dao::study_dao;
 
 our $VERSION = '0.0';
 
 extends 'wtsi_clarity::epp';
-
-## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $PROCESS_ID_PATH => q(/prc:process/@limsid);
-## use critic
 
 has 'analysis_file' => (
   isa => 'Str',
@@ -22,15 +18,11 @@ has 'analysis_file' => (
 );
 
 override 'run' => sub {
-  my $self= shift;
+  my $self = shift;
   super();
 
-  my $results = ();
-  $results->{'input_table_data'} = $self->_input_table_data;
-  $results->{'plate_table_data'} = $self->_plate_table_data;
-
   # Pass the results to the PDF generator
-  my $pdf = wtsi_clarity::util::pdf::factory->createPDF('pool_analysis_results', $results);
+  my $pdf = wtsi_clarity::util::pdf::factory::pool_analysis_results->new()->build($self->_get_parameters());
 
   # Attach PDF to process
   $pdf->saveas(q{./} . $self->analysis_file);
@@ -38,21 +30,24 @@ override 'run' => sub {
   return;
 };
 
-sub _input_table_data {
+sub _get_parameters {
   my $self = shift;
 
-  my $input_table_data = ();
+  my $results = ();
 
-  $input_table_data->{'Plate limsid'} = $self->process_doc->plate_io_map->[0]->{'source_plate'};
-  $input_table_data->{'Plate barcode'} = $self->process_doc->plate_io_map_barcodes->[0]->{'source_plate'};
+  for my $i (0..scalar @{$self->process_doc->plate_io_map} - 1) {
+    my $input_table_data = ();
 
-  return $input_table_data;
-}
+    my $plate_id = $self->process_doc->plate_io_map->[$i]->{'source_plate'};
+    my $barcode = $self->process_doc->plate_io_map_barcodes->[$i]->{'source_plate'};
+    my $signature = $self->process_doc->get_container_signature_by_limsid($plate_id);
 
-sub _plate_table_data {
-  my $self = shift;
+    $input_table_data->[0] = $plate_id;
+    $input_table_data->[1] = $barcode;
+    $input_table_data->[2] = $signature;
 
-  my $plate_table_data = ();
+    $results->{$plate_id}->{'input_table_data'} = $input_table_data;
+  }
 
   foreach my $io_element (@{$self->process_doc->io_map}) {
     my $sample_dao = wtsi_clarity::dao::sample_dao->new( lims_id => $io_element->{'source_well_sample_limsid'});
@@ -65,10 +60,12 @@ sub _plate_table_data {
     $plate_table_element->{'organism'} = $sample_dao->organism;
     $plate_table_element->{'bait_library_name'} = $sample_dao->bait_library_name;
 
-    $plate_table_data->{$io_element->{'source_well'}} = $plate_table_element;
+    $results->{$io_element->{'source_plate'}}->{'plate_table_data'}->{$io_element->{'source_well'}} = $plate_table_element;
   }
 
-  return $plate_table_data;
+  my @values = values %{$results};
+
+  return \@values;
 }
 
 1;
@@ -104,15 +101,11 @@ wtsi_clarity::epp::isc::pool_analyser
 
 =item Readonly
 
-=item wtsi_clarity::util::pdf::factory;
-
 =item wtsi_clarity::dao::sample_dao;
 
 =item wtsi_clarity::dao::study_dao;
 
-=item wtsi_clarity::util::roles::clarity_process_io
-
-=item wtsi_clarity::epp
+=item wtsi_clarity::util::pdf::factory::pool_analysis_results
 
 =back
 

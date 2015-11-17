@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use Moose::Meta::Class;
-use Test::More tests => 48;
+use Test::More tests => 46;
 use Test::Exception;
 use Cwd;
 use Carp;
@@ -9,7 +9,6 @@ use XML::LibXML;
 use XML::SemanticDiff;
 use_ok('wtsi_clarity::util::clarity_elements');
 
-my $result = XML::LibXML->load_xml(location => cwd . "/t/data/util/element_mapper/test_result");
 my $fake_class = Moose::Meta::Class->create_anon_class(
   roles => [qw /wtsi_clarity::util::clarity_elements /]
 )->new_object();
@@ -164,10 +163,6 @@ my $fake_class = Moose::Meta::Class->create_anon_class(
       qr{Requires an XPath!},
       qq{Should throw if the xpath argument is missing}
     ;
-  throws_ok { $fake_class->update_nodes(document => $testdata_xml, xpath => qq{/root/a}, element_name => 'b', value => '123') }
-      qr{Requires a type of xml element to be updated!},
-      qq{Should throw if the type argument is missing}
-    ;
   throws_ok { $fake_class->update_nodes(document => $testdata_xml, xpath => qq{/root/a}, type => qq {Text}, value => '123') }
       qr{Requires the name of the xml element to be updated!},
       qq{Should throw if the 'element_name' or 'udf_name' argument is missing}
@@ -176,11 +171,6 @@ my $fake_class = Moose::Meta::Class->create_anon_class(
       qr{Only one type of 'name' can be given at the same time!},
       qq{Should throw if both 'udf_name' and 'element_name' are given}
     ;
-  throws_ok { $fake_class->update_nodes(document => $testdata_xml, xpath => qq{/root/a}, type => qq {Attribute}, element_name => 'b', value => '123') }
-      qr{Only the text value of a node can be updated for now},
-      qq{Should throw if the type is not supported}
-    ;
-
   lives_ok { $fake_class->update_nodes(document => $testdata_xml, xpath => qq{/root/a}, type => qq {Text}, element_name => 'b') }
       qq{Should not throw if the value argument is missing}
     ;

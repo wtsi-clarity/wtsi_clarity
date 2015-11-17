@@ -5,17 +5,28 @@ use Carp;
 use Readonly;
 use PDF::API2;
 use PDF::Table;
+use DateTime;
 
 our $VERSION = '0.0';
 
-Readonly::Scalar my $col_width                => 30;
 Readonly::Scalar my $left_margin              => 20;
-Readonly::Scalar my $title_height             => 555;
+
+Readonly::Scalar my $font_normal              => 'Helvetica';
+Readonly::Scalar my $font_bold                => 'Helvetica-Bold';
+
+Readonly::Scalar my $title_height             => 40;
 Readonly::Scalar my $title_size               => 15;
-Readonly::Scalar my $stamp_height             => 760;
-Readonly::Scalar my $stamp_size               => 8;
-Readonly::Scalar my $subtitle_shift           => 20;
+
+Readonly::Scalar my $subtitle_shift           => 10;
 Readonly::Scalar my $subtitle_size            => 10;
+
+Readonly::Scalar my $stamp_size               => 8;
+Readonly::Scalar my $stamp_height             => 20;
+
+Readonly::Scalar my $A4_LANDSCAPE_HEIGHT      => 8.27;
+Readonly::Scalar my $A4_LANDSCAPE_WIDTH       => 11.7;
+Readonly::Scalar my $DPI_RESOLUTION           => 72;
+
 
 # TODO revert it back as required => 1
 has 'pdf_data' => (
@@ -27,7 +38,9 @@ has 'pdf_data' => (
 has 'pdf' => (
   isa      => 'PDF::API2',
   is       => 'ro',
-  default   => sub { return PDF::API2->new(); },
+  default   => sub {
+    return PDF::API2->new();
+  },
   required => 0,
 );
 
@@ -36,6 +49,31 @@ has 'cell_font_size' => (
   is        => 'rw',
   default   => 7,
 );
+
+has 'col_width' => (
+  isa       => 'Int',
+  is        => 'rw',
+  default   => 30,
+);
+
+has 'page_height' => (
+  isa       => 'Int',
+  is        => 'rw',
+  default   => 840,
+);
+
+has 'stamp' => (
+  is      => 'rw',
+  default => sub {
+    my $date = DateTime->now->strftime('%A %d-%B-%Y at %H:%M:%S');
+
+    return qq{This file was created on $date};
+  },
+);
+
+sub A4_LANDSCAPE {
+  return (0, 0, $A4_LANDSCAPE_WIDTH * $DPI_RESOLUTION, $A4_LANDSCAPE_HEIGHT * $DPI_RESOLUTION);
+}
 
 sub get_nb_row {
   my ($self, $data) = @_;
@@ -49,17 +87,19 @@ sub get_nb_col {
 
 ## no critic (Subroutines::ProhibitManyArgs)
 sub add_io_block_to_page {
-  my ($self, $pdf, $page, $font, $table_data, $table_title, $y_pos) = @_;
-  $self->add_text_to_page($page, $font, $table_title, $left_margin, $y_pos+$subtitle_shift, $subtitle_size);
-  $self->add_table_to_page($pdf, $page, $table_data,  $left_margin, $y_pos);
+  my ($self, $pdf, $page, $table_data, $table_title, $y_pos) = @_;
+
+  $self->add_text_to_page($page, $self->pdf->corefont($font_bold), $table_title, $left_margin, $y_pos, $subtitle_size);
+  $self->add_table_to_page($pdf, $page, $table_data, $left_margin, $y_pos + $subtitle_shift);
   return;
 }
 
 sub add_buffer_block_to_page {
-  my ($self, $pdf, $page, $font, $table_data, $table_title, $table_cell_styles, $y_pos) = @_;
-  $self->add_text_to_page($page, $font, $table_title, $left_margin, $y_pos+$subtitle_shift, $subtitle_size);
+  my ($self, $pdf, $page, $table_data, $table_title, $table_cell_styles, $y_pos) = @_;
+
+  $self->add_text_to_page($page, $self->pdf->corefont($font_bold), $table_title, $left_margin, $y_pos , $subtitle_size);
   my $properties = $self->transform_all_properties($table_cell_styles);
-  $self->add_buffer_table_to_page($pdf, $page, $table_data, $properties , $y_pos);
+  $self->add_buffer_table_to_page($pdf, $page, $table_data, $properties, $y_pos + $subtitle_shift);
   return;
 }
 
@@ -69,7 +109,7 @@ sub transform_all_properties {
   foreach my $j (0 .. $self->get_nb_row($data) - 1) {
     my $row_properties = [];
     foreach my $i (0 .. $self->get_nb_col($data) - 1) {
-       push $row_properties, $self->transform_property($data->[$j]->[$i]);
+      push $row_properties, $self->transform_property($data->[$j]->[$i]);
     }
     push $table_properties, $row_properties;
   }
@@ -81,26 +121,26 @@ sub transform_property {
   my ($self, $property) = @_;
   # orange, yellow, blue, magenta, pink, a different shade of magenta, a different shade of pink, cyan, light green, red, green2, green3
   my @list_of_colours = ('#F5BA7F', '#F5E77D', '#7DD3F5', '#DB7DF5', '#F57FBA', '#F57DE7', '#F57DD3', '#7DF5DB', '#1FB714', '#DD0806', '#339966', '#99CC00');
-  my $pdf_property ;
+  my $pdf_property;
 
   for ($property) {
     /HEADER_STYLE|EMPTY_STYLE/xms and do {
-        $pdf_property = {
-          background_color => 'white',
-          font_size=> $self->cell_font_size(),
-          justify => 'center',
-        };
-        last;
+      $pdf_property = {
+        background_color => 'white',
+        font_size => $self->cell_font_size(),
+        justify => 'center',
       };
+      last;
+    };
 
     /COLOUR_(\d+)/xms and do {
-        $pdf_property = {
-          background_color => $list_of_colours[$1],
-          font_size=> $self->cell_font_size(),
-          justify => 'center',
-        };
-        last;
+      $pdf_property = {
+        background_color => $list_of_colours[$1],
+        font_size => $self->cell_font_size(),
+        justify => 'center',
       };
+      last;
+    };
 
     /PASSED/xms and do {
       $pdf_property = {
@@ -126,65 +166,68 @@ sub transform_property {
 }
 
 sub add_title_to_page {
-  my ($self, $page, $font, $title) = @_;
-  $self->add_text_to_page($page, $font, $title, $left_margin, $title_height, $title_size);
+  my ($self, $page, $title) = @_;
+  $self->add_text_to_page($page, $self->pdf->corefont($font_bold), $title, $left_margin, $title_height, $title_size);
   return;
 }
 
 sub add_timestamp {
-  my ($self, $page, $font, $stamp) = @_;
-  $self->add_text_to_page($page, $font, $stamp, $left_margin, $stamp_height, $stamp_size);
+  my ($self, $page) = @_;
+  $self->add_text_to_page($page, $self->pdf->corefont($font_normal), $self->stamp(), $left_margin, $stamp_height, $stamp_size);
   return;
 }
 
 sub add_buffer_table_to_page {
   my ($self, $pdf, $page, $data, $table_properties, $y) = @_;
+  my $y_pos = $self->page_height - $y;
+
   my $pdftable = PDF::Table->new();
   my @table_data = @{$data}; # this pdf library eats the array ! So we need to give it a copy!
 
   my $nb_core_col = $self->get_nb_col(\@table_data) - 2;
-  my $nb_core_row = $self->get_nb_row(\@table_data) - 2;
 
   $pdftable->table(
     # required params
     $pdf, $page, \@table_data,
 
     x => $left_margin,
-    w => ($nb_core_col + 1)*$col_width,
-    start_y => $y,
-    start_h => 500,
+    w => ($nb_core_col + 1) * $self->col_width(),
+    start_y => $y_pos,
+    start_h => 600,
     padding => 1,
     font  =>      $pdf->corefont('Courier-Bold', -encoding => 'latin1'),
     cell_props => $table_properties,
     column_props => [
-      { min_w => $col_width/2, max_w => $col_width/2, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width, max_w => $col_width, },
-      { min_w => $col_width/2, max_w => $col_width/2, },
+      { min_w => 0, max_w => $self->col_width() / 2, },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => $self->col_width(), max_w => $self->col_width(), },
+      { min_w => 0, max_w => $self->col_width() / 2, },
     ]
   );
   return;
 }
 
 sub add_table_to_page {
-  my ($self, $pdf, $page, $data, $x, $y) = @_;
+  my ($self, $pdf, $page, $data, $x_pos, $y) = @_;
+  my $y_pos = $self->page_height - $y;
+
   my $pdftable_source = PDF::Table->new();
   my @local_data = @{$data}; # this pdf library eats the array ! So we need to give it a copy!
 
   $pdftable_source->table(
     $pdf, $page, \@local_data,
-    x => $x, w => 400,
-    start_y    => $y,
+    x => $x_pos, w => 400,
+    start_y    => $y_pos,
     start_h    => 100,
     font_size  => 9,
     padding    => 4,
@@ -195,10 +238,12 @@ sub add_table_to_page {
 }
 
 sub add_text_to_page {
-  my ($self, $page, $font, $content, $x, $y, $font_size) = @_;
+  my ($self, $page, $font, $content, $x_pos, $y, $font_size) = @_;
+  my $y_pos = $self->page_height - $y;
+
   my $text = $page->text();
   $text->font($font, $font_size);
-  $text->translate($x, $y);
+  $text->translate($x_pos, $y_pos);
   $text->text($content);
   return;
 }
@@ -249,6 +294,8 @@ wtsi_clarity::util::pdf::pdf_generator
 =head2 transform_all_properties
 
 =head2 transform_property
+
+=head2 A4_LANDSCAPE
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

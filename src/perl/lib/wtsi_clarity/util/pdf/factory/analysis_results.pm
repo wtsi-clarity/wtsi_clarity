@@ -3,7 +3,6 @@ package wtsi_clarity::util::pdf::factory::analysis_results;
 use Moose::Role;
 use Carp;
 use Readonly;
-use DateTime;
 
 Readonly::Scalar our $HEADER_STYLE => q(HEADER_STYLE);
 Readonly::Scalar my $NUMBER_OF_COLUMNS => 12;
@@ -37,6 +36,8 @@ sub _format {
 
       if (exists $table_info->{$cell}) {
         push @table_row, $table->{'format_cell'}->($table_info->{$cell});
+      } else {
+        push @table_row, q{};
       }
     }
 
@@ -70,14 +71,14 @@ __END__
 wtsi_clarity::util::pdf::factory::analysis_results
 
 =head1 SYNOPSIS
-  
+
   use wtsi_clarity::util::pdf::factory::analysis_results;
   my $factory = wtsi_clarity::util::pdf::factory::pico_analysis_results->new();
   $factory->build($pdf_data);
-  
+
 =head1 DESCRIPTION
 
-  Creates the pico analysis PDF 
+  Creates the pico analysis PDF
 
 =head1 SUBROUTINES/METHODS
 

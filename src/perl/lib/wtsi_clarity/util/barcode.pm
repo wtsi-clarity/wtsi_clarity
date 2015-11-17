@@ -12,39 +12,43 @@ our $VERSION = '0.0';
 ##no critic
 
 sub makeID {
-    my $s = shift;
-    return $s =~ /^[A-Z]{2}\-[0-9][0-9]*$/ ? $s . makeCheck($s) : "";
+  my $s = shift;
+  return $s =~ /^[A-Z]{2}\-[0-9][0-9]*$/ ? $s . makeCheck($s) : "";
 }
 
 sub makeCheck {
-    my ($s) = @_;
-    my @chars = split //, $s;
+  my ($s) = @_;
+  my @chars = split //, $s;
 
-    my $len = (scalar @chars) - 1;
-    my $sum = 0;
+  my $len = (scalar @chars) - 1;
+  my $sum = 0;
 
-    foreach my $c (@chars) {
-	next if $c eq '-';
-	$sum += ord($c) * $len--;
-    }
- 
-    return chr($sum % 23 + ord('A'));
+  foreach my $c (@chars) {
+    next if $c eq '-';
+    $sum += ord($c) * $len--;
+  }
+
+  return chr($sum % 23 + ord('A'));
 }
 
 sub numberPrefix {
-    # Return the number of two letter prefix
-    my ($prefix) = @_;
-    my $i = (substr $prefix,0,1);
-    my $j = (substr $prefix,1,1);
+  # Return the number of two letter prefix
+  my ($prefix) = @_;
+  my $i = (substr $prefix, 0, 1);
+  my $j = (substr $prefix, 1, 1);
 
-    $i = ord($i)-64;
-    $j = ord($j)-64;
-    if($i < 1){$i = 0;}
-    if($j < 1){$j = 0;}
+  $i = ord($i) - 64;
+  $j = ord($j) - 64;
+  if ($i < 1) {
+    $i = 0;
+  }
+  if ($j < 1) {
+    $j = 0;
+  }
 
-    $prefix = (($i * 27) + $j) * 1000000000;
+  $prefix = (($i * 27) + $j) * 1000000000;
 
-    return $prefix;
+  return $prefix;
 }
 
 ## Method to return the barcode identifier based on the entity type
@@ -55,28 +59,30 @@ sub numberPrefix {
 ## zero's.
 
 sub calculateBarcode {
-    my ($type,$number) = @_;
+  my ($type, $number) = @_;
 
-    if (!$type) {
-      croak 'Barcode prefix is needed for barcode generation';
-    }
-    if (!$number) {
-      croak 'ID is needed for barcode generation';
-    }
+  if (!$type) {
+    croak 'Barcode prefix is needed for barcode generation';
+  }
+  if (!$number) {
+    croak 'ID is needed for barcode generation';
+  }
 
-    my $cl = makeID($type ."-". $number);
-    if(!$cl) {
-      croak 'Failed to generate id';
-    }
+  my $cl = makeID($type ."-". $number);
+  if (!$cl) {
+    croak 'Failed to generate id';
+  }
 
-    my $bc = numberPrefix($type) + ($number * 100);
-    $bc += ord(substr($cl,length($cl)-1));
-    if(length($bc) == 11){$bc ="0$bc";}
-  
-    my $check = checkDigit($bc);
-    $bc      .= $check;
+  my $bc = numberPrefix($type) + ($number * 100);
+  $bc += ord(substr($cl, length($cl) - 1));
+  if (length($bc) == 11) {
+    $bc = "0$bc";
+  }
 
-    return ($bc, $cl);
+  my $check = checkDigit($bc);
+  $bc .= $check;
+
+  return ($bc, $cl);
 }
 
 ## Method to find the check digit that should be returned by
@@ -88,14 +94,14 @@ sub calculateBarcode {
 ## barcode with a hand scanner.
 
 sub checkDigit {
-    my $stem = shift;
-    my $sum  = 0;
-    while ($stem) {
-        $sum += (chop $stem) * 3;
-        $sum +=  chop $stem;
-    }
-    my $mod = 10 - ($sum % 10);
-    return ($mod == 10) ? 0 : $mod;
+  my $stem = shift;
+  my $sum = 0;
+  while ($stem) {
+    $sum += (chop $stem) * 3;
+    $sum += chop $stem;
+  }
+  my $mod = 10 - ($sum % 10);
+  return ($mod == 10) ? 0 : $mod;
 }
 
 1;

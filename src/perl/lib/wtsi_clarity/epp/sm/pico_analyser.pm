@@ -6,7 +6,7 @@ use Readonly;
 use File::Temp qw/ tempdir /;
 use wtsi_clarity::file_parsing::dtx_concentration_calculator;
 use wtsi_clarity::file_parsing::dtx_parser;
-use wtsi_clarity::util::pdf::factory;
+use wtsi_clarity::util::pdf::factory::pico_analysis_results;
 use Mojo::Collection 'c';
 
 extends 'wtsi_clarity::epp';
@@ -40,7 +40,7 @@ has 'analysis_file' => (
 );
 
 override 'run' => sub {
-  my $self= shift;
+  my $self = shift;
   super();
 
   # Fetch the files
@@ -56,7 +56,7 @@ override 'run' => sub {
   my $results = $calculator->get_analysis_results();
 
   # Pass the results to the PDF generator
-  my $pdf = wtsi_clarity::util::pdf::factory->createPDF('pico_analysis_results', $results);
+  my $pdf = wtsi_clarity::util::pdf::factory::pico_analysis_results->new()->build($results);
 
   # Attach PDF to process
   $pdf->saveas(q{./} . $self->analysis_file);
@@ -73,7 +73,9 @@ has '_dtx_parser' => (
   isa      => 'wtsi_clarity::file_parsing::dtx_parser',
   is       => 'ro',
   required => 0,
-  default  => sub { return wtsi_clarity::file_parsing::dtx_parser->new(); },
+  default  => sub {
+    return wtsi_clarity::file_parsing::dtx_parser->new();
+  },
 );
 
 has '_output_ids' => (
@@ -86,7 +88,9 @@ has '_output_ids' => (
 sub _build__output_ids {
   my ($self) = @_;
   my $node_list = $self->process_doc->findnodes($OUTPUT_IDS_PATH);
-  my @ids = map { $_->getValue() } $node_list->get_nodelist();
+  my @ids = map {
+    $_->getValue()
+  } $node_list->get_nodelist();
   return \@ids;
 }
 
@@ -102,10 +106,10 @@ sub _build__output_artifact_details {
   my $base_url = $self->config->clarity_api->{'base_uri'};
 
   my @uris = c->new(@{$self->_output_ids})
-              ->map( sub {
-                  return $base_url.'/artifacts/'.$_;
-                } )
-              ->each;
+    ->map( sub {
+    return $base_url.'/artifacts/'.$_;
+  } )
+    ->each;
 
   return $self->request->batch_retrieve('artifacts', \@uris );
 };
@@ -130,14 +134,15 @@ sub _build__input_to_output_map {
   #   }
   # }
   my $input_containers_map = c->new($self->_input_artifact_details->findnodes(q{/art:details/art:artifact})->get_nodelist())
-              ->reduce( sub {
-                ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-                my $input_id      = $b->findvalue( q{./@limsid}                       );
-                my $container_id  = $b->findvalue( q{./location[1]/container/@limsid} );
-                my $location      = $b->findvalue( q{./location[1]/value}             );
-                ## use critic
-                $a->{ $input_id } = { 'input_id' => $input_id, 'container_id' => $container_id, 'location' => $location };
-                $a; } , {});
+    ->reduce( sub {
+    ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+    my $input_id = $b->findvalue( q{./@limsid}                       );
+    my $container_id = $b->findvalue( q{./location[1]/container/@limsid} );
+    my $location = $b->findvalue( q{./location[1]/value}             );
+    ## use critic
+    $a->{ $input_id } = { 'input_id' => $input_id, 'container_id' => $container_id, 'location' => $location };
+    $a;
+  }, {});
 
   my $c_in_out = c->new($self->process_doc->findnodes($IN_OUT_PATH)->get_nodelist());
 
@@ -153,10 +158,10 @@ sub _build__input_to_output_map {
   # }
   $input_containers_map = $c_in_out->reduce( sub {
     ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-    my $input_id  = $b->findvalue ( q{input/@limsid}  );
+    my $input_id = $b->findvalue ( q{input/@limsid}  );
     my $output_id = $b->findvalue ( q{output/@limsid} );
     ## use critic
-    if (!defined $a->{$input_id} ) {
+    if (!defined $a->{$input_id}) {
       croak qq{ There is a missing source artifacts in the input-output-map! ( $input_id )};
     }
     $a->{$input_id}->{'output_id'} = $output_id;
@@ -183,15 +188,15 @@ sub _build__input_to_output_map {
 
 sub _update_output_artifacts {
   my ($self, $data) = @_;
-    ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+  ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
   c ->new($self->_output_artifact_details->findnodes(q{/art:details/art:artifact})->get_nodelist())
-    ->each(sub{
-        my $artifact    = $_;
-        my $artifact_id = $artifact->findvalue( q{@limsid} );
-        my $loc         = $self->_input_to_output_map->{$artifact_id}->{'location'};
-        my $udf = $self->create_udf_element($self->process_doc, 'Concentration', $data->{$loc}->{'concentration'});
-        $artifact->appendChild($udf);
-       } ) ;
+    ->each(sub {
+    my $artifact = $_;
+    my $artifact_id = $artifact->findvalue( q{@limsid} );
+    my $loc = $self->_input_to_output_map->{$artifact_id}->{'location'};
+    my $udf = $self->create_udf_element($self->process_doc, 'Concentration', $data->{$loc}->{'concentration'});
+    $artifact->appendChild($udf);
+  } );
   ## use critic
   return $self->_output_artifact_details;
 }
@@ -207,7 +212,9 @@ sub _build__input_uris {
   my ($self) = @_;
 
   my $input_node_list = $self->process_doc->findnodes($INPUT_URIS_PATH);
-  my @input_uris = map { $_->getValue() } $input_node_list->get_nodelist();
+  my @input_uris = map {
+    $_->getValue()
+  } $input_node_list->get_nodelist();
 
   return \@input_uris;
 }
@@ -239,7 +246,7 @@ sub _build__container_to_artifact_map {
 
   foreach my $artifact (@artifacts) {
     my $container_limsid = $artifact->findvalue($CONTAINER_LIMSID_PATH);
-    my $artifact_limsid  = $artifact->findvalue($ARTIFACT_LIMSID_PATH);
+    my $artifact_limsid = $artifact->findvalue($ARTIFACT_LIMSID_PATH);
 
     if (!exists $container_to_artifact_map{$container_limsid}) {
       $container_to_artifact_map{$container_limsid} = $artifact_limsid;
@@ -299,7 +306,9 @@ sub _get_files {
     $process_xml->findvalue($SECOND_OUTPUT),
   );
 
-  my @output_analyte_xml = map { $self->fetch_and_parse($_); } @output_analyte_urls;
+  my @output_analyte_xml = map {
+    $self->fetch_and_parse($_);
+  } @output_analyte_urls;
 
   my $dtx;
   my $standard;
@@ -379,11 +388,21 @@ wtsi_clarity::epp::sm::pico_analyser
 
 =item Readonly
 
-=item List::MoreUtils;
-
-=item wtsi_clarity::util::batch
-
 =item wtsi_clarity::util::clarity_elements
+
+=item File::Temp
+
+=item wtsi_clarity::file_parsing::dtx_concentration_calculator
+
+=item wtsi_clarity::file_parsing::dtx_parser
+
+=item wtsi_clarity::util::pdf::factory::pico_analysis_results
+
+=item Mojo::Collection
+
+=item wtsi_clarity::epp
+
+=item wtsi_clarity::util::clarity_elements_fetcher_role_util
 
 =back
 

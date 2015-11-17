@@ -5,32 +5,45 @@ use Readonly;
 use Carp;
 use URI::Escape;
 use wtsi_clarity::util::request;
+use wtsi_clarity::clarity::step::programstatus;
 
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $PLACEMENTS_URI_PATH      => q( /stp:step/placements/@uri );
 Readonly::Scalar my $SELECTED_CONTAINERS_PATH => q( /stp:placements/selected-containers/container/@uri );
-Readonly::Scalar my $CONTAINER_NAME_LOCATION  => q(/con:container/name);
+Readonly::Scalar my $PLACEMENT_URIS           => q( /con:details/con:container/placement/@uri );
 ## use critic
 
-has '_parent' => (
+has 'programstatus' => (
+  is      => 'ro',
+  isa     => 'wtsi_clarity::clarity::step::programstatus',
+  lazy    => 1,
+  builder => '_build_programstatus',
+  handles => [qw/send_warning send_error send_ok/],
+);
+sub _build_programstatus {
+  my $self = shift;
+  return wtsi_clarity::clarity::step::programstatus->new(step => $self);
+}
+
+has 'parent' => (
   is => 'ro',
   isa => 'HasRequestAndConfig',
   required => 1,
   init_arg => 'parent',
 );
 
-has '_request' => (
+has 'request' => (
   is => 'ro',
   isa => 'wtsi_clarity::util::request',
   required => 0,
   init_arg => undef,
   lazy_build => 1,
 );
-sub _build__request {
+sub _build_request {
   my $self = shift;
-  return $self->_parent->request;
+  return $self->parent->request;
 }
 
 has 'xml' => (
@@ -57,7 +70,7 @@ sub _build__placement_doc {
   my $self = shift;
 
   my $placement_uri = $self->xml->findvalue($PLACEMENTS_URI_PATH);
-  return $self->_parent->fetch_and_parse($placement_uri);
+  return $self->parent->fetch_and_parse($placement_uri);
 }
 
 has 'output_containers' => (
@@ -69,7 +82,7 @@ has 'output_containers' => (
 sub _build_output_containers {
   my $self = shift;
   my @output_container_uris = $self->_placement_doc->findnodes($SELECTED_CONTAINERS_PATH)->to_literal_list;
-  return $self->_request->batch_retrieve('containers', \@output_container_uris);
+  return $self->request->batch_retrieve('containers', \@output_container_uris);
 }
 
 sub _output_containers_uri {
@@ -89,6 +102,20 @@ sub _build_output_container_count {
   my $self = shift;
 
   return scalar @{$self->_output_containers_uri};
+}
+
+has 'output_artifacts' => (
+  is => 'ro',
+  isa => 'XML::LibXML::Document',
+  lazy_build => 1,
+);
+sub _build_output_artifacts {
+  my $self = shift;
+
+  my @uris = $self->output_containers->findnodes($PLACEMENT_URIS)->to_literal_list;
+  my $artifacts = $self->request->batch_retrieve('artifacts', \@uris);
+
+  return $artifacts;
 }
 
 1;

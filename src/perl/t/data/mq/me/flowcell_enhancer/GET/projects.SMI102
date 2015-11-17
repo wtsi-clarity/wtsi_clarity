@@ -15,6 +15,9 @@
     <udf:field type="Boolean" name="WTSI Contaminated with Human DNA that needs removal?">false</udf:field>
     <udf:field type="Boolean" name="WTSI Does the study require the removal of X-chromosome and autosome sequence?">false</udf:field>
     <udf:field type="Boolean" name="WTSI Does the study require the removal of Y-chromosome and autosome sequence?">false</udf:field>
+    <udf:field type="String" name="WTSI Requested Size Range From">100</udf:field>
+    <udf:field type="String" name="WTSI Requested Size Range">100</udf:field>
+    <udf:field type="String" name="WTSI Read Length">123</udf:field>
     <file:file limsid="SMI102-40-152" uri="http://testserver.com:1234/files/SMI102-40-152"/>
     <file:file limsid="SMI102-40-151" uri="http://testserver.com:1234/files/SMI102-40-151"/>
     <file:file limsid="SMI102-40-158" uri="http://testserver.com:1234/files/SMI102-40-158"/>

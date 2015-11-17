@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<con:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container">
+    <con:container uri="http://testserver.com:1234/here/containers/27-11767" limsid="27-11767">
+        <name>GCLP:SM:27-11767:0</name>
+        <type uri="http://testserver.com:1234/here/containertypes/4" name="96 Well Plate"/>
+        <occupied-wells>2</occupied-wells>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-384929" limsid="2-384929">
+            <value>B:1</value>
+        </placement>
+        <placement uri="http://testserver.com:1234/here/artifacts/2-384928" limsid="2-384928">
+            <value>A:1</value>
+        </placement>
+        <state>Populated</state>
+    </con:container>
+</con:details>

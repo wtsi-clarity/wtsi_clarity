@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="yes"?>
+<wkfcnf:workflow xmlns:wkfcnf="http://genologics.com/ri/workflowconfiguration" status="ACTIVE" uri="http://testserver.com:1234/here/configuration/workflows/601" name="GCLP Sample Management QC_20150604">
+    <protocols>
+        <protocol uri="http://testserver.com:1234/here/configuration/protocols/2" name="Sample Receipt Protocol"/>
+        <protocol uri="http://testserver.com:1234/here/configuration/protocols/3" name="Dilution Protocol"/>
+        <protocol uri="http://testserver.com:1234/here/configuration/protocols/4" name="Picogreen Protocol"/>
+        <protocol uri="http://testserver.com:1234/here/configuration/protocols/5" name="Picogreen Analysis"/>
+        <protocol uri="http://testserver.com:1234/here/configuration/protocols/8" name="QC Report"/>
+    </protocols>
+    <stages>
+        <stage uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1211" name="Sample Receipt (SM)"/>
+        <stage uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1212" name="Add Control Sample (SM)"/>
+        <stage uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213" name="Volume Check (SM)"/>
+        <stage uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1214" name="Working Dilution (SM)"/>
+        <stage uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1215" name="Pico Dilution (SM)"/>
+        <stage uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1216" name="Pico Assay Plate (SM)"/>
+        <stage uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217" name="Pico Reagent Addition (SM)"/>
+        <stage uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218" name="Pico DTX (SM)"/>
+        <stage uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219" name="Picogreen Analysis (SM)"/>
+        <stage uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1220" name="QC Report"/>
+    </stages>
+</wkfcnf:workflow>

@@ -1,0 +1,113 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/SYY154A2PA1?state=1463" limsid="SYY154A2PA1">
+        <name>e9d9f37a-8774-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-207" limsid="27-207"/>
+            <value>B:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/SYY154A2" limsid="SYY154A2"/>
+        <artifact-group name="GCLP Sequencing QC" uri="http://testserver.com:1234/here/artifactgroups/51"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Stock Plate Barcode Issue (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/251"/>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/252"/>
+            <workflow-stage status="IN_PROGRESS" name="Add Control Sample (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/253"/>
+            <workflow-stage status="SKIPPED" name="Cherrypick To Shear" uri="http://testserver.com:1234/here/configuration/workflows/304/stages/783"/>
+            <workflow-stage status="SKIPPED" name="Shear" uri="http://testserver.com:1234/here/configuration/workflows/304/stages/784"/>
+            <workflow-stage status="SKIPPED" name="Shear to 96 Well" uri="http://testserver.com:1234/here/configuration/workflows/304/stages/785"/>
+            <workflow-stage status="SKIPPED" name="Post Shear XP" uri="http://testserver.com:1234/here/configuration/workflows/304/stages/786"/>
+            <workflow-stage status="SKIPPED" name="Library Creation" uri="http://testserver.com:1234/here/configuration/workflows/304/stages/787"/>
+            <workflow-stage status="COMPLETE" name="Library PCR set up" uri="http://testserver.com:1234/here/configuration/workflows/304/stages/788"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/SYY154A3PA1?state=1509" limsid="SYY154A3PA1">
+        <name>ea2f49c4-8774-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-207" limsid="27-207"/>
+            <value>C:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/SYY154A3" limsid="SYY154A3"/>
+        <artifact-group name="GCLP Sequencing QC" uri="http://testserver.com:1234/here/artifactgroups/51"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Stock Plate Barcode Issue (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/251"/>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/252"/>
+            <workflow-stage status="IN_PROGRESS" name="Add Control Sample (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/253"/>
+            <workflow-stage status="SKIPPED" name="Cherrypick To Shear" uri="http://testserver.com:1234/here/configuration/workflows/304/stages/783"/>
+            <workflow-stage status="SKIPPED" name="Shear" uri="http://testserver.com:1234/here/configuration/workflows/304/stages/784"/>
+            <workflow-stage status="SKIPPED" name="Shear to 96 Well" uri="http://testserver.com:1234/here/configuration/workflows/304/stages/785"/>
+            <workflow-stage status="SKIPPED" name="Post Shear XP" uri="http://testserver.com:1234/here/configuration/workflows/304/stages/786"/>
+            <workflow-stage status="SKIPPED" name="Library Creation" uri="http://testserver.com:1234/here/configuration/workflows/304/stages/787"/>
+            <workflow-stage status="COMPLETE" name="Library PCR set up" uri="http://testserver.com:1234/here/configuration/workflows/304/stages/788"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/SYY154A1PA1?state=1510" limsid="SYY154A1PA1">
+        <name>e969bede-8774-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-207" limsid="27-207"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/SYY154A1" limsid="SYY154A1"/>
+        <artifact-group name="GCLP Sequencing QC" uri="http://testserver.com:1234/here/artifactgroups/51"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Stock Plate Barcode Issue (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/251"/>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/252"/>
+            <workflow-stage status="IN_PROGRESS" name="Add Control Sample (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/253"/>
+            <workflow-stage status="SKIPPED" name="Cherrypick To Shear" uri="http://testserver.com:1234/here/configuration/workflows/304/stages/783"/>
+            <workflow-stage status="SKIPPED" name="Shear" uri="http://testserver.com:1234/here/configuration/workflows/304/stages/784"/>
+            <workflow-stage status="SKIPPED" name="Shear to 96 Well" uri="http://testserver.com:1234/here/configuration/workflows/304/stages/785"/>
+            <workflow-stage status="SKIPPED" name="Post Shear XP" uri="http://testserver.com:1234/here/configuration/workflows/304/stages/786"/>
+            <workflow-stage status="SKIPPED" name="Library Creation" uri="http://testserver.com:1234/here/configuration/workflows/304/stages/787"/>
+            <workflow-stage status="COMPLETE" name="Library PCR set up" uri="http://testserver.com:1234/here/configuration/workflows/304/stages/788"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/151C-968PA1?state=191838" limsid="151C-968PA1">
+        <name>Lambda DNA</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11829" limsid="27-11829"/>
+            <value>1:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/151C-968" limsid="151C-968"/>
+        <control-type uri="http://testserver.com:1234/here/controltypes/151"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="Add Control Sample (SM)" uri="http://testserver.com:1234/here/configuration/workflows/32/stages/239"/>
+            <workflow-stage status="IN_PROGRESS" name="Add Control Sample (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/253"/>
+            <workflow-stage status="IN_PROGRESS" name="Add Control Sample (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1212"/>
+            <workflow-stage status="IN_PROGRESS" name="Add Control Sample (SM)" uri="http://testserver.com:1234/here/configuration/workflows/502/stages/1112"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/3C-969PA1?state=191839" limsid="3C-969PA1">
+        <name>Stock plate control</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11830" limsid="27-11830"/>
+            <value>1:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/3C-969" limsid="3C-969"/>
+        <control-type uri="http://testserver.com:1234/here/controltypes/3"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="Add Control Sample (SM)" uri="http://testserver.com:1234/here/configuration/workflows/32/stages/239"/>
+            <workflow-stage status="IN_PROGRESS" name="Add Control Sample (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/253"/>
+            <workflow-stage status="IN_PROGRESS" name="Add Control Sample (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1212"/>
+            <workflow-stage status="IN_PROGRESS" name="Add Control Sample (SM)" uri="http://testserver.com:1234/here/configuration/workflows/502/stages/1112"/>
+        </workflow-stages>
+    </art:artifact>
+</art:details>
