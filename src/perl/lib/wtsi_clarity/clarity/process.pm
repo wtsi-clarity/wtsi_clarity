@@ -11,29 +11,34 @@ use wtsi_clarity::util::types;
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $OUTPUT_ARTIFACT_URI_PATH => q{/prc:process/input-output-map/output[@output-type="Analyte"]/@uri};
-Readonly::Scalar my $PARENT_PROCESS_PATH      => q( /prc:process/input-output-map/input/parent-process/@uri );
-Readonly::Scalar my $PROCESS_TYPE             => q( /prc:process/type );
-Readonly::Scalar my $PROCESS_LIMSID_PATH      => q(/prc:processes/process/@limsid);
-Readonly::Scalar my $INPUT_ARTIFACT_URIS_PATH => q{/prc:process/input-output-map/input/@uri};
-Readonly::Scalar my $INPUT_OUTPUT_PATH        => q{prc:process/input-output-map};
-Readonly::Scalar my $ALL_ANALYTES             => q(prc:process/input-output-map/output[@output-type!="ResultFile"]/@uri | prc:process/input-output-map/input/@uri);
-Readonly::Scalar my $INPUT_ANALYTES           => q(prc:process/input-output-map/input/@uri);
-Readonly::Scalar my $ARTIFACT_BY_LIMSID       => q{art:details/art:artifact[@limsid="%s"]};
-Readonly::Scalar my $CONTAINER_BY_LIMSID      => q{con:details/con:container[@limsid="%s"]};
-Readonly::Scalar my $INPUT_LIMSID             => q{./input/@limsid};
-Readonly::Scalar my $OUTPUT_LIMSID            => q{./output[@output-type!="ResultFile"]/@limsid};
-Readonly::Scalar my $ALL_CONTAINERS           => q{art:details/art:artifact/location/container/@uri};
-Readonly::Scalar my $CONTAINER_URI_PATH       => q{/art:artifact/location/container/@uri};
-Readonly::Scalar my $PLACEMENTS_URI_PATH      => q{/con:container/placement/@uri};
-Readonly::Scalar my $RESULT_FILE_URI          => q{(prc:process/input-output-map/output[@output-type="ResultFile"]/@uri)[1]};
-Readonly::Scalar my $FILE_URL_PATH            => q(/art:artifact/file:file/@uri);
-Readonly::Scalar our $FILE_CONTENT_LOCATION   => q(/file:file/content-location);
-Readonly::Scalar my $CONTAINER_NAME_LOCATION  => q(/con:container/name);
-Readonly::Scalar my $SAMPLE_LIMSID_PATH       => q{/art:artifact/sample/@limsid};
-Readonly::Scalar my $CONTAINER_SIGNATURE_LOCATION  => q(/con:container/udf:field[@name="WTSI Container Signature"]);
-Readonly::Scalar my $OUTPUT_ANALYTES_URI_PATH => q{/prc:process/input-output-map/output/@uri};
-Readonly::Scalar my $WORKFLOW_STAGE_URI  => q{/art:details/art:artifact[1]/workflow-stages/workflow-stage[@status="IN_PROGRESS"]/@uri};
+Readonly::Scalar my $OUTPUT_ARTIFACT_URI_PATH     => q{/prc:process/input-output-map/output[@output-type="Analyte"]/@uri};
+Readonly::Scalar my $PARENT_PROCESS_PATH          => q( /prc:process/input-output-map/input/parent-process/@uri );
+Readonly::Scalar my $PROCESS_TYPE                 => q( /prc:process/type );
+Readonly::Scalar my $PROCESS_LIMSID_PATH          => q(/prc:processes/process/@limsid);
+Readonly::Scalar my $INPUT_ARTIFACT_URIS_PATH     => q{/prc:process/input-output-map/input/@uri};
+Readonly::Scalar my $INPUT_ANALYTES_URIS_PATH     => q{prc:process/input-output-map/output[@output-type!="ResultFile"]/../input/@uri};
+Readonly::Scalar my $INPUT_OUTPUT_PATH            => q{prc:process/input-output-map};
+Readonly::Scalar my $ALL_ANALYTES                 => q(prc:process/input-output-map/output[@output-type!="ResultFile"]/@uri | prc:process/input-output-map/input/@uri);
+Readonly::Scalar my $INPUT_ANALYTES               => q(prc:process/input-output-map/input/@uri);
+Readonly::Scalar my $ARTIFACT_BY_LIMSID           => q{art:details/art:artifact[@limsid="%s"]};
+Readonly::Scalar my $CONTAINER_BY_LIMSID          => q{con:details/con:container[@limsid="%s"]};
+Readonly::Scalar my $INPUT_LIMSID                 => q{./input/@limsid};
+Readonly::Scalar my $OUTPUT_LIMSID                => q{./output[@output-type!="ResultFile"]/@limsid};
+Readonly::Scalar my $ALL_CONTAINERS               => q{art:details/art:artifact/location/container/@uri};
+Readonly::Scalar my $CONTAINER_URI_PATH           => q{/art:artifact/location/container/@uri};
+Readonly::Scalar my $PLACEMENTS_URI_PATH          => q{/con:container/placement/@uri};
+Readonly::Scalar my $RESULT_FILE_URI              => q{(prc:process/input-output-map/output[@output-type="ResultFile"]/@uri)[1]};
+Readonly::Scalar my $FILE_URL_PATH                => q(/art:artifact/file:file/@uri);
+Readonly::Scalar our $FILE_CONTENT_LOCATION       => q(/file:file/content-location);
+Readonly::Scalar my $CONTAINER_NAME_LOCATION      => q(/con:container/name);
+Readonly::Scalar my $SAMPLE_LIMSID_PATH           => q{/art:artifact/sample/@limsid};
+Readonly::Scalar my $CONTAINER_SIGNATURE_LOCATION => q(/con:container/udf:field[@name="WTSI Container Signature"]);
+Readonly::Scalar my $OUTPUT_ANALYTES_URI_PATH     => q{/prc:process/input-output-map/output/@uri};
+Readonly::Scalar my $WORKFLOW_STAGE_URI           => q{/art:details/art:artifact[1]/workflow-stages/workflow-stage[@status="IN_PROGRESS"]/@uri};
+Readonly::Scalar my $FIRST_ARTIFACT_URI           => q{art:details/art:artifact[1]/@uri};
+Readonly::Scalar my $SAMPLE_URI_BY_ARTIFACT_DOC   => q{art:artifact/sample/@uri};
+Readonly::Scalar my $PROJECT_URI_BY_SAMPLE_DOC    => q{smp:sample/project/@uri};
+Readonly::Scalar my $TECHNICIAN_URI_BY_PROCESS    => q{prc:process/technician[1]/@uri};
 ## use critic
 
 has '_parent' => (
@@ -385,6 +390,54 @@ sub _build__input_analytes {
   return $self->_request->batch_retrieve('artifacts', \@all_analyte_uris);
 }
 
+has '_first_input_analyte_uri' => (
+  is => 'ro',
+  isa => 'Str',
+  lazy_build => 1,
+);
+
+sub _build__first_input_analyte_uri {
+  my $self = shift;
+  return $self->_input_analytes->findnodes($FIRST_ARTIFACT_URI)->pop()->textContent;
+}
+
+has '_first_sample_doc' => (
+  is => 'ro',
+  isa => 'XML::LibXML::Document',
+  lazy_build => 1,
+);
+
+sub _build__first_sample_doc {
+  my $self = shift;
+
+  my $first_analytes_doc = $self->_parent->fetch_and_parse($self->_first_input_analyte_uri);
+  my $sample_uri = $first_analytes_doc->findvalue($SAMPLE_URI_BY_ARTIFACT_DOC);
+
+  return $self->_parent->fetch_and_parse($sample_uri);
+}
+
+has 'project_doc' => (
+  is => 'ro',
+  isa => 'XML::LibXML::Document',
+  lazy_build => 1,
+);
+sub _build_project_doc {
+  my $self = shift;
+
+  return $self->_parent->fetch_and_parse($self->_first_sample_doc->findvalue($PROJECT_URI_BY_SAMPLE_DOC));
+}
+
+has 'technician_doc' => (
+  is => 'ro',
+  isa => 'XML::LibXML::Document',
+  lazy_build => 1,
+);
+sub _build_technician_doc {
+  my $self = shift;
+
+  return $self->_parent->fetch_and_parse($self->xml->findvalue($TECHNICIAN_URI_BY_PROCESS));
+}
+
 sub get_result_file_location {
   my $self = shift;
 
@@ -439,6 +492,17 @@ sub _build_output_artifact_uris {
   } $self->_parent->findnodes($OUTPUT_ARTIFACT_URI_PATH)->get_nodelist;
 
   return \@output_uris;
+}
+
+has 'number_of_input_artifacts' => (
+  isa => 'Num',
+  is  => 'ro',
+  lazy_build => 1,
+);
+sub _build_number_of_input_artifacts {
+  my $self = shift;
+
+  return scalar $self->xml->findnodes($INPUT_ANALYTES_URIS_PATH)->get_nodelist;
 }
 
 sub container_uri_by_artifact_limsid {

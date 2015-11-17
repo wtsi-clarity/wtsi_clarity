@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/2-194133?state=94041" limsid="2-194133">
+    <name>Worksheet</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://testserver.com:1234/here/processes/24-26994" limsid="24-26994"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-4510" limsid="27-4510"/>
+        <value>A:3</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/SMI102A112" limsid="SMI102A112"/>
+    <workflow-stages>
+        <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/309"/>
+        <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/310"/>
+        <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/311"/>
+        <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
+    </workflow-stages>
+</art:artifact>

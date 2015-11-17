@@ -16,6 +16,8 @@ Readonly::Hash my %PURPOSE_TO_ENHANCER_TYPE => (
 
   'sample_manifest'       => 'epp::reports::manifest',
   'sample_report'         => 'epp::reports::sample_qc_report',
+
+  'charging_fluidigm'     => 'mq::me::charging::fluidigm',
 );
 
 sub package_name {

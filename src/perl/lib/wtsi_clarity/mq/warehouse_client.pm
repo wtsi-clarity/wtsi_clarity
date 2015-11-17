@@ -7,6 +7,12 @@ extends 'wtsi_clarity::mq::client';
 
 our $VERSION = '0.0';
 
+has 'warehouse' => (
+  isa       => 'Str',
+  is        => 'ro',
+  required  => 1,
+);
+
 sub _build_message_bus_type { return q{warehouse_mq} };
 
 sub send_message {
@@ -45,7 +51,7 @@ sub send_message {
 
 sub assemble_routing_key {
   my ($self, $purpose) = @_;
-  return $self->_mq_config->{'env'}. q{.} . $self->_mq_config->{'routing_key'} . q{.} . $purpose;
+  return join q{.}, $self->_mq_config->{'env'}, $self->_mq_config->{'routing_key'}, $self->warehouse, $purpose;
 }
 
 1;

@@ -12,7 +12,7 @@ our $VERSION = '0.0';
 
 extends 'wtsi_clarity::epp';
 
-enum 'WtsiClarityRoutingKeys', [qw/warehouse report/];
+enum 'WtsiClarityRoutingKeys', [qw/event report warehouse/];
 
 has '_client' => (
   is => 'ro',
