@@ -45,10 +45,10 @@ my $base_uri = $config->clarity_api->{'base_uri'};
       'event' => {
                    'subjects' => [
                                    {
-                                     'subject_type' => 'Clarity_project',
+                                     'subject_type' => 'clarity_project',
                                      'friendly_name' => 'Test Project XXX123',
                                      'uuid' => 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e',
-                                     'role_type' => 'Clarity_charge_project'
+                                     'role_type' => 'clarity_charge_project'
                                    }
                                  ],
                    'event_type' => 'billing',

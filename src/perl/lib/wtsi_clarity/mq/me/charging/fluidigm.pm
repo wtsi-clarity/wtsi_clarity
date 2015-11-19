@@ -11,8 +11,8 @@ with qw/ wtsi_clarity::mq::message_enhancer /;
 our $VERSION = '0.0';
 
 Readonly::Scalar my $EVENT_TYPE                 => q{billing};
-Readonly::Scalar my $CLARITY_PROJECT_ROLE_TYPE  => q{Clarity_charge_project};
-Readonly::Scalar my $PROJECT_SUBJECT_TYPE       => q{Clarity_project};
+Readonly::Scalar my $CLARITY_PROJECT_ROLE_TYPE  => q{clarity_charge_project};
+Readonly::Scalar my $PROJECT_SUBJECT_TYPE       => q{clarity_project};
 Readonly::Scalar my $PRODUCT_TYPE               => q{Human QC 96:96};
 Readonly::Scalar my $PIPELINE                   => q{SM};
 Readonly::Scalar my $RESEARCHER_EMAIL           => q{res:researcher/email};

@@ -45,10 +45,10 @@ has 'purpose' => (
 );
 
 has '_date' => (
-  isa        => 'DateTime',
+  isa        => 'Str',
   is         => 'ro',
   required   => 0,
-  default    => sub { return DateTime->now(); },
+  default    => sub { return DateTime->now()->strftime('%Y-%m-%d %H:%M:%S'); },
 );
 
 has '_messages' => (
