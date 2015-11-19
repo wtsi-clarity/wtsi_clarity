@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
     with open(OUT_FILE_PATH, 'w') as OUT_FILE:
 
-        workflows = clarity.get_xml(urljoin(root_url, 'configuration/workflows/')).findall('workflow')
+        workflows = clarity.get_xml(urljoin(clarity.root, 'configuration/workflows/')).findall('workflow')
 
         for workflow in workflows:
             if workflow.get('status') == 'ACTIVE':
