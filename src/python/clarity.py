@@ -22,6 +22,9 @@ class Clarity:
 
         self.setup_urllib(user, password)
 
+        self.cache = {}
+        self.caching = False
+
     def setup_urllib(self, user, password):
         password_mgr = request.HTTPPasswordMgrWithDefaultRealm()
         password_mgr.add_password(None, self.root, user, password)
@@ -30,9 +33,18 @@ class Clarity:
         opener.open(self.root)
         request.install_opener(opener)
 
-    @staticmethod
-    def get_xml(uri):
+    def get_xml(self, uri):
+        if self.caching:
+            if uri in self.cache:
+                print("CACHED: " + uri)
+                return self.cache[uri]
+
+        print(uri)
         xml = request.urlopen(uri)
+
+        if self.caching:
+            self.cache[uri] = xml
+
         return ElementTree.parse(xml).getroot()
 
     def batch_get_xml(self, object_type, uri_list):

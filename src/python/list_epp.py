@@ -26,40 +26,46 @@ if __name__ == "__main__":
     clarity = Clarity(root_url)
 
     with open(OUT_FILE_PATH, 'w') as OUT_FILE:
-        OUT_FILE.write(SEP.join(["Protocol", "Step", "Script Name", "Behaviour", "Stage", "Timing", "Script"]) + "\n")
 
-        protocols = clarity.get_xml(urljoin(root_url, 'configuration/protocols/')).findall("protocol")
-        print("{:>3}/{}".format(0, len(protocols)))
-        for i, protocol in enumerate(protocols):
-            protocol_name = protocol.get("name")
-            protocol_uri = protocol.get("uri")
+        workflows = clarity.get_xml(urljoin(root_url, 'configuration/workflows/')).findall('workflow')
 
-            steps = clarity.get_xml(protocol_uri).find("steps").findall("step")
-            if steps:
-                for step in steps:
-                    step_name = step.get("name")
-                    process_type_uri = step.find("process-type").get("uri")
+        for workflow in workflows:
+            if workflow.get('status') == 'ACTIVE':
+                workflow_xml = clarity.get_xml(workflow.get('uri'))
+                protocols = workflow_xml.find('protocols').findall('protocol')
 
-                    epps = {}
-                    epp_triggers = step.find("epp-triggers").findall("epp-trigger")
-                    if epp_triggers:
-                        for epp_trigger in epp_triggers:
-                            epps[epp_trigger.get("name")] = {
-                                "type": epp_trigger.get("type") or "",
-                                "point": epp_trigger.get("point") or "",
-                                "status": epp_trigger.get("status") or "",
-                            }
+                for protocol in protocols:
+                    protocol_name = protocol.get("name")
+                    protocol_uri = protocol.get("uri")
 
-                        for script in clarity.get_xml(process_type_uri).findall("parameter"):
-                            string = script.find("string")
-                            epps[script.get("name")]["script"] = string.text.strip() if string is not None else ""
+                    steps = clarity.get_xml(protocol_uri).find("steps").findall("step")
+                    if steps:
+                        for step in steps:
+                            step_name = step.get("name")
+                            process_type_uri = step.find("process-type").get("uri")
 
-                        for epp_name, epp in epps.items():
-                            OUT_FILE.write(SEP.join([protocol_name, step_name, epp_name, format_string(epp.get('type')),
-                                                     format_string(epp.get('status')), format_string(epp.get('point')),
-                                                     epp.get('script')]) + "\n")
+                            epps = {}
+                            epp_triggers = step.find("epp-triggers").findall("epp-trigger")
+                            if epp_triggers:
+                                for epp_trigger in epp_triggers:
+                                    epps[epp_trigger.get("name")] = {
+                                        "type": epp_trigger.get("type") or "",
+                                        "point": epp_trigger.get("point") or "",
+                                        "status": epp_trigger.get("status") or "",
+                                    }
+
+                                for script in clarity.get_xml(process_type_uri).findall("parameter"):
+                                    string = script.find("string")
+                                    epps[script.get("name")][
+                                        "script"] = string.text.strip() if string is not None else ""
+
+                                for epp_name, epp in epps.items():
+                                    OUT_FILE.write(SEP.join([workflow.get('name'), protocol_name, step_name, epp_name,
+                                                             format_string(epp.get('type')),
+                                                             format_string(epp.get('status')),
+                                                             format_string(epp.get('point')),
+                                                             epp.get('script')]) + "\n")
+                            else:
+                                OUT_FILE.write(workflow.get('name') + SEP + protocol_name + SEP + step_name + "\n")
                     else:
-                        OUT_FILE.write(protocol_name + SEP + step_name + "\n")
-            else:
-                OUT_FILE.write(protocol_name + '\n')
-            print("{:>3}/{}".format(i + 1, len(protocols)))
+                        OUT_FILE.write(protocol_name + '\n')
