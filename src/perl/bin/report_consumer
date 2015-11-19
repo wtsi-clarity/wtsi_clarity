@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use FindBin qw($Bin);
-use lib ( -d "$Bin/../lib/perl5" ? "$Bin/../lib/perl5" : "$Bin/../lib" );
+use lib ( -d "$Bin/../lib/perl5" ? ("$Bin/../lib/perl5", "$Bin"): ("$Bin/../lib", "$Bin") );
 
 use wtsi_clarity::mq::mh::report_message_handler;
 
