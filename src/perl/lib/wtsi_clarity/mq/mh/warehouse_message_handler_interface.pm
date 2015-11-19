@@ -1,24 +1,15 @@
-package wtsi_clarity::mq::mh::warehouse_message_handler;
+package wtsi_clarity::mq::mh::warehouse_message_handler_interface;
 
-use Moose;
+use Moose::Role;
 use Carp;
 use JSON;
 use Encode;
 
 use wtsi_clarity::mq::warehouse_client;
 
-with 'wtsi_clarity::mq::message_handler_interface';
+with 'wtsi_clarity::mq::mh::message_handler_interface';
 
 our $VERSION = '0.0';
-
-has '_wh_client' => (
-  isa         => 'wtsi_clarity::mq::warehouse_client',
-  is          => 'ro',
-  required    => 0,
-  default     => sub {
-    return wtsi_clarity::mq::warehouse_client->new(warehouse => 'unified');
-  },
-);
 
 sub process {
   my ($self, $message, $package) = @_;
@@ -35,7 +26,9 @@ sub process {
 sub _send_message {
   my ($self, $message, $purpose) = @_;
   print $purpose . ": " . $message . "\n" or carp "Can't write to the log file"; # So it goes into the log
-  $self->_wh_client->send_message($message, $purpose);
+
+  my $wh_client = wtsi_clarity::mq::warehouse_client->new(warehouse => $self->warehouse_type);
+  $wh_client->send_message($message, $purpose);
   return;
 }
 
@@ -55,12 +48,13 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::mq::mh::warehouse_message_handler
+wtsi_clarity::mq::mh::warehouse_message_handler_interface
 
 =head1 SYNOPSIS
 
-  my $message_handler = wtsi_clarity::mq::mh::warehouse_message_handler->new();
-  $message_handler->process_message($json_string);
+  package wtsi_clarity::mq::mh::report_message_handler;
+
+  with 'wtsi_clarity::mq::mh::warehouse_message_handler_interface';
 
 =head1 DESCRIPTION
 

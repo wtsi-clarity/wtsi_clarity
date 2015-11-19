@@ -1,4 +1,4 @@
-package wtsi_clarity::mq::message_handler_interface;
+package wtsi_clarity::mq::mh::message_handler_interface;
 
 use Moose::Role;
 use Carp;
@@ -53,13 +53,13 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::mq::message_handler_interface
+wtsi_clarity::mq::mh::message_handler_interface
 
 =head1 SYNOPSIS
 
 package wtsi_clarity::mq::mh::report_message_handler;
 
-with 'wtsi_clarity::mq::message_handler_interface';
+with 'wtsi_clarity::mq::mh::message_handler_interface';
 
 sub process {
   my ($self, $message, $package_name) = @_;

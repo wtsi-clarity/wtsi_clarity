@@ -7,15 +7,15 @@ use Test::Exception;
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 
-use_ok('wtsi_clarity::mq::mh::warehouse_message_handler');
+use_ok('wtsi_clarity::mq::mh::unified_message_handler');
 
 {
-  my $mq_handler = wtsi_clarity::mq::mh::warehouse_message_handler->new();
-  isa_ok($mq_handler, 'wtsi_clarity::mq::mh::warehouse_message_handler');
+  my $mq_handler = wtsi_clarity::mq::mh::unified_message_handler->new();
+  isa_ok($mq_handler, 'wtsi_clarity::mq::mh::unified_message_handler');
 }
 
 {
-  my $mock_mq_handler = Test::MockObject::Extends->new( wtsi_clarity::mq::mh::warehouse_message_handler->new() );
+  my $mock_mq_handler = Test::MockObject::Extends->new( wtsi_clarity::mq::mh::unified_message_handler->new() );
 
   $mock_mq_handler->mock(q{prepare_messages}, sub { return [{lims => 'CLARITY-GCLP'}]; });
   $mock_mq_handler->mock(q{_send_message}, sub { return 1; });

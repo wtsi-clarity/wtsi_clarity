@@ -3,7 +3,7 @@ package wtsi_clarity::mq::mh::report_message_handler;
 use Moose;
 use Carp;
 
-with 'wtsi_clarity::mq::message_handler_interface';
+with 'wtsi_clarity::mq::mh::message_handler_interface';
 
 our $VERSION = '0.0';
 
