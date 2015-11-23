@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+from urllib.error import HTTPError
 from urllib.parse import urljoin
 from xml.etree import ElementTree
 import sys
@@ -7,12 +7,26 @@ from clarity import Clarity
 
 __author__ = 'rf9'
 
+IGNORE_LIST = ['show-in-tables']
+
 
 def expand(element_to_expand):
     for child_element in clarity.get_xml(element_to_expand.get('uri')):
         element_to_expand.append(child_element)
     # Remove the uri from the element (because it will always be different)
     del element_to_expand.attrib['uri']
+
+
+def sort_tree(tree):
+    for child_element in tree:
+        sort_tree(child_element)
+
+    children_elements = sorted(list(tree), key=lambda x: ElementTree.tostring(x))
+    for child_element in children_elements:
+        tree.remove(child_element)
+
+        if tree.tag not in IGNORE_LIST:
+            tree.append(child_element)
 
 
 if __name__ == "__main__":
@@ -70,15 +84,7 @@ if __name__ == "__main__":
             del stage.attrib['uri']
 
     # Alphabetise the xml (retaining structure) to avoid false changes in the diff.
-    for element in workflows.iter():
-        children = list(element)
-        children.sort(key=lambda x: ElementTree.tostring(x))
-        for child in children:
-            element.remove(child)
-
-            # The show in tables setting appears to be useless, so we're ignoring differences in it for now.
-            if child.tag != 'show-in-tables':
-                element.append(child)
+    sort_tree(workflows)
 
     with open(OUT_FILE_PATH, 'w') as OUT_FILE:
         OUT_FILE.write(ElementTree.tostring(workflows).decode('ascii'))

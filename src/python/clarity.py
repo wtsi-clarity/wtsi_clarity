@@ -2,7 +2,6 @@ import getpass
 import urllib.request as request
 from urllib.error import HTTPError
 from xml.etree import ElementTree
-
 import sys
 
 __author__ = 'rf9'
@@ -47,11 +46,8 @@ class Clarity:
             return self.cache[uri]
 
         print('Downloading: ' + uri)
-        try:
-            xml = request.urlopen(uri)
-        except HTTPError:
-            sys.stderr.write("Invalid root uri\n")
-            sys.exit(1)
+
+        xml = request.urlopen(uri)
 
         self.cache[uri] = xml
         return ElementTree.parse(xml).getroot()
