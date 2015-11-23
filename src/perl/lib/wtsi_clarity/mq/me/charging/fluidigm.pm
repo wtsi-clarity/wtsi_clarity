@@ -6,7 +6,8 @@ use Readonly;
 use wtsi_clarity::dao::study_dao;
 use wtsi_clarity::util::uuid_generator qw/new_uuid/;
 
-with qw/ wtsi_clarity::mq::message_enhancer /;
+with 'wtsi_clarity::mq::message_enhancer';
+with 'wtsi_clarity::util::clarity_elements';
 
 our $VERSION = '0.0';
 
@@ -16,10 +17,6 @@ Readonly::Scalar my $PROJECT_SUBJECT_TYPE       => q{clarity_project};
 Readonly::Scalar my $PRODUCT_TYPE               => q{Human QC 96:96};
 Readonly::Scalar my $PIPELINE                   => q{SM};
 Readonly::Scalar my $RESEARCHER_EMAIL           => q{res:researcher/email};
-
-## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $PROJECT_LIMSID             => q{prj:project/@limsid};
-## use critic
 
 sub type {
   return 'event'
@@ -61,12 +58,6 @@ sub _get_uuid {
   return new_uuid();
 }
 
-sub _study_limsid {
-  my $self = shift;
-
-  return $self->process->project_doc->findvalue($PROJECT_LIMSID);
-}
-
 has '_study_dao' => (
   isa => 'wtsi_clarity::dao::study_dao',
   is  => 'ro',
@@ -74,7 +65,7 @@ has '_study_dao' => (
 );
 sub _build__study_dao {
   my $self = shift;
-  return wtsi_clarity::dao::study_dao->new(lims_id => $self->_study_limsid);
+  return wtsi_clarity::dao::study_dao->new(lims_id => $self->process->study_limsid);
 }
 
 sub _user_identifier {
@@ -109,10 +100,25 @@ sub _subjects {
   $clarity_project_subject{'role_type'}     = $CLARITY_PROJECT_ROLE_TYPE;
   $clarity_project_subject{'subject_type'}  = $PROJECT_SUBJECT_TYPE;
   $clarity_project_subject{'friendly_name'} = $self->_project_name;
-  $clarity_project_subject{'uuid'}          = $self->_get_uuid;
+  $clarity_project_subject{'uuid'}          = $self->_project_uuid;
 
   push @subjects, \%clarity_project_subject;
   return \@subjects;
+}
+
+sub _project_uuid {
+  my $self = shift;
+
+  my $project_uuid = $self->_study_dao->study_uuid;
+
+  if (!$project_uuid) {
+    $project_uuid = $self->_get_uuid;
+    $self->add_udf_element(
+      $self->_study_dao->artifact_xml, q{WTSI Project UUID}, $project_uuid);
+    $self->request->put($self->_study_dao->uri, $self->_study_dao->artifact_xml->toString());
+  }
+
+  return $project_uuid;
 }
 
 sub _metadata {

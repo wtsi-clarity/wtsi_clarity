@@ -26,7 +26,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
   my $sample_dao = wtsi_clarity::dao::sample_dao->new( lims_id => $lims_id);
 
   my $artifact_xml;
-  lives_ok { $artifact_xml = $sample_dao->_artifact_xml} 'got sample artifacts';
+  lives_ok { $artifact_xml = $sample_dao->artifact_xml} 'got sample artifacts';
   is(ref $artifact_xml, 'XML::LibXML::Document', 'Got back an XML Document');
 }
 

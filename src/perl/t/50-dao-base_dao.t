@@ -37,7 +37,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
   my $dao = $base_dao->new_object( lims_id => $lims_id);
   
   my $artifact_xml;
-  lives_ok { $artifact_xml = $dao->_artifact_xml} 'got sample artifacts';
+  lives_ok { $artifact_xml = $dao->artifact_xml} 'got sample artifacts';
   is(ref $artifact_xml, 'XML::LibXML::Document', 'Got back an XML Document');
 }
 
