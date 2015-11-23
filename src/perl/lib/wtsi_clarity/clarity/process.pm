@@ -39,6 +39,7 @@ Readonly::Scalar my $FIRST_ARTIFACT_URI           => q{art:details/art:artifact[
 Readonly::Scalar my $SAMPLE_URI_BY_ARTIFACT_DOC   => q{art:artifact/sample/@uri};
 Readonly::Scalar my $PROJECT_URI_BY_SAMPLE_DOC    => q{smp:sample/project/@uri};
 Readonly::Scalar my $TECHNICIAN_URI_BY_PROCESS    => q{prc:process/technician[1]/@uri};
+Readonly::Scalar my $PROJECT_LIMSID               => q{prj:project/@limsid};
 ## use critic
 
 has '_parent' => (
@@ -425,6 +426,17 @@ sub _build_project_doc {
   my $self = shift;
 
   return $self->_parent->fetch_and_parse($self->_first_sample_doc->findvalue($PROJECT_URI_BY_SAMPLE_DOC));
+}
+
+has 'study_limsid' => (
+  isa         => 'Str',
+  is          => 'ro',
+  lazy_build  => 1,
+);
+sub _build_study_limsid {
+  my $self = shift;
+
+  return $self->project_doc->findvalue($PROJECT_LIMSID);
 }
 
 has 'technician_doc' => (
