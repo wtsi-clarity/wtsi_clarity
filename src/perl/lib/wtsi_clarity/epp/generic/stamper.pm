@@ -13,13 +13,14 @@ with 'wtsi_clarity::util::clarity_elements';
 ##no critic ValuesAndExpressions::RequireInterpolationOfMetachars
 Readonly::Scalar my $IO_MAP_PATH              => q{ /prc:process/input-output-map[output[@output-type='Analyte']]};
 Readonly::Scalar my $OUTPUT_IDS_PATH          => q{ /prc:process/input-output-map/output[@output-type='Analyte']/@limsid};
-Readonly::Scalar my $CONTAINER_PATH           => q{ /art:artifact/location/container/@uri };
+Readonly::Scalar my $CONTAINER_PATH           => q{ location/container/@uri };
 Readonly::Scalar my $BATCH_CONTAINER_PATH     => q{ /art:details/art:artifact/location/container/@limsid };
 Readonly::Scalar my $ARTIFACT_PATH            => q{ /art:details/art:artifact };
-Readonly::Scalar my $WELL_PATH                => q{ /art:artifact/location/value };
+Readonly::Scalar my $ARTIFACT_PATH_BY_URI     => q{ /art:details/art:artifact[@uri='%s'] };
+Readonly::Scalar my $WELL_PATH                => q{ location/value };
 Readonly::Scalar my $CONTAINER_TYPE_NAME_PATH => q{ /con:container/type/@name[1] };
 Readonly::Scalar my $CONTAINER_NAME_PATH      => q{ /con:container/name/text() };
-Readonly::Scalar my $CONTROL_PATH             => q{ /art:artifact/control-type };
+Readonly::Scalar my $CONTROL_PATH             => q{ control-type };
 Readonly::Scalar my $INPUT_URI                => q{ ./input/@uri };
 Readonly::Scalar my $OUTPUT_URI               => q{ ./output/@uri };
 ##use critic
@@ -204,9 +205,11 @@ sub _build__analytes {
   }
 
   my $containers = {};
-  for my $anode (@nodes) {
-    my $url = $anode->findvalue($INPUT_URI);
-    my $analyte_dom = $self->fetch_and_parse($url);
+  for my $analyte_node (@nodes) {
+    my $url = $analyte_node->findvalue($INPUT_URI);
+
+    my $analyte_dom = $self->process_doc->input_artifacts()->findnodes(sprintf $ARTIFACT_PATH_BY_URI, $url)->pop();
+
     my $container_url = $analyte_dom->findvalue($CONTAINER_PATH);
 
     if (!$container_url) {
@@ -232,7 +235,7 @@ sub _build__analytes {
     }
 
     $containers->{$container_url}->{$url}->{'well'} = $well;
-    my $uri = $anode->findvalue($OUTPUT_URI); # ideally, we have to check that this output is of type 'Analyte'
+    my $uri = $analyte_node->findvalue($OUTPUT_URI); # ideally, we have to check that this output is of type 'Analyte'
     if (!$uri) {
       croak qq[Target analyte uri not defined for container $container_url input analyte $url];
     }

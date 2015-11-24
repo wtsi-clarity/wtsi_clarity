@@ -1,0 +1,40 @@
+<?xml version="1.0" standalone="yes"?>
+<stp:placements xmlns:stp="http://genologics.com/ri/step" uri="http://testserver.com:1234/here/steps/24-68040/placements">
+    <step uri="http://testserver.com:1234/here/steps/24-68040" rel="steps"/>
+    <configuration uri="http://testserver.com:1234/here/configuration/protocols/2/steps/4">Volume Check (SM)</configuration>
+    <selected-containers>
+        <container uri="http://testserver.com:1234/here/containers/27-13727"/>
+    </selected-containers>
+    <output-placements>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-407893">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-13727" limsid="27-13727"/>
+                <value>C:9</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-407894">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-13727" limsid="27-13727"/>
+                <value>A:8</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-407895">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-13727" limsid="27-13727"/>
+                <value>C:3</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-407896">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-13727" limsid="27-13727"/>
+                <value>A:1</value>
+            </location>
+        </output-placement>
+        <output-placement uri="http://testserver.com:1234/here/artifacts/2-407897">
+            <location>
+                <container uri="http://testserver.com:1234/here/containers/27-13727" limsid="27-13727"/>
+                <value>F:10</value>
+            </location>
+        </output-placement>
+    </output-placements>
+</stp:placements>

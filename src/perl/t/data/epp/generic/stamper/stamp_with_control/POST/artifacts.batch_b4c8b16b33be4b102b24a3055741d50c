@@ -1,0 +1,73 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A102PA1?state=195303" limsid="MAN351A102PA1">
+        <name>ebc42e04-7647-11e5-99cf-84f8ddc16ee0</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-520" limsid="27-520"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A102" limsid="MAN351A102"/>
+        <artifact-group name="GCLP Sample Management QC" uri="http://testserver.com:1234/here/artifactgroups/651"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/502/stages/1111"/>
+            <workflow-stage status="IN_PROGRESS" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/502/stages/1113"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A104PA1?state=195304" limsid="MAN351A104PA1">
+        <name>ed132877-7647-11e5-99cf-9315f9783454</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-520" limsid="27-520"/>
+            <value>C:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A104" limsid="MAN351A104"/>
+        <artifact-group name="GCLP Sample Management QC" uri="http://testserver.com:1234/here/artifactgroups/651"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/502/stages/1111"/>
+            <workflow-stage status="IN_PROGRESS" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/502/stages/1113"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/MAN351A103PA1?state=195305" limsid="MAN351A103PA1">
+        <name>edd2afc2-7647-11e5-99cf-9143ada1b21a</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-520" limsid="27-520"/>
+            <value>B:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A103" limsid="MAN351A103"/>
+        <artifact-group name="GCLP Sample Management QC" uri="http://testserver.com:1234/here/artifactgroups/651"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/502/stages/1111"/>
+            <workflow-stage status="IN_PROGRESS" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/502/stages/1113"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/3C-1151PA1?state=207887" limsid="3C-1151PA1">
+        <name>Stock plate control</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13753" limsid="27-13753"/>
+            <value>1:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/3C-1151" limsid="3C-1151"/>
+        <control-type uri="http://testserver.com:1234/here/controltypes/3"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/32/stages/240"/>
+            <workflow-stage status="IN_PROGRESS" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/254"/>
+            <workflow-stage status="IN_PROGRESS" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1213"/>
+            <workflow-stage status="IN_PROGRESS" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/502/stages/1113"/>
+        </workflow-stages>
+    </art:artifact>
+</art:details>
