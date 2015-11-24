@@ -12,7 +12,7 @@ our $VERSION = '0.0';
 
 extends 'wtsi_clarity::epp';
 
-enum 'WtsiClarityRoutingKeys', [qw/warehouse report/];
+enum 'WtsiClarityRoutingKeys', [qw/event report warehouse/];
 
 has '_client' => (
   is => 'ro',
@@ -45,10 +45,10 @@ has 'purpose' => (
 );
 
 has '_date' => (
-  isa        => 'DateTime',
+  isa        => 'Str',
   is         => 'ro',
   required   => 0,
-  default    => sub { return DateTime->now(); },
+  default    => sub { return DateTime->now()->strftime('%Y-%m-%d %H:%M:%S'); },
 );
 
 has '_messages' => (

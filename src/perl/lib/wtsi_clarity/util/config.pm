@@ -20,8 +20,9 @@ Readonly::Array  my @CONF_ITEMS      => qw/ clarity_api
                                             printing
                                             ftp_user
                                             tag_plate
-                                            warehouse_consumer
+                                            event_consumer
                                             report_consumer
+                                            warehouse_consumer
                                             irods
                                             barcode_mint
                                           /;

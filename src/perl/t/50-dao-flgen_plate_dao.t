@@ -61,7 +61,7 @@ local $ENV{'WTSI_CLARITY_HOME'} = q[t/data/config];
 
   my $_xml;
   lives_ok {
-    $_xml = $flgen_plate_dao->_artifact_xml
+    $_xml = $flgen_plate_dao->artifact_xml
   } 'got container xml';
   isa_ok($_xml, 'XML::LibXML::Document');
 

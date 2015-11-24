@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use XML::LibXML;
 
-use Test::More tests => 17;
+use Test::More tests => 23;
 use Test::MockObject::Extends;
 use Test::Exception;
 use Cwd;
@@ -18,6 +18,9 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 use wtsi_clarity::util::config;
 my $config = wtsi_clarity::util::config->new();
 my $base_uri = $config->clarity_api->{'base_uri'};
+
+local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/clarity/process/';
+local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 {
   my $xml = XML::LibXML->load_xml(location => $test_dir . 'process1.xml');
@@ -721,9 +724,6 @@ my $base_uri = $config->clarity_api->{'base_uri'};
 }
 
 {
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/clarity/process/';
-  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-
   my $epp = Test::MockObject::Extends->new(
     wtsi_clarity::epp->new(
       process_url => $base_uri . '/processes/24-27770'
@@ -740,8 +740,6 @@ my $base_uri = $config->clarity_api->{'base_uri'};
 
 # find_by_artifactlimsid_and_name
 {
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/clarity/process';
-
   my $xml = XML::LibXML->load_xml(location => $test_dir . 'process1.xml');
 
   my $epp = Test::MockObject::Extends->new(
@@ -763,8 +761,6 @@ my $base_uri = $config->clarity_api->{'base_uri'};
 
 # _find_highest_limsid
 {
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/clarity/process';
-
   my $xml = XML::LibXML->load_xml(location => $test_dir . 'process1.xml');
 
   my $epp = Test::MockObject::Extends->new(
@@ -783,9 +779,6 @@ my $base_uri = $config->clarity_api->{'base_uri'};
 }
 
 {
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/clarity/process';
-  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-
   my $xml = XML::LibXML->load_xml(location => $test_dir . 'process1.xml');
 
   my $epp = Test::MockObject::Extends->new(
@@ -805,10 +798,6 @@ my $base_uri = $config->clarity_api->{'base_uri'};
 }
 
 {
-  local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
-  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/clarity/process/';
-  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
-
   my $epp = Test::MockObject::Extends->new(
     wtsi_clarity::epp->new(
       process_url => $base_uri . '/processes/24-65265'
@@ -826,6 +815,114 @@ my $base_uri = $config->clarity_api->{'base_uri'};
   my @differences = $comparer->compare(
     $process->input_containers, $expected_input_containers_xml);
   cmp_ok(scalar @differences, '==', 0, 'Returns the correct batch artifact XML.');
+}
+
+{
+  my $epp = Test::MockObject::Extends->new(
+    wtsi_clarity::epp->new(
+      process_url => $base_uri . '/processes/24-65265'
+    )
+  );
+
+  my $xml = XML::LibXML->load_xml(location => $ENV{'WTSICLARITY_WEBCACHE_DIR'} . '/GET/processes.24-65265');
+
+  my $process = wtsi_clarity::clarity::process->new(xml => $xml, parent => $epp);
+
+  my $expected_analyte_uri = 'http://testserver.com:1234/here/artifacts/2-375287?state=187930';
+
+  is($process->_first_input_analyte_uri, $expected_analyte_uri, 'Returns the correct URI of the first analyte.');
+}
+
+{
+  my $epp = Test::MockObject::Extends->new(
+    wtsi_clarity::epp->new(
+      process_url => $base_uri . '/processes/24-68036'
+    )
+  );
+
+  my $xml = XML::LibXML->load_xml(location => $ENV{'WTSICLARITY_WEBCACHE_DIR'} . '/GET/processes.24-68036');
+
+  my $process = wtsi_clarity::clarity::process->new(xml => $xml, parent => $epp);
+
+  my $expected_file = q{expected_samples_doc.xml};
+  my $expected_samples_xml = XML::LibXML->load_xml(location => cwd . '/' . $test_dir . $expected_file) or croak 'File cannot be found at ' . cwd() . '/' . $test_dir . $expected_file;
+  my $comparer = XML::SemanticDiff->new();
+
+  my @differences = $comparer->compare(
+    $process->_first_sample_doc, $expected_samples_xml);
+  cmp_ok(scalar @differences, '==', 0, 'Returns the correct samples XML.');
+}
+
+{
+  my $epp = Test::MockObject::Extends->new(
+    wtsi_clarity::epp->new(
+      process_url => $base_uri . '/processes/24-68036'
+    )
+  );
+
+  my $xml = XML::LibXML->load_xml(location => $ENV{'WTSICLARITY_WEBCACHE_DIR'} . '/GET/processes.24-68036');
+
+  my $process = wtsi_clarity::clarity::process->new(xml => $xml, parent => $epp);
+
+  my $expected_file = q{expected_projects_doc.xml};
+  my $expected_project_xml = XML::LibXML->load_xml(location => cwd . '/' . $test_dir . $expected_file) or croak 'File cannot be found at ' . cwd() . '/' . $test_dir . $expected_file;
+  my $comparer = XML::SemanticDiff->new();
+
+  my @differences = $comparer->compare(
+    $process->project_doc, $expected_project_xml);
+  cmp_ok(scalar @differences, '==', 0, 'Returns the correct project XML.');
+}
+
+{
+  my $epp = Test::MockObject::Extends->new(
+    wtsi_clarity::epp->new(
+      process_url => $base_uri . '/processes/24-68036'
+    )
+  );
+
+  my $xml = XML::LibXML->load_xml(location => $ENV{'WTSICLARITY_WEBCACHE_DIR'} . '/GET/processes.24-68036');
+
+  my $process = wtsi_clarity::clarity::process->new(xml => $xml, parent => $epp);
+
+  my $expected_file = q{expected_technician_doc.xml};
+  my $expected_samples_xml = XML::LibXML->load_xml(location => cwd . '/' . $test_dir . $expected_file) or croak 'File cannot be found at ' . cwd() . '/' . $test_dir . $expected_file;
+  my $comparer = XML::SemanticDiff->new();
+
+  my @differences = $comparer->compare(
+    $process->technician_doc, $expected_samples_xml);
+  cmp_ok(scalar @differences, '==', 0, 'Returns the correct technician XML.');
+}
+
+{
+  my $epp = Test::MockObject::Extends->new(
+    wtsi_clarity::epp->new(
+      process_url => $base_uri . '/processes/24-68036'
+    )
+  );
+
+  my $xml = XML::LibXML->load_xml(location => $ENV{'WTSICLARITY_WEBCACHE_DIR'} . '/GET/processes.24-68036');
+
+  my $process = wtsi_clarity::clarity::process->new(xml => $xml, parent => $epp);
+
+  my $expected_number_of_input_artifacts = 9;
+
+  is($process->number_of_input_artifacts, $expected_number_of_input_artifacts, 'Returns the correct number of input artifacts.');
+}
+
+{
+  my $epp = Test::MockObject::Extends->new(
+    wtsi_clarity::epp->new(
+      process_url => $base_uri . '/processes/24-68036'
+    )
+  );
+
+  my $xml = XML::LibXML->load_xml(location => $ENV{'WTSICLARITY_WEBCACHE_DIR'} . '/GET/processes.24-68036');
+
+  my $process = wtsi_clarity::clarity::process->new(xml => $xml, parent => $epp);
+
+  my $expected_study_limsid = 'SMI102';
+
+  is($process->study_limsid, $expected_study_limsid, 'Returns the correct limsid of the study.');
 }
 
 1;

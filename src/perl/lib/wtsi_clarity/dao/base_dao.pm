@@ -28,7 +28,7 @@ has 'lims_id' => (
   alias       => 'id',
 );
 
-has '_artifact_xml' => (
+has 'artifact_xml' => (
   traits          => [ 'DoNotSerialize' ],
   isa             => 'XML::LibXML::Document',
   is              => 'rw',
@@ -38,7 +38,7 @@ has '_artifact_xml' => (
                         'findnodes' => 'findnodes'
                       },
 );
-sub _build__artifact_xml {
+sub _build_artifact_xml {
   my $self = shift;
   return $self->_get_xml($self->resource_type, $self->lims_id);
 }

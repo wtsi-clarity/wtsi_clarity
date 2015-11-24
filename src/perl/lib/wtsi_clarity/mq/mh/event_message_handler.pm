@@ -1,16 +1,19 @@
-package wtsi_clarity::mq::mh::report_message_handler;
+package wtsi_clarity::mq::mh::event_message_handler;
 
 use Moose;
 use Carp;
+use JSON;
+use Encode;
 
-with 'wtsi_clarity::mq::mh::message_handler_interface';
+with 'wtsi_clarity::mq::mh::warehouse_message_handler_interface';
 
 our $VERSION = '0.0';
 
-sub process {
-  my ($self, $message, $package) = @_;
-  return $package->new( message => $message )->run();
-}
+has 'warehouse_type' => (
+  isa     => 'Str',
+  is      => 'ro',
+  default => q{event},
+);
 
 1;
 
@@ -18,11 +21,11 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::mq::mh::report_message_handler
+wtsi_clarity::mq::mh::event_message_handler
 
 =head1 SYNOPSIS
 
-  my $message_handler = wtsi_clarity::mq::mh::report_message_handler->new();
+  my $message_handler = wtsi_clarity::mq::mh::event_message_handler->new();
   $message_handler->process($json_string);
 
 =head1 DESCRIPTION
@@ -31,8 +34,6 @@ wtsi_clarity::mq::mh::report_message_handler
 
 =head1 SUBROUTINES/METHODS
 
-=head2 process
-
 =head1 CONFIGURATION AND ENVIRONMENT
 
 =head1 DEPENDENCIES
@@ -40,6 +41,8 @@ wtsi_clarity::mq::mh::report_message_handler
 =over
 
 =item Moose
+
+=item Readonly
 
 =item Carp
 

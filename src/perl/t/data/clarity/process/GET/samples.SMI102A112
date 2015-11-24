@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:sample xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample" uri="http://testserver.com:1234/here/samples/SMI102A112" limsid="SMI102A112">
+    <name>Sample 17</name>
+    <project limsid="SMI102" uri="http://testserver.com:1234/here/projects/SMI102"/>
+    <artifact limsid="SMI102A112PA1" uri="http://testserver.com:1234/here/artifacts/SMI102A112PA1?state=1225"/>
+    <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+    <udf:field type="String" name="WTSI Donor ID">Test 17</udf:field>
+    <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+    <udf:field type="String" name="WTSI Phenotype">Not Applicable</udf:field>
+    <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+</smp:sample>

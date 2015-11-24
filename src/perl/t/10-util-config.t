@@ -66,7 +66,7 @@ my $chome_name = 'WTSI_CLARITY_HOME';
   local $ENV{$chome_name}= q[t/data/config];
   my $c = wtsi_clarity::util::config->new();
 
-  is_deeply($c->message_queues, { warehouse_queue => 'warehouse', report_queue => 'report' },
+  is_deeply($c->message_queues, { warehouse_queue => 'warehouse', report_queue => 'report', event_queue => 'event' },
     'Will build a convinient hash of consumers to queues');
 }
 

@@ -1,16 +1,19 @@
-package wtsi_clarity::mq::mh::report_message_handler;
+package wtsi_clarity::mq::message_types::event_message;
 
 use Moose;
-use Carp;
-
-with 'wtsi_clarity::mq::mh::message_handler_interface';
+use Moose::Util::TypeConstraints;
 
 our $VERSION = '0.0';
 
-sub process {
-  my ($self, $message, $package) = @_;
-  return $package->new( message => $message )->run();
-}
+extends 'wtsi_clarity::mq::message';
+
+enum 'WtsiClarityMqEventPurpose', [qw( charging_fluidigm )];
+
+has 'purpose' => (
+  isa      => 'WtsiClarityMqEventPurpose',
+  is       => 'ro',
+  required => 1,
+);
 
 1;
 
@@ -18,20 +21,33 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::mq::mh::report_message_handler
+wtsi_clarity::mq::message_types::event_message
 
 =head1 SYNOPSIS
 
-  my $message_handler = wtsi_clarity::mq::mh::report_message_handler->new();
-  $message_handler->process($json_string);
+  my $m = wtsi_clarity::mq::message_types::event_message->new(
+      process_url => 'some',
+      step_url    => 'other',
+      step_start  => 1,
+      timestamp   => DateTime->now(),
+      purpose     => 'sample',
+  );
 
 =head1 DESCRIPTION
 
- Handles messages coming off RabbitMQ. Dispatches them to relevant report builder.
+  A serializable to json wrapper for messages from clarity epp
+  scripts.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 process
+=head2 process_url - required attribute
+
+=head2 step_url - required attribute
+
+=head2 step_start - required boolean attribute
+
+=head2 timestamp - required attribute, can be given either
+  as DateTime objest or a string
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
@@ -41,15 +57,13 @@ wtsi_clarity::mq::mh::report_message_handler
 
 =item Moose
 
-=item Carp
-
-=item wtsi_clarity::mq::message_handler_interface
+=item Moose::Util::TypeConstraints
 
 =back
 
 =head1 AUTHOR
 
-Chris Smith E<lt>cs24@sanger.ac.ukE<gt>
+Karoly Erdos E<lt>ke4@sanger.ac.ukE<gt>
 
 =head1 LICENSE AND COPYRIGHT
 
