@@ -2,6 +2,7 @@ import getpass
 import urllib.request as request
 from urllib.error import HTTPError
 from xml.etree import ElementTree
+import sys
 
 __author__ = 'rf9'
 
@@ -20,7 +21,16 @@ class Clarity:
         user = input("Username (leave blank for '" + user + "'): ") or user
         password = getpass.getpass('Password: ')
 
-        self.setup_urllib(user, password)
+        try:
+            self.setup_urllib(user, password)
+        except HTTPError as err:
+            if err.msg == "Unauthorized":
+                sys.stderr.write("Invalid username or password\n")
+            else:
+                sys.stderr.write("Invalid root uri\n")
+            sys.exit(1)
+
+        self.cache = {}
 
     def setup_urllib(self, user, password):
         password_mgr = request.HTTPPasswordMgrWithDefaultRealm()
@@ -30,9 +40,16 @@ class Clarity:
         opener.open(self.root)
         request.install_opener(opener)
 
-    @staticmethod
-    def get_xml(uri):
+    def get_xml(self, uri, use_cache=True):
+        if use_cache and uri in self.cache:
+            print('From cache:  ' + uri)
+            return self.cache[uri]
+
+        print('Downloading: ' + uri)
+
         xml = request.urlopen(uri)
+
+        self.cache[uri] = xml
         return ElementTree.parse(xml).getroot()
 
     def batch_get_xml(self, object_type, uri_list):
@@ -52,12 +69,13 @@ class Clarity:
             })
             element.append(child)
 
-        req = request.Request(url=self.root + object_type + '/batch/retrieve', data=ElementTree.tostring(element),
+        req = request.Request(url=(self.root + object_type + '/batch/retrieve'), data=ElementTree.tostring(element),
                               method='POST')
         req.add_header("Content-Type", "application/xml")
 
         try:
             with request.urlopen(req) as response:
                 return ElementTree.parse(response).getroot().getchildren()
-        except HTTPError:
-            raise Exception(ElementTree.tostring(element))
+        except HTTPError as err:
+            sys.stderr.write("Invalid root uri\n")
+            sys.exit(1)
