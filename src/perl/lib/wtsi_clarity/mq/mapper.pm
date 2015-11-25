@@ -18,6 +18,7 @@ Readonly::Hash my %PURPOSE_TO_ENHANCER_TYPE => (
   'sample_report'         => 'epp::reports::sample_qc_report',
 
   'charging_fluidigm'     => 'mq::me::charging::fluidigm',
+  'charging_secondary_qc' => 'mq::me::charging::secondary_qc',
 );
 
 sub package_name {

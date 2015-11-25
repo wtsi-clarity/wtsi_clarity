@@ -1,0 +1,77 @@
+<?xml version="1.0" standalone="yes"?>
+<prj:project xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:prj="http://genologics.com/ri/project" uri="http://testserver.com:1234/here/projects/DEA103" limsid="DEA103">
+    <name>Test Project XXX123</name>
+    <open-date>2014-07-14</open-date>
+    <udf:field type="String" name="WTSI Project Cost Code">S01XYZ</udf:field>
+    <udf:field type="Numeric" name="WTSI Requested Size Range From">1</udf:field>
+    <udf:field type="Numeric" name="WTSI Requested Size Range">200</udf:field>
+    <udf:field type="String" name="WTSI Read Length">100</udf:field>
+    <file:file limsid="40-101" uri="http://testserver.com:1234/here/files/40-101"/>
+    <file:file limsid="40-102" uri="http://testserver.com:1234/here/files/40-102"/>
+    <file:file limsid="40-103" uri="http://testserver.com:1234/here/files/40-103"/>
+    <file:file limsid="40-109" uri="http://testserver.com:1234/here/files/40-109"/>
+    <file:file limsid="40-106" uri="http://testserver.com:1234/here/files/40-106"/>
+    <file:file limsid="40-111" uri="http://testserver.com:1234/here/files/40-111"/>
+    <file:file limsid="40-112" uri="http://testserver.com:1234/here/files/40-112"/>
+    <file:file limsid="40-401" uri="http://testserver.com:1234/here/files/40-401"/>
+    <file:file limsid="40-851" uri="http://testserver.com:1234/here/files/40-851"/>
+    <file:file limsid="DEA103-40-948" uri="http://testserver.com:1234/here/files/DEA103-40-948"/>
+    <file:file limsid="40-402" uri="http://testserver.com:1234/here/files/40-402"/>
+    <file:file limsid="40-955" uri="http://testserver.com:1234/here/files/40-955"/>
+    <file:file limsid="40-956" uri="http://testserver.com:1234/here/files/40-956"/>
+    <file:file limsid="40-113" uri="http://testserver.com:1234/here/files/40-113"/>
+    <file:file limsid="40-601" uri="http://testserver.com:1234/here/files/40-601"/>
+    <file:file limsid="40-969" uri="http://testserver.com:1234/here/files/40-969"/>
+    <file:file limsid="40-968" uri="http://testserver.com:1234/here/files/40-968"/>
+    <file:file limsid="40-970" uri="http://testserver.com:1234/here/files/40-970"/>
+    <file:file limsid="40-971" uri="http://testserver.com:1234/here/files/40-971"/>
+    <file:file limsid="40-105" uri="http://testserver.com:1234/here/files/40-105"/>
+    <file:file limsid="40-110" uri="http://testserver.com:1234/here/files/40-110"/>
+    <file:file limsid="40-953" uri="http://testserver.com:1234/here/files/40-953"/>
+    <file:file limsid="40-957" uri="http://testserver.com:1234/here/files/40-957"/>
+    <file:file limsid="40-961" uri="http://testserver.com:1234/here/files/40-961"/>
+    <file:file limsid="40-107" uri="http://testserver.com:1234/here/files/40-107"/>
+    <file:file limsid="40-108" uri="http://testserver.com:1234/here/files/40-108"/>
+    <file:file limsid="40-501" uri="http://testserver.com:1234/here/files/40-501"/>
+    <file:file limsid="DEA103-40-949" uri="http://testserver.com:1234/here/files/DEA103-40-949"/>
+    <file:file limsid="40-751" uri="http://testserver.com:1234/here/files/40-751"/>
+    <file:file limsid="40-752" uri="http://testserver.com:1234/here/files/40-752"/>
+    <file:file limsid="40-958" uri="http://testserver.com:1234/here/files/40-958"/>
+    <file:file limsid="40-1411" uri="http://testserver.com:1234/here/files/40-1411"/>
+    <file:file limsid="40-1402" uri="http://testserver.com:1234/here/files/40-1402"/>
+    <file:file limsid="40-1410" uri="http://testserver.com:1234/here/files/40-1410"/>
+    <file:file limsid="40-1401" uri="http://testserver.com:1234/here/files/40-1401"/>
+    <file:file limsid="40-1408" uri="http://testserver.com:1234/here/files/40-1408"/>
+    <file:file limsid="DEA103-40-1461" uri="http://testserver.com:1234/here/files/DEA103-40-1461"/>
+    <file:file limsid="DEA103-40-1462" uri="http://testserver.com:1234/here/files/DEA103-40-1462"/>
+    <file:file limsid="40-3010" uri="http://testserver.com:1234/here/files/40-3010"/>
+    <file:file limsid="DEA103-40-2401" uri="http://testserver.com:1234/here/files/DEA103-40-2401"/>
+    <file:file limsid="DEA103-40-2604" uri="http://testserver.com:1234/here/files/DEA103-40-2604"/>
+    <file:file limsid="DEA103-40-3602" uri="http://testserver.com:1234/here/files/DEA103-40-3602"/>
+    <file:file limsid="40-3755" uri="http://testserver.com:1234/here/files/40-3755"/>
+    <file:file limsid="40-3760" uri="http://testserver.com:1234/here/files/40-3760"/>
+    <file:file limsid="40-3761" uri="http://testserver.com:1234/here/files/40-3761"/>
+    <file:file limsid="40-3762" uri="http://testserver.com:1234/here/files/40-3762"/>
+    <file:file limsid="DEA103-40-2601" uri="http://testserver.com:1234/here/files/DEA103-40-2601"/>
+    <file:file limsid="40-3009" uri="http://testserver.com:1234/here/files/40-3009"/>
+    <file:file limsid="40-3008" uri="http://testserver.com:1234/here/files/40-3008"/>
+    <file:file limsid="40-3007" uri="http://testserver.com:1234/here/files/40-3007"/>
+    <file:file limsid="40-3752" uri="http://testserver.com:1234/here/files/40-3752"/>
+    <file:file limsid="DEA103-40-2602" uri="http://testserver.com:1234/here/files/DEA103-40-2602"/>
+    <file:file limsid="DEA103-40-2603" uri="http://testserver.com:1234/here/files/DEA103-40-2603"/>
+    <file:file limsid="DEA103-40-3606" uri="http://testserver.com:1234/here/files/DEA103-40-3606"/>
+    <file:file limsid="40-3851" uri="http://testserver.com:1234/here/files/40-3851"/>
+    <file:file limsid="40-3852" uri="http://testserver.com:1234/here/files/40-3852"/>
+    <file:file limsid="40-3853" uri="http://testserver.com:1234/here/files/40-3853"/>
+    <file:file limsid="40-3854" uri="http://testserver.com:1234/here/files/40-3854"/>
+    <file:file limsid="40-3855" uri="http://testserver.com:1234/here/files/40-3855"/>
+    <file:file limsid="40-3763" uri="http://testserver.com:1234/here/files/40-3763"/>
+    <file:file limsid="40-3764" uri="http://testserver.com:1234/here/files/40-3764"/>
+    <file:file limsid="40-3765" uri="http://testserver.com:1234/here/files/40-3765"/>
+    <file:file limsid="DEA103-40-3604" uri="http://testserver.com:1234/here/files/DEA103-40-3604"/>
+    <file:file limsid="DEA103-40-3605" uri="http://testserver.com:1234/here/files/DEA103-40-3605"/>
+    <file:file limsid="40-3856" uri="http://testserver.com:1234/here/files/40-3856"/>
+    <file:file limsid="40-3858" uri="http://testserver.com:1234/here/files/40-3858"/>
+    <file:file limsid="40-3860" uri="http://testserver.com:1234/here/files/40-3860"/>
+    <file:file limsid="DEA103-40-4601" uri="http://testserver.com:1234/here/files/DEA103-40-4601"/>
+</prj:project>

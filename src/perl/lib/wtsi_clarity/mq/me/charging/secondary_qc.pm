@@ -1,4 +1,4 @@
-package wtsi_clarity::mq::me::charging::fluidigm;
+package wtsi_clarity::mq::me::charging::secondary_qc;
 
 use Moose;
 
@@ -9,7 +9,7 @@ our $VERSION = '0.0';
 has 'product_type' => (
   isa     => 'Str',
   is      => 'ro',
-  default => q{Human QC 96:96},
+  default => q{Secondary QC GCLP},
 );
 
 1;
@@ -18,11 +18,11 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::mq::me::charging::fluidigm
+wtsi_clarity::mq::me::charging::secondary_qc
 
 =head1 SYNOPSIS
 
-  my $me = wtsi_clarity::mq::me::charging::fluidigm
+  my $me = wtsi_clarity::mq::me::charging::secondary_qc
              ->new(
                process_url => 'http://process',
                step_url    => 'http://step',
@@ -31,7 +31,7 @@ wtsi_clarity::mq::me::charging::fluidigm
 
 =head1 DESCRIPTION
 
-  Gathers the data to prepare a charging message for fluidigm to be sent to the event warehouse queue.
+  Gathers the data to prepare a charging message for secondary quality control to be sent to the event warehouse queue.
 
 =head1 SUBROUTINES/METHODS
 

@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 7;
+use Test::More tests => 8;
 use Test::Exception;
 
 use_ok('wtsi_clarity::mq::mapper');
@@ -32,6 +32,12 @@ use_ok('wtsi_clarity::mq::mapper');
   my $mq_mapper = wtsi_clarity::mq::mapper->new();
   is($mq_mapper->package_name('charging_fluidigm'), 'wtsi_clarity::mq::me::charging::fluidigm',
     'Creates the correct package name for a fluidigm charging report');
+}
+
+{
+  my $mq_mapper = wtsi_clarity::mq::mapper->new();
+  is($mq_mapper->package_name('charging_secondary_qc'), 'wtsi_clarity::mq::me::charging::secondary_qc',
+    'Creates the correct package name for a Secondary Quality Control charging report');
 }
 
 {
