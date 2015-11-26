@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 11;
+use Test::More tests => 9;
 use Test::MockObject::Extends;
 use Test::Exception;
 
@@ -12,7 +12,7 @@ use File::Slurp;
 
 use_ok('wtsi_clarity::epp::reports::sample_qc_report');
 
-local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+local $ENV{'WTSI_CLARITY_HOME'} = q[t/data/config];
 
 use wtsi_clarity::util::config;
 my $config = wtsi_clarity::util::config->new();
@@ -57,7 +57,7 @@ my $EXPECTED_FILE_CONTENT = [
   my $file_content = $report->file_content($sample_doc);
 
   is_deeply($file_content, $EXPECTED_FILE_CONTENT,
-    'File content is generated from a sample node correctly');
+  'File content is generated from a sample node correctly');
 
   my $mocked_report = Test::MockObject::Extends->new(
     wtsi_clarity::epp::reports::sample_qc_report->new(
@@ -94,10 +94,10 @@ my $EXPECTED_FILE_CONTENT = [
 
   my $sample_doc = $samples->[0];
 
-  my $sample_limsid           = $sample_doc->findvalue('./@limsid');
-  my $artifact                = $report->_get_cherrypick_sample_artifact($sample_limsid);
+  my $sample_limsid = $sample_doc->findvalue('./@limsid');
+  my $artifact = $report->_get_cherrypick_sample_artifact($sample_limsid);
   my $cherrypick_stamping_doc = $report->_get_cherrypick_stamping_process($artifact);
-  my $cherrypick_volume       = $report->_get_cherrypick_sample_volume($artifact);
+  my $cherrypick_volume = $report->_get_cherrypick_sample_volume($artifact);
 
   is($artifact->findvalue('art:artifact/@limsid'), '2-373511', 'Finds the correct artifact');
 
@@ -108,18 +108,19 @@ my $EXPECTED_FILE_CONTENT = [
   my $expected_dna_amount_library_prep = 192;
 
   is($report->_get_dna_amount_library_prep($cherrypick_stamping_doc, $sample_doc, $cherrypick_volume), $expected_dna_amount_library_prep,
-    'Returns the correct DNA amount library prep value.');
+  'Returns the correct DNA amount library prep value.');
 }
 
-SKIP: {
-  my $irods_setup_exit_code = system('ihelp > /dev/null 2>&1');
-
-  skip 'iRODS icommands needs to be installed and they needs to be on the PATH.', 3 if ($irods_setup_exit_code != 0);
-
-  my $report = wtsi_clarity::epp::reports::sample_qc_report->new(
-    process_url => $base_uri . '/processes/24-63229',
-    publish_to_irods  => 1
-  );
+{
+  my $report = Test::MockObject::Extends->new(
+    wtsi_clarity::epp::reports::sample_qc_report->new(
+      process_url => $base_uri . '/processes/24-63229',
+      publish_to_irods  => 1
+    )
+  )->mock(q(_irods_publisher), sub {
+    return Test::MockObject->new()->mock(q(publish), sub {
+    });
+  });
 
   my $report_path = $ENV{'WTSICLARITY_WEBCACHE_DIR'} . q{/example_report.txt};
 
@@ -137,17 +138,9 @@ SKIP: {
 
   $report->_write_sample_uuid($sample_doc->findvalue('./name'));
 
-  lives_ok {$report->_publish_report_to_irods($report_path)}
-    'Successfully published the file into iRODS.';
-
-  #cleanup
-  my $irods_publisher = wtsi_clarity::irods::irods_publisher->new();
-  my $exit_code;
-  my @file_paths = split(/\//, $report_path);
-  my $file_to_remove = pop @file_paths;
-  lives_ok {$exit_code = $irods_publisher->remove($file_to_remove)}
-    'Successfully removed file from iRODS.';
-  is($exit_code, 0, "Successfully exited from the irm command.");
+  lives_ok {
+    $report->_publish_report_to_irods($report_path)
+  } 'Successfully published the file into iRODS.';
 }
 
 1;
