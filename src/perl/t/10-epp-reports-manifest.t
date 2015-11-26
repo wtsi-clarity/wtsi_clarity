@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 6;
+use Test::More tests => 4;
 use Test::MockObject::Extends;
 use Test::Exception;
 
@@ -12,7 +12,7 @@ use File::Slurp;
 
 use_ok('wtsi_clarity::epp::reports::manifest');
 
-local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
+local $ENV{'WTSI_CLARITY_HOME'} = q[t/data/config];
 
 my $EXPECTED_FILE_CONTENT = [
   {
@@ -1855,8 +1855,7 @@ my $EXPECTED_FILE_CONTENT = [
   my $file_content = $manifest->file_content($container);
   $file_content = $manifest->_sort_file_content($file_content, $manifest->sort_order, $manifest->sort_by_column);
 
-  is_deeply($file_content, $EXPECTED_FILE_CONTENT,
-    'File content is generated from a container node correctly');
+  is_deeply($file_content, $EXPECTED_FILE_CONTENT, 'File content is generated from a container node correctly');
 
   my $mocked_manifest = Test::MockObject::Extends->new(
     wtsi_clarity::epp::reports::manifest->new(
@@ -1872,31 +1871,24 @@ my $EXPECTED_FILE_CONTENT = [
   is($mocked_manifest->file_name($container), $expected_file_name, 'Creates a file name correctly');
 }
 
-SKIP: {
-  my $irods_setup_exit_code = system('ihelp > /dev/null 2>&1');
-
-  skip 'iRODS icommands needs to be installed and they needs to be on the PATH.', 3 if ($irods_setup_exit_code != 0);
-
+{
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/manifest';
 
-  my $manifest = wtsi_clarity::epp::reports::manifest->new(
-    process_url       => 'http://clarity.com/processes/1',
-    publish_to_irods  => 1
-  );
+  my $manifest = Test::MockObject::Extends->new(
+    wtsi_clarity::epp::reports::manifest->new(
+      process_url       => 'http://clarity.com/processes/1',
+      publish_to_irods  => 1
+    )
+  )->mock(q(_irods_publisher), sub {
+    return Test::MockObject->new()->mock(q(publish), sub {
+    });
+  });
 
   my $report_path = $ENV{'WTSICLARITY_WEBCACHE_DIR'} . q{/example_manifest.txt};
 
-  lives_ok {$manifest->_publish_report_to_irods($report_path)}
-    'Successfully published the file into iRODS.';
-
-  #cleanup
-  my $irods_publisher = wtsi_clarity::irods::irods_publisher->new();
-  my $exit_code;
-  my @file_paths = split(/\//, $report_path);
-  my $file_to_remove = pop @file_paths;
-  lives_ok {$exit_code = $irods_publisher->remove($file_to_remove)}
-    'Successfully removed file from iRODS.';
-  is($exit_code, 0, "Successfully exited from the irm command.");
+  lives_ok {
+    $manifest->_publish_report_to_irods($report_path)
+  } 'Successfully published the file into iRODS.';
 }
 
 1;
