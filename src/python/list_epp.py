@@ -18,14 +18,14 @@ def format_string(in_str):
 if __name__ == "__main__":
     if len(sys.argv) == 3:
         root_url = sys.argv[1]
-        OUT_FILE_PATH = sys.argv[2]
+        out_file_path = sys.argv[2]
     else:
         sys.stderr.write("usage: python list_epp.py <root_uri> <output_file>\n")
         sys.exit(1)
 
     clarity = Clarity(root_url)
 
-    with open(OUT_FILE_PATH, 'w') as OUT_FILE:
+    with open(out_file_path, 'w') as out_file:
 
         workflows = clarity.get_xml(urljoin(clarity.root, 'configuration/workflows/')).findall('workflow')
 
@@ -60,12 +60,12 @@ if __name__ == "__main__":
                                         "script"] = string.text.strip() if string is not None else ""
 
                                 for epp_name, epp in epps.items():
-                                    OUT_FILE.write(SEP.join([workflow.get('name'), protocol_name, step_name, epp_name,
+                                    out_file.write(SEP.join([workflow.get('name'), protocol_name, step_name, epp_name,
                                                              format_string(epp.get('type')),
                                                              format_string(epp.get('status')),
                                                              format_string(epp.get('point')),
                                                              epp.get('script')]) + "\n")
                             else:
-                                OUT_FILE.write(workflow.get('name') + SEP + protocol_name + SEP + step_name + "\n")
+                                out_file.write(workflow.get('name') + SEP + protocol_name + SEP + step_name + "\n")
                     else:
-                        OUT_FILE.write(protocol_name + '\n')
+                        out_file.write(protocol_name + '\n')

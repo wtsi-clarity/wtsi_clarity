@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import sys
-
 from clarity import Clarity
 
 if __name__ == "__main__":

@@ -76,6 +76,6 @@ class Clarity:
         try:
             with request.urlopen(req) as response:
                 return ElementTree.parse(response).getroot().getchildren()
-        except HTTPError as err:
+        except HTTPError:
             sys.stderr.write("Invalid root uri\n")
             sys.exit(1)
