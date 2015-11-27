@@ -20,18 +20,20 @@ my $base_uri = $config->clarity_api->{'base_uri'};
     process_url => $base_uri . '/processes/24-68036',
     step_url    => $base_uri . '/steps/24-68036',
     timestamp   => '2015-11-17 09:51:36',
+    event_type  => 'charging_fluidigm',
   );
 
   is($me->_user_identifier, 'karel@testsite.ac.uk', 'Extracts the user identifier correctly');
   is($me->_cost_code, 'S01XYZ', 'Extracts the cost code correctly');
   is($me->_project_name, 'Test Project XXX123', 'Extracts the project name correctly');
-  is($me->_number_of_samples, 9, 'Gets the number of samples correctly');
+  is($me->number_of_samples, 9, 'Gets the number of samples correctly');
 
   my $me_mocked = Test::MockObject::Extends->new(
     wtsi_clarity::mq::me::charging::fluidigm->new(
       process_url => $base_uri . '/processes/24-68036',
       step_url    => $base_uri . '/steps/24-68036',
       timestamp   => '2015-11-17 09:51:36',
+      event_type  => 'charging_fluidigm',
     )
   );
 
@@ -49,6 +51,7 @@ my $base_uri = $config->clarity_api->{'base_uri'};
       process_url => $base_uri . '/processes/24-68036',
       step_url    => $base_uri . '/steps/24-68036',
       timestamp   => '2015-11-17 09:51:36',
+      event_type  => 'charging_fluidigm',
     )
   );
 
@@ -64,7 +67,7 @@ my $base_uri = $config->clarity_api->{'base_uri'};
                                      'role_type' => 'clarity_charge_project'
                                    }
                                  ],
-                   'event_type' => 'billing',
+                   'event_type' => 'charging_fluidigm',
                    'metadata' => {
                                    'product_type' => 'Human QC 96:96',
                                    'cost_code' => 'S01XYZ',
