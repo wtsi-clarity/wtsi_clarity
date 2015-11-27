@@ -76,6 +76,7 @@ my $builder = $class->new(
                 'DateTime'                        => 0,
                 'DBI'                             => 0,
                 'DBD::SQLite'                     => 0,
+                'DBD::mysql'                      => 0,
                 'Digest::MD5'                     => 0,
                 'English'                         => 0,
                 'Exporter'                        => 0,

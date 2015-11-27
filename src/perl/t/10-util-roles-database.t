@@ -24,7 +24,7 @@ my $dbh = DBI->connect($dsn, $user, $password, {
 eval {
   $dbh->do('DROP TABLE hash')
 };
-$dbh->do('CREATE TABLE hash (id integer PRIMARY KEY AUTOINCREMENT, filename varchar, hash varchar, location varchar, uploaded_at DEFAULT CURRENT_TIMESTAMP)');
+$dbh->do('CREATE TABLE hash (id integer NOT NULL PRIMARY KEY AUTOINCREMENT, filename varchar(255), hash varchar(32), location varchar(50), uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)');
 
 {
   my $filename = "test_file_name";
