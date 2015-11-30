@@ -11,11 +11,17 @@ with 'wtsi_clarity::util::clarity_elements';
 
 our $VERSION = '0.0';
 
-Readonly::Scalar my $EVENT_TYPE                 => q{billing};
 Readonly::Scalar my $CLARITY_PROJECT_ROLE_TYPE  => q{clarity_charge_project};
 Readonly::Scalar my $PROJECT_SUBJECT_TYPE       => q{clarity_project};
-Readonly::Scalar my $PIPELINE                   => q{SM};
 Readonly::Scalar my $RESEARCHER_EMAIL           => q{res:researcher/email};
+
+requires qw{product_type pipeline metadata};
+
+has 'event_type' => (
+  isa       => 'Str',
+  is        => 'ro',
+  required  => 1,
+);
 
 sub type {
   return 'event'
@@ -42,11 +48,11 @@ sub _get_event_message {
 
   my %event_message = ();
   $event_message{'uuid'}            = $self->_get_uuid;
-  $event_message{'event_type'}      = $EVENT_TYPE;
+  $event_message{'event_type'}      = $self->event_type;
   $event_message{'occured_at'}      = $self->timestamp;
   $event_message{'user_identifier'} = $self->_user_identifier;
   $event_message{'subjects'}        = $self->_subjects;
-  $event_message{'metadata'}        = $self->_metadata;
+  $event_message{'metadata'}        = $self->metadata;
 
   return \%event_message;
 }
@@ -57,6 +63,12 @@ sub _get_uuid {
   return new_uuid();
 }
 
+sub get_process {
+  my ($self) = @_;
+
+  return $self->process;
+}
+
 has '_study_dao' => (
   isa => 'wtsi_clarity::dao::study_dao',
   is  => 'ro',
@@ -64,7 +76,7 @@ has '_study_dao' => (
 );
 sub _build__study_dao {
   my $self = shift;
-  return wtsi_clarity::dao::study_dao->new(lims_id => $self->process->study_limsid);
+  return wtsi_clarity::dao::study_dao->new(lims_id => $self->get_process->study_limsid);
 }
 
 sub _user_identifier {
@@ -85,10 +97,10 @@ sub _project_name {
   return $self->_study_dao->name;
 }
 
-sub _number_of_samples {
+sub number_of_samples {
   my $self = shift;
 
-  return $self->process->number_of_input_artifacts;
+  return $self->get_process->number_of_input_artifacts;
 }
 
 sub _subjects {
@@ -120,14 +132,13 @@ sub _project_uuid {
   return $project_uuid;
 }
 
-sub _metadata {
+sub common_metadata {
   my $self = shift;
 
   my %metadata = ();
   $metadata{'product_type'}       = $self->product_type;
-  $metadata{'pipeline'}           = $PIPELINE;
+  $metadata{'pipeline'}           = $self->pipeline;
   $metadata{'cost_code'}          = $self->_cost_code;
-  $metadata{'number_of_samples'}  = $self->_number_of_samples;
 
   return \%metadata;
 }
@@ -165,6 +176,19 @@ wtsi_clarity::mq::me::charging::charging_common
 =head2 type
 
   Returns the type of the message.
+
+=head2 number_of_samples
+
+  Returns the number of input samples in the process.
+
+=head2 common_metadata
+
+  Gathers and returns the common meta data of the event message.
+
+=head2 get_process
+
+  Returns the current process.
+  This method has been provided to easily change the process to another one in the implementation classes.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

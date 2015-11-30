@@ -36,10 +36,12 @@ Readonly::Scalar my $CONTAINER_SIGNATURE_LOCATION => q(/con:container/udf:field[
 Readonly::Scalar my $OUTPUT_ANALYTES_URI_PATH     => q{/prc:process/input-output-map/output/@uri};
 Readonly::Scalar my $WORKFLOW_STAGE_URI           => q{/art:details/art:artifact[1]/workflow-stages/workflow-stage[@status="IN_PROGRESS"]/@uri};
 Readonly::Scalar my $FIRST_ARTIFACT_URI           => q{art:details/art:artifact[1]/@uri};
+Readonly::Scalar my $FIRST_ARTIFACT_LIMSID        => q{art:details/art:artifact[1]/@limsid};
 Readonly::Scalar my $SAMPLE_URI_BY_ARTIFACT_DOC   => q{art:artifact/sample/@uri};
 Readonly::Scalar my $PROJECT_URI_BY_SAMPLE_DOC    => q{smp:sample/project/@uri};
 Readonly::Scalar my $TECHNICIAN_URI_BY_PROCESS    => q{prc:process/technician[1]/@uri};
 Readonly::Scalar my $PROJECT_LIMSID               => q{prj:project/@limsid};
+Readonly::Scalar my $BAIT_LIBRARY_PATH            => q{smp:sample/udf:field[@name='WTSI Bait Library Name']};
 ## use critic
 
 has '_parent' => (
@@ -402,6 +404,17 @@ sub _build__first_input_analyte_uri {
   return $self->_input_analytes->findnodes($FIRST_ARTIFACT_URI)->pop()->textContent;
 }
 
+has 'first_input_analyte_limsid' => (
+  is => 'ro',
+  isa => 'Str',
+  lazy_build => 1,
+);
+
+sub _build_first_input_analyte_limsid {
+  my $self = shift;
+  return $self->_input_analytes->findnodes($FIRST_ARTIFACT_LIMSID)->pop()->textContent;
+}
+
 has '_first_sample_doc' => (
   is => 'ro',
   isa => 'XML::LibXML::Document',
@@ -415,6 +428,17 @@ sub _build__first_sample_doc {
   my $sample_uri = $first_analytes_doc->findvalue($SAMPLE_URI_BY_ARTIFACT_DOC);
 
   return $self->_parent->fetch_and_parse($sample_uri);
+}
+
+has 'bait_library' => (
+  is => 'ro',
+  isa => 'Str',
+  lazy_build => 1,
+);
+sub _build_bait_library {
+  my $self = shift;
+
+  return $self->_first_sample_doc->findvalue($BAIT_LIBRARY_PATH);
 }
 
 has 'project_doc' => (
