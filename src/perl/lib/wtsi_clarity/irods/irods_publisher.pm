@@ -5,19 +5,20 @@ use Readonly;
 use Carp;
 use IPC::Open3 'open3';
 
-with 'wtsi_clarity::util::roles::database';
-
 our $VERSION = '0.0';
 
 Readonly::Scalar my $OVERWRITE_IF_EXISTS => 1;
-Readonly::Scalar my $PUBLISH_LOCATION => "irods";
+
+has 'md5_hash' => (
+  is => "rw",
+);
 
 sub publish {
   my ($self, $file, $destination, $is_overwrite, @metadata) = @_;
 
   $self->_put($file, $destination, $OVERWRITE_IF_EXISTS);
 
-  $self->_save_hash($destination, $PUBLISH_LOCATION);
+  $self->md5_hash($self->_save_hash($destination));
 
   if (@metadata) {
     $self->_add_metadata_to_file($destination, @metadata);
@@ -67,7 +68,7 @@ sub _execute_irods_command {
 }
 
 sub _save_hash {
-  my ($self, $filename, $location) = @_;
+  my ($self, $filename) = @_;
 
   my $command = "ichksum $filename";
 
@@ -78,11 +79,8 @@ sub _save_hash {
   $output =~ /$filename\s+(\w+)/smx;
   if ($output) {
     my $md5_hash = $1;
-    $self->insert_hash_to_database($filename, $md5_hash, $location);
 
-    return;
-  } else {
-    croak "Could not find checksum for $filename";
+    return $md5_hash;
   }
 }
 

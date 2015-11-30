@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample">
+    <smp:sample uri="http://testserver.com:1234/here/samples/TES155A954" limsid="TES155A954">
+        <name>01e9be16-a7c6-11e4-b42e-68b59977951e</name>
+        <date-received>2015-01-29</date-received>
+        <project limsid="TES155" uri="http://testserver.com:1234/here/projects/TES155"/>
+        <submitter uri="http://testserver.com:1234/here/researchers/17">
+            <first-name>AD</first-name>
+            <last-name>Test</last-name>
+        </submitter>
+        <artifact limsid="TES155A954PA1" uri="http://testserver.com:1234/here/artifacts/TES155A954PA1?state=7220"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Donor ID">01e9be16-a7c6-11e4-b42e-68b59977951e</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Proceed To Sequencing?">Yes</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2004</udf:field>
+        <udf:field type="String" name="WTSI Working Volume (µL) (SM)">120</udf:field>
+        <udf:field type="String" name="WTSI Supplier">WTSI_2004</udf:field>
+        <udf:field type="String" name="Sample Conc. (ng\/µL) (SM)">38.3304326231556</udf:field>
+        <udf:field type="String" name="WTSI Library Concentration">138.3304326231556</udf:field>
+    </smp:sample>
+</smp:details>

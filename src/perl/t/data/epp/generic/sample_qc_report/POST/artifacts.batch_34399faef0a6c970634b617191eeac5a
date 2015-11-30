@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-373510?state=186820" limsid="2-373510">
+        <name>0243d48c-a7c6-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63229" limsid="24-63229"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11472" limsid="27-11472"/>
+            <value>C:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A953" limsid="TES155A953"/>
+        <udf:field type="Numeric" name="Cherrypick Sample Volume">3.92948600846865</udf:field>
+        <udf:field type="Numeric" name="Cherrypick Buffer Volume">116.070513991531</udf:field>
+        <workflow-stages/>
+    </art:artifact>
+</art:details>
