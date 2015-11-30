@@ -88,6 +88,8 @@ wtsi_clarity::util::roles::database
 
 =item DBI
 
+=item wtsi_clarity::util::configurable
+
 =back
 
 =head1 AUTHOR
