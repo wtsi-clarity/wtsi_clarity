@@ -8,7 +8,7 @@ our $VERSION = '0.0';
 extends 'wtsi_clarity::mq::message';
 
 enum 'WtsiClarityMqEventPurpose',
-  [qw( charging_fluidigm charging_secondary_qc charging_library_construction)];
+  [qw( charging_fluidigm charging_secondary_qc charging_library_construction charging_sequencing)];
 
 has 'purpose' => (
   isa      => 'WtsiClarityMqEventPurpose',

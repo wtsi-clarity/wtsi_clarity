@@ -42,6 +42,7 @@ Readonly::Scalar my $PROJECT_URI_BY_SAMPLE_DOC    => q{smp:sample/project/@uri};
 Readonly::Scalar my $TECHNICIAN_URI_BY_PROCESS    => q{prc:process/technician[1]/@uri};
 Readonly::Scalar my $PROJECT_LIMSID               => q{prj:project/@limsid};
 Readonly::Scalar my $BAIT_LIBRARY_PATH            => q{smp:sample/udf:field[@name='WTSI Bait Library Name']};
+Readonly::Scalar my $ARTIFACT_LIMSID_PATH         => q{art:artifacts/artifact/@limsid};
 ## use critic
 
 has '_parent' => (
@@ -180,8 +181,7 @@ sub find_by_artifactlimsid_and_name {
   my ($self, $artifact_limsid, $process_name) = @_;
 
   my $parameters = 'inputartifactlimsid=' . $artifact_limsid . '&type=' . uri_escape($process_name);
-  my $uri = $self->_config->clarity_api->{'base_uri'} . '/processes?' . $parameters;
-  my $process_list_xml = $self->_parent->fetch_and_parse($uri);
+  my $process_list_xml = $self->_by_entity_type_and_parameter($parameters, '/processes?');
 
   my @processes = $process_list_xml->findnodes($PROCESS_LIMSID_PATH)->to_literal_list();
 
@@ -190,9 +190,16 @@ sub find_by_artifactlimsid_and_name {
   }
 
   my $process_limsid = $self->_find_highest_limsid(\@processes);
-  my $process_uri = $self->_config->clarity_api->{'base_uri'} . '/processes/' . $process_limsid;
 
-  return $self->_parent->fetch_and_parse($process_uri);
+  return $self->_by_entity_type_and_parameter($process_limsid, '/processes/');
+}
+
+sub _by_entity_type_and_parameter {
+  my ($self, $param, $entity_type) = @_;
+
+  my $uri = $self->_config->clarity_api->{'base_uri'} . qq{$entity_type} . $param;
+
+  return $self->_parent->fetch_and_parse($uri);
 }
 
 sub _find_highest_limsid {
@@ -376,8 +383,7 @@ has 'output_analytes' => (
 
 sub _build_output_analytes {
   my $self = shift;
-  # my @uri_nodes = $self->process_doc->findnodes($OUTPUT_ANALYTES);
-  # my @uris = map { $_->getValue() } @uri_nodes;
+
   return $self->_request->batch_retrieve('artifacts', $self->output_analyte_uris);
 }
 
@@ -415,6 +421,18 @@ sub _build_first_input_analyte_limsid {
   return $self->_input_analytes->findnodes($FIRST_ARTIFACT_LIMSID)->pop()->textContent;
 }
 
+has 'first_input_analyte_doc' => (
+  is => 'ro',
+  isa => 'XML::LibXML::Document',
+  lazy_build => 1,
+);
+
+sub _build_first_input_analyte_doc {
+  my $self = shift;
+
+  return $self->_parent->fetch_and_parse($self->_first_input_analyte_uri);
+}
+
 has '_first_sample_doc' => (
   is => 'ro',
   isa => 'XML::LibXML::Document',
@@ -425,7 +443,7 @@ sub _build__first_sample_doc {
   my $self = shift;
 
   my $first_analytes_doc = $self->_parent->fetch_and_parse($self->_first_input_analyte_uri);
-  my $sample_uri = $first_analytes_doc->findvalue($SAMPLE_URI_BY_ARTIFACT_DOC);
+  my $sample_uri = $first_analytes_doc->findnodes($SAMPLE_URI_BY_ARTIFACT_DOC)->pop()->textContent;
 
   return $self->_parent->fetch_and_parse($sample_uri);
 }
@@ -492,8 +510,7 @@ sub get_result_file_location {
 sub get_container_name_by_limsid {
   my ($self, $limsid) = @_;
 
-  my $uri = $self->_config->clarity_api->{'base_uri'} . '/containers/' . $limsid;
-  my $container_xml = $self->_parent->fetch_and_parse($uri);
+  my $container_xml = $self->_by_entity_type_and_parameter($limsid, '/containers/');
   my $container_name = $container_xml->findvalue($CONTAINER_NAME_LOCATION);
 
   croak qq{Could not find the name of container with the given limsid: $limsid} if (!defined $container_name || $container_name eq q{});
@@ -568,8 +585,7 @@ sub get_analytes_uris_by_container_uri {
 sub get_container_signature_by_limsid {
   my ($self, $limsid) = @_;
 
-  my $uri = $self->_config->clarity_api->{'base_uri'} . '/containers/' . $limsid;
-  my $container_xml = $self->_parent->fetch_and_parse($uri);
+  my $container_xml = $self->_by_entity_type_and_parameter($limsid, '/containers/');;
   my $container_signature = $container_xml->findvalue($CONTAINER_SIGNATURE_LOCATION);
 
   croak qq{Could not find the signature of container with the given limsid: $limsid} if (!defined $container_signature || $container_signature eq q{});

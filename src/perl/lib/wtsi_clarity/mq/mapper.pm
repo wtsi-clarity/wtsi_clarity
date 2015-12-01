@@ -20,6 +20,7 @@ Readonly::Hash my %PURPOSE_TO_ENHANCER_TYPE => (
   'charging_fluidigm'             => 'mq::me::charging::fluidigm',
   'charging_secondary_qc'         => 'mq::me::charging::secondary_qc',
   'charging_library_construction' => 'mq::me::charging::library_construction',
+  'charging_sequencing'           => 'mq::me::charging::sequencing',
 );
 
 sub package_name {

@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/2-286145?state=142890" limsid="2-286145">
+    <name>Pool #10</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://testserver.com:1234/here/processes/24-40462" limsid="24-40462"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-6822" limsid="27-6822"/>
+        <value>1:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/SV1453A53" limsid="SV1453A53"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV1453A51" limsid="SV1453A51"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV1453A58" limsid="SV1453A58"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV1453A57" limsid="SV1453A57"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV1453A60" limsid="SV1453A60"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV1453A66" limsid="SV1453A66"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV1453A65" limsid="SV1453A65"/>
+    <sample uri="http://testserver.com:1234/here/samples/SV1453A67" limsid="SV1453A67"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 74 (GGTCGTGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 73 (GCAACATT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 76 (GTACATCT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 75 (GAATCTGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 78 (GCATGGCT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 77 (GAGGTGCT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 80 (GTCGCTAT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 79 (GTTAGCCT)"/>
+    <workflow-stages>
+        <workflow-stage status="COMPLETE" name="Illumina Sequencing" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/854"/>
+        <workflow-stage status="IN_PROGRESS" name="Sequencing Data Manual QC (NPG)" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/390"/>
+    </workflow-stages>
+</art:artifact>
