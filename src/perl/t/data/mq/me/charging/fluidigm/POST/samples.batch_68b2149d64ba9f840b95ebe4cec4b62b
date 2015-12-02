@@ -1,0 +1,779 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample">
+    <smp:sample uri="http://testserver.com:1234/here/samples/3C-153" limsid="3C-153">
+        <name>Stock plate control</name>
+        <date-received>2014-08-29</date-received>
+        <artifact limsid="3C-153PA1" uri="http://testserver.com:1234/here/artifacts/3C-153PA1?state=17020"/>
+        <control-type name="Stock plate control" uri="http://testserver.com:1234/here/controltypes/3"/>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A16" limsid="44Y203A16">
+        <name>21901380-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A16PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A16PA1?state=17083"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2016</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A10" limsid="44Y203A10">
+        <name>213d3232-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A10PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A10PA1?state=17093"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2010</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A11" limsid="44Y203A11">
+        <name>208a50e0-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A11PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A11PA1?state=17092"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2011</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A8" limsid="44Y203A8">
+        <name>1fdd33ba-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A8PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A8PA1?state=17120"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2008</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A9" limsid="44Y203A9">
+        <name>1f2aaf56-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A9PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A9PA1?state=17107"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2009</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A14" limsid="44Y203A14">
+        <name>1db24e4a-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A14PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A14PA1?state=17123"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2014</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A15" limsid="44Y203A15">
+        <name>1e7bbffa-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A15PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A15PA1?state=17091"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2015</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A12" limsid="44Y203A12">
+        <name>1c35f562-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A12PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A12PA1?state=17102"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2012</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A13" limsid="44Y203A13">
+        <name>1ceed7e4-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A13PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A13PA1?state=17060"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2013</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A7" limsid="44Y203A7">
+        <name>19b1caaa-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A7PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A7PA1?state=17081"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2007</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A6" limsid="44Y203A6">
+        <name>176bed20-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A6PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A6PA1?state=17063"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2006</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A5" limsid="44Y203A5">
+        <name>182eb634-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A5PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A5PA1?state=17090"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2005</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A4" limsid="44Y203A4">
+        <name>160a7c3a-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A4PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A4PA1?state=17085"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2004</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A17" limsid="44Y203A17">
+        <name>16b84cd4-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A17PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A17PA1?state=17088"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2017</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A19" limsid="44Y203A19">
+        <name>14b7da08-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A19PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A19PA1?state=17054"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2019</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A18" limsid="44Y203A18">
+        <name>15626ed2-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A18PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A18PA1?state=17089"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2018</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A21" limsid="44Y203A21">
+        <name>134b8502-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A21PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A21PA1?state=17116"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2021</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A20" limsid="44Y203A20">
+        <name>1416145c-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A20PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A20PA1?state=17082"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2020</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A23" limsid="44Y203A23">
+        <name>1d4cfbf8-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A23PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A23PA1?state=17068"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2023</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A22" limsid="44Y203A22">
+        <name>1e15aa80-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A22PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A22PA1?state=17105"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2022</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A25" limsid="44Y203A25">
+        <name>1bd3c20c-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A25PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A25PA1?state=17128"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2025</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A24" limsid="44Y203A24">
+        <name>1c8e02a2-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A24PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A24PA1?state=17071"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2024</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A62" limsid="44Y203A62">
+        <name>1ac99418-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A62PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A62PA1?state=17104"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2062</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A63" limsid="44Y203A63">
+        <name>1b77a6de-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A63PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A63PA1?state=17094"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2063</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A64" limsid="44Y203A64">
+        <name>1953176c-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A64PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A64PA1?state=17099"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2064</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A65" limsid="44Y203A65">
+        <name>1a0bf462-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A65PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A65PA1?state=17117"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2065</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A58" limsid="44Y203A58">
+        <name>17cc6e84-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A58PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A58PA1?state=17118"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2058</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A59" limsid="44Y203A59">
+        <name>1891c9cc-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A59PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A59PA1?state=17098"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2059</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A60" limsid="44Y203A60">
+        <name>166014ce-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A60PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A60PA1?state=17127"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2060</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A61" limsid="44Y203A61">
+        <name>170fd864-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A61PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A61PA1?state=17084"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2061</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A70" limsid="44Y203A70">
+        <name>150eb6d4-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A70PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A70PA1?state=17129"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2070</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A71" limsid="44Y203A71">
+        <name>15b38dbc-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A71PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A71PA1?state=17065"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2071</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A72" limsid="44Y203A72">
+        <name>13c11eca-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A72PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A72PA1?state=17056"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2072</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A73" limsid="44Y203A73">
+        <name>14657dd0-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A73PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A73PA1?state=17110"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2073</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A66" limsid="44Y203A66">
+        <name>25a33c36-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A66PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A66PA1?state=17103"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2066</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A68" limsid="44Y203A68">
+        <name>24f53dde-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A68PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A68PA1?state=17069"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2068</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A69" limsid="44Y203A69">
+        <name>24a40860-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A69PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A69PA1?state=14495"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2069</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A79" limsid="44Y203A79">
+        <name>244f39a2-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A79PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A79PA1?state=17121"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2079</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A78" limsid="44Y203A78">
+        <name>23ef2738-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A78PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A78PA1?state=17106"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2078</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A81" limsid="44Y203A81">
+        <name>2398c262-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A81PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A81PA1?state=17079"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2081</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A80" limsid="44Y203A80">
+        <name>233f97e6-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A80PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A80PA1?state=17109"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2080</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A75" limsid="44Y203A75">
+        <name>22e85300-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A75PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A75PA1?state=14494"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2075</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A74" limsid="44Y203A74">
+        <name>228d66de-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A74PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A74PA1?state=17061"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2074</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A77" limsid="44Y203A77">
+        <name>223a67c2-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A77PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A77PA1?state=17077"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2077</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A76" limsid="44Y203A76">
+        <name>21e4feb8-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A76PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A76PA1?state=17058"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2076</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A87" limsid="44Y203A87">
+        <name>20e077f4-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A87PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A87PA1?state=14493"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2087</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A86" limsid="44Y203A86">
+        <name>20343250-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A86PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A86PA1?state=17086"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2086</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A83" limsid="44Y203A83">
+        <name>1f8022ba-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A83PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A83PA1?state=14498"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2083</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A82" limsid="44Y203A82">
+        <name>1ed2d3bc-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A82PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A82PA1?state=17124"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2082</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A85" limsid="44Y203A85">
+        <name>2a4b7a28-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A85PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A85PA1?state=17101"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2085</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A84" limsid="44Y203A84">
+        <name>2aa9c9a2-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A84PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A84PA1?state=17114"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2084</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A32" limsid="44Y203A32">
+        <name>2b05e944-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A32PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A32PA1?state=17057"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2032</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A33" limsid="44Y203A33">
+        <name>2b5f7ae0-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A33PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A33PA1?state=17066"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2033</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A30" limsid="44Y203A30">
+        <name>28ddae0e-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A30PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A30PA1?state=17080"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2030</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A31" limsid="44Y203A31">
+        <name>29374c16-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A31PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A31PA1?state=14499"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2031</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A28" limsid="44Y203A28">
+        <name>298b8bfa-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A28PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A28PA1?state=17115"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2028</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A29" limsid="44Y203A29">
+        <name>29e36bcc-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A29PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A29PA1?state=17076"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2029</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A26" limsid="44Y203A26">
+        <name>27730fa0-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A26PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A26PA1?state=17064"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2026</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A27" limsid="44Y203A27">
+        <name>27c918e6-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A27PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A27PA1?state=17100"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2027</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A41" limsid="44Y203A41">
+        <name>288034cc-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A41PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A41PA1?state=17125"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2041</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A38" limsid="44Y203A38">
+        <name>2606bc8e-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A38PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A38PA1?state=17108"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2038</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A39" limsid="44Y203A39">
+        <name>265e89e6-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A39PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A39PA1?state=17087"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2039</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A36" limsid="44Y203A36">
+        <name>26ba1b76-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A36PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A36PA1?state=17122"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2036</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A37" limsid="44Y203A37">
+        <name>27181550-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A37PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A37PA1?state=17074"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2037</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A34" limsid="44Y203A34">
+        <name>306ecfea-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A34PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A34PA1?state=17095"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2034</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A35" limsid="44Y203A35">
+        <name>3017df8c-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A35PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A35PA1?state=14500"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2035</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A49" limsid="44Y203A49">
+        <name>3120ebf8-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A49PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A49PA1?state=14497"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2049</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A48" limsid="44Y203A48">
+        <name>30c8aff6-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A48PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A48PA1?state=17055"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2048</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A47" limsid="44Y203A47">
+        <name>2ef0ef0e-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A47PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A47PA1?state=17097"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2047</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A46" limsid="44Y203A46">
+        <name>2e95df38-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A46PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A46PA1?state=17112"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2046</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A44" limsid="44Y203A44">
+        <name>2f530540-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A44PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A44PA1?state=17111"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2044</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A43" limsid="44Y203A43">
+        <name>2d814de4-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A43PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A43PA1?state=17096"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2043</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A42" limsid="44Y203A42">
+        <name>2d28b094-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A42PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A42PA1?state=17113"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2042</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A57" limsid="44Y203A57">
+        <name>2e3827a8-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A57PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A57PA1?state=17053"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2057</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A56" limsid="44Y203A56">
+        <name>2ddf725c-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A56PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A56PA1?state=17067"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2056</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A55" limsid="44Y203A55">
+        <name>2c1f48e8-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A55PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A55PA1?state=14496"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2055</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A54" limsid="44Y203A54">
+        <name>2bccaca0-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A54PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A54PA1?state=17052"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2054</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A53" limsid="44Y203A53">
+        <name>2ccf47ac-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A53PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A53PA1?state=17072"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2053</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A52" limsid="44Y203A52">
+        <name>2c7334b2-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A52PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A52PA1?state=17062"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2052</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A51" limsid="44Y203A51">
+        <name>317c78b0-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A51PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A51PA1?state=17070"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2051</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/44Y203A50" limsid="44Y203A50">
+        <name>31e25d7e-2f8c-11e4-b42e-68b59977951e</name>
+        <date-received>2014-08-29</date-received>
+        <project limsid="44Y203" uri="http://testserver.com:1234/here/projects/44Y203"/>
+        <artifact limsid="44Y203A50PA1" uri="http://testserver.com:1234/here/artifacts/44Y203A50PA1?state=17075"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2050</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/3C-402" limsid="3C-402">
+        <name>Stock plate control</name>
+        <date-received>2014-12-08</date-received>
+        <submitter uri="http://testserver.com:1234/here/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="3C-402PA1" uri="http://testserver.com:1234/here/artifacts/3C-402PA1?state=46190"/>
+        <control-type name="Stock plate control" uri="http://testserver.com:1234/here/controltypes/3"/>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/3C-405" limsid="3C-405">
+        <name>Stock plate control</name>
+        <date-received>2014-12-12</date-received>
+        <submitter uri="http://testserver.com:1234/here/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="3C-405PA1" uri="http://testserver.com:1234/here/artifacts/3C-405PA1?state=52695"/>
+        <udf:field type="String" name="Sample Conc. (ng\/ÃÂÃÂµL) (SM)">27.7744982662919</udf:field>
+        <control-type name="Stock plate control" uri="http://testserver.com:1234/here/controltypes/3"/>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/3C-452" limsid="3C-452">
+        <name>Stock plate control</name>
+        <date-received>2015-01-22</date-received>
+        <submitter uri="http://testserver.com:1234/here/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="3C-452PA1" uri="http://testserver.com:1234/here/artifacts/3C-452PA1?state=66893"/>
+        <control-type name="Stock plate control" uri="http://testserver.com:1234/here/controltypes/3"/>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/2C-464" limsid="2C-464">
+        <name>NTC</name>
+        <date-received>2015-01-29</date-received>
+        <submitter uri="http://testserver.com:1234/here/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="2C-464PA1" uri="http://testserver.com:1234/here/artifacts/2C-464PA1?state=77999"/>
+        <control-type name="NTC" uri="http://testserver.com:1234/here/controltypes/2"/>
+    </smp:sample>
+</smp:details>

@@ -4,13 +4,14 @@
     <open-date>2015-02-17</open-date>
     <researcher uri="http://testserver.com:1234/here/researchers/358"/>
     <udf:field type="Numeric" name="WTSI Project ID">453</udf:field>
+    <udf:field type="String" name="WTSI Type">Exome Sequencing</udf:field>
     <udf:field type="String" name="WTSI Project Cost Code">S4019</udf:field>
     <udf:field type="String" name="WTSI Estimated number of lanes">24</udf:field>
     <udf:field type="String" name="WTSI Instrument Model">Illumina HiSeq Rapid</udf:field>
     <udf:field type="String" name="WTSI Run Length">75 PE</udf:field>
+    <udf:field type="String" name="WTSI Read Length">75</udf:field>
     <udf:field type="String" name="WTSI Accession Number">111</udf:field>
     <udf:field type="String" name="WTSI Bait">Human Exome v5</udf:field>
-    <udf:field type="String" name="WTSI Read Length">75</udf:field>
     <file:file limsid="SV1453-40-1456" uri="http://testserver.com:1234/here/files/SV1453-40-1456"/>
     <file:file limsid="SV1453-40-1454" uri="http://testserver.com:1234/here/files/SV1453-40-1454"/>
     <file:file limsid="SV1453-40-1455" uri="http://testserver.com:1234/here/files/SV1453-40-1455"/>

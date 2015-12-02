@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+<res:researcher xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:res="http://genologics.com/ri/researcher" uri="http://testserver.com:1234/here/researchers/555">
+    <first-name>Karel</first-name>
+    <last-name>Gott</last-name>
+    <email>karel@testsite.ac.uk</email>
+    <lab uri="http://testserver.com:1234/here/labs/2"/>
+    <credentials>
+        <username>rf9</username>
+        <account-locked>false</account-locked>
+        <role uri="http://testserver.com:1234/here/roles/1" name="Facility Administrator" roleName="administrator"/>
+        <role uri="http://testserver.com:1234/here/roles/2" name="Researcher" roleName="labtech"/>
+        <role uri="http://testserver.com:1234/here/roles/3" name="Collaborator" roleName="webclient"/>
+        <role uri="http://testserver.com:1234/here/roles/4" name="System Administrator" roleName="systemadministrator"/>
+    </credentials>
+    <initials>RMF</initials>
+</res:researcher>

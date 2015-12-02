@@ -16,7 +16,8 @@
             <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/309"/>
             <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/310"/>
             <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/311"/>
-            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="QUEUED" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
         </workflow-stages>
     </art:artifact>
     <art:artifact uri="http://testserver.com:1234/here/artifacts/2-194140?state=94048" limsid="2-194140">
@@ -35,7 +36,8 @@
             <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/309"/>
             <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/310"/>
             <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/311"/>
-            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="QUEUED" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
         </workflow-stages>
     </art:artifact>
     <art:artifact uri="http://testserver.com:1234/here/artifacts/2-194147?state=94055" limsid="2-194147">
@@ -54,7 +56,8 @@
             <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/310"/>
             <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/309"/>
             <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/311"/>
-            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="QUEUED" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
         </workflow-stages>
     </art:artifact>
     <art:artifact uri="http://testserver.com:1234/here/artifacts/2-194205?state=94063" limsid="2-194205">
@@ -73,7 +76,8 @@
             <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/310"/>
             <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/309"/>
             <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/311"/>
-            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="QUEUED" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
         </workflow-stages>
     </art:artifact>
     <art:artifact uri="http://testserver.com:1234/here/artifacts/2-194214?state=94072" limsid="2-194214">
@@ -92,7 +96,8 @@
             <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/309"/>
             <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/310"/>
             <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/311"/>
-            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="QUEUED" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
         </workflow-stages>
     </art:artifact>
     <art:artifact uri="http://testserver.com:1234/here/artifacts/2-194222?state=94080" limsid="2-194222">
@@ -111,7 +116,8 @@
             <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/310"/>
             <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/309"/>
             <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/311"/>
-            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="QUEUED" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
         </workflow-stages>
     </art:artifact>
     <art:artifact uri="http://testserver.com:1234/here/artifacts/2-194231?state=94089" limsid="2-194231">
@@ -130,7 +136,8 @@
             <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/309"/>
             <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/310"/>
             <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/311"/>
-            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="QUEUED" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
         </workflow-stages>
     </art:artifact>
     <art:artifact uri="http://testserver.com:1234/here/artifacts/2-194239?state=94097" limsid="2-194239">
@@ -149,7 +156,8 @@
             <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/309"/>
             <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/310"/>
             <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/311"/>
-            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="QUEUED" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
         </workflow-stages>
     </art:artifact>
     <art:artifact uri="http://testserver.com:1234/here/artifacts/2-194326?state=94134" limsid="2-194326">
@@ -168,7 +176,8 @@
             <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/309"/>
             <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/310"/>
             <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/311"/>
-            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="QUEUED" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/312"/>
         </workflow-stages>
     </art:artifact>
 </art:details>
