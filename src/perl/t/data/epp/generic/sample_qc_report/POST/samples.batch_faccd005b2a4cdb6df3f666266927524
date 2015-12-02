@@ -18,7 +18,7 @@
         <udf:field type="String" name="WTSI Working Volume (µL) (SM)">120</udf:field>
         <udf:field type="String" name="WTSI Supplier">WTSI_2004</udf:field>
         <udf:field type="String" name="Sample Conc. (ng\/µL) (SM)">38.3304326231556</udf:field>
-        <udf:field type="String" name="WTSI Library Concentration">138.3304326231556</udf:field>
+        <udf:field type="String" name="WTSI Library Molarity">138.3304326231556</udf:field>
     </smp:sample>
     <smp:sample uri="http://testserver.com:1234/here/samples/TES155A951" limsid="TES155A951">
         <name>031182d8-a7c6-11e4-b42e-68b59977951e</name>
@@ -38,7 +38,7 @@
         <udf:field type="String" name="WTSI Working Volume (µL) (SM)">120</udf:field>
         <udf:field type="String" name="WTSI Supplier">WTSI_2001</udf:field>
         <udf:field type="String" name="Sample Conc. (ng\/µL) (SM)">34.1153903342897</udf:field>
-        <udf:field type="String" name="WTSI Library Concentration">133.3304326231556</udf:field>
+        <udf:field type="String" name="WTSI Library Molarity">133.3304326231556</udf:field>
     </smp:sample>
     <smp:sample uri="http://testserver.com:1234/here/samples/TES155A952" limsid="TES155A952">
         <name>02a47f9e-a7c6-11e4-b42e-68b59977951e</name>
@@ -58,7 +58,7 @@
         <udf:field type="String" name="WTSI Working Volume (µL) (SM)">120</udf:field>
         <udf:field type="String" name="WTSI Supplier">WTSI_2002</udf:field>
         <udf:field type="String" name="Sample Conc. (ng\/µL) (SM)">21.3275229917744</udf:field>
-        <udf:field type="String" name="WTSI Library Concentration">123.3304326231556</udf:field>
+        <udf:field type="String" name="WTSI Library Molarity">123.3304326231556</udf:field>
     </smp:sample>
     <smp:sample uri="http://testserver.com:1234/here/samples/TES155A953" limsid="TES155A953">
         <name>0243d48c-a7c6-11e4-b42e-68b59977951e</name>
@@ -77,6 +77,6 @@
         <udf:field type="String" name="WTSI Supplier Sample Name (SM)">2003</udf:field>
         <udf:field type="String" name="WTSI Working Volume (µL) (SM)">120</udf:field>
         <udf:field type="String" name="WTSI Supplier">WTSI_2003</udf:field>
-        <udf:field type="String" name="WTSI Library Concentration">158.3304326231556</udf:field>
+        <udf:field type="String" name="WTSI Library Molarity">158.3304326231556</udf:field>
     </smp:sample>
 </smp:details>
