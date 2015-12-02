@@ -27,6 +27,14 @@ Readonly::Scalar my $A4_LANDSCAPE_HEIGHT      => 8.27;
 Readonly::Scalar my $A4_LANDSCAPE_WIDTH       => 11.7;
 Readonly::Scalar my $DPI_RESOLUTION           => 72;
 
+
+# TODO revert it back as required => 1
+has 'pdf_data' => (
+  isa      => 'HashRef',
+  is       => 'ro',
+  required => 0,
+);
+
 has 'pdf' => (
   isa      => 'PDF::API2',
   is       => 'ro',
@@ -89,7 +97,7 @@ sub add_io_block_to_page {
 sub add_buffer_block_to_page {
   my ($self, $pdf, $page, $table_data, $table_title, $table_cell_styles, $y_pos) = @_;
 
-  $self->add_text_to_page($page, $self->pdf->corefont($font_bold), $table_title, $left_margin, $y_pos, $subtitle_size);
+  $self->add_text_to_page($page, $self->pdf->corefont($font_bold), $table_title, $left_margin, $y_pos , $subtitle_size);
   my $properties = $self->transform_all_properties($table_cell_styles);
   $self->add_buffer_table_to_page($pdf, $page, $table_data, $properties, $y_pos + $subtitle_shift);
   return;
@@ -119,6 +127,8 @@ sub transform_property {
     /HEADER_STYLE|EMPTY_STYLE/xms and do {
       $pdf_property = {
         background_color => 'white',
+        font_size => $self->cell_font_size(),
+        justify => 'center',
       };
       last;
     };
@@ -126,6 +136,8 @@ sub transform_property {
     /COLOUR_(\d+)/xms and do {
       $pdf_property = {
         background_color => $list_of_colours[$1],
+        font_size => $self->cell_font_size(),
+        justify => 'center',
       };
       last;
     };
@@ -133,6 +145,8 @@ sub transform_property {
     /PASSED/xms and do {
       $pdf_property = {
         background_color => '#175C08',
+        font_size => $self->cell_font_size(),
+        justify => 'center',
         font_color => '#FFF',
       };
       last;
@@ -141,6 +155,8 @@ sub transform_property {
     /FAILED/xms and do {
       $pdf_property = {
         background_color => '#6B0200',
+        font_size => $self->cell_font_size(),
+        justify => 'center',
         font_color => '#FFF',
       }
     }
@@ -180,10 +196,6 @@ sub add_buffer_table_to_page {
     start_h => 600,
     padding => 1,
     font  =>      $pdf->corefont('Courier-Bold', -encoding => 'latin1'),
-    font_size => $self->cell_font_size(),
-    lead => $self->cell_font_size() + 1,
-    justify => 'center',
-    padding_bottom => 3,
     cell_props => $table_properties,
     column_props => [
       { min_w => 0, max_w => $self->col_width() / 2, },
@@ -255,6 +267,9 @@ wtsi_clarity::util::pdf::pdf_generator
   Abstract base class to create a pdf document
 
 =head1 SUBROUTINES/METHODS
+
+=head2 pdf_data - hash describing the data to display
+(see t/10-util-pdf_worksheet_generator.t for format)
 
 =head2 create() - creates pdf file, which then can be saved using saveas(). Must be overriden.
 
