@@ -425,7 +425,8 @@ sub _fetch_sanger_barcode {
     my $container_name = $container_from_step_xml->findvalue($CONTAINER_NAME_PATH);
 
     my $container_search_uri = $self->config->clarity_api->{'base_uri'}
-      . q{/containers?name=} . $container_name;
+      . q{/containers?name=} . $container_name
+      . q{&state=Empty};
 
     my $container_search_xml = $self->fetch_and_parse($container_search_uri);
     my $container_search_xml_limsid = $container_search_xml->findvalue($FIRST_CONTAINER);
