@@ -103,6 +103,22 @@ sub number_of_samples {
   return $self->get_process->number_of_input_artifacts;
 }
 
+sub bait_library {
+  my ($self) = @_;
+
+  return $self->get_process->bait_library;
+}
+
+sub plex_level {
+  my ($self) = @_;
+
+  my $plex_level = wtsi_clarity::epp::isc::pooling::bait_library_mapper->new()
+                      ->plexing_mode_by_bait_library($self->bait_library);
+  ($plex_level) = $plex_level =~ m/(\d+)/xms;
+
+  return $plex_level;
+}
+
 sub _subjects {
   my $self = shift;
 
@@ -180,6 +196,14 @@ wtsi_clarity::mq::me::charging::charging_common
 =head2 number_of_samples
 
   Returns the number of input samples in the process.
+
+=head2 bait_library
+
+  Returns the applied bait library type.
+
+=head2 plex_level
+
+  Returns the plex level of the bait library.
 
 =head2 common_metadata
 

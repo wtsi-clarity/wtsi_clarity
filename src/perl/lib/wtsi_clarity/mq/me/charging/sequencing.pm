@@ -1,4 +1,4 @@
-package wtsi_clarity::mq::me::charging::library_construction;
+package wtsi_clarity::mq::me::charging::sequencing;
 
 use Moose;
 use Readonly;
@@ -19,38 +19,40 @@ has 'pipeline' => (
   default => q{IHTP},
 );
 
-has '_library_type' => (
-  isa     => 'Str',
-  is      => 'ro',
-  default => q{ISC},
-);
-
 with 'wtsi_clarity::mq::me::charging::charging_common';
 
-Readonly::Scalar my $PRE_CAPTURE_LIB_POOLING_STEP_NAME => q{Pre Capture Lib Pooling};
+Readonly::Scalar my $PRE_CAPTURE_LIB_POOLING_STEP_NAME  => q{Pre Capture Lib Pooling};
+Readonly::Scalar my $SEQUENCING_VERSION                 => q{1};
+Readonly::Scalar my $SEQUENCING_PLATFORM                => q{2500};
+Readonly::Scalar my $RUN_TYPE                           => q{PE};
 
 sub metadata {
   my ($self) = @_;
 
   my $metadata = $self->common_metadata;
-  $metadata->{'library_type'}         = $self->_library_type;
-  $metadata->{'bait_library'}         = $self->bait_library;
-  $metadata->{'plex_level'}           = $self->plex_level;
-  $metadata->{'number_of_libraries'}  = $self->number_of_samples;
+  $metadata->{'version'}          = $SEQUENCING_VERSION;
+  $metadata->{'platform'}         = $SEQUENCING_PLATFORM;
+  $metadata->{'run_type'}         = $RUN_TYPE;
+  $metadata->{'read_length'}      = $self->_read_length;
+  $metadata->{'plex_level'}       = $self->plex_level;
+  $metadata->{'number_of_lanes'}  = $self->number_of_samples;
 
   return $metadata;
 }
 
-# @Override
-sub get_process {
+sub _read_length {
   my ($self) = @_;
 
-  my $pre_capture_process_doc = $self->process->find_by_artifactlimsid_and_name(
-    $self->process->first_input_analyte_limsid,
-    $PRE_CAPTURE_LIB_POOLING_STEP_NAME
-  );
+  return $self->_study_dao->read_length;
+}
 
-  return wtsi_clarity::clarity::process->new(xml => $pre_capture_process_doc, parent => $self);
+# @Override
+sub number_of_samples {
+  my ($self) = @_;
+
+  my $input_analyte_doc = $self->process->first_input_analyte_doc;
+
+  return $input_analyte_doc->findvalue(q{count(art:artifact/sample)});
 }
 
 1;
@@ -59,11 +61,11 @@ __END__
 
 =head1 NAME
 
-wtsi_clarity::mq::me::charging::library_construction
+wtsi_clarity::mq::me::charging::sequencing
 
 =head1 SYNOPSIS
 
-  my $me = wtsi_clarity::mq::me::charging::library_construction
+  my $me = wtsi_clarity::mq::me::charging::sequencing
              ->new(
                process_url => 'http://process',
                step_url    => 'http://step',
@@ -72,7 +74,7 @@ wtsi_clarity::mq::me::charging::library_construction
 
 =head1 DESCRIPTION
 
-  Gathers the data to prepare a charging message for Library Construction to be sent to the event warehouse queue.
+  Gathers the data to prepare a charging message for Sequencing to be sent to the event warehouse queue.
 
 =head1 SUBROUTINES/METHODS
 
@@ -85,6 +87,12 @@ wtsi_clarity::mq::me::charging::library_construction
   Override from charging_common mixin.
   Sets the current process to the 'Pre Capture Lib Pooling' process related to this artifact.
 
+=head2 number_of_samples
+
+  Override from charging_common mixin.
+  Gets the number of samples from the analyte.
+  At this step the samples has been pooled to a 'container' (analyte), already, so we have to count them.
+
 =head1 CONFIGURATION AND ENVIRONMENT
 
 =head1 DEPENDENCIES
@@ -93,7 +101,11 @@ wtsi_clarity::mq::me::charging::library_construction
 
 =item Moose
 
+=item Readonly
+
 =item wtsi_clarity::mq::me::charging::charging_common
+
+=item wtsi_clarity::epp::isc::pooling::bait_library_mapper
 
 =back
 
