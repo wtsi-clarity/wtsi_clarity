@@ -2,24 +2,24 @@
 
 import os
 from xml.etree import ElementTree
-
 import sys
-
 from clarity import Clarity
 
 __author__ = 'rf9'
 
-DIRECTORY_NAME = "backfill_test"
+DIRECTORY_NAME = "backfill2"
 FILE_DIR = os.path.dirname(os.path.realpath(__file__))
 CONCENTRATION = "WTSI Library Concentration"
 MOLARITY = "WTSI Library Molarity"
 FIELD = "{http://genologics.com/ri/userdefined}field"
+CONCENTRATION_COLUMN_HEADER = 'Total Conc. (ng/ul)'
+MOLARITY_COLUMN_HEADER = 'Region[200-700] Molarity (nmol/l)'
 
 
 def get_rows(file):
-    headers = next(file).split(',')
+    headers = [header.strip() for header in next(file).split(',')]
     for line in file:
-        yield {header: cell for (header, cell) in zip(headers, line.split(','))}
+        yield {header: cell.strip() for (header, cell) in zip(headers, line.split(',')) if cell.strip()}
 
 
 def change_xml(xml, field_name, value):
@@ -58,25 +58,21 @@ if __name__ == '__main__':
             for row in get_rows(open(os.path.join(directory, filename))):
                 well = row['Sample Name'].split("_")[0]
 
-                try:
-                    molarity = float(row['Region[200-700] Molarity (nmol/l)']) * 5
+                if MOLARITY_COLUMN_HEADER in row:
+                    molarity = float(row[MOLARITY_COLUMN_HEADER]) * 5
 
                     if well not in molarities:
                         molarities[well] = molarity
                     else:
                         molarities[well] = (molarities[well] + molarity) / 2
-                except (KeyError, ValueError):
-                    pass
 
-                try:
-                    concentration = float(row['Total Conc. (ng/ul)']) * 5
+                if CONCENTRATION_COLUMN_HEADER in row:
+                    concentration = float(row[CONCENTRATION_COLUMN_HEADER]) * 5
 
                     if well not in concentrations:
                         concentrations[well] = concentration
                     else:
                         concentrations[well] = (concentrations[well] + concentration) / 2
-                except (KeyError, ValueError):
-                    pass
 
             search_xml = clarity.get_xml(clarity.root + "containers?udf.WTSI%20Container%20Signature=" + signature)
             container_uri = search_xml.find("container").get('uri')
@@ -97,13 +93,11 @@ if __name__ == '__main__':
 
                 well = artifact_xml.find('location').find('value').text.replace(':', '')
 
-                if well in molarities:
-                    molarity = str(molarities[well])
-                    change_xml(sample_xml, MOLARITY, molarity)
+                molarity = str(molarities[well])
+                change_xml(sample_xml, MOLARITY, molarity)
 
-                if well in concentrations:
-                    concentration = str(concentrations[well])
-                    change_xml(sample_xml, CONCENTRATION, concentration)
+                concentration = str(concentrations[well])
+                change_xml(sample_xml, CONCENTRATION, concentration)
 
                 post_xmls.append(sample_xml)
 
