@@ -1,0 +1,102 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample">
+    <smp:sample uri="http://testserver.com:1234/here/samples/SMI102A112" limsid="SMI102A112">
+        <name>Sample 17</name>
+        <date-received>2014-07-13</date-received>
+        <project limsid="SMI102" uri="http://testserver.com:1234/here/projects/SMI102"/>
+        <artifact limsid="SMI102A112PA1" uri="http://testserver.com:1234/here/artifacts/SMI102A112PA1?state=1225"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Donor ID">Test 17</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Phenotype">Not Applicable</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/SMI102A104" limsid="SMI102A104">
+        <name>Sample 9</name>
+        <date-received>2014-07-13</date-received>
+        <project limsid="SMI102" uri="http://testserver.com:1234/here/projects/SMI102"/>
+        <artifact limsid="SMI102A104PA1" uri="http://testserver.com:1234/here/artifacts/SMI102A104PA1?state=1233"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Donor ID">Test 9</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Phenotype">Not Applicable</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/SMI102A128" limsid="SMI102A128">
+        <name>Sample 33</name>
+        <date-received>2014-07-13</date-received>
+        <project limsid="SMI102" uri="http://testserver.com:1234/here/projects/SMI102"/>
+        <artifact limsid="SMI102A128PA1" uri="http://testserver.com:1234/here/artifacts/SMI102A128PA1?state=1205"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Donor ID">Test 33</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Phenotype">Not Applicable</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/SMI102A120" limsid="SMI102A120">
+        <name>Sample 25</name>
+        <date-received>2014-07-13</date-received>
+        <project limsid="SMI102" uri="http://testserver.com:1234/here/projects/SMI102"/>
+        <artifact limsid="SMI102A120PA1" uri="http://testserver.com:1234/here/artifacts/SMI102A120PA1?state=1172"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Donor ID">Test 25</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Phenotype">Not Applicable</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/SMI102A144" limsid="SMI102A144">
+        <name>Sample 49</name>
+        <date-received>2014-07-13</date-received>
+        <project limsid="SMI102" uri="http://testserver.com:1234/here/projects/SMI102"/>
+        <artifact limsid="SMI102A144PA1" uri="http://testserver.com:1234/here/artifacts/SMI102A144PA1?state=1209"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Donor ID">Test 49</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Phenotype">Not Applicable</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/SMI102A136" limsid="SMI102A136">
+        <name>Sample 41</name>
+        <date-received>2014-07-13</date-received>
+        <project limsid="SMI102" uri="http://testserver.com:1234/here/projects/SMI102"/>
+        <artifact limsid="SMI102A136PA1" uri="http://testserver.com:1234/here/artifacts/SMI102A136PA1?state=1152"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Donor ID">Test 41</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Phenotype">Not Applicable</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/SMI102A160" limsid="SMI102A160">
+        <name>Sample 65</name>
+        <date-received>2014-07-13</date-received>
+        <project limsid="SMI102" uri="http://testserver.com:1234/here/projects/SMI102"/>
+        <artifact limsid="SMI102A160PA1" uri="http://testserver.com:1234/here/artifacts/SMI102A160PA1?state=1214"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Donor ID">Test 65</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Phenotype">Not Applicable</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/SMI102A152" limsid="SMI102A152">
+        <name>Sample 57</name>
+        <date-received>2014-07-13</date-received>
+        <project limsid="SMI102" uri="http://testserver.com:1234/here/projects/SMI102"/>
+        <artifact limsid="SMI102A152PA1" uri="http://testserver.com:1234/here/artifacts/SMI102A152PA1?state=1193"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Donor ID">Test 57</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Phenotype">Not Applicable</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/SMI102A96" limsid="SMI102A96">
+        <name>Sample 1</name>
+        <date-received>2014-07-13</date-received>
+        <project limsid="SMI102" uri="http://testserver.com:1234/here/projects/SMI102"/>
+        <artifact limsid="SMI102A96PA1" uri="http://testserver.com:1234/here/artifacts/SMI102A96PA1?state=1181"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Donor ID">Test 1</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Phenotype">Not Applicable</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+    </smp:sample>
+</smp:details>
