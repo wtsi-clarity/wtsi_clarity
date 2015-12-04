@@ -49,7 +49,7 @@ sub _get_event_message {
   my %event_message = ();
   $event_message{'uuid'}            = $self->_get_uuid;
   $event_message{'event_type'}      = $self->event_type;
-  $event_message{'occured_at'}      = $self->timestamp;
+  $event_message{'occured_at'}      = $self->get_process->date_run;
   $event_message{'user_identifier'} = $self->_user_identifier;
   $event_message{'subjects'}        = $self->_subjects;
   $event_message{'metadata'}        = $self->metadata;

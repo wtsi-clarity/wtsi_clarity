@@ -44,6 +44,7 @@ Readonly::Scalar my $TECHNICIAN_URI_BY_PROCESS    => q{prc:process/technician[1]
 Readonly::Scalar my $PROJECT_LIMSID               => q{prj:project/@limsid};
 Readonly::Scalar my $BAIT_LIBRARY_PATH            => q{smp:sample/udf:field[@name='WTSI Bait Library Name']};
 Readonly::Scalar my $ARTIFACT_LIMSID_PATH         => q{art:artifacts/artifact/@limsid};
+Readonly::Scalar my $DATE_RUN_PATH                => q{prc:process/date-run};
 ## use critic
 
 has '_parent' => (
@@ -620,6 +621,12 @@ sub get_current_workflow_uri {
   return $workflow_uri;
 }
 
+sub date_run {
+  my ($self) = @_;
+
+  return $self->findvalue($DATE_RUN_PATH);
+}
+
 1;
 
 __END__
@@ -697,7 +704,11 @@ wtsi_clarity::clarity::process
 
 =head2 get_current_workflow_uri
 
-    Returns the uri for the workflow.
+  Returns the uri for the workflow.
+
+=head2 date_run
+
+  Returns the date when the process run.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

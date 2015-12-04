@@ -76,7 +76,7 @@ my $base_uri = $config->clarity_api->{'base_uri'};
                                  },
                    'user_identifier' => 'karel@testsite.ac.uk',
                    'uuid' => 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e',
-                   'occured_at' => '2015-11-17 09:51:36'
+                   'occured_at' => '2015-12-02'
                  }
     }
   ];
