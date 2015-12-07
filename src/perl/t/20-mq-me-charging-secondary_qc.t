@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 7;
+use Test::More tests => 8;
 use Test::Exception;
 use Test::MockObject::Extends;
 
@@ -43,6 +43,20 @@ my $base_uri = $config->clarity_api->{'base_uri'};
   });
 
   lives_ok { $me_mocked->prepare_messages } 'Prepares those messages just fine';
+}
+
+{
+  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
+  my $me = wtsi_clarity::mq::me::charging::secondary_qc->new(
+    process_url => $base_uri . '/processes/24-25340',
+    step_url    => $base_uri . '/steps/24-25340',
+    timestamp   => '2015-11-17 09:51:36',
+    event_type  => 'charging_secondary_qc',
+  );
+
+  throws_ok { $me->_user_identifier }
+    qr{The technician XML element is missing from the process XML document.},
+    'Errors when the technician XML element is missing';
 }
 
 {

@@ -507,7 +507,13 @@ has 'technician_doc' => (
 sub _build_technician_doc {
   my $self = shift;
 
-  return $self->_parent->fetch_and_parse($self->xml->findvalue($TECHNICIAN_URI_BY_PROCESS));
+  my $technician_uri = $self->xml->findvalue($TECHNICIAN_URI_BY_PROCESS);
+
+  if (!$technician_uri) {
+    croak q{The technician XML element is missing from the process XML document.};
+  }
+
+  return $self->_parent->fetch_and_parse($technician_uri);
 }
 
 sub get_result_file_location {
