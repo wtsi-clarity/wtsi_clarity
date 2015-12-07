@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use XML::LibXML;
 
-use Test::More tests => 23;
+use Test::More tests => 24;
 use Test::MockObject::Extends;
 use Test::Exception;
 use Cwd;
@@ -923,6 +923,22 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
   my $expected_study_limsid = 'SMI102';
 
   is($process->study_limsid, $expected_study_limsid, 'Returns the correct limsid of the study.');
+}
+
+{
+  my $epp = Test::MockObject::Extends->new(
+    wtsi_clarity::epp->new(
+      process_url => $base_uri . '/processes/24-26697'
+    )
+  );
+
+  my $xml = XML::LibXML->load_xml(location => $ENV{'WTSICLARITY_WEBCACHE_DIR'} . '/GET/processes.24-26697');
+
+  my $process = wtsi_clarity::clarity::process->new(xml => $xml, parent => $epp);
+
+  my $expected_date = '2015-02-11';
+
+  is($process->date_run, $expected_date, 'Returns the correct run date of the process.');
 }
 
 1;
