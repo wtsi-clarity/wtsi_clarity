@@ -49,7 +49,7 @@ sub _get_event_message {
   my %event_message = ();
   $event_message{'uuid'}            = $self->_get_uuid;
   $event_message{'event_type'}      = $self->event_type;
-  $event_message{'occured_at'}      = $self->get_process->date_run;
+  $event_message{'occured_at'}      = $self->_occured_at;
   $event_message{'user_identifier'} = $self->_user_identifier;
   $event_message{'subjects'}        = $self->_subjects;
   $event_message{'metadata'}        = $self->metadata;
@@ -67,6 +67,18 @@ sub get_process {
   my ($self) = @_;
 
   return $self->process;
+}
+
+sub _occured_at {
+  my ($self) = @_;
+
+  my $date_run = $self->get_process->date_run;
+
+  if (!$date_run) {
+    $date_run = $self->timestamp;
+  }
+
+  return $date_run;
 }
 
 has '_study_dao' => (
