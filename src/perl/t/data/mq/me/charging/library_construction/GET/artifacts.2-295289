@@ -1,0 +1,56 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/2-295289?state=148231" limsid="2-295289">
+    <name>2460277166836 A1:H2 (G:1)</name>
+    <type>Analyte</type>
+    <output-type>Pool</output-type>
+    <parent-process uri="http://testserver.com:1234/here/processes/122-41512" limsid="122-41512"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-7236" limsid="27-7236"/>
+        <value>G:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/LAB106A294" limsid="LAB106A294"/>
+    <sample uri="http://testserver.com:1234/here/samples/LAB106A295" limsid="LAB106A295"/>
+    <sample uri="http://testserver.com:1234/here/samples/LAB106A292" limsid="LAB106A292"/>
+    <sample uri="http://testserver.com:1234/here/samples/LAB106A293" limsid="LAB106A293"/>
+    <sample uri="http://testserver.com:1234/here/samples/LAB106A290" limsid="LAB106A290"/>
+    <sample uri="http://testserver.com:1234/here/samples/LAB106A291" limsid="LAB106A291"/>
+    <sample uri="http://testserver.com:1234/here/samples/LAB106A289" limsid="LAB106A289"/>
+    <sample uri="http://testserver.com:1234/here/samples/LAB106A303" limsid="LAB106A303"/>
+    <sample uri="http://testserver.com:1234/here/samples/LAB106A302" limsid="LAB106A302"/>
+    <sample uri="http://testserver.com:1234/here/samples/LAB106A301" limsid="LAB106A301"/>
+    <sample uri="http://testserver.com:1234/here/samples/LAB106A300" limsid="LAB106A300"/>
+    <sample uri="http://testserver.com:1234/here/samples/LAB106A299" limsid="LAB106A299"/>
+    <sample uri="http://testserver.com:1234/here/samples/LAB106A298" limsid="LAB106A298"/>
+    <sample uri="http://testserver.com:1234/here/samples/LAB106A297" limsid="LAB106A297"/>
+    <sample uri="http://testserver.com:1234/here/samples/LAB106A296" limsid="LAB106A296"/>
+    <sample uri="http://testserver.com:1234/here/samples/LAB106A304" limsid="LAB106A304"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 8 (ACTTGATG)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 5 (ACAGTGGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 6 (GCCAATGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 15 (TAAGCGTT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 16 (TCCGTCTT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 13 (TGGTTGTT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 14 (TCTCGGTT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 1 (ATCACGTT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 2 (CGATGTTT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 4 (TGACCACT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 3 (TTAGGCAT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 11 (GGCTACAG)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 12 (CTTGTACT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 9 (GATCAGCG)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 10 (TAGCTTGT)"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 7 (CAGATCTG)"/>
+    <workflow-stages>
+        <workflow-stage status="SKIPPED" name="Pre CaptureLib Pool QC" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/901"/>
+        <workflow-stage status="SKIPPED" name="Pre Hyb Pool Normalisation" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/375"/>
+        <workflow-stage status="SKIPPED" name="Hybridization set up" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/377"/>
+        <workflow-stage status="SKIPPED" name="Capture Wash" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/379"/>
+        <workflow-stage status="SKIPPED" name="Post Capture PCR set up" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/380"/>
+        <workflow-stage status="SKIPPED" name="Post Capture PCR" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/381"/>
+        <workflow-stage status="SKIPPED" name="Post Capture PCR Purification" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/382"/>
+        <workflow-stage status="SKIPPED" name="Cap Lib Pool QC 3" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/707"/>
+        <workflow-stage status="IN_PROGRESS" name="Post Capture Library Pooling" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/385"/>
+    </workflow-stages>
+</art:artifact>
