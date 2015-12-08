@@ -664,7 +664,7 @@ sub find_by_processtype_samplelimsid_and_type {
   my @artifacts = $process_list_xml->findnodes($ARTIFACT_LIMSID_PATH)->to_literal_list();
 
   if (scalar @artifacts == 0) {
-    return 0;
+    croak qq{The process could not be found with the following parameters: \nprocess type = $process_type, sample's limsid = $sample_limsid, type = $type};
   }
 
   my $artifact_limsid = $self->_find_highest_limsid(\@artifacts);
