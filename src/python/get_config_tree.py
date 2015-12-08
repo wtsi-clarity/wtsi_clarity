@@ -12,10 +12,11 @@ IGNORE_LIST = ['show-in-tables']
 
 
 def expand(element_to_expand):
-    for child_element in clarity.get_xml(element_to_expand.get('uri')):
-        element_to_expand.append(child_element)
-    # Remove the uri from the element (because it will always be different)
-    del element_to_expand.attrib['uri']
+    if element_to_expand.get('uri'):
+        for child_element in clarity.get_xml(element_to_expand.get('uri')):
+            element_to_expand.append(child_element)
+        # Remove the uri from the element (because it will always be different)
+        del element_to_expand.attrib['uri']
 
 
 def sort_tree(tree):

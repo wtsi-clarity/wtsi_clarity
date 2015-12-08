@@ -79,9 +79,9 @@ if __name__ == '__main__':
 
             container_xml = clarity.get_xml(container_uri)
             placement_uris = {placement.get('uri') for placement in container_xml.findall('placement')}
-            artifact_xmls = clarity.batch_get_xml('artifacts', placement_uris)
+            artifact_xmls = clarity.get_xml(placement_uris)
             sample_uris = {artifact.find('sample').get('uri') for artifact in artifact_xmls}
-            sample_xmls = clarity.batch_get_xml('samples', sample_uris)
+            sample_xmls = clarity.get_xml(sample_uris)
 
             post_xmls = []
 
