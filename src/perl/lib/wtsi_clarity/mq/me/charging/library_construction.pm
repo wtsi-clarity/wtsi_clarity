@@ -42,15 +42,10 @@ sub metadata {
 }
 
 # @Override
-sub get_process {
-  my ($self) = @_;
+sub number_of_samples {
+  my $self = shift;
 
-  my $pre_capture_process_doc = $self->process->find_by_artifactlimsid_and_name(
-    $self->process->first_input_analyte_limsid,
-    $PRE_CAPTURE_LIB_POOLING_STEP_NAME
-  );
-
-  return wtsi_clarity::clarity::process->new(xml => $pre_capture_process_doc, parent => $self);
+  return $self->process->samples_count_wo_control;
 }
 
 1;
@@ -84,6 +79,12 @@ wtsi_clarity::mq::me::charging::library_construction
 
   Override from charging_common mixin.
   Sets the current process to the 'Pre Capture Lib Pooling' process related to this artifact.
+
+=head2 number_of_samples
+
+  Override from charging_common mixin.
+  Gets the number of samples from the step.
+  At this step the samples has been pooled to a 'container' (analyte), already, so we have to count them.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

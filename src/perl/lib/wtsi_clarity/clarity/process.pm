@@ -37,6 +37,7 @@ Readonly::Scalar my $OUTPUT_ANALYTES_URI_PATH     => q{/prc:process/input-output
 Readonly::Scalar my $WORKFLOW_STAGE_URI           => q{/art:details/art:artifact[1]/workflow-stages/workflow-stage[@status="IN_PROGRESS"]/@uri};
 Readonly::Scalar my $FIRST_ARTIFACT_URI           => q{art:details/art:artifact[1]/@uri};
 Readonly::Scalar my $FIRST_ARTIFACT_LIMSID        => q{art:details/art:artifact[1]/@limsid};
+Readonly::Scalar my $NON_CONTROL_SAMPLE_LIMSID    => q{smp:details/smp:sample/project/../@limsid};
 Readonly::Scalar my $SAMPLE_URI_BY_ARTIFACT_DOC   => q{art:artifact/sample/@uri};
 Readonly::Scalar my $SAMPLE_URI_BY_ARTIFACTS_DOC  => q{art:details/art:artifact/sample/@uri};
 Readonly::Scalar my $PROJECT_URI_BY_SAMPLE_DOC    => q{smp:details/smp:sample/project/@uri};
@@ -44,6 +45,7 @@ Readonly::Scalar my $TECHNICIAN_URI_BY_PROCESS    => q{prc:process/technician[1]
 Readonly::Scalar my $PROJECT_LIMSID               => q{prj:project/@limsid};
 Readonly::Scalar my $BAIT_LIBRARY_PATH            => q{smp:sample/udf:field[@name='WTSI Bait Library Name']};
 Readonly::Scalar my $ARTIFACT_LIMSID_PATH         => q{art:artifacts/artifact/@limsid};
+Readonly::Scalar my $ARTIFACT_PROCESS_LIMSID_PATH => q{art:artifact/parent-process/@limsid};
 Readonly::Scalar my $DATE_RUN_PATH                => q{prc:process/date-run};
 ## use critic
 
@@ -466,6 +468,28 @@ sub _build_samples_doc {
   return $samples_doc;
 }
 
+has 'samples_count_wo_control' => (
+  is => 'ro',
+  isa => 'Num',
+  lazy_build => 1,
+);
+sub _build_samples_count_wo_control {
+  my $self = shift;
+
+  return scalar @{$self->samples_doc->findnodes($NON_CONTROL_SAMPLE_LIMSID)->to_literal_list};
+}
+
+has '_first_non_control_sample_limsid' => (
+  is => 'ro',
+  isa => 'Str',
+  lazy_build => 1,
+);
+sub _build__first_non_control_sample_limsid {
+  my ($self) = @_;
+
+  return $self->samples_doc->findnodes($NON_CONTROL_SAMPLE_LIMSID)    ->pop->textContent;
+}
+
 has 'bait_library' => (
   is => 'ro',
   isa => 'Str',
@@ -627,6 +651,31 @@ sub get_current_workflow_uri {
   return $workflow_uri;
 }
 
+sub find_by_processtype_samplelimsid_and_type {
+  my ($self, $process_type, $sample_limsid, $type) = @_;
+
+  if (!$type) {
+    $type = q{Analyte};
+  }
+
+  my $parameters = 'process-type=' . $process_type . '&samplelimsid=' . $sample_limsid. '&type=' . $type;
+  my $process_list_xml = $self->_by_entity_type_and_parameter($parameters, '/artifacts?');
+
+  my @artifacts = $process_list_xml->findnodes($ARTIFACT_LIMSID_PATH)->to_literal_list();
+
+  if (scalar @artifacts == 0) {
+    croak qq{The process could not be found with the following parameters: \nprocess type = $process_type, sample's limsid = $sample_limsid, type = $type};
+  }
+
+  my $artifact_limsid = $self->_find_highest_limsid(\@artifacts);
+
+  my $arifact_doc = $self->_by_entity_type_and_parameter($artifact_limsid, '/artifacts/');
+
+  my $process_limsid = $arifact_doc->findvalue($ARTIFACT_PROCESS_LIMSID_PATH);
+
+  return $self->_by_entity_type_and_parameter($process_limsid, '/processes/');
+}
+
 sub date_run {
   my ($self) = @_;
 
@@ -707,6 +756,11 @@ wtsi_clarity::clarity::process
 =head2 get_container_signature_by_limsid
 
   Returns the signature of the container by its limsid.
+
+=head2 find_by_processtype_samplelimsid_and_type
+
+  Finds and returns the process by process type, sample limsid and type (Analyte, Result file).
+  The default type is Analyte.
 
 =head2 get_current_workflow_uri
 
