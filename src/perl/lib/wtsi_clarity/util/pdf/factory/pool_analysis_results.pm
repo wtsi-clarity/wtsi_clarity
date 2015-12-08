@@ -14,8 +14,8 @@ Readonly::Scalar our $NUMBER_OF_COLUMNS => 12;
 Readonly::Scalar our $ASSET_NUMBER_OF_ROWS => 8;
 Readonly::Scalar our $ASSET_NUMBER_OF_COLUMNS => 12;
 
-Readonly::Scalar my $SOURCE_TABLE_HEIGHT      => 100;
-Readonly::Scalar my $BUFFER_TABLE_Y_POSITION  => 200;
+Readonly::Scalar my $SOURCE_TABLE_HEIGHT      => 70;
+Readonly::Scalar my $BUFFER_TABLE_Y_POSITION  => 140;
 
 Readonly::Scalar my $PAGE_HEIGHT => 595;
 Readonly::Scalar my $COLUMN_WIDTH => 60;
@@ -26,8 +26,6 @@ has 'plate_table' => (
   is  => 'ro',
   required => 0,
   default => sub {
-    my $self = shift;
-
     return {
       header_row => \&table_header_row,
       row_first_column => \&table_row_first_column,
@@ -42,8 +40,6 @@ has 'plate_style_table' => (
   is  => 'ro',
   required => 0,
   default => sub {
-    my $self = shift;
-
     return {
       header_row => \&headers_row,
       row_first_column => \&style_row_first_column,
@@ -102,9 +98,7 @@ sub table_footer_row {
 sub format_table_cell {
   my $cell = shift;
 
-  my $study_sample_name = join q{_}, $cell->{'study_name'}, $cell->{'sample_name'};
-
-  return join "\n", $study_sample_name, $cell->{'organism'}, $cell->{'bait_library_name'};
+  return join "\n", $cell->{'study_name'}, $cell->{'sample_name'}, $cell->{'organism'}, $cell->{'bait_library_name'};
 }
 
 sub format_style_table_cell {
