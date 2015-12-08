@@ -24,7 +24,7 @@ local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/sample_qc_report';
 my $EXPECTED_FILE_CONTENT = [
   {
     'DNA amount library prep' => '192',
-    'Library molarity' => '138.3304326231556',
+    'Library concentration' => '138.3304326231556',
     'Status' => 'Passed',
     'Sample volume' => '5.00907469236368',
     'Concentration' => '38.3304326231556',
