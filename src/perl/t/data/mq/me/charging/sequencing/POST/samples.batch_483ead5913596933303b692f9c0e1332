@@ -1,0 +1,163 @@
+<?xml version="1.0" standalone="yes"?>
+<smp:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:smp="http://genologics.com/ri/sample">
+    <smp:sample uri="http://testserver.com:1234/here/samples/SV1453A53" limsid="SV1453A53">
+        <name>59428ef0-b823-11e4-b42e-68b59977951e</name>
+        <date-received>2015-02-19</date-received>
+        <project limsid="SV1453" uri="http://testserver.com:1234/here/projects/SV1453"/>
+        <submitter uri="http://testserver.com:1234/here/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="SV1453A53PA1" uri="http://testserver.com:1234/here/artifacts/SV1453A53PA1?state=95832"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Bait Library Name">Human all exon V5</udf:field>
+        <udf:field type="String" name="WTSI Donor ID">59428ef0-b823-11e4-b42e-68b59977951e</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Proceed To Sequencing?">Yes</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">NA18947</udf:field>
+        <udf:field type="String" name="WTSI Working Volume (µL) (SM)">94.0113</udf:field>
+        <udf:field type="String" name="WTSI Supplier">Sanger</udf:field>
+        <udf:field type="String" name="Sample Conc. (ng\/µL) (SM)">199.749782371174</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/SV1453A51" limsid="SV1453A51">
+        <name>5c4b533e-b823-11e4-b42e-68b59977951e</name>
+        <date-received>2015-02-19</date-received>
+        <project limsid="SV1453" uri="http://testserver.com:1234/here/projects/SV1453"/>
+        <submitter uri="http://testserver.com:1234/here/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="SV1453A51PA1" uri="http://testserver.com:1234/here/artifacts/SV1453A51PA1?state=95830"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Bait Library Name">Human all exon V5</udf:field>
+        <udf:field type="String" name="WTSI Donor ID">5c4b533e-b823-11e4-b42e-68b59977951e</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Proceed To Sequencing?">Yes</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">NA18943</udf:field>
+        <udf:field type="String" name="WTSI Working Volume (µL) (SM)">91.9965</udf:field>
+        <udf:field type="String" name="WTSI Supplier">Sanger</udf:field>
+        <udf:field type="String" name="Sample Conc. (ng\/µL) (SM)">342.71580778529</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/SV1453A58" limsid="SV1453A58">
+        <name>5cc0a12a-b823-11e4-b42e-68b59977951e</name>
+        <date-received>2015-02-19</date-received>
+        <project limsid="SV1453" uri="http://testserver.com:1234/here/projects/SV1453"/>
+        <submitter uri="http://testserver.com:1234/here/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="SV1453A58PA1" uri="http://testserver.com:1234/here/artifacts/SV1453A58PA1?state=95805"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Bait Library Name">Human all exon V5</udf:field>
+        <udf:field type="String" name="WTSI Donor ID">5cc0a12a-b823-11e4-b42e-68b59977951e</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Proceed To Sequencing?">Yes</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">NA18956</udf:field>
+        <udf:field type="String" name="WTSI Working Volume (µL) (SM)">95.8616</udf:field>
+        <udf:field type="String" name="WTSI Supplier">Sanger</udf:field>
+        <udf:field type="String" name="Sample Conc. (ng\/µL) (SM)">278.87885903218</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/SV1453A57" limsid="SV1453A57">
+        <name>5b4b377e-b823-11e4-b42e-68b59977951e</name>
+        <date-received>2015-02-19</date-received>
+        <project limsid="SV1453" uri="http://testserver.com:1234/here/projects/SV1453"/>
+        <submitter uri="http://testserver.com:1234/here/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="SV1453A57PA1" uri="http://testserver.com:1234/here/artifacts/SV1453A57PA1?state=95790"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Bait Library Name">Human all exon V5</udf:field>
+        <udf:field type="String" name="WTSI Donor ID">5b4b377e-b823-11e4-b42e-68b59977951e</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Proceed To Sequencing?">Yes</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">NA18952</udf:field>
+        <udf:field type="String" name="WTSI Working Volume (µL) (SM)">96.4122</udf:field>
+        <udf:field type="String" name="WTSI Supplier">Sanger</udf:field>
+        <udf:field type="String" name="Sample Conc. (ng\/µL) (SM)">194.056036378187</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/SV1453A60" limsid="SV1453A60">
+        <name>4aba0aac-b823-11e4-b42e-68b59977951e</name>
+        <date-received>2015-02-19</date-received>
+        <project limsid="SV1453" uri="http://testserver.com:1234/here/projects/SV1453"/>
+        <submitter uri="http://testserver.com:1234/here/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="SV1453A60PA1" uri="http://testserver.com:1234/here/artifacts/SV1453A60PA1?state=95833"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Bait Library Name">Human all exon V5</udf:field>
+        <udf:field type="String" name="WTSI Donor ID">4aba0aac-b823-11e4-b42e-68b59977951e</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Proceed To Sequencing?">Yes</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">NA18941</udf:field>
+        <udf:field type="String" name="WTSI Working Volume (µL) (SM)">95.3403</udf:field>
+        <udf:field type="String" name="WTSI Supplier">Sanger</udf:field>
+        <udf:field type="String" name="Sample Conc. (ng\/µL) (SM)">272.366650415793</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/SV1453A66" limsid="SV1453A66">
+        <name>4b9e595a-b823-11e4-b42e-68b59977951e</name>
+        <date-received>2015-02-19</date-received>
+        <project limsid="SV1453" uri="http://testserver.com:1234/here/projects/SV1453"/>
+        <submitter uri="http://testserver.com:1234/here/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="SV1453A66PA1" uri="http://testserver.com:1234/here/artifacts/SV1453A66PA1?state=95807"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Bait Library Name">Human all exon V5</udf:field>
+        <udf:field type="String" name="WTSI Donor ID">4b9e595a-b823-11e4-b42e-68b59977951e</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Proceed To Sequencing?">Yes</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">NA20520</udf:field>
+        <udf:field type="String" name="WTSI Working Volume (µL) (SM)">94.2698</udf:field>
+        <udf:field type="String" name="WTSI Supplier">Sanger</udf:field>
+        <udf:field type="String" name="Sample Conc. (ng\/µL) (SM)">245.786238112639</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/SV1453A65" limsid="SV1453A65">
+        <name>4d1ab508-b823-11e4-b42e-68b59977951e</name>
+        <date-received>2015-02-19</date-received>
+        <project limsid="SV1453" uri="http://testserver.com:1234/here/projects/SV1453"/>
+        <submitter uri="http://testserver.com:1234/here/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="SV1453A65PA1" uri="http://testserver.com:1234/here/artifacts/SV1453A65PA1?state=95808"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Bait Library Name">Human all exon V5</udf:field>
+        <udf:field type="String" name="WTSI Donor ID">4d1ab508-b823-11e4-b42e-68b59977951e</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Proceed To Sequencing?">Yes</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Male</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">NA20518</udf:field>
+        <udf:field type="String" name="WTSI Working Volume (µL) (SM)">85.2761</udf:field>
+        <udf:field type="String" name="WTSI Supplier">Sanger</udf:field>
+        <udf:field type="String" name="Sample Conc. (ng\/µL) (SM)">275.916885274907</udf:field>
+    </smp:sample>
+    <smp:sample uri="http://testserver.com:1234/here/samples/SV1453A67" limsid="SV1453A67">
+        <name>41c7ec34-b823-11e4-b42e-68b59977951e</name>
+        <date-received>2015-02-19</date-received>
+        <project limsid="SV1453" uri="http://testserver.com:1234/here/projects/SV1453"/>
+        <submitter uri="http://testserver.com:1234/here/researchers/8">
+            <first-name>Lucy</first-name>
+            <last-name>Hildyard</last-name>
+        </submitter>
+        <artifact limsid="SV1453A67PA1" uri="http://testserver.com:1234/here/artifacts/SV1453A67PA1?state=95779"/>
+        <udf:field type="Numeric" name="WTSI Taxon ID">9606</udf:field>
+        <udf:field type="String" name="WTSI Bait Library Name">Human all exon V5</udf:field>
+        <udf:field type="String" name="WTSI Donor ID">41c7ec34-b823-11e4-b42e-68b59977951e</udf:field>
+        <udf:field type="String" name="WTSI Organism">Homo Sapiens</udf:field>
+        <udf:field type="String" name="WTSI Proceed To Sequencing?">Yes</udf:field>
+        <udf:field type="String" name="WTSI Supplier Gender - (SM)">Female</udf:field>
+        <udf:field type="String" name="WTSI Supplier Sample Name (SM)">NA20529</udf:field>
+        <udf:field type="String" name="WTSI Working Volume (µL) (SM)">87.8979</udf:field>
+        <udf:field type="String" name="WTSI Supplier">Sanger</udf:field>
+        <udf:field type="String" name="Sample Conc. (ng\/µL) (SM)">243.532163729919</udf:field>
+    </smp:sample>
+</smp:details>

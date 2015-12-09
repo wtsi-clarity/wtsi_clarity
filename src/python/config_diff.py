@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
-
-from urllib.parse import urljoin
 from xml.etree import ElementTree
+
 import sys
-from clarity import Clarity
 
 __author__ = 'rf9'
 
@@ -29,16 +27,16 @@ def remove_same(node1, node2):
 
 if __name__ == "__main__":
     if len(sys.argv) == 5:
-        IN_FILE_1 = sys.argv[1]
-        IN_FILE_2 = sys.argv[2]
-        OUT_FILE_1 = sys.argv[3]
-        OUT_FILE_2 = sys.argv[4]
+        in_file_1 = sys.argv[1]
+        in_file_2 = sys.argv[2]
+        out_file_1 = sys.argv[3]
+        out_file_2 = sys.argv[4]
     else:
         sys.stderr.write("usage: python list_epp.py <file1> <file2> <output_file1> <output_file2>\n")
         sys.exit(1)
 
-    tree1 = ElementTree.parse(IN_FILE_1).getroot()
-    tree2 = ElementTree.parse(IN_FILE_2).getroot()
+    tree1 = ElementTree.parse(in_file_1).getroot()
+    tree2 = ElementTree.parse(in_file_2).getroot()
 
     for parent in tree1.iter():
         for child in parent:
@@ -52,8 +50,8 @@ if __name__ == "__main__":
 
     remove_same(tree1, tree2)
 
-    with open(OUT_FILE_1, mode='w') as out_file:
+    with open(out_file_1, mode='w') as out_file:
         out_file.write(ElementTree.tostring(tree1).decode('ascii'))
 
-    with open(OUT_FILE_2, mode='w') as out_file:
+    with open(out_file_2, mode='w') as out_file:
         out_file.write(ElementTree.tostring(tree2).decode('ascii'))

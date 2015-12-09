@@ -73,9 +73,24 @@ class Clarity:
                               method='POST')
         req.add_header("Content-Type", "application/xml")
 
-        try:
-            with request.urlopen(req) as response:
-                return ElementTree.parse(response).getroot().getchildren()
-        except HTTPError as err:
-            sys.stderr.write("Invalid root uri\n")
-            sys.exit(1)
+        with request.urlopen(req) as response:
+            return ElementTree.parse(response).getroot().getchildren()
+
+    def batch_post_xml(self, object_type, xml_list):
+        if object_type not in ('artifacts', 'containers', 'files', 'samples'):
+            raise ClarityException("Cannot batch %r" % object_type)
+
+        builder = ElementTree.TreeBuilder()
+        builder.start('ns0:details', {
+        })
+        element = builder.close()
+
+        for xml in xml_list:
+            element.append(xml)
+
+        req = request.Request(url=(self.root + object_type + '/batch/update'), data=ElementTree.tostring(element),
+                              method='POST')
+        req.add_header("Content-Type", "application/xml")
+
+        with request.urlopen(req) as response:
+            return ElementTree.parse(response).getroot().getchildren()

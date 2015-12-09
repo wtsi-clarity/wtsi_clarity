@@ -2,8 +2,6 @@ package wtsi_clarity::mq::me::charging::secondary_qc;
 
 use Moose;
 
-with 'wtsi_clarity::mq::me::charging::charging_common';
-
 our $VERSION = '0.0';
 
 has 'product_type' => (
@@ -11,6 +9,23 @@ has 'product_type' => (
   is      => 'ro',
   default => q{Secondary QC GCLP},
 );
+
+has 'pipeline' => (
+  isa     => 'Str',
+  is      => 'ro',
+  default => q{SM},
+);
+
+with 'wtsi_clarity::mq::me::charging::charging_common';
+
+sub metadata {
+  my ($self) = @_;
+
+  my $metadata = $self->common_metadata;
+  $metadata->{'number_of_samples'}  = $self->number_of_samples;
+
+  return $metadata;
+}
 
 1;
 
@@ -34,6 +49,10 @@ wtsi_clarity::mq::me::charging::secondary_qc
   Gathers the data to prepare a charging message for secondary quality control to be sent to the event warehouse queue.
 
 =head1 SUBROUTINES/METHODS
+
+=head2 metadata
+
+  Returns the matadata part of the event message.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

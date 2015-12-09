@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-from urllib.error import HTTPError
 from urllib.parse import urljoin
 from xml.etree import ElementTree
+
 import sys
+
 from clarity import Clarity
 
 __author__ = 'rf9'
@@ -32,7 +33,7 @@ def sort_tree(tree):
 if __name__ == "__main__":
     if len(sys.argv) == 3:
         root_url = sys.argv[1]
-        OUT_FILE_PATH = sys.argv[2]
+        out_file_path = sys.argv[2]
     else:
         sys.stderr.write("usage: python list_epp.py <root_uri> <output_file>\n")
         sys.exit(1)
@@ -86,5 +87,5 @@ if __name__ == "__main__":
     # Alphabetise the xml (retaining structure) to avoid false changes in the diff.
     sort_tree(workflows)
 
-    with open(OUT_FILE_PATH, 'w') as OUT_FILE:
-        OUT_FILE.write(ElementTree.tostring(workflows).decode('ascii'))
+    with open(out_file_path, 'w') as out_file:
+        out_file.write(ElementTree.tostring(workflows).decode('ascii'))

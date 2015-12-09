@@ -17,6 +17,7 @@ Readonly::Scalar my $STUDY_USER_MANAGER_ROLE  => q{manager};
 
 Readonly::Scalar my $COST_CODE_PATH           => q{/prj:project/udf:field[@name='WTSI Project Cost Code']};
 Readonly::Scalar my $STUDY_UUID_PATH          => q{/prj:project/udf:field[@name='WTSI Project UUID']};
+Readonly::Scalar my $STUDY_READ_LENGTH_PATH   => q{/prj:project/udf:field[@name='WTSI Read Length']};
 
 # In the ATTRIBUTES hash: an element's key is the attribute name
 # and the element's value is the XPATH to get the attribute's value
@@ -115,6 +116,19 @@ sub _build_study_uuid {
   my $study_uuid = $self->findvalue($STUDY_UUID_PATH);
 
   return $study_uuid;
+}
+
+has 'read_length' => (
+  traits      => [ 'DoNotSerialize' ],
+  isa         => 'Str',
+  is          => 'ro',
+  required    => 0,
+  lazy_build  => 1,
+);
+sub _build_read_length {
+  my $self = shift;
+
+  return $self->findvalue($STUDY_READ_LENGTH_PATH);
 }
 
 has 'uri' => (

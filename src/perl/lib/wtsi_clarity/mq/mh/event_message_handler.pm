@@ -15,6 +15,18 @@ has 'warehouse_type' => (
   default => q{event},
 );
 
+# @Override
+sub prepare_messages {
+  my ($self, $message, $package) = @_;
+
+  return $package->new(
+            process_url => $message->process_url,
+            step_url    => $message->step_url,
+            timestamp   => $message->timestamp,
+            event_type  => $message->purpose,
+          )->prepare_messages();
+}
+
 1;
 
 __END__
@@ -33,6 +45,11 @@ wtsi_clarity::mq::mh::event_message_handler
  Handles messages coming off RabbitMQ. Dispatches them to relevant report builder.
 
 =head1 SUBROUTINES/METHODS
+
+=head2 prepare_messages
+
+  Overrides from warehouse_message_handler_interface.
+  We need the message purpose as a parameter to set the event type of the message.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

@@ -1,0 +1,589 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="24-25340" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-25340" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processtypes/54">E-Gel Creation (SM)</type>
+  <date-run>2015-01-22</date-run>
+  <input-output-map>
+    <input limsid="2-112646" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112646?state=52888" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112646?state=52888">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144194" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144194?state=68698"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112647" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112647?state=52889" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112647?state=52889">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144195" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144195?state=68699"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112644" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112644?state=52886" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112644?state=52886">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144192" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144192?state=68696"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112645" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112645?state=52887" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112645?state=52887">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144193" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144193?state=68697"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112642" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112642?state=52884" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112642?state=52884">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144190" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144190?state=68694"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112643" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112643?state=52885" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112643?state=52885">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144191" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144191?state=68695"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112640" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112640?state=52882" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112640?state=52882">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144188" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144188?state=68692"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112641" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112641?state=52883" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112641?state=52883">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144189" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144189?state=68693"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112612" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112612?state=52854" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112612?state=52854">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144160" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144160?state=68664"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112613" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112613?state=52855" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112613?state=52855">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144161" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144161?state=68665"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112614" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112614?state=52856" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112614?state=52856">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144162" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144162?state=68666"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112615" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112615?state=52857" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112615?state=52857">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144163" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144163?state=68667"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112608" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112608?state=52850" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112608?state=52850">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144156" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144156?state=68660"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112609" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112609?state=52851" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112609?state=52851">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144157" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144157?state=68661"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112610" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112610?state=52852" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112610?state=52852">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144158" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144158?state=68662"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112611" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112611?state=52853" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112611?state=52853">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144159" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144159?state=68663"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112620" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112620?state=52862" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112620?state=52862">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144168" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144168?state=68672"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112621" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112621?state=52863" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112621?state=52863">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144169" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144169?state=68673"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112622" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112622?state=52864" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112622?state=52864">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144170" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144170?state=68674"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112623" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112623?state=52865" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112623?state=52865">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144171" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144171?state=68675"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112616" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112616?state=52858" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112616?state=52858">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144164" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144164?state=68668"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112617" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112617?state=52859" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112617?state=52859">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144165" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144165?state=68669"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112618" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112618?state=52860" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112618?state=52860">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144166" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144166?state=68670"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112619" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112619?state=52861" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112619?state=52861">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144167" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144167?state=68671"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112629" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112629?state=52871" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112629?state=52871">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144177" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144177?state=68681"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112628" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112628?state=52870" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112628?state=52870">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144176" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144176?state=68680"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112631" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112631?state=52873" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112631?state=52873">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144179" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144179?state=68683"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112630" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112630?state=52872" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112630?state=52872">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144178" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144178?state=68682"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112625" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112625?state=52867" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112625?state=52867">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144173" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144173?state=68677"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112624" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112624?state=52866" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112624?state=52866">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144172" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144172?state=68676"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112627" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112627?state=52869" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112627?state=52869">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144175" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144175?state=68679"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112626" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112626?state=52868" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112626?state=52868">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144174" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144174?state=68678"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112637" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112637?state=52879" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112637?state=52879">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144185" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144185?state=68689"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112636" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112636?state=52878" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112636?state=52878">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144184" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144184?state=68688"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112639" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112639?state=52881" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112639?state=52881">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144187" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144187?state=68691"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112638" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112638?state=52880" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112638?state=52880">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144186" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144186?state=68690"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112633" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112633?state=52875" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112633?state=52875">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144181" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144181?state=68685"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112632" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112632?state=52874" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112632?state=52874">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144180" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144180?state=68684"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112635" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112635?state=52877" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112635?state=52877">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144183" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144183?state=68687"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112634" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112634?state=52876" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112634?state=52876">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144182" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144182?state=68686"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112528" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112528?state=52820" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112528?state=52820">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144076" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144076?state=68630"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112529" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112529?state=52821" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112529?state=52821">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144077" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144077?state=68631"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112526" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112526?state=52818" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112526?state=52818">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144074" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144074?state=68628"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112527" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112527?state=52819" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112527?state=52819">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144075" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144075?state=68629"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112532" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112532?state=52824" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112532?state=52824">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144080" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144080?state=68634"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112533" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112533?state=52825" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112533?state=52825">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144081" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144081?state=68635"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112530" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112530?state=52822" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112530?state=52822">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144078" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144078?state=68632"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112531" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112531?state=52823" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112531?state=52823">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144079" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144079?state=68633"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112536" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112536?state=52828" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112536?state=52828">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144084" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144084?state=68638"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112537" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112537?state=52829" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112537?state=52829">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144085" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144085?state=68639"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112534" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112534?state=52826" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112534?state=52826">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144082" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144082?state=68636"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112535" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112535?state=52827" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112535?state=52827">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144083" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144083?state=68637"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112540" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112540?state=52832" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112540?state=52832">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144088" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144088?state=68642"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112541" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112541?state=52833" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112541?state=52833">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144089" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144089?state=68643"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112538" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112538?state=52830" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112538?state=52830">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144086" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144086?state=68640"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112539" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112539?state=52831" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112539?state=52831">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144087" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144087?state=68641"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112545" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112545?state=52837" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112545?state=52837">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144093" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144093?state=68647"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112544" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112544?state=52836" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112544?state=52836">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144092" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144092?state=68646"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112543" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112543?state=52835" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112543?state=52835">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144091" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144091?state=68645"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112542" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112542?state=52834" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112542?state=52834">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144090" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144090?state=68644"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112549" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112549?state=52841" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112549?state=52841">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144097" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144097?state=68651"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112548" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112548?state=52840" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112548?state=52840">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144096" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144096?state=68650"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112547" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112547?state=52839" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112547?state=52839">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144095" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144095?state=68649"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112546" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112546?state=52838" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112546?state=52838">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144094" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144094?state=68648"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112603" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112603?state=52845" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112603?state=52845">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144151" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144151?state=68655"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112602" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112602?state=52844" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112602?state=52844">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144100" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144100?state=68654"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112601" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112601?state=52843" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112601?state=52843">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144099" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144099?state=68653"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112550" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112550?state=52842" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112550?state=52842">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144098" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144098?state=68652"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112607" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112607?state=52849" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112607?state=52849">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144155" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144155?state=68659"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112606" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112606?state=52848" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112606?state=52848">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144154" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144154?state=68658"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112605" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112605?state=52847" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112605?state=52847">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144153" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144153?state=68657"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112604" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112604?state=52846" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112604?state=52846">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144152" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144152?state=68656"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112502" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112502?state=52794" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112502?state=52794">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144000" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144000?state=68604"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112503" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112503?state=52795" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112503?state=52795">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144051" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144051?state=68605"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112504" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112504?state=52796" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112504?state=52796">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144052" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144052?state=68606"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112505" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112505?state=52797" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112505?state=52797">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144053" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144053?state=68607"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112506" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112506?state=52798" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112506?state=52798">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144054" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144054?state=68608"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112507" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112507?state=52799" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112507?state=52799">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144055" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144055?state=68609"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112508" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112508?state=52800" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112508?state=52800">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144056" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144056?state=68610"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112509" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112509?state=52801" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112509?state=52801">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144057" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144057?state=68611"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112511" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112511?state=52803" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112511?state=52803">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144059" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144059?state=68613"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112510" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112510?state=52802" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112510?state=52802">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144058" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144058?state=68612"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112513" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112513?state=52805" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112513?state=52805">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144061" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144061?state=68615"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112512" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112512?state=52804" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112512?state=52804">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144060" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144060?state=68614"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112515" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112515?state=52807" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112515?state=52807">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144063" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144063?state=68617"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112514" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112514?state=52806" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112514?state=52806">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144062" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144062?state=68616"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112517" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112517?state=52809" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112517?state=52809">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144065" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144065?state=68619"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112516" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112516?state=52808" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112516?state=52808">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144064" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144064?state=68618"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112519" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112519?state=52811" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112519?state=52811">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144067" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144067?state=68621"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112518" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112518?state=52810" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112518?state=52810">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144066" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144066?state=68620"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112521" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112521?state=52813" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112521?state=52813">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144069" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144069?state=68623"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112520" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112520?state=52812" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112520?state=52812">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144068" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144068?state=68622"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112523" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112523?state=52815" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112523?state=52815">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144071" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144071?state=68625"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112522" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112522?state=52814" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112522?state=52814">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144070" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144070?state=68624"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112525" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112525?state=52817" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112525?state=52817">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144073" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144073?state=68627"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-112524" post-process-uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112524?state=52816" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-112524?state=52816">
+      <parent-process limsid="24-23258" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-23258"/>
+    </input>
+    <output limsid="2-144072" output-generation-type="PerInput" output-type="Analyte" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-144072?state=68626"/>
+  </input-output-map>
+  <udf:field name="Robot ID" type="String">010468</udf:field>
+  <udf:field name="Input Plate 1" type="String">5260272593678</udf:field>
+  <udf:field name="Output Plate 1" type="String">5260273538876</udf:field>
+  <udf:field name="Bed 9 (Input Plate 1)" type="String">580030009698</udf:field>
+  <udf:field name="Bed 10 (Output Plate 1)" type="String">580030010854</udf:field>
+  <udf:field name="Plate Purpose" type="String">E-Gel</udf:field>
+  <udf:field name="Select Barcode Printer" type="String">g216bc</udf:field>
+  <process-parameter name="Send to Event Warehouse"/>
+</prc:process>

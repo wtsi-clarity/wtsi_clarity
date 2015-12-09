@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/2-363094?state=180361" limsid="2-363094">
+    <name>lh13_dummy_30-Lib PCR XP</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://testserver.com:1234/here/processes/24-61767" limsid="24-61767"/>
+    <qc-flag>PASSED</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-10214" limsid="27-10214"/>
+        <value>C:1</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/DEA103A2725" limsid="DEA103A2725"/>
+    <reagent-label name="Sanger_168tags - 10 mer tags: tag 3 (TTAGGCAT)"/>
+    <workflow-stages>
+        <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1172"/>
+        <workflow-stage status="COMPLETE" name="Pre Capture Lib QC" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1175"/>
+        <workflow-stage status="IN_PROGRESS" name="Pre Capture Lib Pooling" uri="http://testserver.com:1234/here/configuration/workflows/552/stages/1176"/>
+    </workflow-stages>
+</art:artifact>
