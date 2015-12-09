@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
+"""
+This script is used to download an xml representation of the active workflows in clarity.
+
+usage: python list_epp.py <root_uri> <output_file>
+
+Root url is the url that ends in `/api/v2`
+
+Use with config_diff.py to get the differences between two xml configs.
+"""
+
 from urllib.parse import urljoin
 from xml.etree import ElementTree
-
 import sys
-
 from clarity import Clarity
 
 __author__ = 'rf9'
