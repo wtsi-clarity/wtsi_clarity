@@ -38,11 +38,13 @@ Readonly::Scalar my $WORKFLOW_STAGE_URI           => q{/art:details/art:artifact
 Readonly::Scalar my $FIRST_ARTIFACT_URI           => q{art:details/art:artifact[1]/@uri};
 Readonly::Scalar my $FIRST_ARTIFACT_LIMSID        => q{art:details/art:artifact[1]/@limsid};
 Readonly::Scalar my $SAMPLE_URI_BY_ARTIFACT_DOC   => q{art:artifact/sample/@uri};
-Readonly::Scalar my $PROJECT_URI_BY_SAMPLE_DOC    => q{smp:sample/project/@uri};
+Readonly::Scalar my $SAMPLE_URI_BY_ARTIFACTS_DOC  => q{art:details/art:artifact/sample/@uri};
+Readonly::Scalar my $PROJECT_URI_BY_SAMPLE_DOC    => q{smp:details/smp:sample/project/@uri};
 Readonly::Scalar my $TECHNICIAN_URI_BY_PROCESS    => q{prc:process/technician[1]/@uri};
 Readonly::Scalar my $PROJECT_LIMSID               => q{prj:project/@limsid};
 Readonly::Scalar my $BAIT_LIBRARY_PATH            => q{smp:sample/udf:field[@name='WTSI Bait Library Name']};
 Readonly::Scalar my $ARTIFACT_LIMSID_PATH         => q{art:artifacts/artifact/@limsid};
+Readonly::Scalar my $DATE_RUN_PATH                => q{prc:process/date-run};
 ## use critic
 
 has '_parent' => (
@@ -448,6 +450,22 @@ sub _build__first_sample_doc {
   return $self->_parent->fetch_and_parse($sample_uri);
 }
 
+has 'samples_doc' => (
+  is => 'ro',
+  isa => 'XML::LibXML::Document',
+  lazy_build => 1,
+);
+
+sub _build_samples_doc {
+  my $self = shift;
+
+  my $analytes_doc = $self->_input_analytes;
+  my @sample_uris = $analytes_doc->findnodes($SAMPLE_URI_BY_ARTIFACTS_DOC)->to_literal_list;
+  my $samples_doc = $self->_request->batch_retrieve('samples', \@sample_uris);
+
+  return $samples_doc;
+}
+
 has 'bait_library' => (
   is => 'ro',
   isa => 'Str',
@@ -467,7 +485,7 @@ has 'project_doc' => (
 sub _build_project_doc {
   my $self = shift;
 
-  return $self->_parent->fetch_and_parse($self->_first_sample_doc->findvalue($PROJECT_URI_BY_SAMPLE_DOC));
+  return $self->_parent->fetch_and_parse($self->samples_doc->findnodes($PROJECT_URI_BY_SAMPLE_DOC)->pop->textContent);
 }
 
 has 'study_limsid' => (
@@ -489,7 +507,13 @@ has 'technician_doc' => (
 sub _build_technician_doc {
   my $self = shift;
 
-  return $self->_parent->fetch_and_parse($self->xml->findvalue($TECHNICIAN_URI_BY_PROCESS));
+  my $technician_uri = $self->xml->findvalue($TECHNICIAN_URI_BY_PROCESS);
+
+  if (!$technician_uri) {
+    croak q{The technician XML element is missing from the process XML document.};
+  }
+
+  return $self->_parent->fetch_and_parse($technician_uri);
 }
 
 sub get_result_file_location {
@@ -603,6 +627,12 @@ sub get_current_workflow_uri {
   return $workflow_uri;
 }
 
+sub date_run {
+  my ($self) = @_;
+
+  return $self->findvalue($DATE_RUN_PATH);
+}
+
 1;
 
 __END__
@@ -680,7 +710,11 @@ wtsi_clarity::clarity::process
 
 =head2 get_current_workflow_uri
 
-    Returns the uri for the workflow.
+  Returns the uri for the workflow.
+
+=head2 date_run
+
+  Returns the date when the process run.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
