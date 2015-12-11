@@ -134,18 +134,12 @@ wtsi_clarity::epp::isc::beckman_file_generator
 =head1 SYNOPSIS
 
   package wtsi_clarity::epp::isc::some_process_that_needs_to_generate_a_beckman_robot_file
-  extends 'wtsi_clarity::epp::isc::beckman_file_generator'
+  with 'wtsi_clarity::epp::isc::beckman_file_generator'
 
-  overrides '_build_internal_csv_output' => sub {
-    ['here', 'is', 'some', 'sample', 'data']
-  };
 
 =head1 DESCRIPTION
 
-  Should be subclassed by any process that wants to create a beckman file. That subclass must implement
-  a _build_internal_csv_output method.
-
-  This class probably shouldn't be instantiated itself.
+  Moose role that can help build a Beckman file
 
 =head1 SUBROUTINES/METHODS
 
