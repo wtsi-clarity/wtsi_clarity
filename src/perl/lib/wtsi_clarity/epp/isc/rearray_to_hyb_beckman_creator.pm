@@ -5,7 +5,6 @@ use Carp;
 use Readonly;
 use POSIX qw/strftime/;
 use List::MoreUtils qw/any/;
-use wtsi_clarity::epp::isc::beckman_file_generator;
 
 our $VERSION = '0.0';
 
@@ -18,14 +17,24 @@ Readonly::Scalar my $FILE_NAME => q{%s_rearray_to_hyb_%s_%s.csv};
 Readonly::Scalar my $MAX_SMALL_TIP_VOLUME => 50;
 ## use critic
 
-extends 'wtsi_clarity::epp::isc::beckman_file_generator';
+extends 'wtsi_clarity::epp';
 
 with qw/
+        wtsi_clarity::epp::isc::beckman_file_generator
         wtsi_clarity::util::clarity_elements
         wtsi_clarity::epp::generic::roles::stamper_common
        /;
 
-override '_build_internal_csv_output' => sub {
+override 'run' => sub {
+  my $self= shift;
+  super();
+
+  $self->_beckman_file->saveas(q{./} . $self->beckman_file_name);
+
+  return;
+};
+
+sub _build_internal_csv_output {
   my $self = shift;
   my $row_number = 1;
   my @rows = map { $self->row($_->{'well'}, $_, $row_number++) } @{$self->_sorted_input_analytes};
@@ -54,6 +63,7 @@ sub _sorted_input_analytes {
 }
 
 ## no critic(Subroutines::ProhibitUnusedPrivateSubroutines)
+# Source well and destination well are the same
 sub _get_source_well {
   my ($self, $dest_well, $analyte_data, $sample_nr) = @_;
   return $self->_well($analyte_data);
@@ -139,7 +149,13 @@ wtsi_clarity::epp::isc::rearray_to_hyb_beckman_creator
 
 =item List::MoreUtils
 
+=item wtsi_clarity::epp
+
 =item wtsi_clarity::epp::isc::beckman_file_generator
+
+=item wtsi_clarity::util::clarity_elements
+
+=item wtsi_clarity::epp::generic::roles::stamper_common
 
 =back
 

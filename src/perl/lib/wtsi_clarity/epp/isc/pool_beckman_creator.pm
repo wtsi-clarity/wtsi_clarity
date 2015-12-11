@@ -9,9 +9,10 @@ use wtsi_clarity::epp::isc::pool_calculator;
 
 our $VERSION = '0.0';
 
-extends 'wtsi_clarity::epp::isc::beckman_file_generator';
+extends 'wtsi_clarity::epp';
 
 with qw/
+        wtsi_clarity::epp::isc::beckman_file_generator
         wtsi_clarity::util::clarity_elements
        /;
 
@@ -19,7 +20,16 @@ with qw/
 Readonly::Scalar my $PROCESS_ID_PATH => q(/prc:process/@limsid);
 ## use critic
 
-override '_build_internal_csv_output' => sub {
+override 'run' => sub {
+  my $self= shift;
+  super();
+
+  $self->_beckman_file->saveas(q{./} . $self->beckman_file_name);
+
+  return;
+};
+
+sub _build_internal_csv_output {
   my $self = shift;
 
   my ($pool_calculator_result, $warnings) = $self->_get_result_from_pool_calculator;
@@ -124,9 +134,13 @@ wtsi_clarity::epp::isc::pool_beckman_creator
 
 =item Mojo::Collection
 
-=item wtsi_clarity::util::textfile
+=item wtsi_clarity::epp
 
-=item wtsi_clarity::util::beckman
+=item wtsi_clarity::epp::isc::beckman_file_generator;
+
+=item wtsi_clarity::epp::isc::beckman_file_generator
+
+=item wtsi_clarity::util::clarity_elements
 
 =back
 

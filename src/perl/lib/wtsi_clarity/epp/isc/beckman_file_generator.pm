@@ -1,6 +1,6 @@
 package wtsi_clarity::epp::isc::beckman_file_generator;
 
-use Moose;
+use Moose::Role;
 use Carp;
 use Readonly;
 use Mojo::Collection 'c';
@@ -15,8 +15,6 @@ Readonly::Scalar my $DEFAULT_SOURCE_BARCODE     => q(Not used);
 Readonly::Scalar my $DEFAULT_SOURCE_STOCK       => q(Not used);
 Readonly::Scalar my $DEFAULT_DEST_EAN13         => q(Not used);
 Readonly::Scalar my $DEFAULT_DEST_BARCODE       => q(Not used);
-
-extends 'wtsi_clarity::epp';
 
 with qw/wtsi_clarity::util::csv::report_common/;
 
@@ -56,18 +54,6 @@ has 'internal_csv_output' => (
   required => 0,
   lazy_build => 1,
 );
-sub _build_internal_csv_output {
-  croak '_build_internal_csv_output must be overriden'
-}
-
-override 'run' => sub {
-  my $self= shift;
-  super();
-
-  $self->_beckman_file->saveas(q{./} . $self->beckman_file_name);
-
-  return;
-};
 
 sub row {
   my ($self, $dest_well, $analyte_data, $sample_num) = @_;
@@ -135,6 +121,7 @@ sub _get_not_implemented_yet {
   my ($self, $sample_id) = @_;
   return qq{*} ; #qq{Not implemented yet};
 }
+## use critic
 
 1;
 
@@ -180,6 +167,8 @@ wtsi_clarity::epp::isc::beckman_file_generator
 =item wtsi_clarity::util::textfile
 
 =item wtsi_clarity::util::beckman
+
+=item wtsi_clarity::util::csv::report_common
 
 =back
 
