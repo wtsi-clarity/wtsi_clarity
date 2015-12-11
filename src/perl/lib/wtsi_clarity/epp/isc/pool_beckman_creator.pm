@@ -136,8 +136,6 @@ wtsi_clarity::epp::isc::pool_beckman_creator
 
 =item wtsi_clarity::epp
 
-=item wtsi_clarity::epp::isc::beckman_file_generator;
-
 =item wtsi_clarity::epp::isc::beckman_file_generator
 
 =item wtsi_clarity::util::clarity_elements
