@@ -73,6 +73,7 @@ sub _get_destination_well {
   my ($self, $dest_well, $analyte_data, $sample_nr) = @_;
   return $self->_well($analyte_data);
 }
+## use critic
 
 sub _well {
   my ($self, $analyte_data) = @_;
