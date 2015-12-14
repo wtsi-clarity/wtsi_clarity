@@ -8,6 +8,7 @@ use_ok('wtsi_clarity::epp::isc::rearray_to_hyb_beckman_creator');
 {
   my $little_tip_process = wtsi_clarity::epp::isc::rearray_to_hyb_beckman_creator->new(
     process_url => 'http://clarity.dev/processes/122-22459',
+    output_file_limsid => '12-345',
     _well_volumes => [1,2,3,4,5],
   );
 
@@ -15,6 +16,7 @@ use_ok('wtsi_clarity::epp::isc::rearray_to_hyb_beckman_creator');
 
   my $big_tip_process = wtsi_clarity::epp::isc::rearray_to_hyb_beckman_creator->new(
     process_url => 'http://clarity.dev/processes/122-22459',
+    output_file_limsid => '12-345',
     _well_volumes => [1,2,3,4,51],
   );
 
@@ -52,7 +54,8 @@ use_ok('wtsi_clarity::epp::isc::rearray_to_hyb_beckman_creator');
 
   my $mocked_rearray_to_hyb = Test::MockObject::Extends->new(
     wtsi_clarity::epp::isc::rearray_to_hyb_beckman_creator->new(
-      process_url => 'http://clarity.dev/processes/122-22459',
+      process_url        => 'http://clarity.dev/processes/122-22459',
+      output_file_limsid => '12-345',
     )
   );
 
@@ -71,12 +74,13 @@ use_ok('wtsi_clarity::epp::isc::rearray_to_hyb_beckman_creator');
   my $file_content = $mocked_rearray_to_hyb->_beckman_file->content;
 
   is_deeply($file_content, $expected_result, 'get_file returns a file object with the correct content');
-  is($mocked_rearray_to_hyb->beckman_file_name, 'ABC123_rearray_to_hyb_p250_011215.csv', 'Names the file correctly');
+  is($mocked_rearray_to_hyb->beckman_file_name, '12-345_ABC123_rearray_to_hyb_p250_011215.csv', 'Names the file correctly');
 }
 
 {
   my $beckman_creator = wtsi_clarity::epp::isc::rearray_to_hyb_beckman_creator->new(
     process_url => 'http://clarity.dev/processes/122-22459',
+    output_file_limsid => '12-345',
   );
 
   can_ok($beckman_creator, qw/ run /);
