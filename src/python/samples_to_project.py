@@ -12,7 +12,7 @@ if __name__ == '__main__':
         sys.stderr.write("usage: python list_epp.py <root_uri> <input_file> <output_file>\n")
         sys.exit(1)
 
-    clarity = Clarity(root_url)
+    clarity = Clarity.new(root_url)
 
     with open(in_file) as f:
         uuids = [l.strip() for l in f]

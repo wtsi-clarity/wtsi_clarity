@@ -19,35 +19,24 @@ __author__ = 'rf9'
 IGNORE_LIST = ['show-in-tables']
 
 
-def expand(element_to_expand):
-    if element_to_expand.get('uri'):
-        for child_element in clarity.get_xml(element_to_expand.get('uri')):
-            element_to_expand.append(child_element)
-        # Remove the uri from the element (because it will always be different)
-        del element_to_expand.attrib['uri']
+def main(clarity, out_file_path):
+    def expand(element_to_expand):
+        if element_to_expand.get('uri'):
+            for child_element in clarity.get_xml(element_to_expand.get('uri')):
+                element_to_expand.append(child_element)
+            # Remove the uri from the element (because it will always be different)
+            del element_to_expand.attrib['uri']
 
+    def sort_tree(tree):
+        for child_element in tree:
+            sort_tree(child_element)
 
-def sort_tree(tree):
-    for child_element in tree:
-        sort_tree(child_element)
+        children_elements = sorted(list(tree), key=lambda x: ElementTree.tostring(x))
+        for child_element in children_elements:
+            tree.remove(child_element)
 
-    children_elements = sorted(list(tree), key=lambda x: ElementTree.tostring(x))
-    for child_element in children_elements:
-        tree.remove(child_element)
-
-        if tree.tag not in IGNORE_LIST:
-            tree.append(child_element)
-
-
-if __name__ == "__main__":
-    if len(sys.argv) == 3:
-        root_url = sys.argv[1]
-        out_file_path = sys.argv[2]
-    else:
-        sys.stderr.write("usage: python list_epp.py <root_uri> <output_file>\n")
-        sys.exit(1)
-
-    clarity = Clarity(root_url)
+            if tree.tag not in IGNORE_LIST:
+                tree.append(child_element)
 
     workflows = clarity.get_xml(urljoin(clarity.root, 'configuration/workflows/'))
 
@@ -98,3 +87,14 @@ if __name__ == "__main__":
 
     with open(out_file_path, 'w') as out_file:
         out_file.write(ElementTree.tostring(workflows).decode('ascii'))
+
+
+if __name__ == "__main__":
+    if len(sys.argv) == 3:
+        root = sys.argv[1]
+        out = sys.argv[2]
+    else:
+        sys.stderr.write("usage: python list_epp.py <root_uri> <output_file>\n")
+        sys.exit(1)
+
+    main(Clarity.new(root), out)

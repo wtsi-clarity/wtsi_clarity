@@ -17,14 +17,10 @@ class ClarityException(Exception):
 
 
 class Clarity:
-    def __init__(self, root):
+    def __init__(self, root, user, password):
         if root[-1] != '/':
             root += "/"
         self.root = root
-
-        user = getpass.getuser()
-        user = input("Username (leave blank for '" + user + "'): ") or user
-        password = getpass.getpass('Password: ')
 
         try:
             self.setup_urllib(user, password)
@@ -36,6 +32,14 @@ class Clarity:
             sys.exit(1)
 
         self.cache = {}
+
+    @classmethod
+    def new(cls, root):
+        user = getpass.getuser()
+        user = input("Username (leave blank for '" + user + "'): ") or user
+        password = getpass.getpass('Password: ')
+
+        return cls(root, user, password)
 
     def setup_urllib(self, user, password):
         password_mgr = request.HTTPPasswordMgrWithDefaultRealm()
