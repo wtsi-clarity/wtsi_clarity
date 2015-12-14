@@ -13,7 +13,7 @@ Readonly::Scalar my $ARTIFACT_BY_WELL => qq{art:details/art:artifact[location/va
 Readonly::Scalar my $AVERAGE_MOLARITY_UDF => q{./udf:field[@name="Average Molarity"]};
 Readonly::Scalar my $THREE_THOUSAND => 3000;
 Readonly::Scalar my $MAX_VOLUME => 180;
-Readonly::Scalar my $FILE_NAME => q{%s_rearray_to_hyb_%s_%s.csv};
+Readonly::Scalar my $FILE_NAME => q{%s_%s_rearray_to_hyb_%s_%s.csv};
 Readonly::Scalar my $MAX_SMALL_TIP_VOLUME => 50;
 ## use critic
 
@@ -34,6 +34,12 @@ override 'run' => sub {
   return;
 };
 
+has 'output_file_limsid' => (
+  is       => 'ro',
+  isa      => 'Str',
+  required => 1,
+);
+
 sub _build_internal_csv_output {
   my $self = shift;
   my $row_number = 1;
@@ -43,7 +49,7 @@ sub _build_internal_csv_output {
 
 sub build_beckman_file_name {
   my $self = shift;
-  return sprintf $FILE_NAME, $self->_output_container_signature, $self->_tip_size, $self->_formatted_date;
+  return sprintf $FILE_NAME, $self->output_file_limsid, $self->_output_container_signature, $self->_tip_size, $self->_formatted_date;
 }
 
 sub _sorted_input_analytes {
