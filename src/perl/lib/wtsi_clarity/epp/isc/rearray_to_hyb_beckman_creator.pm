@@ -93,7 +93,8 @@ has '_well_volumes' => (
 sub _get_source_volume {
   my ($self, $dest_well, $analyte_data, $sample_nr) = @_;
   my $volume = $THREE_THOUSAND / $analyte_data->{'molarity'};
-  $self->_add_volume($volume = ($volume > $MAX_VOLUME) ? $MAX_VOLUME : $volume);
+  $volume = sprintf "%.2f", ($volume > $MAX_VOLUME) ? $MAX_VOLUME : $volume;
+  $self->_add_volume($volume);
   return $volume;
 }
 

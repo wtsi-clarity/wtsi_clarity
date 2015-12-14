@@ -24,17 +24,17 @@ use_ok('wtsi_clarity::epp::isc::rearray_to_hyb_beckman_creator');
 {
   my $expected_result = [
     'Sample,Name,Source EAN13,Source Barcode,Source Stock,Source Well,Destination EAN13,Destination Barcode,Destination Well,Source Volume',
-    '1,PCRXP1,Not used,Not used,Not used,A1,Not used,Not used,A1,180',
-    '2,PCRXP1,Not used,Not used,Not used,B1,Not used,Not used,B1,180',
-    '3,PCRXP1,Not used,Not used,Not used,C1,Not used,Not used,C1,100',
-    '4,PCRXP1,Not used,Not used,Not used,D1,Not used,Not used,D1,75',
-    '5,PCRXP1,Not used,Not used,Not used,E1,Not used,Not used,E1,54.3478260869565',
-    '6,PCRXP1,Not used,Not used,Not used,F1,Not used,Not used,F1,50',
-    '7,PCRXP1,Not used,Not used,Not used,G1,Not used,Not used,G1,42.8571428571429',
-    '8,PCRXP1,Not used,Not used,Not used,H1,Not used,Not used,H1,37.5',
-    '9,PCRXP1,Not used,Not used,Not used,A2,Not used,Not used,A2,33.3333333333333',
-    '10,PCRXP1,Not used,Not used,Not used,B2,Not used,Not used,B2,29.9031139109286',
-    '11,PCRXP1,Not used,Not used,Not used,C2,Not used,Not used,C2,3',
+    '1,PCRXP1,Not used,Not used,Not used,A1,Not used,Not used,A1,180.00',
+    '2,PCRXP1,Not used,Not used,Not used,B1,Not used,Not used,B1,180.00',
+    '3,PCRXP1,Not used,Not used,Not used,C1,Not used,Not used,C1,100.00',
+    '4,PCRXP1,Not used,Not used,Not used,D1,Not used,Not used,D1,75.00',
+    '5,PCRXP1,Not used,Not used,Not used,E1,Not used,Not used,E1,54.35',
+    '6,PCRXP1,Not used,Not used,Not used,F1,Not used,Not used,F1,50.00',
+    '7,PCRXP1,Not used,Not used,Not used,G1,Not used,Not used,G1,42.86',
+    '8,PCRXP1,Not used,Not used,Not used,H1,Not used,Not used,H1,37.50',
+    '9,PCRXP1,Not used,Not used,Not used,A2,Not used,Not used,A2,33.33',
+    '10,PCRXP1,Not used,Not used,Not used,B2,Not used,Not used,B2,29.90',
+    '11,PCRXP1,Not used,Not used,Not used,C2,Not used,Not used,C2,3.00',
   ];
   my $sorted_input_analytes = [
     { well => 'A:1', molarity => 1 },
