@@ -1,4 +1,5 @@
 import getpass
+import os
 import re
 import urllib.request as request
 from collections import defaultdict
@@ -17,10 +18,14 @@ class ClarityException(Exception):
 
 
 class Clarity:
-    def __init__(self, root, user, password):
+    def __init__(self, root, user=None, password=None):
         if root[-1] != '/':
             root += "/"
         self.root = root
+
+        os_user = getpass.getuser()
+        user = user or os.environ.get('USERNAME') or input("Username (leave blank for '" + os_user + "'): ") or os_user
+        password = password or os.environ.get('PASSWORD') or getpass.getpass('Password: ')
 
         try:
             self.setup_urllib(user, password)
@@ -32,14 +37,6 @@ class Clarity:
             sys.exit(1)
 
         self.cache = {}
-
-    @classmethod
-    def new(cls, root):
-        user = getpass.getuser()
-        user = input("Username (leave blank for '" + user + "'): ") or user
-        password = getpass.getpass('Password: ')
-
-        return cls(root, user, password)
 
     def setup_urllib(self, user, password):
         password_mgr = request.HTTPPasswordMgrWithDefaultRealm()

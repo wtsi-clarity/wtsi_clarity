@@ -23,7 +23,7 @@ if __name__ == "__main__":
         sys.stderr.write("usage: python list_epp.py <root_uri> <output_file>\n")
         sys.exit(1)
 
-    clarity = Clarity.new(root_url)
+    clarity = Clarity(root_url)
 
     with open(out_file_path, 'w') as out_file:
 
