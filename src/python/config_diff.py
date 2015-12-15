@@ -35,16 +35,7 @@ def remove_same(node1, node2):
     return False
 
 
-if __name__ == "__main__":
-    if len(sys.argv) == 5:
-        in_file_1 = sys.argv[1]
-        in_file_2 = sys.argv[2]
-        out_file_1 = sys.argv[3]
-        out_file_2 = sys.argv[4]
-    else:
-        sys.stderr.write("usage: python list_epp.py <file1> <file2> <output_file1> <output_file2>\n")
-        sys.exit(1)
-
+def main(in_file_1, in_file_2, out_file_1, out_file_2):
     tree1 = ElementTree.parse(in_file_1).getroot()
     tree2 = ElementTree.parse(in_file_2).getroot()
 
@@ -65,3 +56,16 @@ if __name__ == "__main__":
 
     with open(out_file_2, mode='w') as out_file:
         out_file.write(ElementTree.tostring(tree2).decode('ascii'))
+
+
+if __name__ == "__main__":
+    if len(sys.argv) == 5:
+        in1 = sys.argv[1]
+        in2 = sys.argv[2]
+        out1 = sys.argv[3]
+        out2 = sys.argv[4]
+    else:
+        sys.stderr.write("usage: python list_epp.py <file1> <file2> <output_file1> <output_file2>\n")
+        sys.exit(1)
+
+    main(in1, in2, out1, out2)
