@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 6;
+use Test::More tests => 8;
 use Test::MockObject::Extends;
 use Test::Exception;
 
@@ -1858,6 +1858,9 @@ my $EXPECTED_FILE_CONTENT = [
   is_deeply($file_content, $EXPECTED_FILE_CONTENT,
     'File content is generated from a container node correctly');
 
+  is($manifest->publish_to_irods, 1, "Return correctly the publish to external iRODS setting");
+
+  my $called;
   my $mocked_manifest = Test::MockObject::Extends->new(
     wtsi_clarity::epp::reports::manifest->new(
       process_url => 'http://clarity.com/processes/1',
@@ -1866,6 +1869,22 @@ my $EXPECTED_FILE_CONTENT = [
   $mocked_manifest->mock(q{now}, sub {
     return "20150813121212";
   });
+  $mocked_manifest->mock(q{publish_to_irods}, sub {
+    return 1;
+  });
+  $mocked_manifest->mock(q{_publish_report_to_irods}, sub {
+    ++$called;
+    return 1;
+  });
+
+  my $file = $mocked_manifest->_file_factory->create(
+      type      => 'report_writer',
+      headers   => $mocked_manifest->headers,
+      data      => $file_content,
+      delimiter => $mocked_manifest->file_delimiter,
+    );
+  $mocked_manifest->_output_file($file, "test_file.txt");
+  is($called, 1, '_publish_report_to_irods function called');
 
   my $expected_file_name = "27-11037.20150813121212.manifest.txt";
 

@@ -15,13 +15,6 @@ our $VERSION = '0.0';
 
 Readonly::Scalar my $FILE_NAME => q{%s.%s.manifest.txt};
 
-has 'container_id' => (
-  is        => 'ro',
-  isa       => 'ArrayRef',
-  predicate => '_has_container_id',
-  required  => 0,
-);
-
 has '_containers' => (
   is      => 'ro',
   isa     => 'XML::LibXML::Document',
@@ -112,10 +105,24 @@ sub file_content {
   return \@rows;
 }
 
+sub publish_to_irods {
+  my ($self) = @_;
+
+  my @sample_limsids = sort keys %{$self->_projects};
+
+  return scalar @sample_limsids > 0 ? $self->_projects->{$sample_limsids[0]}->{'publish_to_irods'} : 0;
+}
+
 sub irods_destination_path {
   my ($self) = @_;
 
   return $self->config->irods->{'manifest_path'} . q{/};
+}
+
+sub _find_project_limsid_by_sample_limsid {
+  my ($self, $sample) = @_;
+
+  return $sample->findvalue('./project/@limsid');
 }
 
 sub _build__containers {
@@ -161,7 +168,12 @@ sub _set_projects {
 sub _build_project_hash {
   my ($self, $project_uri) = @_;
   my $project = $self->fetch_and_parse($project_uri);
-  return ($project->findvalue('/prj:project/@limsid'), $project->findvalue('/prj:project/name') );
+
+  my %project_data;
+  $project_data{'publish_to_irods'} = $project->findvalue('/prj:project/udf:field[@name="WTSI Send data to external iRODS"]') eq 'true' ? 1 : 0;
+  $project_data{'name'}             = $project->findvalue('/prj:project/name');
+
+  return ($project->findvalue('/prj:project/@limsid'), \%project_data );
 }
 
 sub _build_row {
@@ -186,7 +198,7 @@ sub _build_row {
     'UDF/WTSI Organism'                   => $sample->findvalue('./udf:field[@name="WTSI Organism"]') // q{},
     'UDF/WTSI Taxon ID'                   => $sample->findvalue('./udf:field[@name="WTSI Taxon ID"]') // q{},
     'Sample UUID'                         => $sample->findvalue('./name') // q{},
-    'Project Name'                        => $self->_projects->{$sample->findvalue('./project/@limsid')} // q{},
+    'Project Name'                        => $self->_projects->{$self->_find_project_limsid_by_sample_limsid($sample)}->{'name'} // q{},
     'Project ID'                          => $sample->findvalue('./project/@limsid') // q{},
   }
 }
@@ -243,6 +255,11 @@ message must be supplied
 =head2 sort_by_column
 
   Define the sorting criteria by column name.
+
+=head2 publish_to_irods
+
+  Checks whether the 'WTSI Send data to external iRODS' check box in project the sample relates to is checked or not.
+  If it is checked then returns 1, otherwise 0.
 
 =head2 irods_destination_path
 

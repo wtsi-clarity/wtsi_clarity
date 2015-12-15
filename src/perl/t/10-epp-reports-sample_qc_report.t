@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 11;
+use Test::More tests => 12;
 use Test::MockObject::Extends;
 use Test::Exception;
 
@@ -51,6 +51,10 @@ my $EXPECTED_FILE_CONTENT = [
   my $expected_sample_count = 4;
 
   is(scalar @{$samples}, $expected_sample_count, 'Got the correct count of samples');
+
+  $report->_sample_doc($samples);
+
+  is($report->publish_to_irods, 0, 'Returns the correct value for ');
 
   my $sample_doc = $samples->[0];
 
