@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 6;
+use Test::More tests => 8;
 use Test::Exception;
 use DBI;
 use DateTime;
@@ -16,9 +16,9 @@ my $dsn = $config->database->{'dsn'};
 my $user = $config->database->{'user'};
 my $password = $config->database->{'pass'};
 my $dbh = DBI->connect($dsn, $user, $password, {
-  PrintError => 0,
-  RaiseError => 1,
-  AutoCommit => 1,
+  PrintError       => 0,
+  RaiseError       => 1,
+  AutoCommit       => 1,
   FetchHashKeyName => 'NAME_lc',
 });
 eval {
@@ -55,9 +55,6 @@ $dbh->do('CREATE TABLE hash (id integer NOT NULL PRIMARY KEY AUTOINCREMENT, file
   is($count, 1, "Correct number of rows added");
 }
 
-$dbh->disconnect();
-unlink "test.db";
-
 {
   my $database = Test::MockObject::Extends->new(
     Moose::Meta::Class->create(
@@ -70,7 +67,29 @@ unlink "test.db";
 
   lives_ok {
     $database->DEMOLISH()
-  } 'Database is only made when needed.'
+  } 'Database is only made when needed.';
+}
+
+$dbh->disconnect();
+unlink "test.db";
+
+{
+  my $database = Moose::Meta::Class->create(
+    'New::Class',
+    roles => [qw/wtsi_clarity::util::roles::database/],
+  )->new_object(process_url => 'unimportant');
+
+  $database->config->database->{'use_database'} = 0;
+
+  my $filename = "test_file_name";
+  my $hash = "test_hash";
+  my $location = "test_location";
+
+  is($database->database, 0, 'Doesn\'t make databse when database is off');
+
+  lives_ok {
+    $database->insert_hash_to_database($filename, $hash, $location);
+  } "Doesn't crash when databse is turned off.";
 }
 
 1;

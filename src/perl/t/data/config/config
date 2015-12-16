@@ -63,6 +63,7 @@ lab_sample_qc_path=/Sanger1-dev/home/glsai
 internal_generation=1
 
 [database]
+use_database=1
 dsn=dbi:SQLite:dbname=test.db
 user=
 pass=

@@ -8,31 +8,33 @@ with qw/wtsi_clarity::util::configurable/;
 our $VERSION = '0.0';
 
 has 'database' => (
-  is => 'ro',
-  lazy => 1,
-  builder => '_build_database',
-  predicate => 'has_database',
-);
+    is        => 'ro',
+    lazy      => 1,
+    builder   => '_build_database',
+    predicate => 'has_database',
+  );
 
 sub _build_database {
   my ($self) = @_;
 
-  my $dsn = $self->config->database->{'dsn'};
-  my $user = $self->config->database->{'user'};
-  my $password = $self->config->database->{'pass'};
-  return DBI->connect($dsn, $user, $password, {
-    PrintError => 0,
-    RaiseError => 1,
-    AutoCommit => 1,
-    FetchHashKeyName => 'NAME_lc',
-  });
+  if($self->config->database->{'use_database'}) {
+    my $dsn = $self->config->database->{'dsn'};
+    my $user = $self->config->database->{'user'};
+    my $password = $self->config->database->{'pass'};
+    return DBI->connect($dsn, $user, $password, {
+        PrintError       => 0,
+        RaiseError       => 1,
+        AutoCommit       => 1,
+        FetchHashKeyName => 'NAME_lc',
+      });
+  }
 }
 
 sub DEMOLISH() {
   my ($self) = @_;
   super();
 
-  if ($self->has_database) {
+  if($self->has_database) {
     $self->database->disconnect();
   }
 
@@ -42,10 +44,12 @@ sub DEMOLISH() {
 sub insert_hash_to_database {
   my ($self, $filename, $hash, $location) = @_;
 
-  $self->database->do('INSERT INTO hash (filename, hash, location) VALUES (?, ?, ?)',
-  undef,
-  $filename, $hash, $location
-  );
+  if($self->database) {
+    $self->database->do('INSERT INTO hash (filename, hash, location) VALUES (?, ?, ?)',
+      undef,
+      $filename, $hash, $location
+    );
+  }
 
   return;
 }
