@@ -139,18 +139,17 @@ class ClarityElement:
         self.clarity = clarity
         self.xml_list = xml_list
 
-    def __getattr__(self, item):
+    def get(self, item):
         # Try the xml method
         try:
             return [getattr(xml, item) for xml in self.xml_list]
         except AttributeError:
             pass
 
-        item = item.replace('_', '-')
-
         # Look for the attribute
-        if item in self.xml_list[0].attrib:
-            return [xml.attrib[item] for xml in self.xml_list]
+        attributes = [x for x in [xml.attrib.get(item) for xml in self.xml_list] if x is not None]
+        if attributes:
+            return attributes
 
         # Look for a child
         elements = [child for xml in self.xml_list for child in xml.findall(item)]
@@ -158,14 +157,18 @@ class ClarityElement:
             return ClarityElement(self.clarity, elements)
 
         # If it has a url, fetch the urls and try with the fetched objects.
-        uris = [xml.get('uri') for xml in self.xml_list if xml.get('uri')]
+        uris = [x for x in [xml.get('uri') for xml in self.xml_list] if x is not None]
         if uris:
             try:
-                return getattr(ClarityElement(self.clarity, self.clarity.get_xml(uris)), item)
+                return ClarityElement(self.clarity, self.clarity.get_xml(uris)).get(item)
             except RuntimeError as err:
                 pass
 
         return []
+
+    def get_first(self, item):
+        values = self.get(item)
+        return values[0] if values else None
 
     def __iter__(self):
         self.n = 0

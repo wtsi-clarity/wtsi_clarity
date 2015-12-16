@@ -27,41 +27,35 @@ if __name__ == "__main__":
 
     with open(out_file_path, 'w') as out_file:
 
-        workflows = clarity.get_object(clarity.root + 'configuration/workflows/').workflow
+        workflows = clarity.get_object(clarity.root + 'configuration/workflows/').get('workflow')
 
         for workflow in workflows:
-            if workflow.status == ['ACTIVE']:
-                protocols = workflow.protocols.protocol
-
-                for protocol in protocols:
-                    protocol_name = protocol.name[0]
-
-                    steps = protocol.steps.step
+            if workflow.get_first('status') == 'ACTIVE':
+                for protocol in workflow.get('protocols').get('protocol'):
+                    steps = protocol.get('steps').get('step')
                     if steps:
                         for step in steps:
-                            step_name = step.name[0]
-
                             epps = {}
-                            epp_triggers = step.epp_triggers.epp_trigger
+                            epp_triggers = step.get('epp-triggers').get('epp-trigger')
                             if epp_triggers:
                                 for epp_trigger in epp_triggers:
-                                    epps[epp_trigger.name[0]] = {
-                                        "type": (epp_trigger.type or [""])[0],
-                                        "point": (epp_trigger.point or [""])[0],
-                                        "status": (epp_trigger.status or [""])[0],
+                                    epps[epp_trigger.get_first('name')] = {
+                                        "type": epp_trigger.get_first('type') or "",
+                                        "point": epp_trigger.get_first('point') or "",
+                                        "status": epp_trigger.get_first('status') or "",
                                     }
 
-                                for script in step.process_type.parameter:
-                                    string = script.string
-                                    epps[script.name[0]]["script"] = string.text[0].strip() if string is not None else ""
+                                for script in step.get('process-type').get('parameter'):
+                                    string = script.get('string')
+                                    epps[script.get_first('name')]["script"] = (string.get_first('text') or "").strip()
 
                                 for epp_name, epp in epps.items():
-                                    out_file.write(SEP.join([workflow.name[0], protocol_name, step_name, epp_name,
-                                                             format_string(epp.get('type')),
-                                                             format_string(epp.get('status')),
-                                                             format_string(epp.get('point')),
-                                                             epp.get('script')]) + "\n")
+                                    print(workflow.get_first('name'), protocol.get_first('name'),
+                                          step.get_first('name'), epp_name, format_string(epp['type']),
+                                          format_string(epp['status']), format_string(epp['point']), epp['script'],
+                                          sep=SEP, file=out_file)
                             else:
-                                out_file.write(workflow.name[0] + SEP + protocol_name + SEP + step_name + "\n")
+                                print(workflow.get_first('name'), protocol.get_first('name'), step.get_first('name'),
+                                      sep=SEP, file=out_file)
                     else:
-                        out_file.write(protocol_name + '\n')
+                        print(workflow.get_first('name'), protocol.get_first('name'), sep=SEP, file=out_file)
