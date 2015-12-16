@@ -13,32 +13,33 @@ from clarity import Clarity
 
 __author__ = 'rf9'
 
-DIRECTORY = 'snapshots'
-
 if __name__ == "__main__":
-    if len(sys.argv) == 2:
+    if len(sys.argv) == 3:
         root_url = sys.argv[1]
+        directory = sys.argv[2]
+        if directory.endswith('/'):
+            directory = directory[:-1]
     else:
-        sys.stderr.write("usage: python list_epp.py <root_uri_prod>\n")
+        sys.stderr.write("usage: python list_epp.py <root_uri_prod> <directory>\n")
         sys.exit(1)
 
     date = str(datetime.datetime.now()).replace(' ', '_')
 
-    if not os.path.exists(DIRECTORY):
-        os.makedirs(DIRECTORY)
+    if not os.path.exists(directory):
+        os.makedirs(directory)
 
     # Save current snapshot to directory
-    prod_file = '%s/%s_prod.xml' % (DIRECTORY, date)
-    cmp_file1 = '%s/%s_prod_cmp_1.xml' % (DIRECTORY, date)
-    cmp_file2 = '%s/%s_prod_cmp_2.xml' % (DIRECTORY, date)
+    prod_file = '%s/%s_prod.xml' % (directory, date)
+    cmp_file1 = '%s/%s_prod_cmp_1.xml' % (directory, date)
+    cmp_file2 = '%s/%s_prod_cmp_2.xml' % (directory, date)
 
     clarity = Clarity(root_url)
 
     get_config_tree.main(clarity, prod_file)
 
-    filenames = list(os.walk(DIRECTORY))[0][2]
+    filenames = list(os.walk(directory))[0][2]
 
-    prod_filenames = [DIRECTORY + '/' + filename for filename in filenames if filename.endswith('_prod.xml')]
+    prod_filenames = [directory + '/' + filename for filename in filenames if filename.endswith('_prod.xml')]
 
     if len(prod_filenames) >= 2:
         exit(not config_diff.main(prod_filenames[-2], prod_filenames[-1], cmp_file1, cmp_file2))
