@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 12;
+use Test::More tests => 22;
 use Test::Exception;
 use Test::MockObject::Extends;
 
@@ -37,6 +37,42 @@ my $base_uri = $config->clarity_api->{'base_uri'};
     wtsi_clarity::mq::me::charging::library_construction->new(
       process_url => $base_uri . '/processes/122-65197',
       step_url    => $base_uri . '/steps/122-65197',
+      timestamp   => '2015-11-17 09:51:36',
+      event_type  => 'charging_library_construction',
+    )
+  );
+
+  $me_mocked->mock(q{_project_uuid}, sub {
+
+    return 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e';
+  });
+
+  lives_ok { $me_mocked->prepare_messages } 'Prepares those messages just fine';
+}
+
+{
+  local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
+  my $me = wtsi_clarity::mq::me::charging::library_construction->new(
+    process_url => $base_uri . '/processes/122-41522',
+    step_url    => $base_uri . '/steps/122-41522',
+    timestamp   => '2015-11-17 09:51:36',
+    event_type  => 'charging_library_construction',
+  );
+
+  is($me->_user_identifier, 'karel@testsite.ac.uk', 'Extracts the user identifier correctly');
+  is($me->_project_name, 'Karoly_test', 'Extracts the project name correctly');
+  is($me->product_type, 'GCLP ISC', 'Gets the correct product type information');
+  is($me->pipeline, 'IHTP', 'Gets the correct pipeline information');
+  is($me->_library_type, 'ISC', 'Gets the correct library type information');
+  is($me->bait_library, '14M_0670551', 'Gets the correct bait type information');
+  is($me->plex_level, '8', 'Gets the correct plex level information');
+  is($me->_cost_code, 'S01XYZ', 'Extracts the cost code correctly');
+  is($me->number_of_samples, 64, 'Gets the number of libraries correctly');
+
+  my $me_mocked = Test::MockObject::Extends->new(
+    wtsi_clarity::mq::me::charging::library_construction->new(
+      process_url => $base_uri . '/processes/122-41522',
+      step_url    => $base_uri . '/steps/122-41522',
       timestamp   => '2015-11-17 09:51:36',
       event_type  => 'charging_library_construction',
     )

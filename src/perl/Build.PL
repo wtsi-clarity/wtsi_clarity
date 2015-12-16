@@ -5,7 +5,7 @@ use Module::Build;
 my $class = Module::Build->subclass(code => <<'EOF');
 
   sub git_tag {
-    my $gitver = q[git describe --dirty --always];
+    my $gitver = q[git describe --tags --always];
     my $version = `$gitver` || 'unknown';
     $version =~ s/\s$//smxg;
     $version=~s/\A(?![\d])/0.0-/smx; #prepend 0.0- if does not start with a number

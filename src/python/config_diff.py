@@ -1,6 +1,16 @@
 #!/usr/bin/env python3
-from xml.etree import ElementTree
+"""
+This script is used to get the difference between two xml files.
 
+usage: python list_epp.py <file1> <file2> <output_file1> <output_file2>
+
+file1 will have everything that is the same removed and be written out as output_file1. The same will be done for file2.
+Whist retaining the xml structure, only the differences between the two input files will be in the output files.
+
+This script ignores the order of the xml, so if you care about the order of elements this will not work.
+"""
+
+from xml.etree import ElementTree
 import sys
 
 __author__ = 'rf9'
