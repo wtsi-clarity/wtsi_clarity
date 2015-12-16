@@ -26,6 +26,13 @@ override 'run' => sub {
   return 1;
 };
 
+has 'container_id' => (
+  is        => 'ro',
+  isa       => 'ArrayRef',
+  predicate => '_has_container_id',
+  required  => 0,
+);
+
 has '+process_url' => (
   required  => 0,
   predicate => '_has_process_url',
@@ -39,15 +46,6 @@ has '_message' => (
   trigger   => \&_set_attributes,
   init_arg  => 'message',
   predicate => '_has_message',
-);
-
-has 'publish_to_irods' => (
-  is        => 'ro',
-  isa       => 'Bool',
-  predicate => '_has_publish_to_irods',
-  default   => 0,
-  required  => 0,
-  writer    => 'write_publish_to_irods',
 );
 
 has '_irods_publisher' => (
@@ -72,6 +70,10 @@ sub file_content {
 
 sub headers {
   croak 'Method headers must be overidden';
+}
+
+sub publish_to_irods {
+  croak 'Method publish_to_irods must be overidden';
 }
 
 sub file_delimiter {
@@ -123,21 +125,26 @@ sub _create_reports {
       delimiter => $self->file_delimiter,
     );
 
-    my $filename = $self->file_name($model);
+    $self->_output_file($file, $self->file_name($model));
+  }
 
-    if ($self->_has_publish_to_irods && $self->publish_to_irods) {
-      my $dir = tempdir(CLEANUP => 1);
-      my $file_path = $file->saveas(join q{/}, $dir, $filename);
+  return 1;
+}
 
-      $self->_publish_report_to_irods($file_path);
-      my $hash = $self->md5_hash;
+sub _output_file {
+  my ($self, $file, $filename) = @_;
 
-      if ($hash) {
-        $self->insert_hash_to_database($filename, $hash, $self->irods_destination_path())
-      }
-    } else {
-      $file->saveas($filename);
+  if ($self->publish_to_irods) {
+    my $dir = tempdir(CLEANUP => 1);
+    my $file_path = $file->saveas(join q{/}, $dir, $filename);
+    $self->_publish_report_to_irods($file_path);
+    my $hash = $self->md5_hash;
+
+    if ($hash) {
+      $self->insert_hash_to_database($filename, $hash, $self->irods_destination_path())
     }
+  } else {
+    $file->saveas($filename);
   }
 
   return 1;
@@ -156,7 +163,7 @@ sub _build__irods_publisher {
 sub _set_attributes {
   my $self = shift;
   $self->write_process_url($self->_message->process_url);
-  $self->write_publish_to_irods($self->_message->publish_to_irods);
+
   return 1;
 }
 
@@ -234,6 +241,11 @@ base report class for irods related reports
 
   An abstract method, what the child class should be override.
   Define the sorting criteria by column name.
+
+=head2 publish_to_irods
+
+  Checks whether the 'WTSI Send data to external iRODS' check box in project the sample relates to is checked or not.
+  If it is checked then returns 1, otherwise 0.
 
 =head2 irods_destination_path
 
