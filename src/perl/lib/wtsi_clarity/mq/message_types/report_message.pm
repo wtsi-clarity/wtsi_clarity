@@ -15,13 +15,6 @@ has 'purpose' => (
   required  => 1,
 );
 
-has 'publish_to_irods' => (
-  isa       => 'Bool',
-  is        => 'ro',
-  required  => 1,
-  default   => 1,
-);
-
 1;
 
 __END__
