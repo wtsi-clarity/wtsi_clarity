@@ -49,13 +49,16 @@ def main(in_file_1, in_file_2, out_file_1, out_file_2):
             if child.tag == 'show-in-tables':
                 parent.remove(child)
 
-    remove_same(tree1, tree2)
+    if not remove_same(tree1, tree2):
+        with open(out_file_1, mode='w') as out_file:
+            out_file.write(ElementTree.tostring(tree1).decode('ascii'))
 
-    with open(out_file_1, mode='w') as out_file:
-        out_file.write(ElementTree.tostring(tree1).decode('ascii'))
+        with open(out_file_2, mode='w') as out_file:
+            out_file.write(ElementTree.tostring(tree2).decode('ascii'))
 
-    with open(out_file_2, mode='w') as out_file:
-        out_file.write(ElementTree.tostring(tree2).decode('ascii'))
+        return False
+
+    return True
 
 
 if __name__ == "__main__":

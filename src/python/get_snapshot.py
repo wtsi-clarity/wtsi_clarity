@@ -35,20 +35,17 @@ if __name__ == "__main__":
 
     print('Input test credentials:')
     test_user = getpass.getuser()
-    test_user = input("Username (leave blank for '" + test_user + "'): ") or test_user
+    test_user = input("Username (leave blank for %r): " % test_user) or test_user
     test_password = getpass.getpass('Password: ')
-    temp_clarity = Clarity(root_url_test, test_user, test_password)
+    test_clarity = Clarity(root_url_test, test_user, test_password)
 
     print('Input production credentials:')
     prod_user = getpass.getuser()
-    prod_user = input("Username (leave blank for '" + prod_user + "'): ") or prod_user
+    prod_user = input("Username (leave blank for %r): " % prod_user) or prod_user
     prod_password = getpass.getpass('Password: ')
-    temp_clarity = Clarity(root_url_prod, prod_user, prod_password)
-
-    test_clarity = Clarity(root_url_test, test_user, test_password)
-    get_config_tree.main(test_clarity, test_file)
-
     prod_clarity = Clarity(root_url_prod, prod_user, prod_password)
+
+    get_config_tree.main(test_clarity, test_file)
     get_config_tree.main(prod_clarity, prod_file)
 
     config_diff.main(test_file, prod_file, test_file_diff, prod_file_diff)
