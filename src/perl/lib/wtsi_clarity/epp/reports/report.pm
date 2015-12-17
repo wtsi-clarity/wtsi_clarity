@@ -61,6 +61,13 @@ has '_file_factory' => (
   builder => '_build__file_factory',
 );
 
+has 'save_file' => (
+  is        => 'ro',
+  isa       => 'Bool',
+  default   => 0,
+  required  => 0,
+);
+
 # Methods can
 sub file_content {
   croak 'Method file_content must be overidden';
@@ -136,7 +143,9 @@ sub _output_file {
     my $dir = tempdir(CLEANUP => 1);
     my $file_path = $file->saveas(join q{/}, $dir, $filename);
     $self->_publish_report_to_irods($file_path);
-  } else {
+  }
+
+  if ($self->save_file) {
     $file->saveas($filename);
   }
 
