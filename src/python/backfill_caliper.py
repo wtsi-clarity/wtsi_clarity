@@ -43,7 +43,7 @@ if __name__ == '__main__':
     if len(sys.argv) == 2:
         root_url = sys.argv[1]
     else:
-        sys.stderr.write("usage: python list_epp.py <root_uri>\n")
+        sys.stderr.write("usage: python backfill_caliper.py <root_uri>\n")
         sys.exit(1)
 
     clarity = Clarity(root_url)

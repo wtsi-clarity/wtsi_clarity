@@ -20,7 +20,7 @@ if __name__ == "__main__":
         root_url_test = sys.argv[1]
         root_url_prod = sys.argv[2]
     else:
-        sys.stderr.write("usage: python list_epp.py <root_uri_test> <root_uri_prod>\n")
+        sys.stderr.write("usage: python get_snapshot.py <root_uri_test> <root_uri_prod>\n")
         sys.exit(1)
 
     date = str(datetime.datetime.now()).replace(' ', '_')

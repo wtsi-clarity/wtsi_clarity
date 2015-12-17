@@ -68,7 +68,7 @@ if __name__ == "__main__":
         out1 = sys.argv[3]
         out2 = sys.argv[4]
     else:
-        sys.stderr.write("usage: python list_epp.py <file1> <file2> <output_file1> <output_file2>\n")
+        sys.stderr.write("usage: python config_diff.py <file1> <file2> <output_file1> <output_file2>\n")
         sys.exit(1)
 
     main(in1, in2, out1, out2)

@@ -20,7 +20,7 @@ if __name__ == "__main__":
         if directory.endswith('/'):
             directory = directory[:-1]
     else:
-        sys.stderr.write("usage: python list_epp.py <root_uri_prod> <directory>\n")
+        sys.stderr.write("usage: python check_same.py <root_uri_prod> <directory>\n")
         sys.exit(1)
 
     date = str(datetime.datetime.now()).replace(' ', '_')

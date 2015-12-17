@@ -94,7 +94,7 @@ if __name__ == "__main__":
         root = sys.argv[1]
         out = sys.argv[2]
     else:
-        sys.stderr.write("usage: python list_epp.py <root_uri> <output_file>\n")
+        sys.stderr.write("usage: python get_config_tree.py <root_uri> <output_file>\n")
         sys.exit(1)
 
     main(Clarity(root), out)

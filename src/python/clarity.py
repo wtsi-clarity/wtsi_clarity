@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import getpass
 import os
 import re
@@ -9,6 +11,7 @@ from xml.etree import ElementTree
 import sys
 
 BATCHABLE = ('artifacts', 'containers', 'files', 'samples')
+FIELD = "{http://genologics.com/ri/userdefined}field"
 
 __author__ = 'rf9'
 
@@ -139,7 +142,7 @@ class ClarityElement:
         self.clarity = clarity
         self.xml_list = xml_list
 
-    def get(self, item):
+    def get(self, item, first=True):
         # Try the xml method
         try:
             return [getattr(xml, item) for xml in self.xml_list]
@@ -158,17 +161,22 @@ class ClarityElement:
 
         # If it has a url, fetch the urls and try with the fetched objects.
         uris = [x for x in [xml.get('uri') for xml in self.xml_list] if x is not None]
-        if uris:
-            try:
-                return ClarityElement(self.clarity, self.clarity.get_xml(uris)).get(item)
-            except RuntimeError as err:
-                pass
+        if uris and first:
+            return ClarityElement(self.clarity, self.clarity.get_xml(uris)).get(item, first=False)
 
         return []
 
     def get_first(self, item):
         values = self.get(item)
         return values[0] if values else None
+
+    def find(self, item):
+        return ClarityElement(self.clarity,
+                              [child for element in self.xml_list for child in element.iter() if child.tag == item])
+
+    def get_udf(self, name):
+        return ClarityElement(self.clarity,
+                              [element for element in self.get(FIELD).xml_list if element.get('name') == name])
 
     def __iter__(self):
         self.n = 0
@@ -206,4 +214,9 @@ if __name__ == '__main__':
     # print(artifacts.name.text)
     # print(artifacts.sample.limsid)
 
-    print(container.foo)
+    # print(container.foo)
+
+    print(container.find('value').get('text'))
+    print(container.get('placement').get('sample').get('date-received').get('text'))
+    print(container.get('placement').get('sample').get_udf('WTSI Library Molarity').get('text'))
+    print(container.get('placement').get('foo'))
