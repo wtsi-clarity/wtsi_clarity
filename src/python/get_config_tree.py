@@ -8,79 +8,55 @@ Root url is the url that ends in `/api/v2`
 
 Use with config_diff.py to get the differences between two xml configs.
 """
-
 from urllib.parse import urljoin
 from xml.etree import ElementTree
+
 import sys
+
 from clarity import Clarity
 
 __author__ = 'rf9'
 
-IGNORE_LIST = ['show-in-tables']
+IGNORE_LIST = ['stage']
 
 
 def main(clarity, out_file_path):
     def expand(element_to_expand):
-        if element_to_expand.get('uri'):
-            for child_element in clarity.get_xml(element_to_expand.get('uri')):
-                element_to_expand.append(child_element)
-            # Remove the uri from the element (because it will always be different)
+        uri = element_to_expand.get('uri')
+
+        if 'uri' in element_to_expand.attrib:
             del element_to_expand.attrib['uri']
+        if 'protocol-uri' in element_to_expand.attrib:
+            del element_to_expand.attrib['protocol-uri']
+        if 'next-step-uri' in element_to_expand.attrib:
+            del element_to_expand.attrib['next-step-uri']
+
+        if element_to_expand.tag in IGNORE_LIST:
+            return
+
+        if uri and not element_to_expand:
+            for child_element in clarity.get_xml(uri):
+                element_to_expand.append(child_element)
+
+        for child_element in element_to_expand:
+            expand(child_element)
 
     def sort_tree(tree):
         for child_element in tree:
             sort_tree(child_element)
 
-        children_elements = sorted(list(tree), key=lambda x: ElementTree.tostring(x))
+        children_elements = sorted(tree, key=lambda x: ElementTree.tostring(x))
         for child_element in children_elements:
             tree.remove(child_element)
-
-            if tree.tag not in IGNORE_LIST:
-                tree.append(child_element)
+            tree.append(child_element)
 
     workflows = clarity.get_xml(urljoin(clarity.root, 'configuration/workflows/'))
 
     for workflow in workflows.findall('workflow'):
-
         if workflow.get('status') != 'ACTIVE':
             workflows.remove(workflow)
-            continue
 
-        expand(workflow)
-
-        for protocol in workflow.find('protocols').findall('protocol'):
-            expand(protocol)
-
-            for step in protocol.find('steps').findall('step'):
-                for reagent_kit in step.find('required-reagent-kits').findall('reagent-kit'):
-                    expand(reagent_kit)
-
-                del step.attrib['protocol-uri']
-                del step.attrib['uri']
-
-                process_type = step.find('process-type')
-                expand(process_type)
-
-                for type_definition in process_type.findall('type-definition'):
-                    expand(type_definition)
-
-                for field_definition in process_type.findall('field-definition'):
-                    expand(field_definition)
-
-                for process_output in process_type.findall('process-output'):
-                    for field_definition in process_output.findall('field-definition'):
-                        expand(field_definition)
-
-                for transition in step.find('transitions').findall('transition'):
-                    del transition.attrib['next-step-uri']
-
-                permitted_control_types = step.find('permitted-control-types')
-                if permitted_control_types is not None:
-                    for control_type in permitted_control_types.findall('control-type'):
-                        expand(control_type)
-
-        for stage in workflow.find('stages').findall('stage'):
-            del stage.attrib['uri']
+    expand(workflows)
 
     # Alphabetise the xml (retaining structure) to avoid false changes in the diff.
     sort_tree(workflows)

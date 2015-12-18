@@ -39,16 +39,6 @@ def main(in_file_1, in_file_2, out_file_1, out_file_2):
     tree1 = ElementTree.parse(in_file_1).getroot()
     tree2 = ElementTree.parse(in_file_2).getroot()
 
-    for parent in tree1.iter():
-        for child in parent:
-            if child.tag == 'show-in-tables':
-                parent.remove(child)
-
-    for parent in tree2.iter():
-        for child in parent:
-            if child.tag == 'show-in-tables':
-                parent.remove(child)
-
     if not remove_same(tree1, tree2):
         with open(out_file_1, mode='w') as out_file:
             out_file.write(ElementTree.tostring(tree1).decode('ascii'))
