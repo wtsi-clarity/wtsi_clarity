@@ -124,7 +124,6 @@ sub _create_reports {
       data      => $file_content,
       delimiter => $self->file_delimiter,
     );
-
     $self->_output_file($file, $self->file_name($model));
   }
 
@@ -138,8 +137,7 @@ sub _output_file {
     my $dir = tempdir(CLEANUP => 1);
     my $file_path = $file->saveas(join q{/}, $dir, $filename);
     $self->_publish_report_to_irods($file_path);
-    my $hash = $self->md5_hash;
-
+    my $hash = $self->_irods_publisher->md5_hash;
     if ($hash) {
       $self->insert_hash_to_database($filename, $hash, $self->irods_destination_path())
     }
