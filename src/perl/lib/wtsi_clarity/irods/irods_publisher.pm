@@ -3,15 +3,22 @@ package wtsi_clarity::irods::irods_publisher;
 use Moose;
 use Readonly;
 use Carp;
+use IPC::Open3 'open3';
 
 our $VERSION = '0.0';
 
 Readonly::Scalar my $OVERWRITE_IF_EXISTS => 1;
 
+has 'md5_hash' => (
+  is => "rw",
+);
+
 sub publish {
   my ($self, $file, $destination, $is_overwrite, @metadata) = @_;
 
   $self->_put($file, $destination, $OVERWRITE_IF_EXISTS);
+
+  $self->md5_hash($self->_save_hash($destination));
 
   if (@metadata) {
     $self->_add_metadata_to_file($destination, @metadata);
@@ -58,6 +65,23 @@ sub _execute_irods_command {
   }
 
   return $exit_code;
+}
+
+sub _save_hash {
+  my ($self, $filename) = @_;
+
+  my $command = "ichksum $filename";
+
+  my ($writer, $reader, $err);
+  open3($writer, $reader, $err, $command);
+  my $output = <$reader>;
+
+  $output =~ /$filename\s+(\w+)/smx;
+  if ($output) {
+    my $md5_hash = $1;
+
+    return $md5_hash;
+  }
 }
 
 1;
@@ -108,6 +132,8 @@ wtsi_clarity::irods::irods_publisher
 =item Carp
 
 =item Readonly
+
+=item IPC::Open3
 
 =back
 

@@ -33,9 +33,9 @@ if __name__ == "__main__":
     #
     #     container_xml = clarity.get_xml(container.get('uri'))
     #     artifact_uris = {placement.get('uri') for placement in container_xml.findall('placement')}
-    #     artifacts = clarity.batch_get_xml('artifacts', artifact_uris)
+    #     artifacts = clarity.get_xml(artifact_uris)
     #     sample_uris = {artifact.find('sample').get('uri') for artifact in artifacts}
-    #     samples = clarity.batch_get_xml('samples', sample_uris)
+    #     samples = clarity.get_xml(sample_uris)
     #     uuid = {sample.find('name').text for sample in samples}
     #     uuids += uuid
     #
@@ -51,7 +51,7 @@ if __name__ == "__main__":
                 search_xml = clarity.get_xml(
                     clarity.root + 'samples?' + '&'.join(['name=' + uuid.strip() for uuid in uuids[i:i + batch_size]]))
                 sample_uris = [sample.get('uri') for sample in search_xml.findall('sample')]
-                samples = clarity.batch_get_xml('samples', sample_uris)
+                samples = clarity.get_xml(sample_uris)
 
                 for sample in samples:
                     supplier = [field.text for field in sample.findall(FIELD) if field.get('name') == SUPPLIER_NAME][0]

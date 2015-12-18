@@ -9,6 +9,8 @@ use File::Temp qw/ tempdir /;
 use wtsi_clarity::util::csv::factory;
 use wtsi_clarity::irods::irods_publisher;
 
+with 'wtsi_clarity::util::roles::database';
+
 our $VERSION = '0.0';
 
 Readonly::Scalar my $TWELVE => 12;
@@ -143,6 +145,11 @@ sub _output_file {
     my $dir = tempdir(CLEANUP => 1);
     my $file_path = $file->saveas(join q{/}, $dir, $filename);
     $self->_publish_report_to_irods($file_path);
+    my $hash = $self->_irods_publisher->md5_hash;
+
+    if ($hash) {
+      $self->insert_hash_to_database($filename, $hash, $self->irods_destination_path())
+    }
   }
 
   if ($self->save_file) {
@@ -273,6 +280,8 @@ base report class for irods related reports
 =item wtsi_clarity::epp
 
 =item wtsi_clarity::irods::irods_publisher
+
+=item wtsi_clarity::util::roles::database
 
 =back
 

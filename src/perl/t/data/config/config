@@ -38,7 +38,6 @@ password=pword3
 routing_key=clarity
 exchange=warehouse_exch
 
-
 [printing]
 service_url=http://psd2g.internal.sanger.ac.uk:8000/lims-support
 
@@ -62,3 +61,9 @@ lab_sample_qc_path=/Sanger1-dev/home/glsai
 
 [barcode_mint]
 internal_generation=1
+
+[database]
+use_database=1
+dsn=dbi:SQLite:dbname=test.db
+user=
+pass=
