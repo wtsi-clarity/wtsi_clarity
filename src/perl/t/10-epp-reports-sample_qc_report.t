@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 12;
+use Test::More tests => 15;
 
 use Test::MockObject::Extends;
 use Test::Exception;
@@ -53,7 +53,7 @@ my $EXPECTED_FILE_CONTENT = [
 
   $report->_sample_doc($samples);
 
-  is($report->publish_to_irods, 0, 'Returns the correct value for ');
+  is($report->publish_to_irods, 1, 'Returns the correct value for ');
 
   my $sample_doc = $samples->[0];
 
@@ -145,32 +145,38 @@ my $EXPECTED_FILE_CONTENT = [
 {
   my $HASH = '0123456789abcdef0123456789abcdef';
 
+  my $irods_mock = Test::MockObject->new(
+  )->mock(q(publish), sub {
+    }
+  )->mock(q(md5_hash), sub {
+      return $HASH;
+    }
+  );
+
   my $report = Test::MockObject::Extends->new(
-    wtsi_clarity::epp::reports::sample_qc_report->new(
-      process_url => $base_uri . '/processes/24-63229',
-      publish_to_irods  => 1
-    )
+  wtsi_clarity::epp::reports::sample_qc_report->new(
+    process_url      => $base_uri.'/processes/24-63229',
+    publish_to_irods => 1
+  )
   )->mock(q{now}, sub {
-    return "20150813121212";
-  })->mock(q(_irods_publisher), sub {
-    return Test::MockObject->new()->mock(q(publish), sub {
+      return "20150813121212";
+    })->mock(q(_irods_publisher), sub {
+      return $irods_mock;
+    })->mock(q(insert_hash_to_database), sub {
+      my ($self, $filename, $hash, $location) = @_;
+      is($filename, '01e9be16-a7c6-11e4-b42e-68b59977951e.20150813121212.lab_sample_qc.txt',
+        'Inserts filename into database');
+      is($hash, $HASH, 'Inserts hash into the database');
+      is($location, '/Sanger1-dev/home/glsai/', 'Inserts location into the database.')
     });
-  })->mock(q(md5_hash), sub {
-    return $HASH;
-  })->mock(q(insert_hash_to_database), sub {
-    my ($self, $filename, $hash, $location) = @_;
-    is($filename, '01e9be16-a7c6-11e4-b42e-68b59977951e.20150813121212.lab_sample_qc.txt', 'Inserts filename into database');
-    is($hash, $HASH, 'Inserts hash into the database');
-    is($location, '/Sanger1-dev/home/glsai/', 'Inserts location into the database.')
-  });
 
   lives_ok {
     $report->_create_reports()
   } 'Created reports okay with hash.';
 
-  $report->mock(q(md5_hash), sub {
-    undef;
-  });
+  $irods_mock->mock(q(md5_hash), sub {
+      undef;
+    });
 
   lives_ok {
     $report->_create_reports()
