@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 6;
+use Test::More tests => 12;
 use Test::MockObject::Extends;
 use Test::Exception;
 
@@ -1844,7 +1844,9 @@ my $EXPECTED_FILE_CONTENT = [
 {
   local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/manifest';
 
-  my $manifest = wtsi_clarity::epp::reports::manifest->new( process_url => 'http://clarity.com/processes/1' );
+  my $manifest = wtsi_clarity::epp::reports::manifest->new(
+    process_url => 'http://clarity.com/processes/1',
+  );
 
   my $containers_xml = XML::LibXML->load_xml(
     location => $ENV{'WTSICLARITY_WEBCACHE_DIR'} . '/POST/containers.batch_a96e03cdcd0c7bb75d2263d8cdf143b0'
@@ -1859,7 +1861,74 @@ my $EXPECTED_FILE_CONTENT = [
 
   is($manifest->publish_to_irods, 1, "Return correctly the publish to external iRODS setting");
 
-  my $called;
+  my $publish_reports_to_irods_called;
+  my $mocked_manifest = Test::MockObject::Extends->new(
+    wtsi_clarity::epp::reports::manifest->new(
+      process_url => 'http://clarity.com/processes/1',
+      save_file   => 1,
+    )
+  );
+  $mocked_manifest->mock(q{now}, sub {
+    return "20150813121212";
+  });
+  $mocked_manifest->mock(q{publish_to_irods}, sub {
+    return 1;
+  });
+  $mocked_manifest->mock(q{_publish_report_to_irods}, sub {
+    ++$publish_reports_to_irods_called;
+    return 1;
+  });
+  $mocked_manifest->mock(q{md5_hash}, sub {
+    return '12345';
+  });
+  $mocked_manifest->mock(q{insert_hash_to_database}, sub {
+    return 1;
+  });
+
+  my $saveas_called = 0;
+  my $mocked_file = Test::MockObject::Extends->new(
+    $mocked_manifest->_file_factory->create(
+      type      => 'report_writer',
+      headers   => $mocked_manifest->headers,
+      data      => $file_content,
+      delimiter => $mocked_manifest->file_delimiter,
+    )
+  );
+  $mocked_file->mock(q{saveas}, sub {
+    return ++$saveas_called;
+  });
+
+  $mocked_manifest->_output_file($mocked_file, "test_file.txt");
+
+  is($publish_reports_to_irods_called, 1, '_publish_report_to_irods function called');
+  is($saveas_called, 2, 'Successfully called the saveas method.');
+  my $expected_file_name = "27-11037.20150813121212.manifest.txt";
+
+  is($mocked_manifest->file_name($container), $expected_file_name, 'Creates a file name correctly');
+}
+
+{
+  local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/epp/generic/manifest';
+
+  my $manifest = wtsi_clarity::epp::reports::manifest->new(
+    process_url => 'http://clarity.com/processes/1',
+  );
+
+  my $containers_xml = XML::LibXML->load_xml(
+    location => $ENV{'WTSICLARITY_WEBCACHE_DIR'} . '/POST/containers.batch_a96e03cdcd0c7bb75d2263d8cdf143b0'
+  );
+
+  my $container = $containers_xml->findnodes('/con:details/con:container')->pop();
+
+  my $file_content = $manifest->file_content($container);
+  $file_content = $manifest->_sort_file_content($file_content, $manifest->sort_order, $manifest->sort_by_column);
+
+  is_deeply($file_content, $EXPECTED_FILE_CONTENT,
+    'File content is generated from a container node correctly');
+
+  is($manifest->publish_to_irods, 1, "Return correctly the publish to external iRODS setting");
+
+  my $publish_reports_to_irods_called;
   my $mocked_manifest = Test::MockObject::Extends->new(
     wtsi_clarity::epp::reports::manifest->new(
       process_url => 'http://clarity.com/processes/1',
@@ -1872,25 +1941,27 @@ my $EXPECTED_FILE_CONTENT = [
     return 1;
   });
   $mocked_manifest->mock(q{_publish_report_to_irods}, sub {
-    ++$called;
-    return 1;
-  });
-  $mocked_manifest->mock(q{md5_hash}, sub {
-    return '12345';
-  });
-  $mocked_manifest->mock(q{insert_hash_to_database}, sub {
+    ++$publish_reports_to_irods_called;
     return 1;
   });
 
-  my $file = $mocked_manifest->_file_factory->create(
+  my $saveas_called;
+  my $mocked_file = Test::MockObject::Extends->new(
+    $mocked_manifest->_file_factory->create(
       type      => 'report_writer',
       headers   => $mocked_manifest->headers,
       data      => $file_content,
       delimiter => $mocked_manifest->file_delimiter,
-    );
-  $mocked_manifest->_output_file($file, "test_file.txt");
-  is($called, 1, '_publish_report_to_irods function called');
+    )
+  );
+  $mocked_file->mock(q{saveas}, sub {
+    ++$saveas_called;
+  });
 
+  $mocked_manifest->_output_file($mocked_file, "test_file.txt");
+
+  is($publish_reports_to_irods_called, 1, '_publish_report_to_irods function called');
+  is($saveas_called, 1, 'Successfully called the saveas method.');
   my $expected_file_name = "27-11037.20150813121212.manifest.txt";
 
   is($mocked_manifest->file_name($container), $expected_file_name, 'Creates a file name correctly');

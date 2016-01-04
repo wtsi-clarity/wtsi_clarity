@@ -30,7 +30,7 @@ sub _build_database {
   }
 }
 
-sub DEMOLISH() {
+sub DEMOLISH {
   my ($self) = @_;
   super();
 
