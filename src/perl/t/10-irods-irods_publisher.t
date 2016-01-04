@@ -10,7 +10,7 @@ my $exit_code = system('ihelp > /dev/null 2>&1');
 if ($exit_code != 0) {
   plan skip_all => 'iRODS icommands needs to be installed and they needs to be on the PATH.';
 } else {
-  plan tests => 18;
+  plan tests => 23;
 }
 
 use_ok('wtsi_clarity::irods::irods_publisher');
@@ -25,6 +25,7 @@ my $test_file_name = 'test_file.txt';
 
 my $file_to_put = "$data_path/$test_file_name";
 my $destination_path = "$test_file_name";
+my $long_destination_path = '27-15592.20160104155831.manifest.txt';
 my $file_to_add_metadata = $destination_path;
 my $file_to_remove = $destination_path;
 
@@ -80,6 +81,25 @@ my @metadatum = (
   # cleanup
   lives_ok {
     $exit_code = $publisher->remove($file_to_remove)
+  } 'Successfully removed file from iRODS.';
+  is($exit_code, 0, "Successfully exited from the irm command.");
+}
+
+{
+  my $publisher = Test::MockObject::Extends->new(
+    wtsi_clarity::irods::irods_publisher->new()
+  );
+
+  lives_ok {
+    $exit_code = $publisher->publish($file_to_put, $long_destination_path, $overwrite, @metadatum)
+  } 'Successfully published the file into iRODS and added the metadata to it.';
+
+  is($exit_code, 1, "Successfully exited from the iput and imeta commands.");
+  is(length $publisher->md5_hash, 32, "Generated a hash for a long file name");
+
+  # cleanup
+  lives_ok {
+    $exit_code = $publisher->remove($long_destination_path)
   } 'Successfully removed file from iRODS.';
   is($exit_code, 0, "Successfully exited from the irm command.");
 }
