@@ -76,7 +76,7 @@ sub _save_hash {
   open3($writer, $reader, $err, $command);
   my $output = <$reader>;
 
-  $output =~ /$filename\s+(\w+)/smx;
+  $output =~ /\s+\S+\s+(\w+)/smx;
   if ($output) {
     my $md5_hash = $1;
 
