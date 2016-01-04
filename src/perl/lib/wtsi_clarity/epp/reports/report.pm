@@ -131,7 +131,6 @@ sub _create_reports {
       data      => $file_content,
       delimiter => $self->file_delimiter,
     );
-
     $self->_output_file($file, $self->file_name($model));
   }
 
