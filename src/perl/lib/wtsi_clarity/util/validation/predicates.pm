@@ -30,12 +30,12 @@ sub is_digits_or_uppercase {
 
 sub starts_with {
   my $string = shift;
-  return _matches_regex("^\\s*($string)");
+  return _matches_regex('^\s*(' . $string . ')');
 }
 
 sub ends_with {
   my $string = shift;
-  return _matches_regex("($string)\\s*\$");
+  return _matches_regex('(' . $string . ')\s*$');
 }
 
 sub _matches_regex {
