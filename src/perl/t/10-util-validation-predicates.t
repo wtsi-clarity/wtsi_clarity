@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 43;
+use Test::More tests => 49;
 
 use_ok('wtsi_clarity::util::validation::predicates', qw/has_length_of is_integer has_no_whitespace is_digits_or_uppercase starts_with ends_with/);
 
@@ -50,6 +50,10 @@ use_ok('wtsi_clarity::util::validation::predicates', qw/has_length_of is_integer
   is(starts_with('ABC')->('ABCDE'), 1, "starts_with('ABC') returns 1 when value is ABCDE");
   isnt(starts_with('ABC')->('BCDE'), 1, "starts_with('ABC') does not return 1 when value is BCDE");
   isnt(starts_with('C')->('ABCDE'), 1, "starts_with('C') does not return 1 when value is ABCDE");
+
+  is(starts_with('A|B')->('ABCDE'), 1, "starts_with('A|B') returns 1 when value is ABCDE");
+  is(starts_with('A|B')->('BACDE'), 1, "starts_with('A|B') returns 1 when value is BACDE");
+  isnt(starts_with('A|B')->('CABDE'), 1, "starts_with('A|B') does not return 1 when value is CABDE");
 }
 
 {
@@ -64,6 +68,10 @@ use_ok('wtsi_clarity::util::validation::predicates', qw/has_length_of is_integer
   is(ends_with('CDE')->('ABCDE'), 1, "ends_with('CDE') returns 1 when value is ABCDE");
   isnt(ends_with('CDE')->('ABCD'), 1, "ends_with('CDE') does not return 1 when value is ABCD");
   isnt(ends_with('C')->('ABCDE'), 1, "ends_with('C') does not return 1 when value is ABCDE");
+
+  is(ends_with('D|E')->('ABCDE'), 1, "ends_with('D|E') returns 1 when value is ABCDE");
+  is(ends_with('D|E')->('ABCED'), 1, "ends_with('D|E') returns 1 when value is ABCED");
+  isnt(ends_with('D|E')->('ABDEC'), 1, "ends_with('C') does not return 1 when value is ABDEC");
 }
 
 1;

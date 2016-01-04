@@ -83,14 +83,14 @@ sub is_digits_or_uppercase {
 
 sub starts_with {
   my ($self, $string, $message) = @_;
-  $message = $message // 'The input must start with ' . $string;
+  $message = $message // 'The input must start with ' . ($string =~ s/[|]/ or /rsxm);
   $self->_add_validator(wtsi_clarity::util::validation::predicates::starts_with($string), $message);
   return $self;
 }
 
 sub ends_with {
   my ($self, $string, $message) = @_;
-  $message = $message // 'The input must end with ' . $string;
+  $message = $message // 'The input must end with ' . ($string =~ s/[|]/ or /rsxm);
   $self->_add_validator(wtsi_clarity::util::validation::predicates::ends_with($string), $message);
   return $self;
 }
