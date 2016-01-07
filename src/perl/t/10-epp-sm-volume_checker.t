@@ -82,9 +82,7 @@ my $current = cwd;
     input       => $in_low_extension,
     output      => $out,
   );
-  warning_like { $epp->run }
-  qr/Run method is called for class wtsi_clarity::epp::sm::volume_checker, process/,
-  'callback runs OK, logs process details';
+  lives_ok { $epp->run } 'callback runs OK, logs process details';
 
   chdir $current;
   ok(-e catfile($working, $out), 'robot file has been copied');

@@ -415,7 +415,7 @@ sub _fetch_sanger_barcode {
     my $artifact_uri = $artifacts_xml->findvalue($LAST_ARTIFACT);
 
     if ($artifact_uri eq q{}) {
-      $self->epp_log('No parent plate of plate ' . $container_limsid . ' has been through step ' . $step_name);
+      $self->epp_warn('No parent plate of plate ' . $container_limsid . ' has been through step ' . $step_name);
       next;
     }
 

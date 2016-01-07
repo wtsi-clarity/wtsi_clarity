@@ -41,11 +41,11 @@ foreach my $file (@additional_files_to_copy) {
 
 
 {
-  system("$dir/bin/epp --action test_action1 --process_url dummy_url 2>$dir/lib/stderr.txt");
-  open (my $fh, "<", "$dir/lib/stderr.txt");
-  my $stderr;
-  chomp($stderr = <$fh>);
-  is( $stderr,
+  system("$dir/bin/epp --action test_action1 --process_url dummy_url > $dir/lib/stdout.txt");
+  open (my $fh, "<", "$dir/lib/stdout.txt");
+  my $stdout;
+  chomp($stdout = <$fh>);
+  is( $stdout,
       "Run method from wtsi_clarity::epp::sm::test_action1",
       'callback runs OK, logs process details'
     );
@@ -53,14 +53,14 @@ foreach my $file (@additional_files_to_copy) {
 }
 
 {
-  system("$dir/bin/epp --action test_action1 --action test_action2 --process_url dummy_url 2>$dir/lib/stderr.txt");
-  open (my $fh, "<", "$dir/lib/stderr.txt");
-  my $stderr = "";
+  system("$dir/bin/epp --action test_action1 --action test_action2 --process_url dummy_url > $dir/lib/stdout.txt");
+  open (my $fh, "<", "$dir/lib/stdout.txt");
+  my $stdout = "";
   while(my $line = <$fh>) {
     chomp($line);
-    $stderr = $stderr . $line;
+    $stdout = $stdout . $line;
   }
-  is( $stderr,
+  is( $stdout,
       "Run method from wtsi_clarity::epp::sm::test_action1".
       "Run method from wtsi_clarity::epp::sm::test_action2",
       'callback runs OK, logs process details'
@@ -69,14 +69,14 @@ foreach my $file (@additional_files_to_copy) {
 }
 
 {
-  system("$dir/bin/epp --action test_action1 --action test_action3 --process_url dummy_url --test_action3_attr test_action3_attr_value 2>$dir/lib/stderr.txt");
-  open (my $fh, "<", "$dir/lib/stderr.txt");
-  my $stderr = "";
+  system("$dir/bin/epp --action test_action1 --action test_action3 --process_url dummy_url --test_action3_attr test_action3_attr_value > $dir/lib/stdout.txt");
+  open (my $fh, "<", "$dir/lib/stdout.txt");
+  my $stdout = "";
   while(my $line = <$fh>) {
     chomp($line);
-    $stderr = $stderr . $line;
+    $stdout = $stdout . $line;
   }
-  is( $stderr,
+  is( $stdout,
       "Run method from wtsi_clarity::epp::sm::test_action1".
       "Run method from wtsi_clarity::epp::sm::test_action3".
       "test_action3_attr attribute value is test_action3_attr_value",
