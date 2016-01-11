@@ -42,4 +42,5 @@ if __name__ == "__main__":
     prod_filenames = [directory + '/' + filename for filename in filenames if filename.endswith('_prod.xml')]
 
     if len(prod_filenames) >= 2:
-        exit(not config_diff.main(prod_filenames[-2], prod_filenames[-1], cmp_file1, cmp_file2))
+        if not config_diff.main(prod_filenames[-2], prod_filenames[-1], cmp_file1, cmp_file2):
+            sys.stderr.write('%s workflow configuration changed' % date)
