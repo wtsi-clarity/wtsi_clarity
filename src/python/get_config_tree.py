@@ -34,7 +34,7 @@ def main(clarity, out_file_path):
         if element_to_expand.tag in IGNORE_LIST:
             return
 
-        if uri and not element_to_expand:
+        if uri and element_to_expand is not None:
             for child_element in clarity.get_xml(uri):
                 element_to_expand.append(child_element)
 
