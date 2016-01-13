@@ -43,4 +43,4 @@ if __name__ == "__main__":
 
     if len(prod_filenames) >= 2:
         if not config_diff.main(prod_filenames[-2], prod_filenames[-1], cmp_file1, cmp_file2):
-            sys.stderr.write('%s workflow configuration changed' % date)
+            sys.stderr.write('%s workflow configuration changed\n' % date)
