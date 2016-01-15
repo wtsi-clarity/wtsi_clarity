@@ -33,12 +33,6 @@ Readonly::Scalar our $PROCESS_NAME          => q(Pico DTX (SM));
 
 our $VERSION = '0.0';
 
-has 'analysis_file' => (
-  isa => 'Str',
-  is  => 'ro',
-  required => 1,
-);
-
 override 'run' => sub {
   my $self = shift;
   super();
@@ -54,12 +48,19 @@ override 'run' => sub {
   );
 
   my $results = $calculator->get_analysis_results();
+  my $stock_plate = $self->process_doc->find_previous_container_from_process_type('Working Dilution (SM)');
+
+  my $parameters = {
+    results => $results,
+    stock_plate => $stock_plate,
+  };
 
   # Pass the results to the PDF generator
-  my $pdf = wtsi_clarity::util::pdf::factory::pico_analysis_results->new()->build($results);
+  my $pdf = wtsi_clarity::util::pdf::factory::pico_analysis_results->new()->build($parameters);
 
   # Attach PDF to process
-  $pdf->saveas(q{./} . $self->analysis_file);
+  my $date = DateTime->now()->strftime('%Y-%m-%d_%H-%M-%S');
+  $pdf->saveas(qq{./$stock_plate.$date.pdf});
 
   $self->_update_output_artifacts($results);
 

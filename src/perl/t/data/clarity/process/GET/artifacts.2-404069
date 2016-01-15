@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="yes"?>
+<art:artifact xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact" uri="http://testserver.com:1234/here/artifacts/2-404069?state=205603" limsid="2-404069">
+    <name>35b05740-7990-11e5-a114-b0091263eae0_WD</name>
+    <type>Analyte</type>
+    <output-type>Analyte</output-type>
+    <parent-process uri="http://testserver.com:1234/here/processes/24-67788" limsid="24-67788"/>
+    <qc-flag>UNKNOWN</qc-flag>
+    <location>
+        <container uri="http://testserver.com:1234/here/containers/27-13619" limsid="27-13619"/>
+        <value>E:4</value>
+    </location>
+    <working-flag>true</working-flag>
+    <sample uri="http://testserver.com:1234/here/samples/MAN351A177" limsid="MAN351A177"/>
+    <workflow-stages>
+        <workflow-stage status="COMPLETE" name="Pico Dilution (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1215"/>
+        <workflow-stage status="QUEUED" name="Fluidigm Request (SM)" uri="http://testserver.com:1234/here/configuration/workflows/24/stages/301"/>
+    </workflow-stages>
+</art:artifact>

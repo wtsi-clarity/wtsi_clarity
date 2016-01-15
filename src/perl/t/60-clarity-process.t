@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use XML::LibXML;
 
-use Test::More tests => 24;
+use Test::More tests => 25;
 use Test::MockObject::Extends;
 use Test::Exception;
 use Cwd;
@@ -939,6 +939,17 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
   my $expected_date = '2015-02-11';
 
   is($process->date_run, $expected_date, 'Returns the correct run date of the process.');
+}
+
+{
+  my $epp =  wtsi_clarity::epp->new(
+    process_url => $base_uri . '/processes/24-67927'
+  );
+
+  my $expected_barcode = '5262713619688';
+  my $stock_barcode = $epp->process_doc->find_previous_container_from_process_type('Working Dilution (SM)');
+
+  is($stock_barcode, $expected_barcode, 'Returns the barcode from Working Dilution (SM)')
 }
 
 1;
