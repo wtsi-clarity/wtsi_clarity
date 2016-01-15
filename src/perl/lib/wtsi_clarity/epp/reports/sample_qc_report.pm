@@ -117,13 +117,13 @@ sub file_content {
   return \@rows;
 }
 
-sub publish_to_irods {
+sub set_publish_to_irods {
   my ($self) = @_;
 
   my $project_doc = $self->fetch_and_parse($self->_project_uri);
   my $send_to_ext_irods = $project_doc->findvalue($SEND_DATA_TO_IRODS_PATH);
 
-  return $send_to_ext_irods eq 'true' ? 1 : 0;
+  return $self->write_publish_to_irods($send_to_ext_irods eq 'true' ? 1 : 0);
 }
 
 sub irods_destination_path {
@@ -304,7 +304,7 @@ message must be supplied
 
   Define the sorting criteria by column name.
 
-=head2 publish_to_irods
+=head2 set_publish_to_irods
 
   Checks whether the 'WTSI Send data to external iRODS' check box in project the sample relates to is checked or not.
   If it is checked then returns 1, otherwise 0.

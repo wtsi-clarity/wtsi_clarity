@@ -105,12 +105,12 @@ sub file_content {
   return \@rows;
 }
 
-sub publish_to_irods {
+sub set_publish_to_irods {
   my ($self) = @_;
 
   my @sample_limsids = sort keys %{$self->_projects};
 
-  return scalar @sample_limsids > 0 ? $self->_projects->{$sample_limsids[0]}->{'publish_to_irods'} : 0;
+  return $self->write_publish_to_irods(scalar @sample_limsids > 0 ? $self->_projects->{$sample_limsids[0]}->{'publish_to_irods'} : 0);
 }
 
 sub irods_destination_path {
@@ -256,7 +256,7 @@ message must be supplied
 
   Define the sorting criteria by column name.
 
-=head2 publish_to_irods
+=head2 set_publish_to_irods
 
   Checks whether the 'WTSI Send data to external iRODS' check box in project the sample relates to is checked or not.
   If it is checked then returns 1, otherwise 0.

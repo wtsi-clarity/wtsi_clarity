@@ -53,6 +53,8 @@ my $EXPECTED_FILE_CONTENT = [
 
   $report->_sample_doc($samples);
 
+  $report->set_publish_to_irods();
+
   is($report->publish_to_irods, 1, 'Returns the correct value for ');
 
   my $sample_doc = $samples->[0];
