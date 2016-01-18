@@ -55,20 +55,17 @@ override 'run' => sub {
   );
 
   my $results = $calculator->get_analysis_results();
-  my $stock_plate = $self->process_doc->find_previous_container_from_process_type('Working Dilution (SM)');
 
   my $parameters = {
     results => $results,
-    stock_plate => $stock_plate,
+    stock_plate => $self->stock_plate,
   };
 
   # Pass the results to the PDF generator
   my $pdf = wtsi_clarity::util::pdf::factory::pico_analysis_results->new()->build($parameters);
 
   # Attach PDF to process
-  my $date = DateTime->now()->strftime('%Y%m%d%H%M%S');
-  my $filename = sprintf $FILE_NAME, $self->output_file_limsid, $stock_plate, $date;
-  $pdf->saveas(q{./} . $filename);
+  $pdf->saveas(q{./} . $self->filename);
 
   $self->_update_output_artifacts($results);
 
@@ -76,6 +73,31 @@ override 'run' => sub {
   my $response = $self->request->batch_update('artifacts', $self->_output_artifact_details);
 
   return;
+};
+
+has 'filename' => (
+  isa => 'Str',
+  is => 'ro',
+  lazy_build => 1,
+);
+
+sub _build_filename {
+  my $self = shift;
+
+  my $date = DateTime->now()->strftime('%Y%m%d%H%M%S');
+  return sprintf $FILE_NAME, $self->output_file_limsid, $self->stock_plate, $date;
+};
+
+has 'stock_plate' => (
+  isa => 'Str',
+  is => 'ro',
+  lazy_build => 1,
+);
+
+sub _build_stock_plate {
+  my $self = shift;
+
+  return $self->process_doc->find_previous_container_from_process_type('Working Dilution (SM)');
 };
 
 has '_dtx_parser' => (
