@@ -29,9 +29,16 @@ Readonly::Scalar our $ARTIFACT_LIMSID_PATH  => q(@limsid);
 Readonly::Scalar our $STANDARD_PLATE_NAME   => q(StandardPlate);
 Readonly::Scalar our $PICO_ASSAY_PLATE_NAME => q(PicoAssay);
 Readonly::Scalar our $PROCESS_NAME          => q(Pico DTX (SM));
+Readonly::Scalar my $FILE_NAME => q{%s_%s_picogreen_results_%s.pdf};
 ## use critic
 
 our $VERSION = '0.0';
+
+has 'output_file_limsid' => (
+  is       => 'ro',
+  isa      => 'Str',
+  required => 1,
+);
 
 override 'run' => sub {
   my $self = shift;
@@ -59,8 +66,9 @@ override 'run' => sub {
   my $pdf = wtsi_clarity::util::pdf::factory::pico_analysis_results->new()->build($parameters);
 
   # Attach PDF to process
-  my $date = DateTime->now()->strftime('%Y-%m-%d_%H-%M-%S');
-  $pdf->saveas(qq{./$stock_plate.$date.pdf});
+  my $date = DateTime->now()->strftime('%Y%m%d%H%M%S');
+  my $filename = sprintf $FILE_NAME, $self->output_file_limsid, $stock_plate, $date;
+  $pdf->saveas(q{./} . $filename);
 
   $self->_update_output_artifacts($results);
 

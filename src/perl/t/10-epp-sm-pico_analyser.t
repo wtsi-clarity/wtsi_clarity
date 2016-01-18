@@ -17,7 +17,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 {
   my $pa = wtsi_clarity::epp::sm::pico_analyser->new(
-    analysis_file => '92-1234',
+    output_file_limsid => '92-1234',
     process_url => $base_url . '/processes/24-11981',
   );
 
@@ -28,7 +28,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 # Input URIs
 {
   my $pa = wtsi_clarity::epp::sm::pico_analyser->new(
-    analysis_file => '92-1234',
+    output_file_limsid => '92-1234',
     process_url => $base_url . '/processes/24-11981_b',
   );
 
@@ -45,7 +45,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 {
   my $pa = wtsi_clarity::epp::sm::pico_analyser->new(
-    analysis_file => '92-1234',
+    output_file_limsid => '92-1234',
     process_url => $base_url . '/processes/24-11981_a',
   );
 
@@ -63,7 +63,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 # Extract file url / file name
 {
   my $pa = wtsi_clarity::epp::sm::pico_analyser->new(
-    analysis_file => '92-1234',
+    output_file_limsid => '92-1234',
     process_url => $base_url . '/processes/24-11981',
   );
 
@@ -77,7 +77,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 # Extract file location
 {
   my $pa = wtsi_clarity::epp::sm::pico_analyser->new(
-    analysis_file => '92-1234',
+    output_file_limsid => '92-1234',
     process_url => $base_url . '/processes/24-11981',
   );
 
@@ -89,7 +89,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 { #_output_ids
   my $pa = wtsi_clarity::epp::sm::pico_analyser->new(
-    analysis_file => '92-1234',
+    output_file_limsid => '92-1234',
     process_url => $base_url . '/processes/24-11981_c',
   );
   my $expected_results = [
@@ -104,7 +104,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 { # _input_to_output_map
   my $pa = wtsi_clarity::epp::sm::pico_analyser->new(
-    analysis_file => '92-1234',
+    output_file_limsid => '92-1234',
     process_url => $base_url . '/processes/24-11981_c',
   );
   my $expected_results = {
@@ -140,7 +140,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
 
 { # _update_output_artifacts
   my $pa = wtsi_clarity::epp::sm::pico_analyser->new(
-    analysis_file => '92-1234',
+    output_file_limsid => '92-1234',
     process_url => $base_url . '/processes/24-11981_c',
   );
 
