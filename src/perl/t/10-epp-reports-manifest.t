@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 12;
+use Test::More tests => 13;
 use Test::MockObject::Extends;
 use Test::Exception;
 
@@ -1859,8 +1859,6 @@ my $EXPECTED_FILE_CONTENT = [
 
   is_deeply($file_content, $EXPECTED_FILE_CONTENT, 'File content is generated from a container node correctly');
 
-  $manifest->set_publish_to_irods();
-
   is($manifest->publish_to_irods, 1, "Return correctly the publish to external iRODS setting");
 
   my $publish_reports_to_irods_called;
@@ -1928,8 +1926,6 @@ my $EXPECTED_FILE_CONTENT = [
   is_deeply($file_content, $EXPECTED_FILE_CONTENT,
     'File content is generated from a container node correctly');
 
-  $manifest->set_publish_to_irods();
-
   is($manifest->publish_to_irods, 1, "Return correctly the publish to external iRODS setting");
 
   my $publish_reports_to_irods_called;
@@ -1937,14 +1933,11 @@ my $EXPECTED_FILE_CONTENT = [
     wtsi_clarity::epp::reports::manifest->new(
       process_url => 'http://clarity.com/processes/1',
     )
-  );
-  $mocked_manifest->mock(q{now}, sub {
+  )->mock(q{now}, sub {
     return "20150813121212";
-  });
-  $mocked_manifest->mock(q{publish_to_irods}, sub {
+  })->mock(q{publish_to_irods}, sub {
     return 1;
-  });
-  $mocked_manifest->mock(q{_publish_report_to_irods}, sub {
+  })->mock(q{_publish_report_to_irods}, sub {
     ++$publish_reports_to_irods_called;
     return 1;
   });
@@ -1982,6 +1975,12 @@ my $EXPECTED_FILE_CONTENT = [
   )->mock(q(_irods_publisher), sub {
     return Test::MockObject->new()->mock(q(publish), sub {
     });
+  })->mock(q{_projects}, sub {
+    return {
+      foo => {
+        product_destination => 'Standard'
+      }
+    }
   });
 
   my $report_path = $ENV{'WTSICLARITY_WEBCACHE_DIR'} . q{/example_manifest.txt};
@@ -1989,6 +1988,8 @@ my $EXPECTED_FILE_CONTENT = [
   lives_ok {
     $manifest->_publish_report_to_irods($report_path)
   } 'Successfully published the file into iRODS.';
+
+  is($manifest->irods_destination_path, '/Sanger1-dev/home/glsai/', 'irods path is correct');
 }
 
 1;

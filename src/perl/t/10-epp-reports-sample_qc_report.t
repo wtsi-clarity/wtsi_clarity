@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 15;
+use Test::More tests => 16;
 
 use Test::MockObject::Extends;
 use Test::Exception;
@@ -52,8 +52,6 @@ my $EXPECTED_FILE_CONTENT = [
   is(scalar @{$samples}, $expected_sample_count, 'Got the correct count of samples');
 
   $report->_sample_doc($samples);
-
-  $report->set_publish_to_irods();
 
   is($report->publish_to_irods, 1, 'Returns the correct value for ');
 
@@ -138,10 +136,13 @@ my $EXPECTED_FILE_CONTENT = [
   my $sample_doc = $samples->[0];
 
   $report->_write_sample_uuid($sample_doc->findvalue('./name'));
+  $report->_write_project_uri($sample_doc->findvalue('./project/@uri'));
 
   lives_ok {
     $report->_publish_report_to_irods($report_path)
   } 'Successfully published the file into iRODS.';
+
+  is($report->irods_destination_path, '/Sanger1-dev/home/glsai/', 'irods path is correct');
 }
 
 {
@@ -160,7 +161,9 @@ my $EXPECTED_FILE_CONTENT = [
     process_url      => $base_uri.'/processes/24-63229',
     publish_to_irods => 1
   )
-  )->mock(q{now}, sub {
+  )->mock(q{irods_destination_path}, sub {
+      return '/test/destination/path/'
+  })->mock(q{now}, sub {
       return "20150813121212";
     })->mock(q(_irods_publisher), sub {
       return $irods_mock;
@@ -169,7 +172,7 @@ my $EXPECTED_FILE_CONTENT = [
       is($filename, '01e9be16-a7c6-11e4-b42e-68b59977951e.20150813121212.lab_sample_qc.txt',
         'Inserts filename into database');
       is($hash, $HASH, 'Inserts hash into the database');
-      is($location, '/Sanger1-dev/home/glsai/', 'Inserts location into the database.')
+      is($location, '/test/destination/path/', 'Inserts location into the database.')
     });
 
   lives_ok {

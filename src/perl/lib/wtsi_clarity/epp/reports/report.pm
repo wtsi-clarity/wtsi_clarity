@@ -59,9 +59,8 @@ has '_irods_publisher' => (
 has 'publish_to_irods' => (
   is        => 'rw',
   isa       => 'Bool',
-  predicate => '_has_publish_to_irods',
   required  => 0,
-  writer    => 'write_publish_to_irods',
+  default   => 1,
 );
 
 has '_file_factory' => (
@@ -85,10 +84,6 @@ sub file_content {
 
 sub headers {
   croak 'Method headers must be overidden';
-}
-
-sub set_publish_to_irods {
-  croak 'Method write_publish_to_irods must be overidden';
 }
 
 sub file_delimiter {
@@ -148,10 +143,6 @@ sub _create_reports {
 sub _output_file {
   my ($self, $file, $filename) = @_;
 
-  if (!$self->_has_publish_to_irods) {
-    $self->set_publish_to_irods;
-  }
-
   if ($self->publish_to_irods) {
     my $dir = tempdir(CLEANUP => 1);
     my $file_path = $file->saveas(join q{/}, $dir, $filename);
@@ -191,7 +182,6 @@ sub _publish_report_to_irods {
   my ($self, $report_path) = @_;
 
   my $destination_base_path = $self->irods_destination_path;
-
   my @file_paths = split /\//sxm, $report_path;
   my $report_filename = pop @file_paths;
   $self->_irods_publisher->publish($report_path, $destination_base_path . $report_filename, 1, $self->get_metadatum);
