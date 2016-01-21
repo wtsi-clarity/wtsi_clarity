@@ -108,10 +108,10 @@ sub file_content {
 sub irods_destination_path {
   my ($self) = @_;
 
-  my @sample_limsids = sort values %{$self->_projects};
+  my @projects = sort values %{$self->_projects};
 
-  my $destination = $sample_limsids[0]->{'data_destination'};
-  return $self->config->irods->{$destination.'_manifest_path'}.q{/};
+  my $destination = $projects[0]->{'data_destination'};
+  return $self->config->irods->{$destination.'_manifest_path'};
 }
 
 sub _find_project_limsid_by_sample_limsid {

@@ -146,11 +146,14 @@ sub _output_file {
   if ($self->publish_to_irods) {
     my $dir = tempdir(CLEANUP => 1);
     my $file_path = $file->saveas(join q{/}, $dir, $filename);
-    $self->_publish_report_to_irods($file_path);
-    my $hash = $self->_irods_publisher->md5_hash;
+    my $published = $self->_publish_report_to_irods($file_path);
 
-    if ($hash) {
-      $self->insert_hash_to_database($filename, $hash, $self->irods_destination_path())
+    if ($published) {
+      my $hash = $self->_irods_publisher->md5_hash;
+
+      if ($hash) {
+        $self->insert_hash_to_database($filename, $hash, $self->irods_destination_path())
+      }
     }
   }
 
@@ -182,11 +185,15 @@ sub _publish_report_to_irods {
   my ($self, $report_path) = @_;
 
   my $destination_base_path = $self->irods_destination_path;
-  my @file_paths = split /\//sxm, $report_path;
-  my $report_filename = pop @file_paths;
-  $self->_irods_publisher->publish($report_path, $destination_base_path . $report_filename, 1, $self->get_metadatum);
+  if ($destination_base_path) {
+    my @file_paths = split /\//sxm, $report_path;
+    my $report_filename = pop @file_paths;
+    $self->_irods_publisher->publish($report_path, $destination_base_path.q{/}.$report_filename, 1, $self->get_metadatum);
 
-  return 1;
+    return 1;
+  } else {
+    return 0;
+  }
 }
 
 sub _sort_file_content {

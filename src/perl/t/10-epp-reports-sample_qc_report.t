@@ -142,7 +142,7 @@ my $EXPECTED_FILE_CONTENT = [
     $report->_publish_report_to_irods($report_path)
   } 'Successfully published the file into iRODS.';
 
-  is($report->irods_destination_path, '/Sanger1-dev/home/glsai/', 'irods path is correct');
+  is($report->irods_destination_path, '/Sanger1-dev/home/glsai', 'irods path is correct');
 }
 
 {

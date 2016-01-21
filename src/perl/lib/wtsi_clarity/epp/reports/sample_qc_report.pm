@@ -123,7 +123,7 @@ sub irods_destination_path {
 
   my $project_doc = $self->fetch_and_parse($self->_project_uri);
   my $destination = $project_doc->findvalue($DATA_DESTINATION_PATH);
-  return $self->config->irods->{$destination.'_lab_sample_qc_path'}.q{/};
+  return $self->config->irods->{$destination.'_lab_sample_qc_path'};
 }
 
 sub _build__containers {

@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 13;
+use Test::More tests => 15;
 use Test::MockObject::Extends;
 use Test::Exception;
 
@@ -1935,8 +1935,6 @@ my $EXPECTED_FILE_CONTENT = [
     )
   )->mock(q{now}, sub {
     return "20150813121212";
-  })->mock(q{publish_to_irods}, sub {
-    return 1;
   })->mock(q{_publish_report_to_irods}, sub {
     ++$publish_reports_to_irods_called;
     return 1;
@@ -1985,11 +1983,21 @@ my $EXPECTED_FILE_CONTENT = [
 
   my $report_path = $ENV{'WTSICLARITY_WEBCACHE_DIR'} . q{/example_manifest.txt};
 
-  lives_ok {
-    $manifest->_publish_report_to_irods($report_path)
-  } 'Successfully published the file into iRODS.';
+  is($manifest->_publish_report_to_irods($report_path), 1, 'Successfully published the file into iRODS.');
 
-  is($manifest->irods_destination_path, '/Sanger1-dev/home/glsai/', 'irods path is correct');
+  is($manifest->irods_destination_path, '/Sanger1-dev/home/glsai', 'irods path is correct');
+
+  $manifest->mock(q{_projects}, sub {
+      return {
+        foo => {
+          data_destination => 'bar'
+        }
+      }
+    });
+
+  is($manifest->_publish_report_to_irods($report_path), 0, 'Successfully published the file into iRODS.');
+
+  is($manifest->irods_destination_path, undef, 'irods path is correct');
 }
 
 1;
