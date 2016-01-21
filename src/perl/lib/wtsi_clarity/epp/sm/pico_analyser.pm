@@ -97,7 +97,7 @@ has 'stock_plate' => (
 sub _build_stock_plate {
   my $self = shift;
 
-  return $self->process_doc->find_previous_container_from_process_type('Working Dilution (SM)');
+  return $self->process_doc->find_previous_container_from_process_type('Volume Check (SM)');
 };
 
 has '_dtx_parser' => (
