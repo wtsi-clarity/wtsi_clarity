@@ -110,7 +110,7 @@ sub irods_destination_path {
 
   my @sample_limsids = sort values %{$self->_projects};
 
-  my $destination = $sample_limsids[0]->{'product_destination'};
+  my $destination = $sample_limsids[0]->{'data_destination'};
   return $self->config->irods->{$destination.'_manifest_path'}.q{/};
 }
 
@@ -165,7 +165,7 @@ sub _build_project_hash {
   my $project = $self->fetch_and_parse($project_uri);
 
   my %project_data;
-  $project_data{'product_destination'} = $project->findvalue('/prj:project/udf:field[@name="WTSI Product Destination"]');
+  $project_data{'data_destination'} = $project->findvalue('/prj:project/udf:field[@name="WTSI Data Destination"]');
   $project_data{'name'} = $project->findvalue('/prj:project/name');
 
   return ($project->findvalue('/prj:project/@limsid'), \%project_data );

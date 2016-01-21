@@ -25,7 +25,7 @@
 <udf:field type="String" name="WTSI Instrument Model">Illumina HiSeq Rapid</udf:field>
 <udf:field type="String" name="WTSI Run Length">75 PE</udf:field>
 <udf:field type="String" name="WTSI Send data to external iRODS">true</udf:field>
-<udf:field type="String" name="WTSI Product Destination">Standard</udf:field>
+<udf:field type="String" name="WTSI Data Destination">Standard</udf:field>
 <file:file limsid="TES155-40-173" uri="http://testserver.com:1234/here/files/TES155-40-173" />
 <file:file limsid="TES155-40-174" uri="http://testserver.com:1234/here/files/TES155-40-174" />
 </prj:project>

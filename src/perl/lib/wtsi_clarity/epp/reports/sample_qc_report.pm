@@ -21,7 +21,7 @@ Readonly::Scalar my $BUFFER                           => 0.1;
 ## use critic
 
 Readonly::Scalar my $CHERRYPICK_STAMPING_PROCESS_NAME => q{Cherrypick Stamping (SM)};
-Readonly::Scalar my $PRODUCT_DESTINATION_PATH          => q{prj:project/udf:field[@name="WTSI Product Destination"]};
+Readonly::Scalar my $DATA_DESTINATION_PATH          => q{prj:project/udf:field[@name="WTSI Data Destination"]};
 
 has '_containers' => (
   is      => 'ro',
@@ -122,7 +122,7 @@ sub irods_destination_path {
   my ($self) = @_;
 
   my $project_doc = $self->fetch_and_parse($self->_project_uri);
-  my $destination = $project_doc->findvalue($PRODUCT_DESTINATION_PATH);
+  my $destination = $project_doc->findvalue($DATA_DESTINATION_PATH);
   return $self->config->irods->{$destination.'_lab_sample_qc_path'}.q{/};
 }
 
