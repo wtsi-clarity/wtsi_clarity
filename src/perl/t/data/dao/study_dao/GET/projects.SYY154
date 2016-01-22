@@ -32,7 +32,6 @@
   <udf:field name="WTSI Estimated number of lanes" type="String">2</udf:field>
   <udf:field name="WTSI Instrument Model" type="String">Illumina HiSeq Rapid</udf:field>
   <udf:field name="WTSI Run Length" type="String">100 PE</udf:field>
-  <udf:field name="WTSI Data Destination" type="String">Standard</udf:field>
   <file:file limsid="SYY154-40-157" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/files/SYY154-40-157"/>
   <file:file limsid="SYY154-40-159" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/files/SYY154-40-159"/>
 </prj:project>
