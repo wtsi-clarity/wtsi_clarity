@@ -21,7 +21,7 @@ Readonly::Scalar my $BUFFER                           => 0.1;
 ## use critic
 
 Readonly::Scalar my $CHERRYPICK_STAMPING_PROCESS_NAME => q{Cherrypick Stamping (SM)};
-Readonly::Scalar my $SEND_DATA_TO_IRODS_PATH          => q{prj:project/udf:field[@name="WTSI Send data to external iRODS"]};
+Readonly::Scalar my $DATA_DESTINATION_PATH          => q{prj:project/udf:field[@name="WTSI Data Destination"]};
 
 has '_containers' => (
   is      => 'ro',
@@ -42,6 +42,7 @@ has '_project_uri' => (
   isa         => 'Str',
   lazy_build  => 1,
   writer      => '_write_project_uri',
+  predicate   => '_has_project_uri',
 );
 
 sub elements {
@@ -117,19 +118,12 @@ sub file_content {
   return \@rows;
 }
 
-sub set_publish_to_irods {
-  my ($self) = @_;
-
-  my $project_doc = $self->fetch_and_parse($self->_project_uri);
-  my $send_to_ext_irods = $project_doc->findvalue($SEND_DATA_TO_IRODS_PATH);
-
-  return $self->write_publish_to_irods($send_to_ext_irods eq 'true' ? 1 : 0);
-}
-
 sub irods_destination_path {
   my ($self) = @_;
 
-  return $self->config->irods->{'lab_sample_qc_path'} . q{/};
+  my $project_doc = $self->fetch_and_parse($self->_project_uri);
+  my $destination = $project_doc->findvalue($DATA_DESTINATION_PATH);
+  return $self->config->irods->{$destination.'_lab_sample_qc_path'};
 }
 
 sub _build__containers {
