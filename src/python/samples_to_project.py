@@ -9,7 +9,7 @@ if __name__ == '__main__':
         in_file = sys.argv[2]
         out_file = sys.argv[3]
     else:
-        sys.stderr.write("usage: python list_epp.py <root_uri> <input_file> <output_file>\n")
+        sys.stderr.write("usage: python samples_to_project.py <root_uri> <input_file> <output_file>\n")
         sys.exit(1)
 
     clarity = Clarity(root_url)

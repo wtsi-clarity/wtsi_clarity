@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 25;
+use Test::More tests => 26;
 use Test::Exception;
 use JSON;
 
@@ -52,6 +52,7 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
   is($study_dao->ega_dac_accession_number, q{1111111}, 'Returns the correct ega dac accession number of the study');
   is($study_dao->remove_x_and_autosomes, q{false}, 'Returns the correct remove_x_and_autosomes flag of the study');
   is($study_dao->separate_y_chromosome_data, q{false}, 'Returns the correct separate_y_chromosome_data flag of the study');
+  is($study_dao->data_destination, q{Standard}, 'Returns the correct data destination of the study');
 
   my $expected_study_user_ids = [21];
   is_deeply($study_dao->study_user_ids, $expected_study_user_ids, 'Returns the correct id of the user of the study');

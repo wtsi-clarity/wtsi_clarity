@@ -39,23 +39,16 @@ def main(in_file_1, in_file_2, out_file_1, out_file_2):
     tree1 = ElementTree.parse(in_file_1).getroot()
     tree2 = ElementTree.parse(in_file_2).getroot()
 
-    for parent in tree1.iter():
-        for child in parent:
-            if child.tag == 'show-in-tables':
-                parent.remove(child)
+    if not remove_same(tree1, tree2):
+        with open(out_file_1, mode='w') as out_file:
+            out_file.write(ElementTree.tostring(tree1).decode('ascii'))
 
-    for parent in tree2.iter():
-        for child in parent:
-            if child.tag == 'show-in-tables':
-                parent.remove(child)
+        with open(out_file_2, mode='w') as out_file:
+            out_file.write(ElementTree.tostring(tree2).decode('ascii'))
 
-    remove_same(tree1, tree2)
+        return False
 
-    with open(out_file_1, mode='w') as out_file:
-        out_file.write(ElementTree.tostring(tree1).decode('ascii'))
-
-    with open(out_file_2, mode='w') as out_file:
-        out_file.write(ElementTree.tostring(tree2).decode('ascii'))
+    return True
 
 
 if __name__ == "__main__":
@@ -65,7 +58,7 @@ if __name__ == "__main__":
         out1 = sys.argv[3]
         out2 = sys.argv[4]
     else:
-        sys.stderr.write("usage: python list_epp.py <file1> <file2> <output_file1> <output_file2>\n")
+        sys.stderr.write("usage: python config_diff.py <file1> <file2> <output_file1> <output_file2>\n")
         sys.exit(1)
 
     main(in1, in2, out1, out2)

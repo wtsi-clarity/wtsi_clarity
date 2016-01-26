@@ -1859,6 +1859,8 @@ my $EXPECTED_FILE_CONTENT = [
 
   is_deeply($file_content, $EXPECTED_FILE_CONTENT, 'File content is generated from a container node correctly');
 
+  $manifest->set_publish_to_irods();
+
   is($manifest->publish_to_irods, 1, "Return correctly the publish to external iRODS setting");
 
   my $publish_reports_to_irods_called;
@@ -1925,6 +1927,8 @@ my $EXPECTED_FILE_CONTENT = [
 
   is_deeply($file_content, $EXPECTED_FILE_CONTENT,
     'File content is generated from a container node correctly');
+
+  $manifest->set_publish_to_irods();
 
   is($manifest->publish_to_irods, 1, "Return correctly the publish to external iRODS setting");
 

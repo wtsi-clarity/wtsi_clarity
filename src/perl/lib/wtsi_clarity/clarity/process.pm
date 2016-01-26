@@ -676,6 +676,22 @@ sub find_by_processtype_samplelimsid_and_type {
   return $self->_by_entity_type_and_parameter($process_limsid, '/processes/');
 }
 
+sub find_previous_container_from_process_type {
+  my ($self, $process_type) = @_;
+
+  my $first_sample_id = $self->samples_doc->findnodes($NON_CONTROL_SAMPLE_LIMSID)->pop->value;
+
+  my $search_result = $self->_request->query_resources('artifacts', {
+    sample_id    => $first_sample_id,
+    process_type => $process_type,
+    type         => 'Analyte'
+  });
+
+  my $artifact_id = $search_result->findnodes($ARTIFACT_LIMSID_PATH)->pop->value;
+  my $container_uri = $self->container_uri_by_artifact_limsid($artifact_id);
+  return $self->_parent->fetch_and_parse($container_uri)->findvalue($CONTAINER_NAME_LOCATION);
+}
+
 sub date_run {
   my ($self) = @_;
 
@@ -765,6 +781,10 @@ wtsi_clarity::clarity::process
 =head2 get_current_workflow_uri
 
   Returns the uri for the workflow.
+
+=head2 find_previous_container_from_process_type
+
+  Returns the plate barcode that was in the given process type for the current samples.
 
 =head2 date_run
 

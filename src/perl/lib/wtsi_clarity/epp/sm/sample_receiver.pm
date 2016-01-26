@@ -64,14 +64,14 @@ sub _is_new_sample {
 
   $url |= q[];
   if ($doc->findnodes($SUPPLIER_NAME_PATH)) {
-    $self->epp_log(qq[Supplier name already set for the sample, not updating $url]);
+    $self->epp_warn(qq[Supplier name already set for the sample, not updating $url]);
     return 0;
   }
   my @nodes = $doc->findnodes($DATE_RECEIVED_PATH);
   if (@nodes) {
     my $date = $self->trim_value($nodes[0]->textContent());
     if ($date) {
-      $self->epp_log(qq[Date received $date already set for the sample, not updating $url]);
+      $self->epp_warn(qq[Date received $date already set for the sample, not updating $url]);
       return 0;
     }
   }

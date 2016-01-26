@@ -56,6 +56,14 @@ has '_irods_publisher' => (
   builder   => '_build__irods_publisher',
 );
 
+has 'publish_to_irods' => (
+  is        => 'rw',
+  isa       => 'Bool',
+  predicate => '_has_publish_to_irods',
+  required  => 0,
+  writer    => 'write_publish_to_irods',
+);
+
 has '_file_factory' => (
   is => 'ro',
   isa => 'wtsi_clarity::util::csv::factory',
@@ -79,8 +87,8 @@ sub headers {
   croak 'Method headers must be overidden';
 }
 
-sub publish_to_irods {
-  croak 'Method publish_to_irods must be overidden';
+sub set_publish_to_irods {
+  croak 'Method write_publish_to_irods must be overidden';
 }
 
 sub file_delimiter {
@@ -139,6 +147,10 @@ sub _create_reports {
 
 sub _output_file {
   my ($self, $file, $filename) = @_;
+
+  if (!$self->_has_publish_to_irods) {
+    $self->set_publish_to_irods;
+  }
 
   if ($self->publish_to_irods) {
     my $dir = tempdir(CLEANUP => 1);
@@ -250,7 +262,7 @@ base report class for irods related reports
   An abstract method, what the child class should be override.
   Define the sorting criteria by column name.
 
-=head2 publish_to_irods
+=head2 set_publish_to_irods
 
   Checks whether the 'WTSI Send data to external iRODS' check box in project the sample relates to is checked or not.
   If it is checked then returns 1, otherwise 0.

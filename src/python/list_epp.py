@@ -27,45 +27,35 @@ if __name__ == "__main__":
 
     with open(out_file_path, 'w') as out_file:
 
-        workflows = clarity.get_xml(urljoin(clarity.root, 'configuration/workflows/')).findall('workflow')
+        workflows = clarity.get_object(clarity.root + 'configuration/workflows/').get('workflow')
 
         for workflow in workflows:
-            if workflow.get('status') == 'ACTIVE':
-                workflow_xml = clarity.get_xml(workflow.get('uri'))
-                protocols = workflow_xml.find('protocols').findall('protocol')
-
-                for protocol in protocols:
-                    protocol_name = protocol.get("name")
-                    protocol_uri = protocol.get("uri")
-
-                    steps = clarity.get_xml(protocol_uri).find("steps").findall("step")
+            if workflow.get_first('status') == 'ACTIVE':
+                for protocol in workflow.get('protocols').get('protocol'):
+                    steps = protocol.get('steps').get('step')
                     if steps:
                         for step in steps:
-                            step_name = step.get("name")
-                            process_type_uri = step.find("process-type").get("uri")
-
                             epps = {}
-                            epp_triggers = step.find("epp-triggers").findall("epp-trigger")
+                            epp_triggers = step.get('epp-triggers').get('epp-trigger')
                             if epp_triggers:
                                 for epp_trigger in epp_triggers:
-                                    epps[epp_trigger.get("name")] = {
-                                        "type": epp_trigger.get("type") or "",
-                                        "point": epp_trigger.get("point") or "",
-                                        "status": epp_trigger.get("status") or "",
+                                    epps[epp_trigger.get_first('name')] = {
+                                        "type": epp_trigger.get_first('type') or "",
+                                        "point": epp_trigger.get_first('point') or "",
+                                        "status": epp_trigger.get_first('status') or "",
                                     }
 
-                                for script in clarity.get_xml(process_type_uri).findall("parameter"):
-                                    string = script.find("string")
-                                    epps[script.get("name")][
-                                        "script"] = string.text.strip() if string is not None else ""
+                                for script in step.get('process-type').get('parameter'):
+                                    string = script.get('string')
+                                    epps[script.get_first('name')]["script"] = (string.get_first('text') or "").strip()
 
                                 for epp_name, epp in epps.items():
-                                    out_file.write(SEP.join([workflow.get('name'), protocol_name, step_name, epp_name,
-                                                             format_string(epp.get('type')),
-                                                             format_string(epp.get('status')),
-                                                             format_string(epp.get('point')),
-                                                             epp.get('script')]) + "\n")
+                                    print(workflow.get_first('name'), protocol.get_first('name'),
+                                          step.get_first('name'), epp_name, format_string(epp['type']),
+                                          format_string(epp['status']), format_string(epp['point']), epp['script'],
+                                          sep=SEP, file=out_file)
                             else:
-                                out_file.write(workflow.get('name') + SEP + protocol_name + SEP + step_name + "\n")
+                                print(workflow.get_first('name'), protocol.get_first('name'), step.get_first('name'),
+                                      sep=SEP, file=out_file)
                     else:
-                        out_file.write(protocol_name + '\n')
+                        print(workflow.get_first('name'), protocol.get_first('name'), sep=SEP, file=out_file)

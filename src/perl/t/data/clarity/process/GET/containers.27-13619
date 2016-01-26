@@ -1,0 +1,108 @@
+<?xml version="1.0" standalone="yes"?>
+<con:container xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container" uri="http://testserver.com:1234/here/containers/27-13619" limsid="27-13619">
+    <name>5262713619688</name>
+    <type uri="http://testserver.com:1234/here/containertypes/15" name="ABgene 0800"/>
+    <occupied-wells>33</occupied-wells>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-403991" limsid="2-403991">
+        <value>F:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-403996" limsid="2-403996">
+        <value>E:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404055" limsid="2-404055">
+        <value>F:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404056" limsid="2-404056">
+        <value>G:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-403998" limsid="2-403998">
+        <value>G:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404052" limsid="2-404052">
+        <value>C:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404054" limsid="2-404054">
+        <value>E:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404057" limsid="2-404057">
+        <value>H:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-403988" limsid="2-403988">
+        <value>E:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-403997" limsid="2-403997">
+        <value>F:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-403999" limsid="2-403999">
+        <value>H:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404058" limsid="2-404058">
+        <value>A:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404060" limsid="2-404060">
+        <value>C:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404069" limsid="2-404069">
+        <value>E:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-403992" limsid="2-403992">
+        <value>A:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-403989" limsid="2-403989">
+        <value>D:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404000" limsid="2-404000">
+        <value>A:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-403994" limsid="2-403994">
+        <value>B:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404053" limsid="2-404053">
+        <value>D:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404059" limsid="2-404059">
+        <value>B:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404061" limsid="2-404061">
+        <value>H:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404066" limsid="2-404066">
+        <value>F:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404067" limsid="2-404067">
+        <value>G:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404051" limsid="2-404051">
+        <value>B:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404063" limsid="2-404063">
+        <value>C:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404068" limsid="2-404068">
+        <value>D:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404070" limsid="2-404070">
+        <value>H:5</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-403990" limsid="2-403990">
+        <value>G:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-403993" limsid="2-403993">
+        <value>C:1</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-403995" limsid="2-403995">
+        <value>D:2</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404062" limsid="2-404062">
+        <value>B:4</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404064" limsid="2-404064">
+        <value>H:3</value>
+    </placement>
+    <placement uri="http://testserver.com:1234/here/artifacts/2-404065" limsid="2-404065">
+        <value>A:4</value>
+    </placement>
+    <udf:field type="String" name="WTSI Container Purpose Name">Working Dilution</udf:field>
+    <udf:field type="String" name="WTSI Container Signature">HCZRW</udf:field>
+    <state>Populated</state>
+</con:container>

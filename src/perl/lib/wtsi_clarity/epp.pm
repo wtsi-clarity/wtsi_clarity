@@ -83,14 +83,17 @@ sub _build_plates {
 
 sub run {
   my $self = shift;
-  $self->epp_log('Run method is called for ' . $self->toString());
-  return;
+  return $self->epp_log('Run method is called for ' . $self->toString());
 }
 
 sub epp_log {
   my ($self, $message) = @_;
-  warn "$message\n";
-  return;
+  return print "$message\n";
+}
+
+sub epp_warn {
+  my ($self, $message) = @_;
+  return warn "$message\n";
 }
 
 sub toString {
@@ -130,6 +133,8 @@ wtsi_clarity::epp
 =head2 run - executes the callback, should be implemented by child classes
 
 =head2 epp_log - simple logging procedure
+
+=head2 epp_warn - simple logging procedure for writing to stderr
 
 =head2 config
 

@@ -71,7 +71,7 @@ sub _check_options {
   }
 
   if ($self->shadow_plate && $self->has_container_type_name) {
-    $self->epp_log(q{Argument container_type_name should not be provided when shadow stamping. Output container type(s) will match input container type(s)});
+    $self->epp_warn(q{Argument container_type_name should not be provided when shadow stamping. Output container type(s) will match input container type(s)});
     $self->clear_container_type_name;
   }
 
