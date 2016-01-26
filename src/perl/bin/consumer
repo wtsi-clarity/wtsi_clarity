@@ -1,0 +1,28 @@
+#! /usr/bin/env perl
+
+use strict;
+use warnings;
+use FindBin qw($Bin);
+use lib ( -d "$Bin/../lib/perl5" ? "$Bin/../lib/perl5" : "$Bin/../lib" );
+
+use wtsi_clarity::util::config;
+use wtsi_clarity::mq::consumer;
+
+sub start_consumer {
+  my ($consumer_name, $prefix, $message_handler) = @_;
+  my $config = wtsi_clarity::util::config->new();
+  my $config_section = "${prefix}_consumer";
+
+  wtsi_clarity::mq::consumer->new(
+    name            => $consumer_name,
+    pid_file        => $config->dir_path . "/${prefix}_pid",
+    stderr_file     => $config->dir_path . "/${prefix}_consumer.err",
+    stdout_file     => $config->dir_path . "/${prefix}_consumer.log",
+    queue           => $config->$config_section->{'queue'},
+    message_handler => $message_handler,
+  )->run();
+
+  return 1;
+}
+
+1;

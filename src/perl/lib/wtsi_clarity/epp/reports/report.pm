@@ -9,6 +9,8 @@ use File::Temp qw/ tempdir /;
 use wtsi_clarity::util::csv::factory;
 use wtsi_clarity::irods::irods_publisher;
 
+with 'wtsi_clarity::util::roles::database';
+
 our $VERSION = '0.0';
 
 Readonly::Scalar my $TWELVE => 12;
@@ -23,6 +25,13 @@ override 'run' => sub {
 
   return 1;
 };
+
+has 'container_id' => (
+  is        => 'ro',
+  isa       => 'ArrayRef',
+  predicate => '_has_container_id',
+  required  => 0,
+);
 
 has '+process_url' => (
   required  => 0,
@@ -39,21 +48,20 @@ has '_message' => (
   predicate => '_has_message',
 );
 
-has 'publish_to_irods' => (
-  is        => 'ro',
-  isa       => 'Bool',
-  predicate => '_has_publish_to_irods',
-  default   => 0,
-  required  => 0,
-  writer    => 'write_publish_to_irods',
-);
-
 has '_irods_publisher' => (
   is        => 'ro',
   isa       => 'wtsi_clarity::irods::irods_publisher',
   required  => 0,
   lazy      => 1,
   builder   => '_build__irods_publisher',
+);
+
+has 'publish_to_irods' => (
+  is        => 'rw',
+  isa       => 'Bool',
+  predicate => '_has_publish_to_irods',
+  required  => 0,
+  writer    => 'write_publish_to_irods',
 );
 
 has '_file_factory' => (
@@ -63,6 +71,13 @@ has '_file_factory' => (
   builder => '_build__file_factory',
 );
 
+has 'save_file' => (
+  is        => 'ro',
+  isa       => 'Bool',
+  default   => 0,
+  required  => 0,
+);
+
 # Methods can
 sub file_content {
   croak 'Method file_content must be overidden';
@@ -70,6 +85,10 @@ sub file_content {
 
 sub headers {
   croak 'Method headers must be overidden';
+}
+
+sub set_publish_to_irods {
+  croak 'Method write_publish_to_irods must be overidden';
 }
 
 sub file_delimiter {
@@ -120,16 +139,32 @@ sub _create_reports {
       data      => $file_content,
       delimiter => $self->file_delimiter,
     );
+    $self->_output_file($file, $self->file_name($model));
+  }
 
-    my $filename = $self->file_name($model);
+  return 1;
+}
 
-    if ($self->_has_publish_to_irods && $self->publish_to_irods) {
-      my $dir = tempdir(CLEANUP => 1);
-      my $file_path = $file->saveas(join q{/}, $dir, $filename);
-      $self->_publish_report_to_irods($file_path);
-    } else {
-      $file->saveas($filename);
+sub _output_file {
+  my ($self, $file, $filename) = @_;
+
+  if (!$self->_has_publish_to_irods) {
+    $self->set_publish_to_irods;
+  }
+
+  if ($self->publish_to_irods) {
+    my $dir = tempdir(CLEANUP => 1);
+    my $file_path = $file->saveas(join q{/}, $dir, $filename);
+    $self->_publish_report_to_irods($file_path);
+    my $hash = $self->_irods_publisher->md5_hash;
+
+    if ($hash) {
+      $self->insert_hash_to_database($filename, $hash, $self->irods_destination_path())
     }
+  }
+
+  if ($self->save_file) {
+    $file->saveas($filename);
   }
 
   return 1;
@@ -148,7 +183,7 @@ sub _build__irods_publisher {
 sub _set_attributes {
   my $self = shift;
   $self->write_process_url($self->_message->process_url);
-  $self->write_publish_to_irods($self->_message->publish_to_irods);
+
   return 1;
 }
 
@@ -227,6 +262,11 @@ base report class for irods related reports
   An abstract method, what the child class should be override.
   Define the sorting criteria by column name.
 
+=head2 set_publish_to_irods
+
+  Checks whether the 'WTSI Send data to external iRODS' check box in project the sample relates to is checked or not.
+  If it is checked then returns 1, otherwise 0.
+
 =head2 irods_destination_path
 
   An abstract method, what the child class should be override.
@@ -251,6 +291,8 @@ base report class for irods related reports
 =item wtsi_clarity::epp
 
 =item wtsi_clarity::irods::irods_publisher
+
+=item wtsi_clarity::util::roles::database
 
 =back
 

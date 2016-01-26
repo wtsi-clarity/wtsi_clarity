@@ -18,7 +18,8 @@ use_ok('wtsi_clarity::util::pdf::factory::pool_analysis_results');
     'pooled_into'       => 'A:1'
   };
 
-  my $output = "Study_ABC_sample_name\nHomo_sapiens\nDDD_V5_plus";
+  my $output = "Study_ABC
+sample_name\nHomo_sapiens\nDDD_V5_plus";
 
   is(wtsi_clarity::util::pdf::factory::pool_analysis_results::format_table_cell($cell), $output, 'Formats a table cell correctly');
 }
@@ -761,313 +762,409 @@ use_ok('wtsi_clarity::util::pdf::factory::pool_analysis_results');
     ],
     [
       'A',
-      'Study_ABC_sample_name1
+      'Study_ABC
+sample_name1
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name9
+      'Study_ABC
+sample_name9
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name17
+      'Study_ABC
+sample_name17
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name25
+      'Study_ABC
+sample_name25
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name33
+      'Study_ABC
+sample_name33
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name41
+      'Study_ABC
+sample_name41
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name49
+      'Study_ABC
+sample_name49
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name57
+      'Study_ABC
+sample_name57
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name65
+      'Study_ABC
+sample_name65
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name73
+      'Study_ABC
+sample_name73
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name81
+      'Study_ABC
+sample_name81
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name89
+      'Study_ABC
+sample_name89
 Homo_sapiens
 DDD_V5_plus'
     ],
     [
       'B',
-      'Study_ABC_sample_name2
+      'Study_ABC
+sample_name2
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name10
+      'Study_ABC
+sample_name10
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name18
+      'Study_ABC
+sample_name18
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name26
+      'Study_ABC
+sample_name26
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name34
+      'Study_ABC
+sample_name34
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name42
+      'Study_ABC
+sample_name42
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name50
+      'Study_ABC
+sample_name50
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name58
+      'Study_ABC
+sample_name58
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name66
+      'Study_ABC
+sample_name66
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name74
+      'Study_ABC
+sample_name74
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name82
+      'Study_ABC
+sample_name82
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name90
+      'Study_ABC
+sample_name90
 Homo_sapiens
 DDD_V5_plus'
     ],
     [
       'C',
-      'Study_ABC_sample_name3
+      'Study_ABC
+sample_name3
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name11
+      'Study_ABC
+sample_name11
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name19
+      'Study_ABC
+sample_name19
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name27
+      'Study_ABC
+sample_name27
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name35
+      'Study_ABC
+sample_name35
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name43
+      'Study_ABC
+sample_name43
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name51
+      'Study_ABC
+sample_name51
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name59
+      'Study_ABC
+sample_name59
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name67
+      'Study_ABC
+sample_name67
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name75
+      'Study_ABC
+sample_name75
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name83
+      'Study_ABC
+sample_name83
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name91
+      'Study_ABC
+sample_name91
 Homo_sapiens
 DDD_V5_plus'
     ],
     [
       'D',
-      'Study_ABC_sample_name4
+      'Study_ABC
+sample_name4
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name12
+      'Study_ABC
+sample_name12
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name20
+      'Study_ABC
+sample_name20
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name28
+      'Study_ABC
+sample_name28
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name36
+      'Study_ABC
+sample_name36
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name44
+      'Study_ABC
+sample_name44
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name52
+      'Study_ABC
+sample_name52
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name60
+      'Study_ABC
+sample_name60
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name68
+      'Study_ABC
+sample_name68
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name76
+      'Study_ABC
+sample_name76
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name84
+      'Study_ABC
+sample_name84
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name92
+      'Study_ABC
+sample_name92
 Homo_sapiens
 DDD_V5_plus'
     ],
     [
       'E',
-      'Study_ABC_sample_name5
+      'Study_ABC
+sample_name5
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name13
+      'Study_ABC
+sample_name13
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name21
+      'Study_ABC
+sample_name21
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name29
+      'Study_ABC
+sample_name29
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name37
+      'Study_ABC
+sample_name37
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name45
+      'Study_ABC
+sample_name45
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name53
+      'Study_ABC
+sample_name53
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name61
+      'Study_ABC
+sample_name61
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name69
+      'Study_ABC
+sample_name69
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name77
+      'Study_ABC
+sample_name77
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name85
+      'Study_ABC
+sample_name85
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name93
+      'Study_ABC
+sample_name93
 Homo_sapiens
 DDD_V5_plus'
     ],
     [
       'F',
-      'Study_ABC_sample_name6
+      'Study_ABC
+sample_name6
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name14
+      'Study_ABC
+sample_name14
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name22
+      'Study_ABC
+sample_name22
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name30
+      'Study_ABC
+sample_name30
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name38
+      'Study_ABC
+sample_name38
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name46
+      'Study_ABC
+sample_name46
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name54
+      'Study_ABC
+sample_name54
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name62
+      'Study_ABC
+sample_name62
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name70
+      'Study_ABC
+sample_name70
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name78
+      'Study_ABC
+sample_name78
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name86
+      'Study_ABC
+sample_name86
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name94
+      'Study_ABC
+sample_name94
 Homo_sapiens
 DDD_V5_plus'
     ],
     [
       'G',
-      'Study_ABC_sample_name7
+      'Study_ABC
+sample_name7
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name15
+      'Study_ABC
+sample_name15
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name23
+      'Study_ABC
+sample_name23
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name31
+      'Study_ABC
+sample_name31
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name39
+      'Study_ABC
+sample_name39
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name47
+      'Study_ABC
+sample_name47
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name55
+      'Study_ABC
+sample_name55
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name63
+      'Study_ABC
+sample_name63
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name71
+      'Study_ABC
+sample_name71
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name79
+      'Study_ABC
+sample_name79
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name87
+      'Study_ABC
+sample_name87
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name95
+      'Study_ABC
+sample_name95
 Homo_sapiens
 DDD_V5_plus'
     ],
     [
       'H',
-      'Study_ABC_sample_name8
+      'Study_ABC
+sample_name8
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name16
+      'Study_ABC
+sample_name16
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name24
+      'Study_ABC
+sample_name24
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name32
+      'Study_ABC
+sample_name32
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name40
+      'Study_ABC
+sample_name40
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name48
+      'Study_ABC
+sample_name48
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name56
+      'Study_ABC
+sample_name56
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name64
+      'Study_ABC
+sample_name64
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name72
+      'Study_ABC
+sample_name72
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name80
+      'Study_ABC
+sample_name80
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name88
+      'Study_ABC
+sample_name88
 Homo_sapiens
 DDD_V5_plus',
-      'Study_ABC_sample_name96
+      'Study_ABC
+sample_name96
 Homo_sapiens
 DDD_V5_plus'
     ],
@@ -1292,7 +1389,8 @@ DDD_V5_plus'
     [
       'A',
       '',
-      'Study_ABC_sample_name9
+      'Study_ABC
+sample_name9
 Homo_sapiens
 DDD_V5_plus',
       '',

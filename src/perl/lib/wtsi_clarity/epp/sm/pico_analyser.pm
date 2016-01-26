@@ -29,13 +29,14 @@ Readonly::Scalar our $ARTIFACT_LIMSID_PATH  => q(@limsid);
 Readonly::Scalar our $STANDARD_PLATE_NAME   => q(StandardPlate);
 Readonly::Scalar our $PICO_ASSAY_PLATE_NAME => q(PicoAssay);
 Readonly::Scalar our $PROCESS_NAME          => q(Pico DTX (SM));
+Readonly::Scalar my $FILE_NAME => q{%s_%s_picogreen_results_%s.pdf};
 ## use critic
 
 our $VERSION = '0.0';
 
-has 'analysis_file' => (
-  isa => 'Str',
-  is  => 'ro',
+has 'output_file_limsid' => (
+  is       => 'ro',
+  isa      => 'Str',
   required => 1,
 );
 
@@ -55,11 +56,16 @@ override 'run' => sub {
 
   my $results = $calculator->get_analysis_results();
 
+  my $parameters = {
+    results => $results,
+    stock_plate => $self->stock_plate,
+  };
+
   # Pass the results to the PDF generator
-  my $pdf = wtsi_clarity::util::pdf::factory::pico_analysis_results->new()->build($results);
+  my $pdf = wtsi_clarity::util::pdf::factory::pico_analysis_results->new()->build($parameters);
 
   # Attach PDF to process
-  $pdf->saveas(q{./} . $self->analysis_file);
+  $pdf->saveas(q{./} . $self->filename);
 
   $self->_update_output_artifacts($results);
 
@@ -67,6 +73,31 @@ override 'run' => sub {
   my $response = $self->request->batch_update('artifacts', $self->_output_artifact_details);
 
   return;
+};
+
+has 'filename' => (
+  isa => 'Str',
+  is => 'ro',
+  lazy_build => 1,
+);
+
+sub _build_filename {
+  my $self = shift;
+
+  my $date = DateTime->now()->strftime('%Y%m%d%H%M%S');
+  return sprintf $FILE_NAME, $self->output_file_limsid, $self->stock_plate, $date;
+};
+
+has 'stock_plate' => (
+  isa => 'Str',
+  is => 'ro',
+  lazy_build => 1,
+);
+
+sub _build_stock_plate {
+  my $self = shift;
+
+  return $self->process_doc->find_previous_container_from_process_type('Volume Check (SM)');
 };
 
 has '_dtx_parser' => (

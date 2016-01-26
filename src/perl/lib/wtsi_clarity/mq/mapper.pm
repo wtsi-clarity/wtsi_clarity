@@ -8,14 +8,19 @@ our $VERSION = '0.0';
 
 Readonly::Scalar my $BASE_MQ_PACKAGE_NAME => q{wtsi_clarity::};
 Readonly::Hash my %PURPOSE_TO_ENHANCER_TYPE => (
-  'sample'                => 'mq::me::sample_enhancer',
-  'study'                 => 'mq::me::study_enhancer',
-  'user'                  => 'mq::me::study_user_enhancer',
-  'fluidigm'              => 'mq::me::fluidigm_enhancer',
-  'flowcell'              => 'mq::me::flowcell_enhancer',
+  'sample'                        => 'mq::me::sample_enhancer',
+  'study'                         => 'mq::me::study_enhancer',
+  'user'                          => 'mq::me::study_user_enhancer',
+  'fluidigm'                      => 'mq::me::fluidigm_enhancer',
+  'flowcell'                      => 'mq::me::flowcell_enhancer',
 
-  'sample_manifest'       => 'epp::reports::manifest',
-  'sample_report'         => 'epp::reports::sample_qc_report',
+  'sample_manifest'               => 'epp::reports::manifest',
+  'sample_report'                 => 'epp::reports::sample_qc_report',
+
+  'charging_fluidigm'             => 'mq::me::charging::fluidigm',
+  'charging_secondary_qc'         => 'mq::me::charging::secondary_qc',
+  'charging_library_construction' => 'mq::me::charging::library_construction',
+  'charging_sequencing'           => 'mq::me::charging::sequencing',
 );
 
 sub package_name {

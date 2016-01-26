@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use DateTime;
 
-use Test::More tests => 10;
+use Test::More tests => 11;
 use Test::Exception;
 
 local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
@@ -30,6 +30,15 @@ my %args      = ( process_url => 'http://clarity.com/processes/1',
   );
 
   isa_ok($message, 'wtsi_clarity::mq::message_types::report_message', 'create returns a report_message object');
+}
+
+{
+  my $message = wtsi_clarity::mq::message->create('event',
+    purpose => 'charging_fluidigm',
+    %args,
+  );
+
+  isa_ok($message, 'wtsi_clarity::mq::message_types::event_message', 'create returns a event_message object');
 }
 
 {

@@ -11,29 +11,42 @@ use wtsi_clarity::util::types;
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $OUTPUT_ARTIFACT_URI_PATH => q{/prc:process/input-output-map/output[@output-type="Analyte"]/@uri};
-Readonly::Scalar my $PARENT_PROCESS_PATH      => q( /prc:process/input-output-map/input/parent-process/@uri );
-Readonly::Scalar my $PROCESS_TYPE             => q( /prc:process/type );
-Readonly::Scalar my $PROCESS_LIMSID_PATH      => q(/prc:processes/process/@limsid);
-Readonly::Scalar my $INPUT_ARTIFACT_URIS_PATH => q{/prc:process/input-output-map/input/@uri};
-Readonly::Scalar my $INPUT_OUTPUT_PATH        => q{prc:process/input-output-map};
-Readonly::Scalar my $ALL_ANALYTES             => q(prc:process/input-output-map/output[@output-type!="ResultFile"]/@uri | prc:process/input-output-map/input/@uri);
-Readonly::Scalar my $INPUT_ANALYTES           => q(prc:process/input-output-map/input/@uri);
-Readonly::Scalar my $ARTIFACT_BY_LIMSID       => q{art:details/art:artifact[@limsid="%s"]};
-Readonly::Scalar my $CONTAINER_BY_LIMSID      => q{con:details/con:container[@limsid="%s"]};
-Readonly::Scalar my $INPUT_LIMSID             => q{./input/@limsid};
-Readonly::Scalar my $OUTPUT_LIMSID            => q{./output[@output-type!="ResultFile"]/@limsid};
-Readonly::Scalar my $ALL_CONTAINERS           => q{art:details/art:artifact/location/container/@uri};
-Readonly::Scalar my $CONTAINER_URI_PATH       => q{/art:artifact/location/container/@uri};
-Readonly::Scalar my $PLACEMENTS_URI_PATH      => q{/con:container/placement/@uri};
-Readonly::Scalar my $RESULT_FILE_URI          => q{(prc:process/input-output-map/output[@output-type="ResultFile"]/@uri)[1]};
-Readonly::Scalar my $FILE_URL_PATH            => q(/art:artifact/file:file/@uri);
-Readonly::Scalar our $FILE_CONTENT_LOCATION   => q(/file:file/content-location);
-Readonly::Scalar my $CONTAINER_NAME_LOCATION  => q(/con:container/name);
-Readonly::Scalar my $SAMPLE_LIMSID_PATH       => q{/art:artifact/sample/@limsid};
-Readonly::Scalar my $CONTAINER_SIGNATURE_LOCATION  => q(/con:container/udf:field[@name="WTSI Container Signature"]);
-Readonly::Scalar my $OUTPUT_ANALYTES_URI_PATH => q{/prc:process/input-output-map/output/@uri};
-Readonly::Scalar my $WORKFLOW_STAGE_URI  => q{/art:details/art:artifact[1]/workflow-stages/workflow-stage[@status="IN_PROGRESS"]/@uri};
+Readonly::Scalar my $OUTPUT_ARTIFACT_URI_PATH     => q{/prc:process/input-output-map/output[@output-type="Analyte"]/@uri};
+Readonly::Scalar my $PARENT_PROCESS_PATH          => q( /prc:process/input-output-map/input/parent-process/@uri );
+Readonly::Scalar my $PROCESS_TYPE                 => q( /prc:process/type );
+Readonly::Scalar my $PROCESS_LIMSID_PATH          => q(/prc:processes/process/@limsid);
+Readonly::Scalar my $INPUT_ARTIFACT_URIS_PATH     => q{/prc:process/input-output-map/input/@uri};
+Readonly::Scalar my $INPUT_ANALYTES_URIS_PATH     => q{prc:process/input-output-map/output[@output-type!="ResultFile"]/../input/@uri};
+Readonly::Scalar my $INPUT_OUTPUT_PATH            => q{prc:process/input-output-map};
+Readonly::Scalar my $ALL_ANALYTES                 => q(prc:process/input-output-map/output[@output-type!="ResultFile"]/@uri | prc:process/input-output-map/input/@uri);
+Readonly::Scalar my $INPUT_ANALYTES               => q(prc:process/input-output-map/input/@uri);
+Readonly::Scalar my $ARTIFACT_BY_LIMSID           => q{art:details/art:artifact[@limsid="%s"]};
+Readonly::Scalar my $CONTAINER_BY_LIMSID          => q{con:details/con:container[@limsid="%s"]};
+Readonly::Scalar my $INPUT_LIMSID                 => q{./input/@limsid};
+Readonly::Scalar my $OUTPUT_LIMSID                => q{./output[@output-type!="ResultFile"]/@limsid};
+Readonly::Scalar my $ALL_CONTAINERS               => q{art:details/art:artifact/location/container/@uri};
+Readonly::Scalar my $CONTAINER_URI_PATH           => q{/art:artifact/location/container/@uri};
+Readonly::Scalar my $PLACEMENTS_URI_PATH          => q{/con:container/placement/@uri};
+Readonly::Scalar my $RESULT_FILE_URI              => q{(prc:process/input-output-map/output[@output-type="ResultFile"]/@uri)[1]};
+Readonly::Scalar my $FILE_URL_PATH                => q(/art:artifact/file:file/@uri);
+Readonly::Scalar our $FILE_CONTENT_LOCATION       => q(/file:file/content-location);
+Readonly::Scalar my $CONTAINER_NAME_LOCATION      => q(/con:container/name);
+Readonly::Scalar my $SAMPLE_LIMSID_PATH           => q{/art:artifact/sample/@limsid};
+Readonly::Scalar my $CONTAINER_SIGNATURE_LOCATION => q(/con:container/udf:field[@name="WTSI Container Signature"]);
+Readonly::Scalar my $OUTPUT_ANALYTES_URI_PATH     => q{/prc:process/input-output-map/output/@uri};
+Readonly::Scalar my $WORKFLOW_STAGE_URI           => q{/art:details/art:artifact[1]/workflow-stages/workflow-stage[@status="IN_PROGRESS"]/@uri};
+Readonly::Scalar my $FIRST_ARTIFACT_URI           => q{art:details/art:artifact[1]/@uri};
+Readonly::Scalar my $FIRST_ARTIFACT_LIMSID        => q{art:details/art:artifact[1]/@limsid};
+Readonly::Scalar my $NON_CONTROL_SAMPLE_LIMSID    => q{smp:details/smp:sample/project/../@limsid};
+Readonly::Scalar my $SAMPLE_URI_BY_ARTIFACT_DOC   => q{art:artifact/sample/@uri};
+Readonly::Scalar my $SAMPLE_URI_BY_ARTIFACTS_DOC  => q{art:details/art:artifact/sample/@uri};
+Readonly::Scalar my $PROJECT_URI_BY_SAMPLE_DOC    => q{smp:details/smp:sample/project/@uri};
+Readonly::Scalar my $TECHNICIAN_URI_BY_PROCESS    => q{prc:process/technician[1]/@uri};
+Readonly::Scalar my $PROJECT_LIMSID               => q{prj:project/@limsid};
+Readonly::Scalar my $BAIT_LIBRARY_PATH            => q{smp:sample/udf:field[@name='WTSI Bait Library Name']};
+Readonly::Scalar my $ARTIFACT_LIMSID_PATH         => q{art:artifacts/artifact/@limsid};
+Readonly::Scalar my $ARTIFACT_PROCESS_LIMSID_PATH => q{art:artifact/parent-process/@limsid};
+Readonly::Scalar my $DATE_RUN_PATH                => q{prc:process/date-run};
 ## use critic
 
 has '_parent' => (
@@ -172,8 +185,7 @@ sub find_by_artifactlimsid_and_name {
   my ($self, $artifact_limsid, $process_name) = @_;
 
   my $parameters = 'inputartifactlimsid=' . $artifact_limsid . '&type=' . uri_escape($process_name);
-  my $uri = $self->_config->clarity_api->{'base_uri'} . '/processes?' . $parameters;
-  my $process_list_xml = $self->_parent->fetch_and_parse($uri);
+  my $process_list_xml = $self->_by_entity_type_and_parameter($parameters, '/processes?');
 
   my @processes = $process_list_xml->findnodes($PROCESS_LIMSID_PATH)->to_literal_list();
 
@@ -182,9 +194,16 @@ sub find_by_artifactlimsid_and_name {
   }
 
   my $process_limsid = $self->_find_highest_limsid(\@processes);
-  my $process_uri = $self->_config->clarity_api->{'base_uri'} . '/processes/' . $process_limsid;
 
-  return $self->_parent->fetch_and_parse($process_uri);
+  return $self->_by_entity_type_and_parameter($process_limsid, '/processes/');
+}
+
+sub _by_entity_type_and_parameter {
+  my ($self, $param, $entity_type) = @_;
+
+  my $uri = $self->_config->clarity_api->{'base_uri'} . qq{$entity_type} . $param;
+
+  return $self->_parent->fetch_and_parse($uri);
 }
 
 sub _find_highest_limsid {
@@ -368,8 +387,7 @@ has 'output_analytes' => (
 
 sub _build_output_analytes {
   my $self = shift;
-  # my @uri_nodes = $self->process_doc->findnodes($OUTPUT_ANALYTES);
-  # my @uris = map { $_->getValue() } @uri_nodes;
+
   return $self->_request->batch_retrieve('artifacts', $self->output_analyte_uris);
 }
 
@@ -383,6 +401,143 @@ sub _build__input_analytes {
   my $self = shift;
   my @all_analyte_uris = uniq($self->findnodes($INPUT_ANALYTES)->to_literal_list);
   return $self->_request->batch_retrieve('artifacts', \@all_analyte_uris);
+}
+
+has '_first_input_analyte_uri' => (
+  is => 'ro',
+  isa => 'Str',
+  lazy_build => 1,
+);
+
+sub _build__first_input_analyte_uri {
+  my $self = shift;
+  return $self->_input_analytes->findnodes($FIRST_ARTIFACT_URI)->pop()->textContent;
+}
+
+has 'first_input_analyte_limsid' => (
+  is => 'ro',
+  isa => 'Str',
+  lazy_build => 1,
+);
+
+sub _build_first_input_analyte_limsid {
+  my $self = shift;
+  return $self->_input_analytes->findnodes($FIRST_ARTIFACT_LIMSID)->pop()->textContent;
+}
+
+has 'first_input_analyte_doc' => (
+  is => 'ro',
+  isa => 'XML::LibXML::Document',
+  lazy_build => 1,
+);
+
+sub _build_first_input_analyte_doc {
+  my $self = shift;
+
+  return $self->_parent->fetch_and_parse($self->_first_input_analyte_uri);
+}
+
+has '_first_sample_doc' => (
+  is => 'ro',
+  isa => 'XML::LibXML::Document',
+  lazy_build => 1,
+);
+
+sub _build__first_sample_doc {
+  my $self = shift;
+
+  my $first_analytes_doc = $self->_parent->fetch_and_parse($self->_first_input_analyte_uri);
+  my $sample_uri = $first_analytes_doc->findnodes($SAMPLE_URI_BY_ARTIFACT_DOC)->pop()->textContent;
+
+  return $self->_parent->fetch_and_parse($sample_uri);
+}
+
+has 'samples_doc' => (
+  is => 'ro',
+  isa => 'XML::LibXML::Document',
+  lazy_build => 1,
+);
+
+sub _build_samples_doc {
+  my $self = shift;
+
+  my $analytes_doc = $self->_input_analytes;
+  my @sample_uris = $analytes_doc->findnodes($SAMPLE_URI_BY_ARTIFACTS_DOC)->to_literal_list;
+  my $samples_doc = $self->_request->batch_retrieve('samples', \@sample_uris);
+
+  return $samples_doc;
+}
+
+has 'samples_count_wo_control' => (
+  is => 'ro',
+  isa => 'Num',
+  lazy_build => 1,
+);
+sub _build_samples_count_wo_control {
+  my $self = shift;
+
+  return scalar @{$self->samples_doc->findnodes($NON_CONTROL_SAMPLE_LIMSID)->to_literal_list};
+}
+
+has '_first_non_control_sample_limsid' => (
+  is => 'ro',
+  isa => 'Str',
+  lazy_build => 1,
+);
+sub _build__first_non_control_sample_limsid {
+  my ($self) = @_;
+
+  return $self->samples_doc->findnodes($NON_CONTROL_SAMPLE_LIMSID)    ->pop->textContent;
+}
+
+has 'bait_library' => (
+  is => 'ro',
+  isa => 'Str',
+  lazy_build => 1,
+);
+sub _build_bait_library {
+  my $self = shift;
+
+  return $self->_first_sample_doc->findvalue($BAIT_LIBRARY_PATH);
+}
+
+has 'project_doc' => (
+  is => 'ro',
+  isa => 'XML::LibXML::Document',
+  lazy_build => 1,
+);
+sub _build_project_doc {
+  my $self = shift;
+
+  return $self->_parent->fetch_and_parse($self->samples_doc->findnodes($PROJECT_URI_BY_SAMPLE_DOC)->pop->textContent);
+}
+
+has 'study_limsid' => (
+  isa         => 'Str',
+  is          => 'ro',
+  lazy_build  => 1,
+);
+sub _build_study_limsid {
+  my $self = shift;
+
+  return $self->project_doc->findvalue($PROJECT_LIMSID);
+}
+
+has 'technician_doc' => (
+  is => 'ro',
+  isa => 'XML::LibXML::Document',
+  lazy_build => 1,
+);
+sub _build_technician_doc {
+  my $self = shift;
+
+  my $technician_uri = $self->xml->findvalue($TECHNICIAN_URI_BY_PROCESS);
+
+  if (!$technician_uri) {
+    croak q{The technician XML element is missing from the process XML document.};
+  }
+
+  return $self->_parent->fetch_and_parse($technician_uri);
 }
 
 sub get_result_file_location {
@@ -403,8 +558,7 @@ sub get_result_file_location {
 sub get_container_name_by_limsid {
   my ($self, $limsid) = @_;
 
-  my $uri = $self->_config->clarity_api->{'base_uri'} . '/containers/' . $limsid;
-  my $container_xml = $self->_parent->fetch_and_parse($uri);
+  my $container_xml = $self->_by_entity_type_and_parameter($limsid, '/containers/');
   my $container_name = $container_xml->findvalue($CONTAINER_NAME_LOCATION);
 
   croak qq{Could not find the name of container with the given limsid: $limsid} if (!defined $container_name || $container_name eq q{});
@@ -441,6 +595,17 @@ sub _build_output_artifact_uris {
   return \@output_uris;
 }
 
+has 'number_of_input_artifacts' => (
+  isa => 'Num',
+  is  => 'ro',
+  lazy_build => 1,
+);
+sub _build_number_of_input_artifacts {
+  my $self = shift;
+
+  return scalar $self->xml->findnodes($INPUT_ANALYTES_URIS_PATH)->get_nodelist;
+}
+
 sub container_uri_by_artifact_limsid {
   my ($self, $artifact_limsid) = @_;
 
@@ -468,8 +633,7 @@ sub get_analytes_uris_by_container_uri {
 sub get_container_signature_by_limsid {
   my ($self, $limsid) = @_;
 
-  my $uri = $self->_config->clarity_api->{'base_uri'} . '/containers/' . $limsid;
-  my $container_xml = $self->_parent->fetch_and_parse($uri);
+  my $container_xml = $self->_by_entity_type_and_parameter($limsid, '/containers/');;
   my $container_signature = $container_xml->findvalue($CONTAINER_SIGNATURE_LOCATION);
 
   croak qq{Could not find the signature of container with the given limsid: $limsid} if (!defined $container_signature || $container_signature eq q{});
@@ -485,6 +649,53 @@ sub get_current_workflow_uri {
 
   my ($workflow_uri) = $workflow_stage =~ / ^ (. * )\/stages\/\d + /smx;
   return $workflow_uri;
+}
+
+sub find_by_processtype_samplelimsid_and_type {
+  my ($self, $process_type, $sample_limsid, $type) = @_;
+
+  if (!$type) {
+    $type = q{Analyte};
+  }
+
+  my $parameters = 'process-type=' . $process_type . '&samplelimsid=' . $sample_limsid. '&type=' . $type;
+  my $process_list_xml = $self->_by_entity_type_and_parameter($parameters, '/artifacts?');
+
+  my @artifacts = $process_list_xml->findnodes($ARTIFACT_LIMSID_PATH)->to_literal_list();
+
+  if (scalar @artifacts == 0) {
+    croak qq{The process could not be found with the following parameters: \nprocess type = $process_type, sample's limsid = $sample_limsid, type = $type};
+  }
+
+  my $artifact_limsid = $self->_find_highest_limsid(\@artifacts);
+
+  my $arifact_doc = $self->_by_entity_type_and_parameter($artifact_limsid, '/artifacts/');
+
+  my $process_limsid = $arifact_doc->findvalue($ARTIFACT_PROCESS_LIMSID_PATH);
+
+  return $self->_by_entity_type_and_parameter($process_limsid, '/processes/');
+}
+
+sub find_previous_container_from_process_type {
+  my ($self, $process_type) = @_;
+
+  my $first_sample_id = $self->samples_doc->findnodes($NON_CONTROL_SAMPLE_LIMSID)->pop->value;
+
+  my $search_result = $self->_request->query_resources('artifacts', {
+    sample_id    => $first_sample_id,
+    process_type => $process_type,
+    type         => 'Analyte'
+  });
+
+  my $artifact_id = $search_result->findnodes($ARTIFACT_LIMSID_PATH)->pop->value;
+  my $container_uri = $self->container_uri_by_artifact_limsid($artifact_id);
+  return $self->_parent->fetch_and_parse($container_uri)->findvalue($CONTAINER_NAME_LOCATION);
+}
+
+sub date_run {
+  my ($self) = @_;
+
+  return $self->findvalue($DATE_RUN_PATH);
 }
 
 1;
@@ -562,9 +773,22 @@ wtsi_clarity::clarity::process
 
   Returns the signature of the container by its limsid.
 
+=head2 find_by_processtype_samplelimsid_and_type
+
+  Finds and returns the process by process type, sample limsid and type (Analyte, Result file).
+  The default type is Analyte.
+
 =head2 get_current_workflow_uri
 
-    Returns the uri for the workflow.
+  Returns the uri for the workflow.
+
+=head2 find_previous_container_from_process_type
+
+  Returns the plate barcode that was in the given process type for the current samples.
+
+=head2 date_run
+
+  Returns the date when the process run.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

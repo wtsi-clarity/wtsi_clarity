@@ -25,7 +25,7 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
   my $containertypes_dao = wtsi_clarity::dao::containertypes_dao->new(lims_id => $lims_id);
 
   my $_xml;
-  lives_ok { $_xml = $containertypes_dao->_artifact_xml} 'got container xml';
+  lives_ok { $_xml = $containertypes_dao->artifact_xml} 'got container xml';
   isa_ok($_xml, 'XML::LibXML::Document');
 
   is($containertypes_dao->plate_size, 96, 'Returns the correct plate size');

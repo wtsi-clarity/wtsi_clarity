@@ -52,6 +52,7 @@ Readonly::Hash my %ACTION2MODULE => (
   'pool_samples'                   => 'isc::pooling::analyte_pooler',
   'place_pools'                    => 'isc::pooling::pool_placer',
   'make_beckman_file'              => 'isc::pool_beckman_creator',
+  'rearray_to_hyb'                 => 'isc::rearray_to_hyb_beckman_creator',
   'analyse_pool'                   => 'isc::pool_analyser',
   'unattach_analytes'              => 'isc::analytes_unattacher',
   'validate_flowcell'              => 'isc::flowcell_barcode_validator',

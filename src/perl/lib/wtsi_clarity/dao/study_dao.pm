@@ -11,10 +11,13 @@ with 'wtsi_clarity::dao::base_dao';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $STUDY_USER_URI_PATH      => q{/prj:project/researcher/@uri};
+Readonly::Scalar my $STUDY_URI_PATH           => q{/prj:project/@uri};
 # Note 'manager' is the closest role we could use. It might change in the future!
 Readonly::Scalar my $STUDY_USER_MANAGER_ROLE  => q{manager};
 
 Readonly::Scalar my $COST_CODE_PATH           => q{/prj:project/udf:field[@name='WTSI Project Cost Code']};
+Readonly::Scalar my $STUDY_UUID_PATH          => q{/prj:project/udf:field[@name='WTSI Project UUID']};
+Readonly::Scalar my $STUDY_READ_LENGTH_PATH   => q{/prj:project/udf:field[@name='WTSI Read Length']};
 
 # In the ATTRIBUTES hash: an element's key is the attribute name
 # and the element's value is the XPATH to get the attribute's value
@@ -98,6 +101,47 @@ has 'cost_code' => (
 sub _build_cost_code {
   my $self = shift;
   return $self->findvalue($COST_CODE_PATH);
+}
+
+has 'study_uuid' => (
+  traits      => [ 'DoNotSerialize' ],
+  isa         => 'Str',
+  is          => 'ro',
+  required    => 0,
+  lazy_build  => 1,
+);
+sub _build_study_uuid {
+  my $self = shift;
+
+  my $study_uuid = $self->findvalue($STUDY_UUID_PATH);
+
+  return $study_uuid;
+}
+
+has 'read_length' => (
+  traits      => [ 'DoNotSerialize' ],
+  isa         => 'Str',
+  is          => 'ro',
+  required    => 0,
+  lazy_build  => 1,
+);
+sub _build_read_length {
+  my $self = shift;
+
+  return $self->findvalue($STUDY_READ_LENGTH_PATH);
+}
+
+has 'uri' => (
+  traits      => [ 'DoNotSerialize' ],
+  isa         => 'Str',
+  is          => 'ro',
+  required    => 0,
+  lazy_build  => 1,
+);
+sub _build_uri {
+  my $self = shift;
+
+  return $self->findvalue($STUDY_URI_PATH);
 }
 
 sub get_user_message {

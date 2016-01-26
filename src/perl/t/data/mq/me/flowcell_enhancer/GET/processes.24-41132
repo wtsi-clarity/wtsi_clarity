@@ -1,1 +1,33 @@
-<?xml version="1.0" standalone="yes"?><prc:process xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" uri="http://testserver.com:1234/here/processes/24-41132" limsid="24-41132"><type uri="http://testserver.com:1234/here/processtypes/459">Cluster Generation</type><date-run>2015-05-06</date-run><technician uri="http://testserver.com:1234/here/researchers/359"><first-name>Melanie </first-name><last-name>Robinson</last-name></technician><input-output-map><input post-process-uri="http://testserver.com:1234/here/artifacts/2-286410?state=143005" uri="http://testserver.com:1234/here/artifacts/2-286410?state=143005" limsid="2-286410"><parent-process uri="http://testserver.com:1234/here/processes/122-40664" limsid="122-40664"/></input><output uri="http://testserver.com:1234/here/artifacts/2-289192?state=145088" output-generation-type="PerInput" output-type="Analyte" limsid="2-289192"/></input-output-map><input-output-map><input post-process-uri="http://testserver.com:1234/here/artifacts/2-286410?state=143005" uri="http://testserver.com:1234/here/artifacts/2-286410?state=143005" limsid="2-286410"><parent-process uri="http://testserver.com:1234/here/processes/122-40664" limsid="122-40664"/></input><output uri="http://testserver.com:1234/here/artifacts/2-289193?state=145089" output-generation-type="PerInput" output-type="Analyte" limsid="2-289193"/></input-output-map><udf:field type="String" name="Flow Cell ID">HFC2HADXX</udf:field><udf:field type="String" name="Pipette Used:">6720000001718</udf:field><udf:field type="String" name="FRM Lot:">10010030</udf:field><udf:field type="String" name="FLM2 Lot:">10005880</udf:field><udf:field type="String" name="FLM1 Lot:">10010048</udf:field><udf:field type="String" name="AMS Lot:">10007776</udf:field><udf:field type="String" name="FPM Lot:">10005889</udf:field><udf:field type="String" name="FDR Lot:">10012398</udf:field><udf:field type="String" name="HP11 Lot:">10010049</udf:field><udf:field type="String" name="HP12 Lot:">10008913</udf:field><udf:field type="String" name="HP10 Lot:">10007774</udf:field><udf:field type="String" name="Plate Purpose">Cluster Generation</udf:field></prc:process>
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="24-41132" uri="http://testserver.com:1234/here/processes/24-41132" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://testserver.com:1234/here/processtypes/459">Cluster Generation</type>
+  <date-run>2015-05-06</date-run>
+  <technician uri="http://testserver.com:1234/here/researchers/359">
+    <first-name>Melanie </first-name>
+    <last-name>Robinson</last-name>
+  </technician>
+  <input-output-map>
+    <input limsid="2-286410" post-process-uri="http://testserver.com:1234/here/artifacts/2-286410?state=143005" uri="http://testserver.com:1234/here/artifacts/2-286410?state=143005">
+      <parent-process limsid="122-40664" uri="http://testserver.com:1234/here/processes/122-40664"/>
+    </input>
+    <output limsid="2-289192" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-289192?state=145088"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-286410" post-process-uri="http://testserver.com:1234/here/artifacts/2-286410?state=143005" uri="http://testserver.com:1234/here/artifacts/2-286410?state=143005">
+      <parent-process limsid="122-40664" uri="http://testserver.com:1234/here/processes/122-40664"/>
+    </input>
+    <output limsid="2-289193" output-generation-type="PerInput" output-type="Analyte" uri="http://testserver.com:1234/here/artifacts/2-289193?state=145089"/>
+  </input-output-map>
+  <udf:field name="Flow Cell ID" type="String">HFC2HADXX</udf:field>
+  <udf:field name="Pipette Used:" type="String">6720000001718</udf:field>
+  <udf:field name="FRM Lot:" type="String">10010030</udf:field>
+  <udf:field name="FLM2 Lot:" type="String">10005880</udf:field>
+  <udf:field name="FLM1 Lot:" type="String">10010048</udf:field>
+  <udf:field name="AMS Lot:" type="String">10007776</udf:field>
+  <udf:field name="FPM Lot:" type="String">10005889</udf:field>
+  <udf:field name="FDR Lot:" type="String">10012398</udf:field>
+  <udf:field name="HP11 Lot:" type="String">10010049</udf:field>
+  <udf:field name="HP12 Lot:" type="String">10008913</udf:field>
+  <udf:field name="HP10 Lot:" type="String">10007774</udf:field>
+  <udf:field name="Plate Purpose" type="String">Cluster Generation</udf:field>
+</prc:process>

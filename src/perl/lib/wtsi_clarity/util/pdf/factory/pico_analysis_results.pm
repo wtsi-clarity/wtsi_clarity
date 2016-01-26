@@ -10,7 +10,8 @@ extends 'wtsi_clarity::util::pdf::pdf_generator';
 
 Readonly::Scalar our $NUMBER_OF_COLUMNS => 12;
 
-Readonly::Scalar my $buffer_table_y_position => 100;
+Readonly::Scalar my $info_table_y_position => 60;
+Readonly::Scalar my $buffer_table_y_position => 120;
 
 our $VERSION = '0.0';
 
@@ -49,7 +50,11 @@ has 'plate_style_table' => (
 sub build {
   my ($self, $parameters) = @_;
 
-  my ($plate_table, $plate_table_cell_styles) = $self->format_tables($parameters);
+  my ($plate_table, $plate_table_cell_styles) = $self->format_tables($parameters->{'results'});
+
+  my $info_table = [
+    ['Stock Plate', $parameters->{'stock_plate'}]
+  ];
 
   my $pdf_generator = wtsi_clarity::util::pdf::pdf_generator->new();
 
@@ -59,6 +64,7 @@ sub build {
   $pdf_generator->add_title_to_page($page, 'Picogreen Analysis');
   $pdf_generator->add_timestamp($page);
 
+  $pdf_generator->add_io_block_to_page($self->pdf, $page, $info_table, q{}, $info_table_y_position);
   $pdf_generator->add_buffer_block_to_page($self->pdf, $page, $plate_table, 'Results', $plate_table_cell_styles, $buffer_table_y_position);
 
   return $self->pdf;

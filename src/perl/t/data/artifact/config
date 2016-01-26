@@ -1,0 +1,6 @@
+[mandatory]
+limsid=/art:artifact/@limsid
+name=/art:artifact/name
+
+[optional]
+reagent_label_name=/art:artifact/reagent-label/@name

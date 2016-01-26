@@ -16,7 +16,7 @@ our $VERSION = '0.0';
 Readonly::Scalar my $FLUIDIGM_BC_LENGTH => 10;
 Readonly::Scalar my $EAN_BC_LENGTH      => 13;
 Readonly::Scalar my $FLOWCELL_BC_LENGTH => 9;
-Readonly::Scalar my $FLOWCELL_START     => 'H';
+Readonly::Scalar my $FLOWCELL_START     => 'C|H';
 Readonly::Scalar my $FLOWCELL_END       => 'XX';
 
 sub flgen_bc {

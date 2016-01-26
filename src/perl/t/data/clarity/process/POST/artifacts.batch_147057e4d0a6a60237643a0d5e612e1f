@@ -1,0 +1,1259 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405774?state=206746" limsid="2-405774">
+        <name>2c78f82f-7990-11e5-a114-a2ee327457bb</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>E:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A153" limsid="MAN351A153"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405775?state=206747" limsid="2-405775">
+        <name>2c78f82f-7990-11e5-a114-a2ee327457bb</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>E:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A153" limsid="MAN351A153"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405776?state=206748" limsid="2-405776">
+        <name>2bef1c59-7990-11e5-a114-c4417fcbd586</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>D:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A152" limsid="MAN351A152"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405777?state=206749" limsid="2-405777">
+        <name>2bef1c59-7990-11e5-a114-c4417fcbd586</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>D:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A152" limsid="MAN351A152"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405778?state=206750" limsid="2-405778">
+        <name>280515fe-7990-11e5-a114-d43c8145f490</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>G:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A155" limsid="MAN351A155"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405779?state=206751" limsid="2-405779">
+        <name>280515fe-7990-11e5-a114-d43c8145f490</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>G:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A155" limsid="MAN351A155"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405780?state=206752" limsid="2-405780">
+        <name>277e0993-7990-11e5-a114-a52a0cd857c4</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>F:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A154" limsid="MAN351A154"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405781?state=206753" limsid="2-405781">
+        <name>277e0993-7990-11e5-a114-a52a0cd857c4</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>F:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A154" limsid="MAN351A154"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405782?state=206754" limsid="2-405782">
+        <name>28f5a988-7990-11e5-a114-b86be745edab</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A149" limsid="MAN351A149"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405783?state=206755" limsid="2-405783">
+        <name>28f5a988-7990-11e5-a114-b86be745edab</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A149" limsid="MAN351A149"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405784?state=206756" limsid="2-405784">
+        <name>287b25c8-7990-11e5-a114-83114a71bde8</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>C:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A151" limsid="MAN351A151"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405785?state=206757" limsid="2-405785">
+        <name>287b25c8-7990-11e5-a114-83114a71bde8</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>C:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A151" limsid="MAN351A151"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405786?state=206758" limsid="2-405786">
+        <name>2a1fc73a-7990-11e5-a114-d37e8d9ed7eb</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>B:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A150" limsid="MAN351A150"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405787?state=206759" limsid="2-405787">
+        <name>2a1fc73a-7990-11e5-a114-d37e8d9ed7eb</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>B:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A150" limsid="MAN351A150"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405788?state=206760" limsid="2-405788">
+        <name>2987850f-7990-11e5-a114-a85a635c6eec</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>D:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A160" limsid="MAN351A160"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405789?state=206761" limsid="2-405789">
+        <name>2987850f-7990-11e5-a114-a85a635c6eec</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>D:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A160" limsid="MAN351A160"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405790?state=206762" limsid="2-405790">
+        <name>2b54d8b7-7990-11e5-a114-9550b43cee4b</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>E:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A161" limsid="MAN351A161"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405791?state=206763" limsid="2-405791">
+        <name>2b54d8b7-7990-11e5-a114-9550b43cee4b</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>E:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A161" limsid="MAN351A161"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405792?state=206764" limsid="2-405792">
+        <name>2ac6a208-7990-11e5-a114-fae932a13894</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>F:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A162" limsid="MAN351A162"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405793?state=206765" limsid="2-405793">
+        <name>2ac6a208-7990-11e5-a114-fae932a13894</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>F:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A162" limsid="MAN351A162"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405794?state=206766" limsid="2-405794">
+        <name>2f9713b2-7990-11e5-a114-f205058b4a2d</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>G:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A163" limsid="MAN351A163"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405795?state=206767" limsid="2-405795">
+        <name>2f9713b2-7990-11e5-a114-f205058b4a2d</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>G:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A163" limsid="MAN351A163"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405796?state=206768" limsid="2-405796">
+        <name>2f13c3c2-7990-11e5-a114-ab638b29cdc3</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>H:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A156" limsid="MAN351A156"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405797?state=206769" limsid="2-405797">
+        <name>2f13c3c2-7990-11e5-a114-ab638b29cdc3</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>H:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A156" limsid="MAN351A156"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405798?state=206770" limsid="2-405798">
+        <name>30932a80-7990-11e5-a114-bc57a78f0735</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>A:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A157" limsid="MAN351A157"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405799?state=206771" limsid="2-405799">
+        <name>30932a80-7990-11e5-a114-bc57a78f0735</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>A:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A157" limsid="MAN351A157"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405800?state=206772" limsid="2-405800">
+        <name>301fbafa-7990-11e5-a114-f36ed523bd4c</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>B:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A158" limsid="MAN351A158"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405851?state=206773" limsid="2-405851">
+        <name>301fbafa-7990-11e5-a114-f36ed523bd4c</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>B:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A158" limsid="MAN351A158"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405852?state=206774" limsid="2-405852">
+        <name>2d86a421-7990-11e5-a114-b15cfcbdd31e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>C:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A159" limsid="MAN351A159"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405853?state=206775" limsid="2-405853">
+        <name>2d86a421-7990-11e5-a114-b15cfcbdd31e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>C:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A159" limsid="MAN351A159"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405854?state=206776" limsid="2-405854">
+        <name>2d0227d6-7990-11e5-a114-a5b52c39cad7</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>D:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A168" limsid="MAN351A168"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405855?state=206777" limsid="2-405855">
+        <name>2d0227d6-7990-11e5-a114-a5b52c39cad7</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>D:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A168" limsid="MAN351A168"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405856?state=206778" limsid="2-405856">
+        <name>2e8f6d21-7990-11e5-a114-ba640e0692af</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>E:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A169" limsid="MAN351A169"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405857?state=206779" limsid="2-405857">
+        <name>2e8f6d21-7990-11e5-a114-ba640e0692af</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>E:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A169" limsid="MAN351A169"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405858?state=206780" limsid="2-405858">
+        <name>2e097031-7990-11e5-a114-bab6c9f00688</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>F:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A170" limsid="MAN351A170"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405859?state=206781" limsid="2-405859">
+        <name>2e097031-7990-11e5-a114-bab6c9f00688</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>F:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A170" limsid="MAN351A170"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405860?state=206782" limsid="2-405860">
+        <name>339cca42-7990-11e5-a114-af94f151b15a</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>G:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A171" limsid="MAN351A171"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405861?state=206783" limsid="2-405861">
+        <name>339cca42-7990-11e5-a114-af94f151b15a</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>G:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A171" limsid="MAN351A171"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405862?state=206784" limsid="2-405862">
+        <name>331b92c5-7990-11e5-a114-c7810379529e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>H:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A164" limsid="MAN351A164"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405863?state=206785" limsid="2-405863">
+        <name>331b92c5-7990-11e5-a114-c7810379529e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>H:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A164" limsid="MAN351A164"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405864?state=206786" limsid="2-405864">
+        <name>34a26212-7990-11e5-a114-9d3474781b22</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>A:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A165" limsid="MAN351A165"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405865?state=206787" limsid="2-405865">
+        <name>34a26212-7990-11e5-a114-9d3474781b22</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>A:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A165" limsid="MAN351A165"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405866?state=206788" limsid="2-405866">
+        <name>3421d35d-7990-11e5-a114-d66c7827c3c2</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>B:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A166" limsid="MAN351A166"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405867?state=206789" limsid="2-405867">
+        <name>3421d35d-7990-11e5-a114-d66c7827c3c2</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>B:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A166" limsid="MAN351A166"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405868?state=206790" limsid="2-405868">
+        <name>3199b5fc-7990-11e5-a114-f00dc4f45911</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>C:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A167" limsid="MAN351A167"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405869?state=206791" limsid="2-405869">
+        <name>3199b5fc-7990-11e5-a114-f00dc4f45911</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>C:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A167" limsid="MAN351A167"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405870?state=206792" limsid="2-405870">
+        <name>311e06bd-7990-11e5-a114-e8ecd59af0cd</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>H:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A180" limsid="MAN351A180"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405871?state=206793" limsid="2-405871">
+        <name>311e06bd-7990-11e5-a114-e8ecd59af0cd</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>H:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A180" limsid="MAN351A180"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405872?state=206794" limsid="2-405872">
+        <name>329c1418-7990-11e5-a114-cce39c1cc683</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>B:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A174" limsid="MAN351A174"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405873?state=206795" limsid="2-405873">
+        <name>329c1418-7990-11e5-a114-cce39c1cc683</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>B:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A174" limsid="MAN351A174"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405874?state=206796" limsid="2-405874">
+        <name>321e3daf-7990-11e5-a114-d4bc924f8fcf</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>C:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A175" limsid="MAN351A175"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405875?state=206797" limsid="2-405875">
+        <name>321e3daf-7990-11e5-a114-d4bc924f8fcf</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>C:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A175" limsid="MAN351A175"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405876?state=206798" limsid="2-405876">
+        <name>363fc205-7990-11e5-a114-93a7cd5f5403</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>H:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A172" limsid="MAN351A172"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405877?state=206799" limsid="2-405877">
+        <name>363fc205-7990-11e5-a114-93a7cd5f5403</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>H:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A172" limsid="MAN351A172"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405878?state=206800" limsid="2-405878">
+        <name>36c7e30a-7990-11e5-a114-cb38053ea39f</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>A:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A173" limsid="MAN351A173"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405879?state=206801" limsid="2-405879">
+        <name>36c7e30a-7990-11e5-a114-cb38053ea39f</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>A:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A173" limsid="MAN351A173"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405880?state=206802" limsid="2-405880">
+        <name>375cdd01-7990-11e5-a114-84c4836df710</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>F:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A178" limsid="MAN351A178"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405881?state=206803" limsid="2-405881">
+        <name>375cdd01-7990-11e5-a114-84c4836df710</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>F:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A178" limsid="MAN351A178"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405882?state=206804" limsid="2-405882">
+        <name>37ebe27d-7990-11e5-a114-dde71491ba68</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>G:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A179" limsid="MAN351A179"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405883?state=206805" limsid="2-405883">
+        <name>37ebe27d-7990-11e5-a114-dde71491ba68</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>G:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A179" limsid="MAN351A179"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405884?state=206806" limsid="2-405884">
+        <name>35272f41-7990-11e5-a114-fc4c9b724d93</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>D:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A176" limsid="MAN351A176"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405885?state=206807" limsid="2-405885">
+        <name>35272f41-7990-11e5-a114-fc4c9b724d93</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>D:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A176" limsid="MAN351A176"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405886?state=206808" limsid="2-405886">
+        <name>35b05740-7990-11e5-a114-b0091263eae0</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>E:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A177" limsid="MAN351A177"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405887?state=206809" limsid="2-405887">
+        <name>35b05740-7990-11e5-a114-b0091263eae0</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>E:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/MAN351A177" limsid="MAN351A177"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405888?state=206810" limsid="2-405888">
+        <name>Lambda DNA</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13634" limsid="27-13634"/>
+            <value>H:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/151C-1065" limsid="151C-1065"/>
+        <control-type uri="http://testserver.com:1234/here/controltypes/151"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-405889?state=206811" limsid="2-405889">
+        <name>Lambda DNA</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-67919" limsid="24-67919"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13635" limsid="27-13635"/>
+            <value>H:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/151C-1065" limsid="151C-1065"/>
+        <control-type uri="http://testserver.com:1234/here/controltypes/151"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Pico Reagent Addition (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1217"/>
+            <workflow-stage status="COMPLETE" name="Pico DTX (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1218"/>
+            <workflow-stage status="QUEUED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+            <workflow-stage status="REMOVED" name="Picogreen Analysis (SM)" uri="http://testserver.com:1234/here/configuration/workflows/601/stages/1219"/>
+        </workflow-stages>
+    </art:artifact>
+</art:details>

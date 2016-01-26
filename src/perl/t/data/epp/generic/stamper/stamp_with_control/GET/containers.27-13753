@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="yes"?>
+<con:container xmlns:udf="http://genologics.com/ri/userdefined" xmlns:con="http://genologics.com/ri/container" uri="http://testserver.com:1234/here/containers/27-13753" limsid="27-13753">
+    <name>27-13753</name>
+    <type uri="http://testserver.com:1234/here/containertypes/2" name="Tube"/>
+    <occupied-wells>1</occupied-wells>
+    <placement uri="http://testserver.com:1234/here/artifacts/3C-1151PA1" limsid="3C-1151PA1">
+        <value>1:1</value>
+    </placement>
+    <state>Populated</state>
+</con:container>

@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="yes"?>
+<prj:project xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:prj="http://genologics.com/ri/project" uri="http://testserver.com:1234/here/projects/LAB106" limsid="LAB106">
+    <name>Karoly_test</name>
+    <open-date>2014-08-04</open-date>
+    <researcher uri="http://testserver.com:1234/here/researchers/55"/>
+    <udf:field type="String" name="WTSI Project Cost Code">S01XYZ</udf:field>
+    <file:file limsid="LAB106-40-213" uri="http://testserver.com:1234/here/files/LAB106-40-213"/>
+    <file:file limsid="LAB106-40-251" uri="http://testserver.com:1234/here/files/LAB106-40-251"/>
+    <file:file limsid="LAB106-40-3601" uri="http://testserver.com:1234/here/files/LAB106-40-3601"/>
+</prj:project>

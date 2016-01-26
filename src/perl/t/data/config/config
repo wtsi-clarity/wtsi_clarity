@@ -11,6 +11,11 @@ password=guest
 vhost=/
 port=5672
 dead_letter_exchange=clarity.deadletter_exchange
+id_lims=C_GCLP_D
+
+[event_consumer]
+queue=event_queue
+routing_key=event
 
 [warehouse_consumer]
 queue=warehouse_queue
@@ -56,3 +61,9 @@ lab_sample_qc_path=/Sanger1-dev/home/glsai
 
 [barcode_mint]
 internal_generation=1
+
+[database]
+use_database=1
+dsn=dbi:SQLite:dbname=test.db
+user=
+pass=

@@ -3,9 +3,7 @@ package wtsi_clarity::epp::isc::pool_beckman_creator;
 use Moose;
 use Carp;
 use Readonly;
-use Mojo::Collection 'c';
-use wtsi_clarity::util::textfile;
-use wtsi_clarity::util::beckman;
+use wtsi_clarity::epp::isc::beckman_file_generator;
 
 use wtsi_clarity::epp::isc::pool_calculator;
 
@@ -14,54 +12,23 @@ our $VERSION = '0.0';
 extends 'wtsi_clarity::epp';
 
 with qw/
+        wtsi_clarity::epp::isc::beckman_file_generator
         wtsi_clarity::util::clarity_elements
-        wtsi_clarity::util::csv::report_common
        /;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $PROCESS_ID_PATH            => q(/prc:process/@limsid);
-Readonly::Scalar my $DEFAULT_PLATE_NAME_PREFIX  => q(PCRXP);
-Readonly::Scalar my $DEFAULT_SOURCE_EAN13       => q(Not used);
-Readonly::Scalar my $DEFAULT_SOURCE_BARCODE     => q(Not used);
-Readonly::Scalar my $DEFAULT_SOURCE_STOCK       => q(Not used);
-Readonly::Scalar my $DEFAULT_DEST_EAN13         => q(Not used);
-Readonly::Scalar my $DEFAULT_DEST_BARCODE       => q(Not used);
+Readonly::Scalar my $PROCESS_ID_PATH => q(/prc:process/@limsid);
 ## use critic
 
-has 'beckman_file_name' => (
-  isa      => 'Str',
-  is       => 'ro',
-  required => 1,
-);
+override 'run' => sub {
+  my $self= shift;
+  super();
 
-has '_beckman' => (
-  is => 'ro',
-  isa => 'wtsi_clarity::util::beckman',
-  required => 0,
-  lazy_build => 1,
-);
-sub _build__beckman {
-  my $self = shift;
-  return wtsi_clarity::util::beckman->new();
-}
+  $self->_beckman_file->saveas(q{./} . $self->beckman_file_name);
 
-has '_beckman_file' => (
-  is => 'ro',
-  isa => 'wtsi_clarity::util::textfile',
-  required => 0,
-  lazy_build => 1,
-);
-sub _build__beckman_file {
-  my $self = shift;
-  return $self->_beckman->get_file($self->internal_csv_output);
-}
+  return;
+};
 
-has 'internal_csv_output' => (
-  is => 'ro',
-  isa => 'ArrayRef',
-  required => 0,
-  lazy_build => 1,
-);
 sub _build_internal_csv_output {
   my $self = shift;
 
@@ -76,29 +43,12 @@ sub _build_internal_csv_output {
   foreach my $plate_name (@plate_names) {
     while ( my ($dest_well, $analytes) = each $pool_calculator_result->{$plate_name}) {
       foreach my $analyte_data (@{$analytes}) {
-        my @row_content = c->new(@{$self->_beckman->headers})
-                          ->reduce( sub {
-                            my $method = $self->get_method_from_header($b);
-                            my $value = $self->$method($dest_well, $analyte_data, $sample_nr);
-                            $a->{$b} = $value;
-                            $a;
-                          }, {});
-        push @rows, @row_content;
-        $sample_nr++;
+        push @rows, $self->row($dest_well, $analyte_data, $sample_nr++);
       }
     }
   }
 
   return \@rows;
-}
-
-override 'run' => sub {
-  my $self= shift;
-  super();
-
-  $self->_beckman_file->saveas(q{./} . $self->beckman_file_name);
-
-  return;
 };
 
 sub _get_result_from_pool_calculator {
@@ -111,44 +61,9 @@ sub _get_result_from_pool_calculator {
 }
 
 ## no critic(Subroutines::ProhibitUnusedPrivateSubroutines)
-sub _get_sample {
-  my ($self, $dest_well, $analyte_data, $sample_nr) = @_;
-  return $sample_nr;
-}
-
-sub _get_name {
-  my ($self, $dest_well, $analyte_data, $sample_nr) = @_;
-  return $DEFAULT_PLATE_NAME_PREFIX . q{1};
-}
-
-sub _get_source_ean13 {
-  my ($self, $dest_well, $analyte_data, $sample_nr) = @_;
-  return $DEFAULT_SOURCE_EAN13;
-}
-
-sub _get_source_barcode {
-  my ($self, $dest_well, $analyte_data, $sample_nr) = @_;
-  return $DEFAULT_SOURCE_BARCODE;
-}
-
-sub _get_source_stock {
-  my ($self, $dest_well, $analyte_data, $sample_nr) = @_;
-  return $DEFAULT_SOURCE_STOCK;
-}
-
 sub _get_source_well {
   my ($self, $dest_well, $analyte_data, $sample_nr) = @_;
   return $analyte_data->{'source_well'};
-}
-
-sub _get_destination_ean13 {
-  my ($self, $dest_well, $analyte_data, $sample_nr) = @_;
-  return $DEFAULT_DEST_EAN13;
-}
-
-sub _get_destination_barcode {
-  my ($self, $dest_well, $analyte_data, $sample_nr) = @_;
-  return $DEFAULT_DEST_BARCODE;
 }
 
 sub _get_destination_well {
@@ -161,10 +76,6 @@ sub _get_source_volume {
   return $analyte_data->{'Volume'};
 }
 
-sub _get_not_implemented_yet {
-  my ($self, $sample_id) = @_;
-  return qq{*} ; #qq{Not implemented yet};
-}
 ## use critic
 
 sub _display_warnings {
@@ -223,9 +134,11 @@ wtsi_clarity::epp::isc::pool_beckman_creator
 
 =item Mojo::Collection
 
-=item wtsi_clarity::util::textfile
+=item wtsi_clarity::epp
 
-=item wtsi_clarity::util::beckman
+=item wtsi_clarity::epp::isc::beckman_file_generator
+
+=item wtsi_clarity::util::clarity_elements
 
 =back
 

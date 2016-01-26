@@ -1,0 +1,1618 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27720?state=11870" limsid="2-27720">
+        <name>1385-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A381" limsid="TES155A381"/>
+        <reagent-label name="iPCR tag 1 (AACGTGAT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27721?state=11871" limsid="2-27721">
+        <name>1388-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>D:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A384" limsid="TES155A384"/>
+        <reagent-label name="iPCR tag 4 (AGTGGTCA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27722?state=11872" limsid="2-27722">
+        <name>1387-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>C:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A383" limsid="TES155A383"/>
+        <reagent-label name="iPCR tag 3 (ATGCCTAA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27723?state=11873" limsid="2-27723">
+        <name>1386-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>B:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A382" limsid="TES155A382"/>
+        <reagent-label name="iPCR tag 2 (AAACATCG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27724?state=11874" limsid="2-27724">
+        <name>1390-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>F:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A386" limsid="TES155A386"/>
+        <reagent-label name="iPCR tag 6 (ACATTGGC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27725?state=11875" limsid="2-27725">
+        <name>1389-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>E:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A385" limsid="TES155A385"/>
+        <reagent-label name="iPCR tag 5 (ACCACTGT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27726?state=11876" limsid="2-27726">
+        <name>1403-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>C:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A399" limsid="TES155A399"/>
+        <reagent-label name="iPCR tag 19 (ACAGCAGA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27727?state=11877" limsid="2-27727">
+        <name>1402-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>B:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A398" limsid="TES155A398"/>
+        <reagent-label name="iPCR tag 18 (ACACAGAA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27728?state=11878" limsid="2-27728">
+        <name>1404-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>D:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A400" limsid="TES155A400"/>
+        <reagent-label name="iPCR tag 20 (ACCTCCAA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27729?state=11879" limsid="2-27729">
+        <name>1405-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>E:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A401" limsid="TES155A401"/>
+        <reagent-label name="iPCR tag 21 (ACGCTCGA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27730?state=11880" limsid="2-27730">
+        <name>1407-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>G:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A403" limsid="TES155A403"/>
+        <reagent-label name="iPCR tag 23 (ACTATGCA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27731?state=11881" limsid="2-27731">
+        <name>1406-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>F:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A402" limsid="TES155A402"/>
+        <reagent-label name="iPCR tag 22 (ACGTATCA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27732?state=11882" limsid="2-27732">
+        <name>1408-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>H:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A404" limsid="TES155A404"/>
+        <reagent-label name="iPCR tag 24 (AGAGTCAA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27733?state=11883" limsid="2-27733">
+        <name>1409-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>A:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A405" limsid="TES155A405"/>
+        <reagent-label name="iPCR tag 25 (AGATCGCA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27734?state=11884" limsid="2-27734">
+        <name>1411-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>C:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A407" limsid="TES155A407"/>
+        <reagent-label name="iPCR tag 27 (AGTCACTA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27735?state=11885" limsid="2-27735">
+        <name>1410-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>B:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A406" limsid="TES155A406"/>
+        <reagent-label name="iPCR tag 26 (AGCAGGAA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27736?state=11886" limsid="2-27736">
+        <name>1412-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>D:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A408" limsid="TES155A408"/>
+        <reagent-label name="iPCR tag 28 (ATCCTGTA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27737?state=11887" limsid="2-27737">
+        <name>1391-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>G:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A387" limsid="TES155A387"/>
+        <reagent-label name="iPCR tag 7 (CAGATCTG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27738?state=11888" limsid="2-27738">
+        <name>1392-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>H:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A388" limsid="TES155A388"/>
+        <reagent-label name="iPCR tag 8 (CATCAAGT)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27739?state=11889" limsid="2-27739">
+        <name>1393-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>A:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A389" limsid="TES155A389"/>
+        <reagent-label name="iPCR tag 9 (CGCTGATC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27740?state=11890" limsid="2-27740">
+        <name>1394-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>B:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A390" limsid="TES155A390"/>
+        <reagent-label name="iPCR tag 10 (ACAAGCTA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27741?state=11891" limsid="2-27741">
+        <name>1395-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>C:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A391" limsid="TES155A391"/>
+        <reagent-label name="iPCR tag 11 (CTGTAGCC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27742?state=11892" limsid="2-27742">
+        <name>1396-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>D:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A392" limsid="TES155A392"/>
+        <reagent-label name="iPCR tag 12 (AGTACAAG)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27743?state=11893" limsid="2-27743">
+        <name>1397-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>E:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A393" limsid="TES155A393"/>
+        <reagent-label name="iPCR tag 13 (AACAACCA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27744?state=11894" limsid="2-27744">
+        <name>1398-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>F:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A394" limsid="TES155A394"/>
+        <reagent-label name="iPCR tag 14 (AACCGAGA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27745?state=11895" limsid="2-27745">
+        <name>1399-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>G:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A395" limsid="TES155A395"/>
+        <reagent-label name="iPCR tag 15 (AACGCTTA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27746?state=11896" limsid="2-27746">
+        <name>1400-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>H:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A396" limsid="TES155A396"/>
+        <reagent-label name="iPCR tag 16 (AAGACGGA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27747?state=11897" limsid="2-27747">
+        <name>1401-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>A:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A397" limsid="TES155A397"/>
+        <reagent-label name="iPCR tag 17 (AAGGTACA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27748?state=11898" limsid="2-27748">
+        <name>1446-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>F:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A442" limsid="TES155A442"/>
+        <reagent-label name="iPCR tag 62 (TCCGTCTA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27749?state=11899" limsid="2-27749">
+        <name>1445-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>E:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A441" limsid="TES155A441"/>
+        <reagent-label name="iPCR tag 61 (TATCAGCA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27750?state=11900" limsid="2-27750">
+        <name>1449-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>A:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A445" limsid="TES155A445"/>
+        <reagent-label name="iPCR tag 65 (TGGAACAA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27801?state=11901" limsid="2-27801">
+        <name>1447-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>G:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A443" limsid="TES155A443"/>
+        <reagent-label name="iPCR tag 63 (TCTTCACA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27802?state=11902" limsid="2-27802">
+        <name>1448-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>H:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A444" limsid="TES155A444"/>
+        <reagent-label name="iPCR tag 64 (TGAAGAGA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27803?state=11903" limsid="2-27803">
+        <name>1451-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>C:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A447" limsid="TES155A447"/>
+        <reagent-label name="iPCR tag 67 (TGGTGGTA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27804?state=11904" limsid="2-27804">
+        <name>1452-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>D:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A448" limsid="TES155A448"/>
+        <reagent-label name="iPCR tag 68 (TTCACGCA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27805?state=11905" limsid="2-27805">
+        <name>1450-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>B:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A446" limsid="TES155A446"/>
+        <reagent-label name="iPCR tag 66 (TGGCTTCA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27806?state=11906" limsid="2-27806">
+        <name>1454-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>F:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A450" limsid="TES155A450"/>
+        <reagent-label name="iPCR tag 70 (AAGAGATC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27807?state=11907" limsid="2-27807">
+        <name>1453-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>E:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A449" limsid="TES155A449"/>
+        <reagent-label name="iPCR tag 69 (AACTCACC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27808?state=11908" limsid="2-27808">
+        <name>1436-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>D:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A432" limsid="TES155A432"/>
+        <reagent-label name="iPCR tag 52 (GCTAACGA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27809?state=11909" limsid="2-27809">
+        <name>1435-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>C:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A431" limsid="TES155A431"/>
+        <reagent-label name="iPCR tag 51 (GCGAGTAA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27810?state=11910" limsid="2-27810">
+        <name>1438-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>F:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A434" limsid="TES155A434"/>
+        <reagent-label name="iPCR tag 54 (GGAGAACA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27811?state=11911" limsid="2-27811">
+        <name>1437-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>E:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A433" limsid="TES155A433"/>
+        <reagent-label name="iPCR tag 53 (GCTCGGTA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27812?state=11912" limsid="2-27812">
+        <name>1441-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>A:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A437" limsid="TES155A437"/>
+        <reagent-label name="iPCR tag 57 (GTCGTAGA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27813?state=11913" limsid="2-27813">
+        <name>1440-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>H:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A436" limsid="TES155A436"/>
+        <reagent-label name="iPCR tag 56 (GTACGCAA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27814?state=11914" limsid="2-27814">
+        <name>1439-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>G:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A435" limsid="TES155A435"/>
+        <reagent-label name="iPCR tag 55 (GGTGCGAA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27815?state=11915" limsid="2-27815">
+        <name>1444-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>D:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A440" limsid="TES155A440"/>
+        <reagent-label name="iPCR tag 60 (TAGGATGA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27816?state=11916" limsid="2-27816">
+        <name>1443-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>C:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A439" limsid="TES155A439"/>
+        <reagent-label name="iPCR tag 59 (GTGTTCTA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27817?state=11917" limsid="2-27817">
+        <name>1442-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>B:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A438" limsid="TES155A438"/>
+        <reagent-label name="iPCR tag 58 (GTCTGTCA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27818?state=11918" limsid="2-27818">
+        <name>1424-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>H:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A420" limsid="TES155A420"/>
+        <reagent-label name="iPCR tag 40 (CGAACTTA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27819?state=11919" limsid="2-27819">
+        <name>1425-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>A:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A421" limsid="TES155A421"/>
+        <reagent-label name="iPCR tag 41 (CGACTGGA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27820?state=11920" limsid="2-27820">
+        <name>1426-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>B:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A422" limsid="TES155A422"/>
+        <reagent-label name="iPCR tag 42 (CGCATACA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27821?state=11921" limsid="2-27821">
+        <name>1427-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>C:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A423" limsid="TES155A423"/>
+        <reagent-label name="iPCR tag 43 (CTCAATGA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27822?state=11922" limsid="2-27822">
+        <name>1428-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>D:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A424" limsid="TES155A424"/>
+        <reagent-label name="iPCR tag 44 (CTGAGCCA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27823?state=11923" limsid="2-27823">
+        <name>1429-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>E:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A425" limsid="TES155A425"/>
+        <reagent-label name="iPCR tag 45 (CTGGCATA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27824?state=11924" limsid="2-27824">
+        <name>1430-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>F:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A426" limsid="TES155A426"/>
+        <reagent-label name="iPCR tag 46 (GAATCTGA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27825?state=11925" limsid="2-27825">
+        <name>1431-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>G:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A427" limsid="TES155A427"/>
+        <reagent-label name="iPCR tag 47 (GACTAGTA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27826?state=11926" limsid="2-27826">
+        <name>1432-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>H:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A428" limsid="TES155A428"/>
+        <reagent-label name="iPCR tag 48 (GAGCTGAA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27827?state=11927" limsid="2-27827">
+        <name>1433-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>A:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A429" limsid="TES155A429"/>
+        <reagent-label name="iPCR tag 49 (GATAGACA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27828?state=11928" limsid="2-27828">
+        <name>1434-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>B:7</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A430" limsid="TES155A430"/>
+        <reagent-label name="iPCR tag 50 (GCCACATA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27829?state=11929" limsid="2-27829">
+        <name>1413-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>E:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A409" limsid="TES155A409"/>
+        <reagent-label name="iPCR tag 29 (ATTGAGGA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27830?state=11930" limsid="2-27830">
+        <name>1415-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>G:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A411" limsid="TES155A411"/>
+        <reagent-label name="iPCR tag 31 (CAAGACTA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27831?state=11931" limsid="2-27831">
+        <name>1414-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>F:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A410" limsid="TES155A410"/>
+        <reagent-label name="iPCR tag 30 (CAACCACA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27832?state=11932" limsid="2-27832">
+        <name>1416-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>H:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A412" limsid="TES155A412"/>
+        <reagent-label name="iPCR tag 32 (CAATGGAA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27833?state=11933" limsid="2-27833">
+        <name>1418-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>B:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A414" limsid="TES155A414"/>
+        <reagent-label name="iPCR tag 34 (CAGCGTTA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27834?state=11934" limsid="2-27834">
+        <name>1417-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>A:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A413" limsid="TES155A413"/>
+        <reagent-label name="iPCR tag 33 (CACTTCGA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27835?state=11935" limsid="2-27835">
+        <name>1419-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>C:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A415" limsid="TES155A415"/>
+        <reagent-label name="iPCR tag 35 (CATACCAA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27836?state=11936" limsid="2-27836">
+        <name>1420-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>D:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A416" limsid="TES155A416"/>
+        <reagent-label name="iPCR tag 36 (CCAGTTCA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27837?state=11937" limsid="2-27837">
+        <name>1421-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>E:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A417" limsid="TES155A417"/>
+        <reagent-label name="iPCR tag 37 (CCGAAGTA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27838?state=11938" limsid="2-27838">
+        <name>1423-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>G:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A419" limsid="TES155A419"/>
+        <reagent-label name="iPCR tag 39 (CCTCCTGA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27839?state=11939" limsid="2-27839">
+        <name>1422-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>F:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A418" limsid="TES155A418"/>
+        <reagent-label name="iPCR tag 38 (CCGTGAGA)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27840?state=11940" limsid="2-27840">
+        <name>1479-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>G:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A475" limsid="TES155A475"/>
+        <reagent-label name="iPCR tag 95 (GATGAATC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27841?state=11941" limsid="2-27841">
+        <name>1478-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>F:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A474" limsid="TES155A474"/>
+        <reagent-label name="iPCR tag 94 (GAGTTAGC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27842?state=11942" limsid="2-27842">
+        <name>1477-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>E:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A473" limsid="TES155A473"/>
+        <reagent-label name="iPCR tag 93 (GACAGTGC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27843?state=11943" limsid="2-27843">
+        <name>1469-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>E:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A465" limsid="TES155A465"/>
+        <reagent-label name="iPCR tag 85 (CCATCCTC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27844?state=11944" limsid="2-27844">
+        <name>1470-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>F:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A466" limsid="TES155A466"/>
+        <reagent-label name="iPCR tag 86 (CCGACAAC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27845?state=11945" limsid="2-27845">
+        <name>1471-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>G:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A467" limsid="TES155A467"/>
+        <reagent-label name="iPCR tag 87 (CCTAATCC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27846?state=11946" limsid="2-27846">
+        <name>1466-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>B:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A462" limsid="TES155A462"/>
+        <reagent-label name="iPCR tag 82 (ATTGGCTC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27847?state=11947" limsid="2-27847">
+        <name>1467-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>C:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A463" limsid="TES155A463"/>
+        <reagent-label name="iPCR tag 83 (CAAGGAGC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27848?state=11948" limsid="2-27848">
+        <name>1468-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>D:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A464" limsid="TES155A464"/>
+        <reagent-label name="iPCR tag 84 (CACCTTAC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27849?state=11949" limsid="2-27849">
+        <name>1474-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>B:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A470" limsid="TES155A470"/>
+        <reagent-label name="iPCR tag 90 (CGGATTGC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27850?state=11950" limsid="2-27850">
+        <name>1475-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>C:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A471" limsid="TES155A471"/>
+        <reagent-label name="iPCR tag 91 (CTAAGGTC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27901?state=11951" limsid="2-27901">
+        <name>1476-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>D:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A472" limsid="TES155A472"/>
+        <reagent-label name="iPCR tag 92 (GAACAGGC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27902?state=11952" limsid="2-27902">
+        <name>1472-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>H:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A468" limsid="TES155A468"/>
+        <reagent-label name="iPCR tag 88 (CCTCTATC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27903?state=11953" limsid="2-27903">
+        <name>1473-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>A:12</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A469" limsid="TES155A469"/>
+        <reagent-label name="iPCR tag 89 (CGACACAC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27904?state=11954" limsid="2-27904">
+        <name>1458-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>B:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A454" limsid="TES155A454"/>
+        <reagent-label name="iPCR tag 74 (ACACGACC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27905?state=11955" limsid="2-27905">
+        <name>1460-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>D:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A456" limsid="TES155A456"/>
+        <reagent-label name="iPCR tag 76 (AGATGTAC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27906?state=11956" limsid="2-27906">
+        <name>1459-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>C:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A455" limsid="TES155A455"/>
+        <reagent-label name="iPCR tag 75 (ACAGATTC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27907?state=11957" limsid="2-27907">
+        <name>1456-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>H:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A452" limsid="TES155A452"/>
+        <reagent-label name="iPCR tag 72 (AATCCGTC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27908?state=11958" limsid="2-27908">
+        <name>1455-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>G:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A451" limsid="TES155A451"/>
+        <reagent-label name="iPCR tag 71 (AAGGACAC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27909?state=11959" limsid="2-27909">
+        <name>1457-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>A:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A453" limsid="TES155A453"/>
+        <reagent-label name="iPCR tag 73 (AATGTTGC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27910?state=11960" limsid="2-27910">
+        <name>1464-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>H:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A460" limsid="TES155A460"/>
+        <reagent-label name="iPCR tag 80 (ATAGCGAC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27911?state=11961" limsid="2-27911">
+        <name>1463-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>G:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A459" limsid="TES155A459"/>
+        <reagent-label name="iPCR tag 79 (AGGCTAAC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27912?state=11962" limsid="2-27912">
+        <name>1465-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>A:11</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A461" limsid="TES155A461"/>
+        <reagent-label name="iPCR tag 81 (ATCATTCC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27913?state=11963" limsid="2-27913">
+        <name>1461-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>E:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A457" limsid="TES155A457"/>
+        <reagent-label name="iPCR tag 77 (AGCACCTC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-27914?state=11964" limsid="2-27914">
+        <name>1462-postpcrXP</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-12824" limsid="24-12824"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-537" limsid="27-537"/>
+            <value>F:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A458" limsid="TES155A458"/>
+        <reagent-label name="iPCR tag 78 (AGCCATGC)"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Post Lib PCR QC Stamp" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/370"/>
+        </workflow-stages>
+    </art:artifact>
+</art:details>

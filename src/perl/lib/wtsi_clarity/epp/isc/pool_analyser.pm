@@ -6,6 +6,7 @@ use Readonly;
 use wtsi_clarity::util::pdf::factory::pool_analysis_results;
 use wtsi_clarity::dao::sample_dao;
 use wtsi_clarity::dao::study_dao;
+use List::MoreUtils qw(uniq);
 
 our $VERSION = '0.0';
 
@@ -49,14 +50,30 @@ sub _get_parameters {
     $results->{$plate_id}->{'input_table_data'} = $input_table_data;
   }
 
+  my @sample_ids = map {
+    $_->{'source_well_sample_limsid'}
+  } @{$self->process_doc->io_map};
+
+  my %samples = map {
+    $_ => wtsi_clarity::dao::sample_dao->new(lims_id => $_);
+  } uniq @sample_ids;
+
+  my @study_ids = map {
+    $_->project_limsid
+  } values %samples;
+
+  my %studies = map {
+    $_ => wtsi_clarity::dao::study_dao->new(lims_id => $_)
+  } uniq @study_ids;
+
   foreach my $io_element (@{$self->process_doc->io_map}) {
-    my $sample_dao = wtsi_clarity::dao::sample_dao->new( lims_id => $io_element->{'source_well_sample_limsid'});
-    my $study_dao = wtsi_clarity::dao::study_dao->new( lims_id => $sample_dao->project_limsid);
+    my $sample_dao = $samples{$io_element->{'source_well_sample_limsid'}};
+    my $study_dao = $studies{$sample_dao->project_limsid};
 
     my $plate_table_element = ();
     $plate_table_element->{'pooled_into'} = $io_element->{'dest_well'};
     $plate_table_element->{'study_name'} = $study_dao->name;
-    $plate_table_element->{'sample_name'} = $sample_dao->name;
+    $plate_table_element->{'sample_name'} = $sample_dao->id_sample_lims;
     $plate_table_element->{'organism'} = $sample_dao->organism;
     $plate_table_element->{'bait_library_name'} = $sample_dao->bait_library_name;
 

@@ -10,10 +10,10 @@ __author__ = 'rf9'
 
 def setup_urllib():
     password_mgr = request.HTTPPasswordMgrWithDefaultRealm()
-    password_mgr.add_password(None, ROOT_URL, USER, PASS)
+    password_mgr.add_password(None, root_url, USER, PASS)
     handler = request.HTTPBasicAuthHandler(password_mgr)
     opener = request.build_opener(handler)
-    opener.open(ROOT_URL)
+    opener.open(root_url)
     request.install_opener(opener)
 
 
@@ -24,13 +24,13 @@ def get_xml(uri):
 
 if __name__ == "__main__":
     if len(sys.argv) == 2:
-        ROOT_URL = sys.argv[1]
+        root_url = sys.argv[1]
     else:
-        sys.stderr.write("usage: python list_epp.py <root_uri>\n")
+        sys.stderr.write("usage: python missing_reagents_check.py <root_uri>\n")
         sys.exit(1)
 
-    if ROOT_URL[-1] != '/':
-        ROOT_URL += "/"
+    if root_url[-1] != '/':
+        root_url += "/"
 
     USER = getpass.getuser()
     USER = input("Username (leave blank for '" + USER + "'): ") or USER
@@ -39,7 +39,7 @@ if __name__ == "__main__":
     setup_urllib()
 
     process_type = "Library PCR set up".replace(' ', '%20')
-    uri = ROOT_URL + 'artifacts?process-type=' + process_type + '&start-index=3500'
+    uri = root_url + 'artifacts?process-type=' + process_type + '&start-index=3500'
 
     while 1:
         xml = get_xml(uri)

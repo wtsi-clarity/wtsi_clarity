@@ -1,0 +1,73 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-407893?state=207881" limsid="2-407893">
+        <name>700b7db4-16fb-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-68040" limsid="24-68040"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13727" limsid="27-13727"/>
+            <value>C:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A67" limsid="TES155A67"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-407894?state=207882" limsid="2-407894">
+        <name>700b7db4-16fb-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-68040" limsid="24-68040"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13727" limsid="27-13727"/>
+            <value>A:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A57" limsid="TES155A57"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-407895?state=207883" limsid="2-407895">
+        <name>700b7db4-16fb-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-68040" limsid="24-68040"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13727" limsid="27-13727"/>
+            <value>C:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A19" limsid="TES155A19"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-407896?state=207884" limsid="2-407896">
+        <name>700b7db4-16fb-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-68040" limsid="24-68040"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13727" limsid="27-13727"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A1" limsid="TES155A1"/>
+        <workflow-stages/>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-407897?state=207885" limsid="2-407897">
+        <name>700b7db4-16fb-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-68040" limsid="24-68040"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-13727" limsid="27-13727"/>
+            <value>F:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A78" limsid="TES155A78"/>
+        <workflow-stages/>
+    </art:artifact>
+</art:details>

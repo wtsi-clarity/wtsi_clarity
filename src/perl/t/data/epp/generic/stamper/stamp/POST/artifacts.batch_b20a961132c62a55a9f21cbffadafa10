@@ -1,0 +1,98 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/TES155A78PA1?state=5614" limsid="TES155A78PA1">
+        <name>700b7db4-16fb-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-213" limsid="27-213"/>
+            <value>F:10</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A78" limsid="TES155A78"/>
+        <artifact-group name="GCLP Sequencing QC" uri="http://testserver.com:1234/here/artifactgroups/51"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Stock Plate Barcode Issue (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/251"/>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/252"/>
+            <workflow-stage status="IN_PROGRESS" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/254"/>
+            <workflow-stage status="COMPLETE" name="Cherrypick To Shear" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/362"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/TES155A1PA1?state=5683" limsid="TES155A1PA1">
+        <name>700b7db4-16fb-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-213" limsid="27-213"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A1" limsid="TES155A1"/>
+        <artifact-group name="GCLP Sequencing QC" uri="http://testserver.com:1234/here/artifactgroups/51"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Stock Plate Barcode Issue (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/251"/>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/252"/>
+            <workflow-stage status="IN_PROGRESS" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/254"/>
+            <workflow-stage status="COMPLETE" name="Cherrypick To Shear" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/362"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/TES155A19PA1?state=6000" limsid="TES155A19PA1">
+        <name>700b7db4-16fb-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-213" limsid="27-213"/>
+            <value>C:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A19" limsid="TES155A19"/>
+        <artifact-group name="GCLP Sequencing QC" uri="http://testserver.com:1234/here/artifactgroups/51"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Stock Plate Barcode Issue (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/251"/>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/252"/>
+            <workflow-stage status="IN_PROGRESS" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/254"/>
+            <workflow-stage status="COMPLETE" name="Cherrypick To Shear" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/362"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/TES155A57PA1?state=6028" limsid="TES155A57PA1">
+        <name>700b7db4-16fb-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-213" limsid="27-213"/>
+            <value>A:8</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A57" limsid="TES155A57"/>
+        <artifact-group name="GCLP Sequencing QC" uri="http://testserver.com:1234/here/artifactgroups/51"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Stock Plate Barcode Issue (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/251"/>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/252"/>
+            <workflow-stage status="IN_PROGRESS" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/254"/>
+            <workflow-stage status="COMPLETE" name="Cherrypick To Shear" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/362"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/TES155A67PA1?state=6062" limsid="TES155A67PA1">
+        <name>700b7db4-16fb-11e4-b42e-68b59977951e</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-213" limsid="27-213"/>
+            <value>C:9</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/TES155A67" limsid="TES155A67"/>
+        <artifact-group name="GCLP Sequencing QC" uri="http://testserver.com:1234/here/artifactgroups/51"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Stock Plate Barcode Issue (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/251"/>
+            <workflow-stage status="COMPLETE" name="Sample Receipt (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/252"/>
+            <workflow-stage status="IN_PROGRESS" name="Volume Check (SM)" uri="http://testserver.com:1234/here/configuration/workflows/26/stages/254"/>
+            <workflow-stage status="COMPLETE" name="Cherrypick To Shear" uri="http://testserver.com:1234/here/configuration/workflows/53/stages/362"/>
+        </workflow-stages>
+    </art:artifact>
+</art:details>

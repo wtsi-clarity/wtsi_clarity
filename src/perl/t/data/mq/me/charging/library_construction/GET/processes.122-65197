@@ -1,0 +1,103 @@
+<?xml version="1.0" standalone="yes"?>
+<prc:process limsid="122-65197" uri="http://testserver.com:1234/here/processes/122-65197" xmlns:file="http://genologics.com/ri/file" xmlns:prc="http://genologics.com/ri/process" xmlns:udf="http://genologics.com/ri/userdefined">
+  <type uri="http://testserver.com:1234/here/processtypes/133">Pre Capture Lib Pooling</type>
+  <date-run>2015-12-02</date-run>
+  <technician uri="http://testserver.com:1234/here/researchers/58">
+    <first-name>Karoly</first-name>
+    <last-name>Erdos</last-name>
+  </technician>
+  <input-output-map>
+    <input limsid="2-363094" post-process-uri="http://testserver.com:1234/here/artifacts/2-363094?state=180361" uri="http://testserver.com:1234/here/artifacts/2-363094?state=180361">
+      <parent-process limsid="24-61767" uri="http://testserver.com:1234/here/processes/24-61767"/>
+    </input>
+    <output limsid="2-386604" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/here/artifacts/2-386604?state=194237"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-363098" post-process-uri="http://testserver.com:1234/here/artifacts/2-363098?state=180365" uri="http://testserver.com:1234/here/artifacts/2-363098?state=180365">
+      <parent-process limsid="24-61767" uri="http://testserver.com:1234/here/processes/24-61767"/>
+    </input>
+    <output limsid="2-386604" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/here/artifacts/2-386604?state=194237"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-363096" post-process-uri="http://testserver.com:1234/here/artifacts/2-363096?state=180363" uri="http://testserver.com:1234/here/artifacts/2-363096?state=180363">
+      <parent-process limsid="24-61767" uri="http://testserver.com:1234/here/processes/24-61767"/>
+    </input>
+    <output limsid="2-386604" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/here/artifacts/2-386604?state=194237"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-363100" post-process-uri="http://testserver.com:1234/here/artifacts/2-363100?state=180375" uri="http://testserver.com:1234/here/artifacts/2-363100?state=180375">
+      <parent-process limsid="24-61767" uri="http://testserver.com:1234/here/processes/24-61767"/>
+    </input>
+    <output limsid="2-386603" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/here/artifacts/2-386603?state=194236"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-363153" post-process-uri="http://testserver.com:1234/here/artifacts/2-363153?state=180378" uri="http://testserver.com:1234/here/artifacts/2-363153?state=180378">
+      <parent-process limsid="24-61767" uri="http://testserver.com:1234/here/processes/24-61767"/>
+    </input>
+    <output limsid="2-386603" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/here/artifacts/2-386603?state=194236"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-363158" post-process-uri="http://testserver.com:1234/here/artifacts/2-363158?state=180369" uri="http://testserver.com:1234/here/artifacts/2-363158?state=180369">
+      <parent-process limsid="24-61767" uri="http://testserver.com:1234/here/processes/24-61767"/>
+    </input>
+    <output limsid="2-386602" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/here/artifacts/2-386602?state=194235"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-363162" post-process-uri="http://testserver.com:1234/here/artifacts/2-363162?state=180373" uri="http://testserver.com:1234/here/artifacts/2-363162?state=180373">
+      <parent-process limsid="24-61767" uri="http://testserver.com:1234/here/processes/24-61767"/>
+    </input>
+    <output limsid="2-386602" output-generation-type="PerAllInputs" output-type="Pool" uri="http://testserver.com:1234/here/artifacts/2-386602?state=194235"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-363162" post-process-uri="http://testserver.com:1234/here/artifacts/2-363162?state=180373" uri="http://testserver.com:1234/here/artifacts/2-363162?state=180373">
+      <parent-process limsid="24-61767" uri="http://testserver.com:1234/here/processes/24-61767"/>
+    </input>
+    <output limsid="92-386601" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-386601?state=194234"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-363153" post-process-uri="http://testserver.com:1234/here/artifacts/2-363153?state=180378" uri="http://testserver.com:1234/here/artifacts/2-363153?state=180378">
+      <parent-process limsid="24-61767" uri="http://testserver.com:1234/here/processes/24-61767"/>
+    </input>
+    <output limsid="92-386601" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-386601?state=194234"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-363158" post-process-uri="http://testserver.com:1234/here/artifacts/2-363158?state=180369" uri="http://testserver.com:1234/here/artifacts/2-363158?state=180369">
+      <parent-process limsid="24-61767" uri="http://testserver.com:1234/here/processes/24-61767"/>
+    </input>
+    <output limsid="92-386601" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-386601?state=194234"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-363098" post-process-uri="http://testserver.com:1234/here/artifacts/2-363098?state=180365" uri="http://testserver.com:1234/here/artifacts/2-363098?state=180365">
+      <parent-process limsid="24-61767" uri="http://testserver.com:1234/here/processes/24-61767"/>
+    </input>
+    <output limsid="92-386601" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-386601?state=194234"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-363100" post-process-uri="http://testserver.com:1234/here/artifacts/2-363100?state=180375" uri="http://testserver.com:1234/here/artifacts/2-363100?state=180375">
+      <parent-process limsid="24-61767" uri="http://testserver.com:1234/here/processes/24-61767"/>
+    </input>
+    <output limsid="92-386601" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-386601?state=194234"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-363094" post-process-uri="http://testserver.com:1234/here/artifacts/2-363094?state=180361" uri="http://testserver.com:1234/here/artifacts/2-363094?state=180361">
+      <parent-process limsid="24-61767" uri="http://testserver.com:1234/here/processes/24-61767"/>
+    </input>
+    <output limsid="92-386601" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-386601?state=194234"/>
+  </input-output-map>
+  <input-output-map>
+    <input limsid="2-363096" post-process-uri="http://testserver.com:1234/here/artifacts/2-363096?state=180363" uri="http://testserver.com:1234/here/artifacts/2-363096?state=180363">
+      <parent-process limsid="24-61767" uri="http://testserver.com:1234/here/processes/24-61767"/>
+    </input>
+    <output limsid="92-386601" output-generation-type="PerAllInputs" output-type="ResultFile" uri="http://testserver.com:1234/here/artifacts/92-386601?state=194234"/>
+  </input-output-map>
+  <udf:field name="Workstation: Name" type="String">Beckman NX8_01</udf:field>
+  <udf:field name="Program Used" type="String">Pre Capture SAT Scripting_2</udf:field>
+  <udf:field name="Barcode Copies" type="Numeric">2</udf:field>
+  <udf:field name="Select Barcode Printer" type="String">g311bc2</udf:field>
+  <udf:field name="Plate Purpose" type="String">ReArray</udf:field>
+  <udf:field name="Barcode Prefix" type="String">IC</udf:field>
+  <udf:field name="Minimum Volume" type="String">5</udf:field>
+  <udf:field name="Maximum Volume" type="String">50</udf:field>
+  <udf:field name="Maximum Total Volume" type="String">200</udf:field>
+  <process-parameter name="13 - Pool Placer"/>
+</prc:process>

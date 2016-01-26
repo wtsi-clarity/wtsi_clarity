@@ -1,0 +1,323 @@
+<?xml version="1.0" standalone="yes"?>
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-378540?state=189767" limsid="2-378540">
+        <name>14d72619-61dd-11e5-a3e8-919676aa85cf</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63755" limsid="24-63755"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11594" limsid="27-11594"/>
+            <value>D:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A3650" limsid="DEA103A3650"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1135"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-378541?state=189768" limsid="2-378541">
+        <name>18c80ab3-61dd-11e5-a3e8-88a435f8bc1b</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63755" limsid="24-63755"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11594" limsid="27-11594"/>
+            <value>C:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A3649" limsid="DEA103A3649"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1135"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-378542?state=189769" limsid="2-378542">
+        <name>175d90ae-61dd-11e5-a3e8-a52e77968030</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63755" limsid="24-63755"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11594" limsid="27-11594"/>
+            <value>G:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A3630" limsid="DEA103A3630"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1135"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-378543?state=189770" limsid="2-378543">
+        <name>16d5b4b7-61dd-11e5-a3e8-a6aed7a808f1</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63755" limsid="24-63755"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11594" limsid="27-11594"/>
+            <value>F:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A3629" limsid="DEA103A3629"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1135"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-378544?state=189771" limsid="2-378544">
+        <name>166176f0-61dd-11e5-a3e8-d8f6933f0964</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63755" limsid="24-63755"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11594" limsid="27-11594"/>
+            <value>E:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A3628" limsid="DEA103A3628"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1135"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-378545?state=189772" limsid="2-378545">
+        <name>15efcfdd-61dd-11e5-a3e8-b7c6d0bbc3b3</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63755" limsid="24-63755"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11594" limsid="27-11594"/>
+            <value>D:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A3627" limsid="DEA103A3627"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1135"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-378546?state=189773" limsid="2-378546">
+        <name>156e73f6-61dd-11e5-a3e8-a0c877599fe0</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63755" limsid="24-63755"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11594" limsid="27-11594"/>
+            <value>C:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A3626" limsid="DEA103A3626"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1135"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-378547?state=189774" limsid="2-378547">
+        <name>0f173c73-61dd-11e5-a3e8-d4d54c910237</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63755" limsid="24-63755"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11594" limsid="27-11594"/>
+            <value>B:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A3625" limsid="DEA103A3625"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1135"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-378548?state=189775" limsid="2-378548">
+        <name>0f9e1eeb-61dd-11e5-a3e8-dee9ee359f3c</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63755" limsid="24-63755"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11594" limsid="27-11594"/>
+            <value>A:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A3624" limsid="DEA103A3624"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1135"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-378549?state=189776" limsid="2-378549">
+        <name>101b4f6e-61dd-11e5-a3e8-feea74af9401</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63755" limsid="24-63755"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11594" limsid="27-11594"/>
+            <value>H:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A3623" limsid="DEA103A3623"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1135"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-378550?state=189777" limsid="2-378550">
+        <name>1099a154-61dd-11e5-a3e8-d75f48a6984c</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63755" limsid="24-63755"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11594" limsid="27-11594"/>
+            <value>G:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A3622" limsid="DEA103A3622"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1135"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-378601?state=189778" limsid="2-378601">
+        <name>0cb347e7-61dd-11e5-a3e8-f83a77a914ab</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63755" limsid="24-63755"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11594" limsid="27-11594"/>
+            <value>F:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A3621" limsid="DEA103A3621"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1135"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-378602?state=189779" limsid="2-378602">
+        <name>0d3dc7ff-61dd-11e5-a3e8-cb68e0b2080c</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63755" limsid="24-63755"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11594" limsid="27-11594"/>
+            <value>E:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A3620" limsid="DEA103A3620"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1135"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-378603?state=189780" limsid="2-378603">
+        <name>0ddb9fc6-61dd-11e5-a3e8-841e9493a103</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63755" limsid="24-63755"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11594" limsid="27-11594"/>
+            <value>D:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A3619" limsid="DEA103A3619"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1135"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-378604?state=189781" limsid="2-378604">
+        <name>13788dc2-61dd-11e5-a3e8-9c85214ace4f</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63755" limsid="24-63755"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11594" limsid="27-11594"/>
+            <value>A:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A3647" limsid="DEA103A3647"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1135"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-378605?state=189782" limsid="2-378605">
+        <name>13eec56e-61dd-11e5-a3e8-ecc5967b5a9b</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63755" limsid="24-63755"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11594" limsid="27-11594"/>
+            <value>B:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A3648" limsid="DEA103A3648"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1135"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-378606?state=189783" limsid="2-378606">
+        <name>11142f95-61dd-11e5-a3e8-ab82e5f2b853</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63755" limsid="24-63755"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11594" limsid="27-11594"/>
+            <value>H:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A3646" limsid="DEA103A3646"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1135"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-378607?state=189784" limsid="2-378607">
+        <name>0a8629b6-61dd-11e5-a3e8-ac121d58b631</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63755" limsid="24-63755"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11594" limsid="27-11594"/>
+            <value>C:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A3616" limsid="DEA103A3616"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1135"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-378608?state=189785" limsid="2-378608">
+        <name>0c326c18-61dd-11e5-a3e8-ef392d610fe0</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63755" limsid="24-63755"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11594" limsid="27-11594"/>
+            <value>B:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A3615" limsid="DEA103A3615"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1135"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://testserver.com:1234/here/artifacts/2-378609?state=189786" limsid="2-378609">
+        <name>09f5461d-61dd-11e5-a3e8-ddf1e2c9c296</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://testserver.com:1234/here/processes/24-63755" limsid="24-63755"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://testserver.com:1234/here/containers/27-11594" limsid="27-11594"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://testserver.com:1234/here/samples/DEA103A3613" limsid="DEA103A3613"/>
+        <workflow-stages>
+            <workflow-stage status="IN_PROGRESS" name="E-Gel Creation (SM)" uri="http://testserver.com:1234/here/configuration/workflows/551/stages/1135"/>
+        </workflow-stages>
+    </art:artifact>
+</art:details>

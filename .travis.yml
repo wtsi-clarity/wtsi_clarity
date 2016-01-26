@@ -75,6 +75,9 @@ install:
   - cpanm --quiet --notest URI::Escape
   - cpanm --quiet --notest POSIX
   - cpanm --quiet --notest UUID::Tiny
+  - cpanm --quiet --notest DBD::SQLite
+  - cpanm --quiet --notest DBD::mysql
+  - cpanm --quiet --notest DBI
   - cpanm --quiet --notest --no-lwp https://github.com/wtsi-npg/perl-dnap-utilities/releases/download/${DNAP_UTILITIES_VERSION}/WTSI-DNAP-Utilities-${DNAP_UTILITIES_VERSION}.tar.gz
   - cpanm --quiet --notest --no-lwp https://github.com/wtsi-npg/perl-rabbit-wrap/releases/download/${PERL_RABBIT_WRAP_VERSION}/WTSI-DNAP-RabbitMQ-${PERL_RABBIT_WRAP_VERSION}.tar.gz
 

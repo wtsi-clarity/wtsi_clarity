@@ -21,13 +21,7 @@ Readonly::Scalar my $BUFFER                           => 0.1;
 ## use critic
 
 Readonly::Scalar my $CHERRYPICK_STAMPING_PROCESS_NAME => q{Cherrypick Stamping (SM)};
-
-has 'container_id' => (
-  is        => 'ro',
-  isa       => 'ArrayRef',
-  predicate => '_has_container_id',
-  required  => 0,
-);
+Readonly::Scalar my $SEND_DATA_TO_IRODS_PATH          => q{prj:project/udf:field[@name="WTSI Send data to external iRODS"]};
 
 has '_containers' => (
   is      => 'ro',
@@ -43,6 +37,13 @@ has '_sample_uuid' => (
   writer      => '_write_sample_uuid',
 );
 
+has '_project_uri' => (
+  is          => 'ro',
+  isa         => 'Str',
+  lazy_build  => 1,
+  writer      => '_write_project_uri',
+);
+
 sub elements {
   my $self = shift;
   my $containers = $self->_containers->findnodes('/con:details/con:container');
@@ -53,14 +54,21 @@ sub elements {
     push @samples, @{$self->_build_samples($container)};
   }
 
-  return sub {
-    if (scalar @samples == 0) {
-      return;
-    }
-    my $sample_doc = pop @samples;
-    $self->_write_sample_uuid($sample_doc->findvalue('./name'));
-    return $sample_doc;
+  return sub { return $self->_sample_doc(\@samples) };
+
+}
+
+sub _sample_doc {
+  my ($self, $samples) = @_;
+
+  if (scalar @{$samples} == 0) {
+    return;
   }
+  my $sample_doc = pop @{$samples};
+  $self->_write_sample_uuid($sample_doc->findvalue('./name'));
+  $self->_write_project_uri($sample_doc->findvalue('./project/@uri'));
+
+  return $sample_doc;
 }
 
 sub sort_by_column { return 'sample_UUID' }
@@ -107,6 +115,15 @@ sub file_content {
   );
 
   return \@rows;
+}
+
+sub set_publish_to_irods {
+  my ($self) = @_;
+
+  my $project_doc = $self->fetch_and_parse($self->_project_uri);
+  my $send_to_ext_irods = $project_doc->findvalue($SEND_DATA_TO_IRODS_PATH);
+
+  return $self->write_publish_to_irods($send_to_ext_irods eq 'true' ? 1 : 0);
 }
 
 sub irods_destination_path {
@@ -286,6 +303,11 @@ message must be supplied
 =head2 sort_by_column
 
   Define the sorting criteria by column name.
+
+=head2 set_publish_to_irods
+
+  Checks whether the 'WTSI Send data to external iRODS' check box in project the sample relates to is checked or not.
+  If it is checked then returns 1, otherwise 0.
 
 =head2 irods_destination_path
 
