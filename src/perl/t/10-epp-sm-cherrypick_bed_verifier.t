@@ -38,7 +38,7 @@ use_ok('wtsi_clarity::epp::sm::cherrypick_bed_verifier');
     process_url => $base_uri . '/processes/24-104741_a',
   );
 
-  throws_ok { $process->_robot_id } qr/Robot ID must be set first/, 
+  throws_ok { $process->_robot_id } qr/Robot ID must be set first/,
     'Throws an error when it can not find the Robot ID';
 }
 
@@ -57,7 +57,7 @@ use_ok('wtsi_clarity::epp::sm::cherrypick_bed_verifier');
     process_url => $base_uri . '/processes/24-104741_a',
   );
 
-  throws_ok { $process->_output_limsid } qr/Can not find output/, 
+  throws_ok { $process->_output_limsid } qr/Can not find output/,
     'Throws an error when it can not find the limsid of the first output';
 }
 
@@ -160,11 +160,11 @@ use_ok('wtsi_clarity::epp::sm::cherrypick_bed_verifier');
     _robot_id => '014296'
   );
 
-  my @result = (
+  my @expected_result = (
     {
-      'bed' => 21,
-      'plate_barcode' => '1220345864764',
-      'barcode' => '930020021696'
+      'bed' => 1,
+      'plate_barcode' => '1220332271865',
+      'barcode' => '930020001650'
     },
     {
       'bed' => 2,
@@ -172,13 +172,17 @@ use_ok('wtsi_clarity::epp::sm::cherrypick_bed_verifier');
       'barcode' => '930020002664'
     },
     {
-      'bed' => 1,
-      'plate_barcode' => '1220332271865',
-      'barcode' => '930020001650'
+      'bed' => 21,
+      'plate_barcode' => '1220345864764',
+      'barcode' => '930020021696'
     }
   );
 
-  is_deeply($process->_plate_bed_map, \@result, "Creates the plate_bed_map correctly");
+  my @actual_result = sort {
+    $a->{'bed'} <=> $b->{'bed'}
+  } @{$process->_plate_bed_map};
+
+  is_deeply(\@actual_result, \@expected_result, "Creates the plate_bed_map correctly");
 
   $process = wtsi_clarity::epp::sm::cherrypick_bed_verifier->new(
     process_url => $base_uri . '/processes/24-104741',
@@ -187,7 +191,7 @@ use_ok('wtsi_clarity::epp::sm::cherrypick_bed_verifier');
     _robot_id => '123456789' # False robot id
   );
 
-  throws_ok { $process->_plate_bed_map } qr/Could not find tecan config for robot 123456789/, 
+  throws_ok { $process->_plate_bed_map } qr/Could not find tecan config for robot 123456789/,
     'Throws an error when the robot id does not exist in the config';
 
   delete $config->{'014296'}{'beds'}{'SCRC1'};
@@ -199,7 +203,7 @@ use_ok('wtsi_clarity::epp::sm::cherrypick_bed_verifier');
     _robot_id => '014296'
   );
 
-  throws_ok { $process->_plate_bed_map } qr/Could not find config for plate SCRC1/, 
+  throws_ok { $process->_plate_bed_map } qr/Could not find config for plate SCRC1/,
     'Throws an error when the config does not exist for a plate';
 }
 
@@ -236,7 +240,7 @@ use_ok('wtsi_clarity::epp::sm::cherrypick_bed_verifier');
   };
 
   is($process->validate($test_input->{"plate_bed_map"}, $test_input->{"udf_beds"}, $test_input->{"udf_plates"}), 1, "Validates the whole process correctly");
-  
+
   my @expected = (
     {
       "plate_bed_map" => [
