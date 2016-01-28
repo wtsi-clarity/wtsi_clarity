@@ -59,7 +59,7 @@ sub _add_checksum {
   my ($self, $barcode) = @_;
 
   # Generate checksum
-  my @chars = split qw{}, $barcode;
+  my @chars = split //smx, $barcode;
   my @alphabet = (q{0}..q{9}, q{A}..q{Z}, q{:}, q{_}, q{-});
 
   ## no critic(BuiltinFunctions::ProhibitComplexMappings)

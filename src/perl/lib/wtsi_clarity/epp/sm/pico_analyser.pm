@@ -291,7 +291,7 @@ sub _get_dtx_files {
   my $self = shift;
   my %files = ();
 
-  my @artifact_limsids = values $self->_container_to_artifact_map;
+  my @artifact_limsids = values %{$self->_container_to_artifact_map};
 
   foreach (0..1) {
     my $artifact_limsid = $artifact_limsids[$_];

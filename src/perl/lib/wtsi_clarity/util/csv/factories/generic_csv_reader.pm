@@ -12,7 +12,7 @@ sub build {
   my $file_content = $args{'file_content'} || croak qq{Requires a file content!};
 
   my $csv_parser = Text::CSV->new();
-  my $header_line = shift $file_content;
+  my $header_line = shift @{$file_content};
   $csv_parser->parse($header_line);
   my @headers = map {
     _cleanup_key($_)

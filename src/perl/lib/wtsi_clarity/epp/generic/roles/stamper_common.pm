@@ -153,7 +153,7 @@ sub _group_by_container {
     $memo->{$container} = [];
   }
 
-  push $memo->{$container}, $io;
+  push @{$memo->{$container}}, $io;
 
   return $memo;
 }
@@ -187,7 +187,8 @@ sub sorted_io {
   my @analytes = map { $self->_augment_input($input_analytes, $_) } @io_nodes;
 
   # Group by container
-  my @analytes_by_container = values reduce { $self->_group_by_container($a, $b) } {}, @analytes;
+  my %analytes_by_container = reduce { $self->_group_by_container($a, $b) } {}, @analytes;
+  my @analytes_by_container = values %analytes_by_container;
 
   # Sort analytes within container then just return the io_node... Perl is so pretty...
   my @sorted_io = map { $_->{'io_node'} } map {

@@ -284,7 +284,7 @@ sub _get_pdf_data {
     $page->{'plate_table'} = $table_data;
     $page->{'plate_table_cell_styles'} = $table_properties;
 
-    push $pdf_data->{'pages'}, $page;
+    push @{$pdf_data->{'pages'}}, $page;
   }
 
   return $pdf_data;
