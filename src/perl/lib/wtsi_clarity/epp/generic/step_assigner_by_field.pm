@@ -117,7 +117,8 @@ sub _set_next_actions {
     my $sample_xml = $self->_get_sample_by_uri($artifact_xml->findvalue($SAMPLE_URI_PATH));
     my $is_proceed_to_sequencing = $sample_xml->findvalue(sprintf $FIELD_NAME_PATH, $self->field_name);
 
-    if (uc($is_proceed_to_sequencing) ~~ @PROCEED_VALUES) {
+    my $contained = grep { $_ eq uc $is_proceed_to_sequencing } @PROCEED_VALUES;
+    if ($contained) {
       $next_action_node->setAttribute('action', $NEXT_STEP_ACTION);
       $next_action_node->setAttribute('step-uri', $self->_transition_step_uri_by_step_name->{$self->next_step_name});
     } else {
