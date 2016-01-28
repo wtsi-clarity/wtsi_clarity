@@ -73,7 +73,7 @@ sub _reroute_analytes {
   my $req_doc = wtsi_clarity::epp::generic::workflow_assigner::make_step_rerouting_request(
     $reroute_to_step_uri, $analytes_to_reroute
   )->toString();
-  return $self->request->post($post_uri, $req_doc) or croak qq{Could not send successful request for rerouting. ($post_uri)};
+  return $self->request->post($post_uri, $req_doc) || croak qq{Could not send successful request for rerouting. ($post_uri)};
 }
 
 sub _get_new_step_uri {
