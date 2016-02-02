@@ -44,7 +44,7 @@ override 'run' => sub {
   super();
 
   try {
-    $self->_bed_verifier->verify($self);
+    $self->_bed_verifier->verify();
   } catch {
     my $error = $_;
     $self->_punish_user_by_resetting_everything();
@@ -74,6 +74,7 @@ sub _build__bed_verifier {
   return wtsi_clarity::process_checks::bed_verifier->new(
     config     => $self->_bed_config_file,
     input_only => $self->input_only,
+    epp        => $self,
   );
 }
 
