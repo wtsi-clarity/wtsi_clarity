@@ -172,18 +172,18 @@ sub _build__plate_mapping {
     }
 
     if ($plate->is_input) {
-      if ($self->_input_only) {
-        push @plate_mapping, {source_plate => $plate->barcode}
-      } else {
-        my $plate_name = $plate->plate_name;
-        $plate_name =~ s/Input/Output/gsm;
+      my $plate_name = $plate->plate_name;
+      $plate_name =~ s/Input/Output/gsm;
 
-        # Find the corrosonding output plate.
-        my $output_plates = $self->_find_plates_by_name($plate_name);
+      # Find the corrosonding output plate.
+      my $output_plates = $self->_find_plates_by_name($plate_name);
 
-        foreach my $output_plate (@{$output_plates}) {
+      if (scalar @{$output_plates} > 0) {
+        for my $output_plate (@{$output_plates}) {
           push @plate_mapping, {source_plate => $plate->barcode, dest_plate => $output_plate->barcode};
         }
+      } else {
+        push @plate_mapping, {source_plate => $plate->barcode}
       }
     }
   }
@@ -193,7 +193,7 @@ sub _build__plate_mapping {
 sub _verify_plate_mapping {
   my ($self, $plate_mapping) = @_;
 
-  foreach my $plate_io (@{$self->epp->process_doc->plate_io_map_barcodes}) {
+  for my $plate_io (@{$self->epp->process_doc->plate_io_map_barcodes}) {
     my $matches;
 
     if ($self->_input_only) {
