@@ -5,7 +5,7 @@ use Moose::Meta::Class;
 use Test::Exception;
 use Test::MockObject;
 use Test::MockObject::Extends;
-use Test::More tests => 25;
+use Test::More tests => 28;
 
 use wtsi_clarity::util::config;
 
@@ -121,7 +121,7 @@ use_ok('wtsi_clarity::process_checks::bed_verifier');
     process_url => $base_url.'/processes/24-102433_b1',
   );
 
-  is($bed_verifier->_verify_bed_barcodes($process), 1, 'Verifies the bed barcodes are correct');
+  is($bed_verifier->_verify_static_barcodes($process), 1, 'Verifies the bed barcodes are correct');
 }
 
 {
@@ -133,7 +133,7 @@ use_ok('wtsi_clarity::process_checks::bed_verifier');
     ),
   );
 
-  is($bed_verifier->_verify_bed_barcodes, 1, 'Verifies the bed and input/output barcodes are correct');
+  is($bed_verifier->_verify_static_barcodes, 1, 'Verifies the bed and input/output barcodes are correct');
 }
 
 {
@@ -145,7 +145,7 @@ use_ok('wtsi_clarity::process_checks::bed_verifier');
     ),
   );
 
-  throws_ok { $bed_verifier->_verify_bed_barcodes }
+  throws_ok { $bed_verifier->_verify_static_barcodes }
     qr/Bed something else can not be found in config for specified robot/,
     'Throws an error when a bed has a name not in the config';
 }
@@ -159,7 +159,7 @@ use_ok('wtsi_clarity::process_checks::bed_verifier');
     ),
   );
 
-  throws_ok { $bed_verifier->_verify_bed_barcodes }
+  throws_ok { $bed_verifier->_verify_static_barcodes }
     qr/Bed 2 barcode \(12345\) differs from config bed barcode \(580040002672\)/,
     'Throws an error when a bed has different barcode to the config';
 }
@@ -173,9 +173,35 @@ use_ok('wtsi_clarity::process_checks::bed_verifier');
     ),
   );
 
-  throws_ok { $bed_verifier->_verify_bed_barcodes }
+  throws_ok { $bed_verifier->_verify_static_barcodes }
     qr/Could not find any bed barcodes, please scan in at least one bed udf field/,
     'Throws an error when no bed has barcodes filled in';
+}
+
+{
+  my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(
+    config => $bed_verification_config,
+    epp    => $epp->new_object(
+      step_name   => 'fluidigm_96_96_ifc',
+      process_url => $base_url.'/processes/24-102433_f',
+    ),
+  );
+
+  is($bed_verifier->_verify_static_barcodes, 1, 'Correctly validates static plate barcodes.');
+}
+
+{
+  my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(
+    config => $bed_verification_config,
+    epp    => $epp->new_object(
+      step_name   => 'fluidigm_96_96_ifc',
+      process_url => $base_url.'/processes/24-102433_g',
+    ),
+  );
+
+  throws_ok { $bed_verifier->_verify_static_barcodes }
+    qr/Input Plate 2 \(8765\) differs from the config barcode \(5678\)/,
+    'Throws error when static plate value is incorrect.';
 }
 
 {
@@ -187,7 +213,21 @@ use_ok('wtsi_clarity::process_checks::bed_verifier');
     ),
   );
 
-  throws_ok {$bed_verifier->_plate_mapping }
+  throws_ok {$bed_verifier->_verify_barcodes_filled_out }
+    qr/Not all bed barcodes have been filled out./,
+    'Throws an error when not every bed barcodes has been filled in';
+}
+
+{
+  my $bed_verifier = wtsi_clarity::process_checks::bed_verifier->new(
+    config => $bed_verification_config,
+    epp    => $epp->new_object(
+      step_name   => 'working_dilution',
+      process_url => $base_url.'/processes/24-50647',
+    ),
+  );
+
+  throws_ok {$bed_verifier->_verify_barcodes_filled_out }
     qr/Not all plate barcodes have been filled out./,
     'Throws an error when not every bed barcodes has been filled in';
 }

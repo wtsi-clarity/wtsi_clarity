@@ -11,6 +11,7 @@ our $VERSION = '0.0';
 Readonly::Scalar my $ROBOT_BARCODE_PATH => q[ /prc:process/udf:field[@name="Robot ID"] ];
 Readonly::Scalar my $INPUT_ONLY_ERROR => q[Expected source plate %s];
 Readonly::Scalar my $INPUT_OUTPUT_ERROR => q[Expected source plate %s to be paired with destination plate %s];
+Readonly::Scalar my $ALL_BARCODE_FIELDS => q[ /prc:process/udf:field[contains(@name, "Plate") or contains(@name, "Bed")] ];
 ## use critic
 
 has 'config' => (
@@ -36,7 +37,9 @@ has 'epp' => (
 sub verify {
   my ($self) = @_;
 
-  $self->_verify_bed_barcodes();
+  $self->_verify_barcodes_filled_out();
+
+  $self->_verify_static_barcodes();
   $self->_verify_plate_mapping($self->_plate_mapping);
 
   return 1;
@@ -84,6 +87,49 @@ sub _build__robot_config {
   }
 }
 
+# List of plates that are mentioned in fields starting with "Bed"
+has '_bed_plate_names' => (
+    isa     => 'ArrayRef',
+    is      => 'ro',
+    lazy    => 1,
+    builder => '_build__bed_plate_names',
+  );
+sub _build__bed_plate_names {
+  my ($self) = @_;
+
+  my @plates = map {
+    $_->plate_name;
+  } @{$self->epp->beds};
+
+  return \@plates;
+}
+
+sub _verify_barcodes_filled_out {
+  my ($self) = @_;
+
+  # Verify that all plate fields are mentioned in at least one bed field name
+  my %plate_names = map { $_->plate_full_name => 1 } @{$self->epp->plates};
+
+  my @unfilled_plates = grep {
+    !exists $plate_names{$_}
+  } @{$self->_bed_plate_names};
+
+  if (scalar @unfilled_plates) {
+    croak 'Not all plate barcodes have been filled out.';
+  }
+
+  # Verify that each plate has a bed mentioning it
+  my %bed_plates = map { $_ => 1 } @{$self->_bed_plate_names};
+
+  my @unfilled_beds = grep {
+    !exists($bed_plates{$_->plate_full_name})
+  } @{$self->epp->plates};
+
+  if (scalar @unfilled_beds) {
+    croak 'Not all bed barcodes have been filled out.';
+  }
+}
+
 # A map of plate input names to the filled in barcodes
 has '_plate_name_value_mapping' => (
     is      => 'rw',
@@ -101,7 +147,7 @@ sub _build__plate_name_value_mapping {
   return \%plate_name_value_map;
 }
 
-sub _verify_bed_barcodes {
+sub _verify_static_barcodes {
   my ($self) = @_;
 
   # Check there is at least one udf field begining with "Bed" filled in.
@@ -109,7 +155,7 @@ sub _verify_bed_barcodes {
     croak 'Could not find any bed barcodes, please scan in at least one bed udf field';
   }
 
-  foreach my $bed (@{$self->epp->beds}) {
+  for my $bed (@{$self->epp->beds}) {
     # Check that each field starting with "Bed" has an entry in the config
     if (!exists $self->_robot_config->{$bed->bed_name}) {
       croak $bed->bed_name.' can not be found in config for specified robot';
@@ -120,24 +166,20 @@ sub _verify_bed_barcodes {
     }
   }
 
+  for my $plate (@{$self->epp->plates}) {
+    # Check that each plate field that has a config entry is correct
+    my $plate_name = $plate->plate_full_name;
+    my $config_value = $self->_robot_config->{$plate->plate_full_name};
+    my $actual_value = $self->_plate_name_value_mapping->{$plate_name};
+
+    if ($config_value) {
+      if ($config_value ne $actual_value) {
+        croak "$plate_name ($actual_value) differs from the config barcode ($config_value)";
+      }
+    }
+  }
+
   return 1;
-}
-
-# List of plates that are mentioned in fields starting with "Bed"
-has '_bed_plate_names' => (
-    isa     => 'ArrayRef',
-    is      => 'ro',
-    lazy    => 1,
-    builder => '_build__bed_plate_names',
-  );
-sub _build__bed_plate_names {
-  my ($self) = @_;
-
-  my @plates = map {
-    $_->plate_name;
-  } @{$self->epp->beds};
-
-  return \@plates;
 }
 
 sub _find_plates_by_name {
@@ -160,17 +202,9 @@ has '_plate_mapping' => (
 sub _build__plate_mapping {
   my ($self) = @_;
 
-  my %bed_plate_names = map { $_ => 1 } @{$self->_bed_plate_names};
-
   my @plate_mapping = ();
 
-  foreach my $plate (@{$self->epp->plates}) {
-
-    # Verify that all plate fields are mentioned in at least one bed field name
-    if (!exists($bed_plate_names{$plate->plate_full_name})) {
-      croak 'Not all plate barcodes have been filled out.';
-    }
-
+  for my $plate (@{$self->epp->plates}) {
     if ($plate->is_input) {
       my $plate_name = $plate->plate_name;
       $plate_name =~ s/Input/Output/gsm;
