@@ -5,247 +5,254 @@ use Carp;
 use Readonly;
 use List::MoreUtils qw/all/;
 
+with qw/MooseX::Getopt/;
+
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $ROBOT_BARCODE_PATH => q[ /prc:process/udf:field[@name="Robot ID"] ];
-Readonly::Scalar my $INPUT_ONLY_ERROR   => q[Expected source plate %s];
+Readonly::Scalar my $INPUT_ONLY_ERROR => q[Expected source plate %s];
 Readonly::Scalar my $INPUT_OUTPUT_ERROR => q[Expected source plate %s to be paired with destination plate %s];
+Readonly::Scalar my $BED_FIELDS => q{/prc:process/udf:field[starts-with(@name, "Bed") and contains(@name, "Plate")]};
+Readonly::Scalar my $PLATE_FIELDS => q{/prc:process/udf:field[starts-with(@name, "Input Plate") or starts-with(@name, "Output Plate")]};
 ## use critic
 
-# Required
 has 'config' => (
-  isa        => 'HashRef',
-  is         => 'ro',
-  required   => 1,
-);
+    isa      => 'HashRef',
+    is       => 'ro',
+    required => 1,
+  );
 
-# Optional
 has '_input_only' => (
-  is       => 'ro',
-  isa      => 'Bool',
-  required => 0,
-  init_arg => 'input_only',
-  default  => 0,
-);
+    is       => 'ro',
+    isa      => 'Bool',
+    required => 0,
+    init_arg => 'input_only',
+    default  => 0,
+  );
+
+has 'epp' => (
+    isa      => 'wtsi_clarity::epp',
+    is       => 'ro',
+    required => 0,
+  );
 
 sub verify {
-  my ($self, $epp) = @_;
+  my ($self) = @_;
 
-  $self->_verify_step_config($epp);
-  $self->_verify_robot_config($epp);
-  $self->_verify_bed_barcodes($epp);
+  $self->_verify_barcodes_filled_out();
 
-  $self->_verify_plate_mapping($epp, $self->_plate_mapping($epp));
+  $self->_verify_static_barcodes();
+  $self->_verify_plate_mapping($self->_plate_mapping);
 
   return 1;
 }
 
+# The verification entry for this process type.
 has '_step_config' => (
-  is => 'ro',
-  isa => 'HashRef',
-  lazy => 1,
-  default => sub { {} },
-  writer => '_set__step_config',
-);
+    is      => 'ro',
+    isa     => 'HashRef',
+    lazy    => 1,
+    builder => '_build__step_config',
+  );
+sub _build__step_config {
+  my ($self) = @_;
 
-sub _verify_step_config {
-  my ($self, $epp) = @_;
+  my $step_name = $self->epp->step_name;
 
-  if (!exists ($self->config->{ $epp->step_name })) {
-    croak qq/Bed verification config can not be found for process / . $epp->step_name;
+  if (!exists ($self->config->{$step_name})) {
+    croak qq/Bed verification config can not be found for process $step_name/;
   } else {
-    return $self->_set__step_config($self->config->{ $epp->step_name });
+    return $self->config->{$step_name};
   }
 }
 
+# The verification entry for this robot
 has '_robot_config' => (
-  is => 'ro',
-  isa => 'HashRef',
-  lazy => 1,
-  default => sub { {} },
-  writer => '_set__robot_config',
-);
+    is      => 'ro',
+    isa     => 'HashRef',
+    lazy    => 1,
+    builder => '_build__robot_config',
+  );
+sub _build__robot_config {
+  my ($self) = @_;
 
-sub _verify_robot_config {
-  my ($self, $epp) = @_;
-
-  my $robot_bc = $epp->process_doc->findvalue($ROBOT_BARCODE_PATH);
+  my $robot_bc = $self->epp->process_doc->findvalue($ROBOT_BARCODE_PATH);
 
   if ($robot_bc eq q{}) {
-    croak qq[Robot barcode must be set for bed verification\n];
+    croak qq[Robot barcode must be set for bed verification];
   }
 
   if (!exists $self->_step_config->{$robot_bc}) {
-    croak qq[Robot $robot_bc has not been configured for step ] . $epp->step_name;
+    croak qq[Robot $robot_bc has not been configured for step ].$self->epp->step_name;
+  } else {
+    return $self->_step_config->{$robot_bc};
   }
-
-  return $self->_set__robot_config($self->_step_config->{$robot_bc});
 }
 
-has '_bed_names' => (
-  isa        => 'ArrayRef',
-  is         => 'rw',
-  required => 0,
-  writer => "_set_bed_names",
-);
-sub _create_bed_names {
-  my ($self, $epp) = @_;
-
-  my @bed_names = ();
-
-  foreach my $bed (@{$epp->beds}) {
-
-    push @bed_names, $bed->plate_name;
-  }
-
-  return $self->_set_bed_names(\@bed_names);
+has 'beds' => (
+    is         => 'ro',
+    isa        => 'WtsiClarityProcessBeds',
+    lazy_build => 1,
+    coerce     => 1,
+    traits     => ['NoGetopt'],
+  );
+sub _build_beds {
+  my $self = shift;
+  return $self->epp->findnodes($BED_FIELDS);
 }
 
-has '_plate_name_value_mapping' => (
-  is => 'rw',
-  isa => 'HashRef',
-  required => 0,
-  writer => "_set_plate_name_value_mapping",
-);
-sub _create_plate_name_value_mapping {
-  my ($self, $epp) = @_;
-  my %plate_name_value_map = ();
-
-  foreach my $plate (@{$epp->plates}) {
-    $plate_name_value_map{$plate->plate_full_name} = $plate->barcode;
-  }
-
-  return $self->_set_plate_name_value_mapping(\%plate_name_value_map);
+has 'plates' => (
+    is         => 'ro',
+    isa        => 'WtsiClarityPlates',
+    lazy_build => 1,
+    coerce     => 1,
+    traits     => ['NoGetopt'],
+  );
+sub _build_plates {
+  my $self = shift;
+  return $self->epp->findnodes($PLATE_FIELDS);
 }
 
-# TODO ke4 uncomment it when fixing #433
-# has '_number_of_input_beds' => (
-#   is => 'rw',
-#   isa => 'Int',
-#   writer => "_set_number_of_input_beds",
-# );
-# sub _create_number_of_input_beds {
-#   my ($self, $epp) = @_;
-#   my $input_bed_count = 0;
+# List of plates that are mentioned in fields starting with "Bed"
+has '_bed_plate_names' => (
+    isa     => 'ArrayRef',
+    is      => 'ro',
+    lazy    => 1,
+    builder => '_build__bed_plate_names',
+  );
+sub _build__bed_plate_names {
+  my ($self) = @_;
 
-#   foreach my $bed (@{$epp->beds}) {
-#     if ($bed->is_input) {
-#       $input_bed_count++;
-#     }
-#   }
+  my @plates = map {
+    $_->plate_name;
+  } @{$self->beds};
 
-#   return $self->_set_number_of_input_beds($input_bed_count);
-# }
+  return \@plates;
+}
 
-sub _verify_bed_barcodes {
-  my ($self, $epp) = @_;
+sub _verify_barcodes_filled_out {
+  my ($self) = @_;
 
-  my %plate_name_value_mapping = %{$self->_create_plate_name_value_mapping($epp)};
+  # Verify that all plate fields are mentioned in at least one bed field name
+  my %plate_names = map { $_->plate_full_name => 1 } @{$self->plates};
 
-  if (scalar @{$epp->beds} == 0 ) {
-    croak 'The barcode of the bed(s) are empty. Please, add barcode value(s) to the form.';
+  my @unfilled_plates = grep {
+    !exists $plate_names{$_}
+  } @{$self->_bed_plate_names};
+
+  if (scalar @unfilled_plates) {
+    croak 'Not all plate barcodes have been filled out.';
   }
 
-  # TODO ke4: Fix this bug later #433
-  # We should get the input container from the proper place
-  # if ($self->_create_number_of_input_beds($epp) != $epp->step_doc->input_container_count) {
-  #   croak 'Not all bed(s) barcode has been filled. Please, add all bed barcode value(s) to the form.';
-  # }
+  # Verify that each plate has a bed mentioning it
+  my %bed_plates = map { $_ => 1 } @{$self->_bed_plate_names};
 
-  foreach my $bed (@{$epp->beds}) {
+  my @unfilled_beds = grep {
+    !exists($bed_plates{$_->plate_full_name})
+  } @{$self->plates};
+
+  if (scalar @unfilled_beds) {
+    croak 'Not all bed barcodes have been filled out.';
+  }
+}
+
+sub _verify_static_barcodes {
+  my ($self) = @_;
+
+  # Check there is at least one udf field begining with "Bed" filled in.
+  if (scalar @{$self->beds} == 0) {
+    croak 'Could not find any bed barcodes, please scan in at least one bed udf field';
+  }
+
+  for my $bed (@{$self->beds}) {
+    # Check that each field starting with "Bed" has an entry in the config
     if (!exists $self->_robot_config->{$bed->bed_name}) {
-      croak $bed->bed_name . ' can not be found in config for specified robot';
+      croak $bed->bed_name.' can not be found in config for specified robot';
     }
-
+    # Check that each field starting with "Bed" has the correct value as specified by the config
     if ($self->_robot_config->{$bed->bed_name} ne $bed->barcode) {
-      croak $bed->bed_name . ' barcode (' . $bed->barcode . ') differs from config bed barcode (' . $self->_robot_config->{$bed->bed_name} . ')';
-    }
-
-    if (! $plate_name_value_mapping{$bed->plate_name}) {
-      croak 'Not all input/output plate barcode has been filled out.';
+      croak $bed->bed_name.' barcode ('.$bed->barcode.') differs from config bed barcode ('.$self->_robot_config->{$bed->bed_name}.')';
     }
   }
 
-  return 1;
-}
+  for my $plate (@{$self->plates}) {
+    # Check that each plate field that has a config entry is correct
+    my $plate_name = $plate->plate_full_name;
+    my $config_value = $self->_robot_config->{$plate->plate_full_name};
+    my $actual_value = $plate->barcode;
 
-sub _plate_mapping {
-  my ($self, $epp) = @_;
-  my @plate_mapping = ();
-
-  $self->_create_bed_names($epp);
-
-  foreach my $plate (@{$epp->plates}) {
-
-    my %bed_names = map { $_ => 1 } @{$self->_bed_names};
-
-    if(!exists($bed_names{$plate->plate_full_name})) {
-      croak 'Not all bed barcode has been filled out.';
-    }
-
-    if ($self->_input_only) {
-      push @plate_mapping, { source_plate => $plate->barcode }
-    } else {
-      next if $plate->is_output;
-
-      my $plate_name = $plate->plate_name;
-      $plate_name =~ s/Input/Output/gsm;
-
-      my $output_plates = $self->_find_output_plate($epp, $plate_name);
-
-      foreach my $output_plate (@{$output_plates}) {
-        push @plate_mapping, { source_plate => $plate->barcode, dest_plate => $output_plate->barcode };
+    if ($config_value) {
+      if ($config_value ne $actual_value) {
+        croak "$plate_name ($actual_value) differs from the config barcode ($config_value)";
       }
     }
   }
 
+  return 1;
+}
+
+sub _find_plates_by_name {
+  my ($self, $plate_name) = @_;
+
+  my @plates = grep {
+    $_->plate_name eq $plate_name
+  } @{$self->plates};
+
+  return \@plates;
+}
+
+# A list of source/dest plate pairs, (just source plates if _input_only is true.
+has '_plate_mapping' => (
+    isa     => 'ArrayRef',
+    is      => 'ro',
+    lazy    => 1,
+    builder => '_build__plate_mapping',
+  );
+sub _build__plate_mapping {
+  my ($self) = @_;
+
+  my @plate_mapping = ();
+
+  for my $plate (@{$self->plates}) {
+    if ($plate->is_input) {
+      my $plate_name = $plate->plate_name;
+      $plate_name =~ s/Input/Output/gsm;
+
+      # Find the corrosonding output plate.
+      my $output_plates = $self->_find_plates_by_name($plate_name);
+
+      if (scalar @{$output_plates} > 0) {
+        for my $output_plate (@{$output_plates}) {
+          push @plate_mapping, {source_plate => $plate->barcode, dest_plate => $output_plate->barcode};
+        }
+      } else {
+        push @plate_mapping, {source_plate => $plate->barcode}
+      }
+    }
+  }
   return \@plate_mapping;
 }
 
-sub _find_output_plate {
-  my ($self, $epp, $plate_name) = @_;
-  my @output_plates = grep { $_->plate_name eq $plate_name } @{$epp->plates};
-  return \@output_plates;
-}
-
-my $source_plate_match = _plate_match('source_plate');
-my $dest_plate_match   = _plate_match('dest_plate');
-
-sub _plate_match {
-  my ($plate_name) = @_;
-
-  return sub {
-    my ($a, $b) = @_;
-    return $a->{$plate_name} == $b->{$plate_name};
-  }
-}
-
-sub _match_all {
-  my ($self, $plate_mapping, $plate_io, @verifiers) = @_;
-  return grep { $self->_match_verifiers($_, $plate_io, @verifiers) } @{$plate_mapping};
-}
-
-sub _match_verifiers {
-  my ($self, $mapping, $plate_io, @verifiers) = @_;
-  return all { $_->($mapping, $plate_io) } @verifiers;
-}
-
 sub _verify_plate_mapping {
-  my ($self, $epp, $plate_mapping) = @_;
+  my ($self, $plate_mapping) = @_;
 
-  foreach my $plate_io (@{$epp->process_doc->plate_io_map_barcodes}) {
+  for my $plate_io (@{$self->epp->process_doc->plate_io_map_barcodes}) {
     my $matches;
 
     if ($self->_input_only) {
-      $matches = $self->_match_all($plate_mapping, $plate_io, $source_plate_match);
+      $matches = grep {
+        $_->{'source_plate'} eq $plate_io->{'source_plate'}
+      } @{$plate_mapping};
 
       if ($matches != 1) {
         croak sprintf $INPUT_ONLY_ERROR, $plate_io->{'source_plate'};
       }
 
     } else {
-      $matches = $self->_match_all($plate_mapping, $plate_io, $source_plate_match, $dest_plate_match);
+      $matches = grep {
+        $_->{'source_plate'} eq $plate_io->{'source_plate'} && $_->{'dest_plate'} eq $plate_io->{'dest_plate'}
+      } @{$plate_mapping};
 
       if ($matches != 1) {
         croak sprintf $INPUT_OUTPUT_ERROR, $plate_io->{'source_plate'}, $plate_io->{'dest_plate'};
