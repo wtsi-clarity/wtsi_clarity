@@ -5,8 +5,6 @@ use Carp;
 use Readonly;
 use List::MoreUtils qw/all/;
 
-with qw/MooseX::Getopt/;
-
 our $VERSION = '0.0';
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
@@ -95,7 +93,6 @@ has 'beds' => (
     isa        => 'WtsiClarityProcessBeds',
     lazy_build => 1,
     coerce     => 1,
-    traits     => ['NoGetopt'],
   );
 sub _build_beds {
   my $self = shift;
@@ -107,7 +104,6 @@ has 'plates' => (
     isa        => 'WtsiClarityPlates',
     lazy_build => 1,
     coerce     => 1,
-    traits     => ['NoGetopt'],
   );
 sub _build_plates {
   my $self = shift;
