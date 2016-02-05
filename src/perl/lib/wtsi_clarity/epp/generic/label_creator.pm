@@ -465,7 +465,7 @@ sub _set_container_data {
   }
 
   my $count = 0;
-  my @urls = keys %{$self->_container};
+  my @urls = sort keys %{$self->_container};
 
   foreach my $container_url (@urls) {
     my $container = $self->_container->{$container_url};
