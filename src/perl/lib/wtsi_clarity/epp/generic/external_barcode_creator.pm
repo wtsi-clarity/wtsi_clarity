@@ -129,7 +129,7 @@ sub _build__containers_data {
 sub _update_containers_name_with_barcodes {
   my ($self) = @_;
 
-  my @container_uris = map { $_; } keys %{$self->_containers_data};
+  my @container_uris = map { $_; } sort keys %{$self->_containers_data};
 
   my $containers_xml = $self->batch_retrieve_containers_xml(\@container_uris);
 
