@@ -350,7 +350,7 @@ sub _check_range_for_one_result {
 
 sub _make_error_report {
   my $errors = shift;
-  my $joined_keys = join ', ', keys %{$errors};
+  my $joined_keys = join ', ', sort keys %{$errors};
   return qq{The wells [$joined_keys] are out of range!};
 }
 

@@ -295,16 +295,16 @@ sub _get_title {
 
   my $out_purpose = $data->{ q{output_container_info} }->{$out_uri}->{ q{purpose} };
 
-  # we get all the wells concerned by this output.
-  my $wells = Mojo::Collection->new( values %{$data->{ q{output_container_info} }->{$out_uri}->{ q{container_details} }} );
-  # we assume that all input plate have the same purpose !!
-  my $an_input_id = $wells->grep ( sub {
-    return defined $_->{'input_id'};
-  } ) # we filter on the presence of an input_id
-    ->map  ( sub {
-    return         $_->{'input_id'};
-  } ) # we pluck the input_ids
-    ->first;                                            # we only take the first one
+  my @wells = values %{$data->{ q{output_container_info} }->{$out_uri}->{ q{container_details} }};
+  my @input_ids = grep {
+    $_->{'input_id'}
+  } @wells;
+  @input_ids = map {
+    $_->{'input_id'}
+  } @input_ids;
+  @input_ids = sort @input_ids;
+
+  my $an_input_id = $input_ids[0];
 
   my $in_purpose = $data->{ q{input_container_info} }->{$an_input_id}->{ q{purpose} };
 
