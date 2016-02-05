@@ -161,7 +161,7 @@ use_ok('wtsi_clarity::epp::generic::cherrypick_stamper');
   );
 
   my @expected = qw/DEA103A625PA1 DEA103A626PA1 DEA103A627PA1 DEA103A530PA1 DEA103A531PA1 DEA103A532PA1/;
-
+ #my @expected = qw/DEA103A530PA1 DEA103A531PA1 DEA103A532PA1 DEA103A625PA1 DEA103A626PA1 DEA103A627PA1/;
   my $sorted_analytes = $stamper->sorted_io($stamper->process_doc, $stamper->init_96_well_location_values);
 
   foreach my $io ($sorted_analytes->get_nodelist()) {

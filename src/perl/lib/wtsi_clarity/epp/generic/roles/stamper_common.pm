@@ -6,28 +6,28 @@ use Carp;
 use XML::LibXML;
 use List::Util qw/reduce first/;
 
-Readonly::Scalar my $PLACEMENT_URI_PATH               => q{placements};
-Readonly::Scalar my $OUTPUT_PLACEMENTS_PATH           => q{/stp:placements/output-placements/output-placement};
-Readonly::Scalar my $PLATE_96_WELL_NUMBER_OF_COLUMNS  => 12;
+Readonly::Scalar my $PLACEMENT_URI_PATH => q{placements};
+Readonly::Scalar my $OUTPUT_PLACEMENTS_PATH => q{/stp:placements/output-placements/output-placement};
+Readonly::Scalar my $PLATE_96_WELL_NUMBER_OF_COLUMNS => 12;
 
 ##no critic ValuesAndExpressions::RequireInterpolationOfMetachars
-Readonly::Scalar my $BASE_CONTAINER_URI_PATH  => q{/stp:placements/selected-containers/container/@uri[1]};
-Readonly::Scalar my $IO_MAP_PATH              => q{ /prc:process/input-output-map[output[@output-type='Analyte']]};
-Readonly::Scalar my $ARTIFACT_BY_LIMSID       => q{art:details/art:artifact[@limsid="%s"]};
-Readonly::Scalar my $INPUT_URI                => q{./input/@uri};
-Readonly::Scalar my $INPUT_LIMSID             => q{./input/@limsid};
-Readonly::Scalar my $LOCATION_VALUE           => q{./location/value};
-Readonly::Scalar my $CONTAINER_LIMS_ID        => q{./location/container/@limsid};
+Readonly::Scalar my $BASE_CONTAINER_URI_PATH => q{/stp:placements/selected-containers/container/@uri[1]};
+Readonly::Scalar my $IO_MAP_PATH => q{ /prc:process/input-output-map[output[@output-type='Analyte']]};
+Readonly::Scalar my $ARTIFACT_BY_LIMSID => q{art:details/art:artifact[@limsid="%s"]};
+Readonly::Scalar my $INPUT_URI => q{./input/@uri};
+Readonly::Scalar my $INPUT_LIMSID => q{./input/@limsid};
+Readonly::Scalar my $LOCATION_VALUE => q{./location/value};
+Readonly::Scalar my $CONTAINER_LIMS_ID => q{./location/container/@limsid};
 ##use critic
 
 our $VERSION = '0.0';
 
 has '_placement_url' => (
-  isa        => 'Str',
-  is         => 'ro',
-  required   => 0,
-  lazy_build => 1,
-);
+    isa        => 'Str',
+    is         => 'ro',
+    required   => 0,
+    lazy_build => 1,
+  );
 sub _build__placement_url {
   my ($self) = @_;
 
@@ -35,11 +35,11 @@ sub _build__placement_url {
 }
 
 has '_base_placement_doc' => (
-  isa        => 'XML::LibXML::Document',
-  is         => 'ro',
-  required   => 0,
-  lazy_build => 1,
-);
+    isa        => 'XML::LibXML::Document',
+    is         => 'ro',
+    required   => 0,
+    lazy_build => 1,
+  );
 sub _build__base_placement_doc {
   my ($self) = @_;
 
@@ -47,7 +47,7 @@ sub _build__base_placement_doc {
   my $parser = XML::LibXML->new();
   $parser->keep_blanks(0);
 
-  my $placement_xml = $parser->load_xml(string => $placement_xml_raw );
+  my $placement_xml = $parser->load_xml(string => $placement_xml_raw);
 
   # needs to remove the available output-placement nodes
   for my $output_placement ($placement_xml->findnodes($OUTPUT_PLACEMENTS_PATH)) {
@@ -64,8 +64,8 @@ sub get_basic_container_data {
   my ($limsid) = $uri =~ /(\d{2}-\d+)/smx;
 
   return {
-    'limsid'  => $limsid,
-    'uri'     => $uri
+    'limsid' => $limsid,
+    'uri'    => $uri
   }
 }
 
@@ -88,9 +88,9 @@ sub init_96_well_location_values {
 
   my @wells = (); # Ordered list of wells
 
-  for (1..$PLATE_96_WELL_NUMBER_OF_COLUMNS) {
-    foreach my $column ('A'..'H') {
-      push @wells, $column . q{:} . $_;
+  for (1 .. $PLATE_96_WELL_NUMBER_OF_COLUMNS) {
+    foreach my $column ('A' .. 'H') {
+      push @wells, $column.q{:}.$_;
     }
   }
 
@@ -131,10 +131,10 @@ sub post_placement_doc {
 sub _augment_input {
   my ($self, $input_analytes, $io_node) = @_;
 
-  my $id                = $io_node->findvalue($INPUT_LIMSID);
+  my $id = $io_node->findvalue($INPUT_LIMSID);
 
-  my $full_input        = $input_analytes->findnodes(sprintf $ARTIFACT_BY_LIMSID, $id)->pop();
-  my $location          = $full_input->findvalue($LOCATION_VALUE);
+  my $full_input = $input_analytes->findnodes(sprintf $ARTIFACT_BY_LIMSID, $id)->pop();
+  my $location = $full_input->findvalue($LOCATION_VALUE);
   my $container_lims_id = $full_input->findvalue($CONTAINER_LIMS_ID);
 
   return {
@@ -166,8 +166,8 @@ sub _sort_analyte {
 
   my @sort_by = @{$sort_by};
 
-  my $location_index_a = first { $sort_by[$_] eq $analyte_a->{'location'} } 0..$#sort_by;
-  my $location_index_b = first { $sort_by[$_] eq $analyte_b->{'location'} } 0..$#sort_by;
+  my $location_index_a = first { $sort_by[$_] eq $analyte_a->{'location'} } 0 .. $#sort_by;
+  my $location_index_b = first { $sort_by[$_] eq $analyte_b->{'location'} } 0 .. $#sort_by;
 
   return $location_index_a <=> $location_index_b;
 }
@@ -187,12 +187,27 @@ sub sorted_io {
   my @analytes = map { $self->_augment_input($input_analytes, $_) } @io_nodes;
 
   # Group by container
-  my %analytes_by_container = reduce { $self->_group_by_container($a, $b) } {}, @analytes;
-  my @analytes_by_container = values %analytes_by_container;
+  my $analytes_by_container = reduce { $self->_group_by_container($a, $b) } {}, @analytes;
+  my @analytes_by_container = values %{$analytes_by_container};
 
-  # Sort analytes within container then just return the io_node... Perl is so pretty...
-  my @sorted_io = map { $_->{'io_node'} } map {
-    sort { $self->_sort_analyte($sort_by, $a, $b) } @{$_} } @analytes_by_container;
+  # Sort analytes within container then just return the io_node.
+
+  # Reverse sort by container id.
+  @analytes_by_container = sort {
+    @{$b}[0]->{'container_lims_id'} cmp @{$a}[0]->{'container_lims_id'}
+  } @analytes_by_container;
+
+  # Flatten the lists and sort each sublist.
+  my @sorted_io_objects = map {
+    sort {
+      $self->_sort_analyte($sort_by, $a, $b)
+    } @{$_}
+  } @analytes_by_container;
+
+  # Return just the io_node of the objects.
+  my @sorted_io = map {
+    $_->{'io_node'}
+  } @sorted_io_objects;
 
   return XML::LibXML::NodeList->new(@sorted_io);
 }
