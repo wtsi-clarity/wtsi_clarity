@@ -36,12 +36,13 @@ sub _build_internal_csv_output {
 
   carp $self->_display_warnings($warnings) if $warnings;
 
-  my @plate_names = keys %{$pool_calculator_result};
+  my @plate_names = sort keys %{$pool_calculator_result};
   my $sample_nr = 1;
   my @rows;
 
   foreach my $plate_name (@plate_names) {
-    while ( my ($dest_well, $analytes) = each %{$pool_calculator_result->{$plate_name}}) {
+    for my $dest_well (sort keys %{$pool_calculator_result->{$plate_name}}) {
+      my $analytes = $pool_calculator_result->{$plate_name}->{$dest_well};
       foreach my $analyte_data (@{$analytes}) {
         push @rows, $self->row($dest_well, $analyte_data, $sample_nr++);
       }
