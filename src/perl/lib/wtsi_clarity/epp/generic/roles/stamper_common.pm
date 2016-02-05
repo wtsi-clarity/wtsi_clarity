@@ -193,8 +193,8 @@ sub sorted_io {
   # Sort analytes within container then just return the io_node.
 
   # Reverse sort by container id.
-  @analytes_by_container = sort {
-    @{$b}[0]->{'container_lims_id'} cmp @{$a}[0]->{'container_lims_id'}
+  @analytes_by_container = reverse sort {
+    @{$a}[0]->{'container_lims_id'} cmp @{$b}[0]->{'container_lims_id'}
   } @analytes_by_container;
 
   # Flatten the lists and sort each sublist.
