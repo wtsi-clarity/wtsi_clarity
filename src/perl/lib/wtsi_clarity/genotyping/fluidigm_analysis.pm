@@ -170,13 +170,13 @@ wtsi_clarity::genotyping::fluidigm_analysis
   my $file = wtsi_clarity::genotyping::fluidigm_analysis->new(
     sample_plate => 'DN382334Q',
     barcode      => 123456789,
-    description  => 'Just a great plate' # Defaults to sample_plate if not present
-    plate_type   => 'SBS96' # not required
+    description  => 'Just a great plate',
+    plate_type   => 'SBS96',
     samples      => [{
       well_location => 'A01',
       sample_name   => '272222DY78988098',
-      sample_concentration => '', # Left blank if not present
-      sample_type   => ''         # Unknown if not present
+      sample_concentration => '',
+      sample_type   => ''
     }]
   );
 
@@ -210,7 +210,7 @@ wtsi_clarity::genotyping::fluidigm_analysis
 
 =item Carp
 
-=item wtsi_clarity::util::csv::factory;
+=item wtsi_clarity::util::csv::factory
 
 =back
 

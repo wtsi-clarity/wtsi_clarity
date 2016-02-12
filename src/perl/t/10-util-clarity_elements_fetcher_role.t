@@ -66,9 +66,9 @@ use util::xml;
 
 
   while (my ($targetURI, $targetDoc) = each %{$hash} ) {
-    cmp_ok($targetURI, '~~', [ $base_uri . '/containers/27-7562',
-                               $base_uri . '/containers/27-7563'],
-                               'The keys of the target hash should be their URI.' );
+    ok(grep $_ eq $targetURI, @{[ $base_uri . '/containers/27-7562',
+                               $base_uri . '/containers/27-7563']},
+          'The keys of the target hash should be their URI.' );
     my @nodes = util::xml::find_elements ($targetDoc, q{/con:container/udf:field[@name="WTSI Container Purpose Name"]} );
     cmp_ok(scalar(@nodes), '==', 1, 'supplier udf tag should be created.');
     if ($targetURI eq $base_uri . '/containers/27-7562'){

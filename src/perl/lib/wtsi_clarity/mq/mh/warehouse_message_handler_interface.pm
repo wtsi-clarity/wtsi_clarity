@@ -11,13 +11,22 @@ with 'wtsi_clarity::mq::mh::message_handler_interface';
 
 our $VERSION = '0.0';
 
+has 'json' => (
+  isa     => 'JSON',
+  is      => 'ro',
+  default => sub {
+    my $json = JSON->new->allow_nonref;
+    return $json->canonical();
+  },
+);
+
 sub process {
   my ($self, $message, $package) = @_;
 
   my $messages = $self->prepare_messages($message, $package);
 
   foreach my $message_to_wh (@{$messages}) {
-    $self->_send_message(encode_utf8(to_json($message_to_wh)), $message->purpose);
+    $self->_send_message(encode_utf8($self->json->encode($message_to_wh)), $message->purpose);
   }
 
   return 1;

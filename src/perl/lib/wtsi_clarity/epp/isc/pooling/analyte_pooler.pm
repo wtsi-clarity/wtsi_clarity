@@ -216,7 +216,9 @@ sub _create_pools {
   my $pools_doc = $self->_pools_doc;
   my $pooled_inputs_element = $pools_doc->getElementsByTagName('pooled-inputs')->pop();
 
-  while ( my ($pool_name, $analyte_uris) = each %{$self->_pools} ) {
+  my @keys = sort keys %{$self->_pools};
+  while ( my ($pool_name) = each @keys ) {
+    my $analyte_uris = $self->_pools->{$pool_name};
     my $pool_element = $pools_doc->createElement('pool');
     $pool_element->setAttribute('name', $pool_name);
 

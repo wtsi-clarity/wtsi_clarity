@@ -27,7 +27,7 @@ sub parse {
     file_name => $result_set->export_file,
   );
 
-  foreach my $sample (keys $file_wrapper->content) {
+  foreach my $sample (keys %{$file_wrapper->content}) {
     $assay_set{$sample} = wtsi_clarity::genotyping::fluidigm::assay_set->new(
       file_content => $file_wrapper->content->{$sample},
     );

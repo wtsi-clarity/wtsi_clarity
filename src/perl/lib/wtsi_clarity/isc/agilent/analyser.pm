@@ -36,7 +36,7 @@ sub get_analysis_results {
   my ($self) = @_;
 
   # for each well on the input plate (through the mapping details)
-  my $t =c->new(keys $self->mapping_details)
+  my $t =c->new(keys %{$self->mapping_details})
           ->reduce(sub{
               my $source_well = $b;
               my $wells    = $self->mapping_details->{$source_well}{'wells'};
@@ -66,7 +66,7 @@ sub _build__data_set {
   my ($self) = @_;
 
   # for each file
-  return c->new(keys $self->files_content)
+  return c->new(keys %{$self->files_content})
     ->reduce(sub{
       my $filename = $b;
       my $doc = $self->files_content->{$filename};

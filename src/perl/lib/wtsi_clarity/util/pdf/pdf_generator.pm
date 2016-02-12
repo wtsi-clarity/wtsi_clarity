@@ -101,9 +101,9 @@ sub transform_all_properties {
   foreach my $j (0 .. $self->get_nb_row($data) - 1) {
     my $row_properties = [];
     foreach my $i (0 .. $self->get_nb_col($data) - 1) {
-      push $row_properties, $self->transform_property($data->[$j]->[$i]);
+      push @{$row_properties}, $self->transform_property($data->[$j]->[$i]);
     }
-    push $table_properties, $row_properties;
+    push @{$table_properties}, $row_properties;
   }
 
   return $table_properties;

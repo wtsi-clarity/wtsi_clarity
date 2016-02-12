@@ -64,7 +64,7 @@ has 'attributes' => (
 sub BUILD {
   my $self = shift;
 
-  foreach my $attribute_name ( keys $self->attributes ) {
+  foreach my $attribute_name ( keys %{$self->attributes} ) {
     $self->meta->add_attribute($attribute_name => (
       isa             => 'Str',
       is              => 'rw',

@@ -34,7 +34,7 @@ has '_filename' => (
 sub _build__filename {
   my $self = shift;
   my $container_hash = $self->fetch_targets_hash($FIRST_ANALYTE_PATH, $CONTAINER_PATH);
-  my $container = (values $container_hash)[0];
+  my $container = (values %{$container_hash})[0];
   return $container->findvalue($CONTAINER_NAME);
 }
 

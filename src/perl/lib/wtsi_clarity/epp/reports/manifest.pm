@@ -93,14 +93,14 @@ sub file_content {
   $file_content{$container_lims_id}{'container_type'} = $container->findvalue('type/@name');
   $file_content{$container_lims_id}{'wells'} = $self->_build_wells($container);
 
-  my @sample_uris = sort map { $_->{'sample_uri'} } values $file_content{$container_lims_id}{'wells'};
+  my @sample_uris = sort map { $_->{'sample_uri'} } values %{$file_content{$container_lims_id}{'wells'}};
   my $samples = $self->request->batch_retrieve('samples', \@sample_uris);
 
   $self->_set_projects($samples);
 
   my @rows = map {
     $self->_build_row($_, \%file_content, $container_lims_id, $samples);
-  } keys $file_content{$container_lims_id}{'wells'};
+  } keys %{$file_content{$container_lims_id}{'wells'}};
 
   return \@rows;
 }

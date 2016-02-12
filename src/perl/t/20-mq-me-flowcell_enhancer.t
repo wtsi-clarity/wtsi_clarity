@@ -13,7 +13,7 @@ local $ENV{'WTSI_CLARITY_HOME'}= q[t/data/config];
 sub _load_sample {
   my ($testdata_dir, $sample_file_name) = @_;
 
-  return XML::LibXML->load_xml(location => cwd . $testdata_dir . $sample_file_name) or croak 'File cannot be found at ' . cwd() . $testdata_dir . $sample_file_name;
+  return XML::LibXML->load_xml(location => cwd . $testdata_dir . $sample_file_name) || croak 'File cannot be found at ' . cwd() . $testdata_dir . $sample_file_name;
 }
 
 {
