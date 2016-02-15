@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 8;
+use Test::More tests => 5;
 use Test::Exception;
 use Test::MockObject::Extends;
 
@@ -24,9 +24,6 @@ my $base_uri = $config->clarity_api->{'base_uri'};
   );
 
   is($me->_user_identifier, 'karel@testsite.ac.uk', 'Extracts the user identifier correctly');
-  is($me->_cost_code, 'S01XYZ', 'Extracts the cost code correctly');
-  is($me->_project_name, 'Test Project XXX123', 'Extracts the project name correctly');
-  is($me->number_of_samples, 20, 'Gets the number of samples correctly');
 
   my $me_mocked = Test::MockObject::Extends->new(
     wtsi_clarity::mq::me::charging::secondary_qc->new(
@@ -77,7 +74,7 @@ my $base_uri = $config->clarity_api->{'base_uri'};
                                    {
                                      'subject_type' => 'clarity_project',
                                      'friendly_name' => 'Test Project XXX123',
-                                     'uuid' => 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e',
+                                     'uuid' => 'd1bd68c9-92b4-11e5-841d-d1ffc6ce5ce4',
                                      'role_type' => 'clarity_charge_project'
                                    }
                                  ],
@@ -97,11 +94,6 @@ my $base_uri = $config->clarity_api->{'base_uri'};
 
   $me_mocked->mock(q{_get_uuid}, sub {
 
-    return 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e';
-  });
-
-  $me_mocked->mock(q{_project_uuid}, sub {
-    
     return 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e';
   });
 

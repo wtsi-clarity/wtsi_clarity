@@ -12,7 +12,5 @@
     <udf:field type="String" name="WTSI Read Length">75</udf:field>
     <udf:field type="String" name="WTSI Accession Number">111</udf:field>
     <udf:field type="String" name="WTSI Bait">Human Exome v5</udf:field>
-    <file:file limsid="SV1453-40-1456" uri="http://testserver.com:1234/here/files/SV1453-40-1456"/>
-    <file:file limsid="SV1453-40-1454" uri="http://testserver.com:1234/here/files/SV1453-40-1454"/>
-    <file:file limsid="SV1453-40-1455" uri="http://testserver.com:1234/here/files/SV1453-40-1455"/>
+    <udf:field type="String" name="WTSI Project UUID">3f29ea9f-9cce-11e5-b8ab-cfa7c16b1e7b</udf:field>
 </prj:project>
