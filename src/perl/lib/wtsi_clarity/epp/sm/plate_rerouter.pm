@@ -120,16 +120,17 @@ wtsi_clarity::epp::sm::plate_rerouter
 
 =head1 SYNOPSIS
 
-  my $plate_rerouter = wtsi_clarity::epp::sm::file_download->new(er
-    process_url   => 'http://clarity.com/processes/1234',
-    process_type  => 'Fluidigm Worksheet & Barcode (SM)',
-    file_name     => 'Tecan File',
-    udf_name      => 'Tecan File',
+  my $plate_rerouter = wtsi_clarity::epp::sm::file_download->new(
+    process_url       => 'http://clarity.com/processes/1234',
+    process_type      => 'Pico Dilution (SM)',
+    new_step_name     => 'Pico Assay Plate (SM)',
+    new_protocol_name => 'Picogreen Protocol',
+    new_workflow_name => 'GCLP Sample Management QC'
   );
 
 =head1 DESCRIPTION
 
-  Makes a file downloadable from a previous process.
+  Moves the output analytes to the ice bucket of the given step.
 
 =head1 SUBROUTINES/METHODS
 
