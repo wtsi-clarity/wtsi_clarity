@@ -2,6 +2,7 @@ package wtsi_clarity::mq::me::charging::charging_common;
 
 use Moose::Role;
 use Readonly;
+use List::MoreUtils qw/ uniq /;
 
 use wtsi_clarity::dao::study_dao;
 use wtsi_clarity::util::uuid_generator qw/new_uuid/;
@@ -14,8 +15,12 @@ our $VERSION = '0.0';
 Readonly::Scalar my $CLARITY_PROJECT_ROLE_TYPE  => q{clarity_charge_project};
 Readonly::Scalar my $PROJECT_SUBJECT_TYPE       => q{clarity_project};
 Readonly::Scalar my $RESEARCHER_EMAIL           => q{res:researcher/email};
+## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+Readonly::Scalar my $BAIT_LIBRARY_PATH          => q{udf:field[@name='WTSI Bait Library Name']};
+Readonly::Scalar my $PROJECT_LIMSID            => q{project/@limsid};
+## use critic
 
-requires qw{product_type pipeline metadata};
+requires qw{product_type pipeline get_metadata};
 
 has 'event_type' => (
   isa       => 'Str',
@@ -36,25 +41,40 @@ sub _build__lims_ids {
 sub prepare_messages {
   my $self = shift;
 
-  my %message = ();
-  $message{$self->type} = $self->_get_event_message();
-  $message{'lims'}      = $self->config->clarity_mq->{'id_lims'};
+  my @messages = ();
 
-  return [\%message];
+  my @studies = uniq map {
+    $_->findvalue($PROJECT_LIMSID);
+  } @{$self->samples};
+
+  for my $study (@studies) {
+    my @samples = grep {
+      $_->findvalue($PROJECT_LIMSID) eq $study;
+    } @{$self->samples};
+
+    my %message = ();
+    $message{$self->type} = $self->_get_event_message(\@samples);
+    $message{'lims'}      = $self->config->clarity_mq->{'id_lims'};
+
+    push @messages, \%message;
+  }
+
+  return \@messages;
 }
 
 sub _get_event_message {
-  my $self = shift;
+  my ($self, $samples) = @_;
 
-  my %event_message = ();
-  $event_message{'uuid'}            = $self->_get_uuid;
-  $event_message{'event_type'}      = $self->event_type;
-  $event_message{'occured_at'}      = $self->_occured_at;
-  $event_message{'user_identifier'} = $self->_user_identifier;
-  $event_message{'subjects'}        = $self->_subjects;
-  $event_message{'metadata'}        = $self->metadata;
+  my $event_message = {
+    uuid            => $self->_get_uuid,
+    event_type      => $self->event_type,
+    occured_at      => $self->_occured_at,
+    user_identifier => $self->_user_identifier,
+    subjects        => $self->_get_subjects($samples),
+    metadata        => $self->get_metadata($samples),
+  };
 
-  return \%event_message;
+  return $event_message;
 }
 
 sub _get_uuid {
@@ -81,94 +101,79 @@ sub _occured_at {
   return $date_run;
 }
 
-has '_study_dao' => (
-  isa => 'wtsi_clarity::dao::study_dao',
-  is  => 'ro',
-  lazy_build  => 1,
-);
-sub _build__study_dao {
-  my $self = shift;
-  return wtsi_clarity::dao::study_dao->new(lims_id => $self->get_process->study_limsid);
-}
-
 sub _user_identifier {
   my $self = shift;
 
   return $self->process->technician_doc->findvalue($RESEARCHER_EMAIL);
 }
 
-sub _cost_code {
+sub samples {
   my $self = shift;
 
-  return $self->_study_dao->cost_code;
+  return $self->get_process->samples_wo_control;
 }
 
-sub _project_name {
-  my $self = shift;
+sub get_bait_library {
+  my ($self, $samples) = @_;
 
-  return $self->_study_dao->name;
+  return $samples->[0]->findvalue($BAIT_LIBRARY_PATH);
 }
 
-sub number_of_samples {
-  my $self = shift;
-
-  return $self->get_process->number_of_input_artifacts;
-}
-
-sub bait_library {
-  my ($self) = @_;
-
-  return $self->get_process->bait_library;
-}
-
-sub plex_level {
-  my ($self) = @_;
+sub get_plex_level {
+  my ($self, $samples) = @_;
 
   my $plex_level = wtsi_clarity::epp::isc::pooling::bait_library_mapper->new()
-                      ->plexing_mode_by_bait_library($self->bait_library);
+    ->plexing_mode_by_bait_library($self->get_bait_library($samples));
   ($plex_level) = $plex_level =~ m/(\d+)/xms;
 
   return $plex_level;
 }
 
-sub _subjects {
-  my $self = shift;
+sub _get_subjects {
+  my ($self, $samples) = @_;
+
+  my $study = wtsi_clarity::dao::study_dao->new(lims_id => $samples->[0]->findvalue($PROJECT_LIMSID));
+
+  my $clarity_project_subject = {
+    role_type     => $CLARITY_PROJECT_ROLE_TYPE,
+    subject_type  => $PROJECT_SUBJECT_TYPE,
+    friendly_name => $study->name,
+    uuid          => $self->_get_study_uuid($study),
+  };
 
   my @subjects = ();
-  my %clarity_project_subject = ();
-  $clarity_project_subject{'role_type'}     = $CLARITY_PROJECT_ROLE_TYPE;
-  $clarity_project_subject{'subject_type'}  = $PROJECT_SUBJECT_TYPE;
-  $clarity_project_subject{'friendly_name'} = $self->_project_name;
-  $clarity_project_subject{'uuid'}          = $self->_project_uuid;
-
-  push @subjects, \%clarity_project_subject;
+  push @subjects, $clarity_project_subject;
   return \@subjects;
 }
 
-sub _project_uuid {
-  my $self = shift;
+sub _get_study_uuid {
+  my ($self, $study) = @_;
 
-  my $project_uuid = $self->_study_dao->study_uuid;
+  my $project_uuid = $study->study_uuid;
 
   if (!$project_uuid) {
     $project_uuid = $self->_get_uuid;
+
     $self->add_udf_element(
-      $self->_study_dao->artifact_xml, q{WTSI Project UUID}, $project_uuid);
-    $self->request->put($self->_study_dao->uri, $self->_study_dao->artifact_xml->toString());
+      $study->artifact_xml, q{WTSI Project UUID}, $project_uuid);
+    $self->request->put($study->uri, $study->artifact_xml->toString());
   }
 
   return $project_uuid;
 }
 
-sub common_metadata {
-  my $self = shift;
+sub get_common_metadata {
+  my ($self, $samples) = @_;
 
-  my %metadata = ();
-  $metadata{'product_type'}       = $self->product_type;
-  $metadata{'pipeline'}           = $self->pipeline;
-  $metadata{'cost_code'}          = $self->_cost_code;
+  my $study = wtsi_clarity::dao::study_dao->new(lims_id => $samples->[0]->findvalue($PROJECT_LIMSID));
 
-  return \%metadata;
+  my $metadata = {
+    product_type => $self->product_type,
+    pipeline     => $self->pipeline,
+    cost_code    => $study->cost_code,
+  };
+
+  return $metadata;
 }
 
 1;
@@ -205,19 +210,19 @@ wtsi_clarity::mq::me::charging::charging_common
 
   Returns the type of the message.
 
-=head2 number_of_samples
+=head2 samples
 
-  Returns the number of input samples in the process.
+  Returns an ArrayRef of samples
 
-=head2 bait_library
+=head2 get_bait_library
 
   Returns the applied bait library type.
 
-=head2 plex_level
+=head2 get_plex_level
 
   Returns the plex level of the bait library.
 
-=head2 common_metadata
+=head2 get_common_metadata
 
   Gathers and returns the common meta data of the event message.
 

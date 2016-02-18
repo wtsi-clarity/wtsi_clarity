@@ -1,0 +1,33 @@
+<prj:project xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:file="http://genologics.com/ri/file" xmlns:prj="http://genologics.com/ri/project" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/projects/DEA152" limsid="DEA152">
+    <name>AD_test101</name>
+    <open-date>2014-07-13</open-date>
+    <udf:type name="WTSI Standard data release" />
+    <udf:field type="String" name="WTSI ECAP Tracking Number">101</udf:field>
+    <udf:field type="Text" name="WTSI Project Description">test101</udf:field>
+    <udf:field type="Text" name="WTSI Project Abstract">test101</udf:field>
+    <udf:field type="String" name="WTSI Type">Exome Sequencing</udf:field>
+    <udf:field type="String" name="WTSI Project Abbreviation">test101</udf:field>
+    <udf:field type="Numeric" name="WTSI Project ID">765</udf:field>
+    <udf:field type="String" name="WTSI Project Cost Code">test101</udf:field>
+    <udf:field type="String" name="WTSI Project Funding Model">internal</udf:field>
+    <udf:field type="String" name="WTSI Project Budget Division">test101</udf:field>
+    <udf:field type="String" name="WTSI Project State">active</udf:field>
+    <udf:field type="String" name="WTSI Project Approved">true</udf:field>
+    <udf:field type="String" name="WTSI Release Strategy">Open</udf:field>
+    <udf:field type="Boolean" name="WTSI standard access agreement to be used?">false</udf:field>
+    <udf:field type="String" name="WTSI Data release timing">Standard</udf:field>
+    <udf:field type="URI" name="WTSI Data Access Agreement">test101</udf:field>
+    <udf:field type="String" name="WTSI Data Access Contact (DAC)">test101</udf:field>
+    <udf:field type="String" name="WTSI Study Title for Publishing">test101</udf:field>
+    <udf:field type="String" name="WTSI Data Access Group">test101</udf:field>
+    <udf:field type="String" name="WTSI Study reference genome">human</udf:field>
+    <udf:field type="Boolean" name="WTSI Do samples contain Human DNA?">true</udf:field>
+    <udf:field type="Boolean" name="WTSI Contaminated with Human DNA that needs removal?">true</udf:field>
+    <udf:field type="Boolean" name="WTSI Does the study require the removal of X-chromosome and autosome sequence?">true</udf:field>
+    <udf:field type="Boolean" name="WTSI Does the study require the removal of Y-chromosome and autosome sequence?">true</udf:field>
+    <udf:field type="String" name="WTSI Library Construction Protocol">GCLP-ISC Standard</udf:field>
+    <udf:field type="String" name="WTSI Estimated number of lanes">12</udf:field>
+    <udf:field type="String" name="WTSI Instrument Model">Illumina HiSeq Rapid</udf:field>
+    <udf:field type="String" name="WTSI Run Length">100 PE</udf:field>
+    <udf:field type="String" name="WTSI Project UUID">b93a5cd3-d3e0-11e5-857c-c78c28316c7a</udf:field>
+</prj:project>

@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 11;
+use Test::More tests => 6;
 use Test::Exception;
 use Test::MockObject::Extends;
 
@@ -24,13 +24,8 @@ my $base_uri = $config->clarity_api->{'base_uri'};
   );
 
   is($me->_user_identifier, 'karel@testsite.ac.uk', 'Extracts the user identifier correctly');
-  is($me->_project_name, 'AD_test_250714', 'Extracts the project name correctly');
   is($me->product_type, 'GCLP ISC', 'Gets the correct product type information');
   is($me->pipeline, 'IHTP', 'Gets the correct pipeline information');
-  is($me->_read_length, '75', 'Gets the correct read length information');
-  is($me->plex_level, '8', 'Gets the correct plex level information');
-  is($me->_cost_code, 'S4019', 'Extracts the cost code correctly');
-  is($me->number_of_samples, 8, 'Gets the number of lanes correctly');
 
   my $me_mocked = Test::MockObject::Extends->new(
     wtsi_clarity::mq::me::charging::sequencing->new(
@@ -61,42 +56,37 @@ my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $expected_json = [
     {
-      'lims' => 'C_GCLP_D',
+      'lims'  => 'C_GCLP_D',
       'event' => {
-                   'subjects' => [
-                                   {
-                                     'subject_type'   => 'clarity_project',
-                                     'friendly_name'  => 'AD_test_250714',
-                                     'uuid'           => 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e',
-                                     'role_type'      => 'clarity_charge_project'
-                                   }
-                                 ],
-                   'event_type' => 'charging_sequencing',
-                   'metadata' => {
-                                   'product_type'         => 'GCLP ISC',
-                                   'pipeline'             => 'IHTP',
-                                   'version'              => '1',
-                                   'platform'             => '2500',
-                                   'run_type'             => 'PE',
-                                   'read_length'          => 75,
-                                   'plex_level'           => '8',
-                                   'cost_code'            => 'S4019',
-                                   'number_of_lanes'      => 8
-                                 },
-                   'user_identifier'  => 'karel@testsite.ac.uk',
-                   'uuid'             => 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e',
-                   'occured_at'       => '2015-12-02'
-                 }
+        'subjects'        => [
+          {
+            'subject_type'  => 'clarity_project',
+            'friendly_name' => 'AD_test_250714',
+            'uuid'          => '3f29ea9f-9cce-11e5-b8ab-cfa7c16b1e7b',
+            'role_type'     => 'clarity_charge_project'
+          }
+        ],
+        'event_type'      => 'charging_sequencing',
+        'metadata'        => {
+          'product_type'    => 'GCLP ISC',
+          'pipeline'        => 'IHTP',
+          'version'         => '1',
+          'platform'        => '2500',
+          'run_type'        => 'PE',
+          'read_length'     => 75,
+          'plex_level'      => '8',
+          'cost_code'       => 'S4019',
+          'number_of_lanes' => 8
+        },
+        'user_identifier' => 'karel@testsite.ac.uk',
+        'uuid'            => 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e',
+        'occured_at'      => '2015-12-02'
+      }
     }
   ];
 
   $me_mocked->mock(q{_get_uuid}, sub {
 
-    return 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e';
-  });
-
-  $me_mocked->mock(q{_project_uuid}, sub {
-    
     return 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e';
   });
 

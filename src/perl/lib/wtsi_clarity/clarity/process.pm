@@ -38,6 +38,7 @@ Readonly::Scalar my $WORKFLOW_STAGE_URI           => q{/art:details/art:artifact
 Readonly::Scalar my $FIRST_ARTIFACT_URI           => q{art:details/art:artifact[1]/@uri};
 Readonly::Scalar my $FIRST_ARTIFACT_LIMSID        => q{art:details/art:artifact[1]/@limsid};
 Readonly::Scalar my $NON_CONTROL_SAMPLE_LIMSID    => q{smp:details/smp:sample/project/../@limsid};
+Readonly::Scalar my $NON_CONTROL_SAMPLES          => q{smp:details/smp:sample/project/..};
 Readonly::Scalar my $SAMPLE_URI_BY_ARTIFACT_DOC   => q{art:artifact/sample/@uri};
 Readonly::Scalar my $SAMPLE_URI_BY_ARTIFACTS_DOC  => q{art:details/art:artifact/sample/@uri};
 Readonly::Scalar my $PROJECT_URI_BY_SAMPLE_DOC    => q{smp:details/smp:sample/project/@uri};
@@ -468,15 +469,15 @@ sub _build_samples_doc {
   return $samples_doc;
 }
 
-has 'samples_count_wo_control' => (
+has 'samples_wo_control' => (
   is => 'ro',
-  isa => 'Num',
+  isa => 'XML::LibXML::NodeList',
   lazy_build => 1,
 );
-sub _build_samples_count_wo_control {
+sub _build_samples_wo_control {
   my $self = shift;
 
-  return scalar @{$self->samples_doc->findnodes($NON_CONTROL_SAMPLE_LIMSID)->to_literal_list};
+  return $self->samples_doc->findnodes($NON_CONTROL_SAMPLES);
 }
 
 has '_first_non_control_sample_limsid' => (
@@ -487,7 +488,7 @@ has '_first_non_control_sample_limsid' => (
 sub _build__first_non_control_sample_limsid {
   my ($self) = @_;
 
-  return $self->samples_doc->findnodes($NON_CONTROL_SAMPLE_LIMSID)    ->pop->textContent;
+  return $self->samples_doc->findnodes($NON_CONTROL_SAMPLE_LIMSID)->pop->textContent;
 }
 
 has 'bait_library' => (
