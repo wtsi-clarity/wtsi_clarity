@@ -171,7 +171,7 @@ sub _build_row {
     'Sample UUID'             => $sample->findvalue('./name') // q{},
     'Concentration'           => $sample->findvalue('./udf:field[@name="Sample Conc. (ng\/µL) (SM)"]') // q{},
     'Sample volume'           => $cherrypick_volume // q{},
-    'Library concentration'   => $sample->findvalue('./udf:field[@name="WTSI Library Concentration"]') // q{},
+    'Library concentration'   => $sample->findvalue('./udf:field[@name="WTSI Library Molarity"]') // q{},
     'DNA amount library prep' => $self->_get_dna_amount_library_prep($cherrypick_stamping_doc, $sample, $cherrypick_volume),
     'Status'                  => $self->_get_status($sample),
   }
