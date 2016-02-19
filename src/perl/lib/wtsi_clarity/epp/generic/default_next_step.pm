@@ -4,8 +4,8 @@ use Carp;
 
 ## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
 Readonly::Scalar my $CONFIGURATION_URI => q(/stp:step/configuration/@uri);
-Readonly::Scalar my $ACTIONS_URL       => q(/stp:step/actions/@uri);
-Readonly::Scalar my $NEXT_STEP_URI     => q(/protstepcnf:step/transitions/transition[@name='%s']/@next-step-uri);
+Readonly::Scalar my $ACTIONS_URL => q(/stp:step/actions/@uri);
+Readonly::Scalar my $NEXT_STEP_URI => q(/protstepcnf:step/transitions/transition[@name='%s']/@next-step-uri);
 Readonly::Scalar my $NEXT_ACTIONS_PATH => q(/stp:actions/next-actions/next-action);
 ## use critic
 
@@ -28,12 +28,7 @@ has 'next_step' => (
     required => 1,
   );
 
-has 'actions_uri' => (
-    isa        => 'Str',
-    is         => 'ro',
-    lazy_build => 1,
-  );
-sub _build_actions_uri {
+sub actions_uri {
   my ($self) = @_;
 
   return $self->step_doc->findvalue($ACTIONS_URL);
@@ -104,6 +99,10 @@ wtsi_clarity::epp::generic::default_next_step
   Updates all the analytes in the step to have the given step as their default next step
 
 =head1 SUBROUTINES/METHODS
+
+=head2 actions_uri
+
+  Get the uri for the actions doc
 
 =head2 get_action_doc
   Get the current next steps xml
