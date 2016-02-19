@@ -24,6 +24,7 @@ Readonly::Hash my %ACTION2MODULE => (
   'store_plate'                    => 'generic::plate_storer',
   'verify_control'                 => 'generic::control_verifier',
   'copy_udfs'                      => 'generic::udf_copier',
+  'set_next_step'                  => 'generic::default_next_step',
 
   'create_manifest'                => 'reports::manifest',
   'create_sample_qc_report'        => 'reports::sample_qc_report',
