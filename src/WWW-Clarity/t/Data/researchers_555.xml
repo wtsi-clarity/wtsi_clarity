@@ -1,0 +1,15 @@
+<res:researcher xmlns:udf="http://genologics.com/ri/userdefined" xmlns:ri="http://genologics.com/ri" xmlns:res="http://genologics.com/ri/researcher" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/researchers/555">
+    <first-name>Ronan</first-name>
+    <last-name>Forman</last-name>
+    <email>rf9@sanger.ac.uk</email>
+    <lab uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/labs/2"/>
+    <credentials>
+        <username>rf9</username>
+        <account-locked>false</account-locked>
+        <role uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/roles/1" name="Facility Administrator" roleName="administrator"/>
+        <role uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/roles/2" name="Researcher" roleName="labtech"/>
+        <role uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/roles/3" name="Collaborator" roleName="webclient"/>
+        <role uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/roles/4" name="System Administrator" roleName="systemadministrator"/>
+    </credentials>
+    <initials>RMF</initials>
+</res:researcher>

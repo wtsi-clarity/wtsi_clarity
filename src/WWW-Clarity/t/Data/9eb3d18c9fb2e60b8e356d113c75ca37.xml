@@ -1,0 +1,1894 @@
+<art:details xmlns:udf="http://genologics.com/ri/userdefined" xmlns:file="http://genologics.com/ri/file" xmlns:art="http://genologics.com/ri/artifact">
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162871?state=78101" limsid="2-162871">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>K:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/3C-153" limsid="3C-153"/>
+        <control-type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/controltypes/3"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162872?state=78102" limsid="2-162872">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>H:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A16" limsid="44Y203A16"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162873?state=78103" limsid="2-162873">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>D:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A10" limsid="44Y203A10"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162874?state=78104" limsid="2-162874">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>E:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A11" limsid="44Y203A11"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162875?state=78105" limsid="2-162875">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>G:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A8" limsid="44Y203A8"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162876?state=78106" limsid="2-162876">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>B:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A9" limsid="44Y203A9"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162877?state=78107" limsid="2-162877">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>G:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A14" limsid="44Y203A14"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162878?state=78108" limsid="2-162878">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>F:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A15" limsid="44Y203A15"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162879?state=78109" limsid="2-162879">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>H:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A12" limsid="44Y203A12"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162880?state=78110" limsid="2-162880">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>P:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A13" limsid="44Y203A13"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162881?state=78111" limsid="2-162881">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>K:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A7" limsid="44Y203A7"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162882?state=78112" limsid="2-162882">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>I:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A6" limsid="44Y203A6"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162883?state=78113" limsid="2-162883">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>D:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A5" limsid="44Y203A5"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162884?state=78114" limsid="2-162884">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>P:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A4" limsid="44Y203A4"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162885?state=78115" limsid="2-162885">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>M:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A17" limsid="44Y203A17"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162886?state=78116" limsid="2-162886">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>E:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A19" limsid="44Y203A19"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162887?state=78117" limsid="2-162887">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>L:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A18" limsid="44Y203A18"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162888?state=78118" limsid="2-162888">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>I:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A21" limsid="44Y203A21"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162889?state=78119" limsid="2-162889">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>M:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A20" limsid="44Y203A20"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162890?state=78120" limsid="2-162890">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>O:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A23" limsid="44Y203A23"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162891?state=78121" limsid="2-162891">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>A:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A22" limsid="44Y203A22"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162892?state=78122" limsid="2-162892">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>I:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A25" limsid="44Y203A25"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162893?state=78123" limsid="2-162893">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>P:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A24" limsid="44Y203A24"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162894?state=78124" limsid="2-162894">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>M:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A62" limsid="44Y203A62"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162895?state=78125" limsid="2-162895">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>K:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A63" limsid="44Y203A63"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162896?state=78126" limsid="2-162896">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>E:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A64" limsid="44Y203A64"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162897?state=78127" limsid="2-162897">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>N:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A65" limsid="44Y203A65"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162898?state=78128" limsid="2-162898">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>M:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A58" limsid="44Y203A58"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162899?state=78129" limsid="2-162899">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>E:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A59" limsid="44Y203A59"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162900?state=78130" limsid="2-162900">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>K:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A60" limsid="44Y203A60"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162951?state=78131" limsid="2-162951">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>N:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A61" limsid="44Y203A61"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162952?state=78132" limsid="2-162952">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>H:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A70" limsid="44Y203A70"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162953?state=78133" limsid="2-162953">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>J:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A71" limsid="44Y203A71"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162954?state=78134" limsid="2-162954">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>C:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A72" limsid="44Y203A72"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162955?state=78135" limsid="2-162955">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>P:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A73" limsid="44Y203A73"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162956?state=78136" limsid="2-162956">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>D:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A66" limsid="44Y203A66"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162958?state=78138" limsid="2-162958">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>D:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A68" limsid="44Y203A68"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162959?state=78139" limsid="2-162959">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>D:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A69" limsid="44Y203A69"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162960?state=78140" limsid="2-162960">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>L:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A79" limsid="44Y203A79"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162961?state=78141" limsid="2-162961">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>O:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A78" limsid="44Y203A78"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162962?state=78142" limsid="2-162962">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>M:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A81" limsid="44Y203A81"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162963?state=78143" limsid="2-162963">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>J:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A80" limsid="44Y203A80"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162964?state=78144" limsid="2-162964">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>G:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A75" limsid="44Y203A75"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162965?state=78145" limsid="2-162965">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>J:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A74" limsid="44Y203A74"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162966?state=78146" limsid="2-162966">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>A:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A77" limsid="44Y203A77"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162967?state=78147" limsid="2-162967">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>L:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A76" limsid="44Y203A76"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162968?state=78148" limsid="2-162968">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>A:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A87" limsid="44Y203A87"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162969?state=78149" limsid="2-162969">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>C:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A86" limsid="44Y203A86"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162970?state=78150" limsid="2-162970">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>O:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A83" limsid="44Y203A83"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162971?state=78151" limsid="2-162971">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>F:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A82" limsid="44Y203A82"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162972?state=78152" limsid="2-162972">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>I:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A85" limsid="44Y203A85"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162973?state=78153" limsid="2-162973">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>B:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A84" limsid="44Y203A84"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162974?state=78154" limsid="2-162974">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>C:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A32" limsid="44Y203A32"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162975?state=78155" limsid="2-162975">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>O:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A33" limsid="44Y203A33"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162976?state=78156" limsid="2-162976">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>N:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A30" limsid="44Y203A30"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162977?state=78157" limsid="2-162977">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>J:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A31" limsid="44Y203A31"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162978?state=78158" limsid="2-162978">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>I:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A28" limsid="44Y203A28"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162979?state=78159" limsid="2-162979">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>F:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A29" limsid="44Y203A29"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162980?state=78160" limsid="2-162980">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>E:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A26" limsid="44Y203A26"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162981?state=78161" limsid="2-162981">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>N:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A27" limsid="44Y203A27"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162983?state=78163" limsid="2-162983">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>I:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A41" limsid="44Y203A41"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162984?state=78164" limsid="2-162984">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>C:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A38" limsid="44Y203A38"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162985?state=78165" limsid="2-162985">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>O:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A39" limsid="44Y203A39"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162986?state=78166" limsid="2-162986">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>A:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A36" limsid="44Y203A36"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162987?state=78167" limsid="2-162987">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>F:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A37" limsid="44Y203A37"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162988?state=78168" limsid="2-162988">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>K:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A34" limsid="44Y203A34"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162989?state=78169" limsid="2-162989">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>B:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A35" limsid="44Y203A35"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162990?state=78170" limsid="2-162990">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>K:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A49" limsid="44Y203A49"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162991?state=78171" limsid="2-162991">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>B:4</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A48" limsid="44Y203A48"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162992?state=78172" limsid="2-162992">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>O:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A47" limsid="44Y203A47"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162993?state=78173" limsid="2-162993">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>H:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A46" limsid="44Y203A46"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162995?state=78175" limsid="2-162995">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>H:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A44" limsid="44Y203A44"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162996?state=78176" limsid="2-162996">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>G:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A43" limsid="44Y203A43"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162997?state=78177" limsid="2-162997">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>M:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A42" limsid="44Y203A42"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162998?state=78178" limsid="2-162998">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>F:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A57" limsid="44Y203A57"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-162999?state=78179" limsid="2-162999">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>A:1</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A56" limsid="44Y203A56"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-163000?state=78180" limsid="2-163000">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>J:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A55" limsid="44Y203A55"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-163051?state=78181" limsid="2-163051">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>L:3</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A54" limsid="44Y203A54"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-163052?state=78182" limsid="2-163052">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>G:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A53" limsid="44Y203A53"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-163053?state=78183" limsid="2-163053">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>C:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A52" limsid="44Y203A52"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-163054?state=78184" limsid="2-163054">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>G:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A51" limsid="44Y203A51"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-163055?state=78185" limsid="2-163055">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>B:2</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/44Y203A50" limsid="44Y203A50"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-163056?state=78186" limsid="2-163056">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>L:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/3C-402" limsid="3C-402"/>
+        <control-type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/controltypes/3"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-163057?state=78187" limsid="2-163057">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>P:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/3C-405" limsid="3C-405"/>
+        <control-type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/controltypes/3"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-163058?state=78188" limsid="2-163058">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>N:5</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/3C-452" limsid="3C-452"/>
+        <control-type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/controltypes/3"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+    <art:artifact uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/artifacts/2-163059?state=78189" limsid="2-163059">
+        <name>Worksheet</name>
+        <type>Analyte</type>
+        <output-type>Analyte</output-type>
+        <parent-process uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/processes/24-26127" limsid="24-26127"/>
+        <qc-flag>UNKNOWN</qc-flag>
+        <location>
+            <container uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/containers/27-3832" limsid="27-3832"/>
+            <value>P:6</value>
+        </location>
+        <working-flag>true</working-flag>
+        <sample uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/samples/2C-464" limsid="2C-464"/>
+        <control-type uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/controltypes/2"/>
+        <workflow-stages>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 Controller (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/309"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm IFC Amplification (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/310"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm EP1 Read (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/311"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="COMPLETE" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+            <workflow-stage status="IN_PROGRESS" name="Fluidigm 96.96 IFC Analysis (SM)" uri="http://web-claritytest-01.internal.sanger.ac.uk:8080/api/v2/configuration/workflows/24/stages/312"/>
+        </workflow-stages>
+    </art:artifact>
+</art:details>
