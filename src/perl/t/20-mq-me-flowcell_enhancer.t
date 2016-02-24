@@ -84,11 +84,12 @@ sub _load_sample {
   my $sample_xml = _load_sample($testdata_dir, $sample_file_name);
 
   my $expected_project_info = {
-    'cost_code'                   => 'TBC',
-    'study_id'                    => 'SH2155',
-    'requested_insert_size_from'  => 100,
-    'requested_insert_size_to'    => 200,
-    'read_length'                 => 123,
+    'cost_code'                  => 'TBC',
+    'study_id'                   => 'SH2155',
+    'requested_insert_size_from' => 100,
+    'requested_insert_size_to'   => 200,
+    'read_length'                => 123,
+    'purpose'                    => 'Standard',
   };
 
   is_deeply($me->_get_project_info($sample_xml), $expected_project_info, 'Returns the correct project information.');
@@ -108,19 +109,20 @@ sub _load_sample {
   );
 
   my $expected_sample_data = {
-    'study_id' => 'SH2155',
-    'bait_name' => '14M_0731661',
-    'cost_code' => 'TBC',
-    'pipeline_id_lims' => 'GCLP-CLARITY-ISC',
-    'tag_index' => '65',
-    'entity_type' => 'library_indexed',
-    'sample_uuid' => 'bf1d9d38-0a04-11e5-b228-cef7c1d4f35d',
-    'tag_set_name' => 'Sanger_168tags - 10 mer tags',
-    'tag_sequence' => 'TTGTTCCA',
-    'id_library_lims' => '2460271392675:A9',
-    'is_r_and_d' => 'false',
+    'study_id'                   => 'SH2155',
+    'bait_name'                  => '14M_0731661',
+    'cost_code'                  => 'TBC',
+    'pipeline_id_lims'           => 'GCLP-CLARITY-ISC',
+    'tag_index'                  => '65',
+    'entity_type'                => 'library_indexed',
+    'sample_uuid'                => 'bf1d9d38-0a04-11e5-b228-cef7c1d4f35d',
+    'tag_set_name'               => 'Sanger_168tags - 10 mer tags',
+    'tag_sequence'               => 'TTGTTCCA',
+    'id_library_lims'            => '2460271392675:A9',
+    'is_r_and_d'                 => 'false',
     'requested_insert_size_from' => '100',
-    'requested_insert_size_to' => '200'
+    'requested_insert_size_to'   => '200',
+    'purpose'                    => 'Standard',
   };
   my $expected_forward_length = 123;
   my $expected_reverse_length = 123;
