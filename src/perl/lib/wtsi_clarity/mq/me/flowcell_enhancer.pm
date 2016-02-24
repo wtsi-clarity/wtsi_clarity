@@ -49,6 +49,7 @@ Readonly::Scalar my $PROJECT_SIZE_RANGE_PATH  => q{prj:project/udf:field[@name="
 Readonly::Scalar my $PROJECT_READ_LENGTH_PATH => q{prj:project/udf:field[@name="WTSI Read Length"]};
 Readonly::Scalar my $PROJECT_LIMSID           => q{prj:project/@limsid};
 Readonly::Scalar my $PROJECT_ID_PATH          => q{prj:project/udf:field[@name="WTSI Project ID"]};
+Readonly::Scalar my $PROJECT_PURPOSE          => q{prj:project/udf:field[@name="WTSI Purpose"]};
 
 Readonly::Scalar my $TAG_PLATE_PROCESS_NAME   => q{Library PCR set up};
 
@@ -92,6 +93,7 @@ sub _get_flowcell_message {
     flowcell_id         => $self->_flowcell_id,
     forward_read_length => $self->_forward_read_length,
     reverse_read_length => $self->_reverse_read_length,
+    purpose             => $self->_purpose,
     updated_at          => strftime('%Y-%m-%Od %H:%M:%S', localtime),
   );
 
@@ -251,6 +253,8 @@ sub _build_sample {
     $self->_reverse_read_length($read_length);
   }
 
+  $self->_purpose($project_info->{'purpose'});
+
   %sample = (%sample, %{$project_info});
 
   %sample = (%sample, $self->_get_tag_info($sample_doc));
@@ -280,6 +284,7 @@ sub _get_project_info {
     $project_info{'requested_insert_size_from'} = $project_doc->findvalue($PROJECT_SIZE_FROM_PATH);
     $project_info{'requested_insert_size_to'}   = $project_doc->findvalue($PROJECT_SIZE_RANGE_PATH) + $project_info{'requested_insert_size_from'};
     $project_info{'read_length'}                = $project_doc->findvalue($PROJECT_READ_LENGTH_PATH);
+    $project_info{'purpose'}                    = $project_doc->findvalue($PROJECT_PURPOSE);
 
     $self->_set_projects_info( { $project_id => \%project_info });
   }
@@ -365,6 +370,11 @@ sub _build_controls {
 
   return \@controls;
 }
+
+has '_purpose' => (
+    is => 'rw',
+    isa => 'Str',
+  );
 
 1;
 
