@@ -58,8 +58,8 @@ ss_client_id= 888
 [irods]
 14MG_manifest_path=/Sanger1-dev/home/glsai
 14MG_lab_sample_qc_path=/Sanger1-dev/home/glsai
-Standard_manifest_path=/Sanger1-dev/home/glsai
-Standard_lab_sample_qc_path=/Sanger1-dev/home/glsai
+seq_manifest_path=/Sanger1-dev/home/glsai
+seq_lab_sample_qc_path=/Sanger1-dev/home/glsai
 
 [barcode_mint]
 internal_generation=1
