@@ -129,7 +129,7 @@ sub _load_sample {
 
   is_deeply($me->_build_sample('SH2155A67'), $expected_sample_data, 'Returns the correct sample data.');
   is($me->_forward_read_length, $expected_forward_length, 'Returns the correct forward length value.');
-  is($me->_reverse_read_length, $expected_forward_length, 'Returns the correct reverse length value.');
+  is($me->_reverse_read_length, $expected_reverse_length, 'Returns the correct reverse length value.');
 }
 
 1;
