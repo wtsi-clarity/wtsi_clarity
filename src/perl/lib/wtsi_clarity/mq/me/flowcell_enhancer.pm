@@ -17,7 +17,6 @@ Readonly::Scalar my $INPUT_OUTPUT_MAP         => q{prc:process/input-output-map}
 Readonly::Scalar my $INPUT_LIMSID             => q{input/@limsid};
 Readonly::Scalar my $OUTPUT_LIMSID            => q{output/@limsid};
 Readonly::Scalar my $FLOWCELL_BARCODE_UDF     => q{prc:process/udf:field[@name="Flow Cell ID"]};
-Readonly::Scalar my $SPIKED_HYB_BARCODE       => q{prc:process/udf:field[@name="WTSI Spiked Hyb Barcode"]};
 Readonly::Scalar my $PROCESS_LIMSID_PATH      => q{prc:process/@limsid};
 
 Readonly::Scalar my $CONTAINER_URI_PATH       => q{./stp:placements/selected-containers/container/@uri};
@@ -31,7 +30,6 @@ Readonly::Scalar my $ARTIFACT_REAGENT_NAME    => q{./art:artifact/reagent-label/
 Readonly::Scalar my $ARTIFACT_LOCATION_VALUE  => q{./art:artifact/location/value};
 Readonly::Scalar my $ARTIFACT_CONTAINER_URI   => q{./art:artifact/location/container/@uri};
 
-Readonly::Scalar my $LANE_ENTITY_TYPE         => q{library};
 Readonly::Scalar my $PIPELINE_ID_LIMS         => q{GCLP-CLARITY-ISC};
 Readonly::Scalar my $SAMPLE_ENTITY_TYPE       => q{library_indexed};
 Readonly::Scalar my $IS_R_AND_D               => q{false};
@@ -93,7 +91,6 @@ sub _get_flowcell_message {
     flowcell_id         => $self->_flowcell_id,
     forward_read_length => $self->_forward_read_length,
     reverse_read_length => $self->_reverse_read_length,
-    purpose             => $self->_purpose,
     updated_at          => strftime('%Y-%m-%Od %H:%M:%S', localtime),
   );
 
@@ -253,8 +250,6 @@ sub _build_sample {
     $self->_reverse_read_length($read_length);
   }
 
-  $self->_purpose($project_info->{'purpose'});
-
   %sample = (%sample, %{$project_info});
 
   %sample = (%sample, $self->_get_tag_info($sample_doc));
@@ -370,11 +365,6 @@ sub _build_controls {
 
   return \@controls;
 }
-
-has '_purpose' => (
-    is => 'rw',
-    isa => 'Str',
-  );
 
 1;
 
