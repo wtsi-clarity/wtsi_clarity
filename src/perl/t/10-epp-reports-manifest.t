@@ -1976,7 +1976,7 @@ my $EXPECTED_FILE_CONTENT = [
   })->mock(q{_projects}, sub {
     return {
       foo => {
-        data_destination => 'Standard'
+        data_destination => 'seq'
       }
     }
   });
