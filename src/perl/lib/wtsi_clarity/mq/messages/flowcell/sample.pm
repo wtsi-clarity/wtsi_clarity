@@ -5,25 +5,26 @@ use MooseX::Storage;
 
 our $VERSION = '0.0';
 
-with Storage( 'traits' => ['OnlyWhenBuilt'],
-              'format' => 'JSON',
-              'io' => 'File' );
+with Storage('traits' => ['OnlyWhenBuilt'],
+  'format'            => 'JSON',
+  'io'                => 'File');
 
 with 'wtsi_clarity::mq::messages::packer';
 
 my @defaults = ( is => 'ro', isa => 'Str', required => 1 );
 
 has [
-     'tag_sequence',
-     'tag_set_name',
-     'pipeline_id_lims',
-     'entity_type',
-     'bait_name',
-     'sample_uuid',
-     'cost_code',
-     'is_r_and_d',
-     'id_library_lims',
-    ] => @defaults;
+    'tag_sequence',
+    'tag_set_name',
+    'pipeline_id_lims',
+    'entity_type',
+    'bait_name',
+    'sample_uuid',
+    'cost_code',
+    'is_r_and_d',
+    'id_library_lims',
+    'purpose',
+  ] => @defaults;
 
 has [
     'study_uuid',
@@ -32,8 +33,8 @@ has [
     'requested_insert_size_to',] => @defaults, required => 0;
 
 has [
-     'tag_index',
-    ] => @defaults, isa => 'Int';
+    'tag_index',
+  ] => @defaults, isa => 'Int';
 
 1;
 

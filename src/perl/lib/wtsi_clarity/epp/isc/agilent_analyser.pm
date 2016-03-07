@@ -202,7 +202,7 @@ sub _build__map_artid_range {
                 my $size_max      = _extract_value($node, $SIZE_MAX_PATH,           'max lib size',        $DEFAULT_SIZE_MAX,          );
                 my $size_min      = _extract_value($node, $SIZE_MIN_PATH,           'min lib size',        $DEFAULT_SIZE_MAX,          );
 
-                my $artifact_id = c->new(keys $self->_map_artid_sampleid)->first(sub{
+                my $artifact_id = c->new(keys %{$self->_map_artid_sampleid})->first(sub{
                   return $self->_map_artid_sampleid->{$_} eq $sample_id;
                 });
                 $a->{ $artifact_id } = {
@@ -291,7 +291,7 @@ sub _get_filenames_available_for_parsing {
 sub _check_range {
   my $self = shift;
   my %map_location_artid = reverse %{$self->_map_artid_location};
-  my $checked_res = c ->new(keys $self->_analysis_results)
+  my $checked_res = c ->new(keys %{$self->_analysis_results})
                       ->reduce(sub {
                         my $loc = $b;
                         my $results = $self->_analysis_results->{$loc};
@@ -305,7 +305,7 @@ sub _check_range {
                         return $a;
                       }, {});
 
-  if ( scalar keys $checked_res != 0) {
+  if ( scalar keys %{$checked_res} != 0) {
     my $error_message = _make_error_report($checked_res);
     croak $error_message;
   }
@@ -314,8 +314,8 @@ sub _check_range {
 
 sub _precheck {
   my $self = shift;
-  my $nb_of_artifacts = scalar keys $self->_map_artid_sampleid;
-  my $nb_of_results = scalar keys $self->_analysis_results;
+  my $nb_of_artifacts = scalar keys %{$self->_map_artid_sampleid};
+  my $nb_of_results = scalar keys %{$self->_analysis_results};
 
   if ($nb_of_results != $nb_of_artifacts) {
     croak qq{The number of results found ($nb_of_results) is not compatible with the number of wells on the input plate ($nb_of_artifacts)!};
@@ -350,13 +350,13 @@ sub _check_range_for_one_result {
 
 sub _make_error_report {
   my $errors = shift;
-  my $joined_keys = join ', ', keys $errors;
+  my $joined_keys = join ', ', sort keys %{$errors};
   return qq{The wells [$joined_keys] are out of range!};
 }
 
 sub _update_output_details {
   my $self = shift;
-  c ->new(keys $self->_map_artid_location)
+  c ->new(keys %{$self->_map_artid_location})
     ->each(sub{
       my $limsid = $_;
       my $well = $self->_map_artid_location->{$limsid};

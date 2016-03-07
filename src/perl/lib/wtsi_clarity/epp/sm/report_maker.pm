@@ -390,7 +390,7 @@ sub _get_first_missing_necessary_data {
 
   my @c_udfs = map {
     $self->_required_sources->{$_}->{'src_udf_name'};
-  } keys $self->_required_sources;
+  } keys %{$self->_required_sources};
 
   my @missing_data = grep {
     my $udf_name = $_;
@@ -414,7 +414,7 @@ sub _build__all_udf_values {
   my $data = {};
 
   while (my ($param_name, $parameter) = each %src_data ) {
-    my @sample_ids = sort keys $parameter->{'results'};
+    my @sample_ids = sort keys %{$parameter->{'results'}};
     my $name = $parameter->{'src_udf_name'};
     foreach my $sample_id (@sample_ids) {
       $data->{$sample_id}->{$name} = $parameter->{'results'}->{$sample_id}->{$name};

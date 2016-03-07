@@ -26,33 +26,44 @@ Readonly::Scalar my $SEQUENCING_VERSION                 => q{1};
 Readonly::Scalar my $SEQUENCING_PLATFORM                => q{2500};
 Readonly::Scalar my $RUN_TYPE                           => q{PE};
 
-sub metadata {
-  my ($self) = @_;
+## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
+Readonly::Scalar my $ARTIFACT_SAMPLE_URI                => q{art:artifact/sample/@uri};
+Readonly::Scalar my $PROJECT_LIMSID                     => q{project/@limsid};
+Readonly::Scalar my $SAMPLE_PATH                        => q{smp:details/smp:sample};
+## use critic
 
-  my $metadata = $self->common_metadata;
+sub get_metadata {
+  my ($self, $samples) = @_;
+
+  my $metadata = $self->get_common_metadata($samples);
   $metadata->{'version'}          = $SEQUENCING_VERSION;
   $metadata->{'platform'}         = $SEQUENCING_PLATFORM;
   $metadata->{'run_type'}         = $RUN_TYPE;
-  $metadata->{'read_length'}      = $self->_read_length;
-  $metadata->{'plex_level'}       = $self->plex_level;
-  $metadata->{'number_of_lanes'}  = $self->number_of_samples;
+  $metadata->{'read_length'}      = $self->_get_read_length($samples);
+  $metadata->{'plex_level'}       = $self->get_plex_level($samples);
+  $metadata->{'number_of_lanes'}  = scalar @{$samples};
 
   return $metadata;
 }
 
-sub _read_length {
-  my ($self) = @_;
+sub _get_read_length {
+  my ($self, $samples) = @_;
 
-  return $self->_study_dao->read_length;
+  my $study = wtsi_clarity::dao::study_dao->new(lims_id => $samples->[0]->findvalue($PROJECT_LIMSID));
+
+  return $study->read_length;
 }
 
 # @Override
-sub number_of_samples {
+sub samples {
   my ($self) = @_;
 
-  my $input_analyte_doc = $self->process->first_input_analyte_doc;
+  my $input_analyte_doc = $self->get_process->first_input_analyte_doc;
 
-  return $input_analyte_doc->findvalue(q{count(art:artifact/sample)});
+  my @sample_uris = $input_analyte_doc->findnodes($ARTIFACT_SAMPLE_URI)->to_literal_list;
+  my $sample_doc = $self->request->batch_retrieve('samples', \@sample_uris);
+
+  return $sample_doc->findnodes($SAMPLE_PATH);
 }
 
 1;
@@ -78,20 +89,13 @@ wtsi_clarity::mq::me::charging::sequencing
 
 =head1 SUBROUTINES/METHODS
 
-=head2 metadata
+=head2 samples
+
+  Returns an ArrayRef of samples
+
+=head2 get_metadata
 
   Returns the matadata part of the event message.
-
-=head2 get_process
-
-  Override from charging_common mixin.
-  Sets the current process to the 'Pre Capture Lib Pooling' process related to this artifact.
-
-=head2 number_of_samples
-
-  Override from charging_common mixin.
-  Gets the number of samples from the analyte.
-  At this step the samples has been pooled to a 'container' (analyte), already, so we have to count them.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

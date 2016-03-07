@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="yes"?>
+<stp:actions xmlns:stp="http://genologics.com/ri/step" uri="http://testserver.com:1234/here/steps/24-77215/actions">
+    <step uri="http://testserver.com:1234/here/steps/24-77215" rel="steps"/>
+    <configuration uri="http://testserver.com:1234/here/configuration/protocols/2/steps/2">Sample Receipt (SM)</configuration>
+    <next-actions>
+        <next-action step-uri="http://testserver.com:1234/here/configuration/protocols/2/steps/4" action="nextstep" artifact-uri="http://testserver.com:1234/here/artifacts/ERD901A1749PA1"/>
+        <next-action step-uri="http://testserver.com:1234/here/configuration/protocols/2/steps/4" action="nextstep" artifact-uri="http://testserver.com:1234/here/artifacts/ERD901A1750PA1"/>
+        <next-action step-uri="http://testserver.com:1234/here/configuration/protocols/2/steps/4" action="nextstep" artifact-uri="http://testserver.com:1234/here/artifacts/ERD901A1751PA1"/>
+        <next-action step-uri="http://testserver.com:1234/here/configuration/protocols/2/steps/4" action="nextstep" artifact-uri="http://testserver.com:1234/here/artifacts/FOR953A481PA1"/>
+    </next-actions>
+</stp:actions>

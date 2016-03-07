@@ -18,5 +18,6 @@
     <udf:field type="String" name="WTSI Data Access Group">N/A</udf:field>
     <udf:field type="String" name="WTSI Study reference genome">Homo_sapiens (1000Genomes_hs37d5)</udf:field>
     <udf:field type="String" name="WTSI Send data to external iRODS">true</udf:field>
+    <udf:field type="String" name="WTSI Data Destination">seq</udf:field>
     <file:file limsid="ERD851-40-4001" uri="http://testserver.com:1234/here/files/ERD851-40-4001"/>
 </prj:project>

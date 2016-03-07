@@ -154,7 +154,7 @@ use_ok('wtsi_clarity::epp::generic::stamper');
   lives_ok {
     $s->_analytes
   } 'got all info from clarity';
-  my @containers = keys %{$s->_analytes};
+  my @containers = reverse sort keys %{$s->_analytes};
   is (scalar @containers, 2, 'two input containers');
   is (scalar(map {
     $_ =~ /\Ahttp/
@@ -171,7 +171,7 @@ use_ok('wtsi_clarity::epp::generic::stamper');
   lives_ok {
     $s->_analytes
   } 'got all info from clarity';
-  my @containers = keys %{$s->_analytes};
+  my @containers = reverse sort keys %{$s->_analytes};
   is (scalar @containers, 2, 'two input containers');
   is (scalar(map {
     $_ =~ /\Ahttp/

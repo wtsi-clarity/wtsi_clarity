@@ -29,23 +29,16 @@ with 'wtsi_clarity::mq::me::charging::charging_common';
 
 Readonly::Scalar my $PRE_CAPTURE_LIB_POOLING_STEP_NAME => q{Pre Capture Lib Pooling};
 
-sub metadata {
-  my ($self) = @_;
+sub get_metadata {
+  my ($self, $samples) = @_;
 
-  my $metadata = $self->common_metadata;
+  my $metadata = $self->get_common_metadata($samples);
   $metadata->{'library_type'}         = $self->_library_type;
-  $metadata->{'bait_library'}         = $self->bait_library;
-  $metadata->{'plex_level'}           = $self->plex_level;
-  $metadata->{'number_of_libraries'}  = $self->number_of_samples;
+  $metadata->{'bait_library'}         = $self->get_bait_library($samples);
+  $metadata->{'plex_level'}           = $self->get_plex_level($samples);
+  $metadata->{'number_of_libraries'}  = scalar @{$samples};
 
   return $metadata;
-}
-
-# @Override
-sub number_of_samples {
-  my $self = shift;
-
-  return $self->process->samples_count_wo_control;
 }
 
 1;
@@ -71,20 +64,9 @@ wtsi_clarity::mq::me::charging::library_construction
 
 =head1 SUBROUTINES/METHODS
 
-=head2 metadata
+=head2 get_metadata
 
   Returns the matadata part of the event message.
-
-=head2 get_process
-
-  Override from charging_common mixin.
-  Sets the current process to the 'Pre Capture Lib Pooling' process related to this artifact.
-
-=head2 number_of_samples
-
-  Override from charging_common mixin.
-  Gets the number of samples from the step.
-  At this step the samples has been pooled to a 'container' (analyte), already, so we have to count them.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

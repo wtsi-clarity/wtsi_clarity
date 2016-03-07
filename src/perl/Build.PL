@@ -120,6 +120,7 @@ my $builder = $class->new(
     'WTSI::DNAP::Utilities'           => '>= 0.4.2',
     'XML::LibXML'                     => 2.0105,
     'XML::SemanticDiff'               => 0,
+    'List::Compare'                   => 0,
   },
   'dist' => {
     COMPRESS => 'gzip',

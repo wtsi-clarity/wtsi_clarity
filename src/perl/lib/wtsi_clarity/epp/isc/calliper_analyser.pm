@@ -66,7 +66,7 @@ has '_plate_barcode' => (
 sub _build__plate_barcode {
   my $self = shift;
   my $container_hash = $self->fetch_targets_hash($FIRST_ANALYTE_PATH, $CONTAINER_PATH);
-  my $container = (values $container_hash)[0];
+  my $container = (values %{$container_hash})[0];
   return $container->findvalue($CONTAINER_NAME);
 }
 
@@ -178,7 +178,7 @@ sub _update_samples_by_location {
   $self->_set_sample_details($sample_data_by_uris);
 
   foreach my $sample_data (@{$sample_data_by_uris}) {
-    my @samples_uri = keys $sample_data;
+    my @samples_uri = keys %{$sample_data};
     my $sample_uri = pop @samples_uri;
     $self->_update_sample_with_data(
       $sample_uri,
@@ -206,7 +206,7 @@ sub _parent_process_doc {
 sub _set_sample_details {
   my ($self, $sample_data_by_uris) = @_;
 
-  my @sample_uris = map { keys $_ } @{$sample_data_by_uris};
+  my @sample_uris = map { keys %{$_} } @{$sample_data_by_uris};
 
   $self->_writer_sample_details($self->request->batch_retrieve('samples', \@sample_uris));
 

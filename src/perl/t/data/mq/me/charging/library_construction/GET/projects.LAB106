@@ -4,7 +4,5 @@
     <open-date>2014-08-04</open-date>
     <researcher uri="http://testserver.com:1234/here/researchers/55"/>
     <udf:field type="String" name="WTSI Project Cost Code">S01XYZ</udf:field>
-    <file:file limsid="LAB106-40-213" uri="http://testserver.com:1234/here/files/LAB106-40-213"/>
-    <file:file limsid="LAB106-40-251" uri="http://testserver.com:1234/here/files/LAB106-40-251"/>
-    <file:file limsid="LAB106-40-3601" uri="http://testserver.com:1234/here/files/LAB106-40-3601"/>
+    <udf:field type="String" name="WTSI Project UUID">415a0dd1-d3dd-11e5-a832-c9b8b01ff3d0</udf:field>
 </prj:project>

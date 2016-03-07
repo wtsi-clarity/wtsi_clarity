@@ -16,18 +16,18 @@ our $VERSION = '0.0';
 Readonly::Scalar my $FILE_NAME => q{%s.%s.manifest.txt};
 
 has '_containers' => (
-  is      => 'ro',
-  isa     => 'XML::LibXML::Document',
-  lazy    => 1,
-  builder => '_build__containers',
-);
+    is      => 'ro',
+    isa     => 'XML::LibXML::Document',
+    lazy    => 1,
+    builder => '_build__containers',
+  );
 
 has '_projects' => (
-  is       => 'rw',
-  isa      => 'HashRef',
-  default  => sub { {} },
-  init_arg => undef,
-);
+    is       => 'rw',
+    isa      => 'HashRef',
+    default  => sub { {} },
+    init_arg => undef,
+  );
 
 sub elements {
   my $self = shift;
@@ -93,30 +93,25 @@ sub file_content {
   $file_content{$container_lims_id}{'container_type'} = $container->findvalue('type/@name');
   $file_content{$container_lims_id}{'wells'} = $self->_build_wells($container);
 
-  my @sample_uris = sort map { $_->{'sample_uri'} } values $file_content{$container_lims_id}{'wells'};
+  my @sample_uris = sort map { $_->{'sample_uri'} } values %{$file_content{$container_lims_id}{'wells'}};
   my $samples = $self->request->batch_retrieve('samples', \@sample_uris);
 
   $self->_set_projects($samples);
 
   my @rows = map {
     $self->_build_row($_, \%file_content, $container_lims_id, $samples);
-  } keys $file_content{$container_lims_id}{'wells'};
+  } keys %{$file_content{$container_lims_id}{'wells'}};
 
   return \@rows;
-}
-
-sub set_publish_to_irods {
-  my ($self) = @_;
-
-  my @sample_limsids = sort keys %{$self->_projects};
-
-  return $self->write_publish_to_irods(scalar @sample_limsids > 0 ? $self->_projects->{$sample_limsids[0]}->{'publish_to_irods'} : 0);
 }
 
 sub irods_destination_path {
   my ($self) = @_;
 
-  return $self->config->irods->{'manifest_path'} . q{/};
+  my @projects = sort values %{$self->_projects};
+
+  my $destination = $projects[0]->{'data_destination'};
+  return $self->config->irods->{$destination.'_manifest_path'};
 }
 
 sub _find_project_limsid_by_sample_limsid {
@@ -131,7 +126,7 @@ sub _build__containers {
   if ($self->_has_process_url) {
     return $self->process_doc->containers;
   } elsif ($self->_has_container_id) {
-    my @urls = map { $self->config->clarity_api->{'base_uri'} . '/containers/' . $_ } @{$self->container_id};
+    my @urls = map { $self->config->clarity_api->{'base_uri'}.'/containers/'.$_ } @{$self->container_id};
     return $self->request->batch_retrieve('containers', \@urls);
   }
 }
@@ -143,7 +138,7 @@ sub _build_wells {
   my $analytes = $self->request->batch_retrieve('artifacts', \@artifact_uris);
 
   %wells = map { $self->_get_sample_uri($_, $analytes) }
-            $container->findnodes('./placement/value')->to_literal_list;
+    $container->findnodes('./placement/value')->to_literal_list;
 
   return \%wells;
 }
@@ -151,14 +146,14 @@ sub _build_wells {
 sub _get_sample_uri {
   my ($self, $placement, $analytes) = @_;
   my $sample = $analytes->findnodes("art:details/art:artifact[location/value='$placement']")->pop;
-  return ( $placement => { 'sample_uri' => $sample->findvalue('./sample/@uri') } );
+  return ( $placement => {'sample_uri' => $sample->findvalue('./sample/@uri')} );
 }
 
 sub _set_projects {
   my ($self, $samples) = @_;
 
   my %projects = map { $self->_build_project_hash($_) }
-                  uniq($samples->findnodes('/smp:details/smp:sample/project/@uri')->to_literal_list);
+    uniq($samples->findnodes('/smp:details/smp:sample/project/@uri')->to_literal_list);
 
   $self->_projects(\%projects);
 
@@ -170,8 +165,8 @@ sub _build_project_hash {
   my $project = $self->fetch_and_parse($project_uri);
 
   my %project_data;
-  $project_data{'publish_to_irods'} = $project->findvalue('/prj:project/udf:field[@name="WTSI Send data to external iRODS"]') eq 'true' ? 1 : 0;
-  $project_data{'name'}             = $project->findvalue('/prj:project/name');
+  $project_data{'data_destination'} = $project->findvalue('/prj:project/udf:field[@name="WTSI Data Destination"]');
+  $project_data{'name'} = $project->findvalue('/prj:project/name');
 
   return ($project->findvalue('/prj:project/@limsid'), \%project_data );
 }
@@ -180,26 +175,26 @@ sub _build_row {
   my ($self, $well, $file_content, $container_lims_id, $samples) = @_;
 
   my $sample_uri = $file_content->{$container_lims_id}{'wells'}{$well}{'sample_uri'};
-  my $sample     = $samples->findnodes("/smp:details/smp:sample[\@uri='$sample_uri']")->pop();
+  my $sample = $samples->findnodes("/smp:details/smp:sample[\@uri='$sample_uri']")->pop();
 
   return {
-    'Sample/Well Location'                => $well,
-    'Container/Name'                      => $file_content->{$container_lims_id}{'container_name'},
-    'Container/Type'                      => $file_content->{$container_lims_id}{'container_type'},
-    'Sample/Name'                         => $sample->findvalue('./udf:field[@name="WTSI Supplier Sample Name (SM)"]') // q{},
-    'UDF/WTSI Supplier'                   => $sample->findvalue('./udf:field[@name="WTSI Supplier"]') // q{},
-    'UDF/WTSI Supplier Gender - (SM)'     => $sample->findvalue('./udf:field[@name="WTSI Supplier Gender - (SM)"]') // q{},
-    'UDF/WTSI Supplier Volume'            => $sample->findvalue('./udf:field[@name="WTSI Supplier Volume"]') // q{},
-    'UDF/WTSI Phenotype'                  => $sample->findvalue('./udf:field[@name="WTSI Phenotype"]') // q{},
-    'UDF/WTSI Donor ID'                   => $sample->findvalue('./udf:field[@name="WTSI Donor ID"]') // q{},
-    'UDF/WTSI Requested Size Range From'  => $sample->findvalue('./udf:field[@name="WTSI Requested Size Range From"]') // q{},
-    'UDF/WTSI Requested Size Range To'    => $sample->findvalue('./udf:field[@name="WTSI Requested Size Range To"]') // q{},
-    'UDF/WTSI Bait Library Name'          => $sample->findvalue('./udf:field[@name="WTSI Bait Library Name"]') // q{},
-    'UDF/WTSI Organism'                   => $sample->findvalue('./udf:field[@name="WTSI Organism"]') // q{},
-    'UDF/WTSI Taxon ID'                   => $sample->findvalue('./udf:field[@name="WTSI Taxon ID"]') // q{},
-    'Sample UUID'                         => $sample->findvalue('./name') // q{},
-    'Project Name'                        => $self->_projects->{$self->_find_project_limsid_by_sample_limsid($sample)}->{'name'} // q{},
-    'Project ID'                          => $sample->findvalue('./project/@limsid') // q{},
+    'Sample/Well Location'               => $well,
+    'Container/Name'                     => $file_content->{$container_lims_id}{'container_name'},
+    'Container/Type'                     => $file_content->{$container_lims_id}{'container_type'},
+    'Sample/Name'                        => $sample->findvalue('./udf:field[@name="WTSI Supplier Sample Name (SM)"]') // q{},
+    'UDF/WTSI Supplier'                  => $sample->findvalue('./udf:field[@name="WTSI Supplier"]') // q{},
+    'UDF/WTSI Supplier Gender - (SM)'    => $sample->findvalue('./udf:field[@name="WTSI Supplier Gender - (SM)"]') // q{},
+    'UDF/WTSI Supplier Volume'           => $sample->findvalue('./udf:field[@name="WTSI Supplier Volume"]') // q{},
+    'UDF/WTSI Phenotype'                 => $sample->findvalue('./udf:field[@name="WTSI Phenotype"]') // q{},
+    'UDF/WTSI Donor ID'                  => $sample->findvalue('./udf:field[@name="WTSI Donor ID"]') // q{},
+    'UDF/WTSI Requested Size Range From' => $sample->findvalue('./udf:field[@name="WTSI Requested Size Range From"]') // q{},
+    'UDF/WTSI Requested Size Range To'   => $sample->findvalue('./udf:field[@name="WTSI Requested Size Range To"]') // q{},
+    'UDF/WTSI Bait Library Name'         => $sample->findvalue('./udf:field[@name="WTSI Bait Library Name"]') // q{},
+    'UDF/WTSI Organism'                  => $sample->findvalue('./udf:field[@name="WTSI Organism"]') // q{},
+    'UDF/WTSI Taxon ID'                  => $sample->findvalue('./udf:field[@name="WTSI Taxon ID"]') // q{},
+    'Sample UUID'                        => $sample->findvalue('./name') // q{},
+    'Project Name'                       => $self->_projects->{$self->_find_project_limsid_by_sample_limsid($sample)}->{'name'} // q{},
+    'Project ID'                         => $sample->findvalue('./project/@limsid') // q{},
   }
 }
 

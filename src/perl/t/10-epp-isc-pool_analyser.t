@@ -44,7 +44,9 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
     ],
   ];
 
-  my @input_table_data = map {
+  my @input_table_data = sort {
+    @{$a}[0] cmp @{$b}[0]
+  } map {
     $_->{'input_table_data'}
   } @{$parameters};
 
@@ -1373,7 +1375,10 @@ local $ENV{'SAVE2WTSICLARITY_WEBCACHE'} = 0;
     }
   ];
 
-  my @plate_table_data = map {
+  my @plate_table_data = sort {
+    # Something deterministic to sort them on.
+    $a->{'A:1'}->{'pooled_into'} cmp $b->{'A:1'}->{'pooled_into'}
+  } map {
     $_->{'plate_table_data'}
   } @{$parameters};
 

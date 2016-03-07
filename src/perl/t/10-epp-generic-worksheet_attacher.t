@@ -665,7 +665,7 @@ my $TEST_DATA4 = {
   # _get_title
   my $title = wtsi_clarity::epp::generic::worksheet_attacher::_get_title($TEST_DATA3, 'container_uri', "Cherrypicking");
 
-  my $exp_title = q{Process PROCESS_ID - PLATE_PURPOSE_27 -> PLATE_PURPOSE_out};
+  my $exp_title = q{Process PROCESS_ID - PLATE_PURPOSE_23 -> PLATE_PURPOSE_out};
   cmp_ok($title, 'eq', $exp_title, "_get_title(...) should give $exp_title.");
 }
 
@@ -781,39 +781,6 @@ my $TEST_DATA4 = {
     'stamp' => 'my stamp',
     'pages' => [
       {
-        'title' => 'Process PROCESS_ID - PLATE_PURPOSE_29 -> PLATE_PURPOSE_out',
-        'input_table' => [['Plate name', 'Barcode', 'Freezer', 'Shelf', 'Rack', 'Tray'],
-        ['PLATE_NAME29', '00000029', '000029', '000029', '000029', '000029' ]],
-        'input_table_title' => 'Source plates',
-        'output_table' => [['Plate name', 'Barcode', 'Wells'],
-        ['PLATE_NAME2', '12345678900002', '1']],
-        'output_table_title' => 'Destination plates',
-        'plate_table' => [['', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ''],
-        [".\nA\n.", "B:2\n29\nv1 b8", '', '', '', '', '', '', '', '', '', '', '', ".\nA\n."],
-        [".\nB\n.", '', '', '', '', '', '', '', '', '', '', '', '', ".\nB\n."],
-        [".\nC\n.", '', '', '', '', '', '', '', '', '', '', '', '', ".\nC\n."],
-        [".\nD\n.", '', '', '', '', '', '', '', '', '', '', '', '', ".\nD\n."],
-        [".\nE\n.", '', '', '', '', '', '', '', '', '', '', '', '', ".\nE\n."],
-        [".\nF\n.", '', '', '', '', '', '', '', '', '', '', '', '', ".\nF\n."],
-        [".\nG\n.", '', '', '', '', '', '', '', '', '', '', '', '', ".\nG\n."],
-        [".\nH\n.", '', '', '', '', '', '', '', '', '', '', '', '', ".\nH\n."],
-        ['', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ''],
-        ],
-        'plate_table_title' => 'Required buffer',
-        'plate_table_cell_styles' => [
-          ['HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE',],
-          ['HEADER_STYLE', 'COLOUR_0', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'HEADER_STYLE',],
-          ['HEADER_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'HEADER_STYLE',],
-          ['HEADER_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'HEADER_STYLE',],
-          ['HEADER_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'HEADER_STYLE',],
-          ['HEADER_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'HEADER_STYLE',],
-          ['HEADER_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'HEADER_STYLE',],
-          ['HEADER_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'HEADER_STYLE',],
-          ['HEADER_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'HEADER_STYLE',],
-          ['HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE',],
-        ],
-      },
-      {
         'title' => 'Process PROCESS_ID - PLATE_PURPOSE_27 -> PLATE_PURPOSE_out',
         'input_table' => [['Plate name', 'Barcode', 'Freezer', 'Shelf', 'Rack', 'Tray'],
         ['PLATE_NAME27', '00000027', '000021', '000022', '000023', '000024' ]],
@@ -846,6 +813,39 @@ my $TEST_DATA4 = {
           ['HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE',],
         ],
       },
+      {
+        'title' => 'Process PROCESS_ID - PLATE_PURPOSE_29 -> PLATE_PURPOSE_out',
+        'input_table' => [['Plate name', 'Barcode', 'Freezer', 'Shelf', 'Rack', 'Tray'],
+          ['PLATE_NAME29', '00000029', '000029', '000029', '000029', '000029' ]],
+        'input_table_title' => 'Source plates',
+        'output_table' => [['Plate name', 'Barcode', 'Wells'],
+          ['PLATE_NAME2', '12345678900002', '1']],
+        'output_table_title' => 'Destination plates',
+        'plate_table' => [['', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ''],
+          [".\nA\n.", "B:2\n29\nv1 b8", '', '', '', '', '', '', '', '', '', '', '', ".\nA\n."],
+          [".\nB\n.", '', '', '', '', '', '', '', '', '', '', '', '', ".\nB\n."],
+          [".\nC\n.", '', '', '', '', '', '', '', '', '', '', '', '', ".\nC\n."],
+          [".\nD\n.", '', '', '', '', '', '', '', '', '', '', '', '', ".\nD\n."],
+          [".\nE\n.", '', '', '', '', '', '', '', '', '', '', '', '', ".\nE\n."],
+          [".\nF\n.", '', '', '', '', '', '', '', '', '', '', '', '', ".\nF\n."],
+          [".\nG\n.", '', '', '', '', '', '', '', '', '', '', '', '', ".\nG\n."],
+          [".\nH\n.", '', '', '', '', '', '', '', '', '', '', '', '', ".\nH\n."],
+          ['', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ''],
+        ],
+        'plate_table_title' => 'Required buffer',
+        'plate_table_cell_styles' => [
+          ['HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE',],
+          ['HEADER_STYLE', 'COLOUR_0', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'HEADER_STYLE',],
+          ['HEADER_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'HEADER_STYLE',],
+          ['HEADER_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'HEADER_STYLE',],
+          ['HEADER_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'HEADER_STYLE',],
+          ['HEADER_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'HEADER_STYLE',],
+          ['HEADER_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'HEADER_STYLE',],
+          ['HEADER_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'HEADER_STYLE',],
+          ['HEADER_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'EMPTY_STYLE', 'HEADER_STYLE',],
+          ['HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE', 'HEADER_STYLE',],
+        ],
+      },
     ]
   };
 
@@ -853,8 +853,16 @@ my $TEST_DATA4 = {
 
   cmp_ok( $pdf_data->{'stamp'}, 'eq', $expected->{'stamp'}, "_get_pdf_data() should give the correct stamp.");
   cmp_ok( scalar @{$pdf_data->{'pages'}}, '==', 2, "_get_pdf_data() should give the correct number of pages.");
-  my $page0 = @{$pdf_data->{'pages'}}[0];
-  my $exp_page0 = @{$expected->{'pages'}}[0];
+
+  my @pages = sort {
+    $a->{'title'} cmp $b->{'title'}
+  } @{$pdf_data->{'pages'}};
+  my $page0 = $pages[0];
+
+  my @exp_pages = sort {
+    $a->{'title'} cmp $b->{'title'}
+  } @{$expected->{'pages'}};
+  my $exp_page0 = $exp_pages[0];
 
   foreach my $key (qw{title input_table_title output_table_title plate_table_title}) {
     cmp_ok( $page0->{$key}, 'eq', $exp_page0->{$key}, "_get_pdf_data() should give the correct $key.");
@@ -866,8 +874,8 @@ my $TEST_DATA4 = {
   is_deeply( $page0->{'plate_table'}, $exp_page0->{'plate_table'}, "plate_table from _get_pdf_data() should be correct.");
   is_deeply( $page0->{'plate_table_cell_styles'}, $exp_page0->{'plate_table_cell_styles'}, "plate_table_cell_styles from _get_pdf_data() should be correct.");
 
-  my $page1 = @{$pdf_data->{'pages'}}[1];
-  my $exp_page1 = @{$expected->{'pages'}}[1];
+  my $page1 = $pages[1];
+  my $exp_page1 = $exp_pages[1];
 
   foreach my $key (qw{title input_table_title output_table_title plate_table_title}) {
     cmp_ok( $page1->{$key}, 'eq', $exp_page1->{$key}, "_get_pdf_data() should give the correct $key.");

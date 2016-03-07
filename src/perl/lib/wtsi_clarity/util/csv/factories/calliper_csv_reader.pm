@@ -19,7 +19,7 @@ sub build {
   my $barcode = $args{'barcode'} || croak qq{Requires the barcode of the original plate!};
 
   my $csv_parser = Text::CSV->new();
-  shift $file_content;
+  shift @{$file_content};
 
   my $output = {};
 

@@ -41,6 +41,7 @@ Readonly::Hash  my %ATTRIBUTES => {
                                     'ega_dac_accession_number'    => q{/prj:project/udf:field[@name='WTSI Accession Number']},
                                     'remove_x_and_autosomes'      => q{/prj:project/udf:field[@name='WTSI Does the study require the removal of X-chromosome and autosome sequence?']},
                                     'separate_y_chromosome_data'  => q{/prj:project/udf:field[@name='WTSI Does the study require the removal of Y-chromosome and autosome sequence?']},
+                                    'data_destination'            => q{/prj:project/udf:field[@name='WTSI Data Destination']},
                                   };
 ## use critic
 

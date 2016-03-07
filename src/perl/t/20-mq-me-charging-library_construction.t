@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 22;
+use Test::More tests => 12;
 use Test::Exception;
 use Test::MockObject::Extends;
 
@@ -24,14 +24,9 @@ my $base_uri = $config->clarity_api->{'base_uri'};
   );
 
   is($me->_user_identifier, 'karel@testsite.ac.uk', 'Extracts the user identifier correctly');
-  is($me->_project_name, 'Test Project XXX123', 'Extracts the project name correctly');
   is($me->product_type, 'GCLP ISC', 'Gets the correct product type information');
   is($me->pipeline, 'IHTP', 'Gets the correct pipeline information');
   is($me->_library_type, 'ISC', 'Gets the correct library type information');
-  is($me->bait_library, 'Human all exon V5', 'Gets the correct bait type information');
-  is($me->plex_level, '8', 'Gets the correct plex level information');
-  is($me->_cost_code, 'S01XYZ', 'Extracts the cost code correctly');
-  is($me->number_of_samples, 7, 'Gets the number of libraries correctly');
 
   my $me_mocked = Test::MockObject::Extends->new(
     wtsi_clarity::mq::me::charging::library_construction->new(
@@ -60,14 +55,9 @@ my $base_uri = $config->clarity_api->{'base_uri'};
   );
 
   is($me->_user_identifier, 'karel@testsite.ac.uk', 'Extracts the user identifier correctly');
-  is($me->_project_name, 'Karoly_test', 'Extracts the project name correctly');
   is($me->product_type, 'GCLP ISC', 'Gets the correct product type information');
   is($me->pipeline, 'IHTP', 'Gets the correct pipeline information');
   is($me->_library_type, 'ISC', 'Gets the correct library type information');
-  is($me->bait_library, '14M_0670551', 'Gets the correct bait type information');
-  is($me->plex_level, '8', 'Gets the correct plex level information');
-  is($me->_cost_code, 'S01XYZ', 'Extracts the cost code correctly');
-  is($me->number_of_samples, 64, 'Gets the number of libraries correctly');
 
   my $me_mocked = Test::MockObject::Extends->new(
     wtsi_clarity::mq::me::charging::library_construction->new(
@@ -87,7 +77,7 @@ my $base_uri = $config->clarity_api->{'base_uri'};
 }
 
 {
-  my $me_mocked = Test::MockObject::Extends->new( 
+  my $me_mocked = Test::MockObject::Extends->new(
     wtsi_clarity::mq::me::charging::library_construction->new(
       process_url => $base_uri . '/processes/122-65197',
       step_url    => $base_uri . '/steps/122-65197',
@@ -98,40 +88,87 @@ my $base_uri = $config->clarity_api->{'base_uri'};
 
   my $expected_json = [
     {
-      'lims' => 'C_GCLP_D',
+      'lims'  => 'C_GCLP_D',
       'event' => {
-                   'subjects' => [
-                                   {
-                                     'subject_type'   => 'clarity_project',
-                                     'friendly_name'  => 'Test Project XXX123',
-                                     'uuid'           => 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e',
-                                     'role_type'      => 'clarity_charge_project'
-                                   }
-                                 ],
-                   'event_type' => 'charging_library_construction',
-                   'metadata' => {
-                                   'product_type'         => 'GCLP ISC',
-                                   'pipeline'             => 'IHTP',
-                                   'library_type'         => 'ISC',
-                                   'bait_library'         => 'Human all exon V5',
-                                   'plex_level'           => '8',
-                                   'cost_code'            => 'S01XYZ',
-                                   'number_of_libraries'  => 7
-                                 },
-                   'user_identifier'  => 'karel@testsite.ac.uk',
-                   'uuid'             => 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e',
-                   'occured_at'       => '2015-12-02'
-                 }
+        'subjects'        => [
+          {
+            'subject_type'  => 'clarity_project',
+            'friendly_name' => 'lh13_project1',
+            'uuid'          => 'd1bd68c9-92b4-11e5-841d-d1ffc6ce5ce4',
+            'role_type'     => 'clarity_charge_project'
+          }
+        ],
+        'event_type'      => 'charging_library_construction',
+        'metadata'        => {
+          'product_type'        => 'GCLP ISC',
+          'library_type'        => 'ISC',
+          'number_of_libraries' => 3,
+          'bait_library'        => 'Human all exon V5',
+          'cost_code'           => 'SX001',
+          'plex_level'          => '8',
+          'pipeline'            => 'IHTP'
+        },
+        'user_identifier' => 'karel@testsite.ac.uk',
+        'uuid'            => 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e',
+        'occured_at'      => '2015-12-02'
+      }
+    },
+    {
+      'lims'  => 'C_GCLP_D',
+      'event' => {
+        'subjects'        => [
+          {
+            'subject_type'  => 'clarity_project',
+            'friendly_name' => 'AD_test101',
+            'uuid'          => 'b93a5cd3-d3e0-11e5-857c-c78c28316c7a',
+            'role_type'     => 'clarity_charge_project'
+          }
+        ],
+        'event_type'      => 'charging_library_construction',
+        'metadata'        => {
+          'product_type'        => 'GCLP ISC',
+          'library_type'        => 'ISC',
+          'number_of_libraries' => 2,
+          'bait_library'        => 'Human all exon V5',
+          'cost_code'           => 'test101',
+          'plex_level'          => '8',
+          'pipeline'            => 'IHTP'
+        },
+        'user_identifier' => 'karel@testsite.ac.uk',
+        'uuid'            => 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e',
+        'occured_at'      => '2015-12-02'
+      }
+    },
+    {
+      'lims'  => 'C_GCLP_D',
+      'event' => {
+        'subjects'        => [
+          {
+            'subject_type'  => 'clarity_project',
+            'friendly_name' => 'Test Project XXX123',
+            'uuid'          => '5eb907b7-9204-11e5-9665-cec9d23d9897',
+            'role_type'     => 'clarity_charge_project'
+          }
+        ],
+        'event_type'      => 'charging_library_construction',
+        'metadata'        => {
+          'product_type'        => 'GCLP ISC',
+          'library_type'        => 'ISC',
+          'number_of_libraries' => 2,
+          'bait_library'        => 'Human all exon V5',
+          'cost_code'           => 'S01XYZ',
+          'plex_level'          => '8',
+          'pipeline'            => 'IHTP'
+        },
+        'user_identifier' => 'karel@testsite.ac.uk',
+        'uuid'            => 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e',
+        'occured_at'      => '2015-12-02'
+      }
     }
   ];
 
   $me_mocked->mock(q{_get_uuid}, sub {
 
-    return 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e';
-  });
-
-  $me_mocked->mock(q{_project_uuid}, sub {
-    
     return 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e';
   });
 

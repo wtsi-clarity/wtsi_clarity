@@ -18,11 +18,11 @@ has 'pipeline' => (
 
 with 'wtsi_clarity::mq::me::charging::charging_common';
 
-sub metadata {
-  my ($self) = @_;
+sub get_metadata {
+  my ($self, $samples) = @_;
 
-  my $metadata = $self->common_metadata;
-  $metadata->{'number_of_samples'}  = $self->number_of_samples;
+  my $metadata = $self->get_common_metadata($samples);
+  $metadata->{'number_of_samples'}  = scalar @{$samples};
 
   return $metadata;
 }
@@ -50,7 +50,7 @@ wtsi_clarity::mq::me::charging::fluidigm
 
 =head1 SUBROUTINES/METHODS
 
-=head2 metadata
+=head2 get_metadata
 
   Returns the matadata part of the event message.
 

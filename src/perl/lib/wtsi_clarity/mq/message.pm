@@ -65,7 +65,7 @@ around ['create', 'defrost'] => sub {
 
   # TODO: Make the config module a singleton (or something)...
   my $config = wtsi_clarity::util::config->new();
-  my @valid_message_types = values $config->message_queues;
+  my @valid_message_types = values %{$config->message_queues};
 
   if (!_message_type_is_valid($message_type, @valid_message_types)) {
     croak 'Message type must be one of the following: ' . join q{,}, @valid_message_types;

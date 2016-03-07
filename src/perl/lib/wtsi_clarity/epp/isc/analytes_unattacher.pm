@@ -28,7 +28,7 @@ sub _unattach {
   my $doc = wtsi_clarity::epp::generic::workflow_assigner::make_workflow_unassign_request($workflow_uri, $artifact_output_uri_ref);
 
   my $post_uri = $self->config->clarity_api->{'base_uri'}.'/route/artifacts';
-  return $self->request->post($post_uri, $doc->toString()) or croak qq{Could not send successful request for rerouting. ($post_uri)};
+  return $self->request->post($post_uri, $doc->toString()) || croak qq{Could not send successful request for rerouting. ($post_uri)};
 };
 
 1;

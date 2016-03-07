@@ -73,7 +73,7 @@ sub _reroute_analytes {
   my $req_doc = wtsi_clarity::epp::generic::workflow_assigner::make_step_rerouting_request(
     $reroute_to_step_uri, $analytes_to_reroute
   )->toString();
-  return $self->request->post($post_uri, $req_doc) or croak qq{Could not send successful request for rerouting. ($post_uri)};
+  return $self->request->post($post_uri, $req_doc) || croak qq{Could not send successful request for rerouting. ($post_uri)};
 }
 
 sub _get_new_step_uri {
@@ -120,16 +120,17 @@ wtsi_clarity::epp::sm::plate_rerouter
 
 =head1 SYNOPSIS
 
-  my $plate_rerouter = wtsi_clarity::epp::sm::file_download->new(er
-    process_url   => 'http://clarity.com/processes/1234',
-    process_type  => 'Fluidigm Worksheet & Barcode (SM)',
-    file_name     => 'Tecan File',
-    udf_name      => 'Tecan File',
+  my $plate_rerouter = wtsi_clarity::epp::sm::file_download->new(
+    process_url       => 'http://clarity.com/processes/1234',
+    process_type      => 'Pico Dilution (SM)',
+    new_step_name     => 'Pico Assay Plate (SM)',
+    new_protocol_name => 'Picogreen Protocol',
+    new_workflow_name => 'GCLP Sample Management QC'
   );
 
 =head1 DESCRIPTION
 
-  Makes a file downloadable from a previous process.
+  Moves the output analytes to the ice bucket of the given step.
 
 =head1 SUBROUTINES/METHODS
 

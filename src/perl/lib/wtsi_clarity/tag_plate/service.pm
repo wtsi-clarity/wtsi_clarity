@@ -14,6 +14,15 @@ Readonly::Scalar my $EXHAUSTED_STATE               => q[exhausted];
 Readonly::Scalar my $STATE_CHANGE_PATH             => q[state_changes];
 Readonly::Scalar my $GATEKEEPER_VALID_PLATE_STATUS => q[available];
 
+has 'json' => (
+  isa     => 'JSON',
+  is      => 'ro',
+  default => sub {
+    my $json = JSON->new->allow_nonref;
+    return $json->canonical();
+  },
+);
+
 has 'barcode' => (
   isa      => 'Str',
   is       => 'ro',
@@ -73,7 +82,7 @@ sub _build__tag_plate {
     croak 'Search path is not defined in the configuration file';
   }
   my $url = join q{/}, ($self->_gkurl, $path, 'first');
-  my $response = $self->_gkrequest->post($url, to_json({'search' => {'barcode' => $self->barcode,},}) );
+  my $response = $self->_gkrequest->post($url, $self->json->encode({'search' => {'barcode' => $self->barcode,},}) );
   my $parsed_response = from_json($response);
   my $meta=  { 'state'       => $parsed_response->{'qcable'}->{'state'},
                'lot_uuid'    => $parsed_response->{'qcable'}->{'lot'}->{'uuid'},
@@ -142,7 +151,7 @@ sub mark_as_used {
   $state_change_element->{'user'}         = $user;
   $state_change_element->{'target'}       = $meta->{'asset_uuid'};
 
-  $self->_gkrequest->post($url, to_json( {'state_change' => $state_change_element} ));
+  $self->_gkrequest->post($url, $self->json->encode( {'state_change' => $state_change_element} ));
 
   return;
 }

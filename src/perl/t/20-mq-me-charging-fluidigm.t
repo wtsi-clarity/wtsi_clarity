@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 12;
+use Test::More tests => 6;
 use Test::Exception;
 use Test::MockObject::Extends;
 
@@ -24,9 +24,6 @@ my $base_uri = $config->clarity_api->{'base_uri'};
   );
 
   is($me->_user_identifier, 'karel@testsite.ac.uk', 'Extracts the user identifier correctly');
-  is($me->_cost_code, 'S01XYZ', 'Extracts the cost code correctly');
-  is($me->_project_name, 'Test Project XXX123', 'Extracts the project name correctly');
-  is($me->number_of_samples, 9, 'Gets the number of samples correctly');
 
   my $me_mocked = Test::MockObject::Extends->new(
     wtsi_clarity::mq::me::charging::fluidigm->new(
@@ -55,9 +52,6 @@ my $base_uri = $config->clarity_api->{'base_uri'};
   );
 
   is($me->_user_identifier, 'karel@testsite.ac.uk', 'Extracts the user identifier correctly');
-  is($me->_cost_code, 'S01XYZ', 'Extracts the cost code correctly');
-  is($me->_project_name, 'aarvark', 'Extracts the project name correctly');
-  is($me->number_of_samples, 86, 'Gets the number of samples correctly');
 
   my $me_mocked = Test::MockObject::Extends->new(
     wtsi_clarity::mq::me::charging::fluidigm->new(
@@ -94,7 +88,7 @@ my $base_uri = $config->clarity_api->{'base_uri'};
                                    {
                                      'subject_type' => 'clarity_project',
                                      'friendly_name' => 'Test Project XXX123',
-                                     'uuid' => 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e',
+                                     'uuid' => '5eb907b7-9204-11e5-9665-cec9d23d9897',
                                      'role_type' => 'clarity_charge_project'
                                    }
                                  ],
@@ -114,11 +108,6 @@ my $base_uri = $config->clarity_api->{'base_uri'};
 
   $me_mocked->mock(q{_get_uuid}, sub {
 
-    return 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e';
-  });
-
-  $me_mocked->mock(q{_project_uuid}, sub {
-    
     return 'cb11aa6e-8d10-11e5-ba7a-f94e03be199e';
   });
 

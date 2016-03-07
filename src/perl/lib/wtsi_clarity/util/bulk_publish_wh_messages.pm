@@ -25,6 +25,13 @@ Readonly::Scalar my $PROCESS_TYPE_STUDY_RECEIPT       => q{Sample Receipt (SM)};
 Readonly::Scalar my $PROCESS_TYPE_FLUIDIGM_ANALYSIS   => q{Fluidigm 96.96 IFC Analysis (SM)};
 Readonly::Scalar my $PROCESS_TYPE_FLOWCELL_GENERATION => q{Cluster Generation};
 
+Readonly::Hash  my %PROCESS_TYPES  => {
+  'sample' => $PROCESS_TYPE_SAMPLE_RECEIPT,
+  'study' => $PROCESS_TYPE_STUDY_RECEIPT,
+  'fluidigm' => $PROCESS_TYPE_FLUIDIGM_ANALYSIS,
+  'flowcell' => $PROCESS_TYPE_FLOWCELL_GENERATION,
+};
+
 has 'model'  => (
   isa             => 'Str',
   is              => 'ro',
@@ -52,14 +59,10 @@ has '_process_type' => (
 sub _build__process_type {
   my $self = shift;
 
-  my $process_type;
+  my $process_type = $PROCESS_TYPES{$self->model};
 
-  given($self->model) {
-    when (/sample/sm)   { $process_type = $PROCESS_TYPE_SAMPLE_RECEIPT }
-    when (/study/sm)    { $process_type = $PROCESS_TYPE_STUDY_RECEIPT }
-    when (/fluidigm/sm) { $process_type = $PROCESS_TYPE_FLUIDIGM_ANALYSIS }
-    when (/flowcell/sm) { $process_type = $PROCESS_TYPE_FLOWCELL_GENERATION }
-    default           { croak q{Not supported process type} }
+  if (!$process_type) {
+    croak q{Not supported process type};
   }
 
   return q{type=} . $process_type;

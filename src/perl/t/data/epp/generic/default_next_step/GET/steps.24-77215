@@ -1,0 +1,7 @@
+<?xml version="1.0" standalone="yes"?>
+<stp:step xmlns:stp="http://genologics.com/ri/step" current-state="Assign Next Steps" limsid="24-77215" uri="http://testserver.com:1234/here/steps/24-77215">
+    <configuration uri="http://testserver.com:1234/here/configuration/protocols/2/steps/2">Sample Receipt (SM)</configuration>
+    <actions uri="http://testserver.com:1234/here/steps/24-77215/actions"/>
+    <details uri="http://testserver.com:1234/here/steps/24-77215/details"/>
+    <available-programs/>
+</stp:step>

@@ -17,7 +17,6 @@ Readonly::Scalar my $INPUT_OUTPUT_MAP         => q{prc:process/input-output-map}
 Readonly::Scalar my $INPUT_LIMSID             => q{input/@limsid};
 Readonly::Scalar my $OUTPUT_LIMSID            => q{output/@limsid};
 Readonly::Scalar my $FLOWCELL_BARCODE_UDF     => q{prc:process/udf:field[@name="Flow Cell ID"]};
-Readonly::Scalar my $SPIKED_HYB_BARCODE       => q{prc:process/udf:field[@name="WTSI Spiked Hyb Barcode"]};
 Readonly::Scalar my $PROCESS_LIMSID_PATH      => q{prc:process/@limsid};
 
 Readonly::Scalar my $CONTAINER_URI_PATH       => q{./stp:placements/selected-containers/container/@uri};
@@ -31,7 +30,6 @@ Readonly::Scalar my $ARTIFACT_REAGENT_NAME    => q{./art:artifact/reagent-label/
 Readonly::Scalar my $ARTIFACT_LOCATION_VALUE  => q{./art:artifact/location/value};
 Readonly::Scalar my $ARTIFACT_CONTAINER_URI   => q{./art:artifact/location/container/@uri};
 
-Readonly::Scalar my $LANE_ENTITY_TYPE         => q{library};
 Readonly::Scalar my $PIPELINE_ID_LIMS         => q{GCLP-CLARITY-ISC};
 Readonly::Scalar my $SAMPLE_ENTITY_TYPE       => q{library_indexed};
 Readonly::Scalar my $IS_R_AND_D               => q{false};
@@ -49,6 +47,7 @@ Readonly::Scalar my $PROJECT_SIZE_RANGE_PATH  => q{prj:project/udf:field[@name="
 Readonly::Scalar my $PROJECT_READ_LENGTH_PATH => q{prj:project/udf:field[@name="WTSI Read Length"]};
 Readonly::Scalar my $PROJECT_LIMSID           => q{prj:project/@limsid};
 Readonly::Scalar my $PROJECT_ID_PATH          => q{prj:project/udf:field[@name="WTSI Project ID"]};
+Readonly::Scalar my $PROJECT_PURPOSE          => q{prj:project/udf:field[@name="WTSI Purpose"]};
 
 Readonly::Scalar my $TAG_PLATE_PROCESS_NAME   => q{Library PCR set up};
 
@@ -280,6 +279,7 @@ sub _get_project_info {
     $project_info{'requested_insert_size_from'} = $project_doc->findvalue($PROJECT_SIZE_FROM_PATH);
     $project_info{'requested_insert_size_to'}   = $project_doc->findvalue($PROJECT_SIZE_RANGE_PATH) + $project_info{'requested_insert_size_from'};
     $project_info{'read_length'}                = $project_doc->findvalue($PROJECT_READ_LENGTH_PATH);
+    $project_info{'purpose'}                    = $project_doc->findvalue($PROJECT_PURPOSE);
 
     $self->_set_projects_info( { $project_id => \%project_info });
   }

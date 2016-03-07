@@ -86,7 +86,9 @@ use_ok('wtsi_clarity::epp::sm::proceed_sample_updater', 'can use wtsi_clarity::e
     'http://testserver.com:1234/here/artifacts/2-206322'
   ];
 
-  is_deeply($epp->_placements_to_mark_proceed($wells_to_proceed), $expected_placement_uris, "Returns the correct uris of the placements");
+  my @actual_placement_uris = sort @{$epp->_placements_to_mark_proceed($wells_to_proceed)};
+
+  is_deeply(\@actual_placement_uris, $expected_placement_uris, "Returns the correct uris of the placements");
 }
 
 { #Gets the list of sample uris to update
@@ -164,7 +166,7 @@ use_ok('wtsi_clarity::epp::sm::proceed_sample_updater', 'can use wtsi_clarity::e
   my $method_ref = _mock_download_qc_file($mock_qc_report_path);
   $epp->mock(q(_download_qc_file), sub { return $method_ref;});
 
-  my @plates_from_qc = keys $epp->_plate_and_wells_to_proceed();
+  my @plates_from_qc = sort keys %{$epp->_plate_and_wells_to_proceed()};
 
   my $plate_nodes_from_process =
     $epp->_plate_and_wells_from_process()->findnodes(q{/con:details/con:container/name/text()});

@@ -10,11 +10,6 @@ use wtsi_clarity::util::types;
 use wtsi_clarity::clarity::process;
 use wtsi_clarity::clarity::step;
 
-## no critic(ValuesAndExpressions::RequireInterpolationOfMetachars)
-Readonly::Scalar my $BED_PATH => q{/prc:process/udf:field[starts-with(@name, "Bed") and contains(@name, "Plate")]};
-Readonly::Scalar my $PLATE_PATH => q{/prc:process/udf:field[starts-with(@name, "Input Plate") or starts-with(@name, "Output Plate")]};
-## use critic
-
 with qw/MooseX::Getopt wtsi_clarity::util::configurable wtsi_clarity::util::roles::clarity_request/;
 
 our $VERSION = '0.0';
@@ -53,32 +48,6 @@ sub _build_step_doc {
   $step_url =~ s/processes/steps/smxg;
   my $xml = $self->fetch_and_parse($step_url);
   return wtsi_clarity::clarity::step->new(xml => $xml, parent => $self);
-}
-
-has 'beds' => (
-  is => 'ro',
-  isa => 'WtsiClarityProcessBeds',
-  lazy_build => 1,
-  coerce => 1,
-  traits => [ 'NoGetopt' ],
-);
-
-sub _build_beds {
-  my $self = shift;
-  return $self->findnodes($BED_PATH);
-}
-
-has 'plates' => (
-  is => 'ro',
-  isa => 'WtsiClarityPlates',
-  lazy_build => 1,
-  coerce => 1,
-  traits => [ 'NoGetopt' ],
-);
-
-sub _build_plates {
-  my $self = shift;
-  return $self->findnodes($PLATE_PATH);
 }
 
 sub run {

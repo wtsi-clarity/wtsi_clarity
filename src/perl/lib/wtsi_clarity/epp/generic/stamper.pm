@@ -122,7 +122,7 @@ has 'container_type_name' => (
 sub _build_container_type_name {
   my $self = shift;
 
-  my @container_urls = keys %{$self->_analytes};
+  my @container_urls = sort keys %{$self->_analytes};
   my $doc = $self->_analytes->{$container_urls[0]}->{'doc'};
   $self->_set_validate_container_type(0);
   return [$doc->findvalue($CONTAINER_TYPE_NAME_PATH)];
@@ -181,7 +181,7 @@ sub _build__container_type {
       push @types, $xml;
     }
   } else {
-    my @container_urls = keys %{$self->_analytes};
+    my @container_urls = sort keys %{$self->_analytes};
     my $doc = $self->_analytes->{$container_urls[0]}->{'doc'};
     my @nodes = $doc->findnodes(q{ /con:container/type });
     push @types, $nodes[0]->toString();
@@ -322,14 +322,14 @@ sub _create_containers {
   if ($self->group) {
     my $container_doc = $self->_create_container($self->_container_type->[0]);
 
-    for my $input_container (keys %{$self->_analytes}) {
+    for my $input_container (sort keys %{$self->_analytes}) {
       push@{$self->_analytes->{$input_container}->{'output_containers'}}, $self->_build_container_info($container_doc);
     }
 
     return;
   }
 
-  for my $input_container (keys %{$self->_analytes}) {
+  for my $input_container (sort keys %{$self->_analytes}) {
     for my $output_container_type_xml (@{$self->_container_type}) {
 
       my $container_doc = $self->_create_container($output_container_type_xml);
@@ -377,7 +377,7 @@ sub _create_placements_doc {
 
   my %containers = ();
 
-  for my $input_container (keys %{$self->_analytes}) {
+  for my $input_container (sort keys %{$self->_analytes}) {
     for my $output_container (@{$self->_analytes->{$input_container}->{'output_containers'}}) {
       my $container_url = $output_container->{'uri'};
 
@@ -415,8 +415,8 @@ sub _stamping {
     croak 'Placements element not found';
   }
 
-  for my $input_container (keys %{$self->_analytes}) {
-    for my $input_analyte (keys %{$self->_analytes->{$input_container} }) {
+  for my $input_container (sort keys %{$self->_analytes}) {
+    for my $input_analyte (sort keys %{$self->_analytes->{$input_container} }) {
       if ($input_analyte eq 'output_containers' || $input_analyte eq 'doc') {
         next;
       }

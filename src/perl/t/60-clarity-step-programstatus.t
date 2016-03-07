@@ -48,7 +48,7 @@ local $ENV{'WTSICLARITY_WEBCACHE_DIR'} = 't/data/clarity/step';
     'send_ok'      => { status => 'OK',      message => 'Everything is just great'},
   };
 
-  foreach my $method (keys $message_tests) {
+  foreach my $method (keys %{$message_tests}) {
     $step_programstatus->$method($message_tests->{$method}->{'message'});
 
     is($xml->findvalue('stp:program-status/status'), $message_tests->{$method}->{'status'}, 'status is set correctly for ' . $method);
