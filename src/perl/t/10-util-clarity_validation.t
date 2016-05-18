@@ -53,7 +53,7 @@ use_ok('wtsi_clarity::util::clarity_validation', (qw/flgen_bc ean13_bc flowcell_
   is(flowcell_bc('HBCDEFGXX')->failed, 0, 'Returns 1 for a valid flowcell input.');
 
   # Invalid
-  is(flowcell_bc('1234567')->error_message, 'Validation for value 1234567 failed. The input must have a length of 9. The input must start with C or H. The input must end with XX.');
+  is(flowcell_bc('1234567')->error_message, 'Validation for value 1234567 failed. The input must have a length of 9. The input must start with C or H. The input must end with [A-Z][A-Z].');
 
   # Length checks
   is(flowcell_bc('H12AXX')->error_message, 'Validation for value H12AXX failed. The input must have a length of 9.');
@@ -69,12 +69,12 @@ use_ok('wtsi_clarity::util::clarity_validation', (qw/flgen_bc ean13_bc flowcell_
   is(flowcell_bc('A234567XX')->error_message, 'Validation for value A234567XX failed. The input must start with C or H.');
   is(flowcell_bc('G234567XX')->error_message, 'Validation for value G234567XX failed. The input must start with C or H.');
 
-  is(flowcell_bc('H23456789')->error_message, 'Validation for value H23456789 failed. The input must end with XX.');
-  is(flowcell_bc('H2345678X')->error_message, 'Validation for value H2345678X failed. The input must end with XX.');
+  is(flowcell_bc('H23456789')->error_message, 'Validation for value H23456789 failed. The input must end with [A-Z][A-Z].');
+  is(flowcell_bc('H2345678X')->error_message, 'Validation for value H2345678X failed. The input must end with [A-Z][A-Z].');
 
-  is(flowcell_bc('123456789')->error_message, 'Validation for value 123456789 failed. The input must start with C or H. The input must end with XX.');
-  is(flowcell_bc('123H56789')->error_message, 'Validation for value 123H56789 failed. The input must start with C or H. The input must end with XX.');
-  is(flowcell_bc('1234XX789')->error_message, 'Validation for value 1234XX789 failed. The input must start with C or H. The input must end with XX.');
+  is(flowcell_bc('123456789')->error_message, 'Validation for value 123456789 failed. The input must start with C or H. The input must end with [A-Z][A-Z].');
+  is(flowcell_bc('123H56789')->error_message, 'Validation for value 123H56789 failed. The input must start with C or H. The input must end with [A-Z][A-Z].');
+  is(flowcell_bc('1234XX789')->error_message, 'Validation for value 1234XX789 failed. The input must start with C or H. The input must end with [A-Z][A-Z].');
 }
 
 1;
