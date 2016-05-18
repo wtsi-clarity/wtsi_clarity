@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 5;
+use Test::More tests => 9;
 use Test::Exception;
 
 use_ok('wtsi_clarity::epp::isc::flowcell_barcode_validator');
@@ -31,6 +31,25 @@ my $base_uri = $config->clarity_api->{'base_uri'};
 
   throws_ok { $flowcell_bc_validator->run } qr/Validation for value 123456 failed. The input must have a length of 9./,
     'Throws an error when the barcode is too short';
+}
+
+{
+  my $flowcell_bc_validator = wtsi_clarity::epp::isc::flowcell_barcode_validator->new(
+    process_url => $base_uri . '/processes/24-67603',
+  );
+  isa_ok($flowcell_bc_validator, 'wtsi_clarity::epp::isc::flowcell_barcode_validator');
+
+  throws_ok { $flowcell_bc_validator->run } qr/Validation for value H123456X2 failed. The input must end with/,
+    'Throws an error when the barcode is too short';
+}
+
+{
+  my $flowcell_bc_validator = wtsi_clarity::epp::isc::flowcell_barcode_validator->new(
+    process_url => $base_uri . '/processes/24-67604',
+  );
+  isa_ok($flowcell_bc_validator, 'wtsi_clarity::epp::isc::flowcell_barcode_validator');
+
+  lives_ok { $flowcell_bc_validator->run } 'Exits when barcode is valid';
 }
 
 1;
